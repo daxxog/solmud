@@ -107,7 +107,7 @@ public final class signlink
                     catch(Exception _ex) { }
                 if(waveplay)
                 {
-                    String wave = s + savereq;
+                    wave = s + savereq;
                     waveplay = false;
                 }
                 if(midiplay)
@@ -328,6 +328,7 @@ public final class signlink
     public static int midifade;
     private static boolean waveplay;
     private static int wavepos;
+    public static String wave = null;
     public static int wavevol;
     public static boolean reporterror = true;
     public static String errorname = "";

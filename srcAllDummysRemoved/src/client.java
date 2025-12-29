@@ -6597,9 +6597,25 @@ public class client extends RSApplet {
 		}
 	}
 
+    private static boolean audioInitialized = false;
+    private final static void initAudioSystem() {
+        if(!audioInitialized) {
+            AudioAccessor accessor = new SignlinkAudioAccessor();
+            MidiAudioBox midibox = new MidiAudioBox();
+            WaveAudioBox wavebox = new WaveAudioBox();
+
+            MusicLoop musicLoop = new MusicLoop(accessor, midibox, wavebox);
+            Thread audioThread = new Thread(musicLoop, "AudioSystem");
+            audioThread.setDaemon(true);
+            audioThread.start();
+        }
+        audioInitialized = true;
+    }
+
 	void startUp()
 	{
 		drawLoadingText(20, "Starting up");
+        initAudioSystem();
 		if(signlink.sunjava)
 			super.minDelay = 5;
 		if(aBoolean993)
