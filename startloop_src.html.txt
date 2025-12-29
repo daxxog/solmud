@@ -1,0 +1,232 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host web.archive.org:443 was resolved.
+* IPv6: (none)
+* IPv4: 207.241.237.3
+*   Trying 207.241.237.3:443...
+* Connected to web.archive.org (207.241.237.3) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [320 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [5128 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [52 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [52 bytes data]
+* SSL connection using TLSv1.3 / AEAD-AES256-GCM-SHA384 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.archive.org
+*  start date: Dec 23 14:18:32 2024 GMT
+*  expire date: Jan 24 14:18:32 2026 GMT
+*  subjectAltName: host "web.archive.org" matched cert's "*.archive.org"
+*  issuer: C=US; ST=Arizona; L=Scottsdale; O=GoDaddy.com, Inc.; OU=http://certs.godaddy.com/repository/; CN=Go Daddy Secure Certificate Authority - G2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://web.archive.org/web/20050323173114/http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: web.archive.org]
+* [HTTP/2] [1] [:path: /web/20050323173114/http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET /web/20050323173114/http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347 HTTP/2
+> Host: web.archive.org
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 200 
+< server: nginx
+< date: Mon, 29 Dec 2025 19:33:55 GMT
+< content-type: text/html; charset=ISO-8859-1
+< x-archive-orig-date: Wed, 23-Mar-2005 18:02:25 GMT
+< x-archive-orig-server: JAGeX/3.1
+< x-archive-orig-p3p: CP="NOI"
+< x-archive-orig-cache-control: no-cache
+< x-archive-orig-pragma: no-cache
+< x-archive-orig-expires: 0
+< x-archive-orig-set-cookie: RSORIGIN=RUNESCAPE; path=/; domain=.runescape.com; expires=Sat, 23-Apr-2005 18:02:25 GMT
+< x-archive-orig-set-cookie: RSCOUNTRY=0; path=/; domain=.runescape.com; expires=Sat, 23-Apr-2005 18:02:25 GMT
+< x-archive-orig-connection: Close
+< x-archive-orig-content-length: 5397
+< x-archive-guessed-content-type: text/html
+< x-archive-guessed-charset: utf-8
+< memento-datetime: Wed, 23 Mar 2005 17:31:14 GMT
+< link: <http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347>; rel="original", <https://web.archive.org/web/timemap/link/http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347>; rel="timemap"; type="application/link-format", <https://web.archive.org/web/http://nl1.runescape.com:80/rs2.cgi?plugin=-1&lowmem=0&affiliate=realarcade&randval=652146347>; rel="timegate"
+< content-security-policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: archive.org web.archive.org web-static.archive.org wayback-api.archive.org athena.archive.org analytics.archive.org pragma.archivelab.org wwwb-events.archive.org
+< x-archive-src: EC_crawl26.20050323120529-c/EC_crawl26.20050323172847.arc.gz
+< server-timing: captures_list;dur=0.630098, exclusion.robots;dur=0.074382, exclusion.robots.policy;dur=0.065124, esindex;dur=0.013399, cdx.remote;dur=15.492898, LoadShardBlock;dur=128.032904, PetaboxLoader3.datanode;dur=154.497664, load_resource;dur=237.503993, PetaboxLoader3.resolve;dur=177.310630
+< x-app-server: wwwb-app224-dc8
+< x-ts: 200
+< x-tr: 413
+< server-timing: TR;dur=0,Tw;dur=0,Tc;dur=0
+< set-cookie: wb-p-SERVER=wwwb-app224; path=/
+< x-location: All
+< x-as: 20115
+< x-rl: 0
+< x-na: 0
+< x-page-cache: HIT
+< server-timing: HIT
+< x-nid: CHARTER-20115
+< referrer-policy: no-referrer-when-downgrade
+< permissions-policy: interest-cohort=()
+< 
+{ [7714 bytes data]
+100  7714    0  7714    0     0  14645      0 --:--:-- --:--:-- --:--:-- 14665
+* Connection #0 to host web.archive.org left intact
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=Hk4-lkW3" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://nl1.runescape.com:80/rs2.cgi?plugin=-1&amp;lowmem=0&amp;affiliate=realarcade&amp;randval=652146347","20050323173114","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1111599074");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<title>RuneScape Game</title>
+<style>
+body, td, p
+{
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+}
+body {margin:0px; overflow: auto;}
+.b {border-style: outset; border-width:3pt; border-color:#373737}
+.e {border:2px solid #382418}
+.c {text-decoration:none}
+A.c:hover {text-decoration:underline}
+</style>
+</head>
+<script language="javascript">try { if (top == self) {top.location.href='https://web.archive.org/web/20050323173114/http://www.runescape.com/'; } } catch(er) {  } </script>
+<body bgcolor="black" text="white" link="#90c040" alink="#90c040" vlink="#90c040" style="margin: 0;" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onload="startloop();"><center>
+<center><table cellpadding="0" cellspacing="1">
+<tr><td align="center">
+<table border="0" background="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar.gif" cellspacing="0" cellpadding="0" width="765" height="25"><tr>
+<td width="5"></td><td><img border="0" name="jageximg" border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_jagex.gif" style="vertical-align: middle"></td>
+<td></td><td valign="center"><a href="https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/frame2.cgi?page=title.html" id="menulink"><img border="0" name="jageximg" border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_mainmenu.gif" style="vertical-align: middle"><font color="white">Main Menu</font></a></td>
+<td></td><td valign="center"><a href="https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/frame2.cgi?page=serverlist.cgi?lores.x=0&amp;plugin=-1" id="menulink2"><img border="0" name="jageximg" border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_mainmenu.gif" style="vertical-align: middle"><font color="white">World Select</font></a></td>
+<td></td><td valign="center"><a onclick="window.open('https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/worldmap/popupworldmap.html','WorldMap','width=635,height=550');return false;" href="https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/worldmap/popupworldmap.html" target="WorldMap"><img border="0" name="worldmapimg" border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_worldmap.gif" style="vertical-align: middle"><font color="white">World Map</font></a></td>
+<td></td><td valign="center"><a href="https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/frame2.cgi?page=howtoplay.html" target="Manual"><img border="0" name="manualimg" border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_manual.gif" style="vertical-align: middle"><font color="white">Manual</font></a></td>
+<td></td><td valign="center"><a href="https://web.archive.org/web/20050323173114/http://www.runescape.com/aff/realarcade/frame2.cgi?page=guides/rules.html" target="RulesSecurity"><img border="0" src="https://web.archive.org/web/20050323173114im_/http://www.runescape.com/img/gamewin/navbar_rules.gif" style="vertical-align: middle"><font color="white">Rules &amp; Security</font></a></td>
+<td width="5"></td></tr></table>
+</td></tr>
+<tr><td align="center">
+</td></tr>
+</table>
+<bgsound id="midibox" loop="0" volume="0" autostart="yes">
+<bgsound id="wavebox" loop="0" volume="0" autostart="yes">
+
+<script language="javascript">
+var fade=200;
+var fademidi=null;
+var fadevol=0;
+
+function givetrue() {return true;}
+
+function musicloop() {
+	var midi=document.app.getmidi();
+	if (midi!="none") {
+		var midivol=document.app.getmidivol();
+		var midifade=document.app.getmidifade();
+		if (midi=="voladjust" && fademidi!=null) {fadevol=midivol; return;}
+		fademidi=null;
+		if (midi=="stop") {midibox.src="c:\silence.mid"; fade=200; return;}
+		if (midi=="voladjust") {midibox.volume=midivol; if (midifade==1) fade=-(midivol/25); else fade=200; return;}
+		if (midifade==1) {fademidi=midi; fadevol=midivol;}
+		else {midibox.src=midi; midibox.volume=midivol; fade=200;}
+	}
+	if (fademidi!=null) {
+		fade=fade+1;
+		midibox.volume = -(fade*25);
+		if (fade>=144) {
+			midibox.src=fademidi; midibox.volume=fadevol;
+			fademidi=null; fade=-(fadevol/25);
+		}
+	}
+	var wave=document.app.getwave();
+	if (wave!="none") {
+		var wavevol=document.app.getwavevol();
+		wavebox.src=wave; wavebox.volume=wavevol;
+	}
+}
+
+function startloop() {
+	onerror=givetrue;
+	setInterval("musicloop()",50);
+}
+
+function ConfirmMenu(e) {
+     if (e == null) e = event;
+     var response=window.confirm("Clicking this link will exit the game and take you to the main menu.\nPlease log out of the game before exiting.\nClick OK if you have safely logged out.");
+     if (response) document.location.href=menulink1;
+     if (e.cancelable) e.preventDefault();
+     return false;
+}
+
+function ConfirmMenu2(e) {
+     if (e == null) e = event;
+     var response=window.confirm("Clicking this link will exit the game and take you to the world select page.\nPlease log out of the game before exiting.\nClick OK if you have safely logged out.");
+     if (response) document.location.href=menulink2b;
+     if (e.cancelable) e.preventDefault();
+     return false;
+}
+
+function init() {
+  if (document.getElementById) {
+    var node = document.getElementById('menulink');
+    if (node != null) {
+        menulink1=node.getAttribute('href');
+    	node.setAttribute('href','');
+    	node.onclick = ConfirmMenu;
+    }
+    node = document.getElementById('menulink2');
+    if (node != null) {
+    	menulink2b=node.getAttribute('href');
+    	node.setAttribute('href','');
+    	node.onclick = ConfirmMenu2;
+    }
+  }
+  window.scroll(0,0);
+}
+
+init();
+</script>
+</center></body></html>
+<!--
+     FILE ARCHIVED ON 17:31:14 Mar 23, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:33:10 Dec 29, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.63
+  exclusion.robots: 0.074
+  exclusion.robots.policy: 0.065
+  esindex: 0.013
+  cdx.remote: 15.492
+  LoadShardBlock: 128.032 (3)
+  PetaboxLoader3.datanode: 154.497 (4)
+  load_resource: 237.503
+  PetaboxLoader3.resolve: 177.31
+-->
