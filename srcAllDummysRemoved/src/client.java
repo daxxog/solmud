@@ -5229,14 +5229,26 @@ public class client extends RSApplet {
             stream.writeWordBigEndian(14);
             stream.writeWordBigEndian(i);
             socketStream.queueBytes(2, stream.buffer);
-            for (int j = 0; j < 8; j++) socketStream.read();
+
+            System.out.println(">>> Sent handshake (14 + namehash)");
+
+            for (int j = 0; j < 8; j++) {
+                int byteRead = socketStream.read();
+                System.out.println("<<< Read handshake byte " + j + ": " + byteRead);
+            }
 
             int k = socketStream.read();
+            System.out.println("<<< Read status byte after key: " + k);
+
             int i1 = k;
             if (k == 0) {
+                System.out.println("Handshake status = 0 — proceeding to login block");
+
                 socketStream.flushInputStream(inStream.buffer, 8);
                 inStream.currentOffset = 0;
                 aLong1215 = inStream.readQWord();
+                System.out.println("Server session key: " + aLong1215);
+
                 int ai[] = new int[4];
                 ai[0] = (int) (Math.random() * 99999999D);
                 ai[1] = (int) (Math.random() * 99999999D);
@@ -5266,8 +5278,18 @@ public class client extends RSApplet {
                 for (int j2 = 0; j2 < 4; j2++) ai[j2] += 50;
 
                 encryption = new ISAACRandomGen(ai);
+
+                System.out.println(
+                        ">>> Sending encrypted login block (type " + (flag ? 18 : 16) + ")");
+                System.out.println(
+                        ">>> QUEUING login block for send (size: "
+                                + aStream_847.currentOffset
+                                + " bytes)");
                 socketStream.queueBytes(aStream_847.currentOffset, aStream_847.buffer);
+                System.out.println(">>> Login block queued — now reading server response");
+
                 k = socketStream.read();
+                System.out.println("<<< Received final login response code: " + k);
             }
             if (k == 1) {
                 try {
