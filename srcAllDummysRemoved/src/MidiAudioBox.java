@@ -1,10 +1,10 @@
-import javax.sound.midi.*;
 import java.io.File;
 
+import javax.sound.midi.*;
+
 /**
- * Implementation of AudioBox for MIDI music playback.
- * Plays the track once (matches original loop="0").
- * Stop is triggered by setting src to the silent path.
+ * Implementation of AudioBox for MIDI music playback. Plays the track once (matches original
+ * loop="0"). Stop is triggered by setting src to the silent path.
  */
 public class MidiAudioBox implements AudioBox {
     private Sequencer sequencer;
@@ -29,7 +29,7 @@ public class MidiAudioBox implements AudioBox {
             sequencer = MidiSystem.getSequencer();
             sequencer.open();
             sequencer.setSequence(sequence);
-            sequencer.setLoopCount(0);  // Play once only — matches loop="0"
+            sequencer.setLoopCount(0); // Play once only — matches loop="0"
 
             setVolume(currentVolume);
             sequencer.start();
@@ -53,7 +53,7 @@ public class MidiAudioBox implements AudioBox {
 
     @Override
     public String getSilentPath() {
-        return "c:\\silence.mid";  // Path matches original JavaScript implementation
+        return "c:\\silence.mid"; // Path matches original JavaScript implementation
     }
 
     private void stopInternal() {
@@ -61,7 +61,8 @@ public class MidiAudioBox implements AudioBox {
             try {
                 sequencer.stop();
                 sequencer.close();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
             sequencer = null;
         }
     }

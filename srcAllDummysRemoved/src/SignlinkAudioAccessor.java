@@ -8,7 +8,7 @@ public class SignlinkAudioAccessor implements AudioAccessor {
         if (path == null || path.isEmpty()) {
             return "none";
         }
-        signlink.midi = null;  // Clear after read
+        signlink.midi = null; // Clear after read
         return path;
     }
 
@@ -28,7 +28,7 @@ public class SignlinkAudioAccessor implements AudioAccessor {
         if (path == null || path.isEmpty()) {
             return "none";
         }
-        signlink.wave = null;  // Clear after read
+        signlink.wave = null; // Clear after read
         return path;
     }
 

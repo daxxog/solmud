@@ -1,10 +1,10 @@
-import javax.sound.sampled.*;
 import java.io.File;
 
+import javax.sound.sampled.*;
+
 /**
- * Implementation of AudioBox for WAV sound effects playback.
- * Plays the sound once (no looping).
- * No special silent path needed — setting a new src stops previous.
+ * Implementation of AudioBox for WAV sound effects playback. Plays the sound once (no looping). No
+ * special silent path needed — setting a new src stops previous.
  */
 public class WaveAudioBox implements AudioBox {
     private Clip clip;
@@ -34,7 +34,8 @@ public class WaveAudioBox implements AudioBox {
     public void setVolume(int volume) {
         currentVolume = Math.max(0, Math.min(127, volume));
         if (clip != null && clip.isOpen()) {
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            FloatControl gainControl =
+                    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             if (gainControl != null) {
                 float range = gainControl.getMaximum() - gainControl.getMinimum();
                 float gain = gainControl.getMinimum() + (currentVolume / 127f) * range;
@@ -45,7 +46,7 @@ public class WaveAudioBox implements AudioBox {
 
     @Override
     public String getSilentPath() {
-        return "";  // unused in WaveAudioBox
+        return ""; // unused in WaveAudioBox
     }
 
     private void stopInternal() {

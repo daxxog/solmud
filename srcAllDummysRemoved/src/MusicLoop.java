@@ -1,12 +1,12 @@
 /**
- * Polling thread that emulates the original JavaScript musicloop() function.
- * Runs every 50ms to check for new MIDI/WAV files and handle playback.
+ * Polling thread that emulates the original JavaScript musicloop() function. Runs every 50ms to
+ * check for new MIDI/WAV files and handle playback.
  */
 public class MusicLoop implements Runnable {
-    private static final int POLL_INTERVAL_MS = 50;          // Original setInterval(..., 50)
-    private static final int FADE_INITIAL_VALUE = 200;       // Starting fade value
-    private static final int FADE_STEPS = 144;               // Fade completion threshold
-    private static final int FADE_VOLUME_MULTIPLIER = 25;    // Volume change per step
+    private static final int POLL_INTERVAL_MS = 50; // Original setInterval(..., 50)
+    private static final int FADE_INITIAL_VALUE = 200; // Starting fade value
+    private static final int FADE_STEPS = 144; // Fade completion threshold
+    private static final int FADE_VOLUME_MULTIPLIER = 25; // Volume change per step
 
     private final AudioAccessor accessor;
     private final AudioBox midibox;
