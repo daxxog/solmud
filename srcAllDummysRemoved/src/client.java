@@ -7,9 +7,10 @@ import sign.signlink;
 import java.applet.AppletContext;
 import java.awt.*;
 import java.io.*;
-import java.math.BigInteger;
+// [connectServer] import java.math.BigInteger;
 import java.net.*;
-import java.util.zip.CRC32;
+
+// [connectServer] import java.util.zip.CRC32;
 
 public class client extends RSApplet {
 

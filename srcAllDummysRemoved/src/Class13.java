@@ -2,8 +2,6 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3)
 
-import java.io.PrintStream;
-
 final class Class13 {
 
     public static int method225(byte abyte0[], int i, byte abyte1[], int j, int k) {
