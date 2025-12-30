@@ -260,8 +260,15 @@ public class client extends RSApplet {
     }
 
     public Socket openSocket(int i) throws IOException {
-        if (signlink.mainapp != null) return signlink.opensocket(i);
-        else return new Socket(InetAddress.getByName(getCodeBase().getHost()), i);
+        if (signlink.mainapp != null) {
+            System.out.println("openSocket: signlink.opensocket(" + i + ")\n");
+            return signlink.opensocket(i);
+        } else {
+            String host = getCodeBase().getHost();
+            System.out.println(
+                    "openSocket: new Socket(InetAddress.getByName(\"" + host + "\"), " + i + ")\n");
+            return new Socket(InetAddress.getByName(host), i);
+        }
     }
 
     private void processMenuClick() {
@@ -5206,6 +5213,8 @@ public class client extends RSApplet {
     }
 
     private void login(String s, String s1, boolean flag) {
+        System.out.println("Login: [" + s + "]—{" + s1 + "}_(" + flag + ")");
+
         signlink.errorname = s;
         try {
             if (!flag) {
