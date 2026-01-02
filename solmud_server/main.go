@@ -5,19 +5,20 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/binary"
-	"fmt"
 	"log"
 	"net"
 	"strings"
 )
 
-func getWorkingCrcTable() []byte {
+const (
+	LISTEN_ADDR = "127.0.0.1:43595" // MUST match client.j(43595)
+)
+
+// ---- CRC TABLE ----
+// 9 CRCs + 1 hash = 40 bytes total
+func getValid317CrcTable() []byte {
 	var buf bytes.Buffer
 
-	// Unused index 0
-	binary.Write(&buf, binary.BigEndian, uint32(0))
-
-	// 8 archive CRCs (common for many original 317 clients)
 	crcs := []uint32{
 		0x6B5D6C9B, // title
 		0x91579B40, // config
@@ -27,129 +28,65 @@ func getWorkingCrcTable() []byte {
 		0xC8F2A8B3, // textures
 		0xA9B7C6D4, // wordenc
 		0xE4D5F6A7, // sounds
+		0x00000000, // extra
 	}
 
 	for _, crc := range crcs {
-		binary.Write(&buf, binary.BigEndian, crc)
+		_ = binary.Write(&buf, binary.BigEndian, crc)
 	}
 
-	// Correct integrity hash for these values: 0xF29E7BEB
-	binary.Write(&buf, binary.BigEndian, uint32(0xF29E7BEB))
+	// EXACT hash the client expects
+	_ = binary.Write(&buf, binary.BigEndian, uint32(0xE53353D6))
 
-	return buf.Bytes()
+	return buf.Bytes() // 40 bytes
 }
 
-func main() {
-	addr := fmt.Sprintf("%s:%d", LISTEN_HOST, LISTEN_PORT)
-	listener, err := net.Listen("tcp", addr)
-	if err != nil {
-		log.Fatalf("Failed to bind to %s: %v", addr, err)
-	}
-	defer listener.Close()
-
-	go startBasicHttpLogger()
-
-	log.Printf("Solmud server listening on %s", addr)
-
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Printf("Accept error: %v", err)
-			continue
-		}
-		go handleClient(conn)
-	}
-}
-
-func startBasicHttpLogger() {
-	addr := fmt.Sprintf("%s:%d", LISTEN_HOST, HTTP_CACHE_PORT)
-	listener, err := net.Listen("tcp", addr)
-	if err != nil {
-		log.Fatalf("Failed to bind to %s for HTTP cache logging: %v", addr, err)
-	}
-	defer listener.Close()
-	log.Printf("Basic HTTP cache request logger listening on %s", addr)
-	log.Printf("Run your client now and watch the logs for incoming requests!")
-
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Printf("HTTP logger accept error: %v", err)
-			continue
-		}
-		go handleHttpLogConnection(conn)
-	}
-}
-
-func handleHttpLogConnection(conn net.Conn) {
+// ---- CONNECTION HANDLER ----
+func handleConn(conn net.Conn) {
 	defer conn.Close()
-	remote := conn.RemoteAddr().String()
-	log.Printf("=== New HTTP connection from %s ===", remote)
 
 	reader := bufio.NewReader(conn)
 
-	reqLine, err := reader.ReadString('\n')
+	// Read "JAGGRAB /crcXXXX-317\n"
+	line, err := reader.ReadString('\n')
 	if err != nil {
-		log.Printf("Error reading request line from %s: %v", remote, err)
+		log.Println("read error:", err)
 		return
 	}
-	log.Printf("Request line: %q", reqLine)
 
-	parts := strings.Split(strings.TrimSpace(reqLine), " ")
-	if len(parts) < 2 {
-		log.Printf("Malformed request line from %s", remote)
-		fmt.Fprintf(conn, "HTTP/1.1 400 Bad Request\r\nContent-Length: 0\r\n\r\n")
+	line = strings.TrimSpace(line)
+	log.Println("JAGGRAB:", line)
+
+	if !strings.HasPrefix(line, "JAGGRAB /crc") {
+		log.Println("Ignoring non-CRC request")
 		return
 	}
-	path := strings.ToLower(parts[1])
 
-	for {
-		line, err := reader.ReadString('\n')
-		if err != nil || line == "\r\n" || line == "\n" {
-			break
-		}
-		log.Printf("Header: %q", line)
-	}
+	// Consume blank line
+	_, _ = reader.ReadString('\n')
 
-	if strings.HasPrefix(path, "/crc") {
-		log.Printf("Serving WORKING CRC table (common 317 values + correct hash 0xF29E7BEB)")
-		// table := getWorkingCrcTable()
-		table := getFakeValidCrcTable()
-		n, err := conn.Write(table)
-		log.Printf("Sent %d bytes for CRC table (err: %v)", n, err)
-	} else {
-		log.Printf("Unknown request path %s from %s – sending 404", path, remote)
-		fmt.Fprintf(conn, "HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n")
-	}
-
-	log.Printf("=== End of request from %s ===\n", remote)
+	// Send raw CRC bytes ONLY
+	table := getValid317CrcTable()
+	n, err := conn.Write(table)
+	log.Printf("Sent %d CRC bytes (err=%v)", n, err)
 }
 
-func getFakeValidCrcTable() []byte {
-	var buf bytes.Buffer
+// ---- MAIN ----
+func main() {
+	log.Println("Starting 317 JAGGRAB CRC server on", LISTEN_ADDR)
 
-	crcs := []uint32{
-		0x00000000, // unused
-		0xDEADBEEF, // fake title
-		0xCAFEBABE, // fake config
-		0xFEEDFACE, // fake interface
-		0xBADC0DE0, // fake media
-		0x12345678, // fake versionlist
-		0x87654321, // fake textures
-		0xABCDDCBA, // fake wordenc
-		0x56789012, // fake sounds
+	ln, err := net.Listen("tcp", LISTEN_ADDR)
+	if err != nil {
+		log.Fatal("listen failed:", err)
 	}
+	defer ln.Close()
 
-	for _, crc := range crcs {
-		binary.Write(&buf, binary.BigEndian, crc)
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			log.Println("accept error:", err)
+			continue
+		}
+		go handleConn(conn)
 	}
-
-	// Correct hash for these values
-	hash := int32(1234)
-	for _, crc := range crcs {
-		hash = (hash << 1) + int32(crc)
-	}
-	binary.Write(&buf, binary.BigEndian, hash)
-
-	return buf.Bytes()
 }
