@@ -3,8 +3,9 @@ package main
 
 const (
 	// Network constants
-	LISTEN_HOST = "127.0.0.1" // Localhost only during development
-	LISTEN_PORT = 43594       // Standard RuneScape 317 game port
+	LISTEN_HOST     = "127.0.0.1" // Localhost only during development
+	LISTEN_PORT     = 43594       // Standard RuneScape 317 game port
+	HTTP_CACHE_PORT = 80
 
 	// Login handshake opcodes (317 revision)
 	OPCODE_HANDSHAKE = 14
