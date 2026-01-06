@@ -20,23 +20,27 @@ func getValid317CrcTable() []byte {
 	var buf bytes.Buffer
 
 	crcs := []uint32{
-		0x6B5D6C9B, // title
-		0x91579B40, // config
-		0x7A5F7E9F, // interface
-		0xD5B1E4B9, // media
-		0x1D5B2E7C, // versionlist
-		0xC8F2A8B3, // textures
-		0xA9B7C6D4, // wordenc
-		0xE4D5F6A7, // sounds
-		0x00000000, // extra
+		0x6B5D6C9B, // 1 title
+		0x91579B40, // 2 config
+		0x7A5F7E9F, // 3 interface
+		0xD5B1E4B9, // 4 media
+		0x1D5B2E7C, // 5 versionlist
+		0xC8F2A8B3, // 6 textures
+		0xA9B7C6D4, // 7 wordenc
+		0xE4D5F6A7, // 8 sounds
+		0x1A0A1B9C, // 9 models (critical – was 0)
 	}
 
 	for _, crc := range crcs {
 		_ = binary.Write(&buf, binary.BigEndian, crc)
 	}
 
-	// EXACT hash the client expects
-	_ = binary.Write(&buf, binary.BigEndian, uint32(0xE53353D6))
+	// Exact client hash computation (unsigned 32-bit)
+	hash := uint32(1234)
+	for _, crc := range crcs {
+		hash = (hash << 1) + crc
+	}
+	_ = binary.Write(&buf, binary.BigEndian, hash)
 
 	return buf.Bytes() // 40 bytes
 }
