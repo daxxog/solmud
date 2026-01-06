@@ -1,96 +1,234 @@
-// main.go
 package main
 
 import (
 	"bufio"
 	"bytes"
 	"encoding/binary"
+	"hash/crc32"
+	"io"
 	"log"
 	"net"
+	"os"
 	"strings"
 )
 
-const (
-	LISTEN_ADDR = "127.0.0.1:43595" // MUST match client.j(43595)
-)
+// ---------------- CONFIG ----------------
 
-// ---- CRC TABLE ----
-// 9 CRCs + 1 hash = 40 bytes total
-func getValid317CrcTable() []byte {
+const LISTEN_ADDR = "127.0.0.1:43595"
+
+// 317 preload archive IDs (idx0)
+var preloadArchives = []struct {
+	Path string
+	ID   int
+}{
+	{"/title", 0},
+	{"/config", 1},
+	{"/interface", 2},
+	{"/media", 3},
+	{"/versionlist", 4},
+	{"/textures", 5},
+	{"/wordenc", 6},
+	{"/sounds", 7},
+	{"/models", 8},
+}
+
+// ---------------- CACHE ----------------
+
+type Cache struct {
+	data *os.File
+	idx0 *os.File
+}
+
+func openCache() (*Cache, error) {
+	data, err := os.Open("cache/main_file_cache.dat")
+	if err != nil {
+		return nil, err
+	}
+	idx0, err := os.Open("cache/main_file_cache.idx0")
+	if err != nil {
+		data.Close()
+		return nil, err
+	}
+	return &Cache{data: data, idx0: idx0}, nil
+}
+
+// ExtractRawArchive reads an idx0 archive and returns the *exact compressed JAG bytes*
+func (c *Cache) ExtractRawArchive(archiveID int) ([]byte, error) {
+	// idx0 entry = 6 bytes
+	_, err := c.idx0.Seek(int64(archiveID*6), io.SeekStart)
+	if err != nil {
+		return nil, err
+	}
+
+	idx := make([]byte, 6)
+	if _, err := io.ReadFull(c.idx0, idx); err != nil {
+		return nil, err
+	}
+
+	size := int(idx[0])<<16 | int(idx[1])<<8 | int(idx[2])
+	sector := int(idx[3])<<16 | int(idx[4])<<8 | int(idx[5])
+	if size == 0 || sector == 0 {
+		return nil, os.ErrNotExist
+	}
+
+	var out bytes.Buffer
+	read := 0
+	chunk := 0
+
+	for sector != 0 {
+		log.Printf(
+			"idx0[%d]: size=%d sector=%d",
+			archiveID, size, sector,
+		)
+
+		// Each sector = 520 bytes
+		if _, err := c.data.Seek(int64(sector*520), io.SeekStart); err != nil {
+			return nil, err
+		}
+
+		header := make([]byte, 8)
+		if _, err := io.ReadFull(c.data, header); err != nil {
+			return nil, err
+		}
+
+		curArchive := int(binary.BigEndian.Uint16(header[0:2]))
+		curChunk := int(binary.BigEndian.Uint16(header[2:4]))
+		nextSector := int(header[4])<<16 | int(header[5])<<8 | int(header[6])
+
+		// indexID := int(header[7])
+		// if curArchive != archiveID || curChunk != chunk || indexID != 0 {
+		if curArchive != archiveID || curChunk != chunk {
+			return nil, io.ErrUnexpectedEOF
+		}
+
+		remaining := size - read
+		dataSize := 512
+		if remaining < dataSize {
+			dataSize = remaining
+		}
+
+		payload := make([]byte, 512)
+		if _, err := io.ReadFull(c.data, payload); err != nil {
+			return nil, err
+		}
+
+		out.Write(payload[:dataSize])
+		read += dataSize
+		sector = nextSector
+		chunk++
+	}
+
+	if read != size {
+		return nil, io.ErrUnexpectedEOF
+	}
+
+	return out.Bytes(), nil
+}
+
+// ---------------- CRC TABLE ----------------
+
+func build317CrcTable(cache *Cache) []byte {
+	var crcs []uint32
+
+	for _, a := range preloadArchives {
+		data, err := cache.ExtractRawArchive(a.ID)
+		if err != nil {
+			log.Printf("CRC extract failed for %s: %v", a.Path, err)
+			crcs = append(crcs, 0)
+			continue
+		}
+		crc := crc32.ChecksumIEEE(data)
+		crcs = append(crcs, crc)
+		log.Printf("Archive %d CRC = 0x%08X (%d bytes)", a.ID, crc, len(data))
+	}
+
 	var buf bytes.Buffer
-
-	crcs := []uint32{
-		0x6B5D6C9B, // 1 title
-		0x91579B40, // 2 config
-		0x7A5F7E9F, // 3 interface
-		0xD5B1E4B9, // 4 media
-		0x1D5B2E7C, // 5 versionlist
-		0xC8F2A8B3, // 6 textures
-		0xA9B7C6D4, // 7 wordenc
-		0xE4D5F6A7, // 8 sounds
-		0x1A0A1B9C, // 9 models (critical – was 0)
-	}
-
 	for _, crc := range crcs {
-		_ = binary.Write(&buf, binary.BigEndian, crc)
+		binary.Write(&buf, binary.BigEndian, crc)
 	}
 
-	// Exact client hash computation (unsigned 32-bit)
 	hash := uint32(1234)
 	for _, crc := range crcs {
 		hash = (hash << 1) + crc
 	}
-	_ = binary.Write(&buf, binary.BigEndian, hash)
+	binary.Write(&buf, binary.BigEndian, hash)
 
-	return buf.Bytes() // 40 bytes
+	log.Printf("CRC table hash = 0x%08X", hash)
+	return buf.Bytes()
 }
 
-// ---- CONNECTION HANDLER ----
-func handleConn(conn net.Conn) {
-	defer conn.Close()
+// ---------------- SERVER ----------------
 
+func handleConn(cache *Cache, conn net.Conn) {
+	defer conn.Close()
 	reader := bufio.NewReader(conn)
 
-	// Read "JAGGRAB /crcXXXX-317\n"
 	line, err := reader.ReadString('\n')
 	if err != nil {
-		log.Println("read error:", err)
 		return
 	}
-
 	line = strings.TrimSpace(line)
 	log.Println("JAGGRAB:", line)
 
-	if !strings.HasPrefix(line, "JAGGRAB /crc") {
-		log.Println("Ignoring non-CRC request")
+	if !strings.HasPrefix(line, "JAGGRAB ") {
 		return
 	}
 
-	// Consume blank line
-	_, _ = reader.ReadString('\n')
+	path := strings.TrimPrefix(line, "JAGGRAB ")
 
-	// Send raw CRC bytes ONLY
-	table := getValid317CrcTable()
-	n, err := conn.Write(table)
-	log.Printf("Sent %d CRC bytes (err=%v)", n, err)
+	// Strip optional -CRC suffix (e.g. /title-123456789)
+	if i := strings.IndexByte(path, '-'); i != -1 {
+		path = path[:i]
+	}
+
+	// Consume blank line
+	reader.ReadString('\n')
+
+	if strings.HasPrefix(path, "/crc") {
+		data := build317CrcTable(cache)
+		conn.Write(data)
+		return
+	}
+
+	for _, a := range preloadArchives {
+		if path == a.Path {
+			data, err := cache.ExtractRawArchive(a.ID)
+			if err != nil {
+				log.Println("Extract failed:", err)
+				return
+			}
+			log.Printf("Serving %s (%d bytes)", path, len(data))
+			conn.Write(data)
+			return
+		}
+	}
+
+	log.Println("Unknown JAGGRAB path:", path)
 }
 
-// ---- MAIN ----
+// ---------------- MAIN ----------------
+
 func main() {
-	log.Println("Starting 317 JAGGRAB CRC server on", LISTEN_ADDR)
+	cache, err := openCache()
+	if err != nil {
+		log.Fatal("Failed to open cache:", err)
+	}
+	defer cache.data.Close()
+	defer cache.idx0.Close()
 
 	ln, err := net.Listen("tcp", LISTEN_ADDR)
 	if err != nil {
-		log.Fatal("listen failed:", err)
+		log.Fatal(err)
 	}
 	defer ln.Close()
+
+	log.Println("317 JAGGRAB server listening on", LISTEN_ADDR)
 
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
-			log.Println("accept error:", err)
 			continue
 		}
-		go handleConn(conn)
+		go handleConn(cache, conn)
 	}
 }
