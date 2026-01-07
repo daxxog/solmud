@@ -1,0 +1,307 @@
+public class CDEJWOSB {
+  private static int a;
+
+  private static int b;
+
+  public static int a(int, int, int, boolean);
+    Code:
+       0: iload_0
+       1: iconst_3
+       2: iand
+       3: istore_0
+       4: iload_3
+       5: ifeq          25
+       8: iconst_1
+       9: istore        4
+      11: getstatic     #69                 // Field LKGEGIEW.t:I
+      14: ifeq          20
+      17: iinc          4, 1
+      20: iload         4
+      22: ifgt          17
+      25: iload_0
+      26: ifne          31
+      29: iload_2
+      30: ireturn
+      31: iload_0
+      32: iconst_1
+      33: if_icmpne     38
+      36: iload_1
+      37: ireturn
+      38: iload_0
+      39: iconst_2
+      40: if_icmpne     48
+      43: bipush        7
+      45: iload_2
+      46: isub
+      47: ireturn
+      48: bipush        7
+      50: iload_1
+      51: isub
+      52: ireturn
+      53: astore        4
+      55: new           #8                  // class java/lang/StringBuffer
+      58: dup
+      59: ldc           #5                  // String 92720,
+      61: invokespecial #13                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      64: iload_0
+      65: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      68: ldc           #1                  // String ,
+      70: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      73: iload_1
+      74: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      77: ldc           #1                  // String ,
+      79: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      82: iload_2
+      83: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      86: ldc           #1                  // String ,
+      88: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      91: iload_3
+      92: invokevirtual #16                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+      95: ldc           #1                  // String ,
+      97: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     100: aload         4
+     102: invokevirtual #20                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     105: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     108: invokevirtual #19                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     111: invokestatic  #18                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     114: new           #7                  // class java/lang/RuntimeException
+     117: dup
+     118: invokespecial #12                 // Method java/lang/RuntimeException."<init>":()V
+     121: athrow
+    Exception table:
+       from    to  target type
+           0    53    53   Class java/lang/RuntimeException
+
+  public static int a(int, int, int, int);
+    Code:
+       0: iload_2
+       1: iflt          10
+       4: sipush        -146
+       7: putstatic     #21                 // Field b:I
+      10: iload_1
+      11: iconst_3
+      12: iand
+      13: istore_1
+      14: iload_1
+      15: ifne          20
+      18: iload_0
+      19: ireturn
+      20: iload_1
+      21: iconst_1
+      22: if_icmpne     30
+      25: bipush        7
+      27: iload_3
+      28: isub
+      29: ireturn
+      30: iload_1
+      31: iconst_2
+      32: if_icmpne     40
+      35: bipush        7
+      37: iload_0
+      38: isub
+      39: ireturn
+      40: iload_3
+      41: ireturn
+      42: astore        4
+      44: new           #8                  // class java/lang/StringBuffer
+      47: dup
+      48: ldc           #2                  // String 51053,
+      50: invokespecial #13                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      53: iload_0
+      54: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      57: ldc           #1                  // String ,
+      59: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      62: iload_1
+      63: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      66: ldc           #1                  // String ,
+      68: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      71: iload_2
+      72: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      75: ldc           #1                  // String ,
+      77: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      80: iload_3
+      81: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      84: ldc           #1                  // String ,
+      86: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      89: aload         4
+      91: invokevirtual #20                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      94: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      97: invokevirtual #19                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     100: invokestatic  #18                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     103: new           #7                  // class java/lang/RuntimeException
+     106: dup
+     107: invokespecial #12                 // Method java/lang/RuntimeException."<init>":()V
+     110: athrow
+    Exception table:
+       from    to  target type
+           0    42    42   Class java/lang/RuntimeException
+
+  public static int a(int, int, int, byte, int, int);
+    Code:
+       0: iload_3
+       1: bipush        113
+       3: if_icmpeq     10
+       6: getstatic     #17                 // Field a:I
+       9: ireturn
+      10: iload_0
+      11: iconst_3
+      12: iand
+      13: istore_0
+      14: iload_0
+      15: ifne          20
+      18: iload_2
+      19: ireturn
+      20: iload_0
+      21: iconst_1
+      22: if_icmpne     28
+      25: iload         4
+      27: ireturn
+      28: iload_0
+      29: iconst_2
+      30: if_icmpne     43
+      33: bipush        7
+      35: iload_2
+      36: isub
+      37: iload         5
+      39: iconst_1
+      40: isub
+      41: isub
+      42: ireturn
+      43: bipush        7
+      45: iload         4
+      47: isub
+      48: iload_1
+      49: iconst_1
+      50: isub
+      51: isub
+      52: ireturn
+      53: astore        6
+      55: new           #8                  // class java/lang/StringBuffer
+      58: dup
+      59: ldc           #4                  // String 92592,
+      61: invokespecial #13                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      64: iload_0
+      65: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      68: ldc           #1                  // String ,
+      70: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      73: iload_1
+      74: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      77: ldc           #1                  // String ,
+      79: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      82: iload_2
+      83: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      86: ldc           #1                  // String ,
+      88: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      91: iload_3
+      92: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      95: ldc           #1                  // String ,
+      97: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     100: iload         4
+     102: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     105: ldc           #1                  // String ,
+     107: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     110: iload         5
+     112: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     115: ldc           #1                  // String ,
+     117: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     120: aload         6
+     122: invokevirtual #20                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     125: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     128: invokevirtual #19                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     131: invokestatic  #18                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     134: new           #7                  // class java/lang/RuntimeException
+     137: dup
+     138: invokespecial #12                 // Method java/lang/RuntimeException."<init>":()V
+     141: athrow
+    Exception table:
+       from    to  target type
+           0    53    53   Class java/lang/RuntimeException
+
+  public static int a(int, int, int, int, int, int);
+    Code:
+       0: iload_3
+       1: iconst_3
+       2: iand
+       3: istore_3
+       4: iload_0
+       5: iflt          12
+       8: getstatic     #21                 // Field b:I
+      11: ireturn
+      12: iload_3
+      13: ifne          18
+      16: iload_1
+      17: ireturn
+      18: iload_3
+      19: iconst_1
+      20: if_icmpne     34
+      23: bipush        7
+      25: iload         5
+      27: isub
+      28: iload         4
+      30: iconst_1
+      31: isub
+      32: isub
+      33: ireturn
+      34: iload_3
+      35: iconst_2
+      36: if_icmpne     48
+      39: bipush        7
+      41: iload_1
+      42: isub
+      43: iload_2
+      44: iconst_1
+      45: isub
+      46: isub
+      47: ireturn
+      48: iload         5
+      50: ireturn
+      51: astore        6
+      53: new           #8                  // class java/lang/StringBuffer
+      56: dup
+      57: ldc           #3                  // String 62488,
+      59: invokespecial #13                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      62: iload_0
+      63: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      66: ldc           #1                  // String ,
+      68: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      71: iload_1
+      72: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      75: ldc           #1                  // String ,
+      77: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      80: iload_2
+      81: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      84: ldc           #1                  // String ,
+      86: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      89: iload_3
+      90: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      93: ldc           #1                  // String ,
+      95: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      98: iload         4
+     100: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     103: ldc           #1                  // String ,
+     105: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     108: iload         5
+     110: invokevirtual #14                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     113: ldc           #1                  // String ,
+     115: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     118: aload         6
+     120: invokevirtual #20                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     123: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     126: invokevirtual #19                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     129: invokestatic  #18                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     132: new           #7                  // class java/lang/RuntimeException
+     135: dup
+     136: invokespecial #12                 // Method java/lang/RuntimeException."<init>":()V
+     139: athrow
+    Exception table:
+       from    to  target type
+           0    51    51   Class java/lang/RuntimeException
+
+  static {};
+    Code:
+       0: sipush        -12499
+       3: putstatic     #17                 // Field a:I
+       6: sipush        -192
+       9: putstatic     #21                 // Field b:I
+      12: return
+}

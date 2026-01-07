@@ -1,0 +1,107 @@
+public final class FPVKJCAH extends java.awt.Frame {
+  private boolean a;
+
+  KHACHIFW b;
+
+  public FPVKJCAH(KHACHIFW, int, byte, int);
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/awt/Frame."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #23                 // Field a:Z
+       9: aload_0
+      10: aload_1
+      11: putfield      #17                 // Field b:LKHACHIFW;
+      14: aload_0
+      15: ldc           #3                  // String Jagex
+      17: invokevirtual #27                 // Method java/awt/Frame.setTitle:(Ljava/lang/String;)V
+      20: aload_0
+      21: iconst_0
+      22: invokevirtual #26                 // Method java/awt/Frame.setResizable:(Z)V
+      25: aload_0
+      26: invokevirtual #28                 // Method java/awt/Window.show:()V
+      29: iload_3
+      30: iconst_5
+      31: if_icmpeq     50
+      34: aload_0
+      35: aload_0
+      36: getfield      #23                 // Field a:Z
+      39: ifeq          46
+      42: iconst_0
+      43: goto          47
+      46: iconst_1
+      47: putfield      #23                 // Field a:Z
+      50: aload_0
+      51: invokevirtual #29                 // Method java/awt/Window.toFront:()V
+      54: aload_0
+      55: iload_2
+      56: bipush        8
+      58: iadd
+      59: iload         4
+      61: bipush        28
+      63: iadd
+      64: invokevirtual #25                 // Method java/awt/Component.resize:(II)V
+      67: return
+      68: astore        5
+      70: new           #11                 // class java/lang/StringBuffer
+      73: dup
+      74: ldc           #2                  // String 41013,
+      76: invokespecial #16                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      79: aload_1
+      80: invokevirtual #19                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+      83: ldc           #1                  // String ,
+      85: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      88: iload_2
+      89: invokevirtual #18                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      92: ldc           #1                  // String ,
+      94: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      97: iload_3
+      98: invokevirtual #18                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     101: ldc           #1                  // String ,
+     103: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     106: iload         4
+     108: invokevirtual #18                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     111: ldc           #1                  // String ,
+     113: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     116: aload         5
+     118: invokevirtual #31                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     121: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     124: invokevirtual #30                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     127: invokestatic  #24                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     130: new           #10                 // class java/lang/RuntimeException
+     133: dup
+     134: invokespecial #15                 // Method java/lang/RuntimeException."<init>":()V
+     137: athrow
+    Exception table:
+       from    to  target type
+           9    67    68   Class java/lang/RuntimeException
+
+  public java.awt.Graphics getGraphics();
+    Code:
+       0: aload_0
+       1: invokespecial #21                 // Method java/awt/Component.getGraphics:()Ljava/awt/Graphics;
+       4: astore_1
+       5: aload_1
+       6: iconst_4
+       7: bipush        24
+       9: invokevirtual #32                 // Method java/awt/Graphics.translate:(II)V
+      12: aload_1
+      13: areturn
+
+  public final void update(java.awt.Graphics);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field b:LKHACHIFW;
+       4: aload_1
+       5: invokevirtual #33                 // Method KHACHIFW.update:(Ljava/awt/Graphics;)V
+       8: return
+
+  public final void paint(java.awt.Graphics);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field b:LKHACHIFW;
+       4: aload_1
+       5: invokevirtual #22                 // Method KHACHIFW.paint:(Ljava/awt/Graphics;)V
+       8: return
+}

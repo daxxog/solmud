@@ -1,0 +1,2871 @@
+public class FTPNODIB {
+  private boolean a;
+
+  private int b;
+
+  private boolean c;
+
+  private int d;
+
+  private boolean e;
+
+  private boolean f;
+
+  private byte g;
+
+  private byte h;
+
+  public int i;
+
+  public int j;
+
+  public int k;
+
+  public int l;
+
+  public int[][] m;
+
+  public FTPNODIB(int, int, boolean);
+    Code:
+       0: getstatic     #146                // Field LKGEGIEW.t:I
+       3: istore        5
+       5: aload_0
+       6: invokespecial #35                 // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: iconst_1
+      11: putfield      #50                 // Field a:Z
+      14: aload_0
+      15: sipush        -32357
+      18: putfield      #46                 // Field b:I
+      21: aload_0
+      22: iconst_0
+      23: putfield      #38                 // Field c:Z
+      26: aload_0
+      27: bipush        7
+      29: putfield      #57                 // Field d:I
+      32: aload_0
+      33: iconst_1
+      34: putfield      #44                 // Field e:Z
+      37: aload_0
+      38: iconst_1
+      39: putfield      #49                 // Field f:Z
+      42: aload_0
+      43: iconst_2
+      44: putfield      #54                 // Field g:B
+      47: aload_0
+      48: bipush        -101
+      50: putfield      #43                 // Field h:B
+      53: aload_0
+      54: iconst_0
+      55: putfield      #58                 // Field i:I
+      58: aload_0
+      59: iconst_0
+      60: putfield      #59                 // Field j:I
+      63: aload_0
+      64: iload_1
+      65: putfield      #48                 // Field k:I
+      68: aload_0
+      69: iload_2
+      70: putfield      #47                 // Field l:I
+      73: aload_0
+      74: aload_0
+      75: getfield      #48                 // Field k:I
+      78: aload_0
+      79: getfield      #47                 // Field l:I
+      82: multianewarray #26,  2            // class "[[I"
+      86: putfield      #45                 // Field m:[[I
+      89: aload_0
+      90: invokevirtual #53                 // Method a:()V
+      93: iload_3
+      94: ifne          165
+      97: aload_0
+      98: sipush        -496
+     101: putfield      #46                 // Field b:I
+     104: return
+     105: astore        4
+     107: new           #30                 // class java/lang/StringBuffer
+     110: dup
+     111: ldc           #15                 // String 28792,
+     113: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     116: iload_1
+     117: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     120: ldc           #14                 // String ,
+     122: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     125: iload_2
+     126: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     129: ldc           #14                 // String ,
+     131: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     134: iload_3
+     135: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     138: ldc           #14                 // String ,
+     140: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     143: aload         4
+     145: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     148: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     151: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     154: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     157: new           #29                 // class java/lang/RuntimeException
+     160: dup
+     161: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     164: athrow
+     165: iload         5
+     167: ifeq          184
+     170: getstatic     #149                // Field PKVMXVTO.e:Z
+     173: ifeq          180
+     176: iconst_0
+     177: goto          181
+     180: iconst_1
+     181: putstatic     #149                // Field PKVMXVTO.e:Z
+     184: return
+    Exception table:
+       from    to  target type
+          53   104   105   Class java/lang/RuntimeException
+
+  public void a();
+    Code:
+       0: getstatic     #146                // Field LKGEGIEW.t:I
+       3: istore_3
+       4: iconst_0
+       5: istore_1
+       6: iload_3
+       7: ifeq          82
+      10: iconst_0
+      11: istore_2
+      12: iload_3
+      13: ifeq          71
+      16: iload_1
+      17: ifeq          44
+      20: iload_2
+      21: ifeq          44
+      24: iload_1
+      25: aload_0
+      26: getfield      #48                 // Field k:I
+      29: iconst_1
+      30: isub
+      31: if_icmpeq     44
+      34: iload_2
+      35: aload_0
+      36: getfield      #47                 // Field l:I
+      39: iconst_1
+      40: isub
+      41: if_icmpne     58
+      44: aload_0
+      45: getfield      #45                 // Field m:[[I
+      48: iload_1
+      49: aaload
+      50: iload_2
+      51: ldc           #8                  // int 16777215
+      53: iastore
+      54: iload_3
+      55: ifeq          68
+      58: aload_0
+      59: getfield      #45                 // Field m:[[I
+      62: iload_1
+      63: aaload
+      64: iload_2
+      65: ldc           #9                  // int 16777216
+      67: iastore
+      68: iinc          2, 1
+      71: iload_2
+      72: aload_0
+      73: getfield      #47                 // Field l:I
+      76: if_icmplt     16
+      79: iinc          1, 1
+      82: iload_1
+      83: aload_0
+      84: getfield      #48                 // Field k:I
+      87: if_icmplt     10
+      90: return
+
+  public void a(int, int, int, int, byte, boolean);
+    Code:
+       0: iload_3
+       1: aload_0
+       2: getfield      #58                 // Field i:I
+       5: isub
+       6: istore_3
+       7: iload_1
+       8: aload_0
+       9: getfield      #59                 // Field j:I
+      12: isub
+      13: istore_1
+      14: iload         5
+      16: iconst_1
+      17: if_icmpne     29
+      20: iconst_0
+      21: istore        5
+      23: getstatic     #146                // Field LKGEGIEW.t:I
+      26: ifeq          30
+      29: return
+      30: iload         4
+      32: ifne          126
+      35: iload_2
+      36: ifne          58
+      39: aload_0
+      40: iload_3
+      41: iload_1
+      42: sipush        128
+      45: invokespecial #39                 // Method b:(III)V
+      48: aload_0
+      49: iload_3
+      50: iconst_1
+      51: isub
+      52: iload_1
+      53: bipush        8
+      55: invokespecial #39                 // Method b:(III)V
+      58: iload_2
+      59: iconst_1
+      60: if_icmpne     80
+      63: aload_0
+      64: iload_3
+      65: iload_1
+      66: iconst_2
+      67: invokespecial #39                 // Method b:(III)V
+      70: aload_0
+      71: iload_3
+      72: iload_1
+      73: iconst_1
+      74: iadd
+      75: bipush        32
+      77: invokespecial #39                 // Method b:(III)V
+      80: iload_2
+      81: iconst_2
+      82: if_icmpne     104
+      85: aload_0
+      86: iload_3
+      87: iload_1
+      88: bipush        8
+      90: invokespecial #39                 // Method b:(III)V
+      93: aload_0
+      94: iload_3
+      95: iconst_1
+      96: iadd
+      97: iload_1
+      98: sipush        128
+     101: invokespecial #39                 // Method b:(III)V
+     104: iload_2
+     105: iconst_3
+     106: if_icmpne     126
+     109: aload_0
+     110: iload_3
+     111: iload_1
+     112: bipush        32
+     114: invokespecial #39                 // Method b:(III)V
+     117: aload_0
+     118: iload_3
+     119: iload_1
+     120: iconst_1
+     121: isub
+     122: iconst_2
+     123: invokespecial #39                 // Method b:(III)V
+     126: iload         4
+     128: iconst_1
+     129: if_icmpeq     138
+     132: iload         4
+     134: iconst_3
+     135: if_icmpne     233
+     138: iload_2
+     139: ifne          161
+     142: aload_0
+     143: iload_3
+     144: iload_1
+     145: iconst_1
+     146: invokespecial #39                 // Method b:(III)V
+     149: aload_0
+     150: iload_3
+     151: iconst_1
+     152: isub
+     153: iload_1
+     154: iconst_1
+     155: iadd
+     156: bipush        16
+     158: invokespecial #39                 // Method b:(III)V
+     161: iload_2
+     162: iconst_1
+     163: if_icmpne     185
+     166: aload_0
+     167: iload_3
+     168: iload_1
+     169: iconst_4
+     170: invokespecial #39                 // Method b:(III)V
+     173: aload_0
+     174: iload_3
+     175: iconst_1
+     176: iadd
+     177: iload_1
+     178: iconst_1
+     179: iadd
+     180: bipush        64
+     182: invokespecial #39                 // Method b:(III)V
+     185: iload_2
+     186: iconst_2
+     187: if_icmpne     209
+     190: aload_0
+     191: iload_3
+     192: iload_1
+     193: bipush        16
+     195: invokespecial #39                 // Method b:(III)V
+     198: aload_0
+     199: iload_3
+     200: iconst_1
+     201: iadd
+     202: iload_1
+     203: iconst_1
+     204: isub
+     205: iconst_1
+     206: invokespecial #39                 // Method b:(III)V
+     209: iload_2
+     210: iconst_3
+     211: if_icmpne     233
+     214: aload_0
+     215: iload_3
+     216: iload_1
+     217: bipush        64
+     219: invokespecial #39                 // Method b:(III)V
+     222: aload_0
+     223: iload_3
+     224: iconst_1
+     225: isub
+     226: iload_1
+     227: iconst_1
+     228: isub
+     229: iconst_4
+     230: invokespecial #39                 // Method b:(III)V
+     233: iload         4
+     235: iconst_2
+     236: if_icmpne     372
+     239: iload_2
+     240: ifne          272
+     243: aload_0
+     244: iload_3
+     245: iload_1
+     246: sipush        130
+     249: invokespecial #39                 // Method b:(III)V
+     252: aload_0
+     253: iload_3
+     254: iconst_1
+     255: isub
+     256: iload_1
+     257: bipush        8
+     259: invokespecial #39                 // Method b:(III)V
+     262: aload_0
+     263: iload_3
+     264: iload_1
+     265: iconst_1
+     266: iadd
+     267: bipush        32
+     269: invokespecial #39                 // Method b:(III)V
+     272: iload_2
+     273: iconst_1
+     274: if_icmpne     306
+     277: aload_0
+     278: iload_3
+     279: iload_1
+     280: bipush        10
+     282: invokespecial #39                 // Method b:(III)V
+     285: aload_0
+     286: iload_3
+     287: iload_1
+     288: iconst_1
+     289: iadd
+     290: bipush        32
+     292: invokespecial #39                 // Method b:(III)V
+     295: aload_0
+     296: iload_3
+     297: iconst_1
+     298: iadd
+     299: iload_1
+     300: sipush        128
+     303: invokespecial #39                 // Method b:(III)V
+     306: iload_2
+     307: iconst_2
+     308: if_icmpne     339
+     311: aload_0
+     312: iload_3
+     313: iload_1
+     314: bipush        40
+     316: invokespecial #39                 // Method b:(III)V
+     319: aload_0
+     320: iload_3
+     321: iconst_1
+     322: iadd
+     323: iload_1
+     324: sipush        128
+     327: invokespecial #39                 // Method b:(III)V
+     330: aload_0
+     331: iload_3
+     332: iload_1
+     333: iconst_1
+     334: isub
+     335: iconst_2
+     336: invokespecial #39                 // Method b:(III)V
+     339: iload_2
+     340: iconst_3
+     341: if_icmpne     372
+     344: aload_0
+     345: iload_3
+     346: iload_1
+     347: sipush        160
+     350: invokespecial #39                 // Method b:(III)V
+     353: aload_0
+     354: iload_3
+     355: iload_1
+     356: iconst_1
+     357: isub
+     358: iconst_2
+     359: invokespecial #39                 // Method b:(III)V
+     362: aload_0
+     363: iload_3
+     364: iconst_1
+     365: isub
+     366: iload_1
+     367: bipush        8
+     369: invokespecial #39                 // Method b:(III)V
+     372: iload         6
+     374: ifeq          832
+     377: iload         4
+     379: ifne          479
+     382: iload_2
+     383: ifne          405
+     386: aload_0
+     387: iload_3
+     388: iload_1
+     389: ldc           #2                  // int 65536
+     391: invokespecial #39                 // Method b:(III)V
+     394: aload_0
+     395: iload_3
+     396: iconst_1
+     397: isub
+     398: iload_1
+     399: sipush        4096
+     402: invokespecial #39                 // Method b:(III)V
+     405: iload_2
+     406: iconst_1
+     407: if_icmpne     430
+     410: aload_0
+     411: iload_3
+     412: iload_1
+     413: sipush        1024
+     416: invokespecial #39                 // Method b:(III)V
+     419: aload_0
+     420: iload_3
+     421: iload_1
+     422: iconst_1
+     423: iadd
+     424: sipush        16384
+     427: invokespecial #39                 // Method b:(III)V
+     430: iload_2
+     431: iconst_2
+     432: if_icmpne     454
+     435: aload_0
+     436: iload_3
+     437: iload_1
+     438: sipush        4096
+     441: invokespecial #39                 // Method b:(III)V
+     444: aload_0
+     445: iload_3
+     446: iconst_1
+     447: iadd
+     448: iload_1
+     449: ldc           #2                  // int 65536
+     451: invokespecial #39                 // Method b:(III)V
+     454: iload_2
+     455: iconst_3
+     456: if_icmpne     479
+     459: aload_0
+     460: iload_3
+     461: iload_1
+     462: sipush        16384
+     465: invokespecial #39                 // Method b:(III)V
+     468: aload_0
+     469: iload_3
+     470: iload_1
+     471: iconst_1
+     472: isub
+     473: sipush        1024
+     476: invokespecial #39                 // Method b:(III)V
+     479: iload         4
+     481: iconst_1
+     482: if_icmpeq     491
+     485: iload         4
+     487: iconst_3
+     488: if_icmpne     596
+     491: iload_2
+     492: ifne          517
+     495: aload_0
+     496: iload_3
+     497: iload_1
+     498: sipush        512
+     501: invokespecial #39                 // Method b:(III)V
+     504: aload_0
+     505: iload_3
+     506: iconst_1
+     507: isub
+     508: iload_1
+     509: iconst_1
+     510: iadd
+     511: sipush        8192
+     514: invokespecial #39                 // Method b:(III)V
+     517: iload_2
+     518: iconst_1
+     519: if_icmpne     543
+     522: aload_0
+     523: iload_3
+     524: iload_1
+     525: sipush        2048
+     528: invokespecial #39                 // Method b:(III)V
+     531: aload_0
+     532: iload_3
+     533: iconst_1
+     534: iadd
+     535: iload_1
+     536: iconst_1
+     537: iadd
+     538: ldc           #1                  // int 32768
+     540: invokespecial #39                 // Method b:(III)V
+     543: iload_2
+     544: iconst_2
+     545: if_icmpne     570
+     548: aload_0
+     549: iload_3
+     550: iload_1
+     551: sipush        8192
+     554: invokespecial #39                 // Method b:(III)V
+     557: aload_0
+     558: iload_3
+     559: iconst_1
+     560: iadd
+     561: iload_1
+     562: iconst_1
+     563: isub
+     564: sipush        512
+     567: invokespecial #39                 // Method b:(III)V
+     570: iload_2
+     571: iconst_3
+     572: if_icmpne     596
+     575: aload_0
+     576: iload_3
+     577: iload_1
+     578: ldc           #1                  // int 32768
+     580: invokespecial #39                 // Method b:(III)V
+     583: aload_0
+     584: iload_3
+     585: iconst_1
+     586: isub
+     587: iload_1
+     588: iconst_1
+     589: isub
+     590: sipush        2048
+     593: invokespecial #39                 // Method b:(III)V
+     596: iload         4
+     598: iconst_2
+     599: if_icmpne     832
+     602: iload_2
+     603: ifne          636
+     606: aload_0
+     607: iload_3
+     608: iload_1
+     609: ldc           #3                  // int 66560
+     611: invokespecial #39                 // Method b:(III)V
+     614: aload_0
+     615: iload_3
+     616: iconst_1
+     617: isub
+     618: iload_1
+     619: sipush        4096
+     622: invokespecial #39                 // Method b:(III)V
+     625: aload_0
+     626: iload_3
+     627: iload_1
+     628: iconst_1
+     629: iadd
+     630: sipush        16384
+     633: invokespecial #39                 // Method b:(III)V
+     636: iload_2
+     637: iconst_1
+     638: if_icmpne     671
+     641: aload_0
+     642: iload_3
+     643: iload_1
+     644: sipush        5120
+     647: invokespecial #39                 // Method b:(III)V
+     650: aload_0
+     651: iload_3
+     652: iload_1
+     653: iconst_1
+     654: iadd
+     655: sipush        16384
+     658: invokespecial #39                 // Method b:(III)V
+     661: aload_0
+     662: iload_3
+     663: iconst_1
+     664: iadd
+     665: iload_1
+     666: ldc           #2                  // int 65536
+     668: invokespecial #39                 // Method b:(III)V
+     671: iload_2
+     672: iconst_2
+     673: if_icmpne     706
+     676: aload_0
+     677: iload_3
+     678: iload_1
+     679: sipush        20480
+     682: invokespecial #39                 // Method b:(III)V
+     685: aload_0
+     686: iload_3
+     687: iconst_1
+     688: iadd
+     689: iload_1
+     690: ldc           #2                  // int 65536
+     692: invokespecial #39                 // Method b:(III)V
+     695: aload_0
+     696: iload_3
+     697: iload_1
+     698: iconst_1
+     699: isub
+     700: sipush        1024
+     703: invokespecial #39                 // Method b:(III)V
+     706: iload_2
+     707: iconst_3
+     708: if_icmpne     832
+     711: aload_0
+     712: iload_3
+     713: iload_1
+     714: ldc           #4                  // int 81920
+     716: invokespecial #39                 // Method b:(III)V
+     719: aload_0
+     720: iload_3
+     721: iload_1
+     722: iconst_1
+     723: isub
+     724: sipush        1024
+     727: invokespecial #39                 // Method b:(III)V
+     730: aload_0
+     731: iload_3
+     732: iconst_1
+     733: isub
+     734: iload_1
+     735: sipush        4096
+     738: invokespecial #39                 // Method b:(III)V
+     741: return
+     742: astore        7
+     744: new           #30                 // class java/lang/StringBuffer
+     747: dup
+     748: ldc           #23                 // String 53275,
+     750: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     753: iload_1
+     754: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     757: ldc           #14                 // String ,
+     759: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     762: iload_2
+     763: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     766: ldc           #14                 // String ,
+     768: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     771: iload_3
+     772: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     775: ldc           #14                 // String ,
+     777: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     780: iload         4
+     782: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     785: ldc           #14                 // String ,
+     787: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     790: iload         5
+     792: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     795: ldc           #14                 // String ,
+     797: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     800: iload         6
+     802: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     805: ldc           #14                 // String ,
+     807: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     810: aload         7
+     812: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     815: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     818: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     821: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     824: new           #29                 // class java/lang/RuntimeException
+     827: dup
+     828: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     831: athrow
+     832: return
+    Exception table:
+       from    to  target type
+           0   741   742   Class java/lang/RuntimeException
+
+  public void a(boolean, int, int, int, int, int, int);
+    Code:
+       0: getstatic     #146                // Field LKGEGIEW.t:I
+       3: istore        11
+       5: sipush        256
+       8: istore        8
+      10: iload_1
+      11: ifeq          21
+      14: iload         8
+      16: ldc           #5                  // int 131072
+      18: iadd
+      19: istore        8
+      21: iload         5
+      23: aload_0
+      24: getfield      #58                 // Field i:I
+      27: isub
+      28: istore        5
+      30: bipush        14
+      32: iload_2
+      33: idiv
+      34: istore_2
+      35: iload         6
+      37: aload_0
+      38: getfield      #59                 // Field j:I
+      41: isub
+      42: istore        6
+      44: iload         7
+      46: iconst_1
+      47: if_icmpeq     56
+      50: iload         7
+      52: iconst_3
+      53: if_icmpne     66
+      56: iload_3
+      57: istore        9
+      59: iload         4
+      61: istore_3
+      62: iload         9
+      64: istore        4
+      66: iload         5
+      68: istore        9
+      70: iload         11
+      72: ifeq          138
+      75: iload         9
+      77: iflt          135
+      80: iload         9
+      82: aload_0
+      83: getfield      #48                 // Field k:I
+      86: if_icmpge     135
+      89: iload         6
+      91: istore        10
+      93: iload         11
+      95: ifeq          125
+      98: iload         10
+     100: iflt          122
+     103: iload         10
+     105: aload_0
+     106: getfield      #47                 // Field l:I
+     109: if_icmpge     122
+     112: aload_0
+     113: iload         9
+     115: iload         10
+     117: iload         8
+     119: invokespecial #39                 // Method b:(III)V
+     122: iinc          10, 1
+     125: iload         10
+     127: iload         6
+     129: iload         4
+     131: iadd
+     132: if_icmplt     98
+     135: iinc          9, 1
+     138: iload         9
+     140: iload         5
+     142: iload_3
+     143: iadd
+     144: if_icmplt     75
+     147: return
+     148: astore        8
+     150: new           #30                 // class java/lang/StringBuffer
+     153: dup
+     154: ldc           #16                 // String 32403,
+     156: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     159: iload_1
+     160: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     163: ldc           #14                 // String ,
+     165: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     168: iload_2
+     169: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     172: ldc           #14                 // String ,
+     174: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     177: iload_3
+     178: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     181: ldc           #14                 // String ,
+     183: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     186: iload         4
+     188: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     191: ldc           #14                 // String ,
+     193: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     196: iload         5
+     198: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     201: ldc           #14                 // String ,
+     203: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     206: iload         6
+     208: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     211: ldc           #14                 // String ,
+     213: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     216: iload         7
+     218: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     221: ldc           #14                 // String ,
+     223: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     226: aload         8
+     228: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     231: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     234: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     237: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     240: new           #29                 // class java/lang/RuntimeException
+     243: dup
+     244: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     247: athrow
+    Exception table:
+       from    to  target type
+           5   147   148   Class java/lang/RuntimeException
+
+  public void a(int, int, int);
+    Code:
+       0: iload_3
+       1: aload_0
+       2: getfield      #58                 // Field i:I
+       5: isub
+       6: istore_3
+       7: iload_2
+       8: ifeq          27
+      11: aload_0
+      12: aload_0
+      13: getfield      #50                 // Field a:Z
+      16: ifeq          23
+      19: iconst_0
+      20: goto          24
+      23: iconst_1
+      24: putfield      #50                 // Field a:Z
+      27: iload_1
+      28: aload_0
+      29: getfield      #59                 // Field j:I
+      32: isub
+      33: istore_1
+      34: aload_0
+      35: getfield      #45                 // Field m:[[I
+      38: iload_3
+      39: aaload
+      40: iload_1
+      41: dup2
+      42: iaload
+      43: ldc           #6                  // int 2097152
+      45: ior
+      46: iastore
+      47: return
+      48: astore        4
+      50: new           #30                 // class java/lang/StringBuffer
+      53: dup
+      54: ldc           #17                 // String 33794,
+      56: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      59: iload_1
+      60: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      63: ldc           #14                 // String ,
+      65: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      68: iload_2
+      69: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      72: ldc           #14                 // String ,
+      74: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      77: iload_3
+      78: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      81: ldc           #14                 // String ,
+      83: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      86: aload         4
+      88: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      91: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      94: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      97: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     100: new           #29                 // class java/lang/RuntimeException
+     103: dup
+     104: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     107: athrow
+    Exception table:
+       from    to  target type
+           0    47    48   Class java/lang/RuntimeException
+
+  private void b(int, int, int);
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field m:[[I
+       4: iload_1
+       5: aaload
+       6: iload_2
+       7: dup2
+       8: iaload
+       9: iload_3
+      10: ior
+      11: iastore
+      12: return
+
+  public void a(int, int, boolean, boolean, int, int);
+    Code:
+       0: iload         5
+       2: aload_0
+       3: getfield      #58                 // Field i:I
+       6: isub
+       7: istore        5
+       9: iload         6
+      11: aload_0
+      12: getfield      #59                 // Field j:I
+      15: isub
+      16: istore        6
+      18: iload         4
+      20: ifne          24
+      23: return
+      24: iload_2
+      25: ifne          159
+      28: iload_1
+      29: ifne          61
+      32: aload_0
+      33: sipush        128
+      36: iload         5
+      38: iload         6
+      40: sipush        933
+      43: invokespecial #51                 // Method a:(IIII)V
+      46: aload_0
+      47: bipush        8
+      49: iload         5
+      51: iconst_1
+      52: isub
+      53: iload         6
+      55: sipush        933
+      58: invokespecial #51                 // Method a:(IIII)V
+      61: iload_1
+      62: iconst_1
+      63: if_icmpne     93
+      66: aload_0
+      67: iconst_2
+      68: iload         5
+      70: iload         6
+      72: sipush        933
+      75: invokespecial #51                 // Method a:(IIII)V
+      78: aload_0
+      79: bipush        32
+      81: iload         5
+      83: iload         6
+      85: iconst_1
+      86: iadd
+      87: sipush        933
+      90: invokespecial #51                 // Method a:(IIII)V
+      93: iload_1
+      94: iconst_2
+      95: if_icmpne     127
+      98: aload_0
+      99: bipush        8
+     101: iload         5
+     103: iload         6
+     105: sipush        933
+     108: invokespecial #51                 // Method a:(IIII)V
+     111: aload_0
+     112: sipush        128
+     115: iload         5
+     117: iconst_1
+     118: iadd
+     119: iload         6
+     121: sipush        933
+     124: invokespecial #51                 // Method a:(IIII)V
+     127: iload_1
+     128: iconst_3
+     129: if_icmpne     159
+     132: aload_0
+     133: bipush        32
+     135: iload         5
+     137: iload         6
+     139: sipush        933
+     142: invokespecial #51                 // Method a:(IIII)V
+     145: aload_0
+     146: iconst_2
+     147: iload         5
+     149: iload         6
+     151: iconst_1
+     152: isub
+     153: sipush        933
+     156: invokespecial #51                 // Method a:(IIII)V
+     159: iload_2
+     160: iconst_1
+     161: if_icmpeq     169
+     164: iload_2
+     165: iconst_3
+     166: if_icmpne     304
+     169: iload_1
+     170: ifne          202
+     173: aload_0
+     174: iconst_1
+     175: iload         5
+     177: iload         6
+     179: sipush        933
+     182: invokespecial #51                 // Method a:(IIII)V
+     185: aload_0
+     186: bipush        16
+     188: iload         5
+     190: iconst_1
+     191: isub
+     192: iload         6
+     194: iconst_1
+     195: iadd
+     196: sipush        933
+     199: invokespecial #51                 // Method a:(IIII)V
+     202: iload_1
+     203: iconst_1
+     204: if_icmpne     236
+     207: aload_0
+     208: iconst_4
+     209: iload         5
+     211: iload         6
+     213: sipush        933
+     216: invokespecial #51                 // Method a:(IIII)V
+     219: aload_0
+     220: bipush        64
+     222: iload         5
+     224: iconst_1
+     225: iadd
+     226: iload         6
+     228: iconst_1
+     229: iadd
+     230: sipush        933
+     233: invokespecial #51                 // Method a:(IIII)V
+     236: iload_1
+     237: iconst_2
+     238: if_icmpne     270
+     241: aload_0
+     242: bipush        16
+     244: iload         5
+     246: iload         6
+     248: sipush        933
+     251: invokespecial #51                 // Method a:(IIII)V
+     254: aload_0
+     255: iconst_1
+     256: iload         5
+     258: iconst_1
+     259: iadd
+     260: iload         6
+     262: iconst_1
+     263: isub
+     264: sipush        933
+     267: invokespecial #51                 // Method a:(IIII)V
+     270: iload_1
+     271: iconst_3
+     272: if_icmpne     304
+     275: aload_0
+     276: bipush        64
+     278: iload         5
+     280: iload         6
+     282: sipush        933
+     285: invokespecial #51                 // Method a:(IIII)V
+     288: aload_0
+     289: iconst_4
+     290: iload         5
+     292: iconst_1
+     293: isub
+     294: iload         6
+     296: iconst_1
+     297: isub
+     298: sipush        933
+     301: invokespecial #51                 // Method a:(IIII)V
+     304: iload_2
+     305: iconst_2
+     306: if_icmpne     502
+     309: iload_1
+     310: ifne          357
+     313: aload_0
+     314: sipush        130
+     317: iload         5
+     319: iload         6
+     321: sipush        933
+     324: invokespecial #51                 // Method a:(IIII)V
+     327: aload_0
+     328: bipush        8
+     330: iload         5
+     332: iconst_1
+     333: isub
+     334: iload         6
+     336: sipush        933
+     339: invokespecial #51                 // Method a:(IIII)V
+     342: aload_0
+     343: bipush        32
+     345: iload         5
+     347: iload         6
+     349: iconst_1
+     350: iadd
+     351: sipush        933
+     354: invokespecial #51                 // Method a:(IIII)V
+     357: iload_1
+     358: iconst_1
+     359: if_icmpne     406
+     362: aload_0
+     363: bipush        10
+     365: iload         5
+     367: iload         6
+     369: sipush        933
+     372: invokespecial #51                 // Method a:(IIII)V
+     375: aload_0
+     376: bipush        32
+     378: iload         5
+     380: iload         6
+     382: iconst_1
+     383: iadd
+     384: sipush        933
+     387: invokespecial #51                 // Method a:(IIII)V
+     390: aload_0
+     391: sipush        128
+     394: iload         5
+     396: iconst_1
+     397: iadd
+     398: iload         6
+     400: sipush        933
+     403: invokespecial #51                 // Method a:(IIII)V
+     406: iload_1
+     407: iconst_2
+     408: if_icmpne     454
+     411: aload_0
+     412: bipush        40
+     414: iload         5
+     416: iload         6
+     418: sipush        933
+     421: invokespecial #51                 // Method a:(IIII)V
+     424: aload_0
+     425: sipush        128
+     428: iload         5
+     430: iconst_1
+     431: iadd
+     432: iload         6
+     434: sipush        933
+     437: invokespecial #51                 // Method a:(IIII)V
+     440: aload_0
+     441: iconst_2
+     442: iload         5
+     444: iload         6
+     446: iconst_1
+     447: isub
+     448: sipush        933
+     451: invokespecial #51                 // Method a:(IIII)V
+     454: iload_1
+     455: iconst_3
+     456: if_icmpne     502
+     459: aload_0
+     460: sipush        160
+     463: iload         5
+     465: iload         6
+     467: sipush        933
+     470: invokespecial #51                 // Method a:(IIII)V
+     473: aload_0
+     474: iconst_2
+     475: iload         5
+     477: iload         6
+     479: iconst_1
+     480: isub
+     481: sipush        933
+     484: invokespecial #51                 // Method a:(IIII)V
+     487: aload_0
+     488: bipush        8
+     490: iload         5
+     492: iconst_1
+     493: isub
+     494: iload         6
+     496: sipush        933
+     499: invokespecial #51                 // Method a:(IIII)V
+     502: iload_3
+     503: ifeq          1097
+     506: iload_2
+     507: ifne          647
+     510: iload_1
+     511: ifne          543
+     514: aload_0
+     515: ldc           #2                  // int 65536
+     517: iload         5
+     519: iload         6
+     521: sipush        933
+     524: invokespecial #51                 // Method a:(IIII)V
+     527: aload_0
+     528: sipush        4096
+     531: iload         5
+     533: iconst_1
+     534: isub
+     535: iload         6
+     537: sipush        933
+     540: invokespecial #51                 // Method a:(IIII)V
+     543: iload_1
+     544: iconst_1
+     545: if_icmpne     578
+     548: aload_0
+     549: sipush        1024
+     552: iload         5
+     554: iload         6
+     556: sipush        933
+     559: invokespecial #51                 // Method a:(IIII)V
+     562: aload_0
+     563: sipush        16384
+     566: iload         5
+     568: iload         6
+     570: iconst_1
+     571: iadd
+     572: sipush        933
+     575: invokespecial #51                 // Method a:(IIII)V
+     578: iload_1
+     579: iconst_2
+     580: if_icmpne     612
+     583: aload_0
+     584: sipush        4096
+     587: iload         5
+     589: iload         6
+     591: sipush        933
+     594: invokespecial #51                 // Method a:(IIII)V
+     597: aload_0
+     598: ldc           #2                  // int 65536
+     600: iload         5
+     602: iconst_1
+     603: iadd
+     604: iload         6
+     606: sipush        933
+     609: invokespecial #51                 // Method a:(IIII)V
+     612: iload_1
+     613: iconst_3
+     614: if_icmpne     647
+     617: aload_0
+     618: sipush        16384
+     621: iload         5
+     623: iload         6
+     625: sipush        933
+     628: invokespecial #51                 // Method a:(IIII)V
+     631: aload_0
+     632: sipush        1024
+     635: iload         5
+     637: iload         6
+     639: iconst_1
+     640: isub
+     641: sipush        933
+     644: invokespecial #51                 // Method a:(IIII)V
+     647: iload_2
+     648: iconst_1
+     649: if_icmpeq     657
+     652: iload_2
+     653: iconst_3
+     654: if_icmpne     802
+     657: iload_1
+     658: ifne          693
+     661: aload_0
+     662: sipush        512
+     665: iload         5
+     667: iload         6
+     669: sipush        933
+     672: invokespecial #51                 // Method a:(IIII)V
+     675: aload_0
+     676: sipush        8192
+     679: iload         5
+     681: iconst_1
+     682: isub
+     683: iload         6
+     685: iconst_1
+     686: iadd
+     687: sipush        933
+     690: invokespecial #51                 // Method a:(IIII)V
+     693: iload_1
+     694: iconst_1
+     695: if_icmpne     729
+     698: aload_0
+     699: sipush        2048
+     702: iload         5
+     704: iload         6
+     706: sipush        933
+     709: invokespecial #51                 // Method a:(IIII)V
+     712: aload_0
+     713: ldc           #1                  // int 32768
+     715: iload         5
+     717: iconst_1
+     718: iadd
+     719: iload         6
+     721: iconst_1
+     722: iadd
+     723: sipush        933
+     726: invokespecial #51                 // Method a:(IIII)V
+     729: iload_1
+     730: iconst_2
+     731: if_icmpne     766
+     734: aload_0
+     735: sipush        8192
+     738: iload         5
+     740: iload         6
+     742: sipush        933
+     745: invokespecial #51                 // Method a:(IIII)V
+     748: aload_0
+     749: sipush        512
+     752: iload         5
+     754: iconst_1
+     755: iadd
+     756: iload         6
+     758: iconst_1
+     759: isub
+     760: sipush        933
+     763: invokespecial #51                 // Method a:(IIII)V
+     766: iload_1
+     767: iconst_3
+     768: if_icmpne     802
+     771: aload_0
+     772: ldc           #1                  // int 32768
+     774: iload         5
+     776: iload         6
+     778: sipush        933
+     781: invokespecial #51                 // Method a:(IIII)V
+     784: aload_0
+     785: sipush        2048
+     788: iload         5
+     790: iconst_1
+     791: isub
+     792: iload         6
+     794: iconst_1
+     795: isub
+     796: sipush        933
+     799: invokespecial #51                 // Method a:(IIII)V
+     802: iload_2
+     803: iconst_2
+     804: if_icmpne     1097
+     807: iload_1
+     808: ifne          856
+     811: aload_0
+     812: ldc           #3                  // int 66560
+     814: iload         5
+     816: iload         6
+     818: sipush        933
+     821: invokespecial #51                 // Method a:(IIII)V
+     824: aload_0
+     825: sipush        4096
+     828: iload         5
+     830: iconst_1
+     831: isub
+     832: iload         6
+     834: sipush        933
+     837: invokespecial #51                 // Method a:(IIII)V
+     840: aload_0
+     841: sipush        16384
+     844: iload         5
+     846: iload         6
+     848: iconst_1
+     849: iadd
+     850: sipush        933
+     853: invokespecial #51                 // Method a:(IIII)V
+     856: iload_1
+     857: iconst_1
+     858: if_icmpne     906
+     861: aload_0
+     862: sipush        5120
+     865: iload         5
+     867: iload         6
+     869: sipush        933
+     872: invokespecial #51                 // Method a:(IIII)V
+     875: aload_0
+     876: sipush        16384
+     879: iload         5
+     881: iload         6
+     883: iconst_1
+     884: iadd
+     885: sipush        933
+     888: invokespecial #51                 // Method a:(IIII)V
+     891: aload_0
+     892: ldc           #2                  // int 65536
+     894: iload         5
+     896: iconst_1
+     897: iadd
+     898: iload         6
+     900: sipush        933
+     903: invokespecial #51                 // Method a:(IIII)V
+     906: iload_1
+     907: iconst_2
+     908: if_icmpne     956
+     911: aload_0
+     912: sipush        20480
+     915: iload         5
+     917: iload         6
+     919: sipush        933
+     922: invokespecial #51                 // Method a:(IIII)V
+     925: aload_0
+     926: ldc           #2                  // int 65536
+     928: iload         5
+     930: iconst_1
+     931: iadd
+     932: iload         6
+     934: sipush        933
+     937: invokespecial #51                 // Method a:(IIII)V
+     940: aload_0
+     941: sipush        1024
+     944: iload         5
+     946: iload         6
+     948: iconst_1
+     949: isub
+     950: sipush        933
+     953: invokespecial #51                 // Method a:(IIII)V
+     956: iload_1
+     957: iconst_3
+     958: if_icmpne     1097
+     961: aload_0
+     962: ldc           #4                  // int 81920
+     964: iload         5
+     966: iload         6
+     968: sipush        933
+     971: invokespecial #51                 // Method a:(IIII)V
+     974: aload_0
+     975: sipush        1024
+     978: iload         5
+     980: iload         6
+     982: iconst_1
+     983: isub
+     984: sipush        933
+     987: invokespecial #51                 // Method a:(IIII)V
+     990: aload_0
+     991: sipush        4096
+     994: iload         5
+     996: iconst_1
+     997: isub
+     998: iload         6
+    1000: sipush        933
+    1003: invokespecial #51                 // Method a:(IIII)V
+    1006: return
+    1007: astore        7
+    1009: new           #30                 // class java/lang/StringBuffer
+    1012: dup
+    1013: ldc           #25                 // String 6952,
+    1015: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+    1018: iload_1
+    1019: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+    1022: ldc           #14                 // String ,
+    1024: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1027: iload_2
+    1028: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+    1031: ldc           #14                 // String ,
+    1033: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1036: iload_3
+    1037: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+    1040: ldc           #14                 // String ,
+    1042: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1045: iload         4
+    1047: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+    1050: ldc           #14                 // String ,
+    1052: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1055: iload         5
+    1057: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+    1060: ldc           #14                 // String ,
+    1062: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1065: iload         6
+    1067: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+    1070: ldc           #14                 // String ,
+    1072: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1075: aload         7
+    1077: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+    1080: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    1083: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+    1086: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+    1089: new           #29                 // class java/lang/RuntimeException
+    1092: dup
+    1093: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+    1096: athrow
+    1097: return
+    Exception table:
+       from    to  target type
+           0  1006  1007   Class java/lang/RuntimeException
+
+  public void a(int, int, int, int, byte, int, boolean);
+    Code:
+       0: getstatic     #146                // Field LKGEGIEW.t:I
+       3: istore        11
+       5: sipush        256
+       8: istore        8
+      10: iload         7
+      12: ifeq          22
+      15: iload         8
+      17: ldc           #5                  // int 131072
+      19: iadd
+      20: istore        8
+      22: iload_3
+      23: aload_0
+      24: getfield      #58                 // Field i:I
+      27: isub
+      28: istore_3
+      29: iload         4
+      31: aload_0
+      32: getfield      #59                 // Field j:I
+      35: isub
+      36: istore        4
+      38: iload         5
+      40: bipush        6
+      42: if_icmpeq     61
+      45: aload_0
+      46: aload_0
+      47: getfield      #50                 // Field a:Z
+      50: ifeq          57
+      53: iconst_0
+      54: goto          58
+      57: iconst_1
+      58: putfield      #50                 // Field a:Z
+      61: iload_1
+      62: iconst_1
+      63: if_icmpeq     71
+      66: iload_1
+      67: iconst_3
+      68: if_icmpne     81
+      71: iload_2
+      72: istore        9
+      74: iload         6
+      76: istore_2
+      77: iload         9
+      79: istore        6
+      81: iload_3
+      82: istore        9
+      84: iload         11
+      86: ifeq          155
+      89: iload         9
+      91: iflt          152
+      94: iload         9
+      96: aload_0
+      97: getfield      #48                 // Field k:I
+     100: if_icmpge     152
+     103: iload         4
+     105: istore        10
+     107: iload         11
+     109: ifeq          142
+     112: iload         10
+     114: iflt          139
+     117: iload         10
+     119: aload_0
+     120: getfield      #47                 // Field l:I
+     123: if_icmpge     139
+     126: aload_0
+     127: iload         8
+     129: iload         9
+     131: iload         10
+     133: sipush        933
+     136: invokespecial #51                 // Method a:(IIII)V
+     139: iinc          10, 1
+     142: iload         10
+     144: iload         4
+     146: iload         6
+     148: iadd
+     149: if_icmplt     112
+     152: iinc          9, 1
+     155: iload         9
+     157: iload_3
+     158: iload_2
+     159: iadd
+     160: if_icmplt     89
+     163: return
+     164: astore        8
+     166: new           #30                 // class java/lang/StringBuffer
+     169: dup
+     170: ldc           #21                 // String 45433,
+     172: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     175: iload_1
+     176: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     179: ldc           #14                 // String ,
+     181: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     184: iload_2
+     185: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     188: ldc           #14                 // String ,
+     190: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     193: iload_3
+     194: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     197: ldc           #14                 // String ,
+     199: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     202: iload         4
+     204: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     207: ldc           #14                 // String ,
+     209: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     212: iload         5
+     214: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     217: ldc           #14                 // String ,
+     219: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     222: iload         6
+     224: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     227: ldc           #14                 // String ,
+     229: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     232: iload         7
+     234: invokevirtual #42                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     237: ldc           #14                 // String ,
+     239: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     242: aload         8
+     244: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     247: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     250: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     253: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     256: new           #29                 // class java/lang/RuntimeException
+     259: dup
+     260: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     263: athrow
+    Exception table:
+       from    to  target type
+           5   163   164   Class java/lang/RuntimeException
+
+  private void a(int, int, int, int);
+    Code:
+       0: bipush        36
+       2: iload         4
+       4: idiv
+       5: istore        4
+       7: aload_0
+       8: getfield      #45                 // Field m:[[I
+      11: iload_2
+      12: aaload
+      13: iload_3
+      14: dup2
+      15: iaload
+      16: ldc           #8                  // int 16777215
+      18: iload_1
+      19: isub
+      20: iand
+      21: iastore
+      22: return
+      23: astore        5
+      25: new           #30                 // class java/lang/StringBuffer
+      28: dup
+      29: ldc           #20                 // String 42695,
+      31: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      34: iload_1
+      35: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      38: ldc           #14                 // String ,
+      40: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      43: iload_2
+      44: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      47: ldc           #14                 // String ,
+      49: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      52: iload_3
+      53: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      56: ldc           #14                 // String ,
+      58: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      61: iload         4
+      63: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      66: ldc           #14                 // String ,
+      68: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      71: aload         5
+      73: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      76: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      79: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      82: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      85: new           #29                 // class java/lang/RuntimeException
+      88: dup
+      89: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+      92: athrow
+    Exception table:
+       from    to  target type
+           0    22    23   Class java/lang/RuntimeException
+
+  public void c(int, int, int);
+    Code:
+       0: iload_3
+       1: aload_0
+       2: getfield      #58                 // Field i:I
+       5: isub
+       6: istore_3
+       7: iload_2
+       8: aload_0
+       9: getfield      #59                 // Field j:I
+      12: isub
+      13: istore_2
+      14: bipush        6
+      16: iload_1
+      17: idiv
+      18: istore_1
+      19: aload_0
+      20: getfield      #45                 // Field m:[[I
+      23: iload_3
+      24: aaload
+      25: iload_2
+      26: dup2
+      27: iaload
+      28: ldc           #7                  // int 14680063
+      30: iand
+      31: iastore
+      32: return
+      33: astore        4
+      35: new           #30                 // class java/lang/StringBuffer
+      38: dup
+      39: ldc           #18                 // String 36463,
+      41: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      44: iload_1
+      45: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      48: ldc           #14                 // String ,
+      50: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      53: iload_2
+      54: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      57: ldc           #14                 // String ,
+      59: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      62: iload_3
+      63: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      66: ldc           #14                 // String ,
+      68: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      71: aload         4
+      73: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      76: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      79: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      82: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      85: new           #29                 // class java/lang/RuntimeException
+      88: dup
+      89: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+      92: athrow
+    Exception table:
+       from    to  target type
+           0    32    33   Class java/lang/RuntimeException
+
+  public boolean a(int, int, int, int, int, int, int);
+    Code:
+       0: iload         4
+       2: ifeq          21
+       5: aload_0
+       6: aload_0
+       7: getfield      #50                 // Field a:Z
+      10: ifeq          17
+      13: iconst_0
+      14: goto          18
+      17: iconst_1
+      18: putfield      #50                 // Field a:Z
+      21: iload_2
+      22: iload_1
+      23: if_icmpne     34
+      26: iload_3
+      27: iload         7
+      29: if_icmpne     34
+      32: iconst_1
+      33: ireturn
+      34: iload_2
+      35: aload_0
+      36: getfield      #58                 // Field i:I
+      39: isub
+      40: istore_2
+      41: iload_3
+      42: aload_0
+      43: getfield      #59                 // Field j:I
+      46: isub
+      47: istore_3
+      48: iload_1
+      49: aload_0
+      50: getfield      #58                 // Field i:I
+      53: isub
+      54: istore_1
+      55: iload         7
+      57: aload_0
+      58: getfield      #59                 // Field j:I
+      61: isub
+      62: istore        7
+      64: iload         6
+      66: ifne          384
+      69: iload         5
+      71: ifne          147
+      74: iload_2
+      75: iload_1
+      76: iconst_1
+      77: isub
+      78: if_icmpne     89
+      81: iload_3
+      82: iload         7
+      84: if_icmpne     89
+      87: iconst_1
+      88: ireturn
+      89: iload_2
+      90: iload_1
+      91: if_icmpne     118
+      94: iload_3
+      95: iload         7
+      97: iconst_1
+      98: iadd
+      99: if_icmpne     118
+     102: aload_0
+     103: getfield      #45                 // Field m:[[I
+     106: iload_2
+     107: aaload
+     108: iload_3
+     109: iaload
+     110: ldc           #12                 // int 19398944
+     112: iand
+     113: ifne          118
+     116: iconst_1
+     117: ireturn
+     118: iload_2
+     119: iload_1
+     120: if_icmpne     384
+     123: iload_3
+     124: iload         7
+     126: iconst_1
+     127: isub
+     128: if_icmpne     384
+     131: aload_0
+     132: getfield      #45                 // Field m:[[I
+     135: iload_2
+     136: aaload
+     137: iload_3
+     138: iaload
+     139: ldc           #10                 // int 19398914
+     141: iand
+     142: ifne          384
+     145: iconst_1
+     146: ireturn
+     147: iload         5
+     149: iconst_1
+     150: if_icmpne     226
+     153: iload_2
+     154: iload_1
+     155: if_icmpne     168
+     158: iload_3
+     159: iload         7
+     161: iconst_1
+     162: iadd
+     163: if_icmpne     168
+     166: iconst_1
+     167: ireturn
+     168: iload_2
+     169: iload_1
+     170: iconst_1
+     171: isub
+     172: if_icmpne     197
+     175: iload_3
+     176: iload         7
+     178: if_icmpne     197
+     181: aload_0
+     182: getfield      #45                 // Field m:[[I
+     185: iload_2
+     186: aaload
+     187: iload_3
+     188: iaload
+     189: ldc           #11                 // int 19398920
+     191: iand
+     192: ifne          197
+     195: iconst_1
+     196: ireturn
+     197: iload_2
+     198: iload_1
+     199: iconst_1
+     200: iadd
+     201: if_icmpne     384
+     204: iload_3
+     205: iload         7
+     207: if_icmpne     384
+     210: aload_0
+     211: getfield      #45                 // Field m:[[I
+     214: iload_2
+     215: aaload
+     216: iload_3
+     217: iaload
+     218: ldc           #13                 // int 19399040
+     220: iand
+     221: ifne          384
+     224: iconst_1
+     225: ireturn
+     226: iload         5
+     228: iconst_2
+     229: if_icmpne     305
+     232: iload_2
+     233: iload_1
+     234: iconst_1
+     235: iadd
+     236: if_icmpne     247
+     239: iload_3
+     240: iload         7
+     242: if_icmpne     247
+     245: iconst_1
+     246: ireturn
+     247: iload_2
+     248: iload_1
+     249: if_icmpne     276
+     252: iload_3
+     253: iload         7
+     255: iconst_1
+     256: iadd
+     257: if_icmpne     276
+     260: aload_0
+     261: getfield      #45                 // Field m:[[I
+     264: iload_2
+     265: aaload
+     266: iload_3
+     267: iaload
+     268: ldc           #12                 // int 19398944
+     270: iand
+     271: ifne          276
+     274: iconst_1
+     275: ireturn
+     276: iload_2
+     277: iload_1
+     278: if_icmpne     384
+     281: iload_3
+     282: iload         7
+     284: iconst_1
+     285: isub
+     286: if_icmpne     384
+     289: aload_0
+     290: getfield      #45                 // Field m:[[I
+     293: iload_2
+     294: aaload
+     295: iload_3
+     296: iaload
+     297: ldc           #10                 // int 19398914
+     299: iand
+     300: ifne          384
+     303: iconst_1
+     304: ireturn
+     305: iload         5
+     307: iconst_3
+     308: if_icmpne     384
+     311: iload_2
+     312: iload_1
+     313: if_icmpne     326
+     316: iload_3
+     317: iload         7
+     319: iconst_1
+     320: isub
+     321: if_icmpne     326
+     324: iconst_1
+     325: ireturn
+     326: iload_2
+     327: iload_1
+     328: iconst_1
+     329: isub
+     330: if_icmpne     355
+     333: iload_3
+     334: iload         7
+     336: if_icmpne     355
+     339: aload_0
+     340: getfield      #45                 // Field m:[[I
+     343: iload_2
+     344: aaload
+     345: iload_3
+     346: iaload
+     347: ldc           #11                 // int 19398920
+     349: iand
+     350: ifne          355
+     353: iconst_1
+     354: ireturn
+     355: iload_2
+     356: iload_1
+     357: iconst_1
+     358: iadd
+     359: if_icmpne     384
+     362: iload_3
+     363: iload         7
+     365: if_icmpne     384
+     368: aload_0
+     369: getfield      #45                 // Field m:[[I
+     372: iload_2
+     373: aaload
+     374: iload_3
+     375: iaload
+     376: ldc           #13                 // int 19399040
+     378: iand
+     379: ifne          384
+     382: iconst_1
+     383: ireturn
+     384: iload         6
+     386: iconst_2
+     387: if_icmpne     765
+     390: iload         5
+     392: ifne          483
+     395: iload_2
+     396: iload_1
+     397: iconst_1
+     398: isub
+     399: if_icmpne     410
+     402: iload_3
+     403: iload         7
+     405: if_icmpne     410
+     408: iconst_1
+     409: ireturn
+     410: iload_2
+     411: iload_1
+     412: if_icmpne     425
+     415: iload_3
+     416: iload         7
+     418: iconst_1
+     419: iadd
+     420: if_icmpne     425
+     423: iconst_1
+     424: ireturn
+     425: iload_2
+     426: iload_1
+     427: iconst_1
+     428: iadd
+     429: if_icmpne     454
+     432: iload_3
+     433: iload         7
+     435: if_icmpne     454
+     438: aload_0
+     439: getfield      #45                 // Field m:[[I
+     442: iload_2
+     443: aaload
+     444: iload_3
+     445: iaload
+     446: ldc           #13                 // int 19399040
+     448: iand
+     449: ifne          454
+     452: iconst_1
+     453: ireturn
+     454: iload_2
+     455: iload_1
+     456: if_icmpne     765
+     459: iload_3
+     460: iload         7
+     462: iconst_1
+     463: isub
+     464: if_icmpne     765
+     467: aload_0
+     468: getfield      #45                 // Field m:[[I
+     471: iload_2
+     472: aaload
+     473: iload_3
+     474: iaload
+     475: ldc           #10                 // int 19398914
+     477: iand
+     478: ifne          765
+     481: iconst_1
+     482: ireturn
+     483: iload         5
+     485: iconst_1
+     486: if_icmpne     577
+     489: iload_2
+     490: iload_1
+     491: iconst_1
+     492: isub
+     493: if_icmpne     518
+     496: iload_3
+     497: iload         7
+     499: if_icmpne     518
+     502: aload_0
+     503: getfield      #45                 // Field m:[[I
+     506: iload_2
+     507: aaload
+     508: iload_3
+     509: iaload
+     510: ldc           #11                 // int 19398920
+     512: iand
+     513: ifne          518
+     516: iconst_1
+     517: ireturn
+     518: iload_2
+     519: iload_1
+     520: if_icmpne     533
+     523: iload_3
+     524: iload         7
+     526: iconst_1
+     527: iadd
+     528: if_icmpne     533
+     531: iconst_1
+     532: ireturn
+     533: iload_2
+     534: iload_1
+     535: iconst_1
+     536: iadd
+     537: if_icmpne     548
+     540: iload_3
+     541: iload         7
+     543: if_icmpne     548
+     546: iconst_1
+     547: ireturn
+     548: iload_2
+     549: iload_1
+     550: if_icmpne     765
+     553: iload_3
+     554: iload         7
+     556: iconst_1
+     557: isub
+     558: if_icmpne     765
+     561: aload_0
+     562: getfield      #45                 // Field m:[[I
+     565: iload_2
+     566: aaload
+     567: iload_3
+     568: iaload
+     569: ldc           #10                 // int 19398914
+     571: iand
+     572: ifne          765
+     575: iconst_1
+     576: ireturn
+     577: iload         5
+     579: iconst_2
+     580: if_icmpne     671
+     583: iload_2
+     584: iload_1
+     585: iconst_1
+     586: isub
+     587: if_icmpne     612
+     590: iload_3
+     591: iload         7
+     593: if_icmpne     612
+     596: aload_0
+     597: getfield      #45                 // Field m:[[I
+     600: iload_2
+     601: aaload
+     602: iload_3
+     603: iaload
+     604: ldc           #11                 // int 19398920
+     606: iand
+     607: ifne          612
+     610: iconst_1
+     611: ireturn
+     612: iload_2
+     613: iload_1
+     614: if_icmpne     641
+     617: iload_3
+     618: iload         7
+     620: iconst_1
+     621: iadd
+     622: if_icmpne     641
+     625: aload_0
+     626: getfield      #45                 // Field m:[[I
+     629: iload_2
+     630: aaload
+     631: iload_3
+     632: iaload
+     633: ldc           #12                 // int 19398944
+     635: iand
+     636: ifne          641
+     639: iconst_1
+     640: ireturn
+     641: iload_2
+     642: iload_1
+     643: iconst_1
+     644: iadd
+     645: if_icmpne     656
+     648: iload_3
+     649: iload         7
+     651: if_icmpne     656
+     654: iconst_1
+     655: ireturn
+     656: iload_2
+     657: iload_1
+     658: if_icmpne     765
+     661: iload_3
+     662: iload         7
+     664: iconst_1
+     665: isub
+     666: if_icmpne     765
+     669: iconst_1
+     670: ireturn
+     671: iload         5
+     673: iconst_3
+     674: if_icmpne     765
+     677: iload_2
+     678: iload_1
+     679: iconst_1
+     680: isub
+     681: if_icmpne     692
+     684: iload_3
+     685: iload         7
+     687: if_icmpne     692
+     690: iconst_1
+     691: ireturn
+     692: iload_2
+     693: iload_1
+     694: if_icmpne     721
+     697: iload_3
+     698: iload         7
+     700: iconst_1
+     701: iadd
+     702: if_icmpne     721
+     705: aload_0
+     706: getfield      #45                 // Field m:[[I
+     709: iload_2
+     710: aaload
+     711: iload_3
+     712: iaload
+     713: ldc           #12                 // int 19398944
+     715: iand
+     716: ifne          721
+     719: iconst_1
+     720: ireturn
+     721: iload_2
+     722: iload_1
+     723: iconst_1
+     724: iadd
+     725: if_icmpne     750
+     728: iload_3
+     729: iload         7
+     731: if_icmpne     750
+     734: aload_0
+     735: getfield      #45                 // Field m:[[I
+     738: iload_2
+     739: aaload
+     740: iload_3
+     741: iaload
+     742: ldc           #13                 // int 19399040
+     744: iand
+     745: ifne          750
+     748: iconst_1
+     749: ireturn
+     750: iload_2
+     751: iload_1
+     752: if_icmpne     765
+     755: iload_3
+     756: iload         7
+     758: iconst_1
+     759: isub
+     760: if_icmpne     765
+     763: iconst_1
+     764: ireturn
+     765: iload         6
+     767: bipush        9
+     769: if_icmpne     888
+     772: iload_2
+     773: iload_1
+     774: if_icmpne     801
+     777: iload_3
+     778: iload         7
+     780: iconst_1
+     781: iadd
+     782: if_icmpne     801
+     785: aload_0
+     786: getfield      #45                 // Field m:[[I
+     789: iload_2
+     790: aaload
+     791: iload_3
+     792: iaload
+     793: bipush        32
+     795: iand
+     796: ifne          801
+     799: iconst_1
+     800: ireturn
+     801: iload_2
+     802: iload_1
+     803: if_icmpne     829
+     806: iload_3
+     807: iload         7
+     809: iconst_1
+     810: isub
+     811: if_icmpne     829
+     814: aload_0
+     815: getfield      #45                 // Field m:[[I
+     818: iload_2
+     819: aaload
+     820: iload_3
+     821: iaload
+     822: iconst_2
+     823: iand
+     824: ifne          829
+     827: iconst_1
+     828: ireturn
+     829: iload_2
+     830: iload_1
+     831: iconst_1
+     832: isub
+     833: if_icmpne     858
+     836: iload_3
+     837: iload         7
+     839: if_icmpne     858
+     842: aload_0
+     843: getfield      #45                 // Field m:[[I
+     846: iload_2
+     847: aaload
+     848: iload_3
+     849: iaload
+     850: bipush        8
+     852: iand
+     853: ifne          858
+     856: iconst_1
+     857: ireturn
+     858: iload_2
+     859: iload_1
+     860: iconst_1
+     861: iadd
+     862: if_icmpne     888
+     865: iload_3
+     866: iload         7
+     868: if_icmpne     888
+     871: aload_0
+     872: getfield      #45                 // Field m:[[I
+     875: iload_2
+     876: aaload
+     877: iload_3
+     878: iaload
+     879: sipush        128
+     882: iand
+     883: ifne          888
+     886: iconst_1
+     887: ireturn
+     888: iconst_0
+     889: ireturn
+     890: astore        8
+     892: new           #30                 // class java/lang/StringBuffer
+     895: dup
+     896: ldc           #22                 // String 46464,
+     898: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     901: iload_1
+     902: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     905: ldc           #14                 // String ,
+     907: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     910: iload_2
+     911: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     914: ldc           #14                 // String ,
+     916: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     919: iload_3
+     920: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     923: ldc           #14                 // String ,
+     925: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     928: iload         4
+     930: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     933: ldc           #14                 // String ,
+     935: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     938: iload         5
+     940: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     943: ldc           #14                 // String ,
+     945: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     948: iload         6
+     950: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     953: ldc           #14                 // String ,
+     955: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     958: iload         7
+     960: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     963: ldc           #14                 // String ,
+     965: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     968: aload         8
+     970: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     973: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     976: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     979: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     982: new           #29                 // class java/lang/RuntimeException
+     985: dup
+     986: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     989: athrow
+    Exception table:
+       from    to  target type
+           0   890   890   Class java/lang/RuntimeException
+
+  public boolean b(int, int, int, int, int, int, int);
+    Code:
+       0: iload         7
+       2: ifeq          13
+       5: new           #27                 // class java/lang/NullPointerException
+       8: dup
+       9: invokespecial #34                 // Method java/lang/NullPointerException."<init>":()V
+      12: athrow
+      13: iload         6
+      15: iload_1
+      16: if_icmpne     26
+      19: iload_3
+      20: iload_2
+      21: if_icmpne     26
+      24: iconst_1
+      25: ireturn
+      26: iload         6
+      28: aload_0
+      29: getfield      #58                 // Field i:I
+      32: isub
+      33: istore        6
+      35: iload_3
+      36: aload_0
+      37: getfield      #59                 // Field j:I
+      40: isub
+      41: istore_3
+      42: iload_1
+      43: aload_0
+      44: getfield      #58                 // Field i:I
+      47: isub
+      48: istore_1
+      49: iload_2
+      50: aload_0
+      51: getfield      #59                 // Field j:I
+      54: isub
+      55: istore_2
+      56: iload         4
+      58: bipush        6
+      60: if_icmpeq     70
+      63: iload         4
+      65: bipush        7
+      67: if_icmpne     348
+      70: iload         4
+      72: bipush        7
+      74: if_icmpne     85
+      77: iload         5
+      79: iconst_2
+      80: iadd
+      81: iconst_3
+      82: iand
+      83: istore        5
+      85: iload         5
+      87: ifne          150
+      90: iload         6
+      92: iload_1
+      93: iconst_1
+      94: iadd
+      95: if_icmpne     121
+      98: iload_3
+      99: iload_2
+     100: if_icmpne     121
+     103: aload_0
+     104: getfield      #45                 // Field m:[[I
+     107: iload         6
+     109: aaload
+     110: iload_3
+     111: iaload
+     112: sipush        128
+     115: iand
+     116: ifne          121
+     119: iconst_1
+     120: ireturn
+     121: iload         6
+     123: iload_1
+     124: if_icmpne     348
+     127: iload_3
+     128: iload_2
+     129: iconst_1
+     130: isub
+     131: if_icmpne     348
+     134: aload_0
+     135: getfield      #45                 // Field m:[[I
+     138: iload         6
+     140: aaload
+     141: iload_3
+     142: iaload
+     143: iconst_2
+     144: iand
+     145: ifne          348
+     148: iconst_1
+     149: ireturn
+     150: iload         5
+     152: iconst_1
+     153: if_icmpne     215
+     156: iload         6
+     158: iload_1
+     159: iconst_1
+     160: isub
+     161: if_icmpne     186
+     164: iload_3
+     165: iload_2
+     166: if_icmpne     186
+     169: aload_0
+     170: getfield      #45                 // Field m:[[I
+     173: iload         6
+     175: aaload
+     176: iload_3
+     177: iaload
+     178: bipush        8
+     180: iand
+     181: ifne          186
+     184: iconst_1
+     185: ireturn
+     186: iload         6
+     188: iload_1
+     189: if_icmpne     348
+     192: iload_3
+     193: iload_2
+     194: iconst_1
+     195: isub
+     196: if_icmpne     348
+     199: aload_0
+     200: getfield      #45                 // Field m:[[I
+     203: iload         6
+     205: aaload
+     206: iload_3
+     207: iaload
+     208: iconst_2
+     209: iand
+     210: ifne          348
+     213: iconst_1
+     214: ireturn
+     215: iload         5
+     217: iconst_2
+     218: if_icmpne     281
+     221: iload         6
+     223: iload_1
+     224: iconst_1
+     225: isub
+     226: if_icmpne     251
+     229: iload_3
+     230: iload_2
+     231: if_icmpne     251
+     234: aload_0
+     235: getfield      #45                 // Field m:[[I
+     238: iload         6
+     240: aaload
+     241: iload_3
+     242: iaload
+     243: bipush        8
+     245: iand
+     246: ifne          251
+     249: iconst_1
+     250: ireturn
+     251: iload         6
+     253: iload_1
+     254: if_icmpne     348
+     257: iload_3
+     258: iload_2
+     259: iconst_1
+     260: iadd
+     261: if_icmpne     348
+     264: aload_0
+     265: getfield      #45                 // Field m:[[I
+     268: iload         6
+     270: aaload
+     271: iload_3
+     272: iaload
+     273: bipush        32
+     275: iand
+     276: ifne          348
+     279: iconst_1
+     280: ireturn
+     281: iload         5
+     283: iconst_3
+     284: if_icmpne     348
+     287: iload         6
+     289: iload_1
+     290: iconst_1
+     291: iadd
+     292: if_icmpne     318
+     295: iload_3
+     296: iload_2
+     297: if_icmpne     318
+     300: aload_0
+     301: getfield      #45                 // Field m:[[I
+     304: iload         6
+     306: aaload
+     307: iload_3
+     308: iaload
+     309: sipush        128
+     312: iand
+     313: ifne          318
+     316: iconst_1
+     317: ireturn
+     318: iload         6
+     320: iload_1
+     321: if_icmpne     348
+     324: iload_3
+     325: iload_2
+     326: iconst_1
+     327: iadd
+     328: if_icmpne     348
+     331: aload_0
+     332: getfield      #45                 // Field m:[[I
+     335: iload         6
+     337: aaload
+     338: iload_3
+     339: iaload
+     340: bipush        32
+     342: iand
+     343: ifne          348
+     346: iconst_1
+     347: ireturn
+     348: iload         4
+     350: bipush        8
+     352: if_icmpne     475
+     355: iload         6
+     357: iload_1
+     358: if_icmpne     385
+     361: iload_3
+     362: iload_2
+     363: iconst_1
+     364: iadd
+     365: if_icmpne     385
+     368: aload_0
+     369: getfield      #45                 // Field m:[[I
+     372: iload         6
+     374: aaload
+     375: iload_3
+     376: iaload
+     377: bipush        32
+     379: iand
+     380: ifne          385
+     383: iconst_1
+     384: ireturn
+     385: iload         6
+     387: iload_1
+     388: if_icmpne     414
+     391: iload_3
+     392: iload_2
+     393: iconst_1
+     394: isub
+     395: if_icmpne     414
+     398: aload_0
+     399: getfield      #45                 // Field m:[[I
+     402: iload         6
+     404: aaload
+     405: iload_3
+     406: iaload
+     407: iconst_2
+     408: iand
+     409: ifne          414
+     412: iconst_1
+     413: ireturn
+     414: iload         6
+     416: iload_1
+     417: iconst_1
+     418: isub
+     419: if_icmpne     444
+     422: iload_3
+     423: iload_2
+     424: if_icmpne     444
+     427: aload_0
+     428: getfield      #45                 // Field m:[[I
+     431: iload         6
+     433: aaload
+     434: iload_3
+     435: iaload
+     436: bipush        8
+     438: iand
+     439: ifne          444
+     442: iconst_1
+     443: ireturn
+     444: iload         6
+     446: iload_1
+     447: iconst_1
+     448: iadd
+     449: if_icmpne     475
+     452: iload_3
+     453: iload_2
+     454: if_icmpne     475
+     457: aload_0
+     458: getfield      #45                 // Field m:[[I
+     461: iload         6
+     463: aaload
+     464: iload_3
+     465: iaload
+     466: sipush        128
+     469: iand
+     470: ifne          475
+     473: iconst_1
+     474: ireturn
+     475: iconst_0
+     476: ireturn
+     477: astore        8
+     479: new           #30                 // class java/lang/StringBuffer
+     482: dup
+     483: ldc           #24                 // String 67003,
+     485: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     488: iload_1
+     489: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     492: ldc           #14                 // String ,
+     494: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     497: iload_2
+     498: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     501: ldc           #14                 // String ,
+     503: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     506: iload_3
+     507: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     510: ldc           #14                 // String ,
+     512: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     515: iload         4
+     517: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     520: ldc           #14                 // String ,
+     522: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     525: iload         5
+     527: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     530: ldc           #14                 // String ,
+     532: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     535: iload         6
+     537: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     540: ldc           #14                 // String ,
+     542: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     545: iload         7
+     547: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     550: ldc           #14                 // String ,
+     552: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     555: aload         8
+     557: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     560: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     563: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     566: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     569: new           #29                 // class java/lang/RuntimeException
+     572: dup
+     573: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     576: athrow
+    Exception table:
+       from    to  target type
+           0   477   477   Class java/lang/RuntimeException
+
+  public boolean a(byte, int, int, int, int, int, int, int);
+    Code:
+       0: iload_1
+       1: iconst_1
+       2: if_icmpeq     13
+       5: new           #27                 // class java/lang/NullPointerException
+       8: dup
+       9: invokespecial #34                 // Method java/lang/NullPointerException."<init>":()V
+      12: athrow
+      13: iload_3
+      14: iload         7
+      16: iadd
+      17: iconst_1
+      18: isub
+      19: istore        9
+      21: iload_2
+      22: iload         5
+      24: iadd
+      25: iconst_1
+      26: isub
+      27: istore        10
+      29: iload         4
+      31: iload_3
+      32: if_icmplt     57
+      35: iload         4
+      37: iload         9
+      39: if_icmpgt     57
+      42: iload         8
+      44: iload_2
+      45: if_icmplt     57
+      48: iload         8
+      50: iload         10
+      52: if_icmpgt     57
+      55: iconst_1
+      56: ireturn
+      57: iload         4
+      59: iload_3
+      60: iconst_1
+      61: isub
+      62: if_icmpne     114
+      65: iload         8
+      67: iload_2
+      68: if_icmplt     114
+      71: iload         8
+      73: iload         10
+      75: if_icmpgt     114
+      78: aload_0
+      79: getfield      #45                 // Field m:[[I
+      82: iload         4
+      84: aload_0
+      85: getfield      #58                 // Field i:I
+      88: isub
+      89: aaload
+      90: iload         8
+      92: aload_0
+      93: getfield      #59                 // Field j:I
+      96: isub
+      97: iaload
+      98: bipush        8
+     100: iand
+     101: ifne          114
+     104: iload         6
+     106: bipush        8
+     108: iand
+     109: ifne          114
+     112: iconst_1
+     113: ireturn
+     114: iload         4
+     116: iload         9
+     118: iconst_1
+     119: iadd
+     120: if_icmpne     172
+     123: iload         8
+     125: iload_2
+     126: if_icmplt     172
+     129: iload         8
+     131: iload         10
+     133: if_icmpgt     172
+     136: aload_0
+     137: getfield      #45                 // Field m:[[I
+     140: iload         4
+     142: aload_0
+     143: getfield      #58                 // Field i:I
+     146: isub
+     147: aaload
+     148: iload         8
+     150: aload_0
+     151: getfield      #59                 // Field j:I
+     154: isub
+     155: iaload
+     156: sipush        128
+     159: iand
+     160: ifne          172
+     163: iload         6
+     165: iconst_2
+     166: iand
+     167: ifne          172
+     170: iconst_1
+     171: ireturn
+     172: iload         8
+     174: iload_2
+     175: iconst_1
+     176: isub
+     177: if_icmpne     227
+     180: iload         4
+     182: iload_3
+     183: if_icmplt     227
+     186: iload         4
+     188: iload         9
+     190: if_icmpgt     227
+     193: aload_0
+     194: getfield      #45                 // Field m:[[I
+     197: iload         4
+     199: aload_0
+     200: getfield      #58                 // Field i:I
+     203: isub
+     204: aaload
+     205: iload         8
+     207: aload_0
+     208: getfield      #59                 // Field j:I
+     211: isub
+     212: iaload
+     213: iconst_2
+     214: iand
+     215: ifne          227
+     218: iload         6
+     220: iconst_4
+     221: iand
+     222: ifne          227
+     225: iconst_1
+     226: ireturn
+     227: iload         8
+     229: iload         10
+     231: iconst_1
+     232: iadd
+     233: if_icmpne     284
+     236: iload         4
+     238: iload_3
+     239: if_icmplt     284
+     242: iload         4
+     244: iload         9
+     246: if_icmpgt     284
+     249: aload_0
+     250: getfield      #45                 // Field m:[[I
+     253: iload         4
+     255: aload_0
+     256: getfield      #58                 // Field i:I
+     259: isub
+     260: aaload
+     261: iload         8
+     263: aload_0
+     264: getfield      #59                 // Field j:I
+     267: isub
+     268: iaload
+     269: bipush        32
+     271: iand
+     272: ifne          284
+     275: iload         6
+     277: iconst_1
+     278: iand
+     279: ifne          284
+     282: iconst_1
+     283: ireturn
+     284: iconst_0
+     285: ireturn
+     286: astore        9
+     288: new           #30                 // class java/lang/StringBuffer
+     291: dup
+     292: ldc           #19                 // String 42625,
+     294: invokespecial #37                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     297: iload_1
+     298: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     301: ldc           #14                 // String ,
+     303: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     306: iload_2
+     307: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     310: ldc           #14                 // String ,
+     312: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     315: iload_3
+     316: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     319: ldc           #14                 // String ,
+     321: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     324: iload         4
+     326: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     329: ldc           #14                 // String ,
+     331: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     334: iload         5
+     336: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     339: ldc           #14                 // String ,
+     341: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     344: iload         6
+     346: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     349: ldc           #14                 // String ,
+     351: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     354: iload         7
+     356: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     359: ldc           #14                 // String ,
+     361: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     364: iload         8
+     366: invokevirtual #40                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     369: ldc           #14                 // String ,
+     371: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     374: aload         9
+     376: invokevirtual #56                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     379: invokevirtual #41                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     382: invokevirtual #55                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     385: invokestatic  #52                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     388: new           #29                 // class java/lang/RuntimeException
+     391: dup
+     392: invokespecial #36                 // Method java/lang/RuntimeException."<init>":()V
+     395: athrow
+    Exception table:
+       from    to  target type
+           0   286   286   Class java/lang/RuntimeException
+}

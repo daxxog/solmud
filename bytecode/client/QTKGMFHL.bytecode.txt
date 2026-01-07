@@ -1,0 +1,78 @@
+final class QTKGMFHL extends PKVMXVTO {
+  private int f;
+
+  int g;
+
+  int h;
+
+  int i;
+
+  int j;
+
+  public XPBACSMK k;
+
+  public VBAXKVMG l;
+
+  FEHPTPDG m;
+
+  OFQAEXFV n;
+
+  ZIKPHIFI o;
+
+  BMEXSMOV p;
+
+  int q;
+
+  OPNPFUJE[] r;
+
+  int[] s;
+
+  int t;
+
+  int u;
+
+  boolean v;
+
+  boolean w;
+
+  boolean x;
+
+  int y;
+
+  int z;
+
+  int A;
+
+  int B;
+
+  QTKGMFHL C;
+
+  public QTKGMFHL(int, int, int);
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method PKVMXVTO."<init>":()V
+       4: aload_0
+       5: sipush        -589
+       8: putfield      #5                  // Field f:I
+      11: aload_0
+      12: iconst_5
+      13: anewarray     #1                  // class OPNPFUJE
+      16: putfield      #8                  // Field r:[LOPNPFUJE;
+      19: aload_0
+      20: iconst_5
+      21: newarray       int
+      23: putfield      #9                  // Field s:[I
+      26: aload_0
+      27: aload_0
+      28: iload_1
+      29: dup_x1
+      30: putfield      #7                  // Field g:I
+      33: putfield      #6                  // Field j:I
+      36: aload_0
+      37: iload_2
+      38: putfield      #10                 // Field h:I
+      41: aload_0
+      42: iload_3
+      43: putfield      #11                 // Field i:I
+      46: return
+}

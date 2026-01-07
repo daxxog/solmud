@@ -1,0 +1,196 @@
+public final class BISVHPUN {
+  private boolean a;
+
+  private int b;
+
+  public PPOHBEGB c;
+
+  private PPOHBEGB d;
+
+  public BISVHPUN(int);
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #26                 // Field a:Z
+       9: aload_0
+      10: sipush        -589
+      13: putfield      #21                 // Field b:I
+      16: aload_0
+      17: new           #4                  // class PPOHBEGB
+      20: dup
+      21: invokespecial #12                 // Method PPOHBEGB."<init>":()V
+      24: putfield      #20                 // Field c:LPPOHBEGB;
+      27: iload_1
+      28: ifeq          37
+      31: aload_0
+      32: bipush        -25
+      34: putfield      #21                 // Field b:I
+      37: aload_0
+      38: getfield      #20                 // Field c:LPPOHBEGB;
+      41: aload_0
+      42: getfield      #20                 // Field c:LPPOHBEGB;
+      45: putfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      48: aload_0
+      49: getfield      #20                 // Field c:LPPOHBEGB;
+      52: aload_0
+      53: getfield      #20                 // Field c:LPPOHBEGB;
+      56: putfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+      59: return
+      60: astore_2
+      61: new           #9                  // class java/lang/StringBuffer
+      64: dup
+      65: ldc           #3                  // String 656,
+      67: invokespecial #16                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      70: iload_1
+      71: invokevirtual #17                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      74: ldc           #1                  // String ,
+      76: invokevirtual #18                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      79: aload_2
+      80: invokevirtual #28                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      83: invokevirtual #18                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      86: invokevirtual #27                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      89: invokestatic  #25                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      92: new           #8                  // class java/lang/RuntimeException
+      95: dup
+      96: invokespecial #15                 // Method java/lang/RuntimeException."<init>":()V
+      99: athrow
+    Exception table:
+       from    to  target type
+          27    59    60   Class java/lang/RuntimeException
+
+  public void a(PPOHBEGB);
+    Code:
+       0: aload_1
+       1: getfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+       4: ifnull        11
+       7: aload_1
+       8: invokevirtual #29                 // Method PPOHBEGB.b:()V
+      11: aload_1
+      12: aload_0
+      13: getfield      #20                 // Field c:LPPOHBEGB;
+      16: getfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+      19: putfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+      22: aload_1
+      23: aload_0
+      24: getfield      #20                 // Field c:LPPOHBEGB;
+      27: putfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      30: aload_1
+      31: getfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+      34: aload_1
+      35: putfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      38: aload_1
+      39: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      42: aload_1
+      43: putfield      #24                 // Field PPOHBEGB.g:LPPOHBEGB;
+      46: return
+
+  public PPOHBEGB a();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field c:LPPOHBEGB;
+       4: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #20                 // Field c:LPPOHBEGB;
+      13: if_acmpne     18
+      16: aconst_null
+      17: areturn
+      18: aload_1
+      19: invokevirtual #29                 // Method PPOHBEGB.b:()V
+      22: aload_1
+      23: areturn
+
+  public PPOHBEGB b();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field c:LPPOHBEGB;
+       4: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #20                 // Field c:LPPOHBEGB;
+      13: if_acmpne     23
+      16: aload_0
+      17: aconst_null
+      18: putfield      #22                 // Field d:LPPOHBEGB;
+      21: aconst_null
+      22: areturn
+      23: aload_0
+      24: aload_1
+      25: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      28: putfield      #22                 // Field d:LPPOHBEGB;
+      31: aload_1
+      32: areturn
+
+  public PPOHBEGB a(boolean);
+    Code:
+       0: iload_1
+       1: ifeq          12
+       4: new           #6                  // class java/lang/NullPointerException
+       7: dup
+       8: invokespecial #13                 // Method java/lang/NullPointerException."<init>":()V
+      11: athrow
+      12: aload_0
+      13: getfield      #22                 // Field d:LPPOHBEGB;
+      16: astore_2
+      17: aload_2
+      18: aload_0
+      19: getfield      #20                 // Field c:LPPOHBEGB;
+      22: if_acmpne     32
+      25: aload_0
+      26: aconst_null
+      27: putfield      #22                 // Field d:LPPOHBEGB;
+      30: aconst_null
+      31: areturn
+      32: aload_0
+      33: aload_2
+      34: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      37: putfield      #22                 // Field d:LPPOHBEGB;
+      40: aload_2
+      41: areturn
+      42: astore_2
+      43: new           #9                  // class java/lang/StringBuffer
+      46: dup
+      47: ldc           #2                  // String 42563,
+      49: invokespecial #16                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      52: iload_1
+      53: invokevirtual #19                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+      56: ldc           #1                  // String ,
+      58: invokevirtual #18                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      61: aload_2
+      62: invokevirtual #28                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      65: invokevirtual #18                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      68: invokevirtual #27                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      71: invokestatic  #25                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      74: new           #8                  // class java/lang/RuntimeException
+      77: dup
+      78: invokespecial #15                 // Method java/lang/RuntimeException."<init>":()V
+      81: athrow
+    Exception table:
+       from    to  target type
+           0    42    42   Class java/lang/RuntimeException
+
+  public int c();
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: getfield      #20                 // Field c:LPPOHBEGB;
+       6: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+       9: astore_2
+      10: getstatic     #86                 // Field PPOHBEGB.h:I
+      13: ifeq          24
+      16: iinc          1, 1
+      19: aload_2
+      20: getfield      #23                 // Field PPOHBEGB.f:LPPOHBEGB;
+      23: astore_2
+      24: aload_2
+      25: aload_0
+      26: getfield      #20                 // Field c:LPPOHBEGB;
+      29: if_acmpne     16
+      32: iload_1
+      33: ireturn
+}

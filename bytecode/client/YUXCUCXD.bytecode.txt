@@ -1,0 +1,199 @@
+public class YUXCUCXD {
+  public static int a;
+
+  public static java.lang.String[] b;
+
+  public static boolean[] c;
+
+  static {};
+    Code:
+       0: bipush        25
+       2: putstatic     #26                 // Field a:I
+       5: bipush        25
+       7: anewarray     #24                 // class java/lang/String
+      10: dup
+      11: iconst_0
+      12: ldc           #3                  // String attack
+      14: aastore
+      15: dup
+      16: iconst_1
+      17: ldc           #6                  // String defence
+      19: aastore
+      20: dup
+      21: iconst_2
+      22: ldc           #20                 // String strength
+      24: aastore
+      25: dup
+      26: iconst_3
+      27: ldc           #12                 // String hitpoints
+      29: aastore
+      30: dup
+      31: iconst_4
+      32: ldc           #16                 // String ranged
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: ldc           #15                 // String prayer
+      39: aastore
+      40: dup
+      41: bipush        6
+      43: ldc           #13                 // String magic
+      45: aastore
+      46: dup
+      47: bipush        7
+      49: ldc           #4                  // String cooking
+      51: aastore
+      52: dup
+      53: bipush        8
+      55: ldc           #22                 // String woodcutting
+      57: aastore
+      58: dup
+      59: bipush        9
+      61: ldc           #10                 // String fletching
+      63: aastore
+      64: dup
+      65: bipush        10
+      67: ldc           #9                  // String fishing
+      69: aastore
+      70: dup
+      71: bipush        11
+      73: ldc           #8                  // String firemaking
+      75: aastore
+      76: dup
+      77: bipush        12
+      79: ldc           #5                  // String crafting
+      81: aastore
+      82: dup
+      83: bipush        13
+      85: ldc           #19                 // String smithing
+      87: aastore
+      88: dup
+      89: bipush        14
+      91: ldc           #14                 // String mining
+      93: aastore
+      94: dup
+      95: bipush        15
+      97: ldc           #11                 // String herblore
+      99: aastore
+     100: dup
+     101: bipush        16
+     103: ldc           #2                  // String agility
+     105: aastore
+     106: dup
+     107: bipush        17
+     109: ldc           #21                 // String thieving
+     111: aastore
+     112: dup
+     113: bipush        18
+     115: ldc           #18                 // String slayer
+     117: aastore
+     118: dup
+     119: bipush        19
+     121: ldc           #7                  // String farming
+     123: aastore
+     124: dup
+     125: bipush        20
+     127: ldc           #17                 // String runecraft
+     129: aastore
+     130: dup
+     131: bipush        21
+     133: ldc           #1                  // String -unused-
+     135: aastore
+     136: dup
+     137: bipush        22
+     139: ldc           #1                  // String -unused-
+     141: aastore
+     142: dup
+     143: bipush        23
+     145: ldc           #1                  // String -unused-
+     147: aastore
+     148: dup
+     149: bipush        24
+     151: ldc           #1                  // String -unused-
+     153: aastore
+     154: putstatic     #27                 // Field b:[Ljava/lang/String;
+     157: bipush        25
+     159: newarray       boolean
+     161: dup
+     162: iconst_0
+     163: iconst_1
+     164: bastore
+     165: dup
+     166: iconst_1
+     167: iconst_1
+     168: bastore
+     169: dup
+     170: iconst_2
+     171: iconst_1
+     172: bastore
+     173: dup
+     174: iconst_3
+     175: iconst_1
+     176: bastore
+     177: dup
+     178: iconst_4
+     179: iconst_1
+     180: bastore
+     181: dup
+     182: iconst_5
+     183: iconst_1
+     184: bastore
+     185: dup
+     186: bipush        6
+     188: iconst_1
+     189: bastore
+     190: dup
+     191: bipush        7
+     193: iconst_1
+     194: bastore
+     195: dup
+     196: bipush        8
+     198: iconst_1
+     199: bastore
+     200: dup
+     201: bipush        9
+     203: iconst_1
+     204: bastore
+     205: dup
+     206: bipush        10
+     208: iconst_1
+     209: bastore
+     210: dup
+     211: bipush        11
+     213: iconst_1
+     214: bastore
+     215: dup
+     216: bipush        12
+     218: iconst_1
+     219: bastore
+     220: dup
+     221: bipush        13
+     223: iconst_1
+     224: bastore
+     225: dup
+     226: bipush        14
+     228: iconst_1
+     229: bastore
+     230: dup
+     231: bipush        15
+     233: iconst_1
+     234: bastore
+     235: dup
+     236: bipush        16
+     238: iconst_1
+     239: bastore
+     240: dup
+     241: bipush        17
+     243: iconst_1
+     244: bastore
+     245: dup
+     246: bipush        18
+     248: iconst_1
+     249: bastore
+     250: dup
+     251: bipush        20
+     253: iconst_1
+     254: bastore
+     255: putstatic     #28                 // Field c:[Z
+     258: return
+}

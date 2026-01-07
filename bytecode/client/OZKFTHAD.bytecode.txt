@@ -1,0 +1,359 @@
+public class OZKFTHAD {
+  private boolean a;
+
+  private byte b;
+
+  private boolean c;
+
+  private boolean d;
+
+  private int e;
+
+  private int[] f;
+
+  private int[] g;
+
+  int h;
+
+  int i;
+
+  int j;
+
+  private int k;
+
+  private int l;
+
+  private int m;
+
+  private int n;
+
+  private int o;
+
+  public static int p;
+
+  public final void a(boolean, MBMGIXGO);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #25                 // Method MBMGIXGO.c:()I
+       5: putfield      #41                 // Field j:I
+       8: iload_1
+       9: ifne          20
+      12: new           #8                  // class java/lang/NullPointerException
+      15: dup
+      16: invokespecial #14                 // Method java/lang/NullPointerException."<init>":()V
+      19: athrow
+      20: aload_0
+      21: aload_2
+      22: invokevirtual #27                 // Method MBMGIXGO.h:()I
+      25: putfield      #32                 // Field h:I
+      28: aload_0
+      29: aload_2
+      30: invokevirtual #27                 // Method MBMGIXGO.h:()I
+      33: putfield      #31                 // Field i:I
+      36: aload_0
+      37: bipush        -112
+      39: aload_2
+      40: invokevirtual #30                 // Method a:(BLMBMGIXGO;)V
+      43: return
+      44: astore_3
+      45: new           #11                 // class java/lang/StringBuffer
+      48: dup
+      49: ldc           #4                  // String 70259,
+      51: invokespecial #17                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      54: iload_1
+      55: invokevirtual #22                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+      58: ldc           #1                  // String ,
+      60: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      63: aload_2
+      64: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+      67: ldc           #1                  // String ,
+      69: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      72: aload_3
+      73: invokevirtual #40                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      76: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      79: invokevirtual #39                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      82: invokestatic  #38                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      85: new           #10                 // class java/lang/RuntimeException
+      88: dup
+      89: invokespecial #16                 // Method java/lang/RuntimeException."<init>":()V
+      92: athrow
+    Exception table:
+       from    to  target type
+           0    43    44   Class java/lang/RuntimeException
+
+  public final void a(byte, MBMGIXGO);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #29                 // Field b:B
+       5: if_icmpeq     24
+       8: aload_0
+       9: aload_0
+      10: getfield      #24                 // Field c:Z
+      13: ifeq          20
+      16: iconst_0
+      17: goto          21
+      20: iconst_1
+      21: putfield      #24                 // Field c:Z
+      24: aload_0
+      25: aload_2
+      26: invokevirtual #25                 // Method MBMGIXGO.c:()I
+      29: putfield      #34                 // Field e:I
+      32: aload_0
+      33: aload_0
+      34: getfield      #34                 // Field e:I
+      37: newarray       int
+      39: putfield      #36                 // Field f:[I
+      42: aload_0
+      43: aload_0
+      44: getfield      #34                 // Field e:I
+      47: newarray       int
+      49: putfield      #37                 // Field g:[I
+      52: iconst_0
+      53: istore_3
+      54: getstatic     #128                // Field p:I
+      57: ifeq          83
+      60: aload_0
+      61: getfield      #36                 // Field f:[I
+      64: iload_3
+      65: aload_2
+      66: invokevirtual #26                 // Method MBMGIXGO.e:()I
+      69: iastore
+      70: aload_0
+      71: getfield      #37                 // Field g:[I
+      74: iload_3
+      75: aload_2
+      76: invokevirtual #26                 // Method MBMGIXGO.e:()I
+      79: iastore
+      80: iinc          3, 1
+      83: iload_3
+      84: aload_0
+      85: getfield      #34                 // Field e:I
+      88: if_icmplt     60
+      91: return
+      92: astore_3
+      93: new           #11                 // class java/lang/StringBuffer
+      96: dup
+      97: ldc           #2                  // String 22533,
+      99: invokespecial #17                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     102: iload_1
+     103: invokevirtual #19                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     106: ldc           #1                  // String ,
+     108: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     111: aload_2
+     112: invokevirtual #20                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     115: ldc           #1                  // String ,
+     117: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     120: aload_3
+     121: invokevirtual #40                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     124: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     127: invokevirtual #39                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     130: invokestatic  #38                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     133: new           #10                 // class java/lang/RuntimeException
+     136: dup
+     137: invokespecial #16                 // Method java/lang/RuntimeException."<init>":()V
+     140: athrow
+    Exception table:
+       from    to  target type
+           0    91    92   Class java/lang/RuntimeException
+
+  final void a(byte);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: putfield      #33                 // Field k:I
+       5: iload_1
+       6: bipush        8
+       8: if_icmpne     19
+      11: iconst_0
+      12: istore_1
+      13: getstatic     #128                // Field p:I
+      16: ifeq          35
+      19: aload_0
+      20: aload_0
+      21: getfield      #18                 // Field d:Z
+      24: ifeq          31
+      27: iconst_0
+      28: goto          32
+      31: iconst_1
+      32: putfield      #18                 // Field d:Z
+      35: aload_0
+      36: iconst_0
+      37: putfield      #35                 // Field l:I
+      40: aload_0
+      41: iconst_0
+      42: putfield      #28                 // Field m:I
+      45: aload_0
+      46: iconst_0
+      47: putfield      #43                 // Field n:I
+      50: aload_0
+      51: iconst_0
+      52: putfield      #42                 // Field o:I
+      55: return
+      56: astore_2
+      57: new           #11                 // class java/lang/StringBuffer
+      60: dup
+      61: ldc           #5                  // String 98303,
+      63: invokespecial #17                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      66: iload_1
+      67: invokevirtual #19                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      70: ldc           #1                  // String ,
+      72: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      75: aload_2
+      76: invokevirtual #40                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      79: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      82: invokevirtual #39                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      85: invokestatic  #38                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      88: new           #10                 // class java/lang/RuntimeException
+      91: dup
+      92: invokespecial #16                 // Method java/lang/RuntimeException."<init>":()V
+      95: athrow
+    Exception table:
+       from    to  target type
+           0    55    56   Class java/lang/RuntimeException
+
+  final int a(boolean, int);
+    Code:
+       0: iload_1
+       1: ifne          20
+       4: aload_0
+       5: aload_0
+       6: getfield      #23                 // Field a:Z
+       9: ifeq          16
+      12: iconst_0
+      13: goto          17
+      16: iconst_1
+      17: putfield      #23                 // Field a:Z
+      20: aload_0
+      21: getfield      #42                 // Field o:I
+      24: aload_0
+      25: getfield      #33                 // Field k:I
+      28: if_icmplt     139
+      31: aload_0
+      32: aload_0
+      33: getfield      #37                 // Field g:[I
+      36: aload_0
+      37: dup
+      38: getfield      #35                 // Field l:I
+      41: dup_x1
+      42: iconst_1
+      43: iadd
+      44: putfield      #35                 // Field l:I
+      47: iaload
+      48: bipush        15
+      50: ishl
+      51: putfield      #43                 // Field n:I
+      54: aload_0
+      55: getfield      #35                 // Field l:I
+      58: aload_0
+      59: getfield      #34                 // Field e:I
+      62: if_icmplt     75
+      65: aload_0
+      66: aload_0
+      67: getfield      #34                 // Field e:I
+      70: iconst_1
+      71: isub
+      72: putfield      #35                 // Field l:I
+      75: aload_0
+      76: aload_0
+      77: getfield      #36                 // Field f:[I
+      80: aload_0
+      81: getfield      #35                 // Field l:I
+      84: iaload
+      85: i2d
+      86: ldc2_w        #44                 // double 65536.0d
+      89: ddiv
+      90: iload_2
+      91: i2d
+      92: dmul
+      93: d2i
+      94: putfield      #33                 // Field k:I
+      97: aload_0
+      98: getfield      #33                 // Field k:I
+     101: aload_0
+     102: getfield      #42                 // Field o:I
+     105: if_icmple     139
+     108: aload_0
+     109: aload_0
+     110: getfield      #37                 // Field g:[I
+     113: aload_0
+     114: getfield      #35                 // Field l:I
+     117: iaload
+     118: bipush        15
+     120: ishl
+     121: aload_0
+     122: getfield      #43                 // Field n:I
+     125: isub
+     126: aload_0
+     127: getfield      #33                 // Field k:I
+     130: aload_0
+     131: getfield      #42                 // Field o:I
+     134: isub
+     135: idiv
+     136: putfield      #28                 // Field m:I
+     139: aload_0
+     140: dup
+     141: getfield      #43                 // Field n:I
+     144: aload_0
+     145: getfield      #28                 // Field m:I
+     148: iadd
+     149: putfield      #43                 // Field n:I
+     152: aload_0
+     153: dup
+     154: getfield      #42                 // Field o:I
+     157: iconst_1
+     158: iadd
+     159: putfield      #42                 // Field o:I
+     162: aload_0
+     163: getfield      #43                 // Field n:I
+     166: aload_0
+     167: getfield      #28                 // Field m:I
+     170: isub
+     171: bipush        15
+     173: ishr
+     174: ireturn
+     175: astore_3
+     176: new           #11                 // class java/lang/StringBuffer
+     179: dup
+     180: ldc           #3                  // String 64313,
+     182: invokespecial #17                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     185: iload_1
+     186: invokevirtual #22                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     189: ldc           #1                  // String ,
+     191: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     194: iload_2
+     195: invokevirtual #19                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     198: ldc           #1                  // String ,
+     200: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     203: aload_3
+     204: invokevirtual #40                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     207: invokevirtual #21                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     210: invokevirtual #39                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     213: invokestatic  #38                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     216: new           #10                 // class java/lang/RuntimeException
+     219: dup
+     220: invokespecial #16                 // Method java/lang/RuntimeException."<init>":()V
+     223: athrow
+    Exception table:
+       from    to  target type
+           0   175   175   Class java/lang/RuntimeException
+
+  public OZKFTHAD();
+    Code:
+       0: aload_0
+       1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #23                 // Field a:Z
+       9: aload_0
+      10: bipush        -112
+      12: putfield      #29                 // Field b:B
+      15: aload_0
+      16: iconst_0
+      17: putfield      #24                 // Field c:Z
+      20: aload_0
+      21: iconst_1
+      22: putfield      #18                 // Field d:Z
+      25: return
+}

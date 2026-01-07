@@ -1,0 +1,2490 @@
+public final class CXGZMTJK extends AFCKELYG {
+  private boolean x;
+
+  private int y;
+
+  private int z;
+
+  private int A;
+
+  private byte B;
+
+  private boolean C;
+
+  private int D;
+
+  private boolean E;
+
+  private boolean F;
+
+  private boolean G;
+
+  private boolean H;
+
+  public int[] I;
+
+  public int J;
+
+  public int K;
+
+  public int L;
+
+  public int M;
+
+  public int N;
+
+  public int O;
+
+  public CXGZMTJK(int, int);
+    Code:
+       0: aload_0
+       1: invokespecial #40                 // Method AFCKELYG."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #53                 // Field x:Z
+       9: aload_0
+      10: sipush        24869
+      13: putfield      #78                 // Field y:I
+      16: aload_0
+      17: sipush        -32357
+      20: putfield      #67                 // Field A:I
+      23: aload_0
+      24: iconst_3
+      25: putfield      #89                 // Field B:B
+      28: aload_0
+      29: iconst_0
+      30: putfield      #82                 // Field C:Z
+      33: aload_0
+      34: sipush        -388
+      37: putfield      #87                 // Field D:I
+      40: aload_0
+      41: iconst_0
+      42: putfield      #95                 // Field E:Z
+      45: aload_0
+      46: iconst_1
+      47: putfield      #65                 // Field F:Z
+      50: aload_0
+      51: iconst_1
+      52: putfield      #72                 // Field G:Z
+      55: aload_0
+      56: iconst_0
+      57: putfield      #52                 // Field H:Z
+      60: aload_0
+      61: iload_1
+      62: iload_2
+      63: imul
+      64: newarray       int
+      66: putfield      #83                 // Field I:[I
+      69: aload_0
+      70: aload_0
+      71: iload_1
+      72: dup_x1
+      73: putfield      #71                 // Field N:I
+      76: putfield      #91                 // Field J:I
+      79: aload_0
+      80: aload_0
+      81: iload_2
+      82: dup_x1
+      83: putfield      #69                 // Field O:I
+      86: putfield      #66                 // Field K:I
+      89: aload_0
+      90: aload_0
+      91: iconst_0
+      92: dup_x1
+      93: putfield      #99                 // Field M:I
+      96: putfield      #96                 // Field L:I
+      99: return
+
+  public CXGZMTJK(byte[], java.awt.Component);
+    Code:
+       0: aload_0
+       1: invokespecial #40                 // Method AFCKELYG."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #53                 // Field x:Z
+       9: aload_0
+      10: sipush        24869
+      13: putfield      #78                 // Field y:I
+      16: aload_0
+      17: sipush        -32357
+      20: putfield      #67                 // Field A:I
+      23: aload_0
+      24: iconst_3
+      25: putfield      #89                 // Field B:B
+      28: aload_0
+      29: iconst_0
+      30: putfield      #82                 // Field C:Z
+      33: aload_0
+      34: sipush        -388
+      37: putfield      #87                 // Field D:I
+      40: aload_0
+      41: iconst_0
+      42: putfield      #95                 // Field E:Z
+      45: aload_0
+      46: iconst_1
+      47: putfield      #65                 // Field F:Z
+      50: aload_0
+      51: iconst_1
+      52: putfield      #72                 // Field G:Z
+      55: aload_0
+      56: iconst_0
+      57: putfield      #52                 // Field H:Z
+      60: invokestatic  #60                 // Method java/awt/Toolkit.getDefaultToolkit:()Ljava/awt/Toolkit;
+      63: aload_1
+      64: invokevirtual #56                 // Method java/awt/Toolkit.createImage:([B)Ljava/awt/Image;
+      67: astore_3
+      68: new           #28                 // class java/awt/MediaTracker
+      71: dup
+      72: aload_2
+      73: invokespecial #42                 // Method java/awt/MediaTracker."<init>":(Ljava/awt/Component;)V
+      76: astore        4
+      78: aload         4
+      80: aload_3
+      81: iconst_0
+      82: invokevirtual #46                 // Method java/awt/MediaTracker.addImage:(Ljava/awt/Image;I)V
+      85: aload         4
+      87: invokevirtual #90                 // Method java/awt/MediaTracker.waitForAll:()V
+      90: aload_0
+      91: aload_3
+      92: aload_2
+      93: invokevirtual #62                 // Method java/awt/Image.getWidth:(Ljava/awt/image/ImageObserver;)I
+      96: putfield      #91                 // Field J:I
+      99: aload_0
+     100: aload_3
+     101: aload_2
+     102: invokevirtual #61                 // Method java/awt/Image.getHeight:(Ljava/awt/image/ImageObserver;)I
+     105: putfield      #66                 // Field K:I
+     108: aload_0
+     109: aload_0
+     110: getfield      #91                 // Field J:I
+     113: putfield      #71                 // Field N:I
+     116: aload_0
+     117: aload_0
+     118: getfield      #66                 // Field K:I
+     121: putfield      #69                 // Field O:I
+     124: aload_0
+     125: iconst_0
+     126: putfield      #96                 // Field L:I
+     129: aload_0
+     130: iconst_0
+     131: putfield      #99                 // Field M:I
+     134: aload_0
+     135: aload_0
+     136: getfield      #91                 // Field J:I
+     139: aload_0
+     140: getfield      #66                 // Field K:I
+     143: imul
+     144: newarray       int
+     146: putfield      #83                 // Field I:[I
+     149: new           #30                 // class java/awt/image/PixelGrabber
+     152: dup
+     153: aload_3
+     154: iconst_0
+     155: iconst_0
+     156: aload_0
+     157: getfield      #91                 // Field J:I
+     160: aload_0
+     161: getfield      #66                 // Field K:I
+     164: aload_0
+     165: getfield      #83                 // Field I:[I
+     168: iconst_0
+     169: aload_0
+     170: getfield      #91                 // Field J:I
+     173: invokespecial #43                 // Method java/awt/image/PixelGrabber."<init>":(Ljava/awt/Image;IIII[III)V
+     176: astore        5
+     178: aload         5
+     180: invokevirtual #64                 // Method java/awt/image/PixelGrabber.grabPixels:()Z
+     183: pop
+     184: return
+     185: pop
+     186: getstatic     #70                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     189: ldc           #20                 // String Error converting jpg
+     191: invokevirtual #77                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     194: return
+    Exception table:
+       from    to  target type
+          60   184   185   Class java/lang/Exception
+
+  public CXGZMTJK(XTGLDHGX, java.lang.String, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        14
+       5: aload_0
+       6: invokespecial #40                 // Method AFCKELYG."<init>":()V
+       9: aload_0
+      10: iconst_0
+      11: putfield      #53                 // Field x:Z
+      14: aload_0
+      15: sipush        24869
+      18: putfield      #78                 // Field y:I
+      21: aload_0
+      22: sipush        -32357
+      25: putfield      #67                 // Field A:I
+      28: aload_0
+      29: iconst_3
+      30: putfield      #89                 // Field B:B
+      33: aload_0
+      34: iconst_0
+      35: putfield      #82                 // Field C:Z
+      38: aload_0
+      39: sipush        -388
+      42: putfield      #87                 // Field D:I
+      45: aload_0
+      46: iconst_0
+      47: putfield      #95                 // Field E:Z
+      50: aload_0
+      51: iconst_1
+      52: putfield      #65                 // Field F:Z
+      55: aload_0
+      56: iconst_1
+      57: putfield      #72                 // Field G:Z
+      60: aload_0
+      61: iconst_0
+      62: putfield      #52                 // Field H:Z
+      65: new           #26                 // class MBMGIXGO
+      68: dup
+      69: aload_1
+      70: new           #36                 // class java/lang/StringBuffer
+      73: dup
+      74: aload_2
+      75: invokestatic  #88                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      78: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      81: ldc           #7                  // String .dat
+      83: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      86: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      89: aconst_null
+      90: invokevirtual #63                 // Method XTGLDHGX.a:(Ljava/lang/String;[B)[B
+      93: sipush        891
+      96: invokespecial #45                 // Method MBMGIXGO."<init>":([BI)V
+      99: astore        4
+     101: new           #26                 // class MBMGIXGO
+     104: dup
+     105: aload_1
+     106: ldc           #21                 // String index.dat
+     108: aconst_null
+     109: invokevirtual #63                 // Method XTGLDHGX.a:(Ljava/lang/String;[B)[B
+     112: sipush        891
+     115: invokespecial #45                 // Method MBMGIXGO."<init>":([BI)V
+     118: astore        5
+     120: aload         5
+     122: aload         4
+     124: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     127: putfield      #76                 // Field MBMGIXGO.z:I
+     130: aload_0
+     131: aload         5
+     133: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     136: putfield      #71                 // Field N:I
+     139: aload_0
+     140: aload         5
+     142: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     145: putfield      #69                 // Field O:I
+     148: aload         5
+     150: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     153: istore        6
+     155: iload         6
+     157: newarray       int
+     159: astore        7
+     161: iconst_0
+     162: istore        8
+     164: iload         14
+     166: ifeq          216
+     169: getstatic     #292                // Field PKVMXVTO.e:Z
+     172: ifeq          179
+     175: iconst_0
+     176: goto          180
+     179: iconst_1
+     180: putstatic     #292                // Field PKVMXVTO.e:Z
+     183: aload         7
+     185: iload         8
+     187: iconst_1
+     188: iadd
+     189: aload         5
+     191: invokevirtual #59                 // Method MBMGIXGO.g:()I
+     194: iastore
+     195: aload         7
+     197: iload         8
+     199: iconst_1
+     200: iadd
+     201: iaload
+     202: ifne          213
+     205: aload         7
+     207: iload         8
+     209: iconst_1
+     210: iadd
+     211: iconst_1
+     212: iastore
+     213: iinc          8, 1
+     216: iload         8
+     218: iload         6
+     220: iconst_1
+     221: isub
+     222: if_icmplt     183
+     225: iconst_0
+     226: istore        9
+     228: iload         14
+     230: ifeq          279
+     233: aload         5
+     235: dup
+     236: getfield      #76                 // Field MBMGIXGO.z:I
+     239: iconst_2
+     240: iadd
+     241: putfield      #76                 // Field MBMGIXGO.z:I
+     244: aload         4
+     246: dup
+     247: getfield      #76                 // Field MBMGIXGO.z:I
+     250: aload         5
+     252: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     255: aload         5
+     257: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     260: imul
+     261: iadd
+     262: putfield      #76                 // Field MBMGIXGO.z:I
+     265: aload         5
+     267: dup
+     268: getfield      #76                 // Field MBMGIXGO.z:I
+     271: iconst_1
+     272: iadd
+     273: putfield      #76                 // Field MBMGIXGO.z:I
+     276: iinc          9, 1
+     279: iload         9
+     281: iload_3
+     282: if_icmplt     233
+     285: aload_0
+     286: aload         5
+     288: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     291: putfield      #96                 // Field L:I
+     294: aload_0
+     295: aload         5
+     297: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     300: putfield      #99                 // Field M:I
+     303: aload_0
+     304: aload         5
+     306: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     309: putfield      #91                 // Field J:I
+     312: aload_0
+     313: aload         5
+     315: invokevirtual #58                 // Method MBMGIXGO.e:()I
+     318: putfield      #66                 // Field K:I
+     321: aload         5
+     323: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     326: istore        10
+     328: aload_0
+     329: getfield      #91                 // Field J:I
+     332: aload_0
+     333: getfield      #66                 // Field K:I
+     336: imul
+     337: istore        11
+     339: aload_0
+     340: iload         11
+     342: newarray       int
+     344: putfield      #83                 // Field I:[I
+     347: iload         10
+     349: ifne          386
+     352: iconst_0
+     353: istore        12
+     355: iload         14
+     357: ifeq          378
+     360: aload_0
+     361: getfield      #83                 // Field I:[I
+     364: iload         12
+     366: aload         7
+     368: aload         4
+     370: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     373: iaload
+     374: iastore
+     375: iinc          12, 1
+     378: iload         12
+     380: iload         11
+     382: if_icmplt     360
+     385: return
+     386: iload         10
+     388: iconst_1
+     389: if_icmpne     455
+     392: iconst_0
+     393: istore        12
+     395: iload         14
+     397: ifeq          446
+     400: iconst_0
+     401: istore        13
+     403: iload         14
+     405: ifeq          434
+     408: aload_0
+     409: getfield      #83                 // Field I:[I
+     412: iload         12
+     414: iload         13
+     416: aload_0
+     417: getfield      #91                 // Field J:I
+     420: imul
+     421: iadd
+     422: aload         7
+     424: aload         4
+     426: invokevirtual #57                 // Method MBMGIXGO.c:()I
+     429: iaload
+     430: iastore
+     431: iinc          13, 1
+     434: iload         13
+     436: aload_0
+     437: getfield      #66                 // Field K:I
+     440: if_icmplt     408
+     443: iinc          12, 1
+     446: iload         12
+     448: aload_0
+     449: getfield      #91                 // Field J:I
+     452: if_icmplt     400
+     455: return
+
+  public void b(int);
+    Code:
+       0: iload_1
+       1: ifeq          20
+       4: aload_0
+       5: aload_0
+       6: getfield      #52                 // Field H:Z
+       9: ifeq          16
+      12: iconst_0
+      13: goto          17
+      16: iconst_1
+      17: putfield      #52                 // Field H:Z
+      20: aload_0
+      21: getfield      #66                 // Field K:I
+      24: aload_0
+      25: getfield      #91                 // Field J:I
+      28: sipush        -293
+      31: aload_0
+      32: getfield      #83                 // Field I:[I
+      35: invokestatic  #80                 // Method AFCKELYG.a:(III[I)V
+      38: return
+      39: astore_2
+      40: new           #36                 // class java/lang/StringBuffer
+      43: dup
+      44: ldc           #8                  // String 12951,
+      46: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+      49: iload_1
+      50: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+      53: ldc           #6                  // String ,
+      55: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      58: aload_2
+      59: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      62: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      65: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      68: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+      71: new           #34                 // class java/lang/RuntimeException
+      74: dup
+      75: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+      78: athrow
+    Exception table:
+       from    to  target type
+           0    38    39   Class java/lang/RuntimeException
+
+  public void a(int, int, int, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        10
+       5: iload         4
+       7: ifeq          17
+      10: aload_0
+      11: sipush        314
+      14: putfield      #100                // Field z:I
+      17: iconst_0
+      18: istore        5
+      20: iload         10
+      22: ifeq          192
+      25: aload_0
+      26: getfield      #83                 // Field I:[I
+      29: iload         5
+      31: iaload
+      32: istore        6
+      34: iload         6
+      36: ifeq          189
+      39: iload         6
+      41: bipush        16
+      43: ishr
+      44: sipush        255
+      47: iand
+      48: istore        7
+      50: iload         7
+      52: iload_1
+      53: iadd
+      54: istore        7
+      56: iload         7
+      58: iconst_1
+      59: if_icmpge     70
+      62: iconst_1
+      63: istore        7
+      65: iload         10
+      67: ifeq          83
+      70: iload         7
+      72: sipush        255
+      75: if_icmple     83
+      78: sipush        255
+      81: istore        7
+      83: iload         6
+      85: bipush        8
+      87: ishr
+      88: sipush        255
+      91: iand
+      92: istore        8
+      94: iload         8
+      96: iload_2
+      97: iadd
+      98: istore        8
+     100: iload         8
+     102: iconst_1
+     103: if_icmpge     114
+     106: iconst_1
+     107: istore        8
+     109: iload         10
+     111: ifeq          127
+     114: iload         8
+     116: sipush        255
+     119: if_icmple     127
+     122: sipush        255
+     125: istore        8
+     127: iload         6
+     129: sipush        255
+     132: iand
+     133: istore        9
+     135: iload         9
+     137: iload_3
+     138: iadd
+     139: istore        9
+     141: iload         9
+     143: iconst_1
+     144: if_icmpge     155
+     147: iconst_1
+     148: istore        9
+     150: iload         10
+     152: ifeq          168
+     155: iload         9
+     157: sipush        255
+     160: if_icmple     168
+     163: sipush        255
+     166: istore        9
+     168: aload_0
+     169: getfield      #83                 // Field I:[I
+     172: iload         5
+     174: iload         7
+     176: bipush        16
+     178: ishl
+     179: iload         8
+     181: bipush        8
+     183: ishl
+     184: iadd
+     185: iload         9
+     187: iadd
+     188: iastore
+     189: iinc          5, 1
+     192: iload         5
+     194: aload_0
+     195: getfield      #83                 // Field I:[I
+     198: arraylength
+     199: if_icmplt     25
+     202: return
+     203: astore        5
+     205: new           #36                 // class java/lang/StringBuffer
+     208: dup
+     209: ldc           #13                 // String 66849,
+     211: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     214: iload_1
+     215: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     218: ldc           #6                  // String ,
+     220: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     223: iload_2
+     224: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     227: ldc           #6                  // String ,
+     229: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     232: iload_3
+     233: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     236: ldc           #6                  // String ,
+     238: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     241: iload         4
+     243: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     246: ldc           #6                  // String ,
+     248: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     251: aload         5
+     253: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     256: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     259: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     262: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     265: new           #34                 // class java/lang/RuntimeException
+     268: dup
+     269: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     272: athrow
+    Exception table:
+       from    to  target type
+           5   202   203   Class java/lang/RuntimeException
+
+  public void c(int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        5
+       5: aload_0
+       6: getfield      #71                 // Field N:I
+       9: aload_0
+      10: getfield      #69                 // Field O:I
+      13: imul
+      14: newarray       int
+      16: astore_2
+      17: iload_1
+      18: sipush        5059
+      21: if_icmpeq     31
+      24: aload_0
+      25: sipush        -247
+      28: putfield      #78                 // Field y:I
+      31: iconst_0
+      32: istore_3
+      33: iload         5
+      35: ifeq          96
+      38: iconst_0
+      39: istore        4
+      41: iload         5
+      43: ifeq          84
+      46: aload_2
+      47: iload_3
+      48: aload_0
+      49: getfield      #99                 // Field M:I
+      52: iadd
+      53: aload_0
+      54: getfield      #71                 // Field N:I
+      57: imul
+      58: iload         4
+      60: aload_0
+      61: getfield      #96                 // Field L:I
+      64: iadd
+      65: iadd
+      66: aload_0
+      67: getfield      #83                 // Field I:[I
+      70: iload_3
+      71: aload_0
+      72: getfield      #91                 // Field J:I
+      75: imul
+      76: iload         4
+      78: iadd
+      79: iaload
+      80: iastore
+      81: iinc          4, 1
+      84: iload         4
+      86: aload_0
+      87: getfield      #91                 // Field J:I
+      90: if_icmplt     46
+      93: iinc          3, 1
+      96: iload_3
+      97: aload_0
+      98: getfield      #66                 // Field K:I
+     101: if_icmplt     38
+     104: aload_0
+     105: aload_2
+     106: putfield      #83                 // Field I:[I
+     109: aload_0
+     110: aload_0
+     111: getfield      #71                 // Field N:I
+     114: putfield      #91                 // Field J:I
+     117: aload_0
+     118: aload_0
+     119: getfield      #69                 // Field O:I
+     122: putfield      #66                 // Field K:I
+     125: aload_0
+     126: iconst_0
+     127: putfield      #96                 // Field L:I
+     130: aload_0
+     131: iconst_0
+     132: putfield      #99                 // Field M:I
+     135: return
+     136: astore_2
+     137: new           #36                 // class java/lang/StringBuffer
+     140: dup
+     141: ldc           #16                 // String 76028,
+     143: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     146: iload_1
+     147: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     150: ldc           #6                  // String ,
+     152: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     155: aload_2
+     156: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     159: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     162: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     165: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     168: new           #34                 // class java/lang/RuntimeException
+     171: dup
+     172: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     175: athrow
+    Exception table:
+       from    to  target type
+           5   135   136   Class java/lang/RuntimeException
+
+  public void a(int, int, int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #96                 // Field L:I
+       5: iadd
+       6: istore_1
+       7: iload_2
+       8: aload_0
+       9: getfield      #99                 // Field M:I
+      12: iadd
+      13: istore_2
+      14: iload_1
+      15: iload_2
+      16: getstatic     #92                 // Field AFCKELYG.n:I
+      19: imul
+      20: iadd
+      21: istore        4
+      23: iconst_0
+      24: istore        5
+      26: aload_0
+      27: getfield      #66                 // Field K:I
+      30: istore        6
+      32: aload_0
+      33: getfield      #91                 // Field J:I
+      36: istore        7
+      38: getstatic     #92                 // Field AFCKELYG.n:I
+      41: iload         7
+      43: isub
+      44: istore        8
+      46: iconst_0
+      47: istore        9
+      49: iload_3
+      50: aload_0
+      51: getfield      #67                 // Field A:I
+      54: if_icmpeq     73
+      57: aload_0
+      58: aload_0
+      59: getfield      #52                 // Field H:Z
+      62: ifeq          69
+      65: iconst_0
+      66: goto          70
+      69: iconst_1
+      70: putfield      #52                 // Field H:Z
+      73: iload_2
+      74: getstatic     #97                 // Field AFCKELYG.p:I
+      77: if_icmpge     119
+      80: getstatic     #97                 // Field AFCKELYG.p:I
+      83: iload_2
+      84: isub
+      85: istore        10
+      87: iload         6
+      89: iload         10
+      91: isub
+      92: istore        6
+      94: getstatic     #97                 // Field AFCKELYG.p:I
+      97: istore_2
+      98: iload         5
+     100: iload         10
+     102: iload         7
+     104: imul
+     105: iadd
+     106: istore        5
+     108: iload         4
+     110: iload         10
+     112: getstatic     #92                 // Field AFCKELYG.n:I
+     115: imul
+     116: iadd
+     117: istore        4
+     119: iload_2
+     120: iload         6
+     122: iadd
+     123: getstatic     #98                 // Field AFCKELYG.q:I
+     126: if_icmple     142
+     129: iload         6
+     131: iload_2
+     132: iload         6
+     134: iadd
+     135: getstatic     #98                 // Field AFCKELYG.q:I
+     138: isub
+     139: isub
+     140: istore        6
+     142: iload_1
+     143: getstatic     #93                 // Field AFCKELYG.r:I
+     146: if_icmpge     195
+     149: getstatic     #93                 // Field AFCKELYG.r:I
+     152: iload_1
+     153: isub
+     154: istore        10
+     156: iload         7
+     158: iload         10
+     160: isub
+     161: istore        7
+     163: getstatic     #93                 // Field AFCKELYG.r:I
+     166: istore_1
+     167: iload         5
+     169: iload         10
+     171: iadd
+     172: istore        5
+     174: iload         4
+     176: iload         10
+     178: iadd
+     179: istore        4
+     181: iload         9
+     183: iload         10
+     185: iadd
+     186: istore        9
+     188: iload         8
+     190: iload         10
+     192: iadd
+     193: istore        8
+     195: iload_1
+     196: iload         7
+     198: iadd
+     199: getstatic     #94                 // Field AFCKELYG.s:I
+     202: if_icmple     236
+     205: iload_1
+     206: iload         7
+     208: iadd
+     209: getstatic     #94                 // Field AFCKELYG.s:I
+     212: isub
+     213: istore        10
+     215: iload         7
+     217: iload         10
+     219: isub
+     220: istore        7
+     222: iload         9
+     224: iload         10
+     226: iadd
+     227: istore        9
+     229: iload         8
+     231: iload         10
+     233: iadd
+     234: istore        8
+     236: iload         7
+     238: ifle          246
+     241: iload         6
+     243: ifgt          247
+     246: return
+     247: aload_0
+     248: iload         4
+     250: iload         7
+     252: iload         6
+     254: iload         9
+     256: iload         5
+     258: sipush        28339
+     261: iload         8
+     263: aload_0
+     264: getfield      #83                 // Field I:[I
+     267: getstatic     #73                 // Field AFCKELYG.m:[I
+     270: invokespecial #74                 // Method a:(IIIIIII[I[I)V
+     273: return
+     274: astore        4
+     276: new           #36                 // class java/lang/StringBuffer
+     279: dup
+     280: ldc           #12                 // String 6343,
+     282: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     285: iload_1
+     286: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     289: ldc           #6                  // String ,
+     291: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     294: iload_2
+     295: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     298: ldc           #6                  // String ,
+     300: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     303: iload_3
+     304: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     307: ldc           #6                  // String ,
+     309: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     312: aload         4
+     314: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     317: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     320: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     323: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     326: new           #34                 // class java/lang/RuntimeException
+     329: dup
+     330: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     333: athrow
+    Exception table:
+       from    to  target type
+           0   273   274   Class java/lang/RuntimeException
+
+  private void a(int, int, int, int, int, int, int, int[], int[]);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        14
+       5: iload_2
+       6: iconst_2
+       7: ishr
+       8: ineg
+       9: istore        10
+      11: iload_2
+      12: iconst_3
+      13: iand
+      14: ineg
+      15: istore_2
+      16: iload_3
+      17: ineg
+      18: istore        11
+      20: iload         14
+      22: ifeq          148
+      25: iload         10
+      27: istore        12
+      29: iload         14
+      31: ifeq          97
+      34: aload         9
+      36: iload_1
+      37: iinc          1, 1
+      40: aload         8
+      42: iload         5
+      44: iinc          5, 1
+      47: iaload
+      48: iastore
+      49: aload         9
+      51: iload_1
+      52: iinc          1, 1
+      55: aload         8
+      57: iload         5
+      59: iinc          5, 1
+      62: iaload
+      63: iastore
+      64: aload         9
+      66: iload_1
+      67: iinc          1, 1
+      70: aload         8
+      72: iload         5
+      74: iinc          5, 1
+      77: iaload
+      78: iastore
+      79: aload         9
+      81: iload_1
+      82: iinc          1, 1
+      85: aload         8
+      87: iload         5
+      89: iinc          5, 1
+      92: iaload
+      93: iastore
+      94: iinc          12, 1
+      97: iload         12
+      99: iflt          34
+     102: iload_2
+     103: istore        13
+     105: iload         14
+     107: ifeq          128
+     110: aload         9
+     112: iload_1
+     113: iinc          1, 1
+     116: aload         8
+     118: iload         5
+     120: iinc          5, 1
+     123: iaload
+     124: iastore
+     125: iinc          13, 1
+     128: iload         13
+     130: iflt          110
+     133: iload_1
+     134: iload         7
+     136: iadd
+     137: istore_1
+     138: iload         5
+     140: iload         4
+     142: iadd
+     143: istore        5
+     145: iinc          11, 1
+     148: iload         11
+     150: iflt          25
+     153: iload         6
+     155: sipush        28339
+     158: if_icmpeq     288
+     161: aload_0
+     162: bipush        90
+     164: putfield      #67                 // Field A:I
+     167: return
+     168: astore        10
+     170: new           #36                 // class java/lang/StringBuffer
+     173: dup
+     174: ldc           #11                 // String 6170,
+     176: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     179: iload_1
+     180: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     183: ldc           #6                  // String ,
+     185: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     188: iload_2
+     189: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     192: ldc           #6                  // String ,
+     194: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     197: iload_3
+     198: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     201: ldc           #6                  // String ,
+     203: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     206: iload         4
+     208: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     211: ldc           #6                  // String ,
+     213: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     216: iload         5
+     218: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     221: ldc           #6                  // String ,
+     223: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     226: iload         6
+     228: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     231: ldc           #6                  // String ,
+     233: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     236: iload         7
+     238: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     241: ldc           #6                  // String ,
+     243: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     246: aload         8
+     248: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     251: ldc           #6                  // String ,
+     253: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     256: aload         9
+     258: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     261: ldc           #6                  // String ,
+     263: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     266: aload         10
+     268: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     271: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     274: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     277: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     280: new           #34                 // class java/lang/RuntimeException
+     283: dup
+     284: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     287: athrow
+     288: return
+    Exception table:
+       from    to  target type
+           5   167   168   Class java/lang/RuntimeException
+
+  public void b(int, int, int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #96                 // Field L:I
+       5: iadd
+       6: istore_1
+       7: iload_3
+       8: aload_0
+       9: getfield      #99                 // Field M:I
+      12: iadd
+      13: istore_3
+      14: iload_2
+      15: sipush        16083
+      18: if_icmpeq     22
+      21: return
+      22: iload_1
+      23: iload_3
+      24: getstatic     #92                 // Field AFCKELYG.n:I
+      27: imul
+      28: iadd
+      29: istore        4
+      31: iconst_0
+      32: istore        5
+      34: aload_0
+      35: getfield      #66                 // Field K:I
+      38: istore        6
+      40: aload_0
+      41: getfield      #91                 // Field J:I
+      44: istore        7
+      46: getstatic     #92                 // Field AFCKELYG.n:I
+      49: iload         7
+      51: isub
+      52: istore        8
+      54: iconst_0
+      55: istore        9
+      57: iload_3
+      58: getstatic     #97                 // Field AFCKELYG.p:I
+      61: if_icmpge     103
+      64: getstatic     #97                 // Field AFCKELYG.p:I
+      67: iload_3
+      68: isub
+      69: istore        10
+      71: iload         6
+      73: iload         10
+      75: isub
+      76: istore        6
+      78: getstatic     #97                 // Field AFCKELYG.p:I
+      81: istore_3
+      82: iload         5
+      84: iload         10
+      86: iload         7
+      88: imul
+      89: iadd
+      90: istore        5
+      92: iload         4
+      94: iload         10
+      96: getstatic     #92                 // Field AFCKELYG.n:I
+      99: imul
+     100: iadd
+     101: istore        4
+     103: iload_3
+     104: iload         6
+     106: iadd
+     107: getstatic     #98                 // Field AFCKELYG.q:I
+     110: if_icmple     126
+     113: iload         6
+     115: iload_3
+     116: iload         6
+     118: iadd
+     119: getstatic     #98                 // Field AFCKELYG.q:I
+     122: isub
+     123: isub
+     124: istore        6
+     126: iload_1
+     127: getstatic     #93                 // Field AFCKELYG.r:I
+     130: if_icmpge     179
+     133: getstatic     #93                 // Field AFCKELYG.r:I
+     136: iload_1
+     137: isub
+     138: istore        10
+     140: iload         7
+     142: iload         10
+     144: isub
+     145: istore        7
+     147: getstatic     #93                 // Field AFCKELYG.r:I
+     150: istore_1
+     151: iload         5
+     153: iload         10
+     155: iadd
+     156: istore        5
+     158: iload         4
+     160: iload         10
+     162: iadd
+     163: istore        4
+     165: iload         9
+     167: iload         10
+     169: iadd
+     170: istore        9
+     172: iload         8
+     174: iload         10
+     176: iadd
+     177: istore        8
+     179: iload_1
+     180: iload         7
+     182: iadd
+     183: getstatic     #94                 // Field AFCKELYG.s:I
+     186: if_icmple     220
+     189: iload_1
+     190: iload         7
+     192: iadd
+     193: getstatic     #94                 // Field AFCKELYG.s:I
+     196: isub
+     197: istore        10
+     199: iload         7
+     201: iload         10
+     203: isub
+     204: istore        7
+     206: iload         9
+     208: iload         10
+     210: iadd
+     211: istore        9
+     213: iload         8
+     215: iload         10
+     217: iadd
+     218: istore        8
+     220: iload         7
+     222: ifle          230
+     225: iload         6
+     227: ifgt          231
+     230: return
+     231: aload_0
+     232: getstatic     #73                 // Field AFCKELYG.m:[I
+     235: aload_0
+     236: getfield      #83                 // Field I:[I
+     239: iconst_0
+     240: iload         5
+     242: iload         4
+     244: iload         7
+     246: iload         6
+     248: iload         8
+     250: iload         9
+     252: invokespecial #75                 // Method a:([I[IIIIIIII)V
+     255: return
+     256: astore        4
+     258: new           #36                 // class java/lang/StringBuffer
+     261: dup
+     262: ldc           #10                 // String 50442,
+     264: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     267: iload_1
+     268: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     271: ldc           #6                  // String ,
+     273: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     276: iload_2
+     277: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     280: ldc           #6                  // String ,
+     282: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     285: iload_3
+     286: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     289: ldc           #6                  // String ,
+     291: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     294: aload         4
+     296: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     299: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     302: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     305: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     308: new           #34                 // class java/lang/RuntimeException
+     311: dup
+     312: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     315: athrow
+    Exception table:
+       from    to  target type
+           0   255   256   Class java/lang/RuntimeException
+
+  private void a(int[], int[], int, int, int, int, int, int, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        14
+       5: iload         6
+       7: iconst_2
+       8: ishr
+       9: ineg
+      10: istore        10
+      12: iload         6
+      14: iconst_3
+      15: iand
+      16: ineg
+      17: istore        6
+      19: iload         7
+      21: ineg
+      22: istore        11
+      24: iload         14
+      26: ifeq          220
+      29: iload         10
+      31: istore        12
+      33: iload         14
+      35: ifeq          153
+      38: aload_2
+      39: iload         4
+      41: iinc          4, 1
+      44: iaload
+      45: istore_3
+      46: iload_3
+      47: ifeq          63
+      50: aload_1
+      51: iload         5
+      53: iinc          5, 1
+      56: iload_3
+      57: iastore
+      58: iload         14
+      60: ifeq          66
+      63: iinc          5, 1
+      66: aload_2
+      67: iload         4
+      69: iinc          4, 1
+      72: iaload
+      73: istore_3
+      74: iload_3
+      75: ifeq          91
+      78: aload_1
+      79: iload         5
+      81: iinc          5, 1
+      84: iload_3
+      85: iastore
+      86: iload         14
+      88: ifeq          94
+      91: iinc          5, 1
+      94: aload_2
+      95: iload         4
+      97: iinc          4, 1
+     100: iaload
+     101: istore_3
+     102: iload_3
+     103: ifeq          119
+     106: aload_1
+     107: iload         5
+     109: iinc          5, 1
+     112: iload_3
+     113: iastore
+     114: iload         14
+     116: ifeq          122
+     119: iinc          5, 1
+     122: aload_2
+     123: iload         4
+     125: iinc          4, 1
+     128: iaload
+     129: istore_3
+     130: iload_3
+     131: ifeq          147
+     134: aload_1
+     135: iload         5
+     137: iinc          5, 1
+     140: iload_3
+     141: iastore
+     142: iload         14
+     144: ifeq          150
+     147: iinc          5, 1
+     150: iinc          12, 1
+     153: iload         12
+     155: iflt          38
+     158: iload         6
+     160: istore        13
+     162: iload         14
+     164: ifeq          198
+     167: aload_2
+     168: iload         4
+     170: iinc          4, 1
+     173: iaload
+     174: istore_3
+     175: iload_3
+     176: ifeq          192
+     179: aload_1
+     180: iload         5
+     182: iinc          5, 1
+     185: iload_3
+     186: iastore
+     187: iload         14
+     189: ifeq          195
+     192: iinc          5, 1
+     195: iinc          13, 1
+     198: iload         13
+     200: iflt          167
+     203: iload         5
+     205: iload         8
+     207: iadd
+     208: istore        5
+     210: iload         4
+     212: iload         9
+     214: iadd
+     215: istore        4
+     217: iinc          11, 1
+     220: iload         11
+     222: iflt          29
+     225: return
+
+  public void a(int, int, int, boolean);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #96                 // Field L:I
+       5: iadd
+       6: istore_1
+       7: iload         4
+       9: ifeq          29
+      12: iconst_1
+      13: istore        5
+      15: getstatic     #288                // Field AFCKELYG.w:Z
+      18: ifeq          24
+      21: iinc          5, 1
+      24: iload         5
+      26: ifgt          21
+      29: iload_2
+      30: aload_0
+      31: getfield      #99                 // Field M:I
+      34: iadd
+      35: istore_2
+      36: iload_1
+      37: iload_2
+      38: getstatic     #92                 // Field AFCKELYG.n:I
+      41: imul
+      42: iadd
+      43: istore        5
+      45: iconst_0
+      46: istore        6
+      48: aload_0
+      49: getfield      #66                 // Field K:I
+      52: istore        7
+      54: aload_0
+      55: getfield      #91                 // Field J:I
+      58: istore        8
+      60: getstatic     #92                 // Field AFCKELYG.n:I
+      63: iload         8
+      65: isub
+      66: istore        9
+      68: iconst_0
+      69: istore        10
+      71: iload_2
+      72: getstatic     #97                 // Field AFCKELYG.p:I
+      75: if_icmpge     117
+      78: getstatic     #97                 // Field AFCKELYG.p:I
+      81: iload_2
+      82: isub
+      83: istore        11
+      85: iload         7
+      87: iload         11
+      89: isub
+      90: istore        7
+      92: getstatic     #97                 // Field AFCKELYG.p:I
+      95: istore_2
+      96: iload         6
+      98: iload         11
+     100: iload         8
+     102: imul
+     103: iadd
+     104: istore        6
+     106: iload         5
+     108: iload         11
+     110: getstatic     #92                 // Field AFCKELYG.n:I
+     113: imul
+     114: iadd
+     115: istore        5
+     117: iload_2
+     118: iload         7
+     120: iadd
+     121: getstatic     #98                 // Field AFCKELYG.q:I
+     124: if_icmple     140
+     127: iload         7
+     129: iload_2
+     130: iload         7
+     132: iadd
+     133: getstatic     #98                 // Field AFCKELYG.q:I
+     136: isub
+     137: isub
+     138: istore        7
+     140: iload_1
+     141: getstatic     #93                 // Field AFCKELYG.r:I
+     144: if_icmpge     193
+     147: getstatic     #93                 // Field AFCKELYG.r:I
+     150: iload_1
+     151: isub
+     152: istore        11
+     154: iload         8
+     156: iload         11
+     158: isub
+     159: istore        8
+     161: getstatic     #93                 // Field AFCKELYG.r:I
+     164: istore_1
+     165: iload         6
+     167: iload         11
+     169: iadd
+     170: istore        6
+     172: iload         5
+     174: iload         11
+     176: iadd
+     177: istore        5
+     179: iload         10
+     181: iload         11
+     183: iadd
+     184: istore        10
+     186: iload         9
+     188: iload         11
+     190: iadd
+     191: istore        9
+     193: iload_1
+     194: iload         8
+     196: iadd
+     197: getstatic     #94                 // Field AFCKELYG.s:I
+     200: if_icmple     234
+     203: iload_1
+     204: iload         8
+     206: iadd
+     207: getstatic     #94                 // Field AFCKELYG.s:I
+     210: isub
+     211: istore        11
+     213: iload         8
+     215: iload         11
+     217: isub
+     218: istore        8
+     220: iload         10
+     222: iload         11
+     224: iadd
+     225: istore        10
+     227: iload         9
+     229: iload         11
+     231: iadd
+     232: istore        9
+     234: iload         8
+     236: ifle          244
+     239: iload         7
+     241: ifgt          245
+     244: return
+     245: aload_0
+     246: iload         6
+     248: iload         8
+     250: getstatic     #73                 // Field AFCKELYG.m:[I
+     253: iconst_0
+     254: aload_0
+     255: getfield      #83                 // Field I:[I
+     258: iload         10
+     260: iload         7
+     262: iload         9
+     264: iload_3
+     265: iload         5
+     267: bipush        8
+     269: invokespecial #86                 // Method a:(II[II[IIIIIII)V
+     272: return
+     273: astore        5
+     275: new           #36                 // class java/lang/StringBuffer
+     278: dup
+     279: ldc           #19                 // String 91057,
+     281: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     284: iload_1
+     285: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     288: ldc           #6                  // String ,
+     290: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     293: iload_2
+     294: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     297: ldc           #6                  // String ,
+     299: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     302: iload_3
+     303: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     306: ldc           #6                  // String ,
+     308: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     311: iload         4
+     313: invokevirtual #51                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     316: ldc           #6                  // String ,
+     318: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     321: aload         5
+     323: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     326: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     329: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     332: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     335: new           #34                 // class java/lang/RuntimeException
+     338: dup
+     339: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     342: athrow
+    Exception table:
+       from    to  target type
+           0   272   273   Class java/lang/RuntimeException
+
+  private void a(int, int, int[], int, int[], int, int, int, int, int, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        16
+       5: sipush        256
+       8: iload         9
+      10: isub
+      11: istore        12
+      13: iload         7
+      15: ineg
+      16: istore        13
+      18: iload         16
+      20: ifeq          134
+      23: iload_2
+      24: ineg
+      25: istore        14
+      27: iload         16
+      29: ifeq          114
+      32: aload         5
+      34: iload_1
+      35: iinc          1, 1
+      38: iaload
+      39: istore        4
+      41: iload         4
+      43: ifeq          108
+      46: aload_3
+      47: iload         10
+      49: iaload
+      50: istore        15
+      52: aload_3
+      53: iload         10
+      55: iinc          10, 1
+      58: iload         4
+      60: ldc           #4                  // int 16711935
+      62: iand
+      63: iload         9
+      65: imul
+      66: iload         15
+      68: ldc           #4                  // int 16711935
+      70: iand
+      71: iload         12
+      73: imul
+      74: iadd
+      75: ldc           #5                  // int -16711936
+      77: iand
+      78: iload         4
+      80: ldc           #2                  // int 65280
+      82: iand
+      83: iload         9
+      85: imul
+      86: iload         15
+      88: ldc           #2                  // int 65280
+      90: iand
+      91: iload         12
+      93: imul
+      94: iadd
+      95: ldc           #3                  // int 16711680
+      97: iand
+      98: iadd
+      99: bipush        8
+     101: ishr
+     102: iastore
+     103: iload         16
+     105: ifeq          111
+     108: iinc          10, 1
+     111: iinc          14, 1
+     114: iload         14
+     116: iflt          32
+     119: iload         10
+     121: iload         8
+     123: iadd
+     124: istore        10
+     126: iload_1
+     127: iload         6
+     129: iadd
+     130: istore_1
+     131: iinc          13, 1
+     134: iload         13
+     136: iflt          23
+     139: iload         11
+     141: bipush        8
+     143: if_icmplt     153
+     146: iload         11
+     148: bipush        8
+     150: if_icmple     169
+     153: aload_0
+     154: aload_0
+     155: getfield      #53                 // Field x:Z
+     158: ifeq          165
+     161: iconst_0
+     162: goto          166
+     165: iconst_1
+     166: putfield      #53                 // Field x:Z
+     169: return
+     170: astore        12
+     172: new           #36                 // class java/lang/StringBuffer
+     175: dup
+     176: ldc           #17                 // String 76998,
+     178: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     181: iload_1
+     182: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     185: ldc           #6                  // String ,
+     187: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     190: iload_2
+     191: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     194: ldc           #6                  // String ,
+     196: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     199: aload_3
+     200: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     203: ldc           #6                  // String ,
+     205: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     208: iload         4
+     210: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     213: ldc           #6                  // String ,
+     215: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     218: aload         5
+     220: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     223: ldc           #6                  // String ,
+     225: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     228: iload         6
+     230: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     233: ldc           #6                  // String ,
+     235: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     238: iload         7
+     240: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     243: ldc           #6                  // String ,
+     245: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     248: iload         8
+     250: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     253: ldc           #6                  // String ,
+     255: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     258: iload         9
+     260: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     263: ldc           #6                  // String ,
+     265: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     268: iload         10
+     270: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     273: ldc           #6                  // String ,
+     275: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     278: iload         11
+     280: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     283: ldc           #6                  // String ,
+     285: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     288: aload         12
+     290: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     293: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     296: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     299: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     302: new           #34                 // class java/lang/RuntimeException
+     305: dup
+     306: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     309: athrow
+    Exception table:
+       from    to  target type
+           5   169   170   Class java/lang/RuntimeException
+
+  public void b(int, int, int[], int, int[], int, int, int, int, int, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        23
+       5: iload         23
+       7: ifeq          17
+      10: aload_0
+      11: sipush        362
+      14: putfield      #87                 // Field D:I
+      17: iload         6
+      19: ifge          10
+      22: iload         10
+      24: ineg
+      25: iconst_2
+      26: idiv
+      27: istore        12
+      29: iload_1
+      30: ineg
+      31: iconst_2
+      32: idiv
+      33: istore        13
+      35: iload_2
+      36: i2d
+      37: ldc2_w        #101                // double 326.11d
+      40: ddiv
+      41: invokestatic  #81                 // Method java/lang/Math.sin:(D)D
+      44: ldc2_w        #103                // double 65536.0d
+      47: dmul
+      48: d2i
+      49: istore        14
+      51: iload_2
+      52: i2d
+      53: ldc2_w        #101                // double 326.11d
+      56: ddiv
+      57: invokestatic  #55                 // Method java/lang/Math.cos:(D)D
+      60: ldc2_w        #103                // double 65536.0d
+      63: dmul
+      64: d2i
+      65: istore        15
+      67: iload         14
+      69: iload         4
+      71: imul
+      72: bipush        8
+      74: ishr
+      75: istore        14
+      77: iload         15
+      79: iload         4
+      81: imul
+      82: bipush        8
+      84: ishr
+      85: istore        15
+      87: iload         11
+      89: bipush        16
+      91: ishl
+      92: iload         13
+      94: iload         14
+      96: imul
+      97: iload         12
+      99: iload         15
+     101: imul
+     102: iadd
+     103: iadd
+     104: istore        16
+     106: iload         7
+     108: bipush        16
+     110: ishl
+     111: iload         13
+     113: iload         15
+     115: imul
+     116: iload         12
+     118: iload         14
+     120: imul
+     121: isub
+     122: iadd
+     123: istore        17
+     125: iload         9
+     127: iload         8
+     129: getstatic     #92                 // Field AFCKELYG.n:I
+     132: imul
+     133: iadd
+     134: istore        18
+     136: iconst_0
+     137: istore        8
+     139: iload         23
+     141: ifeq          267
+     144: aload         5
+     146: iload         8
+     148: iaload
+     149: istore        19
+     151: iload         18
+     153: iload         19
+     155: iadd
+     156: istore        20
+     158: iload         16
+     160: iload         15
+     162: iload         19
+     164: imul
+     165: iadd
+     166: istore        21
+     168: iload         17
+     170: iload         14
+     172: iload         19
+     174: imul
+     175: isub
+     176: istore        22
+     178: aload_3
+     179: iload         8
+     181: iaload
+     182: ineg
+     183: istore        9
+     185: iload         23
+     187: ifeq          237
+     190: getstatic     #73                 // Field AFCKELYG.m:[I
+     193: iload         20
+     195: iinc          20, 1
+     198: aload_0
+     199: getfield      #83                 // Field I:[I
+     202: iload         21
+     204: bipush        16
+     206: ishr
+     207: iload         22
+     209: bipush        16
+     211: ishr
+     212: aload_0
+     213: getfield      #91                 // Field J:I
+     216: imul
+     217: iadd
+     218: iaload
+     219: iastore
+     220: iload         21
+     222: iload         15
+     224: iadd
+     225: istore        21
+     227: iload         22
+     229: iload         14
+     231: isub
+     232: istore        22
+     234: iinc          9, 1
+     237: iload         9
+     239: iflt          190
+     242: iload         16
+     244: iload         14
+     246: iadd
+     247: istore        16
+     249: iload         17
+     251: iload         15
+     253: iadd
+     254: istore        17
+     256: iload         18
+     258: getstatic     #92                 // Field AFCKELYG.n:I
+     261: iadd
+     262: istore        18
+     264: iinc          8, 1
+     267: iload         8
+     269: iload_1
+     270: if_icmplt     144
+     273: return
+     274: pop
+     275: return
+     276: astore        12
+     278: new           #36                 // class java/lang/StringBuffer
+     281: dup
+     282: ldc           #18                 // String 8964,
+     284: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     287: iload_1
+     288: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     291: ldc           #6                  // String ,
+     293: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     296: iload_2
+     297: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     300: ldc           #6                  // String ,
+     302: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     305: aload_3
+     306: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     309: ldc           #6                  // String ,
+     311: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     314: iload         4
+     316: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     319: ldc           #6                  // String ,
+     321: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     324: aload         5
+     326: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     329: ldc           #6                  // String ,
+     331: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     334: iload         6
+     336: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     339: ldc           #6                  // String ,
+     341: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     344: iload         7
+     346: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     349: ldc           #6                  // String ,
+     351: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     354: iload         8
+     356: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     359: ldc           #6                  // String ,
+     361: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     364: iload         9
+     366: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     369: ldc           #6                  // String ,
+     371: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     374: iload         10
+     376: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     379: ldc           #6                  // String ,
+     381: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     384: iload         11
+     386: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     389: ldc           #6                  // String ,
+     391: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     394: aload         12
+     396: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     399: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     402: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     405: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     408: new           #34                 // class java/lang/RuntimeException
+     411: dup
+     412: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     415: athrow
+    Exception table:
+       from    to  target type
+          22   273   274   Class java/lang/Exception
+           5   276   276   Class java/lang/RuntimeException
+
+  public void a(int, int, int, int, int, int, int, double, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        22
+       5: iload         5
+       7: ldc           #1                  // int 41960
+       9: if_icmpeq     13
+      12: return
+      13: iload_3
+      14: ineg
+      15: iconst_2
+      16: idiv
+      17: istore        11
+      19: iload         7
+      21: ineg
+      22: iconst_2
+      23: idiv
+      24: istore        12
+      26: dload         8
+      28: invokestatic  #81                 // Method java/lang/Math.sin:(D)D
+      31: ldc2_w        #103                // double 65536.0d
+      34: dmul
+      35: d2i
+      36: istore        13
+      38: dload         8
+      40: invokestatic  #55                 // Method java/lang/Math.cos:(D)D
+      43: ldc2_w        #103                // double 65536.0d
+      46: dmul
+      47: d2i
+      48: istore        14
+      50: iload         13
+      52: iload         6
+      54: imul
+      55: bipush        8
+      57: ishr
+      58: istore        13
+      60: iload         14
+      62: iload         6
+      64: imul
+      65: bipush        8
+      67: ishr
+      68: istore        14
+      70: iload         4
+      72: bipush        16
+      74: ishl
+      75: iload         12
+      77: iload         13
+      79: imul
+      80: iload         11
+      82: iload         14
+      84: imul
+      85: iadd
+      86: iadd
+      87: istore        15
+      89: iload_2
+      90: bipush        16
+      92: ishl
+      93: iload         12
+      95: iload         14
+      97: imul
+      98: iload         11
+     100: iload         13
+     102: imul
+     103: isub
+     104: iadd
+     105: istore        16
+     107: iload         10
+     109: iload_1
+     110: getstatic     #92                 // Field AFCKELYG.n:I
+     113: imul
+     114: iadd
+     115: istore        17
+     117: iconst_0
+     118: istore_1
+     119: iload         22
+     121: ifeq          239
+     124: iload         17
+     126: istore        18
+     128: iload         15
+     130: istore        19
+     132: iload         16
+     134: istore        20
+     136: iload_3
+     137: ineg
+     138: istore        10
+     140: iload         22
+     142: ifeq          209
+     145: aload_0
+     146: getfield      #83                 // Field I:[I
+     149: iload         19
+     151: bipush        16
+     153: ishr
+     154: iload         20
+     156: bipush        16
+     158: ishr
+     159: aload_0
+     160: getfield      #91                 // Field J:I
+     163: imul
+     164: iadd
+     165: iaload
+     166: istore        21
+     168: iload         21
+     170: ifeq          189
+     173: getstatic     #73                 // Field AFCKELYG.m:[I
+     176: iload         18
+     178: iinc          18, 1
+     181: iload         21
+     183: iastore
+     184: iload         22
+     186: ifeq          192
+     189: iinc          18, 1
+     192: iload         19
+     194: iload         14
+     196: iadd
+     197: istore        19
+     199: iload         20
+     201: iload         13
+     203: isub
+     204: istore        20
+     206: iinc          10, 1
+     209: iload         10
+     211: iflt          145
+     214: iload         15
+     216: iload         13
+     218: iadd
+     219: istore        15
+     221: iload         16
+     223: iload         14
+     225: iadd
+     226: istore        16
+     228: iload         17
+     230: getstatic     #92                 // Field AFCKELYG.n:I
+     233: iadd
+     234: istore        17
+     236: iinc          1, 1
+     239: iload_1
+     240: iload         7
+     242: if_icmplt     124
+     245: return
+     246: pop
+     247: return
+     248: astore        11
+     250: new           #36                 // class java/lang/StringBuffer
+     253: dup
+     254: ldc           #15                 // String 71953,
+     256: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     259: iload_1
+     260: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     263: ldc           #6                  // String ,
+     265: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     268: iload_2
+     269: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     272: ldc           #6                  // String ,
+     274: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     277: iload_3
+     278: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     281: ldc           #6                  // String ,
+     283: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     286: iload         4
+     288: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     291: ldc           #6                  // String ,
+     293: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     296: iload         5
+     298: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     301: ldc           #6                  // String ,
+     303: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     306: iload         6
+     308: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     311: ldc           #6                  // String ,
+     313: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     316: iload         7
+     318: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     321: ldc           #6                  // String ,
+     323: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     326: dload         8
+     328: invokevirtual #47                 // Method java/lang/StringBuffer.append:(D)Ljava/lang/StringBuffer;
+     331: ldc           #6                  // String ,
+     333: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     336: iload         10
+     338: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     341: ldc           #6                  // String ,
+     343: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     346: aload         11
+     348: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     351: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     354: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     357: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     360: new           #34                 // class java/lang/RuntimeException
+     363: dup
+     364: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     367: athrow
+    Exception table:
+       from    to  target type
+          13   245   246   Class java/lang/Exception
+           5   248   248   Class java/lang/RuntimeException
+
+  public void a(DSMJIEPN, boolean, int, int);
+    Code:
+       0: iload         4
+       2: aload_0
+       3: getfield      #96                 // Field L:I
+       6: iadd
+       7: istore        4
+       9: iload_3
+      10: aload_0
+      11: getfield      #99                 // Field M:I
+      14: iadd
+      15: istore_3
+      16: iload         4
+      18: iload_3
+      19: getstatic     #92                 // Field AFCKELYG.n:I
+      22: imul
+      23: iadd
+      24: istore        5
+      26: iconst_0
+      27: istore        6
+      29: iload_2
+      30: ifeq          40
+      33: aload_0
+      34: sipush        -364
+      37: putfield      #78                 // Field y:I
+      40: aload_0
+      41: getfield      #66                 // Field K:I
+      44: istore        7
+      46: aload_0
+      47: getfield      #91                 // Field J:I
+      50: istore        8
+      52: getstatic     #92                 // Field AFCKELYG.n:I
+      55: iload         8
+      57: isub
+      58: istore        9
+      60: iconst_0
+      61: istore        10
+      63: iload_3
+      64: getstatic     #97                 // Field AFCKELYG.p:I
+      67: if_icmpge     109
+      70: getstatic     #97                 // Field AFCKELYG.p:I
+      73: iload_3
+      74: isub
+      75: istore        11
+      77: iload         7
+      79: iload         11
+      81: isub
+      82: istore        7
+      84: getstatic     #97                 // Field AFCKELYG.p:I
+      87: istore_3
+      88: iload         6
+      90: iload         11
+      92: iload         8
+      94: imul
+      95: iadd
+      96: istore        6
+      98: iload         5
+     100: iload         11
+     102: getstatic     #92                 // Field AFCKELYG.n:I
+     105: imul
+     106: iadd
+     107: istore        5
+     109: iload_3
+     110: iload         7
+     112: iadd
+     113: getstatic     #98                 // Field AFCKELYG.q:I
+     116: if_icmple     132
+     119: iload         7
+     121: iload_3
+     122: iload         7
+     124: iadd
+     125: getstatic     #98                 // Field AFCKELYG.q:I
+     128: isub
+     129: isub
+     130: istore        7
+     132: iload         4
+     134: getstatic     #93                 // Field AFCKELYG.r:I
+     137: if_icmpge     188
+     140: getstatic     #93                 // Field AFCKELYG.r:I
+     143: iload         4
+     145: isub
+     146: istore        11
+     148: iload         8
+     150: iload         11
+     152: isub
+     153: istore        8
+     155: getstatic     #93                 // Field AFCKELYG.r:I
+     158: istore        4
+     160: iload         6
+     162: iload         11
+     164: iadd
+     165: istore        6
+     167: iload         5
+     169: iload         11
+     171: iadd
+     172: istore        5
+     174: iload         10
+     176: iload         11
+     178: iadd
+     179: istore        10
+     181: iload         9
+     183: iload         11
+     185: iadd
+     186: istore        9
+     188: iload         4
+     190: iload         8
+     192: iadd
+     193: getstatic     #94                 // Field AFCKELYG.s:I
+     196: if_icmple     231
+     199: iload         4
+     201: iload         8
+     203: iadd
+     204: getstatic     #94                 // Field AFCKELYG.s:I
+     207: isub
+     208: istore        11
+     210: iload         8
+     212: iload         11
+     214: isub
+     215: istore        8
+     217: iload         10
+     219: iload         11
+     221: iadd
+     222: istore        10
+     224: iload         9
+     226: iload         11
+     228: iadd
+     229: istore        9
+     231: iload         8
+     233: ifle          241
+     236: iload         7
+     238: ifgt          242
+     241: return
+     242: aload_0
+     243: aload_0
+     244: getfield      #83                 // Field I:[I
+     247: iload         8
+     249: aload_1
+     250: getfield      #54                 // Field DSMJIEPN.B:[B
+     253: iload         7
+     255: getstatic     #73                 // Field AFCKELYG.m:[I
+     258: iconst_0
+     259: aload_0
+     260: getfield      #65                 // Field F:Z
+     263: iload         9
+     265: iload         5
+     267: iload         10
+     269: iload         6
+     271: invokespecial #68                 // Method a:([II[BI[IIZIIII)V
+     274: return
+     275: astore        5
+     277: new           #36                 // class java/lang/StringBuffer
+     280: dup
+     281: ldc           #14                 // String 70668,
+     283: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     286: aload_1
+     287: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     290: ldc           #6                  // String ,
+     292: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     295: iload_2
+     296: invokevirtual #51                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     299: ldc           #6                  // String ,
+     301: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     304: iload_3
+     305: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     308: ldc           #6                  // String ,
+     310: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     313: iload         4
+     315: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     318: ldc           #6                  // String ,
+     320: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     323: aload         5
+     325: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     328: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     331: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     334: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     337: new           #34                 // class java/lang/RuntimeException
+     340: dup
+     341: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     344: athrow
+    Exception table:
+       from    to  target type
+           0   274   275   Class java/lang/RuntimeException
+
+  private void a(int[], int, byte[], int, int[], int, boolean, int, int, int, int);
+    Code:
+       0: getstatic     #288                // Field AFCKELYG.w:Z
+       3: istore        16
+       5: iload_2
+       6: iconst_2
+       7: ishr
+       8: ineg
+       9: istore        12
+      11: iload         7
+      13: ifne          32
+      16: iconst_1
+      17: istore        13
+      19: iload         16
+      21: ifeq          27
+      24: iinc          13, 1
+      27: iload         13
+      29: ifgt          24
+      32: iload_2
+      33: iconst_3
+      34: iand
+      35: ineg
+      36: istore_2
+      37: iload         4
+      39: ineg
+      40: istore        13
+      42: iload         16
+      44: ifeq          292
+      47: iload         12
+      49: istore        14
+      51: iload         16
+      53: ifeq          215
+      56: aload_1
+      57: iload         11
+      59: iinc          11, 1
+      62: iaload
+      63: istore        6
+      65: iload         6
+      67: ifeq          92
+      70: aload_3
+      71: iload         9
+      73: baload
+      74: ifne          92
+      77: aload         5
+      79: iload         9
+      81: iinc          9, 1
+      84: iload         6
+      86: iastore
+      87: iload         16
+      89: ifeq          95
+      92: iinc          9, 1
+      95: aload_1
+      96: iload         11
+      98: iinc          11, 1
+     101: iaload
+     102: istore        6
+     104: iload         6
+     106: ifeq          131
+     109: aload_3
+     110: iload         9
+     112: baload
+     113: ifne          131
+     116: aload         5
+     118: iload         9
+     120: iinc          9, 1
+     123: iload         6
+     125: iastore
+     126: iload         16
+     128: ifeq          134
+     131: iinc          9, 1
+     134: aload_1
+     135: iload         11
+     137: iinc          11, 1
+     140: iaload
+     141: istore        6
+     143: iload         6
+     145: ifeq          170
+     148: aload_3
+     149: iload         9
+     151: baload
+     152: ifne          170
+     155: aload         5
+     157: iload         9
+     159: iinc          9, 1
+     162: iload         6
+     164: iastore
+     165: iload         16
+     167: ifeq          173
+     170: iinc          9, 1
+     173: aload_1
+     174: iload         11
+     176: iinc          11, 1
+     179: iaload
+     180: istore        6
+     182: iload         6
+     184: ifeq          209
+     187: aload_3
+     188: iload         9
+     190: baload
+     191: ifne          209
+     194: aload         5
+     196: iload         9
+     198: iinc          9, 1
+     201: iload         6
+     203: iastore
+     204: iload         16
+     206: ifeq          212
+     209: iinc          9, 1
+     212: iinc          14, 1
+     215: iload         14
+     217: iflt          56
+     220: iload_2
+     221: istore        15
+     223: iload         16
+     225: ifeq          270
+     228: aload_1
+     229: iload         11
+     231: iinc          11, 1
+     234: iaload
+     235: istore        6
+     237: iload         6
+     239: ifeq          264
+     242: aload_3
+     243: iload         9
+     245: baload
+     246: ifne          264
+     249: aload         5
+     251: iload         9
+     253: iinc          9, 1
+     256: iload         6
+     258: iastore
+     259: iload         16
+     261: ifeq          267
+     264: iinc          9, 1
+     267: iinc          15, 1
+     270: iload         15
+     272: iflt          228
+     275: iload         9
+     277: iload         8
+     279: iadd
+     280: istore        9
+     282: iload         11
+     284: iload         10
+     286: iadd
+     287: istore        11
+     289: iinc          13, 1
+     292: iload         13
+     294: iflt          47
+     297: return
+     298: astore        12
+     300: new           #36                 // class java/lang/StringBuffer
+     303: dup
+     304: ldc           #9                  // String 37704,
+     306: invokespecial #44                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     309: aload_1
+     310: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     313: ldc           #6                  // String ,
+     315: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     318: iload_2
+     319: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     322: ldc           #6                  // String ,
+     324: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     327: aload_3
+     328: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     331: ldc           #6                  // String ,
+     333: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     336: iload         4
+     338: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     341: ldc           #6                  // String ,
+     343: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     346: aload         5
+     348: invokevirtual #49                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     351: ldc           #6                  // String ,
+     353: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     356: iload         6
+     358: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     361: ldc           #6                  // String ,
+     363: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     366: iload         7
+     368: invokevirtual #51                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     371: ldc           #6                  // String ,
+     373: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     376: iload         8
+     378: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     381: ldc           #6                  // String ,
+     383: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     386: iload         9
+     388: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     391: ldc           #6                  // String ,
+     393: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     396: iload         10
+     398: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     401: ldc           #6                  // String ,
+     403: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     406: iload         11
+     408: invokevirtual #48                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     411: ldc           #6                  // String ,
+     413: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     416: aload         12
+     418: invokevirtual #85                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     421: invokevirtual #50                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     424: invokevirtual #84                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     427: invokestatic  #79                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     430: new           #34                 // class java/lang/RuntimeException
+     433: dup
+     434: invokespecial #41                 // Method java/lang/RuntimeException."<init>":()V
+     437: athrow
+    Exception table:
+       from    to  target type
+           5   297   298   Class java/lang/RuntimeException
+}

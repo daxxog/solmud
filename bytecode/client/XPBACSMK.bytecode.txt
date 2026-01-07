@@ -1,0 +1,45 @@
+final class XPBACSMK {
+  int a;
+
+  int b;
+
+  int c;
+
+  int d;
+
+  int e;
+
+  boolean f;
+
+  int g;
+
+  public XPBACSMK(int, int, int, int, int, int, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #8                  // Field f:Z
+       9: aload_0
+      10: iload_1
+      11: putfield      #4                  // Field a:I
+      14: aload_0
+      15: iload_2
+      16: putfield      #5                  // Field b:I
+      19: aload_0
+      20: iload_3
+      21: putfield      #6                  // Field c:I
+      24: aload_0
+      25: iload         4
+      27: putfield      #7                  // Field d:I
+      30: aload_0
+      31: iload         5
+      33: putfield      #10                 // Field e:I
+      36: aload_0
+      37: iload         6
+      39: putfield      #9                  // Field g:I
+      42: aload_0
+      43: iload         7
+      45: putfield      #8                  // Field f:Z
+      48: return
+}

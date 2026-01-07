@@ -1,0 +1,15 @@
+public class RJXWGZGD {
+  int a;
+
+  int b;
+
+  int c;
+
+  int d;
+
+  public RJXWGZGD();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+}

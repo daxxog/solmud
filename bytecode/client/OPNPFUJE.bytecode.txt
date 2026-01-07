@@ -1,0 +1,35 @@
+public final class OPNPFUJE {
+  int a;
+
+  int b;
+
+  int c;
+
+  int d;
+
+  public XHHRODPC e;
+
+  public int f;
+
+  int g;
+
+  int h;
+
+  int i;
+
+  int j;
+
+  int k;
+
+  int l;
+
+  public int m;
+
+  byte n;
+
+  public OPNPFUJE();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+}

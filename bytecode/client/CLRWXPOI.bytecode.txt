@@ -1,0 +1,1358 @@
+public class CLRWXPOI {
+  private boolean a;
+
+  private OZKFTHAD b;
+
+  private OZKFTHAD c;
+
+  private OZKFTHAD d;
+
+  private OZKFTHAD e;
+
+  private OZKFTHAD f;
+
+  private OZKFTHAD g;
+
+  private OZKFTHAD h;
+
+  private OZKFTHAD i;
+
+  private int[] j;
+
+  private int[] k;
+
+  private int[] l;
+
+  private int m;
+
+  private int n;
+
+  private VADHJTLJ o;
+
+  private OZKFTHAD p;
+
+  int q;
+
+  int r;
+
+  private static int[] s;
+
+  private static int[] t;
+
+  private static int[] u;
+
+  private static int[] v;
+
+  private static int[] w;
+
+  private static int[] x;
+
+  private static int[] y;
+
+  private static int[] z;
+
+  public static final void a();
+    Code:
+       0: getstatic     #218                // Field OZKFTHAD.p:I
+       3: istore_2
+       4: ldc           #1                  // int 32768
+       6: newarray       int
+       8: putstatic     #61                 // Field t:[I
+      11: iconst_0
+      12: istore_0
+      13: iload_2
+      14: ifeq          46
+      17: invokestatic  #65                 // Method java/lang/Math.random:()D
+      20: ldc2_w        #78                 // double 0.5d
+      23: dcmpl
+      24: ifle          37
+      27: getstatic     #61                 // Field t:[I
+      30: iload_0
+      31: iconst_1
+      32: iastore
+      33: iload_2
+      34: ifeq          43
+      37: getstatic     #61                 // Field t:[I
+      40: iload_0
+      41: iconst_m1
+      42: iastore
+      43: iinc          0, 1
+      46: iload_0
+      47: ldc           #1                  // int 32768
+      49: if_icmplt     17
+      52: ldc           #1                  // int 32768
+      54: newarray       int
+      56: putstatic     #73                 // Field u:[I
+      59: iconst_0
+      60: istore_1
+      61: iload_2
+      62: ifeq          87
+      65: getstatic     #73                 // Field u:[I
+      68: iload_1
+      69: iload_1
+      70: i2d
+      71: ldc2_w        #84                 // double 5215.1903d
+      74: ddiv
+      75: invokestatic  #72                 // Method java/lang/Math.sin:(D)D
+      78: ldc2_w        #82                 // double 16384.0d
+      81: dmul
+      82: d2i
+      83: iastore
+      84: iinc          1, 1
+      87: iload_1
+      88: ldc           #1                  // int 32768
+      90: if_icmplt     65
+      93: ldc           #3                  // int 220500
+      95: newarray       int
+      97: putstatic     #32                 // Field s:[I
+     100: return
+
+  public final int[] a(int, int);
+    Code:
+       0: getstatic     #218                // Field OZKFTHAD.p:I
+       3: istore        23
+       5: iconst_0
+       6: istore_3
+       7: iload         23
+       9: ifeq          21
+      12: getstatic     #32                 // Field s:[I
+      15: iload_3
+      16: iconst_0
+      17: iastore
+      18: iinc          3, 1
+      21: iload_3
+      22: iload_1
+      23: if_icmplt     12
+      26: iload_2
+      27: bipush        10
+      29: if_icmpge     36
+      32: getstatic     #32                 // Field s:[I
+      35: areturn
+      36: iload_1
+      37: i2d
+      38: iload_2
+      39: i2d
+      40: dconst_0
+      41: dadd
+      42: ddiv
+      43: dstore        4
+      45: aload_0
+      46: getfield      #43                 // Field b:LOZKFTHAD;
+      49: bipush        8
+      51: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+      54: aload_0
+      55: getfield      #25                 // Field c:LOZKFTHAD;
+      58: bipush        8
+      60: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+      63: iconst_0
+      64: istore        6
+      66: iconst_0
+      67: istore        7
+      69: iconst_0
+      70: istore        8
+      72: aload_0
+      73: getfield      #45                 // Field d:LOZKFTHAD;
+      76: ifnull        141
+      79: aload_0
+      80: getfield      #45                 // Field d:LOZKFTHAD;
+      83: bipush        8
+      85: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+      88: aload_0
+      89: getfield      #44                 // Field e:LOZKFTHAD;
+      92: bipush        8
+      94: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+      97: aload_0
+      98: getfield      #45                 // Field d:LOZKFTHAD;
+     101: getfield      #59                 // Field OZKFTHAD.i:I
+     104: aload_0
+     105: getfield      #45                 // Field d:LOZKFTHAD;
+     108: getfield      #60                 // Field OZKFTHAD.h:I
+     111: isub
+     112: i2d
+     113: ldc2_w        #80                 // double 32.768d
+     116: dmul
+     117: dload         4
+     119: ddiv
+     120: d2i
+     121: istore        6
+     123: aload_0
+     124: getfield      #45                 // Field d:LOZKFTHAD;
+     127: getfield      #60                 // Field OZKFTHAD.h:I
+     130: i2d
+     131: ldc2_w        #80                 // double 32.768d
+     134: dmul
+     135: dload         4
+     137: ddiv
+     138: d2i
+     139: istore        7
+     141: iconst_0
+     142: istore        9
+     144: iconst_0
+     145: istore        10
+     147: iconst_0
+     148: istore        11
+     150: aload_0
+     151: getfield      #27                 // Field f:LOZKFTHAD;
+     154: ifnull        219
+     157: aload_0
+     158: getfield      #27                 // Field f:LOZKFTHAD;
+     161: bipush        8
+     163: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+     166: aload_0
+     167: getfield      #26                 // Field g:LOZKFTHAD;
+     170: bipush        8
+     172: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+     175: aload_0
+     176: getfield      #27                 // Field f:LOZKFTHAD;
+     179: getfield      #59                 // Field OZKFTHAD.i:I
+     182: aload_0
+     183: getfield      #27                 // Field f:LOZKFTHAD;
+     186: getfield      #60                 // Field OZKFTHAD.h:I
+     189: isub
+     190: i2d
+     191: ldc2_w        #80                 // double 32.768d
+     194: dmul
+     195: dload         4
+     197: ddiv
+     198: d2i
+     199: istore        9
+     201: aload_0
+     202: getfield      #27                 // Field f:LOZKFTHAD;
+     205: getfield      #60                 // Field OZKFTHAD.h:I
+     208: i2d
+     209: ldc2_w        #80                 // double 32.768d
+     212: dmul
+     213: dload         4
+     215: ddiv
+     216: d2i
+     217: istore        10
+     219: iconst_0
+     220: istore        12
+     222: iload         23
+     224: ifeq          351
+     227: aload_0
+     228: getfield      #56                 // Field j:[I
+     231: iload         12
+     233: iaload
+     234: ifeq          348
+     237: getstatic     #40                 // Field v:[I
+     240: iload         12
+     242: iconst_0
+     243: iastore
+     244: getstatic     #37                 // Field w:[I
+     247: iload         12
+     249: aload_0
+     250: getfield      #54                 // Field l:[I
+     253: iload         12
+     255: iaload
+     256: i2d
+     257: dload         4
+     259: dmul
+     260: d2i
+     261: iastore
+     262: getstatic     #36                 // Field x:[I
+     265: iload         12
+     267: aload_0
+     268: getfield      #56                 // Field j:[I
+     271: iload         12
+     273: iaload
+     274: bipush        14
+     276: ishl
+     277: bipush        100
+     279: idiv
+     280: iastore
+     281: getstatic     #38                 // Field y:[I
+     284: iload         12
+     286: aload_0
+     287: getfield      #43                 // Field b:LOZKFTHAD;
+     290: getfield      #59                 // Field OZKFTHAD.i:I
+     293: aload_0
+     294: getfield      #43                 // Field b:LOZKFTHAD;
+     297: getfield      #60                 // Field OZKFTHAD.h:I
+     300: isub
+     301: i2d
+     302: ldc2_w        #80                 // double 32.768d
+     305: dmul
+     306: ldc2_w        #86                 // double 1.0057929410678534d
+     309: aload_0
+     310: getfield      #55                 // Field k:[I
+     313: iload         12
+     315: iaload
+     316: i2d
+     317: invokestatic  #64                 // Method java/lang/Math.pow:(DD)D
+     320: dmul
+     321: dload         4
+     323: ddiv
+     324: d2i
+     325: iastore
+     326: getstatic     #39                 // Field z:[I
+     329: iload         12
+     331: aload_0
+     332: getfield      #43                 // Field b:LOZKFTHAD;
+     335: getfield      #60                 // Field OZKFTHAD.h:I
+     338: i2d
+     339: ldc2_w        #80                 // double 32.768d
+     342: dmul
+     343: dload         4
+     345: ddiv
+     346: d2i
+     347: iastore
+     348: iinc          12, 1
+     351: iload         12
+     353: iconst_5
+     354: if_icmplt     227
+     357: iconst_0
+     358: istore        13
+     360: iload         23
+     362: ifeq          643
+     365: aload_0
+     366: getfield      #43                 // Field b:LOZKFTHAD;
+     369: iconst_1
+     370: iload_1
+     371: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     374: istore        14
+     376: aload_0
+     377: getfield      #25                 // Field c:LOZKFTHAD;
+     380: iconst_1
+     381: iload_1
+     382: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     385: istore        15
+     387: aload_0
+     388: getfield      #45                 // Field d:LOZKFTHAD;
+     391: ifnull        455
+     394: aload_0
+     395: getfield      #45                 // Field d:LOZKFTHAD;
+     398: iconst_1
+     399: iload_1
+     400: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     403: istore        16
+     405: aload_0
+     406: getfield      #44                 // Field e:LOZKFTHAD;
+     409: iconst_1
+     410: iload_1
+     411: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     414: istore        17
+     416: iload         14
+     418: aload_0
+     419: iload         17
+     421: iconst_0
+     422: iload         8
+     424: aload_0
+     425: getfield      #45                 // Field d:LOZKFTHAD;
+     428: getfield      #77                 // Field OZKFTHAD.j:I
+     431: invokespecial #76                 // Method a:(IIII)I
+     434: iconst_1
+     435: ishr
+     436: iadd
+     437: istore        14
+     439: iload         8
+     441: iload         16
+     443: iload         6
+     445: imul
+     446: bipush        16
+     448: ishr
+     449: iload         7
+     451: iadd
+     452: iadd
+     453: istore        8
+     455: aload_0
+     456: getfield      #27                 // Field f:LOZKFTHAD;
+     459: ifnull        529
+     462: aload_0
+     463: getfield      #27                 // Field f:LOZKFTHAD;
+     466: iconst_1
+     467: iload_1
+     468: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     471: istore        16
+     473: aload_0
+     474: getfield      #26                 // Field g:LOZKFTHAD;
+     477: iconst_1
+     478: iload_1
+     479: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     482: istore        17
+     484: iload         15
+     486: aload_0
+     487: iload         17
+     489: iconst_0
+     490: iload         11
+     492: aload_0
+     493: getfield      #27                 // Field f:LOZKFTHAD;
+     496: getfield      #77                 // Field OZKFTHAD.j:I
+     499: invokespecial #76                 // Method a:(IIII)I
+     502: iconst_1
+     503: ishr
+     504: ldc           #1                  // int 32768
+     506: iadd
+     507: imul
+     508: bipush        15
+     510: ishr
+     511: istore        15
+     513: iload         11
+     515: iload         16
+     517: iload         9
+     519: imul
+     520: bipush        16
+     522: ishr
+     523: iload         10
+     525: iadd
+     526: iadd
+     527: istore        11
+     529: iconst_0
+     530: istore        16
+     532: iload         23
+     534: ifeq          634
+     537: aload_0
+     538: getfield      #56                 // Field j:[I
+     541: iload         16
+     543: iaload
+     544: ifeq          631
+     547: iload         13
+     549: getstatic     #37                 // Field w:[I
+     552: iload         16
+     554: iaload
+     555: iadd
+     556: istore        17
+     558: iload         17
+     560: iload_1
+     561: if_icmpge     631
+     564: getstatic     #32                 // Field s:[I
+     567: iload         17
+     569: dup2
+     570: iaload
+     571: aload_0
+     572: iload         15
+     574: getstatic     #36                 // Field x:[I
+     577: iload         16
+     579: iaload
+     580: imul
+     581: bipush        15
+     583: ishr
+     584: iconst_0
+     585: getstatic     #40                 // Field v:[I
+     588: iload         16
+     590: iaload
+     591: aload_0
+     592: getfield      #43                 // Field b:LOZKFTHAD;
+     595: getfield      #77                 // Field OZKFTHAD.j:I
+     598: invokespecial #76                 // Method a:(IIII)I
+     601: iadd
+     602: iastore
+     603: getstatic     #40                 // Field v:[I
+     606: iload         16
+     608: dup2
+     609: iaload
+     610: iload         14
+     612: getstatic     #38                 // Field y:[I
+     615: iload         16
+     617: iaload
+     618: imul
+     619: bipush        16
+     621: ishr
+     622: getstatic     #39                 // Field z:[I
+     625: iload         16
+     627: iaload
+     628: iadd
+     629: iadd
+     630: iastore
+     631: iinc          16, 1
+     634: iload         16
+     636: iconst_5
+     637: if_icmplt     537
+     640: iinc          13, 1
+     643: iload         13
+     645: iload_1
+     646: if_icmplt     365
+     649: aload_0
+     650: getfield      #48                 // Field h:LOZKFTHAD;
+     653: ifnull        834
+     656: aload_0
+     657: getfield      #48                 // Field h:LOZKFTHAD;
+     660: bipush        8
+     662: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+     665: aload_0
+     666: getfield      #49                 // Field i:LOZKFTHAD;
+     669: bipush        8
+     671: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+     674: iconst_0
+     675: istore        14
+     677: iconst_0
+     678: istore        15
+     680: iconst_1
+     681: istore        16
+     683: iconst_0
+     684: istore        17
+     686: iload         23
+     688: ifeq          828
+     691: aload_0
+     692: getfield      #48                 // Field h:LOZKFTHAD;
+     695: iconst_1
+     696: iload_1
+     697: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     700: istore        18
+     702: aload_0
+     703: getfield      #49                 // Field i:LOZKFTHAD;
+     706: iconst_1
+     707: iload_1
+     708: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     711: istore        19
+     713: iload         16
+     715: ifeq          754
+     718: aload_0
+     719: getfield      #48                 // Field h:LOZKFTHAD;
+     722: getfield      #60                 // Field OZKFTHAD.h:I
+     725: aload_0
+     726: getfield      #48                 // Field h:LOZKFTHAD;
+     729: getfield      #59                 // Field OZKFTHAD.i:I
+     732: aload_0
+     733: getfield      #48                 // Field h:LOZKFTHAD;
+     736: getfield      #60                 // Field OZKFTHAD.h:I
+     739: isub
+     740: iload         18
+     742: imul
+     743: bipush        8
+     745: ishr
+     746: iadd
+     747: istore        15
+     749: iload         23
+     751: ifeq          785
+     754: aload_0
+     755: getfield      #48                 // Field h:LOZKFTHAD;
+     758: getfield      #60                 // Field OZKFTHAD.h:I
+     761: aload_0
+     762: getfield      #48                 // Field h:LOZKFTHAD;
+     765: getfield      #59                 // Field OZKFTHAD.i:I
+     768: aload_0
+     769: getfield      #48                 // Field h:LOZKFTHAD;
+     772: getfield      #60                 // Field OZKFTHAD.h:I
+     775: isub
+     776: iload         19
+     778: imul
+     779: bipush        8
+     781: ishr
+     782: iadd
+     783: istore        15
+     785: iinc_w        14, 256
+     791: iload         14
+     793: iload         15
+     795: if_icmplt     813
+     798: iconst_0
+     799: istore        14
+     801: iload         16
+     803: ifeq          810
+     806: iconst_0
+     807: goto          811
+     810: iconst_1
+     811: istore        16
+     813: iload         16
+     815: ifeq          825
+     818: getstatic     #32                 // Field s:[I
+     821: iload         17
+     823: iconst_0
+     824: iastore
+     825: iinc          17, 1
+     828: iload         17
+     830: iload_1
+     831: if_icmplt     691
+     834: aload_0
+     835: getfield      #68                 // Field m:I
+     838: ifle          903
+     841: aload_0
+     842: getfield      #69                 // Field n:I
+     845: ifle          903
+     848: aload_0
+     849: getfield      #68                 // Field m:I
+     852: i2d
+     853: dload         4
+     855: dmul
+     856: d2i
+     857: istore        14
+     859: iload         14
+     861: istore        15
+     863: iload         23
+     865: ifeq          897
+     868: getstatic     #32                 // Field s:[I
+     871: iload         15
+     873: dup2
+     874: iaload
+     875: getstatic     #32                 // Field s:[I
+     878: iload         15
+     880: iload         14
+     882: isub
+     883: iaload
+     884: aload_0
+     885: getfield      #69                 // Field n:I
+     888: imul
+     889: bipush        100
+     891: idiv
+     892: iadd
+     893: iastore
+     894: iinc          15, 1
+     897: iload         15
+     899: iload_1
+     900: if_icmplt     868
+     903: aload_0
+     904: getfield      #41                 // Field o:LVADHJTLJ;
+     907: getfield      #62                 // Field VADHJTLJ.c:[I
+     910: iconst_0
+     911: iaload
+     912: ifgt          927
+     915: aload_0
+     916: getfield      #41                 // Field o:LVADHJTLJ;
+     919: getfield      #62                 // Field VADHJTLJ.c:[I
+     922: iconst_1
+     923: iaload
+     924: ifle          1562
+     927: aload_0
+     928: getfield      #42                 // Field p:LOZKFTHAD;
+     931: bipush        8
+     933: invokevirtual #50                 // Method OZKFTHAD.a:(B)V
+     936: aload_0
+     937: getfield      #42                 // Field p:LOZKFTHAD;
+     940: iconst_1
+     941: iload_1
+     942: iconst_1
+     943: iadd
+     944: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+     947: istore        14
+     949: aload_0
+     950: getfield      #41                 // Field o:LVADHJTLJ;
+     953: iconst_0
+     954: iload         14
+     956: i2f
+     957: ldc           #4                  // float 65536.0f
+     959: fdiv
+     960: sipush        201
+     963: invokevirtual #33                 // Method VADHJTLJ.a:(IFI)I
+     966: istore        15
+     968: aload_0
+     969: getfield      #41                 // Field o:LVADHJTLJ;
+     972: iconst_1
+     973: iload         14
+     975: i2f
+     976: ldc           #4                  // float 65536.0f
+     978: fdiv
+     979: sipush        201
+     982: invokevirtual #33                 // Method VADHJTLJ.a:(IFI)I
+     985: istore        16
+     987: iload_1
+     988: iload         15
+     990: iload         16
+     992: iadd
+     993: if_icmplt     1562
+     996: iconst_0
+     997: istore        17
+     999: iload         16
+    1001: istore        18
+    1003: iload         18
+    1005: iload_1
+    1006: iload         15
+    1008: isub
+    1009: if_icmple     1169
+    1012: iload_1
+    1013: iload         15
+    1015: isub
+    1016: istore        18
+    1018: iload         23
+    1020: ifeq          1169
+    1023: getstatic     #32                 // Field s:[I
+    1026: iload         17
+    1028: iload         15
+    1030: iadd
+    1031: iaload
+    1032: i2l
+    1033: getstatic     #66                 // Field VADHJTLJ.j:I
+    1036: i2l
+    1037: lmul
+    1038: bipush        16
+    1040: lshr
+    1041: l2i
+    1042: istore        19
+    1044: iconst_0
+    1045: istore        20
+    1047: iload         23
+    1049: ifeq          1089
+    1052: iload         19
+    1054: getstatic     #32                 // Field s:[I
+    1057: iload         17
+    1059: iload         15
+    1061: iadd
+    1062: iconst_1
+    1063: isub
+    1064: iload         20
+    1066: isub
+    1067: iaload
+    1068: i2l
+    1069: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1072: iconst_0
+    1073: aaload
+    1074: iload         20
+    1076: iaload
+    1077: i2l
+    1078: lmul
+    1079: bipush        16
+    1081: lshr
+    1082: l2i
+    1083: iadd
+    1084: istore        19
+    1086: iinc          20, 1
+    1089: iload         20
+    1091: iload         15
+    1093: if_icmplt     1052
+    1096: iconst_0
+    1097: istore        21
+    1099: iload         23
+    1101: ifeq          1138
+    1104: iload         19
+    1106: getstatic     #32                 // Field s:[I
+    1109: iload         17
+    1111: iconst_1
+    1112: isub
+    1113: iload         21
+    1115: isub
+    1116: iaload
+    1117: i2l
+    1118: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1121: iconst_1
+    1122: aaload
+    1123: iload         21
+    1125: iaload
+    1126: i2l
+    1127: lmul
+    1128: bipush        16
+    1130: lshr
+    1131: l2i
+    1132: isub
+    1133: istore        19
+    1135: iinc          21, 1
+    1138: iload         21
+    1140: iload         17
+    1142: if_icmplt     1104
+    1145: getstatic     #32                 // Field s:[I
+    1148: iload         17
+    1150: iload         19
+    1152: iastore
+    1153: aload_0
+    1154: getfield      #42                 // Field p:LOZKFTHAD;
+    1157: iconst_1
+    1158: iload_1
+    1159: iconst_1
+    1160: iadd
+    1161: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+    1164: istore        14
+    1166: iinc          17, 1
+    1169: iload         17
+    1171: iload         18
+    1173: if_icmplt     1023
+    1176: sipush        128
+    1179: istore        19
+    1181: iload         19
+    1183: istore        18
+    1185: iload         18
+    1187: iload_1
+    1188: iload         15
+    1190: isub
+    1191: if_icmple     1351
+    1194: iload_1
+    1195: iload         15
+    1197: isub
+    1198: istore        18
+    1200: iload         23
+    1202: ifeq          1351
+    1205: getstatic     #32                 // Field s:[I
+    1208: iload         17
+    1210: iload         15
+    1212: iadd
+    1213: iaload
+    1214: i2l
+    1215: getstatic     #66                 // Field VADHJTLJ.j:I
+    1218: i2l
+    1219: lmul
+    1220: bipush        16
+    1222: lshr
+    1223: l2i
+    1224: istore        20
+    1226: iconst_0
+    1227: istore        21
+    1229: iload         23
+    1231: ifeq          1271
+    1234: iload         20
+    1236: getstatic     #32                 // Field s:[I
+    1239: iload         17
+    1241: iload         15
+    1243: iadd
+    1244: iconst_1
+    1245: isub
+    1246: iload         21
+    1248: isub
+    1249: iaload
+    1250: i2l
+    1251: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1254: iconst_0
+    1255: aaload
+    1256: iload         21
+    1258: iaload
+    1259: i2l
+    1260: lmul
+    1261: bipush        16
+    1263: lshr
+    1264: l2i
+    1265: iadd
+    1266: istore        20
+    1268: iinc          21, 1
+    1271: iload         21
+    1273: iload         15
+    1275: if_icmplt     1234
+    1278: iconst_0
+    1279: istore        22
+    1281: iload         23
+    1283: ifeq          1320
+    1286: iload         20
+    1288: getstatic     #32                 // Field s:[I
+    1291: iload         17
+    1293: iconst_1
+    1294: isub
+    1295: iload         22
+    1297: isub
+    1298: iaload
+    1299: i2l
+    1300: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1303: iconst_1
+    1304: aaload
+    1305: iload         22
+    1307: iaload
+    1308: i2l
+    1309: lmul
+    1310: bipush        16
+    1312: lshr
+    1313: l2i
+    1314: isub
+    1315: istore        20
+    1317: iinc          22, 1
+    1320: iload         22
+    1322: iload         16
+    1324: if_icmplt     1286
+    1327: getstatic     #32                 // Field s:[I
+    1330: iload         17
+    1332: iload         20
+    1334: iastore
+    1335: aload_0
+    1336: getfield      #42                 // Field p:LOZKFTHAD;
+    1339: iconst_1
+    1340: iload_1
+    1341: iconst_1
+    1342: iadd
+    1343: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+    1346: istore        14
+    1348: iinc          17, 1
+    1351: iload         17
+    1353: iload         18
+    1355: if_icmplt     1205
+    1358: iload         17
+    1360: iload_1
+    1361: iload         15
+    1363: isub
+    1364: if_icmpge     1417
+    1367: aload_0
+    1368: getfield      #41                 // Field o:LVADHJTLJ;
+    1371: iconst_0
+    1372: iload         14
+    1374: i2f
+    1375: ldc           #4                  // float 65536.0f
+    1377: fdiv
+    1378: sipush        201
+    1381: invokevirtual #33                 // Method VADHJTLJ.a:(IFI)I
+    1384: istore        15
+    1386: aload_0
+    1387: getfield      #41                 // Field o:LVADHJTLJ;
+    1390: iconst_1
+    1391: iload         14
+    1393: i2f
+    1394: ldc           #4                  // float 65536.0f
+    1396: fdiv
+    1397: sipush        201
+    1400: invokevirtual #33                 // Method VADHJTLJ.a:(IFI)I
+    1403: istore        16
+    1405: iload         18
+    1407: iload         19
+    1409: iadd
+    1410: istore        18
+    1412: iload         23
+    1414: ifeq          1185
+    1417: iload         23
+    1419: ifeq          1556
+    1422: iconst_0
+    1423: istore        20
+    1425: iload         17
+    1427: iload         15
+    1429: iadd
+    1430: iload_1
+    1431: isub
+    1432: istore        21
+    1434: iload         23
+    1436: ifeq          1476
+    1439: iload         20
+    1441: getstatic     #32                 // Field s:[I
+    1444: iload         17
+    1446: iload         15
+    1448: iadd
+    1449: iconst_1
+    1450: isub
+    1451: iload         21
+    1453: isub
+    1454: iaload
+    1455: i2l
+    1456: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1459: iconst_0
+    1460: aaload
+    1461: iload         21
+    1463: iaload
+    1464: i2l
+    1465: lmul
+    1466: bipush        16
+    1468: lshr
+    1469: l2i
+    1470: iadd
+    1471: istore        20
+    1473: iinc          21, 1
+    1476: iload         21
+    1478: iload         15
+    1480: if_icmplt     1439
+    1483: iconst_0
+    1484: istore        22
+    1486: iload         23
+    1488: ifeq          1525
+    1491: iload         20
+    1493: getstatic     #32                 // Field s:[I
+    1496: iload         17
+    1498: iconst_1
+    1499: isub
+    1500: iload         22
+    1502: isub
+    1503: iaload
+    1504: i2l
+    1505: getstatic     #34                 // Field VADHJTLJ.h:[[I
+    1508: iconst_1
+    1509: aaload
+    1510: iload         22
+    1512: iaload
+    1513: i2l
+    1514: lmul
+    1515: bipush        16
+    1517: lshr
+    1518: l2i
+    1519: isub
+    1520: istore        20
+    1522: iinc          22, 1
+    1525: iload         22
+    1527: iload         16
+    1529: if_icmplt     1491
+    1532: getstatic     #32                 // Field s:[I
+    1535: iload         17
+    1537: iload         20
+    1539: iastore
+    1540: aload_0
+    1541: getfield      #42                 // Field p:LOZKFTHAD;
+    1544: iconst_1
+    1545: iload_1
+    1546: iconst_1
+    1547: iadd
+    1548: invokevirtual #51                 // Method OZKFTHAD.a:(ZI)I
+    1551: istore        14
+    1553: iinc          17, 1
+    1556: iload         17
+    1558: iload_1
+    1559: if_icmplt     1422
+    1562: iconst_0
+    1563: istore        14
+    1565: iload         23
+    1567: ifeq          1613
+    1570: getstatic     #32                 // Field s:[I
+    1573: iload         14
+    1575: iaload
+    1576: ldc           #2                  // int -32768
+    1578: if_icmpge     1589
+    1581: getstatic     #32                 // Field s:[I
+    1584: iload         14
+    1586: ldc           #2                  // int -32768
+    1588: iastore
+    1589: getstatic     #32                 // Field s:[I
+    1592: iload         14
+    1594: iaload
+    1595: sipush        32767
+    1598: if_icmple     1610
+    1601: getstatic     #32                 // Field s:[I
+    1604: iload         14
+    1606: sipush        32767
+    1609: iastore
+    1610: iinc          14, 1
+    1613: iload         14
+    1615: iload_1
+    1616: if_icmplt     1570
+    1619: getstatic     #32                 // Field s:[I
+    1622: areturn
+
+  private final int a(int, int, int, int);
+    Code:
+       0: iload_2
+       1: ifeq          20
+       4: aload_0
+       5: aload_0
+       6: getfield      #35                 // Field a:Z
+       9: ifeq          16
+      12: iconst_0
+      13: goto          17
+      16: iconst_1
+      17: putfield      #35                 // Field a:Z
+      20: iload         4
+      22: iconst_1
+      23: if_icmpne     42
+      26: iload_3
+      27: sipush        32767
+      30: iand
+      31: sipush        16384
+      34: if_icmpge     39
+      37: iload_1
+      38: ireturn
+      39: iload_1
+      40: ineg
+      41: ireturn
+      42: iload         4
+      44: iconst_2
+      45: if_icmpne     63
+      48: getstatic     #73                 // Field u:[I
+      51: iload_3
+      52: sipush        32767
+      55: iand
+      56: iaload
+      57: iload_1
+      58: imul
+      59: bipush        14
+      61: ishr
+      62: ireturn
+      63: iload         4
+      65: iconst_3
+      66: if_icmpne     82
+      69: iload_3
+      70: sipush        32767
+      73: iand
+      74: iload_1
+      75: imul
+      76: bipush        14
+      78: ishr
+      79: iload_1
+      80: isub
+      81: ireturn
+      82: iload         4
+      84: iconst_4
+      85: if_icmpne     104
+      88: getstatic     #61                 // Field t:[I
+      91: iload_3
+      92: sipush        2607
+      95: idiv
+      96: sipush        32767
+      99: iand
+     100: iaload
+     101: iload_1
+     102: imul
+     103: ireturn
+     104: iconst_0
+     105: ireturn
+     106: astore        5
+     108: new           #16                 // class java/lang/StringBuffer
+     111: dup
+     112: ldc           #6                  // String 46169,
+     114: invokespecial #24                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     117: iload_1
+     118: invokevirtual #28                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     121: ldc           #5                  // String ,
+     123: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     126: iload_2
+     127: invokevirtual #28                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     130: ldc           #5                  // String ,
+     132: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     135: iload_3
+     136: invokevirtual #28                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     139: ldc           #5                  // String ,
+     141: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     144: iload         4
+     146: invokevirtual #28                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+     149: ldc           #5                  // String ,
+     151: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     154: aload         5
+     156: invokevirtual #75                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     159: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     162: invokevirtual #74                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     165: invokestatic  #67                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     168: new           #15                 // class java/lang/RuntimeException
+     171: dup
+     172: invokespecial #23                 // Method java/lang/RuntimeException."<init>":()V
+     175: athrow
+    Exception table:
+       from    to  target type
+           0   106   106   Class java/lang/RuntimeException
+
+  public final void a(boolean, MBMGIXGO);
+    Code:
+       0: getstatic     #218                // Field OZKFTHAD.p:I
+       3: istore        6
+       5: aload_0
+       6: new           #9                  // class OZKFTHAD
+       9: dup
+      10: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+      13: putfield      #43                 // Field b:LOZKFTHAD;
+      16: aload_0
+      17: getfield      #43                 // Field b:LOZKFTHAD;
+      20: iconst_1
+      21: aload_2
+      22: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+      25: aload_0
+      26: new           #9                  // class OZKFTHAD
+      29: dup
+      30: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+      33: putfield      #25                 // Field c:LOZKFTHAD;
+      36: iload_1
+      37: ifne          48
+      40: new           #13                 // class java/lang/NullPointerException
+      43: dup
+      44: invokespecial #21                 // Method java/lang/NullPointerException."<init>":()V
+      47: athrow
+      48: aload_0
+      49: getfield      #25                 // Field c:LOZKFTHAD;
+      52: iconst_1
+      53: aload_2
+      54: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+      57: aload_2
+      58: invokevirtual #46                 // Method MBMGIXGO.c:()I
+      61: istore_3
+      62: iload_3
+      63: ifeq          116
+      66: aload_2
+      67: dup
+      68: getfield      #63                 // Field MBMGIXGO.z:I
+      71: iconst_1
+      72: isub
+      73: putfield      #63                 // Field MBMGIXGO.z:I
+      76: aload_0
+      77: new           #9                  // class OZKFTHAD
+      80: dup
+      81: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+      84: putfield      #45                 // Field d:LOZKFTHAD;
+      87: aload_0
+      88: getfield      #45                 // Field d:LOZKFTHAD;
+      91: iconst_1
+      92: aload_2
+      93: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+      96: aload_0
+      97: new           #9                  // class OZKFTHAD
+     100: dup
+     101: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     104: putfield      #44                 // Field e:LOZKFTHAD;
+     107: aload_0
+     108: getfield      #44                 // Field e:LOZKFTHAD;
+     111: iconst_1
+     112: aload_2
+     113: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+     116: aload_2
+     117: invokevirtual #46                 // Method MBMGIXGO.c:()I
+     120: istore_3
+     121: iload_3
+     122: ifeq          175
+     125: aload_2
+     126: dup
+     127: getfield      #63                 // Field MBMGIXGO.z:I
+     130: iconst_1
+     131: isub
+     132: putfield      #63                 // Field MBMGIXGO.z:I
+     135: aload_0
+     136: new           #9                  // class OZKFTHAD
+     139: dup
+     140: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     143: putfield      #27                 // Field f:LOZKFTHAD;
+     146: aload_0
+     147: getfield      #27                 // Field f:LOZKFTHAD;
+     150: iconst_1
+     151: aload_2
+     152: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+     155: aload_0
+     156: new           #9                  // class OZKFTHAD
+     159: dup
+     160: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     163: putfield      #26                 // Field g:LOZKFTHAD;
+     166: aload_0
+     167: getfield      #26                 // Field g:LOZKFTHAD;
+     170: iconst_1
+     171: aload_2
+     172: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+     175: aload_2
+     176: invokevirtual #46                 // Method MBMGIXGO.c:()I
+     179: istore_3
+     180: iload_3
+     181: ifeq          234
+     184: aload_2
+     185: dup
+     186: getfield      #63                 // Field MBMGIXGO.z:I
+     189: iconst_1
+     190: isub
+     191: putfield      #63                 // Field MBMGIXGO.z:I
+     194: aload_0
+     195: new           #9                  // class OZKFTHAD
+     198: dup
+     199: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     202: putfield      #48                 // Field h:LOZKFTHAD;
+     205: aload_0
+     206: getfield      #48                 // Field h:LOZKFTHAD;
+     209: iconst_1
+     210: aload_2
+     211: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+     214: aload_0
+     215: new           #9                  // class OZKFTHAD
+     218: dup
+     219: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     222: putfield      #49                 // Field i:LOZKFTHAD;
+     225: aload_0
+     226: getfield      #49                 // Field i:LOZKFTHAD;
+     229: iconst_1
+     230: aload_2
+     231: invokevirtual #58                 // Method OZKFTHAD.a:(ZLMBMGIXGO;)V
+     234: iconst_0
+     235: istore        4
+     237: iload         6
+     239: ifeq          301
+     242: getstatic     #222                // Field PKVMXVTO.e:Z
+     245: ifeq          252
+     248: iconst_0
+     249: goto          253
+     252: iconst_1
+     253: putstatic     #222                // Field PKVMXVTO.e:Z
+     256: aload_2
+     257: invokevirtual #53                 // Method MBMGIXGO.k:()I
+     260: istore        5
+     262: iload         5
+     264: ifeq          308
+     267: aload_0
+     268: getfield      #56                 // Field j:[I
+     271: iload         4
+     273: iload         5
+     275: iastore
+     276: aload_0
+     277: getfield      #55                 // Field k:[I
+     280: iload         4
+     282: aload_2
+     283: invokevirtual #52                 // Method MBMGIXGO.j:()I
+     286: iastore
+     287: aload_0
+     288: getfield      #54                 // Field l:[I
+     291: iload         4
+     293: aload_2
+     294: invokevirtual #53                 // Method MBMGIXGO.k:()I
+     297: iastore
+     298: iinc          4, 1
+     301: iload         4
+     303: bipush        10
+     305: if_icmplt     256
+     308: aload_0
+     309: aload_2
+     310: invokevirtual #53                 // Method MBMGIXGO.k:()I
+     313: putfield      #68                 // Field m:I
+     316: aload_0
+     317: aload_2
+     318: invokevirtual #53                 // Method MBMGIXGO.k:()I
+     321: putfield      #69                 // Field n:I
+     324: aload_0
+     325: aload_2
+     326: invokevirtual #47                 // Method MBMGIXGO.e:()I
+     329: putfield      #71                 // Field q:I
+     332: aload_0
+     333: aload_2
+     334: invokevirtual #47                 // Method MBMGIXGO.e:()I
+     337: putfield      #70                 // Field r:I
+     340: aload_0
+     341: new           #10                 // class VADHJTLJ
+     344: dup
+     345: invokespecial #20                 // Method VADHJTLJ."<init>":()V
+     348: putfield      #41                 // Field o:LVADHJTLJ;
+     351: aload_0
+     352: new           #9                  // class OZKFTHAD
+     355: dup
+     356: invokespecial #19                 // Method OZKFTHAD."<init>":()V
+     359: putfield      #42                 // Field p:LOZKFTHAD;
+     362: aload_0
+     363: getfield      #41                 // Field o:LVADHJTLJ;
+     366: aload_2
+     367: iconst_0
+     368: aload_0
+     369: getfield      #42                 // Field p:LOZKFTHAD;
+     372: invokevirtual #57                 // Method VADHJTLJ.a:(LMBMGIXGO;ZLOZKFTHAD;)V
+     375: return
+     376: astore_3
+     377: new           #16                 // class java/lang/StringBuffer
+     380: dup
+     381: ldc           #7                  // String 9595,
+     383: invokespecial #24                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+     386: iload_1
+     387: invokevirtual #31                 // Method java/lang/StringBuffer.append:(Z)Ljava/lang/StringBuffer;
+     390: ldc           #5                  // String ,
+     392: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     395: aload_2
+     396: invokevirtual #29                 // Method java/lang/StringBuffer.append:(Ljava/lang/Object;)Ljava/lang/StringBuffer;
+     399: ldc           #5                  // String ,
+     401: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     404: aload_3
+     405: invokevirtual #75                 // Method java/lang/Throwable.toString:()Ljava/lang/String;
+     408: invokevirtual #30                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+     411: invokevirtual #74                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+     414: invokestatic  #67                 // Method sign/signlink.reporterror:(Ljava/lang/String;)V
+     417: new           #15                 // class java/lang/RuntimeException
+     420: dup
+     421: invokespecial #23                 // Method java/lang/RuntimeException."<init>":()V
+     424: athrow
+    Exception table:
+       from    to  target type
+           5   375   376   Class java/lang/RuntimeException
+
+  public CLRWXPOI();
+    Code:
+       0: aload_0
+       1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #35                 // Field a:Z
+       9: aload_0
+      10: iconst_5
+      11: newarray       int
+      13: putfield      #56                 // Field j:[I
+      16: aload_0
+      17: iconst_5
+      18: newarray       int
+      20: putfield      #55                 // Field k:[I
+      23: aload_0
+      24: iconst_5
+      25: newarray       int
+      27: putfield      #54                 // Field l:[I
+      30: aload_0
+      31: bipush        100
+      33: putfield      #69                 // Field n:I
+      36: aload_0
+      37: sipush        500
+      40: putfield      #71                 // Field q:I
+      43: return
+
+  static {};
+    Code:
+       0: iconst_5
+       1: newarray       int
+       3: putstatic     #40                 // Field v:[I
+       6: iconst_5
+       7: newarray       int
+       9: putstatic     #37                 // Field w:[I
+      12: iconst_5
+      13: newarray       int
+      15: putstatic     #36                 // Field x:[I
+      18: iconst_5
+      19: newarray       int
+      21: putstatic     #38                 // Field y:[I
+      24: iconst_5
+      25: newarray       int
+      27: putstatic     #39                 // Field z:[I
+      30: return
+}
