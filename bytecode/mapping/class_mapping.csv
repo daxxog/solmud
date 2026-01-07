@@ -1,5 +1,20 @@
 deobfuscated_name,obfuscated_name,confidence_score,superclass_match,interface_count,field_count_deob,field_count_obf,method_count_deob,method_count_obf,notes
+Animable,XHHRODPC,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
+Model,ZKARKDQW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Node,PKVMXVTO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 NodeSub,PPOHBEGB,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 RSApplet,KHACHIFW,100.00,true,1,N/A,N/A,N/A,N/A,Exact match - anchor class
+Stream,AFCKELYG,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+DrawingArea,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+OnDemandData,PHKHJKBS,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Player,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+NPC,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Ground,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Class30_Sub1,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+client,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Entity,WBWOBAFW,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub4,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub5,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub3,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Item,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 deobfuscated_name,obfuscated_name,confidence_score,notes

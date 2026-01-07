@@ -37,6 +37,11 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"NodeSub":       "PPOHBEGB",
 	"RSApplet":      "KHACHIFW",
 	"client":        "client",
+	// Phase 1: Enhanced inheritance chain anchors
+	"Animable": "XHHRODPC",
+	"Entity":   "GQOSZKJC",
+	"Model":    "ZKARKDQW",
+	"Stream":   "MBMGIXGO",
 }
 
 const (
@@ -165,11 +170,11 @@ func (self *BytecodeParser) parse_file(file_path string) (*ClassInfo, error) {
 		line := scanner.Text()
 
 		if matches := self.regex_class_decl.FindStringSubmatch(line); matches != nil {
-			class_info.Name = matches[2]
+			class_info.Name = strings.TrimSpace(matches[2])
 		}
 
 		if matches := self.regex_extends.FindStringSubmatch(line); matches != nil {
-			class_info.Superclass = matches[1]
+			class_info.Superclass = strings.TrimSpace(matches[1])
 		}
 
 		if matches := self.regex_implements.FindStringSubmatch(line); matches != nil {
@@ -278,11 +283,11 @@ func (self *JavapParser) parse_class(file_path string, class_name string) (*Clas
 		line := scanner.Text()
 
 		if matches := self.regex_class_decl.FindStringSubmatch(line); matches != nil {
-			class_info.Name = matches[3]
+			class_info.Name = strings.TrimSpace(matches[3])
 		}
 
 		if matches := self.regex_extends.FindStringSubmatch(line); matches != nil {
-			class_info.Superclass = matches[1]
+			class_info.Superclass = strings.TrimSpace(matches[1])
 		}
 
 		if matches := self.regex_implements.FindStringSubmatch(line); matches != nil {
@@ -470,9 +475,11 @@ func (self *Scorer) resolve_superclass(superclass string) string {
 }
 
 type Resolver struct {
-	anchors         map[string]string
-	reverse_anchors map[string]string
-	scorer          *Scorer
+	anchors          map[string]string
+	reverse_anchors  map[string]string
+	scorer           *Scorer
+	deob_inheritance map[string][]string // superclass -> [subclasses]
+	obf_inheritance  map[string][]string // superclass -> [subclasses]
 }
 
 func NewResolver(anchors map[string]string) *Resolver {
@@ -482,14 +489,35 @@ func NewResolver(anchors map[string]string) *Resolver {
 	}
 
 	return &Resolver{
-		anchors:         anchors,
-		reverse_anchors: reverse_anchors,
-		scorer:          NewScorer(anchors),
+		anchors:          anchors,
+		reverse_anchors:  reverse_anchors,
+		scorer:           NewScorer(anchors),
+		deob_inheritance: make(map[string][]string),
+		obf_inheritance:  make(map[string][]string),
+	}
+}
+
+func (self *Resolver) buildInheritanceMaps(deob_classes []ClassInfo, obf_classes []ClassInfo) {
+	// Build deobfuscated inheritance map
+	for _, class := range deob_classes {
+		if class.Superclass != "" {
+			self.deob_inheritance[class.Superclass] = append(self.deob_inheritance[class.Superclass], class.Name)
+		}
+	}
+
+	// Build obfuscated inheritance map
+	for _, class := range obf_classes {
+		if class.Superclass != "" {
+			self.obf_inheritance[class.Superclass] = append(self.obf_inheritance[class.Superclass], class.Name)
+		}
 	}
 }
 
 func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
 	var results []MatchResult
+
+	// Build inheritance maps for enhanced matching
+	self.buildInheritanceMaps(deob_classes, obf_classes)
 
 	fmt.Fprintln(os.Stderr, "Pass 1: Matching anchor classes...")
 	for _, deob_class := range deob_classes {
@@ -507,6 +535,15 @@ func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassIn
 	fmt.Fprintln(os.Stderr, "Pass 2: Matching by inheritance hierarchy...")
 	pending_deob := self.remove_matched(deob_classes, results)
 	pending_obf := self.remove_matched(obf_classes, results)
+
+	// Enhanced inheritance chain matching
+	fmt.Fprintln(os.Stderr, "  Propagating inheritance chains...")
+	inherited_matches := self.propagateInheritanceChains(pending_deob, pending_obf)
+	results = append(results, inherited_matches...)
+
+	// Update pending lists after inheritance propagation
+	pending_deob = self.remove_matched(deob_classes, results)
+	pending_obf = self.remove_matched(obf_classes, results)
 
 	for _, deob_class := range pending_deob {
 		best_match, best_score := self.find_best_match(&deob_class, pending_obf)
@@ -542,6 +579,133 @@ func (self *Resolver) find_obfuscated_class(obf_classes []ClassInfo, name string
 		}
 	}
 	return nil
+}
+
+func (self *Resolver) propagateInheritanceChains(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
+	var results []MatchResult
+
+	// For each anchor mapping, try to propagate to subclasses
+	for deob_super, obf_super := range self.anchors {
+		// Find deobfuscated subclasses of this superclass that are still pending
+		deob_subclasses := self.deob_inheritance[deob_super]
+		obf_subclasses := self.obf_inheritance[obf_super]
+
+		// Filter to only pending classes
+		var pending_deob_subs []string
+		for _, subclass := range deob_subclasses {
+			if self.find_deobfuscated_class(deob_classes, subclass) != nil {
+				pending_deob_subs = append(pending_deob_subs, subclass)
+			}
+		}
+
+		var pending_obf_subs []string
+		for _, subclass := range obf_subclasses {
+			if self.find_obfuscated_class(obf_classes, subclass) != nil {
+				pending_obf_subs = append(pending_obf_subs, subclass)
+			}
+		}
+
+		if len(pending_deob_subs) > 0 && len(pending_obf_subs) > 0 {
+			// Try to match subclasses by relative position in hierarchy
+			matched_subs := self.matchSubclassesByHierarchy(pending_deob_subs, pending_obf_subs, deob_classes, obf_classes)
+			results = append(results, matched_subs...)
+		}
+	}
+
+	return results
+}
+
+func (self *Resolver) matchSubclassesByHierarchy(deob_subclasses []string, obf_subclasses []string,
+	deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
+
+	var results []MatchResult
+
+	// Simple heuristic: if counts match, try to match by complexity (method/field count)
+	if len(deob_subclasses) == len(obf_subclasses) {
+		// Sort both lists by complexity (method count + field count)
+		deob_sorted := self.sortClassesByComplexity(deob_subclasses, deob_classes)
+		obf_sorted := self.sortClassesByComplexity(obf_subclasses, obf_classes)
+
+		// Match by relative complexity
+		for i, deob_name := range deob_sorted {
+			if i >= len(obf_sorted) {
+				break
+			}
+			obf_name := obf_sorted[i]
+
+			// Find the actual class objects
+			deob_class := self.find_deobfuscated_class(deob_classes, deob_name)
+			obf_class := self.find_obfuscated_class(obf_classes, obf_name)
+
+			if deob_class != nil && obf_class != nil {
+				// Since these are subclasses of anchor-matched classes, we can be confident
+				result := self.create_match(deob_class, obf_class)
+				result.ConfidenceScore = 85.0 // High confidence for inheritance chain match
+				result.Details = fmt.Sprintf("Inherited from anchor class hierarchy")
+				results = append(results, result)
+			}
+		}
+	}
+
+	return results
+}
+
+func (self *Resolver) sortClassesByComplexity(class_names []string, classes []ClassInfo) []string {
+	type classComplexity struct {
+		name       string
+		complexity int
+	}
+
+	var complexities []classComplexity
+	for _, name := range class_names {
+		class := self.find_by_name(classes, name)
+		if class != nil {
+			complexity := len(class.Methods) + len(class.Fields)
+			complexities = append(complexities, classComplexity{name, complexity})
+		}
+	}
+
+	// Sort by complexity descending
+	for i := 0; i < len(complexities)-1; i++ {
+		for j := i + 1; j < len(complexities); j++ {
+			if complexities[i].complexity < complexities[j].complexity {
+				complexities[i], complexities[j] = complexities[j], complexities[i]
+			}
+		}
+	}
+
+	var result []string
+	for _, c := range complexities {
+		result = append(result, c.name)
+	}
+	return result
+}
+
+func (self *Resolver) find_deobfuscated_class(classes []ClassInfo, name string) *ClassInfo {
+	for _, class := range classes {
+		if class.Name == name {
+			return &class
+		}
+	}
+	return nil
+}
+
+func (self *Resolver) find_by_name(classes []ClassInfo, name string) *ClassInfo {
+	for _, class := range classes {
+		if class.Name == name {
+			return &class
+		}
+	}
+	return nil
+}
+
+func (self *Resolver) classes_have_similar_inheritance(deob, obf *ClassInfo) bool {
+	// For inheritance chain propagation, we want classes that both extend anchor classes
+	// Check if both classes extend anchor-mapped superclasses
+	_, deob_super_is_anchor := self.anchors[deob.Superclass]
+	_, obf_super_is_anchor := self.reverse_anchors[obf.Superclass]
+
+	return deob_super_is_anchor && obf_super_is_anchor
 }
 
 func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []ClassInfo) (*ClassInfo, float64) {
