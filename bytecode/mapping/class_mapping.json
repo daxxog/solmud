@@ -5,3 +5,57 @@
     "medium_confidence_count": 0,
     "low_confidence_count": 0
   },
+  "matches": [
+    {
+      "DeobfuscatedClass": "Node",
+      "ObfuscatedClass": "PKVMXVTO",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "MethodCountMatch": 5,
+        "MethodSimilarity": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "NodeSub",
+      "ObfuscatedClass": "PPOHBEGB",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "RSApplet",
+      "ObfuscatedClass": "KHACHIFW",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 20,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "SizePenalty": -10
+      },
+      "Details": "Exact match - anchor class"
+    }
+  ]
+}

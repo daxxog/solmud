@@ -491,7 +491,7 @@ func NewResolver(anchors map[string]string) *Resolver {
 func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
 	var results []MatchResult
 
-	fmt.Println("Pass 1: Matching anchor classes...")
+	fmt.Fprintln(os.Stderr, "Pass 1: Matching anchor classes...")
 	for _, deob_class := range deob_classes {
 		if obf_name, exists := self.anchors[deob_class.Name]; exists {
 			obf_class := self.find_obfuscated_class(obf_classes, obf_name)
@@ -504,7 +504,7 @@ func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassIn
 		}
 	}
 
-	fmt.Println("Pass 2: Matching by inheritance hierarchy...")
+	fmt.Fprintln(os.Stderr, "Pass 2: Matching by inheritance hierarchy...")
 	pending_deob := self.remove_matched(deob_classes, results)
 	pending_obf := self.remove_matched(obf_classes, results)
 
@@ -518,7 +518,7 @@ func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassIn
 		}
 	}
 
-	fmt.Println("Pass 3: Matching by signatures...")
+	fmt.Fprintln(os.Stderr, "Pass 3: Matching by signatures...")
 	pending_deob = self.remove_matched(deob_classes, results)
 	pending_obf = self.remove_matched(obf_classes, results)
 
@@ -780,59 +780,59 @@ func main() {
 		panic("threshold must be between 0 and 100")
 	}
 
-	fmt.Printf("Parsing deobfuscated classes from: %s\n", *deob_dir)
+	fmt.Fprintf(os.Stderr, "Parsing deobfuscated classes from: %s\n", *deob_dir)
 	javap_parser := NewJavapParser()
 	deob_classes, err := javap_parser.ParseAll(*deob_dir)
 	if err != nil {
 		panic(fmt.Sprintf("failed to parse deobfuscated classes: %v", err))
 	}
-	fmt.Printf("  Found %d deobfuscated classes\n", len(deob_classes))
+	fmt.Fprintf(os.Stderr, "  Found %d deobfuscated classes\n", len(deob_classes))
 
-	fmt.Printf("Parsing obfuscated classes from: %s\n", *obf_dir)
+	fmt.Fprintf(os.Stderr, "Parsing obfuscated classes from: %s\n", *obf_dir)
 	bytecode_parser := NewBytecodeParser()
 	obf_classes, err := bytecode_parser.ParseAll(*obf_dir)
 	if err != nil {
 		panic(fmt.Sprintf("failed to parse obfuscated classes: %v", err))
 	}
-	fmt.Printf("  Found %d obfuscated classes\n", len(obf_classes))
+	fmt.Fprintf(os.Stderr, "  Found %d obfuscated classes\n", len(obf_classes))
 
 	resolver_instance := NewResolver(ANCHOR_MAPPINGS)
 
-	fmt.Println("Resolving class matches...")
+	fmt.Fprintln(os.Stderr, "Resolving class matches...")
 	matches := resolver_instance.ResolveAll(deob_classes, obf_classes)
-	fmt.Printf("  Found %d total matches\n", len(matches))
+	fmt.Fprintf(os.Stderr, "  Found %d total matches\n", len(matches))
 
 	valid_matches := filter_by_threshold(matches, *threshold)
-	fmt.Printf("  %d matches above threshold %.2f\n", len(valid_matches), *threshold)
+	fmt.Fprintf(os.Stderr, "  %d matches above threshold %.2f\n", len(valid_matches), *threshold)
 
 	high_conf := count_by_confidence(valid_matches, HIGH_CONFIDENCE_THRESHOLD)
 	medium_conf := len(valid_matches) - high_conf
 
 	if *mode == "json" {
-		fmt.Println("\nJSON Output:")
+		fmt.Fprintln(os.Stderr, "\nJSON Output:")
 		json_writer := NewJSONWriter()
 		if err := json_writer.WriteDetailed(valid_matches); err != nil {
 			panic(fmt.Sprintf("failed to write JSON: %v", err))
 		}
 	} else {
-		fmt.Println("\nHigh Confidence Matches (CSV):")
+		fmt.Fprintln(os.Stderr, "\nHigh Confidence Matches (CSV):")
 		stdout_writer := NewStdoutWriter()
 		if err := stdout_writer.WriteHighConfidence(valid_matches); err != nil {
 			panic(err)
 		}
 
-		fmt.Println("\nUncertain Matches (CSV):")
+		fmt.Fprintln(os.Stderr, "\nUncertain Matches (CSV):")
 		if err := stdout_writer.WriteUncertain(valid_matches); err != nil {
 			panic(err)
 		}
 	}
 
-	fmt.Println("\nSummary:")
-	fmt.Printf("  High confidence (≥%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, high_conf)
-	fmt.Printf("  Medium confidence (%.2f-%.2f): %d\n", MIN_CONFIDENCE_THRESHOLD, HIGH_CONFIDENCE_THRESHOLD, medium_conf)
-	fmt.Printf("  Low confidence (<%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, len(valid_matches)-high_conf-medium_conf)
+	fmt.Fprintln(os.Stderr, "\nSummary:")
+	fmt.Fprintf(os.Stderr, "  High confidence (≥%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, high_conf)
+	fmt.Fprintf(os.Stderr, "  Medium confidence (%.2f-%.2f): %d\n", MIN_CONFIDENCE_THRESHOLD, HIGH_CONFIDENCE_THRESHOLD, medium_conf)
+	fmt.Fprintf(os.Stderr, "  Low confidence (<%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, len(valid_matches)-high_conf-medium_conf)
 
-	fmt.Println("\nDone!")
+	fmt.Fprintln(os.Stderr, "\nDone!")
 }
 
 func filter_by_threshold(matches []MatchResult, threshold float64) []MatchResult {
