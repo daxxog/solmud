@@ -1,0 +1,6 @@
+deobfuscated_name,obfuscated_name,confidence_score,superclass_match,interface_count,field_count_deob,field_count_obf,method_count_deob,method_count_obf,notes
+Node,PKVMXVTO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
+NodeSub,PPOHBEGB,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
+RSApplet,KHACHIFW,100.00,true,1,N/A,N/A,N/A,N/A,Exact match - anchor class
+Uncertain Matches (CSV):
+deobfuscated_name,obfuscated_name,confidence_score,notes
