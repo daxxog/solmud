@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_matches": 18,
-    "high_confidence_count": 18,
+    "total_matches": 26,
+    "high_confidence_count": 26,
     "medium_confidence_count": 0,
     "low_confidence_count": 0
   },
@@ -15,10 +15,133 @@
         "SuperclassMatch": 25,
         "FieldCountMatch": 5,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 5,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Animation",
+      "ObfuscatedClass": "LKGEGIEW",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 5,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 5,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Entity",
+      "ObfuscatedClass": "GQOSZKJC",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": -10
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "EntityDef",
+      "ObfuscatedClass": "CKDEJADD",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Flo",
+      "ObfuscatedClass": "MNHKFPQO",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 5,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 5,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "IDK",
+      "ObfuscatedClass": "TAVAECED",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "ItemDef",
+      "ObfuscatedClass": "DJRMEMXO",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
         "SizePenalty": 0
       },
       "Details": "Exact match - anchor class"
@@ -32,10 +155,13 @@
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
         "SizePenalty": -10
       },
       "Details": "Exact match - anchor class"
@@ -49,10 +175,13 @@
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 5,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 0,
         "SizePenalty": 0
       },
       "Details": "Exact match - anchor class"
@@ -66,11 +195,54 @@
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 0,
         "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "ObjectDef",
+      "ObfuscatedClass": "YZDBYLRM",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "OnDemandFetcher",
+      "ObfuscatedClass": "CRRWDRTI",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 0,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": -10
       },
       "Details": "Exact match - anchor class"
     },
@@ -83,95 +255,213 @@
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
         "SizePenalty": -10
       },
       "Details": "Exact match - anchor class"
     },
     {
-      "DeobfuscatedClass": "Ground",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
+      "DeobfuscatedClass": "SpotAnim",
+      "ObfuscatedClass": "MUDLUUBC",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Stream",
+      "ObfuscatedClass": "CRRWDRTI",
+      "ConfidenceScore": 100,
       "ScoreBreakdown": {
         "InterfaceMatch": 0,
         "SuperclassMatch": 0,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": -10
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "VarBit",
+      "ObfuscatedClass": "SXYSOXTR",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": 0
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Varp",
+      "ObfuscatedClass": "VGXVBFVC",
+      "ConfidenceScore": 100,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 5,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": -10
+      },
+      "Details": "Exact match - anchor class"
+    },
+    {
+      "DeobfuscatedClass": "Animable_Sub4",
+      "ObfuscatedClass": "SWTXAYDT",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": 0
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Animable_Sub5",
+      "ObfuscatedClass": "WBWOBAFW",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": 0
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Animable_Sub3",
+      "ObfuscatedClass": "OJEALINP",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": 0
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Item",
+      "ObfuscatedClass": "HNKCWGJM",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": -10
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Ground",
+      "ObfuscatedClass": "DYMVKFXP",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
         "SizePenalty": -10
       },
       "Details": "Inherited from anchor class hierarchy"
     },
     {
       "DeobfuscatedClass": "Class30_Sub1",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Stream",
-      "ObfuscatedClass": "AFCKELYG",
+      "ObfuscatedClass": "QTKGMFHL",
       "ConfidenceScore": 85,
       "ScoreBreakdown": {
         "InterfaceMatch": 0,
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 0,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "DrawingArea",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "OnDemandData",
-      "ObfuscatedClass": "PHKHJKBS",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 25,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 5,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
+        "FunctionalPattern": 0,
         "SizePenalty": -10
       },
       "Details": "Inherited from anchor class hierarchy"
@@ -185,129 +475,53 @@
         "SuperclassMatch": 0,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 0,
         "SizePenalty": -10
       },
       "Details": "Inherited from anchor class hierarchy"
     },
     {
       "DeobfuscatedClass": "Player",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 5,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "NPC",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": 0
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Entity",
-      "ObfuscatedClass": "WBWOBAFW",
+      "ObfuscatedClass": "DLZHLHNK",
       "ConfidenceScore": 85,
       "ScoreBreakdown": {
         "InterfaceMatch": 0,
         "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
         "SizePenalty": -10
       },
       "Details": "Inherited from anchor class hierarchy"
     },
     {
-      "DeobfuscatedClass": "Animable_Sub4",
-      "ObfuscatedClass": "",
+      "DeobfuscatedClass": "NPC",
+      "ObfuscatedClass": "CWNCPMLX",
       "ConfidenceScore": 85,
       "ScoreBreakdown": {
         "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
+        "SuperclassMatch": 25,
         "FieldCountMatch": 0,
         "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
         "MethodCountMatch": 0,
         "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
         "ConstructorMatch": 5,
         "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Animable_Sub5",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Animable_Sub3",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Item",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
+        "FunctionalPattern": 0,
         "SizePenalty": 0
       },
       "Details": "Inherited from anchor class hierarchy"

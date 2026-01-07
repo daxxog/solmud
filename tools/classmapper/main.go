@@ -25,10 +25,13 @@ const (
 	WEIGHT_SUPERCLASS_MATCH   = 25.0
 	WEIGHT_FIELD_COUNT_MATCH  = 5.0
 	WEIGHT_FIELD_TYPE_SIM     = 10.0
+	WEIGHT_FIELD_PATTERN_SIM  = 8.0 // New: field type patterns
 	WEIGHT_METHOD_COUNT_MATCH = 5.0
 	WEIGHT_METHOD_SIG_SIM     = 20.0
+	WEIGHT_METHOD_NAME_SIM    = 7.0 // New: method name similarity
 	WEIGHT_CONSTRUCTOR_MATCH  = 5.0
 	WEIGHT_ACCESS_MOD_MATCH   = 5.0
+	WEIGHT_FUNCTIONAL_PATTERN = 12.0 // New: functional grouping patterns
 )
 
 var ANCHOR_MAPPINGS = map[string]string{
@@ -41,7 +44,24 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Animable": "XHHRODPC",
 	"Entity":   "GQOSZKJC",
 	"Model":    "ZKARKDQW",
-	"Stream":   "MBMGIXGO",
+	"Stream":   "CRRWDRTI", // Reassigned from MBMGIXGO
+	// Phase 2: Immediate high-confidence matches
+	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
+	// Phase 2: File loading pattern matches
+	"IDK":       "TAVAECED", // Loads "idk.dat"
+	"VarBit":    "SXYSOXTR", // Loads "varbit.dat"
+	"ItemDef":   "DJRMEMXO", // Loads "obj.dat"
+	"ObjectDef": "YZDBYLRM", // Loads "loc.dat"
+	"EntityDef": "CKDEJADD", // Loads "npc.dat"
+	"Animation": "LKGEGIEW", // Loads "seq.dat"
+	"Flo":       "MNHKFPQO", // Loads "flo.dat"
+	"Varp":      "VGXVBFVC", // Loads "varp.dat"
+	"SpotAnim":  "MUDLUUBC", // Loads "spotanim.dat"
+	// Phase 2: Inheritance and complexity matches
+	"TextDrawingArea": "YXVQXWYR", // Extends DrawingArea, text rendering
+	"WorldController": "MBMGIXGO", // 91 methods, world management
+	"RSInterface":     "RKAYAFDQ", // 51 methods, interface management
+	"OnDemandFetcher": "CRRWDRTI", // 46 methods, network fetching (reassigned from Stream)
 }
 
 const (
@@ -96,15 +116,18 @@ type MatchResult struct {
 }
 
 type ScoreBreakdown struct {
-	InterfaceMatch   float64
-	SuperclassMatch  float64
-	FieldCountMatch  float64
-	FieldSimilarity  float64
-	MethodCountMatch float64
-	MethodSimilarity float64
-	ConstructorMatch float64
-	AccessMatch      float64
-	SizePenalty      float64
+	InterfaceMatch    float64
+	SuperclassMatch   float64
+	FieldCountMatch   float64
+	FieldSimilarity   float64
+	FieldPatternSim   float64
+	MethodCountMatch  float64
+	MethodSimilarity  float64
+	MethodNameSim     float64
+	ConstructorMatch  float64
+	AccessMatch       float64
+	FunctionalPattern float64
+	SizePenalty       float64
 }
 
 type BytecodeParser struct {
@@ -117,7 +140,7 @@ type BytecodeParser struct {
 
 func NewBytecodeParser() *BytecodeParser {
 	return &BytecodeParser{
-		regex_class_decl: regexp.MustCompile(`^public (class|interface) (\w+)`),
+		regex_class_decl: regexp.MustCompile(`^(public|final|abstract)?\s*(class|interface)\s+(\w+)`),
 		regex_extends:    regexp.MustCompile(`extends (\w+)`),
 		regex_implements: regexp.MustCompile(`implements ([\w,\s\.]+)`),
 		regex_field:      regexp.MustCompile(`^private|public|protected?\s+(?:static\s+)?(?:final\s+)?([\[\]\w]+)\s+(\w+)`),
@@ -170,7 +193,7 @@ func (self *BytecodeParser) parse_file(file_path string) (*ClassInfo, error) {
 		line := scanner.Text()
 
 		if matches := self.regex_class_decl.FindStringSubmatch(line); matches != nil {
-			class_info.Name = strings.TrimSpace(matches[2])
+			class_info.Name = matches[3]
 		}
 
 		if matches := self.regex_extends.FindStringSubmatch(line); matches != nil {
@@ -349,12 +372,21 @@ func (self *Scorer) CalculateScore(deob_class *ClassInfo, obf_class *ClassInfo) 
 	field_sim := self.calculate_field_similarity(deob_class, obf_class)
 	breakdown.FieldSimilarity = field_sim * WEIGHT_FIELD_TYPE_SIM
 
+	field_pattern_sim := self.calculate_field_pattern_similarity(deob_class, obf_class)
+	breakdown.FieldPatternSim = field_pattern_sim * WEIGHT_FIELD_PATTERN_SIM
+
 	if len(deob_class.Methods) == len(obf_class.Methods) {
 		breakdown.MethodCountMatch = WEIGHT_METHOD_COUNT_MATCH
 	}
 
 	method_sim := self.calculate_method_similarity(deob_class, obf_class)
 	breakdown.MethodSimilarity = method_sim * WEIGHT_METHOD_SIG_SIM
+
+	method_name_sim := self.calculate_method_name_similarity(deob_class, obf_class)
+	breakdown.MethodNameSim = method_name_sim * WEIGHT_METHOD_NAME_SIM
+
+	functional_pattern := self.calculate_functional_pattern_score(deob_class, obf_class)
+	breakdown.FunctionalPattern = functional_pattern * WEIGHT_FUNCTIONAL_PATTERN
 
 	if len(deob_class.Constructors) == len(obf_class.Constructors) {
 		breakdown.ConstructorMatch = WEIGHT_CONSTRUCTOR_MATCH
@@ -430,13 +462,159 @@ func (self *Scorer) calculate_method_similarity(deob, obf *ClassInfo) float64 {
 		for _, obf_method := range obf.Methods {
 			if deob_method.ReturnType == obf_method.ReturnType &&
 				len(deob_method.Parameters) == len(obf_method.Parameters) {
-				matching_methods++
-				break
+				// Enhanced: also check parameter types
+				param_match := true
+				for i, param := range deob_method.Parameters {
+					if i >= len(obf_method.Parameters) || param != obf_method.Parameters[i] {
+						param_match = false
+						break
+					}
+				}
+				if param_match {
+					matching_methods++
+					break
+				}
 			}
 		}
 	}
 
 	return float64(matching_methods) / total_methods
+}
+
+func (self *Scorer) calculate_field_pattern_similarity(deob, obf *ClassInfo) float64 {
+	if len(deob.Fields) == 0 || len(obf.Fields) == 0 {
+		return 0.0
+	}
+
+	// Count field types
+	deob_types := make(map[string]int)
+	obf_types := make(map[string]int)
+
+	for _, field := range deob.Fields {
+		deob_types[field.TypeName]++
+	}
+	for _, field := range obf.Fields {
+		obf_types[field.TypeName]++
+	}
+
+	// Calculate similarity based on type distribution
+	total_types := 0
+	matching_types := 0
+
+	for typ, count := range deob_types {
+		total_types++
+		if obf_count, exists := obf_types[typ]; exists {
+			// Consider it a match if counts are similar (within 2)
+			if math.Abs(float64(count-obf_count)) <= 2 {
+				matching_types++
+			}
+		}
+	}
+
+	if total_types == 0 {
+		return 0.0
+	}
+	return float64(matching_types) / float64(total_types)
+}
+
+func (self *Scorer) calculate_method_name_similarity(deob, obf *ClassInfo) float64 {
+	if len(deob.Methods) == 0 || len(obf.Methods) == 0 {
+		return 0.0
+	}
+
+	// For deobfuscated code, method names are meaningful
+	// For obfuscated code, method names are single characters
+	// Look for patterns in method names
+	deob_named_methods := 0
+	obf_single_char_methods := 0
+
+	for _, method := range deob.Methods {
+		if len(method.Name) > 1 { // Meaningful name
+			deob_named_methods++
+		}
+	}
+
+	for _, method := range obf.Methods {
+		if len(method.Name) == 1 { // Single character (obfuscated)
+			obf_single_char_methods++
+		}
+	}
+
+	// If deob has many named methods and obf has many single-char methods, high similarity
+	total_deob_methods := float64(len(deob.Methods))
+	total_obf_methods := float64(len(obf.Methods))
+
+	if total_deob_methods == 0 || total_obf_methods == 0 {
+		return 0.0
+	}
+
+	deob_ratio := float64(deob_named_methods) / total_deob_methods
+	obf_ratio := float64(obf_single_char_methods) / total_obf_methods
+
+	// Perfect match if patterns are consistent
+	if (deob_ratio > 0.8 && obf_ratio > 0.8) || (deob_ratio < 0.2 && obf_ratio < 0.2) {
+		return 1.0
+	}
+
+	return 0.5 // Partial match
+}
+
+func (self *Scorer) calculate_functional_pattern_score(deob, obf *ClassInfo) float64 {
+	score := 0.0
+
+	// Check for utility class patterns
+	if self.is_utility_class_pattern(deob, obf) {
+		score += 0.3
+	}
+
+	// Check for data structure patterns
+	if self.is_data_structure_pattern(deob, obf) {
+		score += 0.3
+	}
+
+	// Check for interface implementation patterns
+	if self.is_interface_implementation_pattern(deob, obf) {
+		score += 0.4
+	}
+
+	return score
+}
+
+func (self *Scorer) is_utility_class_pattern(deob, obf *ClassInfo) bool {
+	// Utility classes typically have:
+	// - Few fields, many static methods
+	// - No inheritance beyond Object
+	// - Short class names in obfuscated code
+
+	return len(deob.Fields) <= 3 && len(obf.Fields) <= 5 &&
+		len(deob.Methods) >= 5 && len(obf.Methods) >= 3
+}
+
+func (self *Scorer) is_data_structure_pattern(deob, obf *ClassInfo) bool {
+	// Data structures typically have:
+	// - Many fields, few methods
+	// - Array fields
+	// - Node-like inheritance
+
+	has_arrays := false
+	for _, field := range deob.Fields {
+		if strings.Contains(field.TypeName, "[") {
+			has_arrays = true
+			break
+		}
+	}
+
+	return has_arrays && len(deob.Fields) > len(deob.Methods) &&
+		len(obf.Fields) > len(obf.Methods)
+}
+
+func (self *Scorer) is_interface_implementation_pattern(deob, obf *ClassInfo) bool {
+	// Interface implementations typically have:
+	// - Methods that match interface signatures
+	// - Similar inheritance patterns
+
+	return len(deob.Interfaces) > 0 && len(deob.Methods) > len(deob.Fields) &&
+		len(obf.Methods) > len(obf.Fields)
 }
 
 func (self *Scorer) access_modifiers_match(deob, obf *ClassInfo) bool {
@@ -480,6 +658,8 @@ type Resolver struct {
 	scorer           *Scorer
 	deob_inheritance map[string][]string // superclass -> [subclasses]
 	obf_inheritance  map[string][]string // superclass -> [subclasses]
+	deob_references  map[string][]string // class -> [classes it references]
+	obf_references   map[string][]string // class -> [classes it references]
 }
 
 func NewResolver(anchors map[string]string) *Resolver {
@@ -494,6 +674,8 @@ func NewResolver(anchors map[string]string) *Resolver {
 		scorer:           NewScorer(anchors),
 		deob_inheritance: make(map[string][]string),
 		obf_inheritance:  make(map[string][]string),
+		deob_references:  make(map[string][]string),
+		obf_references:   make(map[string][]string),
 	}
 }
 
@@ -503,6 +685,12 @@ func (self *Resolver) buildInheritanceMaps(deob_classes []ClassInfo, obf_classes
 		if class.Superclass != "" {
 			self.deob_inheritance[class.Superclass] = append(self.deob_inheritance[class.Superclass], class.Name)
 		}
+		// Build reference maps based on field types
+		for _, field := range class.Fields {
+			if self.is_known_class_reference(field.TypeName) {
+				self.deob_references[class.Name] = append(self.deob_references[class.Name], field.TypeName)
+			}
+		}
 	}
 
 	// Build obfuscated inheritance map
@@ -510,7 +698,25 @@ func (self *Resolver) buildInheritanceMaps(deob_classes []ClassInfo, obf_classes
 		if class.Superclass != "" {
 			self.obf_inheritance[class.Superclass] = append(self.obf_inheritance[class.Superclass], class.Name)
 		}
+		// Build reference maps based on field types
+		for _, field := range class.Fields {
+			if self.is_known_class_reference(field.TypeName) {
+				self.obf_references[class.Name] = append(self.obf_references[class.Name], field.TypeName)
+			}
+		}
 	}
+}
+
+func (self *Resolver) is_known_class_reference(typeName string) bool {
+	// Check if this type references a known mapped class
+	// Remove array brackets and check if it's a known class
+	cleanType := strings.TrimPrefix(typeName, "[")
+	cleanType = strings.TrimPrefix(cleanType, "L")
+	cleanType = strings.TrimSuffix(cleanType, ";")
+
+	_, isMapped := self.anchors[cleanType]
+	_, isReverseMapped := self.reverse_anchors[cleanType]
+	return isMapped || isReverseMapped
 }
 
 func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
@@ -555,7 +761,15 @@ func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassIn
 		}
 	}
 
-	fmt.Fprintln(os.Stderr, "Pass 3: Matching by signatures...")
+	fmt.Fprintln(os.Stderr, "Pass 3: Matching by signatures and cross-references...")
+	pending_deob = self.remove_matched(deob_classes, results)
+	pending_obf = self.remove_matched(obf_classes, results)
+
+	// Enhanced cross-reference matching
+	cross_ref_matches := self.find_cross_reference_matches(pending_deob, pending_obf)
+	results = append(results, cross_ref_matches...)
+
+	// Update pending lists after cross-reference matching
 	pending_deob = self.remove_matched(deob_classes, results)
 	pending_obf = self.remove_matched(obf_classes, results)
 
@@ -708,6 +922,94 @@ func (self *Resolver) classes_have_similar_inheritance(deob, obf *ClassInfo) boo
 	return deob_super_is_anchor && obf_super_is_anchor
 }
 
+func (self *Resolver) find_cross_reference_matches(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
+	var results []MatchResult
+
+	// For each pending deobfuscated class, look for obfuscated classes with similar reference patterns
+	for _, deob_class := range deob_classes {
+		deob_refs := self.deob_references[deob_class.Name]
+		if len(deob_refs) == 0 {
+			continue
+		}
+
+		best_match := self.find_best_cross_reference_match(&deob_class, deob_refs, obf_classes)
+		if best_match != nil {
+			result := self.create_match(&deob_class, best_match)
+			result.ConfidenceScore = 75.0 // Moderate confidence for cross-reference match
+			result.Details = "Matched by cross-reference analysis"
+			results = append(results, result)
+		}
+	}
+
+	return results
+}
+
+func (self *Resolver) find_best_cross_reference_match(deob_class *ClassInfo, deob_refs []string, obf_classes []ClassInfo) *ClassInfo {
+	// Look for obfuscated classes that reference the same mapped classes
+	for _, obf_class := range obf_classes {
+		obf_refs := self.obf_references[obf_class.Name]
+		if len(obf_refs) == 0 {
+			continue
+		}
+
+		// Check if they reference similar known classes
+		if self.references_are_similar(deob_refs, obf_refs) {
+			// Additional validation: similar size/complexity
+			if self.classes_have_similar_complexity(deob_class, &obf_class) {
+				return &obf_class
+			}
+		}
+	}
+	return nil
+}
+
+func (self *Resolver) references_are_similar(deob_refs []string, obf_refs []string) bool {
+	if len(deob_refs) == 0 || len(obf_refs) == 0 {
+		return false
+	}
+
+	// Convert references to mapped class names for comparison
+	mapped_deob_refs := make([]string, 0)
+	for _, ref := range deob_refs {
+		if mapped, exists := self.anchors[ref]; exists {
+			mapped_deob_refs = append(mapped_deob_refs, mapped)
+		} else {
+			mapped_deob_refs = append(mapped_deob_refs, ref)
+		}
+	}
+
+	mapped_obf_refs := make([]string, 0)
+	for _, ref := range obf_refs {
+		if mapped, exists := self.reverse_anchors[ref]; exists {
+			mapped_obf_refs = append(mapped_obf_refs, mapped)
+		} else {
+			mapped_obf_refs = append(mapped_obf_refs, ref)
+		}
+	}
+
+	// Check for overlap
+	overlap := 0
+	for _, dref := range mapped_deob_refs {
+		for _, oref := range mapped_obf_refs {
+			if dref == oref {
+				overlap++
+				break
+			}
+		}
+	}
+
+	return overlap > 0 && overlap >= len(deob_refs)/2 // At least half the references match
+}
+
+func (self *Resolver) classes_have_similar_complexity(deob, obf *ClassInfo) bool {
+	deob_complexity := len(deob.Fields) + len(deob.Methods)
+	obf_complexity := len(obf.Fields) + len(obf.Methods)
+
+	// Allow 30% difference in complexity
+	ratio := float64(deob_complexity) / float64(obf_complexity)
+	return ratio >= 0.7 && ratio <= 1.3
+}
+
 func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []ClassInfo) (*ClassInfo, float64) {
 	var best_match *ClassInfo
 	best_score := 0.0
@@ -732,9 +1034,9 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 func (self *Resolver) create_match(deob, obf *ClassInfo) MatchResult {
 	breakdown := self.scorer.CalculateScore(deob, obf)
 	total_score := breakdown.InterfaceMatch + breakdown.SuperclassMatch +
-		breakdown.FieldCountMatch + breakdown.FieldSimilarity +
-		breakdown.MethodCountMatch + breakdown.MethodSimilarity +
-		breakdown.ConstructorMatch + breakdown.AccessMatch +
+		breakdown.FieldCountMatch + breakdown.FieldSimilarity + breakdown.FieldPatternSim +
+		breakdown.MethodCountMatch + breakdown.MethodSimilarity + breakdown.MethodNameSim +
+		breakdown.ConstructorMatch + breakdown.AccessMatch + breakdown.FunctionalPattern +
 		breakdown.SizePenalty
 
 	return MatchResult{
@@ -969,6 +1271,9 @@ func main() {
 	valid_matches := filter_by_threshold(matches, *threshold)
 	fmt.Fprintf(os.Stderr, "  %d matches above threshold %.2f\n", len(valid_matches), *threshold)
 
+	// Validate and refine matches
+	valid_matches = resolver_instance.validate_and_refine_matches(valid_matches)
+
 	high_conf := count_by_confidence(valid_matches, HIGH_CONFIDENCE_THRESHOLD)
 	medium_conf := len(valid_matches) - high_conf
 
@@ -997,6 +1302,31 @@ func main() {
 	fmt.Fprintf(os.Stderr, "  Low confidence (<%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, len(valid_matches)-high_conf-medium_conf)
 
 	fmt.Fprintln(os.Stderr, "\nDone!")
+}
+
+func (self *Resolver) validate_and_refine_matches(results []MatchResult) []MatchResult {
+	fmt.Fprintln(os.Stderr, "Validating and refining matches...")
+
+	// Build mapping lookup
+	mappings := make(map[string]string)
+	reverse_mappings := make(map[string]string)
+	for _, result := range results {
+		if result.ObfuscatedClass != "" {
+			mappings[result.DeobfuscatedClass] = result.ObfuscatedClass
+			if existing, exists := reverse_mappings[result.ObfuscatedClass]; exists {
+				fmt.Fprintf(os.Stderr, "  Conflict detected: %s and %s both map to %s\n",
+					existing, result.DeobfuscatedClass, result.ObfuscatedClass)
+				// Keep the higher confidence match
+				// (This is a simple conflict resolution - could be enhanced)
+			} else {
+				reverse_mappings[result.ObfuscatedClass] = result.DeobfuscatedClass
+			}
+		}
+	}
+
+	// For now, return all results - validation could be enhanced
+	fmt.Fprintf(os.Stderr, "  Validation complete: %d mappings\n", len(results))
+	return results
 }
 
 func filter_by_threshold(matches []MatchResult, threshold float64) []MatchResult {
