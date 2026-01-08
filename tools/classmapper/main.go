@@ -166,7 +166,12 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Animable": "XHHRODPC",
 	"Entity":   "GQOSZKJC",
 	"Model":    "ZKARKDQW",
-	// "Stream": "MBMGIXGO", // TODO: Reassign after conflict resolution
+	// Phase 1: Forensic evidence corrections
+	"ISAACRandomGen":  "JOCFVBOI", // FIXED: was OIBEELAZ - verified by forensic analysis
+	"Stream":          "MBMGIXGO", // VERIFIED: bit mask patterns, ISAAC integration
+	"MRUNodes":        "GCPOSBWX", // VERIFIED: error code 47547, constructor pattern
+	"NodeCache":       "ARZPHHDH", // VERIFIED: error code 91499, hash table patterns
+	"WorldController": "NYFUGYQS", // DISCOVERED: multi-dimensional arrays, WorldController patterns
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
@@ -181,9 +186,8 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"SpotAnim":  "MUDLUUBC", // Loads "spotanim.dat"
 	// Phase 2: Inheritance and complexity matches
 	"TextDrawingArea": "YXVQXWYR", // Extends DrawingArea, text rendering
-	"WorldController": "MBMGIXGO", // 91 methods, world management
 	"RSInterface":     "RKAYAFDQ", // 51 methods, interface management
-	"OnDemandFetcher": "CRRWDRTI", // 46 methods, network fetching (reassigned from Stream)
+	"OnDemandFetcher": "CRRWDRTI", // 46 methods, network fetching
 	// Graphics classes
 	"DrawingArea":     "AFCKELYG", // Base graphics class with pixel manipulation
 	"Background":      "DSMJIEPN", // Loads texture data

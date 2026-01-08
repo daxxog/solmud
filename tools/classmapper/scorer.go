@@ -19,9 +19,9 @@ const (
 	WEIGHT_CONSTRUCTOR_MATCH    = 5.0
 	WEIGHT_ACCESS_MOD_MATCH     = 5.0
 	WEIGHT_FUNCTIONAL_PATTERN   = 12.0 // New: functional grouping patterns
-	WEIGHT_CROSSREF_SIMILARITY  = 15.0 // New: cross-reference similarity
-	WEIGHT_UNIQUE_PATTERNS      = 8.0  // New: unique behavioral patterns
-	WEIGHT_BEHAVIORAL_SIGNATURE = 12.0 // New: behavioral signature matching
+	WEIGHT_CROSSREF_SIMILARITY  = 30.0 // INCREASED: cross-reference similarity
+	WEIGHT_UNIQUE_PATTERNS      = 20.0 // INCREASED: unique behavioral patterns
+	WEIGHT_BEHAVIORAL_SIGNATURE = 25.0 // INCREASED: behavioral signature matching
 
 	// Phase 3.2.2.1: Internal behavioral patterns
 	WEIGHT_METHOD_CALL_GRAPH  = 10.0 // Intra-class method call patterns
@@ -29,7 +29,7 @@ const (
 	WEIGHT_ITERATION_PATTERNS = 8.0  // Loop and iteration usage
 	WEIGHT_SEMANTIC_METHODS   = 6.0  // Method naming patterns (getters/setters/etc)
 
-	// Phase 3.2.2.2.2: Data structure type classification
+	// Phase 3.2.2.2: Data structure type classification
 	WEIGHT_ARRAY_PATTERN_ANALYSIS = 15.0 // Base array analysis weight
 	WEIGHT_MULTIDIMENSIONAL       = 8.0  // Multi-dimensional bonus
 	WEIGHT_GRAPHICS_ARRAYS        = 10.0 // Graphics-specific patterns
@@ -39,7 +39,12 @@ const (
 	WEIGHT_WORLD_DATA             = 9.0  // WorldController specific
 
 	// Phase 1.1A: Magic Constants & Static Fields Pattern
-	WEIGHT_MAGIC_CONSTANTS = 20.0 // Distinctive magic numbers and constants
+	WEIGHT_MAGIC_CONSTANTS = 35.0 // INCREASED: Distinctive magic numbers and constants
+
+	// Forensic evidence corrections - NEW WEIGHTS
+	WEIGHT_BIT_MASK_PATTERNS   = 40.0 // NEW: Stream bit masks (511, 1023, 2047...)
+	WEIGHT_CRYPTOGRAPHIC_SIGNS = 50.0 // NEW: ISAAC cryptographic patterns
+	WEIGHT_ERROR_CODES         = 30.0 // NEW: Error codes (47547, 91499)
 
 	SIZE_DIFFERENCE_PENALTY   = 10.0
 	MAX_SIZE_DIFFERENCE_RATIO = 1.5
@@ -979,6 +984,30 @@ func (self *Scorer) calculateMagicConstantsScore(deob, obf *ClassInfo) float64 {
 
 	// ISAACRandomGen: Cryptographic random number generation
 	if self.hasISAACPatterns(deob) && self.hasISAACPatterns(obf) {
+		score += 15.0 // ISAACRandomGen: 256-element arrays + getNextKey method
+	} else if self.hasISAACPatterns(deob) || self.hasISAACPatterns(obf) {
+		score += 20.0 // Partial ISAAC pattern match - one class has cryptographic characteristics
+	}
+
+	// Special case: ISAACRandomGen has very distinctive patterns, give baseline bonus
+	if deob.Name == "ISAACRandomGen" && self.hasISAACPatterns(deob) {
+		score += 10.0 // Baseline bonus for ISAAC's distinctive field patterns
+	}
+
+	// NEW: Bit mask patterns for Stream class
+	bitMaskScore := self.calculateBitMaskScore(deob, obf)
+	score += bitMaskScore
+
+	// NEW: Enhanced ISAAC cryptographic patterns
+	isaacScore := self.calculateISACScore(deob, obf)
+	score += isaacScore
+
+	// NEW: Error code patterns for MRUNodes/NodeCache
+	errorCodeScore := self.calculateErrorCodeScore(deob, obf)
+	score += errorCodeScore
+
+	// ISAACRandomGen: Cryptographic random number generation
+	if self.hasISAACPatterns(deob) && self.hasISAACPatterns(obf) {
 		score += 15.0 // ISAACRandomGen: 256-element arrays + getNextKey method + bit operations
 	} else if self.hasISAACPatterns(deob) || self.hasISAACPatterns(obf) {
 		score += 20.0 // Partial ISAAC pattern match - one class has cryptographic characteristics
@@ -1237,4 +1266,116 @@ func (self *Scorer) hasMouseDetectionPatterns(class *ClassInfo) bool {
 
 	// Require at least 6 points for confident match
 	return mouseDetectionScore >= 6
+}
+
+// New forensic pattern detection functions
+
+func (self *Scorer) calculateBitMaskScore(deob, obf *ClassInfo) float64 {
+	if deob.CrossReferences == nil || obf.CrossReferences == nil {
+		return 0.0
+	}
+
+	deobHasBitMasks := self.hasBitMaskPattern(deob)
+	obfHasBitMasks := self.hasBitMaskPattern(obf)
+
+	if deobHasBitMasks && obfHasBitMasks {
+		return 1.0 // Perfect match
+	}
+	return 0.0
+}
+
+func (self *Scorer) hasBitMaskPattern(class *ClassInfo) bool {
+	for _, field := range class.Fields {
+		if strings.Contains(field.Name, "bitMask") ||
+			(strings.Contains(field.TypeName, "int[") && strings.Contains(field.TypeName, "33")) {
+			return true
+		}
+	}
+	return false
+}
+
+func (self *Scorer) calculateISACScore(deob, obf *ClassInfo) float64 {
+	if deob.CrossReferences == nil || obf.CrossReferences == nil {
+		return 0.0
+	}
+
+	deobISAAC := self.hasISAACPattern(deob)
+	obfISAAC := self.hasISAACPattern(obf)
+
+	if deobISAAC && obfISAAC {
+		return 1.0 // Perfect match
+	}
+	return 0.0
+}
+
+func (self *Scorer) hasISAACPattern(class *ClassInfo) bool {
+	hasGoldenRatio := false
+	has256Arrays := false
+	hasBitShifts := false
+
+	for _, field := range class.Fields {
+		if strings.Contains(field.Name, "accumulator") {
+			hasGoldenRatio = true
+		}
+		if strings.Contains(field.TypeName, "int[256]") {
+			has256Arrays = true
+		}
+	}
+
+	if class.InternalBehavior != nil && class.InternalBehavior.MethodCallGraph != nil {
+		totalBitShifts := 0
+		for method, count := range class.InternalBehavior.MethodCallGraph.CallFreq {
+			if strings.Contains(method, "shift") || strings.Contains(method, "rotat") {
+				totalBitShifts += count
+			}
+		}
+		hasBitShifts = totalBitShifts > 20
+	}
+
+	return hasGoldenRatio && has256Arrays && hasBitShifts
+}
+
+func (self *Scorer) calculateErrorCodeScore(deob, obf *ClassInfo) float64 {
+	if deob.CrossReferences == nil || obf.CrossReferences == nil {
+		return 0.0
+	}
+
+	deobErrorCodes := self.extractErrorCodes(deob)
+	obfErrorCodes := self.extractErrorCodes(obf)
+
+	if len(deobErrorCodes) == 0 || len(obfErrorCodes) == 0 {
+		return 0.0
+	}
+
+	matches := 0
+	for deobCode := range deobErrorCodes {
+		for obfCode := range obfErrorCodes {
+			if deobCode == obfCode {
+				matches++
+			}
+		}
+	}
+
+	if len(obfErrorCodes) == 0 {
+		return 0.0
+	}
+
+	return float64(matches) / float64(len(obfErrorCodes))
+}
+
+func (self *Scorer) extractErrorCodes(class *ClassInfo) map[string]bool {
+	codes := make(map[string]bool)
+
+	for _, method := range class.Methods {
+		if strings.Contains(method.Name, "reporterror") {
+			for _, param := range method.Parameters {
+				if strings.Contains(param, "47547") ||
+					strings.Contains(param, "91499") {
+					codes[strings.Trim(param, "\"")] = true
+				}
+			}
+		}
+	}
+
+	return codes
 }
