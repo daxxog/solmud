@@ -17,10 +17,10 @@ Stream,CRRWDRTI,100.00,false,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 VarBit,SXYSOXTR,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Varp,VGXVBFVC,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 client,,85.00,false,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
-Player,DLZHLHNK,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
-NPC,CWNCPMLX,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Ground,DYMVKFXP,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Class30_Sub1,QTKGMFHL,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Player,DLZHLHNK,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+NPC,CWNCPMLX,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Animable_Sub4,SWTXAYDT,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Animable_Sub5,WBWOBAFW,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Animable_Sub3,OJEALINP,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy

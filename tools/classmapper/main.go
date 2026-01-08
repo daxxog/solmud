@@ -64,6 +64,11 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"WorldController": "MBMGIXGO", // 91 methods, world management
 	"RSInterface":     "RKAYAFDQ", // 51 methods, interface management
 	"OnDemandFetcher": "CRRWDRTI", // 46 methods, network fetching (reassigned from Stream)
+	// Graphics classes
+	"DrawingArea":     "AFCKELYG", // Base graphics class with pixel manipulation
+	"Background":      "DSMJIEPN", // Loads texture data
+	"Sprite":          "CXGZMTJK", // Image rendering class
+	"RSImageProducer": "IVIFZQBK", // Image producer for rendering
 }
 
 const (
