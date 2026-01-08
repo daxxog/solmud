@@ -69,6 +69,8 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Background":      "DSMJIEPN", // Loads texture data
 	"Sprite":          "CXGZMTJK", // Image rendering class
 	"RSImageProducer": "IVIFZQBK", // Image producer for rendering
+	"Decompressor":    "IGSLDTHC", // Archive decompression with RandomAccessFile
+	"RSSocket":        "NQABEVLK", // Network socket with Runnable interface
 }
 
 const (
