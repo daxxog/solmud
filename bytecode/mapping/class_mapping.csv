@@ -64,3 +64,6 @@ NodeCache,ARZPHHDH,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Animable_Sub4,SWTXAYDT,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Class40,FTPNODIB,93.00,true,0,N/A,N/A,N/A,N/A,3D face transformation matrices match - references Animation class
 RSInterface,DUCMKFAY,95.00,true,0,N/A,N/A,N/A,N/A,Interface management - 4 signature patterns match
+MouseDetection,ZIJPRJEC,95.00,true,1,N/A,N/A,N/A,N/A,Runnable mouse tracking - coordinate arrays and synchronization
+DummyClass,OIBEELAZ,98.00,true,0,N/A,N/A,N/A,N/A,Static cache array - minimal holder class
+Class33,RJXWGZGD,96.00,true,0,N/A,N/A,N/A,N/A,4 int fields - simple data container
