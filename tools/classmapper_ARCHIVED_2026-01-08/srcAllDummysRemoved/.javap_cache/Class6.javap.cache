@@ -1,0 +1,1211 @@
+Compiled from "Class6.java"
+final class Class6 {
+  private Class29 aClass29_98;
+
+  private Class29 aClass29_99;
+
+  private Class29 aClass29_100;
+
+  private Class29 aClass29_101;
+
+  private Class29 aClass29_102;
+
+  private Class29 aClass29_103;
+
+  private Class29 aClass29_104;
+
+  private Class29 aClass29_105;
+
+  private final int[] anIntArray106;
+
+  private final int[] anIntArray107;
+
+  private final int[] anIntArray108;
+
+  private int anInt109;
+
+  private int anInt110;
+
+  private Class39 aClass39_111;
+
+  private Class29 aClass29_112;
+
+  int anInt113;
+
+  int anInt114;
+
+  private static int[] anIntArray115;
+
+  private static int[] anIntArray116;
+
+  private static int[] anIntArray117;
+
+  private static final int[] anIntArray118;
+
+  private static final int[] anIntArray119;
+
+  private static final int[] anIntArray120;
+
+  private static final int[] anIntArray121;
+
+  private static final int[] anIntArray122;
+
+  public static void method166();
+    Code:
+       0: ldc           #1                  // int 32768
+       2: newarray       int
+       4: putstatic     #2                  // Field anIntArray116:[I
+       7: iconst_0
+       8: istore_0
+       9: iload_0
+      10: ldc           #1                  // int 32768
+      12: if_icmpge     46
+      15: invokestatic  #3                  // Method java/lang/Math.random:()D
+      18: ldc2_w        #4                  // double 0.5d
+      21: dcmpl
+      22: ifle          34
+      25: getstatic     #2                  // Field anIntArray116:[I
+      28: iload_0
+      29: iconst_1
+      30: iastore
+      31: goto          40
+      34: getstatic     #2                  // Field anIntArray116:[I
+      37: iload_0
+      38: iconst_m1
+      39: iastore
+      40: iinc          0, 1
+      43: goto          9
+      46: ldc           #1                  // int 32768
+      48: newarray       int
+      50: putstatic     #6                  // Field anIntArray117:[I
+      53: iconst_0
+      54: istore_0
+      55: iload_0
+      56: ldc           #1                  // int 32768
+      58: if_icmpge     86
+      61: getstatic     #6                  // Field anIntArray117:[I
+      64: iload_0
+      65: iload_0
+      66: i2d
+      67: ldc2_w        #7                  // double 5215.1903d
+      70: ddiv
+      71: invokestatic  #9                  // Method java/lang/Math.sin:(D)D
+      74: ldc2_w        #10                 // double 16384.0d
+      77: dmul
+      78: d2i
+      79: iastore
+      80: iinc          0, 1
+      83: goto          55
+      86: ldc           #12                 // int 220500
+      88: newarray       int
+      90: putstatic     #13                 // Field anIntArray115:[I
+      93: return
+
+  public int[] method167(int, int);
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_3
+       3: iload_1
+       4: if_icmpge     19
+       7: getstatic     #13                 // Field anIntArray115:[I
+      10: iload_3
+      11: iconst_0
+      12: iastore
+      13: iinc          3, 1
+      16: goto          2
+      19: iload_2
+      20: bipush        10
+      22: if_icmpge     29
+      25: getstatic     #13                 // Field anIntArray115:[I
+      28: areturn
+      29: iload_1
+      30: i2d
+      31: iload_2
+      32: i2d
+      33: dconst_0
+      34: dadd
+      35: ddiv
+      36: dstore_3
+      37: aload_0
+      38: getfield      #14                 // Field aClass29_98:LClass29;
+      41: invokevirtual #15                 // Method Class29.resetValues:()V
+      44: aload_0
+      45: getfield      #16                 // Field aClass29_99:LClass29;
+      48: invokevirtual #15                 // Method Class29.resetValues:()V
+      51: iconst_0
+      52: istore        5
+      54: iconst_0
+      55: istore        6
+      57: iconst_0
+      58: istore        7
+      60: aload_0
+      61: getfield      #17                 // Field aClass29_100:LClass29;
+      64: ifnull        123
+      67: aload_0
+      68: getfield      #17                 // Field aClass29_100:LClass29;
+      71: invokevirtual #15                 // Method Class29.resetValues:()V
+      74: aload_0
+      75: getfield      #18                 // Field aClass29_101:LClass29;
+      78: invokevirtual #15                 // Method Class29.resetValues:()V
+      81: aload_0
+      82: getfield      #17                 // Field aClass29_100:LClass29;
+      85: getfield      #19                 // Field Class29.anInt539:I
+      88: aload_0
+      89: getfield      #17                 // Field aClass29_100:LClass29;
+      92: getfield      #20                 // Field Class29.anInt538:I
+      95: isub
+      96: i2d
+      97: ldc2_w        #21                 // double 32.768d
+     100: dmul
+     101: dload_3
+     102: ddiv
+     103: d2i
+     104: istore        5
+     106: aload_0
+     107: getfield      #17                 // Field aClass29_100:LClass29;
+     110: getfield      #20                 // Field Class29.anInt538:I
+     113: i2d
+     114: ldc2_w        #21                 // double 32.768d
+     117: dmul
+     118: dload_3
+     119: ddiv
+     120: d2i
+     121: istore        6
+     123: iconst_0
+     124: istore        8
+     126: iconst_0
+     127: istore        9
+     129: iconst_0
+     130: istore        10
+     132: aload_0
+     133: getfield      #23                 // Field aClass29_102:LClass29;
+     136: ifnull        195
+     139: aload_0
+     140: getfield      #23                 // Field aClass29_102:LClass29;
+     143: invokevirtual #15                 // Method Class29.resetValues:()V
+     146: aload_0
+     147: getfield      #24                 // Field aClass29_103:LClass29;
+     150: invokevirtual #15                 // Method Class29.resetValues:()V
+     153: aload_0
+     154: getfield      #23                 // Field aClass29_102:LClass29;
+     157: getfield      #19                 // Field Class29.anInt539:I
+     160: aload_0
+     161: getfield      #23                 // Field aClass29_102:LClass29;
+     164: getfield      #20                 // Field Class29.anInt538:I
+     167: isub
+     168: i2d
+     169: ldc2_w        #21                 // double 32.768d
+     172: dmul
+     173: dload_3
+     174: ddiv
+     175: d2i
+     176: istore        8
+     178: aload_0
+     179: getfield      #23                 // Field aClass29_102:LClass29;
+     182: getfield      #20                 // Field Class29.anInt538:I
+     185: i2d
+     186: ldc2_w        #21                 // double 32.768d
+     189: dmul
+     190: dload_3
+     191: ddiv
+     192: d2i
+     193: istore        9
+     195: iconst_0
+     196: istore        11
+     198: iload         11
+     200: iconst_5
+     201: if_icmpge     328
+     204: aload_0
+     205: getfield      #25                 // Field anIntArray106:[I
+     208: iload         11
+     210: iaload
+     211: ifeq          322
+     214: getstatic     #26                 // Field anIntArray118:[I
+     217: iload         11
+     219: iconst_0
+     220: iastore
+     221: getstatic     #27                 // Field anIntArray119:[I
+     224: iload         11
+     226: aload_0
+     227: getfield      #28                 // Field anIntArray108:[I
+     230: iload         11
+     232: iaload
+     233: i2d
+     234: dload_3
+     235: dmul
+     236: d2i
+     237: iastore
+     238: getstatic     #29                 // Field anIntArray120:[I
+     241: iload         11
+     243: aload_0
+     244: getfield      #25                 // Field anIntArray106:[I
+     247: iload         11
+     249: iaload
+     250: bipush        14
+     252: ishl
+     253: bipush        100
+     255: idiv
+     256: iastore
+     257: getstatic     #30                 // Field anIntArray121:[I
+     260: iload         11
+     262: aload_0
+     263: getfield      #14                 // Field aClass29_98:LClass29;
+     266: getfield      #19                 // Field Class29.anInt539:I
+     269: aload_0
+     270: getfield      #14                 // Field aClass29_98:LClass29;
+     273: getfield      #20                 // Field Class29.anInt538:I
+     276: isub
+     277: i2d
+     278: ldc2_w        #21                 // double 32.768d
+     281: dmul
+     282: ldc2_w        #31                 // double 1.0057929410678534d
+     285: aload_0
+     286: getfield      #33                 // Field anIntArray107:[I
+     289: iload         11
+     291: iaload
+     292: i2d
+     293: invokestatic  #34                 // Method java/lang/Math.pow:(DD)D
+     296: dmul
+     297: dload_3
+     298: ddiv
+     299: d2i
+     300: iastore
+     301: getstatic     #35                 // Field anIntArray122:[I
+     304: iload         11
+     306: aload_0
+     307: getfield      #14                 // Field aClass29_98:LClass29;
+     310: getfield      #20                 // Field Class29.anInt538:I
+     313: i2d
+     314: ldc2_w        #21                 // double 32.768d
+     317: dmul
+     318: dload_3
+     319: ddiv
+     320: d2i
+     321: iastore
+     322: iinc          11, 1
+     325: goto          198
+     328: iconst_0
+     329: istore        11
+     331: iload         11
+     333: iload_1
+     334: if_icmpge     607
+     337: aload_0
+     338: getfield      #14                 // Field aClass29_98:LClass29;
+     341: iload_1
+     342: invokevirtual #36                 // Method Class29.method328:(I)I
+     345: istore        12
+     347: aload_0
+     348: getfield      #16                 // Field aClass29_99:LClass29;
+     351: iload_1
+     352: invokevirtual #36                 // Method Class29.method328:(I)I
+     355: istore        13
+     357: aload_0
+     358: getfield      #17                 // Field aClass29_100:LClass29;
+     361: ifnull        422
+     364: aload_0
+     365: getfield      #17                 // Field aClass29_100:LClass29;
+     368: iload_1
+     369: invokevirtual #36                 // Method Class29.method328:(I)I
+     372: istore        14
+     374: aload_0
+     375: getfield      #18                 // Field aClass29_101:LClass29;
+     378: iload_1
+     379: invokevirtual #36                 // Method Class29.method328:(I)I
+     382: istore        15
+     384: iload         12
+     386: aload_0
+     387: iload         15
+     389: iload         7
+     391: aload_0
+     392: getfield      #17                 // Field aClass29_100:LClass29;
+     395: getfield      #37                 // Field Class29.anInt540:I
+     398: invokespecial #38                 // Method method168:(III)I
+     401: iconst_1
+     402: ishr
+     403: iadd
+     404: istore        12
+     406: iload         7
+     408: iload         14
+     410: iload         5
+     412: imul
+     413: bipush        16
+     415: ishr
+     416: iload         6
+     418: iadd
+     419: iadd
+     420: istore        7
+     422: aload_0
+     423: getfield      #23                 // Field aClass29_102:LClass29;
+     426: ifnull        493
+     429: aload_0
+     430: getfield      #23                 // Field aClass29_102:LClass29;
+     433: iload_1
+     434: invokevirtual #36                 // Method Class29.method328:(I)I
+     437: istore        14
+     439: aload_0
+     440: getfield      #24                 // Field aClass29_103:LClass29;
+     443: iload_1
+     444: invokevirtual #36                 // Method Class29.method328:(I)I
+     447: istore        15
+     449: iload         13
+     451: aload_0
+     452: iload         15
+     454: iload         10
+     456: aload_0
+     457: getfield      #23                 // Field aClass29_102:LClass29;
+     460: getfield      #37                 // Field Class29.anInt540:I
+     463: invokespecial #38                 // Method method168:(III)I
+     466: iconst_1
+     467: ishr
+     468: ldc           #1                  // int 32768
+     470: iadd
+     471: imul
+     472: bipush        15
+     474: ishr
+     475: istore        13
+     477: iload         10
+     479: iload         14
+     481: iload         8
+     483: imul
+     484: bipush        16
+     486: ishr
+     487: iload         9
+     489: iadd
+     490: iadd
+     491: istore        10
+     493: iconst_0
+     494: istore        14
+     496: iload         14
+     498: iconst_5
+     499: if_icmpge     601
+     502: aload_0
+     503: getfield      #25                 // Field anIntArray106:[I
+     506: iload         14
+     508: iaload
+     509: ifeq          595
+     512: iload         11
+     514: getstatic     #27                 // Field anIntArray119:[I
+     517: iload         14
+     519: iaload
+     520: iadd
+     521: istore        15
+     523: iload         15
+     525: iload_1
+     526: if_icmpge     595
+     529: getstatic     #13                 // Field anIntArray115:[I
+     532: iload         15
+     534: dup2
+     535: iaload
+     536: aload_0
+     537: iload         13
+     539: getstatic     #29                 // Field anIntArray120:[I
+     542: iload         14
+     544: iaload
+     545: imul
+     546: bipush        15
+     548: ishr
+     549: getstatic     #26                 // Field anIntArray118:[I
+     552: iload         14
+     554: iaload
+     555: aload_0
+     556: getfield      #14                 // Field aClass29_98:LClass29;
+     559: getfield      #37                 // Field Class29.anInt540:I
+     562: invokespecial #38                 // Method method168:(III)I
+     565: iadd
+     566: iastore
+     567: getstatic     #26                 // Field anIntArray118:[I
+     570: iload         14
+     572: dup2
+     573: iaload
+     574: iload         12
+     576: getstatic     #30                 // Field anIntArray121:[I
+     579: iload         14
+     581: iaload
+     582: imul
+     583: bipush        16
+     585: ishr
+     586: getstatic     #35                 // Field anIntArray122:[I
+     589: iload         14
+     591: iaload
+     592: iadd
+     593: iadd
+     594: iastore
+     595: iinc          14, 1
+     598: goto          496
+     601: iinc          11, 1
+     604: goto          331
+     607: aload_0
+     608: getfield      #39                 // Field aClass29_104:LClass29;
+     611: ifnull        782
+     614: aload_0
+     615: getfield      #39                 // Field aClass29_104:LClass29;
+     618: invokevirtual #15                 // Method Class29.resetValues:()V
+     621: aload_0
+     622: getfield      #40                 // Field aClass29_105:LClass29;
+     625: invokevirtual #15                 // Method Class29.resetValues:()V
+     628: iconst_0
+     629: istore        11
+     631: iconst_0
+     632: istore        12
+     634: iconst_1
+     635: istore        13
+     637: iconst_0
+     638: istore        14
+     640: iload         14
+     642: iload_1
+     643: if_icmpge     782
+     646: aload_0
+     647: getfield      #39                 // Field aClass29_104:LClass29;
+     650: iload_1
+     651: invokevirtual #36                 // Method Class29.method328:(I)I
+     654: istore        15
+     656: aload_0
+     657: getfield      #40                 // Field aClass29_105:LClass29;
+     660: iload_1
+     661: invokevirtual #36                 // Method Class29.method328:(I)I
+     664: istore        16
+     666: iload         13
+     668: ifeq          705
+     671: aload_0
+     672: getfield      #39                 // Field aClass29_104:LClass29;
+     675: getfield      #20                 // Field Class29.anInt538:I
+     678: aload_0
+     679: getfield      #39                 // Field aClass29_104:LClass29;
+     682: getfield      #19                 // Field Class29.anInt539:I
+     685: aload_0
+     686: getfield      #39                 // Field aClass29_104:LClass29;
+     689: getfield      #20                 // Field Class29.anInt538:I
+     692: isub
+     693: iload         15
+     695: imul
+     696: bipush        8
+     698: ishr
+     699: iadd
+     700: istore        17
+     702: goto          736
+     705: aload_0
+     706: getfield      #39                 // Field aClass29_104:LClass29;
+     709: getfield      #20                 // Field Class29.anInt538:I
+     712: aload_0
+     713: getfield      #39                 // Field aClass29_104:LClass29;
+     716: getfield      #19                 // Field Class29.anInt539:I
+     719: aload_0
+     720: getfield      #39                 // Field aClass29_104:LClass29;
+     723: getfield      #20                 // Field Class29.anInt538:I
+     726: isub
+     727: iload         16
+     729: imul
+     730: bipush        8
+     732: ishr
+     733: iadd
+     734: istore        17
+     736: iinc_w        11, 256
+     742: iload         11
+     744: iload         17
+     746: if_icmplt     764
+     749: iconst_0
+     750: istore        11
+     752: iload         13
+     754: ifne          761
+     757: iconst_1
+     758: goto          762
+     761: iconst_0
+     762: istore        13
+     764: iload         13
+     766: ifeq          776
+     769: getstatic     #13                 // Field anIntArray115:[I
+     772: iload         14
+     774: iconst_0
+     775: iastore
+     776: iinc          14, 1
+     779: goto          640
+     782: aload_0
+     783: getfield      #41                 // Field anInt109:I
+     786: ifle          848
+     789: aload_0
+     790: getfield      #42                 // Field anInt110:I
+     793: ifle          848
+     796: aload_0
+     797: getfield      #41                 // Field anInt109:I
+     800: i2d
+     801: dload_3
+     802: dmul
+     803: d2i
+     804: istore        11
+     806: iload         11
+     808: istore        12
+     810: iload         12
+     812: iload_1
+     813: if_icmpge     848
+     816: getstatic     #13                 // Field anIntArray115:[I
+     819: iload         12
+     821: dup2
+     822: iaload
+     823: getstatic     #13                 // Field anIntArray115:[I
+     826: iload         12
+     828: iload         11
+     830: isub
+     831: iaload
+     832: aload_0
+     833: getfield      #42                 // Field anInt110:I
+     836: imul
+     837: bipush        100
+     839: idiv
+     840: iadd
+     841: iastore
+     842: iinc          12, 1
+     845: goto          810
+     848: aload_0
+     849: getfield      #43                 // Field aClass39_111:LClass39;
+     852: getfield      #44                 // Field Class39.anIntArray665:[I
+     855: iconst_0
+     856: iaload
+     857: ifgt          872
+     860: aload_0
+     861: getfield      #43                 // Field aClass39_111:LClass39;
+     864: getfield      #44                 // Field Class39.anIntArray665:[I
+     867: iconst_1
+     868: iaload
+     869: ifle          1472
+     872: aload_0
+     873: getfield      #45                 // Field aClass29_112:LClass29;
+     876: invokevirtual #15                 // Method Class29.resetValues:()V
+     879: aload_0
+     880: getfield      #45                 // Field aClass29_112:LClass29;
+     883: iload_1
+     884: iconst_1
+     885: iadd
+     886: invokevirtual #36                 // Method Class29.method328:(I)I
+     889: istore        11
+     891: aload_0
+     892: getfield      #43                 // Field aClass39_111:LClass39;
+     895: iconst_0
+     896: iload         11
+     898: i2f
+     899: ldc           #46                 // float 65536.0f
+     901: fdiv
+     902: invokevirtual #47                 // Method Class39.method544:(IF)I
+     905: istore        12
+     907: aload_0
+     908: getfield      #43                 // Field aClass39_111:LClass39;
+     911: iconst_1
+     912: iload         11
+     914: i2f
+     915: ldc           #46                 // float 65536.0f
+     917: fdiv
+     918: invokevirtual #47                 // Method Class39.method544:(IF)I
+     921: istore        13
+     923: iload_1
+     924: iload         12
+     926: iload         13
+     928: iadd
+     929: if_icmplt     1472
+     932: iconst_0
+     933: istore        14
+     935: iload         13
+     937: istore        15
+     939: iload         15
+     941: iload_1
+     942: iload         12
+     944: isub
+     945: if_icmple     954
+     948: iload_1
+     949: iload         12
+     951: isub
+     952: istore        15
+     954: iload         14
+     956: iload         15
+     958: if_icmpge     1105
+     961: getstatic     #13                 // Field anIntArray115:[I
+     964: iload         14
+     966: iload         12
+     968: iadd
+     969: iaload
+     970: i2l
+     971: getstatic     #48                 // Field Class39.anInt672:I
+     974: i2l
+     975: lmul
+     976: bipush        16
+     978: lshr
+     979: l2i
+     980: istore        16
+     982: iconst_0
+     983: istore        17
+     985: iload         17
+     987: iload         12
+     989: if_icmpge     1032
+     992: iload         16
+     994: getstatic     #13                 // Field anIntArray115:[I
+     997: iload         14
+     999: iload         12
+    1001: iadd
+    1002: iconst_1
+    1003: isub
+    1004: iload         17
+    1006: isub
+    1007: iaload
+    1008: i2l
+    1009: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1012: iconst_0
+    1013: aaload
+    1014: iload         17
+    1016: iaload
+    1017: i2l
+    1018: lmul
+    1019: bipush        16
+    1021: lshr
+    1022: l2i
+    1023: iadd
+    1024: istore        16
+    1026: iinc          17, 1
+    1029: goto          985
+    1032: iconst_0
+    1033: istore        17
+    1035: iload         17
+    1037: iload         14
+    1039: if_icmpge     1079
+    1042: iload         16
+    1044: getstatic     #13                 // Field anIntArray115:[I
+    1047: iload         14
+    1049: iconst_1
+    1050: isub
+    1051: iload         17
+    1053: isub
+    1054: iaload
+    1055: i2l
+    1056: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1059: iconst_1
+    1060: aaload
+    1061: iload         17
+    1063: iaload
+    1064: i2l
+    1065: lmul
+    1066: bipush        16
+    1068: lshr
+    1069: l2i
+    1070: isub
+    1071: istore        16
+    1073: iinc          17, 1
+    1076: goto          1035
+    1079: getstatic     #13                 // Field anIntArray115:[I
+    1082: iload         14
+    1084: iload         16
+    1086: iastore
+    1087: aload_0
+    1088: getfield      #45                 // Field aClass29_112:LClass29;
+    1091: iload_1
+    1092: iconst_1
+    1093: iadd
+    1094: invokevirtual #36                 // Method Class29.method328:(I)I
+    1097: istore        11
+    1099: iinc          14, 1
+    1102: goto          954
+    1105: sipush        128
+    1108: istore        16
+    1110: iload         16
+    1112: istore        15
+    1114: iload         15
+    1116: iload_1
+    1117: iload         12
+    1119: isub
+    1120: if_icmple     1129
+    1123: iload_1
+    1124: iload         12
+    1126: isub
+    1127: istore        15
+    1129: iload         14
+    1131: iload         15
+    1133: if_icmpge     1280
+    1136: getstatic     #13                 // Field anIntArray115:[I
+    1139: iload         14
+    1141: iload         12
+    1143: iadd
+    1144: iaload
+    1145: i2l
+    1146: getstatic     #48                 // Field Class39.anInt672:I
+    1149: i2l
+    1150: lmul
+    1151: bipush        16
+    1153: lshr
+    1154: l2i
+    1155: istore        17
+    1157: iconst_0
+    1158: istore        18
+    1160: iload         18
+    1162: iload         12
+    1164: if_icmpge     1207
+    1167: iload         17
+    1169: getstatic     #13                 // Field anIntArray115:[I
+    1172: iload         14
+    1174: iload         12
+    1176: iadd
+    1177: iconst_1
+    1178: isub
+    1179: iload         18
+    1181: isub
+    1182: iaload
+    1183: i2l
+    1184: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1187: iconst_0
+    1188: aaload
+    1189: iload         18
+    1191: iaload
+    1192: i2l
+    1193: lmul
+    1194: bipush        16
+    1196: lshr
+    1197: l2i
+    1198: iadd
+    1199: istore        17
+    1201: iinc          18, 1
+    1204: goto          1160
+    1207: iconst_0
+    1208: istore        18
+    1210: iload         18
+    1212: iload         13
+    1214: if_icmpge     1254
+    1217: iload         17
+    1219: getstatic     #13                 // Field anIntArray115:[I
+    1222: iload         14
+    1224: iconst_1
+    1225: isub
+    1226: iload         18
+    1228: isub
+    1229: iaload
+    1230: i2l
+    1231: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1234: iconst_1
+    1235: aaload
+    1236: iload         18
+    1238: iaload
+    1239: i2l
+    1240: lmul
+    1241: bipush        16
+    1243: lshr
+    1244: l2i
+    1245: isub
+    1246: istore        17
+    1248: iinc          18, 1
+    1251: goto          1210
+    1254: getstatic     #13                 // Field anIntArray115:[I
+    1257: iload         14
+    1259: iload         17
+    1261: iastore
+    1262: aload_0
+    1263: getfield      #45                 // Field aClass29_112:LClass29;
+    1266: iload_1
+    1267: iconst_1
+    1268: iadd
+    1269: invokevirtual #36                 // Method Class29.method328:(I)I
+    1272: istore        11
+    1274: iinc          14, 1
+    1277: goto          1129
+    1280: iload         14
+    1282: iload_1
+    1283: iload         12
+    1285: isub
+    1286: if_icmplt     1292
+    1289: goto          1334
+    1292: aload_0
+    1293: getfield      #43                 // Field aClass39_111:LClass39;
+    1296: iconst_0
+    1297: iload         11
+    1299: i2f
+    1300: ldc           #46                 // float 65536.0f
+    1302: fdiv
+    1303: invokevirtual #47                 // Method Class39.method544:(IF)I
+    1306: istore        12
+    1308: aload_0
+    1309: getfield      #43                 // Field aClass39_111:LClass39;
+    1312: iconst_1
+    1313: iload         11
+    1315: i2f
+    1316: ldc           #46                 // float 65536.0f
+    1318: fdiv
+    1319: invokevirtual #47                 // Method Class39.method544:(IF)I
+    1322: istore        13
+    1324: iload         15
+    1326: iload         16
+    1328: iadd
+    1329: istore        15
+    1331: goto          1114
+    1334: iload         14
+    1336: iload_1
+    1337: if_icmpge     1472
+    1340: iconst_0
+    1341: istore        17
+    1343: iload         14
+    1345: iload         12
+    1347: iadd
+    1348: iload_1
+    1349: isub
+    1350: istore        18
+    1352: iload         18
+    1354: iload         12
+    1356: if_icmpge     1399
+    1359: iload         17
+    1361: getstatic     #13                 // Field anIntArray115:[I
+    1364: iload         14
+    1366: iload         12
+    1368: iadd
+    1369: iconst_1
+    1370: isub
+    1371: iload         18
+    1373: isub
+    1374: iaload
+    1375: i2l
+    1376: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1379: iconst_0
+    1380: aaload
+    1381: iload         18
+    1383: iaload
+    1384: i2l
+    1385: lmul
+    1386: bipush        16
+    1388: lshr
+    1389: l2i
+    1390: iadd
+    1391: istore        17
+    1393: iinc          18, 1
+    1396: goto          1352
+    1399: iconst_0
+    1400: istore        18
+    1402: iload         18
+    1404: iload         13
+    1406: if_icmpge     1446
+    1409: iload         17
+    1411: getstatic     #13                 // Field anIntArray115:[I
+    1414: iload         14
+    1416: iconst_1
+    1417: isub
+    1418: iload         18
+    1420: isub
+    1421: iaload
+    1422: i2l
+    1423: getstatic     #49                 // Field Class39.anIntArrayArray670:[[I
+    1426: iconst_1
+    1427: aaload
+    1428: iload         18
+    1430: iaload
+    1431: i2l
+    1432: lmul
+    1433: bipush        16
+    1435: lshr
+    1436: l2i
+    1437: isub
+    1438: istore        17
+    1440: iinc          18, 1
+    1443: goto          1402
+    1446: getstatic     #13                 // Field anIntArray115:[I
+    1449: iload         14
+    1451: iload         17
+    1453: iastore
+    1454: aload_0
+    1455: getfield      #45                 // Field aClass29_112:LClass29;
+    1458: iload_1
+    1459: iconst_1
+    1460: iadd
+    1461: invokevirtual #36                 // Method Class29.method328:(I)I
+    1464: istore        18
+    1466: iinc          14, 1
+    1469: goto          1334
+    1472: iconst_0
+    1473: istore        11
+    1475: iload         11
+    1477: iload_1
+    1478: if_icmpge     1529
+    1481: getstatic     #13                 // Field anIntArray115:[I
+    1484: iload         11
+    1486: iaload
+    1487: sipush        -32768
+    1490: if_icmpge     1502
+    1493: getstatic     #13                 // Field anIntArray115:[I
+    1496: iload         11
+    1498: sipush        -32768
+    1501: iastore
+    1502: getstatic     #13                 // Field anIntArray115:[I
+    1505: iload         11
+    1507: iaload
+    1508: sipush        32767
+    1511: if_icmple     1523
+    1514: getstatic     #13                 // Field anIntArray115:[I
+    1517: iload         11
+    1519: sipush        32767
+    1522: iastore
+    1523: iinc          11, 1
+    1526: goto          1475
+    1529: getstatic     #13                 // Field anIntArray115:[I
+    1532: areturn
+
+  private int method168(int, int, int);
+    Code:
+       0: iload_3
+       1: iconst_1
+       2: if_icmpne     21
+       5: iload_2
+       6: sipush        32767
+       9: iand
+      10: sipush        16384
+      13: if_icmpge     18
+      16: iload_1
+      17: ireturn
+      18: iload_1
+      19: ineg
+      20: ireturn
+      21: iload_3
+      22: iconst_2
+      23: if_icmpne     41
+      26: getstatic     #6                  // Field anIntArray117:[I
+      29: iload_2
+      30: sipush        32767
+      33: iand
+      34: iaload
+      35: iload_1
+      36: imul
+      37: bipush        14
+      39: ishr
+      40: ireturn
+      41: iload_3
+      42: iconst_3
+      43: if_icmpne     59
+      46: iload_2
+      47: sipush        32767
+      50: iand
+      51: iload_1
+      52: imul
+      53: bipush        14
+      55: ishr
+      56: iload_1
+      57: isub
+      58: ireturn
+      59: iload_3
+      60: iconst_4
+      61: if_icmpne     80
+      64: getstatic     #2                  // Field anIntArray116:[I
+      67: iload_2
+      68: sipush        2607
+      71: idiv
+      72: sipush        32767
+      75: iand
+      76: iaload
+      77: iload_1
+      78: imul
+      79: ireturn
+      80: iconst_0
+      81: ireturn
+
+  public void method169(Stream);
+    Code:
+       0: aload_0
+       1: new           #50                 // class Class29
+       4: dup
+       5: invokespecial #51                 // Method Class29."<init>":()V
+       8: putfield      #14                 // Field aClass29_98:LClass29;
+      11: aload_0
+      12: getfield      #14                 // Field aClass29_98:LClass29;
+      15: aload_1
+      16: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+      19: aload_0
+      20: new           #50                 // class Class29
+      23: dup
+      24: invokespecial #51                 // Method Class29."<init>":()V
+      27: putfield      #16                 // Field aClass29_99:LClass29;
+      30: aload_0
+      31: getfield      #16                 // Field aClass29_99:LClass29;
+      34: aload_1
+      35: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+      38: aload_1
+      39: invokevirtual #53                 // Method Stream.readUnsignedByte:()I
+      42: istore_2
+      43: iload_2
+      44: ifeq          95
+      47: aload_1
+      48: dup
+      49: getfield      #54                 // Field Stream.currentOffset:I
+      52: iconst_1
+      53: isub
+      54: putfield      #54                 // Field Stream.currentOffset:I
+      57: aload_0
+      58: new           #50                 // class Class29
+      61: dup
+      62: invokespecial #51                 // Method Class29."<init>":()V
+      65: putfield      #17                 // Field aClass29_100:LClass29;
+      68: aload_0
+      69: getfield      #17                 // Field aClass29_100:LClass29;
+      72: aload_1
+      73: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+      76: aload_0
+      77: new           #50                 // class Class29
+      80: dup
+      81: invokespecial #51                 // Method Class29."<init>":()V
+      84: putfield      #18                 // Field aClass29_101:LClass29;
+      87: aload_0
+      88: getfield      #18                 // Field aClass29_101:LClass29;
+      91: aload_1
+      92: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+      95: aload_1
+      96: invokevirtual #53                 // Method Stream.readUnsignedByte:()I
+      99: istore_2
+     100: iload_2
+     101: ifeq          152
+     104: aload_1
+     105: dup
+     106: getfield      #54                 // Field Stream.currentOffset:I
+     109: iconst_1
+     110: isub
+     111: putfield      #54                 // Field Stream.currentOffset:I
+     114: aload_0
+     115: new           #50                 // class Class29
+     118: dup
+     119: invokespecial #51                 // Method Class29."<init>":()V
+     122: putfield      #23                 // Field aClass29_102:LClass29;
+     125: aload_0
+     126: getfield      #23                 // Field aClass29_102:LClass29;
+     129: aload_1
+     130: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+     133: aload_0
+     134: new           #50                 // class Class29
+     137: dup
+     138: invokespecial #51                 // Method Class29."<init>":()V
+     141: putfield      #24                 // Field aClass29_103:LClass29;
+     144: aload_0
+     145: getfield      #24                 // Field aClass29_103:LClass29;
+     148: aload_1
+     149: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+     152: aload_1
+     153: invokevirtual #53                 // Method Stream.readUnsignedByte:()I
+     156: istore_2
+     157: iload_2
+     158: ifeq          209
+     161: aload_1
+     162: dup
+     163: getfield      #54                 // Field Stream.currentOffset:I
+     166: iconst_1
+     167: isub
+     168: putfield      #54                 // Field Stream.currentOffset:I
+     171: aload_0
+     172: new           #50                 // class Class29
+     175: dup
+     176: invokespecial #51                 // Method Class29."<init>":()V
+     179: putfield      #39                 // Field aClass29_104:LClass29;
+     182: aload_0
+     183: getfield      #39                 // Field aClass29_104:LClass29;
+     186: aload_1
+     187: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+     190: aload_0
+     191: new           #50                 // class Class29
+     194: dup
+     195: invokespecial #51                 // Method Class29."<init>":()V
+     198: putfield      #40                 // Field aClass29_105:LClass29;
+     201: aload_0
+     202: getfield      #40                 // Field aClass29_105:LClass29;
+     205: aload_1
+     206: invokevirtual #52                 // Method Class29.method325:(LStream;)V
+     209: iconst_0
+     210: istore_3
+     211: iload_3
+     212: bipush        10
+     214: if_icmpge     265
+     217: aload_1
+     218: invokevirtual #55                 // Method Stream.method422:()I
+     221: istore        4
+     223: iload         4
+     225: ifne          231
+     228: goto          265
+     231: aload_0
+     232: getfield      #25                 // Field anIntArray106:[I
+     235: iload_3
+     236: iload         4
+     238: iastore
+     239: aload_0
+     240: getfield      #33                 // Field anIntArray107:[I
+     243: iload_3
+     244: aload_1
+     245: invokevirtual #56                 // Method Stream.method421:()I
+     248: iastore
+     249: aload_0
+     250: getfield      #28                 // Field anIntArray108:[I
+     253: iload_3
+     254: aload_1
+     255: invokevirtual #55                 // Method Stream.method422:()I
+     258: iastore
+     259: iinc          3, 1
+     262: goto          211
+     265: aload_0
+     266: aload_1
+     267: invokevirtual #55                 // Method Stream.method422:()I
+     270: putfield      #41                 // Field anInt109:I
+     273: aload_0
+     274: aload_1
+     275: invokevirtual #55                 // Method Stream.method422:()I
+     278: putfield      #42                 // Field anInt110:I
+     281: aload_0
+     282: aload_1
+     283: invokevirtual #57                 // Method Stream.readUnsignedWord:()I
+     286: putfield      #58                 // Field anInt113:I
+     289: aload_0
+     290: aload_1
+     291: invokevirtual #57                 // Method Stream.readUnsignedWord:()I
+     294: putfield      #59                 // Field anInt114:I
+     297: aload_0
+     298: new           #60                 // class Class39
+     301: dup
+     302: invokespecial #61                 // Method Class39."<init>":()V
+     305: putfield      #43                 // Field aClass39_111:LClass39;
+     308: aload_0
+     309: new           #50                 // class Class29
+     312: dup
+     313: invokespecial #51                 // Method Class29."<init>":()V
+     316: putfield      #45                 // Field aClass29_112:LClass29;
+     319: aload_0
+     320: getfield      #43                 // Field aClass39_111:LClass39;
+     323: aload_1
+     324: aload_0
+     325: getfield      #45                 // Field aClass29_112:LClass29;
+     328: invokevirtual #62                 // Method Class39.method545:(LStream;LClass29;)V
+     331: return
+
+  public Class6();
+    Code:
+       0: aload_0
+       1: invokespecial #63                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_5
+       6: newarray       int
+       8: putfield      #25                 // Field anIntArray106:[I
+      11: aload_0
+      12: iconst_5
+      13: newarray       int
+      15: putfield      #33                 // Field anIntArray107:[I
+      18: aload_0
+      19: iconst_5
+      20: newarray       int
+      22: putfield      #28                 // Field anIntArray108:[I
+      25: aload_0
+      26: bipush        100
+      28: putfield      #42                 // Field anInt110:I
+      31: aload_0
+      32: sipush        500
+      35: putfield      #58                 // Field anInt113:I
+      38: return
+
+  static {};
+    Code:
+       0: iconst_5
+       1: newarray       int
+       3: putstatic     #26                 // Field anIntArray118:[I
+       6: iconst_5
+       7: newarray       int
+       9: putstatic     #27                 // Field anIntArray119:[I
+      12: iconst_5
+      13: newarray       int
+      15: putstatic     #29                 // Field anIntArray120:[I
+      18: iconst_5
+      19: newarray       int
+      21: putstatic     #30                 // Field anIntArray121:[I
+      24: iconst_5
+      25: newarray       int
+      27: putstatic     #35                 // Field anIntArray122:[I
+      30: return
+}

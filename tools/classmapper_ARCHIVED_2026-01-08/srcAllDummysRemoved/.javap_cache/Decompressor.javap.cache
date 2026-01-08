@@ -1,0 +1,738 @@
+Compiled from "Decompressor.java"
+final class Decompressor {
+  private static final byte[] buffer;
+
+  private final java.io.RandomAccessFile dataFile;
+
+  private final java.io.RandomAccessFile indexFile;
+
+  private final int anInt311;
+
+  public Decompressor(java.io.RandomAccessFile, java.io.RandomAccessFile, int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_3
+       6: putfield      #2                  // Field anInt311:I
+       9: aload_0
+      10: aload_1
+      11: putfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+      14: aload_0
+      15: aload_2
+      16: putfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+      19: return
+
+  public synchronized byte[] decompress(int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+       5: iload_1
+       6: bipush        6
+       8: imul
+       9: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+      12: iconst_0
+      13: istore_3
+      14: iload_3
+      15: bipush        6
+      17: if_icmpge     50
+      20: aload_0
+      21: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+      24: getstatic     #6                  // Field buffer:[B
+      27: iload_3
+      28: bipush        6
+      30: iload_3
+      31: isub
+      32: invokevirtual #7                  // Method java/io/RandomAccessFile.read:([BII)I
+      35: istore_2
+      36: iload_2
+      37: iconst_m1
+      38: if_icmpne     43
+      41: aconst_null
+      42: areturn
+      43: iload_3
+      44: iload_2
+      45: iadd
+      46: istore_3
+      47: goto          14
+      50: getstatic     #6                  // Field buffer:[B
+      53: iconst_0
+      54: baload
+      55: sipush        255
+      58: iand
+      59: bipush        16
+      61: ishl
+      62: getstatic     #6                  // Field buffer:[B
+      65: iconst_1
+      66: baload
+      67: sipush        255
+      70: iand
+      71: bipush        8
+      73: ishl
+      74: iadd
+      75: getstatic     #6                  // Field buffer:[B
+      78: iconst_2
+      79: baload
+      80: sipush        255
+      83: iand
+      84: iadd
+      85: istore_3
+      86: getstatic     #6                  // Field buffer:[B
+      89: iconst_3
+      90: baload
+      91: sipush        255
+      94: iand
+      95: bipush        16
+      97: ishl
+      98: getstatic     #6                  // Field buffer:[B
+     101: iconst_4
+     102: baload
+     103: sipush        255
+     106: iand
+     107: bipush        8
+     109: ishl
+     110: iadd
+     111: getstatic     #6                  // Field buffer:[B
+     114: iconst_5
+     115: baload
+     116: sipush        255
+     119: iand
+     120: iadd
+     121: istore        4
+     123: iload         4
+     125: ifle          146
+     128: iload         4
+     130: i2l
+     131: aload_0
+     132: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     135: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     138: ldc2_w        #9                  // long 520l
+     141: ldiv
+     142: lcmp
+     143: ifle          148
+     146: aconst_null
+     147: areturn
+     148: iload_3
+     149: newarray       byte
+     151: astore        5
+     153: iconst_0
+     154: istore        6
+     156: iconst_0
+     157: istore        7
+     159: iload         6
+     161: iload_3
+     162: if_icmpge     448
+     165: iload         4
+     167: ifne          172
+     170: aconst_null
+     171: areturn
+     172: aload_0
+     173: aload_0
+     174: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     177: iload         4
+     179: sipush        520
+     182: imul
+     183: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+     186: iconst_0
+     187: istore        8
+     189: iload_3
+     190: iload         6
+     192: isub
+     193: istore        9
+     195: iload         9
+     197: sipush        512
+     200: if_icmple     208
+     203: sipush        512
+     206: istore        9
+     208: iload         8
+     210: iload         9
+     212: bipush        8
+     214: iadd
+     215: if_icmpge     258
+     218: aload_0
+     219: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     222: getstatic     #6                  // Field buffer:[B
+     225: iload         8
+     227: iload         9
+     229: bipush        8
+     231: iadd
+     232: iload         8
+     234: isub
+     235: invokevirtual #7                  // Method java/io/RandomAccessFile.read:([BII)I
+     238: istore        10
+     240: iload         10
+     242: iconst_m1
+     243: if_icmpne     248
+     246: aconst_null
+     247: areturn
+     248: iload         8
+     250: iload         10
+     252: iadd
+     253: istore        8
+     255: goto          208
+     258: getstatic     #6                  // Field buffer:[B
+     261: iconst_0
+     262: baload
+     263: sipush        255
+     266: iand
+     267: bipush        8
+     269: ishl
+     270: getstatic     #6                  // Field buffer:[B
+     273: iconst_1
+     274: baload
+     275: sipush        255
+     278: iand
+     279: iadd
+     280: istore        11
+     282: getstatic     #6                  // Field buffer:[B
+     285: iconst_2
+     286: baload
+     287: sipush        255
+     290: iand
+     291: bipush        8
+     293: ishl
+     294: getstatic     #6                  // Field buffer:[B
+     297: iconst_3
+     298: baload
+     299: sipush        255
+     302: iand
+     303: iadd
+     304: istore        12
+     306: getstatic     #6                  // Field buffer:[B
+     309: iconst_4
+     310: baload
+     311: sipush        255
+     314: iand
+     315: bipush        16
+     317: ishl
+     318: getstatic     #6                  // Field buffer:[B
+     321: iconst_5
+     322: baload
+     323: sipush        255
+     326: iand
+     327: bipush        8
+     329: ishl
+     330: iadd
+     331: getstatic     #6                  // Field buffer:[B
+     334: bipush        6
+     336: baload
+     337: sipush        255
+     340: iand
+     341: iadd
+     342: istore        13
+     344: getstatic     #6                  // Field buffer:[B
+     347: bipush        7
+     349: baload
+     350: sipush        255
+     353: iand
+     354: istore        14
+     356: iload         11
+     358: iload_1
+     359: if_icmpne     378
+     362: iload         12
+     364: iload         7
+     366: if_icmpne     378
+     369: iload         14
+     371: aload_0
+     372: getfield      #2                  // Field anInt311:I
+     375: if_icmpeq     380
+     378: aconst_null
+     379: areturn
+     380: iload         13
+     382: iflt          403
+     385: iload         13
+     387: i2l
+     388: aload_0
+     389: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     392: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     395: ldc2_w        #9                  // long 520l
+     398: ldiv
+     399: lcmp
+     400: ifle          405
+     403: aconst_null
+     404: areturn
+     405: iconst_0
+     406: istore        15
+     408: iload         15
+     410: iload         9
+     412: if_icmpge     438
+     415: aload         5
+     417: iload         6
+     419: iinc          6, 1
+     422: getstatic     #6                  // Field buffer:[B
+     425: iload         15
+     427: bipush        8
+     429: iadd
+     430: baload
+     431: bastore
+     432: iinc          15, 1
+     435: goto          408
+     438: iload         13
+     440: istore        4
+     442: iinc          7, 1
+     445: goto          159
+     448: aload         5
+     450: areturn
+     451: astore_2
+     452: aconst_null
+     453: areturn
+    Exception table:
+       from    to  target type
+           0    42   451   Class java/io/IOException
+          43   147   451   Class java/io/IOException
+         148   171   451   Class java/io/IOException
+         172   247   451   Class java/io/IOException
+         248   379   451   Class java/io/IOException
+         380   404   451   Class java/io/IOException
+         405   450   451   Class java/io/IOException
+
+  public synchronized boolean method234(int, byte[], int);
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: iload_3
+       3: iload_1
+       4: aload_2
+       5: invokespecial #12                 // Method method235:(ZII[B)Z
+       8: istore        4
+      10: iload         4
+      12: ifne          25
+      15: aload_0
+      16: iconst_0
+      17: iload_3
+      18: iload_1
+      19: aload_2
+      20: invokespecial #12                 // Method method235:(ZII[B)Z
+      23: istore        4
+      25: iload         4
+      27: ireturn
+
+  private synchronized boolean method235(boolean, int, int, byte[]);
+    Code:
+       0: iload_1
+       1: ifeq          125
+       4: aload_0
+       5: aload_0
+       6: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+       9: iload_2
+      10: bipush        6
+      12: imul
+      13: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+      16: iconst_0
+      17: istore        7
+      19: iload         7
+      21: bipush        6
+      23: if_icmpge     63
+      26: aload_0
+      27: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+      30: getstatic     #6                  // Field buffer:[B
+      33: iload         7
+      35: bipush        6
+      37: iload         7
+      39: isub
+      40: invokevirtual #7                  // Method java/io/RandomAccessFile.read:([BII)I
+      43: istore        6
+      45: iload         6
+      47: iconst_m1
+      48: if_icmpne     53
+      51: iconst_0
+      52: ireturn
+      53: iload         7
+      55: iload         6
+      57: iadd
+      58: istore        7
+      60: goto          19
+      63: getstatic     #6                  // Field buffer:[B
+      66: iconst_3
+      67: baload
+      68: sipush        255
+      71: iand
+      72: bipush        16
+      74: ishl
+      75: getstatic     #6                  // Field buffer:[B
+      78: iconst_4
+      79: baload
+      80: sipush        255
+      83: iand
+      84: bipush        8
+      86: ishl
+      87: iadd
+      88: getstatic     #6                  // Field buffer:[B
+      91: iconst_5
+      92: baload
+      93: sipush        255
+      96: iand
+      97: iadd
+      98: istore        5
+     100: iload         5
+     102: ifle          123
+     105: iload         5
+     107: i2l
+     108: aload_0
+     109: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     112: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     115: ldc2_w        #9                  // long 520l
+     118: ldiv
+     119: lcmp
+     120: ifle          151
+     123: iconst_0
+     124: ireturn
+     125: aload_0
+     126: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     129: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     132: ldc2_w        #13                 // long 519l
+     135: ladd
+     136: ldc2_w        #9                  // long 520l
+     139: ldiv
+     140: l2i
+     141: istore        5
+     143: iload         5
+     145: ifne          151
+     148: iconst_1
+     149: istore        5
+     151: getstatic     #6                  // Field buffer:[B
+     154: iconst_0
+     155: iload_3
+     156: bipush        16
+     158: ishr
+     159: i2b
+     160: bastore
+     161: getstatic     #6                  // Field buffer:[B
+     164: iconst_1
+     165: iload_3
+     166: bipush        8
+     168: ishr
+     169: i2b
+     170: bastore
+     171: getstatic     #6                  // Field buffer:[B
+     174: iconst_2
+     175: iload_3
+     176: i2b
+     177: bastore
+     178: getstatic     #6                  // Field buffer:[B
+     181: iconst_3
+     182: iload         5
+     184: bipush        16
+     186: ishr
+     187: i2b
+     188: bastore
+     189: getstatic     #6                  // Field buffer:[B
+     192: iconst_4
+     193: iload         5
+     195: bipush        8
+     197: ishr
+     198: i2b
+     199: bastore
+     200: getstatic     #6                  // Field buffer:[B
+     203: iconst_5
+     204: iload         5
+     206: i2b
+     207: bastore
+     208: aload_0
+     209: aload_0
+     210: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+     213: iload_2
+     214: bipush        6
+     216: imul
+     217: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+     220: aload_0
+     221: getfield      #4                  // Field indexFile:Ljava/io/RandomAccessFile;
+     224: getstatic     #6                  // Field buffer:[B
+     227: iconst_0
+     228: bipush        6
+     230: invokevirtual #15                 // Method java/io/RandomAccessFile.write:([BII)V
+     233: iconst_0
+     234: istore        6
+     236: iconst_0
+     237: istore        7
+     239: iload         6
+     241: iload_3
+     242: if_icmpge     678
+     245: iconst_0
+     246: istore        8
+     248: iload_1
+     249: ifeq          468
+     252: aload_0
+     253: aload_0
+     254: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     257: iload         5
+     259: sipush        520
+     262: imul
+     263: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+     266: iconst_0
+     267: istore        9
+     269: iload         9
+     271: bipush        8
+     273: if_icmpge     314
+     276: aload_0
+     277: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     280: getstatic     #6                  // Field buffer:[B
+     283: iload         9
+     285: bipush        8
+     287: iload         9
+     289: isub
+     290: invokevirtual #7                  // Method java/io/RandomAccessFile.read:([BII)I
+     293: istore        10
+     295: iload         10
+     297: iconst_m1
+     298: if_icmpne     304
+     301: goto          314
+     304: iload         9
+     306: iload         10
+     308: iadd
+     309: istore        9
+     311: goto          269
+     314: iload         9
+     316: bipush        8
+     318: if_icmpne     468
+     321: getstatic     #6                  // Field buffer:[B
+     324: iconst_0
+     325: baload
+     326: sipush        255
+     329: iand
+     330: bipush        8
+     332: ishl
+     333: getstatic     #6                  // Field buffer:[B
+     336: iconst_1
+     337: baload
+     338: sipush        255
+     341: iand
+     342: iadd
+     343: istore        11
+     345: getstatic     #6                  // Field buffer:[B
+     348: iconst_2
+     349: baload
+     350: sipush        255
+     353: iand
+     354: bipush        8
+     356: ishl
+     357: getstatic     #6                  // Field buffer:[B
+     360: iconst_3
+     361: baload
+     362: sipush        255
+     365: iand
+     366: iadd
+     367: istore        12
+     369: getstatic     #6                  // Field buffer:[B
+     372: iconst_4
+     373: baload
+     374: sipush        255
+     377: iand
+     378: bipush        16
+     380: ishl
+     381: getstatic     #6                  // Field buffer:[B
+     384: iconst_5
+     385: baload
+     386: sipush        255
+     389: iand
+     390: bipush        8
+     392: ishl
+     393: iadd
+     394: getstatic     #6                  // Field buffer:[B
+     397: bipush        6
+     399: baload
+     400: sipush        255
+     403: iand
+     404: iadd
+     405: istore        8
+     407: getstatic     #6                  // Field buffer:[B
+     410: bipush        7
+     412: baload
+     413: sipush        255
+     416: iand
+     417: istore        13
+     419: iload         11
+     421: iload_2
+     422: if_icmpne     441
+     425: iload         12
+     427: iload         7
+     429: if_icmpne     441
+     432: iload         13
+     434: aload_0
+     435: getfield      #2                  // Field anInt311:I
+     438: if_icmpeq     443
+     441: iconst_0
+     442: ireturn
+     443: iload         8
+     445: iflt          466
+     448: iload         8
+     450: i2l
+     451: aload_0
+     452: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     455: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     458: ldc2_w        #9                  // long 520l
+     461: ldiv
+     462: lcmp
+     463: ifle          468
+     466: iconst_0
+     467: ireturn
+     468: iload         8
+     470: ifne          511
+     473: iconst_0
+     474: istore_1
+     475: aload_0
+     476: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     479: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+     482: ldc2_w        #13                 // long 519l
+     485: ladd
+     486: ldc2_w        #9                  // long 520l
+     489: ldiv
+     490: l2i
+     491: istore        8
+     493: iload         8
+     495: ifne          501
+     498: iinc          8, 1
+     501: iload         8
+     503: iload         5
+     505: if_icmpne     511
+     508: iinc          8, 1
+     511: iload_3
+     512: iload         6
+     514: isub
+     515: sipush        512
+     518: if_icmpgt     524
+     521: iconst_0
+     522: istore        8
+     524: getstatic     #6                  // Field buffer:[B
+     527: iconst_0
+     528: iload_2
+     529: bipush        8
+     531: ishr
+     532: i2b
+     533: bastore
+     534: getstatic     #6                  // Field buffer:[B
+     537: iconst_1
+     538: iload_2
+     539: i2b
+     540: bastore
+     541: getstatic     #6                  // Field buffer:[B
+     544: iconst_2
+     545: iload         7
+     547: bipush        8
+     549: ishr
+     550: i2b
+     551: bastore
+     552: getstatic     #6                  // Field buffer:[B
+     555: iconst_3
+     556: iload         7
+     558: i2b
+     559: bastore
+     560: getstatic     #6                  // Field buffer:[B
+     563: iconst_4
+     564: iload         8
+     566: bipush        16
+     568: ishr
+     569: i2b
+     570: bastore
+     571: getstatic     #6                  // Field buffer:[B
+     574: iconst_5
+     575: iload         8
+     577: bipush        8
+     579: ishr
+     580: i2b
+     581: bastore
+     582: getstatic     #6                  // Field buffer:[B
+     585: bipush        6
+     587: iload         8
+     589: i2b
+     590: bastore
+     591: getstatic     #6                  // Field buffer:[B
+     594: bipush        7
+     596: aload_0
+     597: getfield      #2                  // Field anInt311:I
+     600: i2b
+     601: bastore
+     602: aload_0
+     603: aload_0
+     604: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     607: iload         5
+     609: sipush        520
+     612: imul
+     613: invokespecial #5                  // Method seekTo:(Ljava/io/RandomAccessFile;I)V
+     616: aload_0
+     617: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     620: getstatic     #6                  // Field buffer:[B
+     623: iconst_0
+     624: bipush        8
+     626: invokevirtual #15                 // Method java/io/RandomAccessFile.write:([BII)V
+     629: iload_3
+     630: iload         6
+     632: isub
+     633: istore        9
+     635: iload         9
+     637: sipush        512
+     640: if_icmple     648
+     643: sipush        512
+     646: istore        9
+     648: aload_0
+     649: getfield      #3                  // Field dataFile:Ljava/io/RandomAccessFile;
+     652: aload         4
+     654: iload         6
+     656: iload         9
+     658: invokevirtual #15                 // Method java/io/RandomAccessFile.write:([BII)V
+     661: iload         6
+     663: iload         9
+     665: iadd
+     666: istore        6
+     668: iload         8
+     670: istore        5
+     672: iinc          7, 1
+     675: goto          239
+     678: iconst_1
+     679: ireturn
+     680: astore        5
+     682: iconst_0
+     683: ireturn
+    Exception table:
+       from    to  target type
+           0    52   680   Class java/io/IOException
+          53   124   680   Class java/io/IOException
+         125   442   680   Class java/io/IOException
+         443   467   680   Class java/io/IOException
+         468   679   680   Class java/io/IOException
+
+  private synchronized void seekTo(java.io.RandomAccessFile, int) throws java.io.IOException;
+    Code:
+       0: iload_2
+       1: iflt          10
+       4: iload_2
+       5: ldc           #16                 // int 62914560
+       7: if_icmple     60
+      10: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      13: new           #18                 // class java/lang/StringBuilder
+      16: dup
+      17: invokespecial #19                 // Method java/lang/StringBuilder."<init>":()V
+      20: ldc           #20                 // String Badseek - pos:
+      22: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      25: iload_2
+      26: invokevirtual #22                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      29: ldc           #23                 // String  len:
+      31: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: aload_1
+      35: invokevirtual #8                  // Method java/io/RandomAccessFile.length:()J
+      38: invokevirtual #24                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+      41: invokevirtual #25                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      44: invokevirtual #26                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      47: ldc           #16                 // int 62914560
+      49: istore_2
+      50: ldc2_w        #27                 // long 1000l
+      53: invokestatic  #29                 // Method java/lang/Thread.sleep:(J)V
+      56: goto          60
+      59: astore_3
+      60: aload_1
+      61: iload_2
+      62: i2l
+      63: invokevirtual #31                 // Method java/io/RandomAccessFile.seek:(J)V
+      66: return
+    Exception table:
+       from    to  target type
+          50    56    59   Class java/lang/Exception
+
+  static {};
+    Code:
+       0: sipush        520
+       3: newarray       byte
+       5: putstatic     #6                  // Field buffer:[B
+       8: return
+}

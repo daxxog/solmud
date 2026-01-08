@@ -1,0 +1,1242 @@
+Compiled from "Player.java"
+public final class Player extends Entity {
+  public int privelage;
+
+  private long aLong1697;
+
+  public EntityDef desc;
+
+  boolean aBoolean1699;
+
+  final int[] anIntArray1700;
+
+  public int team;
+
+  private int anInt1702;
+
+  public java.lang.String name;
+
+  static MRUNodes mruNodes;
+
+  public int combatLevel;
+
+  public int headIcon;
+
+  public int anInt1707;
+
+  int anInt1708;
+
+  int anInt1709;
+
+  boolean visible;
+
+  int anInt1711;
+
+  int anInt1712;
+
+  int anInt1713;
+
+  Model aModel_1714;
+
+  private int anInt1715;
+
+  public final int[] equipment;
+
+  private long aLong1718;
+
+  int anInt1719;
+
+  int anInt1720;
+
+  int anInt1721;
+
+  int anInt1722;
+
+  int skill;
+
+  public Model getRotatedModel();
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field visible:Z
+       4: ifne          9
+       7: aconst_null
+       8: areturn
+       9: aload_0
+      10: invokespecial #2                  // Method method452:()LModel;
+      13: astore_1
+      14: aload_1
+      15: ifnonnull     20
+      18: aconst_null
+      19: areturn
+      20: aload_0
+      21: aload_1
+      22: getfield      #3                  // Field Model.modelHeight:I
+      25: putfield      #4                  // Field Entity.height:I
+      28: aload_1
+      29: iconst_1
+      30: putfield      #5                  // Field Model.aBoolean1659:Z
+      33: aload_0
+      34: getfield      #6                  // Field aBoolean1699:Z
+      37: ifeq          42
+      40: aload_1
+      41: areturn
+      42: aload_0
+      43: getfield      #7                  // Field Entity.anInt1520:I
+      46: iconst_m1
+      47: if_icmpeq     236
+      50: aload_0
+      51: getfield      #8                  // Field Entity.anInt1521:I
+      54: iconst_m1
+      55: if_icmpeq     236
+      58: getstatic     #9                  // Field SpotAnim.cache:[LSpotAnim;
+      61: aload_0
+      62: getfield      #7                  // Field Entity.anInt1520:I
+      65: aaload
+      66: astore_2
+      67: aload_2
+      68: invokevirtual #10                 // Method SpotAnim.getModel:()LModel;
+      71: astore_3
+      72: aload_3
+      73: ifnull        236
+      76: new           #11                 // class Model
+      79: dup
+      80: iconst_1
+      81: aload_0
+      82: getfield      #8                  // Field Entity.anInt1521:I
+      85: invokestatic  #12                 // Method Class36.method532:(I)Z
+      88: iconst_0
+      89: aload_3
+      90: invokespecial #13                 // Method Model."<init>":(ZZZLModel;)V
+      93: astore        4
+      95: aload         4
+      97: iconst_0
+      98: aload_0
+      99: getfield      #14                 // Field Entity.anInt1524:I
+     102: ineg
+     103: iconst_0
+     104: invokevirtual #15                 // Method Model.method475:(III)V
+     107: aload         4
+     109: invokevirtual #16                 // Method Model.method469:()V
+     112: aload         4
+     114: aload_2
+     115: getfield      #17                 // Field SpotAnim.aAnimation_407:LAnimation;
+     118: getfield      #18                 // Field Animation.anIntArray353:[I
+     121: aload_0
+     122: getfield      #8                  // Field Entity.anInt1521:I
+     125: iaload
+     126: invokevirtual #19                 // Method Model.method470:(I)V
+     129: aload         4
+     131: aconst_null
+     132: checkcast     #20                 // class "[[I"
+     135: putfield      #21                 // Field Model.anIntArrayArray1658:[[I
+     138: aload         4
+     140: aconst_null
+     141: checkcast     #20                 // class "[[I"
+     144: putfield      #22                 // Field Model.anIntArrayArray1657:[[I
+     147: aload_2
+     148: getfield      #23                 // Field SpotAnim.anInt410:I
+     151: sipush        128
+     154: if_icmpne     167
+     157: aload_2
+     158: getfield      #24                 // Field SpotAnim.anInt411:I
+     161: sipush        128
+     164: if_icmpeq     184
+     167: aload         4
+     169: aload_2
+     170: getfield      #23                 // Field SpotAnim.anInt410:I
+     173: aload_2
+     174: getfield      #23                 // Field SpotAnim.anInt410:I
+     177: aload_2
+     178: getfield      #24                 // Field SpotAnim.anInt411:I
+     181: invokevirtual #25                 // Method Model.method478:(III)V
+     184: aload         4
+     186: bipush        64
+     188: aload_2
+     189: getfield      #26                 // Field SpotAnim.anInt413:I
+     192: iadd
+     193: sipush        850
+     196: aload_2
+     197: getfield      #27                 // Field SpotAnim.anInt414:I
+     200: iadd
+     201: bipush        -30
+     203: bipush        -50
+     205: bipush        -30
+     207: iconst_1
+     208: invokevirtual #28                 // Method Model.method479:(IIIIIZ)V
+     211: iconst_2
+     212: anewarray     #11                 // class Model
+     215: dup
+     216: iconst_0
+     217: aload_1
+     218: aastore
+     219: dup
+     220: iconst_1
+     221: aload         4
+     223: aastore
+     224: astore        5
+     226: new           #11                 // class Model
+     229: dup
+     230: aload         5
+     232: invokespecial #29                 // Method Model."<init>":([LModel;)V
+     235: astore_1
+     236: aload_0
+     237: getfield      #30                 // Field aModel_1714:LModel;
+     240: ifnull        487
+     243: getstatic     #31                 // Field client.loopCycle:I
+     246: aload_0
+     247: getfield      #32                 // Field anInt1708:I
+     250: if_icmplt     258
+     253: aload_0
+     254: aconst_null
+     255: putfield      #30                 // Field aModel_1714:LModel;
+     258: getstatic     #31                 // Field client.loopCycle:I
+     261: aload_0
+     262: getfield      #33                 // Field anInt1707:I
+     265: if_icmplt     487
+     268: getstatic     #31                 // Field client.loopCycle:I
+     271: aload_0
+     272: getfield      #32                 // Field anInt1708:I
+     275: if_icmpge     487
+     278: aload_0
+     279: getfield      #30                 // Field aModel_1714:LModel;
+     282: astore_2
+     283: aload_2
+     284: aload_0
+     285: getfield      #34                 // Field anInt1711:I
+     288: aload_0
+     289: getfield      #35                 // Field Entity.x:I
+     292: isub
+     293: aload_0
+     294: getfield      #36                 // Field anInt1712:I
+     297: aload_0
+     298: getfield      #37                 // Field anInt1709:I
+     301: isub
+     302: aload_0
+     303: getfield      #38                 // Field anInt1713:I
+     306: aload_0
+     307: getfield      #39                 // Field Entity.y:I
+     310: isub
+     311: invokevirtual #15                 // Method Model.method475:(III)V
+     314: aload_0
+     315: getfield      #40                 // Field Entity.turnDirection:I
+     318: sipush        512
+     321: if_icmpne     339
+     324: aload_2
+     325: invokevirtual #41                 // Method Model.method473:()V
+     328: aload_2
+     329: invokevirtual #41                 // Method Model.method473:()V
+     332: aload_2
+     333: invokevirtual #41                 // Method Model.method473:()V
+     336: goto          374
+     339: aload_0
+     340: getfield      #40                 // Field Entity.turnDirection:I
+     343: sipush        1024
+     346: if_icmpne     360
+     349: aload_2
+     350: invokevirtual #41                 // Method Model.method473:()V
+     353: aload_2
+     354: invokevirtual #41                 // Method Model.method473:()V
+     357: goto          374
+     360: aload_0
+     361: getfield      #40                 // Field Entity.turnDirection:I
+     364: sipush        1536
+     367: if_icmpne     374
+     370: aload_2
+     371: invokevirtual #41                 // Method Model.method473:()V
+     374: iconst_2
+     375: anewarray     #11                 // class Model
+     378: dup
+     379: iconst_0
+     380: aload_1
+     381: aastore
+     382: dup
+     383: iconst_1
+     384: aload_2
+     385: aastore
+     386: astore_3
+     387: new           #11                 // class Model
+     390: dup
+     391: aload_3
+     392: invokespecial #29                 // Method Model."<init>":([LModel;)V
+     395: astore_1
+     396: aload_0
+     397: getfield      #40                 // Field Entity.turnDirection:I
+     400: sipush        512
+     403: if_icmpne     413
+     406: aload_2
+     407: invokevirtual #41                 // Method Model.method473:()V
+     410: goto          456
+     413: aload_0
+     414: getfield      #40                 // Field Entity.turnDirection:I
+     417: sipush        1024
+     420: if_icmpne     434
+     423: aload_2
+     424: invokevirtual #41                 // Method Model.method473:()V
+     427: aload_2
+     428: invokevirtual #41                 // Method Model.method473:()V
+     431: goto          456
+     434: aload_0
+     435: getfield      #40                 // Field Entity.turnDirection:I
+     438: sipush        1536
+     441: if_icmpne     456
+     444: aload_2
+     445: invokevirtual #41                 // Method Model.method473:()V
+     448: aload_2
+     449: invokevirtual #41                 // Method Model.method473:()V
+     452: aload_2
+     453: invokevirtual #41                 // Method Model.method473:()V
+     456: aload_2
+     457: aload_0
+     458: getfield      #35                 // Field Entity.x:I
+     461: aload_0
+     462: getfield      #34                 // Field anInt1711:I
+     465: isub
+     466: aload_0
+     467: getfield      #37                 // Field anInt1709:I
+     470: aload_0
+     471: getfield      #36                 // Field anInt1712:I
+     474: isub
+     475: aload_0
+     476: getfield      #39                 // Field Entity.y:I
+     479: aload_0
+     480: getfield      #38                 // Field anInt1713:I
+     483: isub
+     484: invokevirtual #15                 // Method Model.method475:(III)V
+     487: aload_1
+     488: iconst_1
+     489: putfield      #5                  // Field Model.aBoolean1659:Z
+     492: aload_1
+     493: areturn
+
+  public void updatePlayer(Stream);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: putfield      #42                 // Field Stream.currentOffset:I
+       5: aload_0
+       6: aload_1
+       7: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+      10: putfield      #44                 // Field anInt1702:I
+      13: aload_0
+      14: aload_1
+      15: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+      18: putfield      #45                 // Field headIcon:I
+      21: aload_0
+      22: aconst_null
+      23: putfield      #46                 // Field desc:LEntityDef;
+      26: aload_0
+      27: iconst_0
+      28: putfield      #47                 // Field team:I
+      31: iconst_0
+      32: istore_2
+      33: iload_2
+      34: bipush        12
+      36: if_icmpge     169
+      39: aload_1
+      40: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+      43: istore_3
+      44: iload_3
+      45: ifne          58
+      48: aload_0
+      49: getfield      #48                 // Field equipment:[I
+      52: iload_2
+      53: iconst_0
+      54: iastore
+      55: goto          163
+      58: aload_1
+      59: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+      62: istore        4
+      64: aload_0
+      65: getfield      #48                 // Field equipment:[I
+      68: iload_2
+      69: iload_3
+      70: bipush        8
+      72: ishl
+      73: iload         4
+      75: iadd
+      76: iastore
+      77: iload_2
+      78: ifne          106
+      81: aload_0
+      82: getfield      #48                 // Field equipment:[I
+      85: iconst_0
+      86: iaload
+      87: ldc           #49                 // int 65535
+      89: if_icmpne     106
+      92: aload_0
+      93: aload_1
+      94: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+      97: invokestatic  #51                 // Method EntityDef.forID:(I)LEntityDef;
+     100: putfield      #46                 // Field desc:LEntityDef;
+     103: goto          169
+     106: aload_0
+     107: getfield      #48                 // Field equipment:[I
+     110: iload_2
+     111: iaload
+     112: sipush        512
+     115: if_icmplt     163
+     118: aload_0
+     119: getfield      #48                 // Field equipment:[I
+     122: iload_2
+     123: iaload
+     124: sipush        512
+     127: isub
+     128: getstatic     #52                 // Field ItemDef.totalItems:I
+     131: if_icmpge     163
+     134: aload_0
+     135: getfield      #48                 // Field equipment:[I
+     138: iload_2
+     139: iaload
+     140: sipush        512
+     143: isub
+     144: invokestatic  #53                 // Method ItemDef.forID:(I)LItemDef;
+     147: getfield      #54                 // Field ItemDef.team:I
+     150: istore        5
+     152: iload         5
+     154: ifeq          163
+     157: aload_0
+     158: iload         5
+     160: putfield      #47                 // Field team:I
+     163: iinc          2, 1
+     166: goto          33
+     169: iconst_0
+     170: istore_2
+     171: iload_2
+     172: iconst_5
+     173: if_icmpge     210
+     176: aload_1
+     177: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+     180: istore_3
+     181: iload_3
+     182: iflt          195
+     185: iload_3
+     186: getstatic     #55                 // Field client.anIntArrayArray1003:[[I
+     189: iload_2
+     190: aaload
+     191: arraylength
+     192: if_icmplt     197
+     195: iconst_0
+     196: istore_3
+     197: aload_0
+     198: getfield      #56                 // Field anIntArray1700:[I
+     201: iload_2
+     202: iload_3
+     203: iastore
+     204: iinc          2, 1
+     207: goto          171
+     210: aload_0
+     211: aload_1
+     212: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     215: putfield      #57                 // Field Entity.anInt1511:I
+     218: aload_0
+     219: getfield      #57                 // Field Entity.anInt1511:I
+     222: ldc           #49                 // int 65535
+     224: if_icmpne     232
+     227: aload_0
+     228: iconst_m1
+     229: putfield      #57                 // Field Entity.anInt1511:I
+     232: aload_0
+     233: aload_1
+     234: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     237: putfield      #58                 // Field Entity.anInt1512:I
+     240: aload_0
+     241: getfield      #58                 // Field Entity.anInt1512:I
+     244: ldc           #49                 // int 65535
+     246: if_icmpne     254
+     249: aload_0
+     250: iconst_m1
+     251: putfield      #58                 // Field Entity.anInt1512:I
+     254: aload_0
+     255: aload_1
+     256: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     259: putfield      #59                 // Field Entity.anInt1554:I
+     262: aload_0
+     263: getfield      #59                 // Field Entity.anInt1554:I
+     266: ldc           #49                 // int 65535
+     268: if_icmpne     276
+     271: aload_0
+     272: iconst_m1
+     273: putfield      #59                 // Field Entity.anInt1554:I
+     276: aload_0
+     277: aload_1
+     278: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     281: putfield      #60                 // Field Entity.anInt1555:I
+     284: aload_0
+     285: getfield      #60                 // Field Entity.anInt1555:I
+     288: ldc           #49                 // int 65535
+     290: if_icmpne     298
+     293: aload_0
+     294: iconst_m1
+     295: putfield      #60                 // Field Entity.anInt1555:I
+     298: aload_0
+     299: aload_1
+     300: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     303: putfield      #61                 // Field Entity.anInt1556:I
+     306: aload_0
+     307: getfield      #61                 // Field Entity.anInt1556:I
+     310: ldc           #49                 // int 65535
+     312: if_icmpne     320
+     315: aload_0
+     316: iconst_m1
+     317: putfield      #61                 // Field Entity.anInt1556:I
+     320: aload_0
+     321: aload_1
+     322: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     325: putfield      #62                 // Field Entity.anInt1557:I
+     328: aload_0
+     329: getfield      #62                 // Field Entity.anInt1557:I
+     332: ldc           #49                 // int 65535
+     334: if_icmpne     342
+     337: aload_0
+     338: iconst_m1
+     339: putfield      #62                 // Field Entity.anInt1557:I
+     342: aload_0
+     343: aload_1
+     344: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     347: putfield      #63                 // Field Entity.anInt1505:I
+     350: aload_0
+     351: getfield      #63                 // Field Entity.anInt1505:I
+     354: ldc           #49                 // int 65535
+     356: if_icmpne     364
+     359: aload_0
+     360: iconst_m1
+     361: putfield      #63                 // Field Entity.anInt1505:I
+     364: aload_0
+     365: aload_1
+     366: invokevirtual #64                 // Method Stream.readQWord:()J
+     369: invokestatic  #65                 // Method TextClass.nameForLong:(J)Ljava/lang/String;
+     372: invokestatic  #66                 // Method TextClass.fixName:(Ljava/lang/String;)Ljava/lang/String;
+     375: putfield      #67                 // Field name:Ljava/lang/String;
+     378: aload_0
+     379: aload_1
+     380: invokevirtual #43                 // Method Stream.readUnsignedByte:()I
+     383: putfield      #68                 // Field combatLevel:I
+     386: aload_0
+     387: aload_1
+     388: invokevirtual #50                 // Method Stream.readUnsignedWord:()I
+     391: putfield      #69                 // Field skill:I
+     394: aload_0
+     395: iconst_1
+     396: putfield      #1                  // Field visible:Z
+     399: aload_0
+     400: lconst_0
+     401: putfield      #70                 // Field aLong1718:J
+     404: iconst_0
+     405: istore_2
+     406: iload_2
+     407: bipush        12
+     409: if_icmpge     460
+     412: aload_0
+     413: dup
+     414: getfield      #70                 // Field aLong1718:J
+     417: iconst_4
+     418: lshl
+     419: putfield      #70                 // Field aLong1718:J
+     422: aload_0
+     423: getfield      #48                 // Field equipment:[I
+     426: iload_2
+     427: iaload
+     428: sipush        256
+     431: if_icmplt     454
+     434: aload_0
+     435: dup
+     436: getfield      #70                 // Field aLong1718:J
+     439: aload_0
+     440: getfield      #48                 // Field equipment:[I
+     443: iload_2
+     444: iaload
+     445: sipush        256
+     448: isub
+     449: i2l
+     450: ladd
+     451: putfield      #70                 // Field aLong1718:J
+     454: iinc          2, 1
+     457: goto          406
+     460: aload_0
+     461: getfield      #48                 // Field equipment:[I
+     464: iconst_0
+     465: iaload
+     466: sipush        256
+     469: if_icmplt     494
+     472: aload_0
+     473: dup
+     474: getfield      #70                 // Field aLong1718:J
+     477: aload_0
+     478: getfield      #48                 // Field equipment:[I
+     481: iconst_0
+     482: iaload
+     483: sipush        256
+     486: isub
+     487: iconst_4
+     488: ishr
+     489: i2l
+     490: ladd
+     491: putfield      #70                 // Field aLong1718:J
+     494: aload_0
+     495: getfield      #48                 // Field equipment:[I
+     498: iconst_1
+     499: iaload
+     500: sipush        256
+     503: if_icmplt     529
+     506: aload_0
+     507: dup
+     508: getfield      #70                 // Field aLong1718:J
+     511: aload_0
+     512: getfield      #48                 // Field equipment:[I
+     515: iconst_1
+     516: iaload
+     517: sipush        256
+     520: isub
+     521: bipush        8
+     523: ishr
+     524: i2l
+     525: ladd
+     526: putfield      #70                 // Field aLong1718:J
+     529: iconst_0
+     530: istore_2
+     531: iload_2
+     532: iconst_5
+     533: if_icmpge     568
+     536: aload_0
+     537: dup
+     538: getfield      #70                 // Field aLong1718:J
+     541: iconst_3
+     542: lshl
+     543: putfield      #70                 // Field aLong1718:J
+     546: aload_0
+     547: dup
+     548: getfield      #70                 // Field aLong1718:J
+     551: aload_0
+     552: getfield      #56                 // Field anIntArray1700:[I
+     555: iload_2
+     556: iaload
+     557: i2l
+     558: ladd
+     559: putfield      #70                 // Field aLong1718:J
+     562: iinc          2, 1
+     565: goto          531
+     568: aload_0
+     569: dup
+     570: getfield      #70                 // Field aLong1718:J
+     573: iconst_1
+     574: lshl
+     575: putfield      #70                 // Field aLong1718:J
+     578: aload_0
+     579: dup
+     580: getfield      #70                 // Field aLong1718:J
+     583: aload_0
+     584: getfield      #44                 // Field anInt1702:I
+     587: i2l
+     588: ladd
+     589: putfield      #70                 // Field aLong1718:J
+     592: return
+
+  private Model method452();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field desc:LEntityDef;
+       4: ifnull        80
+       7: iconst_m1
+       8: istore_1
+       9: aload_0
+      10: getfield      #71                 // Field Entity.anim:I
+      13: iflt          43
+      16: aload_0
+      17: getfield      #72                 // Field Entity.anInt1529:I
+      20: ifne          43
+      23: getstatic     #73                 // Field Animation.anims:[LAnimation;
+      26: aload_0
+      27: getfield      #71                 // Field Entity.anim:I
+      30: aaload
+      31: getfield      #18                 // Field Animation.anIntArray353:[I
+      34: aload_0
+      35: getfield      #74                 // Field Entity.anInt1527:I
+      38: iaload
+      39: istore_1
+      40: goto          67
+      43: aload_0
+      44: getfield      #75                 // Field Entity.anInt1517:I
+      47: iflt          67
+      50: getstatic     #73                 // Field Animation.anims:[LAnimation;
+      53: aload_0
+      54: getfield      #75                 // Field Entity.anInt1517:I
+      57: aaload
+      58: getfield      #18                 // Field Animation.anIntArray353:[I
+      61: aload_0
+      62: getfield      #76                 // Field Entity.anInt1518:I
+      65: iaload
+      66: istore_1
+      67: aload_0
+      68: getfield      #46                 // Field desc:LEntityDef;
+      71: iconst_m1
+      72: iload_1
+      73: aconst_null
+      74: invokevirtual #77                 // Method EntityDef.method164:(II[I)LModel;
+      77: astore_2
+      78: aload_2
+      79: areturn
+      80: aload_0
+      81: getfield      #70                 // Field aLong1718:J
+      84: lstore_1
+      85: iconst_m1
+      86: istore_3
+      87: iconst_m1
+      88: istore        4
+      90: iconst_m1
+      91: istore        5
+      93: iconst_m1
+      94: istore        6
+      96: aload_0
+      97: getfield      #71                 // Field Entity.anim:I
+     100: iflt          232
+     103: aload_0
+     104: getfield      #72                 // Field Entity.anInt1529:I
+     107: ifne          232
+     110: getstatic     #73                 // Field Animation.anims:[LAnimation;
+     113: aload_0
+     114: getfield      #71                 // Field Entity.anim:I
+     117: aaload
+     118: astore        7
+     120: aload         7
+     122: getfield      #18                 // Field Animation.anIntArray353:[I
+     125: aload_0
+     126: getfield      #74                 // Field Entity.anInt1527:I
+     129: iaload
+     130: istore_3
+     131: aload_0
+     132: getfield      #75                 // Field Entity.anInt1517:I
+     135: iflt          167
+     138: aload_0
+     139: getfield      #75                 // Field Entity.anInt1517:I
+     142: aload_0
+     143: getfield      #57                 // Field Entity.anInt1511:I
+     146: if_icmpeq     167
+     149: getstatic     #73                 // Field Animation.anims:[LAnimation;
+     152: aload_0
+     153: getfield      #75                 // Field Entity.anInt1517:I
+     156: aaload
+     157: getfield      #18                 // Field Animation.anIntArray353:[I
+     160: aload_0
+     161: getfield      #76                 // Field Entity.anInt1518:I
+     164: iaload
+     165: istore        4
+     167: aload         7
+     169: getfield      #78                 // Field Animation.anInt360:I
+     172: iflt          198
+     175: aload         7
+     177: getfield      #78                 // Field Animation.anInt360:I
+     180: istore        5
+     182: lload_1
+     183: iload         5
+     185: aload_0
+     186: getfield      #48                 // Field equipment:[I
+     189: iconst_5
+     190: iaload
+     191: isub
+     192: bipush        40
+     194: ishl
+     195: i2l
+     196: ladd
+     197: lstore_1
+     198: aload         7
+     200: getfield      #79                 // Field Animation.anInt361:I
+     203: iflt          229
+     206: aload         7
+     208: getfield      #79                 // Field Animation.anInt361:I
+     211: istore        6
+     213: lload_1
+     214: iload         6
+     216: aload_0
+     217: getfield      #48                 // Field equipment:[I
+     220: iconst_3
+     221: iaload
+     222: isub
+     223: bipush        48
+     225: ishl
+     226: i2l
+     227: ladd
+     228: lstore_1
+     229: goto          256
+     232: aload_0
+     233: getfield      #75                 // Field Entity.anInt1517:I
+     236: iflt          256
+     239: getstatic     #73                 // Field Animation.anims:[LAnimation;
+     242: aload_0
+     243: getfield      #75                 // Field Entity.anInt1517:I
+     246: aaload
+     247: getfield      #18                 // Field Animation.anIntArray353:[I
+     250: aload_0
+     251: getfield      #76                 // Field Entity.anInt1518:I
+     254: iaload
+     255: istore_3
+     256: getstatic     #80                 // Field mruNodes:LMRUNodes;
+     259: lload_1
+     260: invokevirtual #81                 // Method MRUNodes.insertFromCache:(J)LNodeSub;
+     263: checkcast     #11                 // class Model
+     266: astore        7
+     268: aload         7
+     270: ifnonnull     434
+     273: iconst_0
+     274: istore        8
+     276: iconst_0
+     277: istore        9
+     279: iload         9
+     281: bipush        12
+     283: if_icmpge     396
+     286: aload_0
+     287: getfield      #48                 // Field equipment:[I
+     290: iload         9
+     292: iaload
+     293: istore        10
+     295: iload         6
+     297: iflt          310
+     300: iload         9
+     302: iconst_3
+     303: if_icmpne     310
+     306: iload         6
+     308: istore        10
+     310: iload         5
+     312: iflt          325
+     315: iload         9
+     317: iconst_5
+     318: if_icmpne     325
+     321: iload         5
+     323: istore        10
+     325: iload         10
+     327: sipush        256
+     330: if_icmplt     360
+     333: iload         10
+     335: sipush        512
+     338: if_icmpge     360
+     341: getstatic     #82                 // Field IDK.cache:[LIDK;
+     344: iload         10
+     346: sipush        256
+     349: isub
+     350: aaload
+     351: invokevirtual #83                 // Method IDK.method537:()Z
+     354: ifne          360
+     357: iconst_1
+     358: istore        8
+     360: iload         10
+     362: sipush        512
+     365: if_icmplt     390
+     368: iload         10
+     370: sipush        512
+     373: isub
+     374: invokestatic  #53                 // Method ItemDef.forID:(I)LItemDef;
+     377: aload_0
+     378: getfield      #44                 // Field anInt1702:I
+     381: invokevirtual #84                 // Method ItemDef.method195:(I)Z
+     384: ifne          390
+     387: iconst_1
+     388: istore        8
+     390: iinc          9, 1
+     393: goto          279
+     396: iload         8
+     398: ifeq          434
+     401: aload_0
+     402: getfield      #85                 // Field aLong1697:J
+     405: ldc2_w        #86                 // long -1l
+     408: lcmp
+     409: ifeq          427
+     412: getstatic     #80                 // Field mruNodes:LMRUNodes;
+     415: aload_0
+     416: getfield      #85                 // Field aLong1697:J
+     419: invokevirtual #81                 // Method MRUNodes.insertFromCache:(J)LNodeSub;
+     422: checkcast     #11                 // class Model
+     425: astore        7
+     427: aload         7
+     429: ifnonnull     434
+     432: aconst_null
+     433: areturn
+     434: aload         7
+     436: ifnonnull     719
+     439: bipush        12
+     441: anewarray     #11                 // class Model
+     444: astore        8
+     446: iconst_0
+     447: istore        9
+     449: iconst_0
+     450: istore        10
+     452: iload         10
+     454: bipush        12
+     456: if_icmpge     591
+     459: aload_0
+     460: getfield      #48                 // Field equipment:[I
+     463: iload         10
+     465: iaload
+     466: istore        11
+     468: iload         6
+     470: iflt          483
+     473: iload         10
+     475: iconst_3
+     476: if_icmpne     483
+     479: iload         6
+     481: istore        11
+     483: iload         5
+     485: iflt          498
+     488: iload         10
+     490: iconst_5
+     491: if_icmpne     498
+     494: iload         5
+     496: istore        11
+     498: iload         11
+     500: sipush        256
+     503: if_icmplt     544
+     506: iload         11
+     508: sipush        512
+     511: if_icmpge     544
+     514: getstatic     #82                 // Field IDK.cache:[LIDK;
+     517: iload         11
+     519: sipush        256
+     522: isub
+     523: aaload
+     524: invokevirtual #88                 // Method IDK.method538:()LModel;
+     527: astore        12
+     529: aload         12
+     531: ifnull        544
+     534: aload         8
+     536: iload         9
+     538: iinc          9, 1
+     541: aload         12
+     543: aastore
+     544: iload         11
+     546: sipush        512
+     549: if_icmplt     585
+     552: iload         11
+     554: sipush        512
+     557: isub
+     558: invokestatic  #53                 // Method ItemDef.forID:(I)LItemDef;
+     561: aload_0
+     562: getfield      #44                 // Field anInt1702:I
+     565: invokevirtual #89                 // Method ItemDef.method196:(I)LModel;
+     568: astore        12
+     570: aload         12
+     572: ifnull        585
+     575: aload         8
+     577: iload         9
+     579: iinc          9, 1
+     582: aload         12
+     584: aastore
+     585: iinc          10, 1
+     588: goto          452
+     591: new           #11                 // class Model
+     594: dup
+     595: iload         9
+     597: aload         8
+     599: invokespecial #90                 // Method Model."<init>":(I[LModel;)V
+     602: astore        7
+     604: iconst_0
+     605: istore        10
+     607: iload         10
+     609: iconst_5
+     610: if_icmpge     683
+     613: aload_0
+     614: getfield      #56                 // Field anIntArray1700:[I
+     617: iload         10
+     619: iaload
+     620: ifeq          677
+     623: aload         7
+     625: getstatic     #55                 // Field client.anIntArrayArray1003:[[I
+     628: iload         10
+     630: aaload
+     631: iconst_0
+     632: iaload
+     633: getstatic     #55                 // Field client.anIntArrayArray1003:[[I
+     636: iload         10
+     638: aaload
+     639: aload_0
+     640: getfield      #56                 // Field anIntArray1700:[I
+     643: iload         10
+     645: iaload
+     646: iaload
+     647: invokevirtual #91                 // Method Model.method476:(II)V
+     650: iload         10
+     652: iconst_1
+     653: if_icmpne     677
+     656: aload         7
+     658: getstatic     #92                 // Field client.anIntArray1204:[I
+     661: iconst_0
+     662: iaload
+     663: getstatic     #92                 // Field client.anIntArray1204:[I
+     666: aload_0
+     667: getfield      #56                 // Field anIntArray1700:[I
+     670: iload         10
+     672: iaload
+     673: iaload
+     674: invokevirtual #91                 // Method Model.method476:(II)V
+     677: iinc          10, 1
+     680: goto          607
+     683: aload         7
+     685: invokevirtual #16                 // Method Model.method469:()V
+     688: aload         7
+     690: bipush        64
+     692: sipush        850
+     695: bipush        -30
+     697: bipush        -50
+     699: bipush        -30
+     701: iconst_1
+     702: invokevirtual #28                 // Method Model.method479:(IIIIIZ)V
+     705: getstatic     #80                 // Field mruNodes:LMRUNodes;
+     708: aload         7
+     710: lload_1
+     711: invokevirtual #93                 // Method MRUNodes.removeFromCache:(LNodeSub;J)V
+     714: aload_0
+     715: lload_1
+     716: putfield      #85                 // Field aLong1697:J
+     719: aload_0
+     720: getfield      #6                  // Field aBoolean1699:Z
+     723: ifeq          729
+     726: aload         7
+     728: areturn
+     729: getstatic     #94                 // Field Model.aModel_1621:LModel;
+     732: astore        8
+     734: aload         8
+     736: aload         7
+     738: iload_3
+     739: invokestatic  #12                 // Method Class36.method532:(I)Z
+     742: iload         4
+     744: invokestatic  #12                 // Method Class36.method532:(I)Z
+     747: iand
+     748: invokevirtual #95                 // Method Model.method464:(LModel;Z)V
+     751: iload_3
+     752: iconst_m1
+     753: if_icmpeq     784
+     756: iload         4
+     758: iconst_m1
+     759: if_icmpeq     784
+     762: aload         8
+     764: getstatic     #73                 // Field Animation.anims:[LAnimation;
+     767: aload_0
+     768: getfield      #71                 // Field Entity.anim:I
+     771: aaload
+     772: getfield      #96                 // Field Animation.anIntArray357:[I
+     775: iload         4
+     777: iload_3
+     778: invokevirtual #97                 // Method Model.method471:([III)V
+     781: goto          795
+     784: iload_3
+     785: iconst_m1
+     786: if_icmpeq     795
+     789: aload         8
+     791: iload_3
+     792: invokevirtual #19                 // Method Model.method470:(I)V
+     795: aload         8
+     797: invokevirtual #98                 // Method Model.method466:()V
+     800: aload         8
+     802: aconst_null
+     803: checkcast     #20                 // class "[[I"
+     806: putfield      #21                 // Field Model.anIntArrayArray1658:[[I
+     809: aload         8
+     811: aconst_null
+     812: checkcast     #20                 // class "[[I"
+     815: putfield      #22                 // Field Model.anIntArrayArray1657:[[I
+     818: aload         8
+     820: areturn
+
+  public boolean isVisible();
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field visible:Z
+       4: ireturn
+
+  public Model method453();
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field visible:Z
+       4: ifne          9
+       7: aconst_null
+       8: areturn
+       9: aload_0
+      10: getfield      #46                 // Field desc:LEntityDef;
+      13: ifnull        24
+      16: aload_0
+      17: getfield      #46                 // Field desc:LEntityDef;
+      20: invokevirtual #99                 // Method EntityDef.method160:()LModel;
+      23: areturn
+      24: iconst_0
+      25: istore_1
+      26: iconst_0
+      27: istore_2
+      28: iload_2
+      29: bipush        12
+      31: if_icmpge     105
+      34: aload_0
+      35: getfield      #48                 // Field equipment:[I
+      38: iload_2
+      39: iaload
+      40: istore_3
+      41: iload_3
+      42: sipush        256
+      45: if_icmplt     72
+      48: iload_3
+      49: sipush        512
+      52: if_icmpge     72
+      55: getstatic     #82                 // Field IDK.cache:[LIDK;
+      58: iload_3
+      59: sipush        256
+      62: isub
+      63: aaload
+      64: invokevirtual #100                // Method IDK.method539:()Z
+      67: ifne          72
+      70: iconst_1
+      71: istore_1
+      72: iload_3
+      73: sipush        512
+      76: if_icmplt     99
+      79: iload_3
+      80: sipush        512
+      83: isub
+      84: invokestatic  #53                 // Method ItemDef.forID:(I)LItemDef;
+      87: aload_0
+      88: getfield      #44                 // Field anInt1702:I
+      91: invokevirtual #101                // Method ItemDef.method192:(I)Z
+      94: ifne          99
+      97: iconst_1
+      98: istore_1
+      99: iinc          2, 1
+     102: goto          28
+     105: iload_1
+     106: ifeq          111
+     109: aconst_null
+     110: areturn
+     111: bipush        12
+     113: anewarray     #11                 // class Model
+     116: astore_2
+     117: iconst_0
+     118: istore_3
+     119: iconst_0
+     120: istore        4
+     122: iload         4
+     124: bipush        12
+     126: if_icmpge     227
+     129: aload_0
+     130: getfield      #48                 // Field equipment:[I
+     133: iload         4
+     135: iaload
+     136: istore        5
+     138: iload         5
+     140: sipush        256
+     143: if_icmplt     182
+     146: iload         5
+     148: sipush        512
+     151: if_icmpge     182
+     154: getstatic     #82                 // Field IDK.cache:[LIDK;
+     157: iload         5
+     159: sipush        256
+     162: isub
+     163: aaload
+     164: invokevirtual #102                // Method IDK.method540:()LModel;
+     167: astore        6
+     169: aload         6
+     171: ifnull        182
+     174: aload_2
+     175: iload_3
+     176: iinc          3, 1
+     179: aload         6
+     181: aastore
+     182: iload         5
+     184: sipush        512
+     187: if_icmplt     221
+     190: iload         5
+     192: sipush        512
+     195: isub
+     196: invokestatic  #53                 // Method ItemDef.forID:(I)LItemDef;
+     199: aload_0
+     200: getfield      #44                 // Field anInt1702:I
+     203: invokevirtual #103                // Method ItemDef.method194:(I)LModel;
+     206: astore        6
+     208: aload         6
+     210: ifnull        221
+     213: aload_2
+     214: iload_3
+     215: iinc          3, 1
+     218: aload         6
+     220: aastore
+     221: iinc          4, 1
+     224: goto          122
+     227: new           #11                 // class Model
+     230: dup
+     231: iload_3
+     232: aload_2
+     233: invokespecial #90                 // Method Model."<init>":(I[LModel;)V
+     236: astore        4
+     238: iconst_0
+     239: istore        5
+     241: iload         5
+     243: iconst_5
+     244: if_icmpge     317
+     247: aload_0
+     248: getfield      #56                 // Field anIntArray1700:[I
+     251: iload         5
+     253: iaload
+     254: ifeq          311
+     257: aload         4
+     259: getstatic     #55                 // Field client.anIntArrayArray1003:[[I
+     262: iload         5
+     264: aaload
+     265: iconst_0
+     266: iaload
+     267: getstatic     #55                 // Field client.anIntArrayArray1003:[[I
+     270: iload         5
+     272: aaload
+     273: aload_0
+     274: getfield      #56                 // Field anIntArray1700:[I
+     277: iload         5
+     279: iaload
+     280: iaload
+     281: invokevirtual #91                 // Method Model.method476:(II)V
+     284: iload         5
+     286: iconst_1
+     287: if_icmpne     311
+     290: aload         4
+     292: getstatic     #92                 // Field client.anIntArray1204:[I
+     295: iconst_0
+     296: iaload
+     297: getstatic     #92                 // Field client.anIntArray1204:[I
+     300: aload_0
+     301: getfield      #56                 // Field anIntArray1700:[I
+     304: iload         5
+     306: iaload
+     307: iaload
+     308: invokevirtual #91                 // Method Model.method476:(II)V
+     311: iinc          5, 1
+     314: goto          241
+     317: aload         4
+     319: areturn
+
+  Player();
+    Code:
+       0: aload_0
+       1: invokespecial #104                // Method Entity."<init>":()V
+       4: aload_0
+       5: ldc2_w        #86                 // long -1l
+       8: putfield      #85                 // Field aLong1697:J
+      11: aload_0
+      12: iconst_0
+      13: putfield      #6                  // Field aBoolean1699:Z
+      16: aload_0
+      17: iconst_5
+      18: newarray       int
+      20: putfield      #56                 // Field anIntArray1700:[I
+      23: aload_0
+      24: iconst_0
+      25: putfield      #1                  // Field visible:Z
+      28: aload_0
+      29: bipush        9
+      31: putfield      #105                // Field anInt1715:I
+      34: aload_0
+      35: bipush        12
+      37: newarray       int
+      39: putfield      #48                 // Field equipment:[I
+      42: return
+
+  static {};
+    Code:
+       0: new           #106                // class MRUNodes
+       3: dup
+       4: sipush        260
+       7: invokespecial #107                // Method MRUNodes."<init>":(I)V
+      10: putstatic     #80                 // Field mruNodes:LMRUNodes;
+      13: return
+}

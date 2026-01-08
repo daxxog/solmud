@@ -1,0 +1,199 @@
+Compiled from "Class29.java"
+final class Class29 {
+  private int anInt535;
+
+  private int[] anIntArray536;
+
+  private int[] anIntArray537;
+
+  int anInt538;
+
+  int anInt539;
+
+  int anInt540;
+
+  private int anInt541;
+
+  private int anInt542;
+
+  private int anInt543;
+
+  private int anInt544;
+
+  private int anInt545;
+
+  public static int anInt546;
+
+  public void method325(Stream);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1                  // Method Stream.readUnsignedByte:()I
+       5: putfield      #2                  // Field anInt540:I
+       8: aload_0
+       9: aload_1
+      10: invokevirtual #3                  // Method Stream.readDWord:()I
+      13: putfield      #4                  // Field anInt538:I
+      16: aload_0
+      17: aload_1
+      18: invokevirtual #3                  // Method Stream.readDWord:()I
+      21: putfield      #5                  // Field anInt539:I
+      24: aload_0
+      25: aload_1
+      26: invokevirtual #6                  // Method method326:(LStream;)V
+      29: return
+
+  public void method326(Stream);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1                  // Method Stream.readUnsignedByte:()I
+       5: putfield      #7                  // Field anInt535:I
+       8: aload_0
+       9: aload_0
+      10: getfield      #7                  // Field anInt535:I
+      13: newarray       int
+      15: putfield      #8                  // Field anIntArray536:[I
+      18: aload_0
+      19: aload_0
+      20: getfield      #7                  // Field anInt535:I
+      23: newarray       int
+      25: putfield      #9                  // Field anIntArray537:[I
+      28: iconst_0
+      29: istore_2
+      30: iload_2
+      31: aload_0
+      32: getfield      #7                  // Field anInt535:I
+      35: if_icmpge     64
+      38: aload_0
+      39: getfield      #8                  // Field anIntArray536:[I
+      42: iload_2
+      43: aload_1
+      44: invokevirtual #10                 // Method Stream.readUnsignedWord:()I
+      47: iastore
+      48: aload_0
+      49: getfield      #9                  // Field anIntArray537:[I
+      52: iload_2
+      53: aload_1
+      54: invokevirtual #10                 // Method Stream.readUnsignedWord:()I
+      57: iastore
+      58: iinc          2, 1
+      61: goto          30
+      64: return
+
+  void resetValues();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: putfield      #11                 // Field anInt541:I
+       5: aload_0
+       6: iconst_0
+       7: putfield      #12                 // Field anInt542:I
+      10: aload_0
+      11: iconst_0
+      12: putfield      #13                 // Field anInt543:I
+      15: aload_0
+      16: iconst_0
+      17: putfield      #14                 // Field anInt544:I
+      20: aload_0
+      21: iconst_0
+      22: putfield      #15                 // Field anInt545:I
+      25: return
+
+  int method328(int);
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field anInt545:I
+       4: aload_0
+       5: getfield      #11                 // Field anInt541:I
+       8: if_icmplt     119
+      11: aload_0
+      12: aload_0
+      13: getfield      #9                  // Field anIntArray537:[I
+      16: aload_0
+      17: dup
+      18: getfield      #12                 // Field anInt542:I
+      21: dup_x1
+      22: iconst_1
+      23: iadd
+      24: putfield      #12                 // Field anInt542:I
+      27: iaload
+      28: bipush        15
+      30: ishl
+      31: putfield      #14                 // Field anInt544:I
+      34: aload_0
+      35: getfield      #12                 // Field anInt542:I
+      38: aload_0
+      39: getfield      #7                  // Field anInt535:I
+      42: if_icmplt     55
+      45: aload_0
+      46: aload_0
+      47: getfield      #7                  // Field anInt535:I
+      50: iconst_1
+      51: isub
+      52: putfield      #12                 // Field anInt542:I
+      55: aload_0
+      56: aload_0
+      57: getfield      #8                  // Field anIntArray536:[I
+      60: aload_0
+      61: getfield      #12                 // Field anInt542:I
+      64: iaload
+      65: i2d
+      66: ldc2_w        #16                 // double 65536.0d
+      69: ddiv
+      70: iload_1
+      71: i2d
+      72: dmul
+      73: d2i
+      74: putfield      #11                 // Field anInt541:I
+      77: aload_0
+      78: getfield      #11                 // Field anInt541:I
+      81: aload_0
+      82: getfield      #15                 // Field anInt545:I
+      85: if_icmple     119
+      88: aload_0
+      89: aload_0
+      90: getfield      #9                  // Field anIntArray537:[I
+      93: aload_0
+      94: getfield      #12                 // Field anInt542:I
+      97: iaload
+      98: bipush        15
+     100: ishl
+     101: aload_0
+     102: getfield      #14                 // Field anInt544:I
+     105: isub
+     106: aload_0
+     107: getfield      #11                 // Field anInt541:I
+     110: aload_0
+     111: getfield      #15                 // Field anInt545:I
+     114: isub
+     115: idiv
+     116: putfield      #13                 // Field anInt543:I
+     119: aload_0
+     120: dup
+     121: getfield      #14                 // Field anInt544:I
+     124: aload_0
+     125: getfield      #13                 // Field anInt543:I
+     128: iadd
+     129: putfield      #14                 // Field anInt544:I
+     132: aload_0
+     133: dup
+     134: getfield      #15                 // Field anInt545:I
+     137: iconst_1
+     138: iadd
+     139: putfield      #15                 // Field anInt545:I
+     142: aload_0
+     143: getfield      #14                 // Field anInt544:I
+     146: aload_0
+     147: getfield      #13                 // Field anInt543:I
+     150: isub
+     151: bipush        15
+     153: ishr
+     154: ireturn
+
+  public Class29();
+    Code:
+       0: aload_0
+       1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+       4: return
+}

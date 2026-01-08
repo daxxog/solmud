@@ -1,0 +1,224 @@
+Compiled from "Skills.java"
+final class Skills {
+  public static final int skillsCount;
+
+  public static final java.lang.String[] skillNames;
+
+  public static final boolean[] skillEnabled;
+
+  Skills();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  static {};
+    Code:
+       0: bipush        25
+       2: anewarray     #2                  // class java/lang/String
+       5: dup
+       6: iconst_0
+       7: ldc           #3                  // String attack
+       9: aastore
+      10: dup
+      11: iconst_1
+      12: ldc           #4                  // String defence
+      14: aastore
+      15: dup
+      16: iconst_2
+      17: ldc           #5                  // String strength
+      19: aastore
+      20: dup
+      21: iconst_3
+      22: ldc           #6                  // String hitpoints
+      24: aastore
+      25: dup
+      26: iconst_4
+      27: ldc           #7                  // String ranged
+      29: aastore
+      30: dup
+      31: iconst_5
+      32: ldc           #8                  // String prayer
+      34: aastore
+      35: dup
+      36: bipush        6
+      38: ldc           #9                  // String magic
+      40: aastore
+      41: dup
+      42: bipush        7
+      44: ldc           #10                 // String cooking
+      46: aastore
+      47: dup
+      48: bipush        8
+      50: ldc           #11                 // String woodcutting
+      52: aastore
+      53: dup
+      54: bipush        9
+      56: ldc           #12                 // String fletching
+      58: aastore
+      59: dup
+      60: bipush        10
+      62: ldc           #13                 // String fishing
+      64: aastore
+      65: dup
+      66: bipush        11
+      68: ldc           #14                 // String firemaking
+      70: aastore
+      71: dup
+      72: bipush        12
+      74: ldc           #15                 // String crafting
+      76: aastore
+      77: dup
+      78: bipush        13
+      80: ldc           #16                 // String smithing
+      82: aastore
+      83: dup
+      84: bipush        14
+      86: ldc           #17                 // String mining
+      88: aastore
+      89: dup
+      90: bipush        15
+      92: ldc           #18                 // String herblore
+      94: aastore
+      95: dup
+      96: bipush        16
+      98: ldc           #19                 // String agility
+     100: aastore
+     101: dup
+     102: bipush        17
+     104: ldc           #20                 // String thieving
+     106: aastore
+     107: dup
+     108: bipush        18
+     110: ldc           #21                 // String slayer
+     112: aastore
+     113: dup
+     114: bipush        19
+     116: ldc           #22                 // String farming
+     118: aastore
+     119: dup
+     120: bipush        20
+     122: ldc           #23                 // String runecraft
+     124: aastore
+     125: dup
+     126: bipush        21
+     128: ldc           #24                 // String -unused-
+     130: aastore
+     131: dup
+     132: bipush        22
+     134: ldc           #24                 // String -unused-
+     136: aastore
+     137: dup
+     138: bipush        23
+     140: ldc           #24                 // String -unused-
+     142: aastore
+     143: dup
+     144: bipush        24
+     146: ldc           #24                 // String -unused-
+     148: aastore
+     149: putstatic     #25                 // Field skillNames:[Ljava/lang/String;
+     152: bipush        25
+     154: newarray       boolean
+     156: dup
+     157: iconst_0
+     158: iconst_1
+     159: bastore
+     160: dup
+     161: iconst_1
+     162: iconst_1
+     163: bastore
+     164: dup
+     165: iconst_2
+     166: iconst_1
+     167: bastore
+     168: dup
+     169: iconst_3
+     170: iconst_1
+     171: bastore
+     172: dup
+     173: iconst_4
+     174: iconst_1
+     175: bastore
+     176: dup
+     177: iconst_5
+     178: iconst_1
+     179: bastore
+     180: dup
+     181: bipush        6
+     183: iconst_1
+     184: bastore
+     185: dup
+     186: bipush        7
+     188: iconst_1
+     189: bastore
+     190: dup
+     191: bipush        8
+     193: iconst_1
+     194: bastore
+     195: dup
+     196: bipush        9
+     198: iconst_1
+     199: bastore
+     200: dup
+     201: bipush        10
+     203: iconst_1
+     204: bastore
+     205: dup
+     206: bipush        11
+     208: iconst_1
+     209: bastore
+     210: dup
+     211: bipush        12
+     213: iconst_1
+     214: bastore
+     215: dup
+     216: bipush        13
+     218: iconst_1
+     219: bastore
+     220: dup
+     221: bipush        14
+     223: iconst_1
+     224: bastore
+     225: dup
+     226: bipush        15
+     228: iconst_1
+     229: bastore
+     230: dup
+     231: bipush        16
+     233: iconst_1
+     234: bastore
+     235: dup
+     236: bipush        17
+     238: iconst_1
+     239: bastore
+     240: dup
+     241: bipush        18
+     243: iconst_1
+     244: bastore
+     245: dup
+     246: bipush        19
+     248: iconst_0
+     249: bastore
+     250: dup
+     251: bipush        20
+     253: iconst_1
+     254: bastore
+     255: dup
+     256: bipush        21
+     258: iconst_0
+     259: bastore
+     260: dup
+     261: bipush        22
+     263: iconst_0
+     264: bastore
+     265: dup
+     266: bipush        23
+     268: iconst_0
+     269: bastore
+     270: dup
+     271: bipush        24
+     273: iconst_0
+     274: bastore
+     275: putstatic     #26                 // Field skillEnabled:[Z
+     278: return
+}

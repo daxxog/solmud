@@ -1,0 +1,223 @@
+Compiled from "StreamLoader.java"
+final class StreamLoader {
+  private final byte[] aByteArray726;
+
+  private final int dataSize;
+
+  private final int[] anIntArray728;
+
+  private final int[] anIntArray729;
+
+  private final int[] anIntArray730;
+
+  private final int[] anIntArray731;
+
+  private final boolean aBoolean732;
+
+  public StreamLoader(byte[]);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: new           #2                  // class Stream
+       7: dup
+       8: aload_1
+       9: invokespecial #3                  // Method Stream."<init>":([B)V
+      12: astore_2
+      13: aload_2
+      14: invokevirtual #4                  // Method Stream.read3Bytes:()I
+      17: istore_3
+      18: aload_2
+      19: invokevirtual #4                  // Method Stream.read3Bytes:()I
+      22: istore        4
+      24: iload         4
+      26: iload_3
+      27: if_icmpeq     73
+      30: iload_3
+      31: newarray       byte
+      33: astore        5
+      35: aload         5
+      37: iload_3
+      38: aload_1
+      39: iload         4
+      41: bipush        6
+      43: invokestatic  #5                  // Method Class13.method225:([BI[BII)I
+      46: pop
+      47: aload_0
+      48: aload         5
+      50: putfield      #6                  // Field aByteArray726:[B
+      53: new           #2                  // class Stream
+      56: dup
+      57: aload_0
+      58: getfield      #6                  // Field aByteArray726:[B
+      61: invokespecial #3                  // Method Stream."<init>":([B)V
+      64: astore_2
+      65: aload_0
+      66: iconst_1
+      67: putfield      #7                  // Field aBoolean732:Z
+      70: goto          83
+      73: aload_0
+      74: aload_1
+      75: putfield      #6                  // Field aByteArray726:[B
+      78: aload_0
+      79: iconst_0
+      80: putfield      #7                  // Field aBoolean732:Z
+      83: aload_0
+      84: aload_2
+      85: invokevirtual #8                  // Method Stream.readUnsignedWord:()I
+      88: putfield      #9                  // Field dataSize:I
+      91: aload_0
+      92: aload_0
+      93: getfield      #9                  // Field dataSize:I
+      96: newarray       int
+      98: putfield      #10                 // Field anIntArray728:[I
+     101: aload_0
+     102: aload_0
+     103: getfield      #9                  // Field dataSize:I
+     106: newarray       int
+     108: putfield      #11                 // Field anIntArray729:[I
+     111: aload_0
+     112: aload_0
+     113: getfield      #9                  // Field dataSize:I
+     116: newarray       int
+     118: putfield      #12                 // Field anIntArray730:[I
+     121: aload_0
+     122: aload_0
+     123: getfield      #9                  // Field dataSize:I
+     126: newarray       int
+     128: putfield      #13                 // Field anIntArray731:[I
+     131: aload_2
+     132: getfield      #14                 // Field Stream.currentOffset:I
+     135: aload_0
+     136: getfield      #9                  // Field dataSize:I
+     139: bipush        10
+     141: imul
+     142: iadd
+     143: istore        5
+     145: iconst_0
+     146: istore        6
+     148: iload         6
+     150: aload_0
+     151: getfield      #9                  // Field dataSize:I
+     154: if_icmpge     217
+     157: aload_0
+     158: getfield      #10                 // Field anIntArray728:[I
+     161: iload         6
+     163: aload_2
+     164: invokevirtual #15                 // Method Stream.readDWord:()I
+     167: iastore
+     168: aload_0
+     169: getfield      #11                 // Field anIntArray729:[I
+     172: iload         6
+     174: aload_2
+     175: invokevirtual #4                  // Method Stream.read3Bytes:()I
+     178: iastore
+     179: aload_0
+     180: getfield      #12                 // Field anIntArray730:[I
+     183: iload         6
+     185: aload_2
+     186: invokevirtual #4                  // Method Stream.read3Bytes:()I
+     189: iastore
+     190: aload_0
+     191: getfield      #13                 // Field anIntArray731:[I
+     194: iload         6
+     196: iload         5
+     198: iastore
+     199: iload         5
+     201: aload_0
+     202: getfield      #12                 // Field anIntArray730:[I
+     205: iload         6
+     207: iaload
+     208: iadd
+     209: istore        5
+     211: iinc          6, 1
+     214: goto          148
+     217: return
+
+  public byte[] getDataForName(java.lang.String);
+    Code:
+       0: aconst_null
+       1: astore_2
+       2: iconst_0
+       3: istore_3
+       4: aload_1
+       5: invokevirtual #16                 // Method java/lang/String.toUpperCase:()Ljava/lang/String;
+       8: astore_1
+       9: iconst_0
+      10: istore        4
+      12: iload         4
+      14: aload_1
+      15: invokevirtual #17                 // Method java/lang/String.length:()I
+      18: if_icmpge     42
+      21: iload_3
+      22: bipush        61
+      24: imul
+      25: aload_1
+      26: iload         4
+      28: invokevirtual #18                 // Method java/lang/String.charAt:(I)C
+      31: iadd
+      32: bipush        32
+      34: isub
+      35: istore_3
+      36: iinc          4, 1
+      39: goto          12
+      42: iconst_0
+      43: istore        4
+      45: iload         4
+      47: aload_0
+      48: getfield      #9                  // Field dataSize:I
+      51: if_icmpge     150
+      54: aload_0
+      55: getfield      #10                 // Field anIntArray728:[I
+      58: iload         4
+      60: iaload
+      61: iload_3
+      62: if_icmpne     144
+      65: aload_2
+      66: ifnonnull     79
+      69: aload_0
+      70: getfield      #11                 // Field anIntArray729:[I
+      73: iload         4
+      75: iaload
+      76: newarray       byte
+      78: astore_2
+      79: aload_0
+      80: getfield      #7                  // Field aBoolean732:Z
+      83: ifne          119
+      86: aload_2
+      87: aload_0
+      88: getfield      #11                 // Field anIntArray729:[I
+      91: iload         4
+      93: iaload
+      94: aload_0
+      95: getfield      #6                  // Field aByteArray726:[B
+      98: aload_0
+      99: getfield      #12                 // Field anIntArray730:[I
+     102: iload         4
+     104: iaload
+     105: aload_0
+     106: getfield      #13                 // Field anIntArray731:[I
+     109: iload         4
+     111: iaload
+     112: invokestatic  #5                  // Method Class13.method225:([BI[BII)I
+     115: pop
+     116: goto          142
+     119: aload_0
+     120: getfield      #6                  // Field aByteArray726:[B
+     123: aload_0
+     124: getfield      #13                 // Field anIntArray731:[I
+     127: iload         4
+     129: iaload
+     130: aload_2
+     131: iconst_0
+     132: aload_0
+     133: getfield      #11                 // Field anIntArray729:[I
+     136: iload         4
+     138: iaload
+     139: invokestatic  #19                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+     142: aload_2
+     143: areturn
+     144: iinc          4, 1
+     147: goto          45
+     150: aconst_null
+     151: areturn
+}

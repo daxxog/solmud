@@ -1,0 +1,44 @@
+Compiled from "Animable.java"
+public class Animable extends NodeSub {
+  Class33[] aClass33Array1425;
+
+  public int modelHeight;
+
+  public void method443(int, int, int, int, int, int, int, int, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #1                  // Method getRotatedModel:()LModel;
+       4: astore        10
+       6: aload         10
+       8: ifnull        40
+      11: aload_0
+      12: aload         10
+      14: getfield      #2                  // Field Model.modelHeight:I
+      17: putfield      #3                  // Field modelHeight:I
+      20: aload         10
+      22: iload_1
+      23: iload_2
+      24: iload_3
+      25: iload         4
+      27: iload         5
+      29: iload         6
+      31: iload         7
+      33: iload         8
+      35: iload         9
+      37: invokevirtual #4                  // Method Model.method443:(IIIIIIIII)V
+      40: return
+
+  Model getRotatedModel();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  Animable();
+    Code:
+       0: aload_0
+       1: invokespecial #5                  // Method NodeSub."<init>":()V
+       4: aload_0
+       5: sipush        1000
+       8: putfield      #3                  // Field modelHeight:I
+      11: return
+}

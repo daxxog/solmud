@@ -1,0 +1,20 @@
+Compiled from "Object3.java"
+public final class Object3 {
+  int anInt811;
+
+  int anInt812;
+
+  int anInt813;
+
+  public Animable aClass30_Sub2_Sub4_814;
+
+  public int uid;
+
+  byte aByte816;
+
+  public Object3();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+}
