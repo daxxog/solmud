@@ -18,7 +18,7 @@
 
 ### 2. Behavioral Analysis
 - **Constructor Pattern**: Creates `Node[]` array and initializes circular linked lists
-- **Magic Constants**: Error code `"91499,"`, array size `1024`
+- **Magic Constants**: Error code `"91499,"`
 - **Cross-References**: `PKVMXVTO` (Node) array elements
 - **Unique Operations**: Hash table with `(l & (size - 1))` indexing
 

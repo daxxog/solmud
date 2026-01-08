@@ -39,7 +39,7 @@
 ### Critical Evidence Points
 1. **Golden Ratio Constant**: The ISAAC algorithm uses the golden ratio constant `0x9e3779b9` which appears as `-1640531527` in the bytecode (line 256). This is the definitive cryptographic signature.
 2. **Dual 256-Element Arrays**: Both deobfuscated and obfuscated classes create two `int[256]` arrays (lines 28-35 in bytecode), which is unique to ISAAC's memory and results arrays.
-3. **Four Distinct Bit Shifts**: The ISAAC algorithm uses four specific bit shifts: 13, 6, 2, and 16. The bytecode contains exactly 28 instances of these shift operations in the expected pattern.
+3. **Bit Shift Operations**: The ISAAC algorithm uses four specific bit shifts: 13, 6, 2, and 16. The bytecode contains exactly 28 instances of these shift operations in the expected pattern.
 4. **Algorithmic Structure**: The isaac() method implements the exact same mathematical operations as the deobfuscated version, including the accumulator manipulation and memory array operations.
 
 ### Cross-Reference Validation
