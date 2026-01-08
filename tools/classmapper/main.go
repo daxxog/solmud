@@ -29,6 +29,9 @@ type ClassInfo struct {
 
 	// Cross-reference data
 	CrossReferences *ClassCrossReferences `json:"cross_refs,omitempty"`
+
+	// Internal behavioral patterns (Phase 3.2.2.1)
+	InternalBehavior *InternalBehavioralPatterns `json:"internal_behavior,omitempty"`
 }
 
 type ClassSource int
@@ -37,6 +40,53 @@ const (
 	SourceDeobfuscated ClassSource = iota
 	SourceObfuscated
 )
+
+// InternalBehavioralPatterns represents internal behavioral patterns within a class
+type InternalBehavioralPatterns struct {
+	// Intra-class method call graph
+	MethodCallGraph *InternalCallGraph `json:"method_call_graph"`
+
+	// State manipulation patterns
+	StatePatterns *StateManipulationPatterns `json:"state_patterns"`
+
+	// Loop and iteration patterns
+	IterationPatterns *IterationPatterns `json:"iteration_patterns"`
+
+	// Semantic method analysis
+	SemanticPatterns *SemanticMethodPatterns `json:"semantic_patterns"`
+}
+
+// InternalCallGraph tracks method calls within the same class
+type InternalCallGraph struct {
+	MethodCalls map[string][]string // caller -> [callees]
+	CallFreq    map[string]int      // method -> call count
+	Recursion   map[string]bool     // method -> recursive?
+}
+
+// StateManipulationPatterns tracks field access patterns
+type StateManipulationPatterns struct {
+	FieldReads   map[string]int // field -> read count
+	FieldWrites  map[string]int // field -> write count
+	SetStateFreq int            // setState() calls per method
+}
+
+// IterationPatterns tracks loop and iteration usage
+type IterationPatterns struct {
+	ForLoops         int // for each patterns
+	WhileLoops       int // while patterns
+	IteratorUsage    int // iterator patterns
+	StreamProcessing int // stream operation patterns
+}
+
+// SemanticMethodPatterns tracks method naming and purpose patterns
+type SemanticMethodPatterns struct {
+	GetterMethods  []string // get* methods
+	SetterMethods  []string // set* methods
+	BuilderMethods []string // with*, add* methods
+	FactoryMethods []string // create*, new* methods
+	EventHandlers  []string // on*, handle* methods
+	UtilityMethods []string // format*, parse*, validate* methods
+}
 
 type FieldInfo struct {
 	AccessModifiers []string

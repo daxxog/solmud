@@ -26,25 +26,33 @@ type JavapParser struct {
 	projectClasses  []string
 	anchorMappings  map[string]string
 	enableCrossRefs bool
+
+	// Internal behavior parsing (Phase 3.2.2.1)
+	internalBehaviorParser *InternalBehaviorParser
+	enableInternalBehavior bool
 }
 
 func NewJavapParser(cacheManager *CacheManager, projectClasses []string, anchors map[string]string, enableCrossRefs bool) *JavapParser {
 	parser := &JavapParser{
-		regex_class_decl: regexp.MustCompile(`^\s*(?:(?:public|private|protected|final|abstract|static)\s+)*(class|interface)\s+(\w+)`),
-		regex_extends:    regexp.MustCompile(`extends\s+(\w+)`),
-		regex_implements: regexp.MustCompile(`implements\s+([\w,\.]+)`),
-		regex_field:      regexp.MustCompile(`^\s*(private|public|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)`),
-		regex_method:     regexp.MustCompile(`^\s*(public|private|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)\(([^)]*)\)`),
-		cacheManager:     cacheManager,
-		projectClasses:   projectClasses,
-		anchorMappings:   anchors,
-		enableCrossRefs:  enableCrossRefs,
+		regex_class_decl:       regexp.MustCompile(`^\s*(?:(?:public|private|protected|final|abstract|static)\s+)*(class|interface)\s+(\w+)`),
+		regex_extends:          regexp.MustCompile(`extends\s+(\w+)`),
+		regex_implements:       regexp.MustCompile(`implements\s+([\w,\.]+)`),
+		regex_field:            regexp.MustCompile(`^\s*(private|public|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)`),
+		regex_method:           regexp.MustCompile(`^\s*(public|private|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)\(([^)]*)\)`),
+		cacheManager:           cacheManager,
+		projectClasses:         projectClasses,
+		anchorMappings:         anchors,
+		enableCrossRefs:        enableCrossRefs,
+		enableInternalBehavior: true, // Enable by default for Phase 3.2.2.1
 	}
 
 	// Initialize cross-reference parser if enabled
 	if enableCrossRefs {
 		parser.crossRefParser = NewCrossReferenceParser(projectClasses, anchors)
 	}
+
+	// Initialize internal behavior parser
+	parser.internalBehaviorParser = NewInternalBehaviorParser()
 
 	return parser
 }
@@ -206,6 +214,36 @@ func (self *JavapParser) parse_class(file_path string, class_name string) (*Clas
 		} else {
 			if self.cacheManager != nil && self.cacheManager.verbose {
 				fmt.Fprintf(os.Stderr, "  [CROSSREF] No source file found for %s\n", class_name)
+			}
+		}
+	}
+
+	// Parse internal behavioral patterns from source file (Phase 3.2.2.1)
+	if self.enableInternalBehavior && self.internalBehaviorParser != nil {
+		if self.cacheManager != nil && self.cacheManager.verbose {
+			fmt.Fprintf(os.Stderr, "  [INTERNAL] Processing %s...\n", class_name)
+		}
+		// Convert class file path to source file path
+		sourcePath := self.convertClassToSourcePath(file_path)
+		if sourcePath != "" {
+			if self.cacheManager != nil && self.cacheManager.verbose {
+				fmt.Fprintf(os.Stderr, "  [INTERNAL] Found source: %s\n", sourcePath)
+			}
+			sourceContent, err := os.ReadFile(sourcePath)
+			if err != nil {
+				if self.cacheManager != nil && self.cacheManager.verbose {
+					fmt.Fprintf(os.Stderr, "  Warning: Failed to read source file for internal behavior analysis %s: %v\n", class_name, err)
+				}
+			} else {
+				internalBehavior := self.internalBehaviorParser.ParseInternalBehavior(string(sourceContent), class_info.Methods)
+				if self.cacheManager != nil && self.cacheManager.verbose {
+					fmt.Fprintf(os.Stderr, "  [INTERNAL] Parsed internal behavior for %s\n", class_name)
+				}
+				class_info.InternalBehavior = internalBehavior
+			}
+		} else {
+			if self.cacheManager != nil && self.cacheManager.verbose {
+				fmt.Fprintf(os.Stderr, "  [INTERNAL] No source file found for %s\n", class_name)
 			}
 		}
 	}

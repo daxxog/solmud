@@ -21,8 +21,15 @@ const (
 	WEIGHT_CROSSREF_SIMILARITY  = 15.0 // New: cross-reference similarity
 	WEIGHT_UNIQUE_PATTERNS      = 8.0  // New: unique behavioral patterns
 	WEIGHT_BEHAVIORAL_SIGNATURE = 12.0 // New: behavioral signature matching
-	SIZE_DIFFERENCE_PENALTY     = 10.0
-	MAX_SIZE_DIFFERENCE_RATIO   = 1.5
+
+	// Phase 3.2.2.1: Internal behavioral patterns
+	WEIGHT_METHOD_CALL_GRAPH  = 10.0 // Intra-class method call patterns
+	WEIGHT_STATE_MANIPULATION = 12.0 // Field read/write patterns
+	WEIGHT_ITERATION_PATTERNS = 8.0  // Loop and iteration usage
+	WEIGHT_SEMANTIC_METHODS   = 6.0  // Method naming patterns (getters/setters/etc)
+
+	SIZE_DIFFERENCE_PENALTY   = 10.0
+	MAX_SIZE_DIFFERENCE_RATIO = 1.5
 )
 
 type ScoreBreakdown struct {
@@ -40,7 +47,14 @@ type ScoreBreakdown struct {
 	CrossrefSimilarity  float64
 	UniquePatterns      float64
 	BehavioralSignature float64
-	SizePenalty         float64
+
+	// Phase 3.2.2.1: Internal behavioral patterns
+	MethodCallGraph   float64
+	StateManipulation float64
+	IterationPatterns float64
+	SemanticMethods   float64
+
+	SizePenalty float64
 }
 
 type Scorer struct {
@@ -94,6 +108,19 @@ func (self *Scorer) CalculateScore(deob_class *ClassInfo, obf_class *ClassInfo) 
 
 	behavioral_sig := self.calculate_behavioral_signature(deob_class, obf_class)
 	breakdown.BehavioralSignature = behavioral_sig * WEIGHT_BEHAVIORAL_SIGNATURE
+
+	// Phase 3.2.2.1: Internal behavioral pattern scoring
+	method_call_graph := self.calculate_method_call_graph_similarity(deob_class, obf_class)
+	breakdown.MethodCallGraph = method_call_graph * WEIGHT_METHOD_CALL_GRAPH
+
+	state_manipulation := self.calculate_state_manipulation_similarity(deob_class, obf_class)
+	breakdown.StateManipulation = state_manipulation * WEIGHT_STATE_MANIPULATION
+
+	iteration_patterns := self.calculate_iteration_pattern_similarity(deob_class, obf_class)
+	breakdown.IterationPatterns = iteration_patterns * WEIGHT_ITERATION_PATTERNS
+
+	semantic_methods := self.calculate_semantic_method_similarity(deob_class, obf_class)
+	breakdown.SemanticMethods = semantic_methods * WEIGHT_SEMANTIC_METHODS
 
 	if len(deob_class.Constructors) == len(obf_class.Constructors) {
 		breakdown.ConstructorMatch = WEIGHT_CONSTRUCTOR_MATCH
@@ -496,4 +523,273 @@ func (self *Scorer) resolve_superclass(superclass string) string {
 		return resolved
 	}
 	return superclass
+}
+
+// Phase 3.2.2.1: Internal behavioral pattern scoring methods
+
+// calculate_method_call_graph_similarity compares intra-class method call patterns
+func (self *Scorer) calculate_method_call_graph_similarity(deob, obf *ClassInfo) float64 {
+	if deob.InternalBehavior == nil || deob.InternalBehavior.MethodCallGraph == nil ||
+		obf.InternalBehavior == nil || obf.InternalBehavior.MethodCallGraph == nil {
+		return 0.0
+	}
+
+	deob_graph := deob.InternalBehavior.MethodCallGraph
+	obf_graph := obf.InternalBehavior.MethodCallGraph
+
+	// Compare method call frequencies
+	total_similarity := 0.0
+	comparisons := 0
+
+	// Check if both have similar call patterns
+	deob_total_calls := 0
+	for _, freq := range deob_graph.CallFreq {
+		deob_total_calls += freq
+	}
+
+	obf_total_calls := 0
+	for _, freq := range obf_graph.CallFreq {
+		obf_total_calls += freq
+	}
+
+	if deob_total_calls > 0 && obf_total_calls > 0 {
+		// Similarity based on call density (calls per method)
+		deob_density := float64(deob_total_calls) / float64(len(deob.Methods))
+		obf_density := float64(obf_total_calls) / float64(len(obf.Methods))
+
+		if deob_density > 0 && obf_density > 0 {
+			density_ratio := math.Min(deob_density, obf_density) / math.Max(deob_density, obf_density)
+			total_similarity += density_ratio * 0.6
+			comparisons++
+		}
+
+		// Similarity based on recursion patterns
+		deob_recursive_count := 0
+		for _, isRecursive := range deob_graph.Recursion {
+			if isRecursive {
+				deob_recursive_count++
+			}
+		}
+
+		obf_recursive_count := 0
+		for _, isRecursive := range obf_graph.Recursion {
+			if isRecursive {
+				obf_recursive_count++
+			}
+		}
+
+		if deob_recursive_count > 0 || obf_recursive_count > 0 {
+			recursion_ratio := math.Min(float64(deob_recursive_count), float64(obf_recursive_count)) /
+				math.Max(float64(deob_recursive_count), float64(obf_recursive_count))
+			if math.Max(float64(deob_recursive_count), float64(obf_recursive_count)) > 0 {
+				total_similarity += recursion_ratio * 0.4
+				comparisons++
+			}
+		}
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return total_similarity / float64(comparisons)
+}
+
+// calculate_state_manipulation_similarity compares field access patterns
+func (self *Scorer) calculate_state_manipulation_similarity(deob, obf *ClassInfo) float64 {
+	if deob.InternalBehavior == nil || deob.InternalBehavior.StatePatterns == nil ||
+		obf.InternalBehavior == nil || obf.InternalBehavior.StatePatterns == nil {
+		return 0.0
+	}
+
+	deob_state := deob.InternalBehavior.StatePatterns
+	obf_state := obf.InternalBehavior.StatePatterns
+
+	total_similarity := 0.0
+	comparisons := 0
+
+	// Compare field read patterns
+	deob_reads := 0
+	for _, count := range deob_state.FieldReads {
+		deob_reads += count
+	}
+
+	obf_reads := 0
+	for _, count := range obf_state.FieldReads {
+		obf_reads += count
+	}
+
+	if deob_reads > 0 || obf_reads > 0 {
+		read_ratio := math.Min(float64(deob_reads), float64(obf_reads)) /
+			math.Max(float64(deob_reads), float64(obf_reads))
+		if math.Max(float64(deob_reads), float64(obf_reads)) > 0 {
+			total_similarity += read_ratio * 0.5
+			comparisons++
+		}
+	}
+
+	// Compare field write patterns
+	deob_writes := 0
+	for _, count := range deob_state.FieldWrites {
+		deob_writes += count
+	}
+
+	obf_writes := 0
+	for _, count := range obf_state.FieldWrites {
+		obf_writes += count
+	}
+
+	if deob_writes > 0 || obf_writes > 0 {
+		write_ratio := math.Min(float64(deob_writes), float64(obf_writes)) /
+			math.Max(float64(deob_writes), float64(obf_writes))
+		if math.Max(float64(deob_writes), float64(obf_writes)) > 0 {
+			total_similarity += write_ratio * 0.5
+			comparisons++
+		}
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return total_similarity / float64(comparisons)
+}
+
+// calculate_iteration_pattern_similarity compares loop and iteration usage
+func (self *Scorer) calculate_iteration_pattern_similarity(deob, obf *ClassInfo) float64 {
+	if deob.InternalBehavior == nil || deob.InternalBehavior.IterationPatterns == nil ||
+		obf.InternalBehavior == nil || obf.InternalBehavior.IterationPatterns == nil {
+		return 0.0
+	}
+
+	deob_iter := deob.InternalBehavior.IterationPatterns
+	obf_iter := obf.InternalBehavior.IterationPatterns
+
+	total_similarity := 0.0
+	comparisons := 0
+
+	// Compare for loops
+	if deob_iter.ForLoops > 0 || obf_iter.ForLoops > 0 {
+		for_ratio := math.Min(float64(deob_iter.ForLoops), float64(obf_iter.ForLoops)) /
+			math.Max(float64(deob_iter.ForLoops), float64(obf_iter.ForLoops))
+		if math.Max(float64(deob_iter.ForLoops), float64(obf_iter.ForLoops)) > 0 {
+			total_similarity += for_ratio * 0.4
+			comparisons++
+		}
+	}
+
+	// Compare while loops
+	if deob_iter.WhileLoops > 0 || obf_iter.WhileLoops > 0 {
+		while_ratio := math.Min(float64(deob_iter.WhileLoops), float64(obf_iter.WhileLoops)) /
+			math.Max(float64(deob_iter.WhileLoops), float64(obf_iter.WhileLoops))
+		if math.Max(float64(deob_iter.WhileLoops), float64(obf_iter.WhileLoops)) > 0 {
+			total_similarity += while_ratio * 0.3
+			comparisons++
+		}
+	}
+
+	// Compare iterator usage
+	if deob_iter.IteratorUsage > 0 || obf_iter.IteratorUsage > 0 {
+		iterator_ratio := math.Min(float64(deob_iter.IteratorUsage), float64(obf_iter.IteratorUsage)) /
+			math.Max(float64(deob_iter.IteratorUsage), float64(obf_iter.IteratorUsage))
+		if math.Max(float64(deob_iter.IteratorUsage), float64(obf_iter.IteratorUsage)) > 0 {
+			total_similarity += iterator_ratio * 0.2
+			comparisons++
+		}
+	}
+
+	// Compare stream operations
+	if deob_iter.StreamProcessing > 0 || obf_iter.StreamProcessing > 0 {
+		stream_ratio := math.Min(float64(deob_iter.StreamProcessing), float64(obf_iter.StreamProcessing)) /
+			math.Max(float64(deob_iter.StreamProcessing), float64(obf_iter.StreamProcessing))
+		if math.Max(float64(deob_iter.StreamProcessing), float64(obf_iter.StreamProcessing)) > 0 {
+			total_similarity += stream_ratio * 0.1
+			comparisons++
+		}
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return total_similarity / float64(comparisons)
+}
+
+// calculate_semantic_method_similarity compares method naming patterns
+func (self *Scorer) calculate_semantic_method_similarity(deob, obf *ClassInfo) float64 {
+	if deob.InternalBehavior == nil || deob.InternalBehavior.SemanticPatterns == nil ||
+		obf.InternalBehavior == nil || obf.InternalBehavior.SemanticPatterns == nil {
+		return 0.0
+	}
+
+	deob_semantic := deob.InternalBehavior.SemanticPatterns
+	obf_semantic := obf.InternalBehavior.SemanticPatterns
+
+	total_similarity := 0.0
+	comparisons := 0
+
+	// Compare getter methods (deobfuscated should have meaningful names, obfuscated won't)
+	if len(deob_semantic.GetterMethods) > 0 || len(obf_semantic.GetterMethods) > 0 {
+		// For obfuscated code, we won't detect getters by name, so similarity is low
+		// This helps distinguish deobfuscated from obfuscated classes
+		if len(deob_semantic.GetterMethods) > 0 && len(obf_semantic.GetterMethods) == 0 {
+			total_similarity += 0.8 // High similarity for this pattern
+		} else if len(deob_semantic.GetterMethods) == 0 && len(obf_semantic.GetterMethods) == 0 {
+			total_similarity += 0.9 // Both have no getters (possibly obfuscated)
+		} else {
+			total_similarity += 0.2 // Mismatch
+		}
+		comparisons++
+	}
+
+	// Compare setter methods
+	if len(deob_semantic.SetterMethods) > 0 || len(obf_semantic.SetterMethods) > 0 {
+		if len(deob_semantic.SetterMethods) > 0 && len(obf_semantic.SetterMethods) == 0 {
+			total_similarity += 0.8
+		} else if len(deob_semantic.SetterMethods) == 0 && len(obf_semantic.SetterMethods) == 0 {
+			total_similarity += 0.9
+		} else {
+			total_similarity += 0.2
+		}
+		comparisons++
+	}
+
+	// Compare builder/factory methods
+	builder_factory_deob := len(deob_semantic.BuilderMethods) + len(deob_semantic.FactoryMethods)
+	builder_factory_obf := len(obf_semantic.BuilderMethods) + len(obf_semantic.FactoryMethods)
+
+	if builder_factory_deob > 0 || builder_factory_obf > 0 {
+		ratio := math.Min(float64(builder_factory_deob), float64(builder_factory_obf)) /
+			math.Max(float64(builder_factory_deob), float64(builder_factory_obf))
+		if math.Max(float64(builder_factory_deob), float64(builder_factory_obf)) > 0 {
+			total_similarity += ratio * 0.6
+			comparisons++
+		}
+	}
+
+	// Compare event handlers
+	if len(deob_semantic.EventHandlers) > 0 || len(obf_semantic.EventHandlers) > 0 {
+		ratio := math.Min(float64(len(deob_semantic.EventHandlers)), float64(len(obf_semantic.EventHandlers))) /
+			math.Max(float64(len(deob_semantic.EventHandlers)), float64(len(obf_semantic.EventHandlers)))
+		if math.Max(float64(len(deob_semantic.EventHandlers)), float64(len(obf_semantic.EventHandlers))) > 0 {
+			total_similarity += ratio * 0.4
+			comparisons++
+		}
+	}
+
+	// Compare utility methods
+	if len(deob_semantic.UtilityMethods) > 0 || len(obf_semantic.UtilityMethods) > 0 {
+		ratio := math.Min(float64(len(deob_semantic.UtilityMethods)), float64(len(obf_semantic.UtilityMethods))) /
+			math.Max(float64(len(deob_semantic.UtilityMethods)), float64(len(obf_semantic.UtilityMethods)))
+		if math.Max(float64(len(deob_semantic.UtilityMethods)), float64(len(obf_semantic.UtilityMethods))) > 0 {
+			total_similarity += ratio * 0.3
+			comparisons++
+		}
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return total_similarity / float64(comparisons)
 }

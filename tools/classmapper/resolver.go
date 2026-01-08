@@ -445,6 +445,7 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 			breakdown.MethodCountMatch + breakdown.MethodSimilarity +
 			breakdown.ConstructorMatch + breakdown.AccessMatch +
 			breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
+			breakdown.MethodCallGraph + breakdown.StateManipulation + breakdown.IterationPatterns + breakdown.SemanticMethods +
 			breakdown.SizePenalty
 
 		if score > best_score {
@@ -463,6 +464,7 @@ func (self *Resolver) create_match(deob, obf *ClassInfo) MatchResult {
 		breakdown.MethodCountMatch + breakdown.MethodSimilarity + breakdown.MethodNameSim +
 		breakdown.ConstructorMatch + breakdown.AccessMatch + breakdown.FunctionalPattern +
 		breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
+		breakdown.MethodCallGraph + breakdown.StateManipulation + breakdown.IterationPatterns + breakdown.SemanticMethods +
 		breakdown.SizePenalty
 
 	return MatchResult{
@@ -643,11 +645,15 @@ func (cr *conflictResolver) CalculateEvidence(result MatchResult) Evidence {
 		evidence.InheritanceWeight = 90.0
 	}
 
-	// 2. Behavioral weight (cross-reference patterns)
+	// 2. Behavioral weight (cross-reference patterns + internal behavior)
 	breakdown := result.ScoreBreakdown
 	evidence.BehavioralWeight = breakdown.CrossrefSimilarity +
 		breakdown.UniquePatterns +
-		breakdown.BehavioralSignature
+		breakdown.BehavioralSignature +
+		breakdown.MethodCallGraph +
+		breakdown.StateManipulation +
+		breakdown.IterationPatterns +
+		breakdown.SemanticMethods
 
 	// 3. Semantic weight (method names, class purpose)
 	evidence.SemanticWeight = cr.calculateSemanticWeight(result)
