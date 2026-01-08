@@ -427,66 +427,6 @@
       "Details": "Inherited from anchor class hierarchy"
     },
     {
-      "DeobfuscatedClass": "Ground",
-      "ObfuscatedClass": "DYMVKFXP",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 25,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "FieldPatternSim": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "MethodNameSim": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "FunctionalPattern": 3.5999999999999996,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "Class30_Sub1",
-      "ObfuscatedClass": "QTKGMFHL",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 25,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "FieldPatternSim": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "MethodNameSim": 0,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "FunctionalPattern": 0,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
-      "DeobfuscatedClass": "client",
-      "ObfuscatedClass": "",
-      "ConfidenceScore": 85,
-      "ScoreBreakdown": {
-        "InterfaceMatch": 0,
-        "SuperclassMatch": 0,
-        "FieldCountMatch": 0,
-        "FieldSimilarity": 0,
-        "FieldPatternSim": 0,
-        "MethodCountMatch": 0,
-        "MethodSimilarity": 0,
-        "MethodNameSim": 3.5,
-        "ConstructorMatch": 5,
-        "AccessMatch": 5,
-        "FunctionalPattern": 0,
-        "SizePenalty": -10
-      },
-      "Details": "Inherited from anchor class hierarchy"
-    },
-    {
       "DeobfuscatedClass": "Player",
       "ObfuscatedClass": "DLZHLHNK",
       "ConfidenceScore": 85,
@@ -523,6 +463,66 @@
         "AccessMatch": 5,
         "FunctionalPattern": 0,
         "SizePenalty": 0
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "client",
+      "ObfuscatedClass": "",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 0,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 3.5,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": -10
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Ground",
+      "ObfuscatedClass": "DYMVKFXP",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 3.5999999999999996,
+        "SizePenalty": -10
+      },
+      "Details": "Inherited from anchor class hierarchy"
+    },
+    {
+      "DeobfuscatedClass": "Class30_Sub1",
+      "ObfuscatedClass": "QTKGMFHL",
+      "ConfidenceScore": 85,
+      "ScoreBreakdown": {
+        "InterfaceMatch": 0,
+        "SuperclassMatch": 25,
+        "FieldCountMatch": 0,
+        "FieldSimilarity": 0,
+        "FieldPatternSim": 0,
+        "MethodCountMatch": 0,
+        "MethodSimilarity": 0,
+        "MethodNameSim": 0,
+        "ConstructorMatch": 5,
+        "AccessMatch": 5,
+        "FunctionalPattern": 0,
+        "SizePenalty": -10
       },
       "Details": "Inherited from anchor class hierarchy"
     }
