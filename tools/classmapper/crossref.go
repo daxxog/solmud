@@ -583,3 +583,236 @@ func (refs *ClassCrossReferences) String() string {
 	return fmt.Sprintf("Cross-references: %d total, %d unique targets, %d chained, %d arrays",
 		refs.TotalReferences, len(refs.UniqueTargets), refs.ChainedReferences, refs.ArrayReferences)
 }
+
+// BytecodeCrossReferenceParser handles parsing of cross-references from bytecode files
+type BytecodeCrossReferenceParser struct {
+	// Regex patterns optimized for bytecode instruction format
+	regex_new_instantiation   *regexp.Regexp // new #constant_pool_index // class ClassName
+	regex_array_instantiation *regexp.Regexp // anewarray #constant_pool_index // class ClassName
+	regex_invoke_method       *regexp.Regexp // invokevirtual/invokestatic/invokespecial #constant_pool_index // Method ClassName.methodName:signature
+	regex_field_access        *regexp.Regexp // getfield/putfield/getstatic/putstatic #constant_pool_index // Field ClassName:fieldName:type
+	regex_array_access        *regexp.Regexp // aaload/aastore for array operations
+
+	// Class registry for validation and mapping
+	projectClasses map[string]bool
+	reverseAnchors map[string]string // obfuscated -> deobfuscated
+}
+
+// NewBytecodeCrossReferenceParser creates a new bytecode cross-reference parser
+func NewBytecodeCrossReferenceParser(projectClasses []string, reverseAnchors map[string]string) *BytecodeCrossReferenceParser {
+	parser := &BytecodeCrossReferenceParser{
+		// Bytecode instruction patterns (space-sensitive for accurate parsing)
+		regex_new_instantiation:   regexp.MustCompile(`new\s+#(\d+)\s+.*?//\s*class\s+([A-Z]{8}|[a-zA-Z_$\.]+)`),
+		regex_array_instantiation: regexp.MustCompile(`anewarray\s+#(\d+)\s+.*?//\s*class\s+([A-Z]{8}|[a-zA-Z_$\.]+)`),
+		regex_invoke_method:       regexp.MustCompile(`invoke\w+\s+#(\d+)\s+.*?//\s*Method\s+([A-Z]{8}|[a-zA-Z_$\.]+)\.([^:]+):`),
+		regex_field_access:        regexp.MustCompile(`(?:get|put)(?:field|static)\s+#(\d+)\s+.*?//\s*Field\s+([A-Z]{8}|[a-zA-Z_$\.]+):([^:]+)`),
+		regex_array_access:        regexp.MustCompile(`(?:aa|ia|ba|ca|sa|la|fa|da)(?:load|store)\s+.*?//\s*(?:array|reference).*?`),
+
+		projectClasses: makeProjectClassMap(projectClasses),
+		reverseAnchors: reverseAnchors,
+	}
+
+	return parser
+}
+
+// ParseBytecodeFile extracts cross-references from a bytecode file
+func (p *BytecodeCrossReferenceParser) ParseBytecodeFile(bytecodePath string) (*ClassCrossReferences, error) {
+	bytecode, err := os.ReadFile(bytecodePath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read bytecode file %s: %w", bytecodePath, err)
+	}
+
+	lines := strings.Split(string(bytecode), "\n")
+	refs := &ClassCrossReferences{
+		MethodReferences: make(map[string][]CrossReference),
+		UniqueTargets:    make(map[string]int),
+		ReferenceCounts:  make(map[ReferenceType]int),
+	}
+
+	// Process each line for cross-references
+	for lineNum, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" {
+			continue
+		}
+
+		// Extract references from this bytecode instruction
+		lineRefs := p.extractReferencesFromBytecodeLine(line, lineNum)
+		for _, ref := range lineRefs {
+			if p.shouldIncludeBytecodeReference(ref) {
+				refs.MethodReferences["<bytecode>"] = append(refs.MethodReferences["<bytecode>"], ref)
+				refs.aggregateReference(ref)
+			}
+		}
+	}
+
+	// Normalize frequencies for comparison
+	refs.normalizeFrequencies()
+
+	return refs, nil
+}
+
+// extractReferencesFromBytecodeLine extracts all types of references from a single bytecode line
+func (p *BytecodeCrossReferenceParser) extractReferencesFromBytecodeLine(line string, lineNum int) []CrossReference {
+	var refs []CrossReference
+
+	// Extract class instantiations
+	if matches := p.regex_new_instantiation.FindAllStringSubmatch(line, -1); matches != nil {
+		for _, match := range matches {
+			if len(match) >= 3 {
+				targetClass := p.mapBytecodeClassName(match[2])
+				if targetClass != "" {
+					refs = append(refs, CrossReference{
+						Type:         RefInstantiation,
+						TargetClass:  targetClass,
+						TargetMember: "<init>",
+						Context:      line,
+						LineNumber:   lineNum,
+					})
+				}
+			}
+		}
+	}
+
+	// Extract array instantiations
+	if matches := p.regex_array_instantiation.FindAllStringSubmatch(line, -1); matches != nil {
+		for _, match := range matches {
+			if len(match) >= 3 {
+				targetClass := p.mapBytecodeClassName(match[2])
+				if targetClass != "" {
+					refs = append(refs, CrossReference{
+						Type:          RefArrayAccess,
+						TargetClass:   targetClass,
+						TargetMember:  "array_creation",
+						Context:       line,
+						LineNumber:    lineNum,
+						IsArrayAccess: true,
+					})
+				}
+			}
+		}
+	}
+
+	// Extract method invocations
+	if matches := p.regex_invoke_method.FindAllStringSubmatch(line, -1); matches != nil {
+		for _, match := range matches {
+			if len(match) >= 4 {
+				targetClass := p.mapBytecodeClassName(match[2])
+				methodName := match[3]
+				if targetClass != "" && methodName != "" {
+					refType := RefMethodCall
+					if strings.Contains(line, "invokestatic") {
+						refType = RefStaticCall
+					}
+
+					refs = append(refs, CrossReference{
+						Type:         refType,
+						TargetClass:  targetClass,
+						TargetMember: methodName,
+						Context:      line,
+						LineNumber:   lineNum,
+					})
+				}
+			}
+		}
+	}
+
+	// Extract field accesses
+	if matches := p.regex_field_access.FindAllStringSubmatch(line, -1); matches != nil {
+		for _, match := range matches {
+			if len(match) >= 4 {
+				targetClass := p.mapBytecodeClassName(match[2])
+				fieldName := match[3]
+				if targetClass != "" && fieldName != "" {
+					refs = append(refs, CrossReference{
+						Type:         RefFieldAccess,
+						TargetClass:  targetClass,
+						TargetMember: fieldName,
+						Context:      line,
+						LineNumber:   lineNum,
+					})
+				}
+			}
+		}
+	}
+
+	// Extract array access patterns (simplified detection)
+	if p.regex_array_access.MatchString(line) {
+		// For array operations, we don't have specific class targets
+		// but we can mark this as a general array access pattern
+		refs = append(refs, CrossReference{
+			Type:          RefArrayAccess,
+			TargetClass:   "<array_operation>",
+			TargetMember:  "array_access",
+			Context:       line,
+			LineNumber:    lineNum,
+			IsArrayAccess: true,
+		})
+	}
+
+	return refs
+}
+
+// mapBytecodeClassName converts bytecode class names to deobfuscated names when possible
+func (p *BytecodeCrossReferenceParser) mapBytecodeClassName(bytecodeName string) string {
+	// First check if this is an obfuscated class name (8 uppercase letters)
+	if len(bytecodeName) == 8 && strings.ToUpper(bytecodeName) == bytecodeName {
+		if deobfuscated, exists := p.reverseAnchors[bytecodeName]; exists {
+			return deobfuscated
+		}
+	}
+
+	// Check if this is a project class (either obfuscated or deobfuscated name)
+	if p.projectClasses[bytecodeName] {
+		return bytecodeName
+	}
+
+	// For standard Java classes, keep as-is but check if we should exclude them
+	if p.isBuiltinClass(bytecodeName) {
+		return "" // Exclude built-in classes
+	}
+
+	// If we can't map it but it's a valid class reference, keep the obfuscated name
+	// This allows similarity comparison even for unmapped classes
+	if len(bytecodeName) > 0 {
+		return bytecodeName
+	}
+
+	return ""
+}
+
+// isBuiltinClass checks if a class should be excluded from analysis (same logic as source parser)
+func (p *BytecodeCrossReferenceParser) isBuiltinClass(className string) bool {
+	// Check direct match
+	if BUILTIN_EXCLUSIONS[className] {
+		return true
+	}
+
+	// Check package prefixes
+	return strings.HasPrefix(className, "java.") ||
+		strings.HasPrefix(className, "javax.") ||
+		strings.HasPrefix(className, "sun.") ||
+		strings.HasPrefix(className, "com.sun.") ||
+		strings.HasPrefix(className, "org.")
+}
+
+// shouldIncludeBytecodeReference determines if a bytecode reference should be included in analysis
+func (p *BytecodeCrossReferenceParser) shouldIncludeBytecodeReference(ref CrossReference) bool {
+	// Exclude built-in classes
+	if p.isBuiltinClass(ref.TargetClass) || ref.TargetClass == "" {
+		return false
+	}
+
+	// Include if it's a known project class or mapped anchor class
+	if p.projectClasses[ref.TargetClass] {
+		return true
+	}
+
+	// Include if it's an obfuscated name that could match (we'll validate during similarity)
+	if len(ref.TargetClass) == 8 && strings.ToUpper(ref.TargetClass) == ref.TargetClass {
+		return true
+	}
+
+	// For now, be conservative and only include known classes
+	return false
+}

@@ -112,10 +112,30 @@ func (self *Scorer) CalculateScore(deob_class *ClassInfo, obf_class *ClassInfo) 
 
 // calculate_crossref_similarity computes Jaccard similarity between cross-reference sets
 func (self *Scorer) calculate_crossref_similarity(deob, obf *ClassInfo) float64 {
-	if deob.CrossReferences == nil || obf.CrossReferences == nil {
+	// Adaptive scoring: work with partial cross-reference data
+	return self.calculateAdaptiveCrossrefSimilarity(deob, obf)
+}
+
+// calculateAdaptiveCrossrefSimilarity handles cases where one or both sides may lack cross-reference data
+func (self *Scorer) calculateAdaptiveCrossrefSimilarity(deob, obf *ClassInfo) float64 {
+	switch {
+	case deob.CrossReferences != nil && obf.CrossReferences != nil:
+		// Both sides have data - use full Jaccard similarity
+		return self.calculateFullCrossrefSimilarity(deob, obf)
+	case deob.CrossReferences != nil && deob.CrossReferences.TotalReferences > 0:
+		// Only deobfuscated side has data - use structural fallback
+		return self.calculateSourceToBytecodeSimilarity(deob, obf)
+	case obf.CrossReferences != nil && obf.CrossReferences.TotalReferences > 0:
+		// Only obfuscated side has data - use structural fallback
+		return self.calculateBytecodeToSourceSimilarity(deob, obf)
+	default:
+		// Neither side has cross-reference data
 		return 0.0
 	}
+}
 
+// calculateFullCrossrefSimilarity computes full Jaccard similarity when both sides have data
+func (self *Scorer) calculateFullCrossrefSimilarity(deob, obf *ClassInfo) float64 {
 	if deob.CrossReferences.TotalReferences == 0 || obf.CrossReferences.TotalReferences == 0 {
 		return 0.0
 	}
@@ -127,11 +147,31 @@ func (self *Scorer) calculate_crossref_similarity(deob, obf *ClassInfo) float64 
 	deob_density := float64(deob.CrossReferences.TotalReferences) / float64(len(deob.Fields)+len(deob.Methods)+1)
 	obf_density := float64(obf.CrossReferences.TotalReferences) / float64(len(obf.Fields)+len(obf.Methods)+1)
 
-	// Average density factor (normalize to 0-1 range)
+	// Average density factor (normalize to 0-1 range, cap at 1.0)
 	density_factor := math.Min(deob_density, obf_density) / math.Max(deob_density, obf_density)
-	density_factor = math.Min(density_factor, 1.0) // Cap at 1.0
+	density_factor = math.Min(density_factor, 1.0)
 
 	return jaccard * density_factor
+}
+
+// calculateSourceToBytecodeSimilarity provides fallback when only source has cross-reference data
+func (self *Scorer) calculateSourceToBytecodeSimilarity(deob, obf *ClassInfo) float64 {
+	// Use structural similarity as proxy for behavioral similarity
+	structural_score := self.calculate_method_similarity(deob, obf)*WEIGHT_METHOD_SIG_SIM +
+		self.calculate_field_similarity(deob, obf)*WEIGHT_FIELD_TYPE_SIM
+
+	// Reduce weight since we don't have actual behavioral data
+	return structural_score * 0.3 // 30% of normal behavioral weight
+}
+
+// calculateBytecodeToSourceSimilarity provides fallback when only bytecode has cross-reference data
+func (self *Scorer) calculateBytecodeToSourceSimilarity(deob, obf *ClassInfo) float64 {
+	// Similar to source-to-bytecode but with even lower confidence
+	structural_score := self.calculate_method_similarity(deob, obf)*WEIGHT_METHOD_SIG_SIM +
+		self.calculate_field_similarity(deob, obf)*WEIGHT_FIELD_TYPE_SIM
+
+	// Even lower weight for bytecode-only data
+	return structural_score * 0.2 // 20% of normal behavioral weight
 }
 
 // calculate_unique_patterns scores classes with distinctive behavioral patterns

@@ -15,15 +15,20 @@ type BytecodeParser struct {
 	regex_implements *regexp.Regexp
 	regex_field      *regexp.Regexp
 	regex_method     *regexp.Regexp
+
+	// Cross-reference analysis
+	bytecodeCrossrefParser *BytecodeCrossReferenceParser
 }
 
-func NewBytecodeParser() *BytecodeParser {
+func NewBytecodeParser(projectClasses []string, reverseAnchors map[string]string) *BytecodeParser {
 	return &BytecodeParser{
 		regex_class_decl: regexp.MustCompile(`^\s*(?:(?:public|private|protected|final|abstract|static)\s+)*(class|interface)\s+(\w+)`),
 		regex_extends:    regexp.MustCompile(`extends (\w+)`),
 		regex_implements: regexp.MustCompile(`implements ([\w,\s\.]+)`),
 		regex_field:      regexp.MustCompile(`^private|public|protected?\s+(?:static\s+)?(?:final\s+)?([\[\]\w]+)\s+(\w+)`),
 		regex_method:     regexp.MustCompile(`^public|private|protected?\s+(?:static\s+)?([\[\]\w]+)\s+(\w+)\(([^)]*)\)`),
+
+		bytecodeCrossrefParser: NewBytecodeCrossReferenceParser(projectClasses, reverseAnchors),
 	}
 }
 
@@ -99,6 +104,17 @@ func (self *BytecodeParser) parse_file(file_path string) (*ClassInfo, error) {
 				Name:       matches[2],
 				Parameters: self.parse_parameters(matches[3]),
 			})
+		}
+	}
+
+	// Extract cross-references from bytecode if parser is available
+	if self.bytecodeCrossrefParser != nil {
+		crossRefs, err := self.bytecodeCrossrefParser.ParseBytecodeFile(file_path)
+		if err != nil {
+			// Log warning but don't fail parsing
+			fmt.Fprintf(os.Stderr, "Warning: failed to extract cross-references from %s: %v\n", file_path, err)
+		} else {
+			class_info.CrossReferences = crossRefs
 		}
 	}
 

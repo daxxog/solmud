@@ -231,6 +231,12 @@ func main() {
 		projectClasses[i] = class.Name
 	}
 
+	// Build reverse anchor mappings for bytecode cross-reference analysis
+	reverseAnchors := make(map[string]string)
+	for deob, obf := range ANCHOR_MAPPINGS {
+		reverseAnchors[obf] = deob
+	}
+
 	// Create parser with cross-reference support if enabled
 	javap_parser := NewJavapParser(cacheManager, projectClasses, ANCHOR_MAPPINGS, *enableCrossRefs)
 	deob_classes, err := javap_parser.ParseAll(*deob_dir)
@@ -263,7 +269,7 @@ func main() {
 		parse_start = time.Now()
 	}
 
-	bytecode_parser := NewBytecodeParser()
+	bytecode_parser := NewBytecodeParser(projectClasses, reverseAnchors)
 
 	// Create progress tracker if enabled
 	var progress *ProgressTracker
