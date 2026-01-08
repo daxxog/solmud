@@ -7,6 +7,30 @@ import (
 	"strings"
 )
 
+// GraphicsPatternDetector identifies domain-specific graphics array patterns
+type GraphicsPatternDetector struct {
+	// Generic patterns that work with both obfuscated and deobfuscated code
+	regex_vertex_arrays *regexp.Regexp // vertex coordinate arrays (multiple arrays with similar access patterns)
+	regex_3d_transforms *regexp.Regexp // mathematical operations on arrays (rotation, scaling, translation)
+	regex_face_indices  *regexp.Regexp // triangle/face indexing patterns
+
+	// Texture patterns
+	regex_pixel_manipulation *regexp.Regexp // pixel data operations and color manipulation
+	regex_image_dimensions   *regexp.Regexp // width/height array patterns
+	regex_color_operations   *regexp.Regexp // RGB/ARGB color manipulation
+
+	// World data patterns
+	regex_tile_grid     *regexp.Regexp // 2D/3D tile access patterns
+	regex_chunk_loading *regexp.Regexp // chunk-based world loading
+	regex_height_map    *regexp.Regexp // heightmap array operations
+}
+
+// DataStructureClassifier provides domain-aware array structure classification
+type DataStructureClassifier struct {
+	graphicsDetector    *GraphicsPatternDetector
+	elementTypePatterns map[string]*regexp.Regexp // element type detection
+}
+
 // InternalBehaviorParser analyzes internal behavioral patterns within Java source code
 type InternalBehaviorParser struct {
 	// Regex patterns for internal analysis
@@ -32,6 +56,42 @@ type InternalBehaviorParser struct {
 	regex_bulk_operations   *regexp.Regexp // System.arraycopy, Arrays.fill, Arrays.copyOf
 	regex_array_calculation *regexp.Regexp // array[index] + something, array[index] * something
 	regex_array_assignment  *regexp.Regexp // array[index] = value
+
+	// Data structure classification (Phase 3.2.2.2.2)
+	classifier *DataStructureClassifier
+}
+
+// NewGraphicsPatternDetector creates a detector for graphics-specific array patterns
+func NewGraphicsPatternDetector() *GraphicsPatternDetector {
+	return &GraphicsPatternDetector{
+		// Generic patterns that work with both obfuscated and deobfuscated code
+		// Vertex arrays: Look for multiple arrays with coordinate-like access patterns
+		regex_vertex_arrays: regexp.MustCompile(`anIntArray\d+\[.*\]\s*=.*anIntArray\d+\[.*\]`),        // Coordinate transformations
+		regex_3d_transforms: regexp.MustCompile(`anIntArray\d+\[.*\]\s*[+\-*/]\s*anIntArray\d+\[.*\]`), // Mathematical operations between arrays
+		regex_face_indices:  regexp.MustCompile(`anIntArray\d+\[.*\]\s*=\s*stream.*readUnsignedWord`),  // Face index loading
+
+		// Texture patterns: Pixel manipulation and color operations
+		regex_pixel_manipulation: regexp.MustCompile(`anIntArray\d+\[.*\]\s*=\s*stream.*readUnsignedByte`), // Pixel data loading
+		regex_image_dimensions:   regexp.MustCompile(`anIntArray\d+\.length\s*\*\s*anIntArray\d+\.length`), // 2D array size calculations
+		regex_color_operations:   regexp.MustCompile(`anIntArray\d+\[.*\]\s*&\s*0x[0-9a-fA-F]+`),           // Color masking operations
+
+		// World data patterns: 2D/3D grid access
+		regex_tile_grid:     regexp.MustCompile(`\w+Array\w*\[.*\]\[.*\]`),                                // 2D array access with any name
+		regex_chunk_loading: regexp.MustCompile(`load.*anIntArrayArray\d+`),                               // Chunk loading operations
+		regex_height_map:    regexp.MustCompile(`\w+Array\w*\[.*\]\[.*\]\s*=\s*stream.*readUnsignedByte`), // Heightmap loading
+	}
+}
+
+// NewDataStructureClassifier creates a new data structure classifier
+func NewDataStructureClassifier() *DataStructureClassifier {
+	return &DataStructureClassifier{
+		graphicsDetector: NewGraphicsPatternDetector(),
+		elementTypePatterns: map[string]*regexp.Regexp{
+			"vertex_pattern": regexp.MustCompile(`(?i)(?:vertex|coord|normal|texcoord).*`),
+			"pixel_pattern":  regexp.MustCompile(`(?i)(?:pixel|rgb|argb|color).*`),
+			"tile_pattern":   regexp.MustCompile(`(?i)(?:tile|chunk|heightmap).*`),
+		},
+	}
 }
 
 // NewInternalBehaviorParser creates a new internal behavior parser
@@ -79,6 +139,9 @@ func NewInternalBehaviorParser() *InternalBehaviorParser {
 		regex_array_calculation: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[\s*[^]]+\s*\]\s*[+\-*/%]\s*[^;]+`),
 		// Array assignments: array[index] = value
 		regex_array_assignment: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[\s*[^]]+\s*\]\s*=\s*[^;]+`),
+
+		// Data structure classification (Phase 3.2.2.2.2)
+		classifier: NewDataStructureClassifier(),
 	}
 }
 
@@ -90,6 +153,7 @@ func (p *InternalBehaviorParser) ParseInternalBehavior(javaSource string, method
 		IterationPatterns: p.parseIterationPatterns(javaSource),
 		SemanticPatterns:  p.parseSemanticPatterns(methods),
 		ArrayPatterns:     p.detectArrayPatterns(javaSource),
+		ArrayStructure:    p.classifier.classifyDataStructure(p.detectArrayPatterns(javaSource), javaSource),
 	}
 
 	return patterns
@@ -488,4 +552,258 @@ func contains(slice []string, item string) bool {
 		}
 	}
 	return false
+}
+
+// classifyDataStructure analyzes array patterns and source code to classify data structure types
+func (d *DataStructureClassifier) classifyDataStructure(metrics *ArrayPatternMetrics, source string) *ArrayStructureSignature {
+	signature := &ArrayStructureSignature{
+		StructureType:  UnknownStructure,
+		DimCount:       1, // default to 1D
+		AccessPattern:  "unknown",
+		DomainSpecific: make(map[string]bool),
+	}
+
+	// Analyze array dimensionality
+	signature.DimCount = d.analyzeDimensionality(metrics)
+
+	// Infer element size from patterns
+	signature.ElementSize = d.inferElementSize(source)
+
+	// Determine access pattern
+	signature.AccessPattern = d.determineAccessPattern(metrics)
+
+	// Analyze loop nesting
+	signature.LoopNesting = metrics.LoopArrayAccess
+
+	// Domain-specific classification
+	signature.StructureType = d.classifyByDomain(metrics, source)
+	d.setDomainSpecificFlags(signature, source)
+
+	return signature
+}
+
+// analyzeDimensionality determines the typical array dimensionality from patterns
+func (d *DataStructureClassifier) analyzeDimensionality(metrics *ArrayPatternMetrics) int {
+	if metrics.MultiDimAccess > metrics.SingleDimAccess/2 {
+		// Significant multi-dimensional usage suggests higher dimensions
+		if metrics.MultiDimAccess > 10 {
+			return 3 // Likely 3D operations
+		}
+		return 2 // Likely 2D operations
+	}
+	return 1 // Primarily 1D operations
+}
+
+// inferElementSize attempts to determine element size from usage patterns
+func (d *DataStructureClassifier) inferElementSize(source string) int {
+	// Look for common element size indicators
+	if strings.Contains(source, "byte[") || strings.Contains(source, "Byte") {
+		return 1 // byte arrays
+	}
+	if strings.Contains(source, "short[") || strings.Contains(source, "Short") {
+		return 2 // short arrays
+	}
+	if strings.Contains(source, "int[") || strings.Contains(source, "Integer") {
+		return 4 // int arrays (most common)
+	}
+	if strings.Contains(source, "float[") || strings.Contains(source, "Float") {
+		return 4 // float arrays
+	}
+	if strings.Contains(source, "double[") || strings.Contains(source, "Double") {
+		return 8 // double arrays
+	}
+	return 4 // default assumption
+}
+
+// determineAccessPattern analyzes access patterns from metrics
+func (d *DataStructureClassifier) determineAccessPattern(metrics *ArrayPatternMetrics) string {
+	totalAccess := metrics.SingleDimAccess + metrics.MultiDimAccess
+
+	if totalAccess == 0 {
+		return "none"
+	}
+
+	// High loop access suggests sequential processing
+	if float64(metrics.LoopArrayAccess)/float64(totalAccess) > 0.7 {
+		return "sequential"
+	}
+
+	// High bulk operations suggest block operations
+	if metrics.BulkOperations > 3 {
+		return "block"
+	}
+
+	// Default to random access
+	return "random"
+}
+
+// classifyByDomain performs domain-specific classification
+func (d *DataStructureClassifier) classifyByDomain(metrics *ArrayPatternMetrics, source string) DataStructureType {
+	// Check for vertex data patterns (Model class)
+	if d.isVertexDataPattern(metrics, source) {
+		return VertexData
+	}
+
+	// Check for texture data patterns (Texture class)
+	if d.isTextureDataPattern(metrics, source) {
+		return TextureData
+	}
+
+	// Check for world data patterns (WorldController class)
+	if d.isWorldDataPattern(metrics, source) {
+		return WorldData
+	}
+
+	// Check for buffer/cache patterns
+	if d.isBufferPattern(metrics, source) {
+		return BufferStructure
+	}
+
+	if d.isCachePattern(metrics, source) {
+		return CacheStructure
+	}
+
+	if d.isNetworkPattern(metrics, source) {
+		return NetworkBuffer
+	}
+
+	// Default classification
+	if metrics.SingleDimAccess > 0 || metrics.MultiDimAccess > 0 {
+		return GenericArray
+	}
+
+	return UnknownStructure
+}
+
+// Domain-specific pattern detection methods
+
+func (d *DataStructureClassifier) isVertexDataPattern(metrics *ArrayPatternMetrics, source string) bool {
+	vertexScore := 0
+
+	// Heuristic: Model classes have extensive coordinate transformations
+	// Look for patterns typical of 3D model processing
+
+	// High number of single-dimension array accesses (vertex coordinates)
+	if metrics.SingleDimAccess > 30 {
+		vertexScore += 2
+	}
+
+	// Mathematical operations between arrays (coordinate transformations)
+	if d.graphicsDetector.regex_3d_transforms.MatchString(source) {
+		vertexScore += 3
+	}
+
+	// Face/triangle index loading patterns
+	if d.graphicsDetector.regex_face_indices.MatchString(source) {
+		vertexScore += 2
+	}
+
+	// Extensive loop-based array processing (typical of model rendering)
+	if metrics.LoopArrayAccess > 10 {
+		vertexScore += 2
+	}
+
+	// Bulk array operations (model data copying)
+	if metrics.BulkOperations > 1 {
+		vertexScore += 1
+	}
+
+	return vertexScore >= 4 // Require reasonable evidence for vertex data classification
+}
+
+func (d *DataStructureClassifier) isTextureDataPattern(metrics *ArrayPatternMetrics, source string) bool {
+	textureScore := 0
+
+	// Heuristic: Texture classes process pixel data and color information
+
+	// Pixel data loading patterns (byte reading for pixel values)
+	if d.graphicsDetector.regex_pixel_manipulation.MatchString(source) {
+		textureScore += 3
+	}
+
+	// Color manipulation operations (bit masking, color processing)
+	if d.graphicsDetector.regex_color_operations.MatchString(source) {
+		textureScore += 2
+	}
+
+	// 2D array size calculations (width * height)
+	if d.graphicsDetector.regex_image_dimensions.MatchString(source) {
+		textureScore += 2
+	}
+
+	// Moderate array access (less intensive than 3D models)
+	if metrics.SingleDimAccess > 15 && metrics.SingleDimAccess < 40 {
+		textureScore += 1
+	}
+
+	return textureScore >= 3 // Require reasonable evidence for texture classification
+}
+
+func (d *DataStructureClassifier) isWorldDataPattern(metrics *ArrayPatternMetrics, source string) bool {
+	worldScore := 0
+
+	// Heuristic: WorldController manages large 2D/3D grids of tile data
+
+	// 2D array access patterns (tile grids)
+	if d.graphicsDetector.regex_tile_grid.MatchString(source) {
+		worldScore += 3
+	}
+
+	// Heightmap data loading (byte values for height)
+	if d.graphicsDetector.regex_height_map.MatchString(source) {
+		worldScore += 2
+	}
+
+	// Chunk-based operations
+	if d.graphicsDetector.regex_chunk_loading.MatchString(source) {
+		worldScore += 2
+	}
+
+	// Extensive 2D array processing (world tile management)
+	if metrics.MultiDimAccess > 8 {
+		worldScore += 2
+	}
+
+	// Complex loop patterns (world rendering/updates)
+	if metrics.LoopArrayAccess > 8 {
+		worldScore += 1
+	}
+
+	return worldScore >= 3 // Require reasonable evidence for world data classification
+}
+
+func (d *DataStructureClassifier) isBufferPattern(metrics *ArrayPatternMetrics, source string) bool {
+	// Simple heuristic for buffer patterns
+	return strings.Contains(source, "buffer") || strings.Contains(source, "stream") ||
+		metrics.BulkOperations > 2
+}
+
+func (d *DataStructureClassifier) isCachePattern(metrics *ArrayPatternMetrics, source string) bool {
+	// Simple heuristic for cache patterns
+	return strings.Contains(source, "cache") || strings.Contains(source, "Cache") ||
+		(strings.Contains(source, "Node") && metrics.SingleDimAccess > 5)
+}
+
+func (d *DataStructureClassifier) isNetworkPattern(metrics *ArrayPatternMetrics, source string) bool {
+	// Simple heuristic for network patterns
+	return strings.Contains(source, "socket") || strings.Contains(source, "network") ||
+		strings.Contains(source, "connection")
+}
+
+// setDomainSpecificFlags sets detailed domain-specific pattern flags
+func (d *DataStructureClassifier) setDomainSpecificFlags(signature *ArrayStructureSignature, source string) {
+	// Vertex data flags
+	signature.DomainSpecific["vertex_arrays"] = d.graphicsDetector.regex_vertex_arrays.MatchString(source)
+	signature.DomainSpecific["3d_transforms"] = d.graphicsDetector.regex_3d_transforms.MatchString(source)
+	signature.DomainSpecific["face_indices"] = d.graphicsDetector.regex_face_indices.MatchString(source)
+
+	// Texture data flags
+	signature.DomainSpecific["pixel_manipulation"] = d.graphicsDetector.regex_pixel_manipulation.MatchString(source)
+	signature.DomainSpecific["image_dimensions"] = d.graphicsDetector.regex_image_dimensions.MatchString(source)
+	signature.DomainSpecific["color_operations"] = d.graphicsDetector.regex_color_operations.MatchString(source)
+
+	// World data flags
+	signature.DomainSpecific["tile_grid"] = d.graphicsDetector.regex_tile_grid.MatchString(source)
+	signature.DomainSpecific["chunk_loading"] = d.graphicsDetector.regex_chunk_loading.MatchString(source)
+	signature.DomainSpecific["heightmap_operations"] = d.graphicsDetector.regex_height_map.MatchString(source)
 }

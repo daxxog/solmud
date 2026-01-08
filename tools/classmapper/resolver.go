@@ -446,7 +446,7 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 			breakdown.ConstructorMatch + breakdown.AccessMatch +
 			breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
 			breakdown.MethodCallGraph + breakdown.StateManipulation + breakdown.IterationPatterns + breakdown.SemanticMethods +
-			breakdown.SizePenalty
+			breakdown.GraphicsArrayBonus + breakdown.SizePenalty
 
 		if score > best_score {
 			best_score = score
@@ -465,7 +465,7 @@ func (self *Resolver) create_match(deob, obf *ClassInfo) MatchResult {
 		breakdown.ConstructorMatch + breakdown.AccessMatch + breakdown.FunctionalPattern +
 		breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
 		breakdown.MethodCallGraph + breakdown.StateManipulation + breakdown.IterationPatterns + breakdown.SemanticMethods +
-		breakdown.SizePenalty
+		breakdown.GraphicsArrayBonus + breakdown.SizePenalty
 
 	return MatchResult{
 		DeobfuscatedClass: deob.Name,

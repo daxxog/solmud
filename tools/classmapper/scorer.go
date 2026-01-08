@@ -28,6 +28,15 @@ const (
 	WEIGHT_ITERATION_PATTERNS = 8.0  // Loop and iteration usage
 	WEIGHT_SEMANTIC_METHODS   = 6.0  // Method naming patterns (getters/setters/etc)
 
+	// Phase 3.2.2.2.2: Data structure type classification
+	WEIGHT_ARRAY_PATTERN_ANALYSIS = 15.0 // Base array analysis weight
+	WEIGHT_MULTIDIMENSIONAL       = 8.0  // Multi-dimensional bonus
+	WEIGHT_GRAPHICS_ARRAYS        = 10.0 // Graphics-specific patterns
+	WEIGHT_BULK_OPERATIONS        = 6.0  // Bulk array operations
+	WEIGHT_3D_VERTEX_DATA         = 12.0 // Model class specific
+	WEIGHT_TEXTURE_DATA           = 10.0 // Texture class specific
+	WEIGHT_WORLD_DATA             = 9.0  // WorldController specific
+
 	SIZE_DIFFERENCE_PENALTY   = 10.0
 	MAX_SIZE_DIFFERENCE_RATIO = 1.5
 )
@@ -53,6 +62,9 @@ type ScoreBreakdown struct {
 	StateManipulation float64
 	IterationPatterns float64
 	SemanticMethods   float64
+
+	// Phase 3.2.2.2.2: Data structure classification
+	GraphicsArrayBonus float64
 
 	SizePenalty float64
 }
@@ -121,6 +133,10 @@ func (self *Scorer) CalculateScore(deob_class *ClassInfo, obf_class *ClassInfo) 
 
 	semantic_methods := self.calculate_semantic_method_similarity(deob_class, obf_class)
 	breakdown.SemanticMethods = semantic_methods * WEIGHT_SEMANTIC_METHODS
+
+	// Phase 3.2.2.2.2: Data structure classification scoring
+	graphics_bonus := self.calculateGraphicsArrayBonus(deob_class, obf_class)
+	breakdown.GraphicsArrayBonus = graphics_bonus
 
 	if len(deob_class.Constructors) == len(obf_class.Constructors) {
 		breakdown.ConstructorMatch = WEIGHT_CONSTRUCTOR_MATCH
@@ -792,4 +808,125 @@ func (self *Scorer) calculate_semantic_method_similarity(deob, obf *ClassInfo) f
 	}
 
 	return total_similarity / float64(comparisons)
+}
+
+// Phase 3.2.2.2.2: Data structure classification scoring methods
+
+// calculateGraphicsArrayBonus calculates domain-specific bonuses for graphics classes
+func (self *Scorer) calculateGraphicsArrayBonus(deob, obf *ClassInfo) float64 {
+	// Only the deobfuscated class has source code and internal behavior analysis
+	if deob.InternalBehavior == nil || deob.InternalBehavior.ArrayStructure == nil {
+		return 0.0
+	}
+
+	deobSig := deob.InternalBehavior.ArrayStructure
+	bonus := 0.0
+
+	// Apply bonus based on array structure classification type
+	switch deobSig.StructureType {
+	case VertexData:
+		bonus += WEIGHT_3D_VERTEX_DATA
+	case TextureData:
+		bonus += WEIGHT_TEXTURE_DATA
+	case WorldData:
+		bonus += WEIGHT_WORLD_DATA
+	}
+
+	return bonus
+}
+
+// calculateVertexSimilarity compares vertex data structure signatures
+func (self *Scorer) calculateVertexSimilarity(deobSig, obfSig *ArrayStructureSignature) float64 {
+	similarity := 0.0
+	comparisons := 0
+
+	// Compare dimensionality (3D vertex data)
+	if deobSig.DimCount >= 2 && obfSig.DimCount >= 2 {
+		similarity += 0.3
+		comparisons++
+	}
+
+	// Compare domain-specific patterns
+	if deobSig.DomainSpecific["vertex_arrays"] && obfSig.DomainSpecific["vertex_arrays"] {
+		similarity += 0.4
+		comparisons++
+	}
+	if deobSig.DomainSpecific["3d_transforms"] && obfSig.DomainSpecific["3d_transforms"] {
+		similarity += 0.2
+		comparisons++
+	}
+	if deobSig.DomainSpecific["face_indices"] && obfSig.DomainSpecific["face_indices"] {
+		similarity += 0.1
+		comparisons++
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return similarity / float64(comparisons)
+}
+
+// calculateTextureSimilarity compares texture data structure signatures
+func (self *Scorer) calculateTextureSimilarity(deobSig, obfSig *ArrayStructureSignature) float64 {
+	similarity := 0.0
+	comparisons := 0
+
+	// Compare dimensionality (2D texture data)
+	if deobSig.DimCount >= 1 && obfSig.DimCount >= 1 {
+		similarity += 0.3
+		comparisons++
+	}
+
+	// Compare domain-specific patterns
+	if deobSig.DomainSpecific["pixel_manipulation"] && obfSig.DomainSpecific["pixel_manipulation"] {
+		similarity += 0.4
+		comparisons++
+	}
+	if deobSig.DomainSpecific["image_dimensions"] && obfSig.DomainSpecific["image_dimensions"] {
+		similarity += 0.2
+		comparisons++
+	}
+	if deobSig.DomainSpecific["color_operations"] && obfSig.DomainSpecific["color_operations"] {
+		similarity += 0.1
+		comparisons++
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return similarity / float64(comparisons)
+}
+
+// calculateWorldSimilarity compares world data structure signatures
+func (self *Scorer) calculateWorldSimilarity(deobSig, obfSig *ArrayStructureSignature) float64 {
+	similarity := 0.0
+	comparisons := 0
+
+	// Compare dimensionality (2D/3D world data)
+	if deobSig.DimCount >= 2 && obfSig.DimCount >= 2 {
+		similarity += 0.3
+		comparisons++
+	}
+
+	// Compare domain-specific patterns
+	if deobSig.DomainSpecific["tile_grid"] && obfSig.DomainSpecific["tile_grid"] {
+		similarity += 0.3
+		comparisons++
+	}
+	if deobSig.DomainSpecific["chunk_loading"] && obfSig.DomainSpecific["chunk_loading"] {
+		similarity += 0.2
+		comparisons++
+	}
+	if deobSig.DomainSpecific["heightmap_operations"] && obfSig.DomainSpecific["heightmap_operations"] {
+		similarity += 0.2
+		comparisons++
+	}
+
+	if comparisons == 0 {
+		return 0.0
+	}
+
+	return similarity / float64(comparisons)
 }

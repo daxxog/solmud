@@ -56,7 +56,8 @@ type InternalBehavioralPatterns struct {
 	SemanticPatterns *SemanticMethodPatterns `json:"semantic_patterns"`
 
 	// Enhanced array pattern analysis (Phase 3.2.2.2)
-	ArrayPatterns *ArrayPatternMetrics `json:"array_patterns,omitempty"`
+	ArrayPatterns  *ArrayPatternMetrics     `json:"array_patterns,omitempty"`
+	ArrayStructure *ArrayStructureSignature `json:"array_structure,omitempty"`
 }
 
 // InternalCallGraph tracks method calls within the same class
@@ -108,6 +109,30 @@ type ArrayAccessContext struct {
 	InCalculation   bool    // array elements used in computations
 	InAssignment    bool    // array elements being assigned
 	AccessFrequency float64 // access density per lines of code
+}
+
+// DataStructureType represents different categories of array data structures
+type DataStructureType int
+
+const (
+	UnknownStructure DataStructureType = iota
+	VertexData                         // 3D model vertices (Model class)
+	TextureData                        // 2D pixel arrays (Texture class)
+	WorldData                          // 3D world tiles (WorldController class)
+	BufferStructure                    // OnDemandFetcher patterns
+	CacheStructure                     // NodeCache, MRUNodes patterns
+	NetworkBuffer                      // RSSocket, networking classes
+	GenericArray                       // Undetermined array usage
+)
+
+// ArrayStructureSignature represents the classified structure of array usage patterns
+type ArrayStructureSignature struct {
+	StructureType  DataStructureType // classified data structure type
+	DimCount       int               // number of dimensions
+	ElementSize    int               // bytes per element (int, byte, etc.)
+	AccessPattern  string            // "sequential", "random", "block"
+	LoopNesting    int               // nested loop levels
+	DomainSpecific map[string]bool   // domain-specific pattern flags
 }
 
 type FieldInfo struct {
