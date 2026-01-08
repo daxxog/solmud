@@ -177,6 +177,7 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"TextClass":    "ZTQFNQRH", // VERIFIED: base-37 hashing algorithm, 6582952005840035281L boundary
 	"StreamLoader": "XTGLDHGX", // VERIFIED: base-61 hash algorithm (hash *= 61) - 32 offset
 	"Class32":      "QPNUVGRI", // VERIFIED: exact array structure match (256,257,258,6,16,4096,18002) - Bzip2 decompression
+	"Sounds":       "JHDAGNBV", // VERIFIED: audio constants (22050, 441000, 65535) + cryptographic seeds + CLRWXPOI integration
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
