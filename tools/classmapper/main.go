@@ -173,13 +173,14 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"NodeCache":       "ARZPHHDH", // VERIFIED: error code 91499, hash table patterns (CORRECT - verification confirmed)
 	"WorldController": "NYFUGYQS", // DISCOVERED: multi-dimensional arrays, WorldController patterns
 	// Phase 3: High-confidence forensic mappings (January 2026)
-	"Skills":       "YUXCUCXD", // VERIFIED: literal skill names "attack", "defence", "strength", etc.
-	"TextClass":    "ZTQFNQRH", // VERIFIED: base-37 hashing algorithm, 6582952005840035281L boundary
-	"StreamLoader": "XTGLDHGX", // VERIFIED: base-61 hash algorithm (hash *= 61) - 32 offset
-	"Class32":      "QPNUVGRI", // VERIFIED: exact array structure match (256,257,258,6,16,4096,18002) - Bzip2 decompression
-	"Sounds":       "JHDAGNBV", // VERIFIED: audio constants (22050, 441000, 65535) + cryptographic seeds + CLRWXPOI integration
-	"Class39":      "VADHJTLJ", // VERIFIED: π constant (3.1415927f) + Math.cos + 3D arrays ([[[I]) + graphics constants - 3D graphics renderer
-	"Class6":       "CLRWXPOI", // VERIFIED: 5215.1903d + Math.sin + 16384.0d + 32768 arrays + VADHJTLJ integration - audio synthesis and mixing
+	"Skills":         "YUXCUCXD", // VERIFIED: literal skill names "attack", "defence", "strength", etc.
+	"TextClass":      "ZTQFNQRH", // VERIFIED: base-37 hashing algorithm, 6582952005840035281L boundary
+	"StreamLoader":   "XTGLDHGX", // VERIFIED: base-61 hash algorithm (hash *= 61) - 32 offset
+	"Class32":        "QPNUVGRI", // VERIFIED: exact array structure match (256,257,258,6,16,4096,18002) - Bzip2 decompression
+	"Sounds":         "JHDAGNBV", // VERIFIED: audio constants (22050, 441000, 65535) + cryptographic seeds + CLRWXPOI integration
+	"Class39":        "VADHJTLJ", // VERIFIED: π constant (3.1415927f) + Math.cos + 3D arrays ([[[I]) + graphics constants - 3D graphics renderer
+	"Class6":         "CLRWXPOI", // VERIFIED: 5215.1903d + Math.sin + 16384.0d + 32768 arrays + VADHJTLJ integration - audio synthesis and mixing
+	"GraphicsEngine": "FTPNODIB", // VERIFIED: 2D graphics buffer int[][] + 16777215/16777216 initialization + 4096/1024/16384/65536 graphics constants + bit operations - 2D graphics rendering engine
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
