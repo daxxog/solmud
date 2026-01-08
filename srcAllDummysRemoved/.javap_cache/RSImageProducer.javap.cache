@@ -1,0 +1,188 @@
+Compiled from "RSImageProducer.java"
+final class RSImageProducer implements java.awt.image.ImageProducer,java.awt.image.ImageObserver {
+  public final int[] anIntArray315;
+
+  private final int anInt316;
+
+  private final int anInt317;
+
+  private final java.awt.image.ColorModel aColorModel318;
+
+  private java.awt.image.ImageConsumer anImageConsumer319;
+
+  private final java.awt.Image anImage320;
+
+  public RSImageProducer(int, int, java.awt.Component);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #2                  // Field anInt316:I
+       9: aload_0
+      10: iload_2
+      11: putfield      #3                  // Field anInt317:I
+      14: aload_0
+      15: iload_1
+      16: iload_2
+      17: imul
+      18: newarray       int
+      20: putfield      #4                  // Field anIntArray315:[I
+      23: aload_0
+      24: new           #5                  // class java/awt/image/DirectColorModel
+      27: dup
+      28: bipush        32
+      30: ldc           #6                  // int 16711680
+      32: ldc           #7                  // int 65280
+      34: sipush        255
+      37: invokespecial #8                  // Method java/awt/image/DirectColorModel."<init>":(IIII)V
+      40: putfield      #9                  // Field aColorModel318:Ljava/awt/image/ColorModel;
+      43: aload_0
+      44: aload_3
+      45: aload_0
+      46: invokevirtual #10                 // Method java/awt/Component.createImage:(Ljava/awt/image/ImageProducer;)Ljava/awt/Image;
+      49: putfield      #11                 // Field anImage320:Ljava/awt/Image;
+      52: aload_0
+      53: invokespecial #12                 // Method method239:()V
+      56: aload_3
+      57: aload_0
+      58: getfield      #11                 // Field anImage320:Ljava/awt/Image;
+      61: aload_0
+      62: invokevirtual #13                 // Method java/awt/Component.prepareImage:(Ljava/awt/Image;Ljava/awt/image/ImageObserver;)Z
+      65: pop
+      66: aload_0
+      67: invokespecial #12                 // Method method239:()V
+      70: aload_3
+      71: aload_0
+      72: getfield      #11                 // Field anImage320:Ljava/awt/Image;
+      75: aload_0
+      76: invokevirtual #13                 // Method java/awt/Component.prepareImage:(Ljava/awt/Image;Ljava/awt/image/ImageObserver;)Z
+      79: pop
+      80: aload_0
+      81: invokespecial #12                 // Method method239:()V
+      84: aload_3
+      85: aload_0
+      86: getfield      #11                 // Field anImage320:Ljava/awt/Image;
+      89: aload_0
+      90: invokevirtual #13                 // Method java/awt/Component.prepareImage:(Ljava/awt/Image;Ljava/awt/image/ImageObserver;)Z
+      93: pop
+      94: aload_0
+      95: invokevirtual #14                 // Method initDrawingArea:()V
+      98: return
+
+  public void initDrawingArea();
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field anInt317:I
+       4: aload_0
+       5: getfield      #2                  // Field anInt316:I
+       8: aload_0
+       9: getfield      #4                  // Field anIntArray315:[I
+      12: invokestatic  #15                 // Method DrawingArea.initDrawingArea:(II[I)V
+      15: return
+
+  public void drawGraphics(int, java.awt.Graphics, int);
+    Code:
+       0: aload_0
+       1: invokespecial #12                 // Method method239:()V
+       4: aload_2
+       5: aload_0
+       6: getfield      #11                 // Field anImage320:Ljava/awt/Image;
+       9: iload_3
+      10: iload_1
+      11: aload_0
+      12: invokevirtual #16                 // Method java/awt/Graphics.drawImage:(Ljava/awt/Image;IILjava/awt/image/ImageObserver;)Z
+      15: pop
+      16: return
+
+  public synchronized void addConsumer(java.awt.image.ImageConsumer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+       5: aload_1
+       6: aload_0
+       7: getfield      #2                  // Field anInt316:I
+      10: aload_0
+      11: getfield      #3                  // Field anInt317:I
+      14: invokeinterface #18,  3           // InterfaceMethod java/awt/image/ImageConsumer.setDimensions:(II)V
+      19: aload_1
+      20: aconst_null
+      21: invokeinterface #19,  2           // InterfaceMethod java/awt/image/ImageConsumer.setProperties:(Ljava/util/Hashtable;)V
+      26: aload_1
+      27: aload_0
+      28: getfield      #9                  // Field aColorModel318:Ljava/awt/image/ColorModel;
+      31: invokeinterface #20,  2           // InterfaceMethod java/awt/image/ImageConsumer.setColorModel:(Ljava/awt/image/ColorModel;)V
+      36: aload_1
+      37: bipush        14
+      39: invokeinterface #21,  2           // InterfaceMethod java/awt/image/ImageConsumer.setHints:(I)V
+      44: return
+
+  public synchronized boolean isConsumer(java.awt.image.ImageConsumer);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+       4: aload_1
+       5: if_acmpne     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  public synchronized void removeConsumer(java.awt.image.ImageConsumer);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+       4: aload_1
+       5: if_acmpne     13
+       8: aload_0
+       9: aconst_null
+      10: putfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+      13: return
+
+  public void startProduction(java.awt.image.ImageConsumer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #22                 // Method addConsumer:(Ljava/awt/image/ImageConsumer;)V
+       5: return
+
+  public void requestTopDownLeftRightResend(java.awt.image.ImageConsumer);
+    Code:
+       0: getstatic     #23                 // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #24                 // String TDLR
+       5: invokevirtual #25                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: return
+
+  private synchronized void method239();
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+       4: ifnull        49
+       7: aload_0
+       8: getfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+      11: iconst_0
+      12: iconst_0
+      13: aload_0
+      14: getfield      #2                  // Field anInt316:I
+      17: aload_0
+      18: getfield      #3                  // Field anInt317:I
+      21: aload_0
+      22: getfield      #9                  // Field aColorModel318:Ljava/awt/image/ColorModel;
+      25: aload_0
+      26: getfield      #4                  // Field anIntArray315:[I
+      29: iconst_0
+      30: aload_0
+      31: getfield      #2                  // Field anInt316:I
+      34: invokeinterface #26,  9           // InterfaceMethod java/awt/image/ImageConsumer.setPixels:(IIIILjava/awt/image/ColorModel;[III)V
+      39: aload_0
+      40: getfield      #17                 // Field anImageConsumer319:Ljava/awt/image/ImageConsumer;
+      43: iconst_2
+      44: invokeinterface #27,  2           // InterfaceMethod java/awt/image/ImageConsumer.imageComplete:(I)V
+      49: return
+
+  public boolean imageUpdate(java.awt.Image, int, int, int, int, int);
+    Code:
+       0: iconst_1
+       1: ireturn
+}

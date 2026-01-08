@@ -1,0 +1,21 @@
+Compiled from "OnDemandData.java"
+public final class OnDemandData extends NodeSub {
+  int dataType;
+
+  byte[] buffer;
+
+  int ID;
+
+  boolean incomplete;
+
+  int loopCycle;
+
+  public OnDemandData();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method NodeSub."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #2                  // Field incomplete:Z
+       9: return
+}

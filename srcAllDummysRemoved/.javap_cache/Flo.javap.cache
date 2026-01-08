@@ -1,0 +1,513 @@
+Compiled from "Flo.java"
+public final class Flo {
+  public static Flo[] cache;
+
+  public int anInt390;
+
+  public int anInt391;
+
+  public boolean aBoolean393;
+
+  public int anInt394;
+
+  public int anInt395;
+
+  public int anInt396;
+
+  public int anInt397;
+
+  public int anInt398;
+
+  public int anInt399;
+
+  public static void unpackConfig(StreamLoader);
+    Code:
+       0: new           #1                  // class Stream
+       3: dup
+       4: aload_0
+       5: ldc           #2                  // String flo.dat
+       7: invokevirtual #3                  // Method StreamLoader.getDataForName:(Ljava/lang/String;)[B
+      10: invokespecial #4                  // Method Stream."<init>":([B)V
+      13: astore_1
+      14: aload_1
+      15: invokevirtual #5                  // Method Stream.readUnsignedWord:()I
+      18: istore_2
+      19: getstatic     #6                  // Field cache:[LFlo;
+      22: ifnonnull     32
+      25: iload_2
+      26: anewarray     #7                  // class Flo
+      29: putstatic     #6                  // Field cache:[LFlo;
+      32: iconst_0
+      33: istore_3
+      34: iload_3
+      35: iload_2
+      36: if_icmpge     74
+      39: getstatic     #6                  // Field cache:[LFlo;
+      42: iload_3
+      43: aaload
+      44: ifnonnull     59
+      47: getstatic     #6                  // Field cache:[LFlo;
+      50: iload_3
+      51: new           #7                  // class Flo
+      54: dup
+      55: invokespecial #8                  // Method "<init>":()V
+      58: aastore
+      59: getstatic     #6                  // Field cache:[LFlo;
+      62: iload_3
+      63: aaload
+      64: aload_1
+      65: invokespecial #9                  // Method readValues:(LStream;)V
+      68: iinc          3, 1
+      71: goto          34
+      74: return
+
+  private void readValues(Stream);
+    Code:
+       0: aload_1
+       1: invokevirtual #10                 // Method Stream.readUnsignedByte:()I
+       4: istore_2
+       5: iload_2
+       6: ifne          10
+       9: return
+      10: iload_2
+      11: iconst_1
+      12: if_icmpne     34
+      15: aload_0
+      16: aload_1
+      17: invokevirtual #11                 // Method Stream.read3Bytes:()I
+      20: putfield      #12                 // Field anInt390:I
+      23: aload_0
+      24: aload_0
+      25: getfield      #12                 // Field anInt390:I
+      28: invokespecial #13                 // Method method262:(I)V
+      31: goto          187
+      34: iload_2
+      35: iconst_2
+      36: if_icmpne     50
+      39: aload_0
+      40: aload_1
+      41: invokevirtual #10                 // Method Stream.readUnsignedByte:()I
+      44: putfield      #14                 // Field anInt391:I
+      47: goto          187
+      50: iload_2
+      51: iconst_3
+      52: if_icmpne     60
+      55: iconst_1
+      56: istore_3
+      57: goto          187
+      60: iload_2
+      61: iconst_5
+      62: if_icmpne     73
+      65: aload_0
+      66: iconst_0
+      67: putfield      #15                 // Field aBoolean393:Z
+      70: goto          187
+      73: iload_2
+      74: bipush        6
+      76: if_icmpne     87
+      79: aload_1
+      80: invokevirtual #16                 // Method Stream.readString:()Ljava/lang/String;
+      83: pop
+      84: goto          187
+      87: iload_2
+      88: bipush        7
+      90: if_icmpne     162
+      93: aload_0
+      94: getfield      #17                 // Field anInt394:I
+      97: istore        4
+      99: aload_0
+     100: getfield      #18                 // Field anInt395:I
+     103: istore        5
+     105: aload_0
+     106: getfield      #19                 // Field anInt396:I
+     109: istore        6
+     111: aload_0
+     112: getfield      #20                 // Field anInt397:I
+     115: istore        7
+     117: aload_1
+     118: invokevirtual #11                 // Method Stream.read3Bytes:()I
+     121: istore        8
+     123: aload_0
+     124: iload         8
+     126: invokespecial #13                 // Method method262:(I)V
+     129: aload_0
+     130: iload         4
+     132: putfield      #17                 // Field anInt394:I
+     135: aload_0
+     136: iload         5
+     138: putfield      #18                 // Field anInt395:I
+     141: aload_0
+     142: iload         6
+     144: putfield      #19                 // Field anInt396:I
+     147: aload_0
+     148: iload         7
+     150: putfield      #20                 // Field anInt397:I
+     153: aload_0
+     154: iload         7
+     156: putfield      #21                 // Field anInt398:I
+     159: goto          187
+     162: getstatic     #22                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     165: new           #23                 // class java/lang/StringBuilder
+     168: dup
+     169: invokespecial #24                 // Method java/lang/StringBuilder."<init>":()V
+     172: ldc           #25                 // String Error unrecognised config code:
+     174: invokevirtual #26                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     177: iload_2
+     178: invokevirtual #27                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     181: invokevirtual #28                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     184: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     187: goto          0
+
+  private void method262(int);
+    Code:
+       0: iload_1
+       1: bipush        16
+       3: ishr
+       4: sipush        255
+       7: iand
+       8: i2d
+       9: ldc2_w        #30                 // double 256.0d
+      12: ddiv
+      13: dstore_2
+      14: iload_1
+      15: bipush        8
+      17: ishr
+      18: sipush        255
+      21: iand
+      22: i2d
+      23: ldc2_w        #30                 // double 256.0d
+      26: ddiv
+      27: dstore        4
+      29: iload_1
+      30: sipush        255
+      33: iand
+      34: i2d
+      35: ldc2_w        #30                 // double 256.0d
+      38: ddiv
+      39: dstore        6
+      41: dload_2
+      42: dstore        8
+      44: dload         4
+      46: dload         8
+      48: dcmpg
+      49: ifge          56
+      52: dload         4
+      54: dstore        8
+      56: dload         6
+      58: dload         8
+      60: dcmpg
+      61: ifge          68
+      64: dload         6
+      66: dstore        8
+      68: dload_2
+      69: dstore        10
+      71: dload         4
+      73: dload         10
+      75: dcmpl
+      76: ifle          83
+      79: dload         4
+      81: dstore        10
+      83: dload         6
+      85: dload         10
+      87: dcmpl
+      88: ifle          95
+      91: dload         6
+      93: dstore        10
+      95: dconst_0
+      96: dstore        12
+      98: dconst_0
+      99: dstore        14
+     101: dload         8
+     103: dload         10
+     105: dadd
+     106: ldc2_w        #32                 // double 2.0d
+     109: ddiv
+     110: dstore        16
+     112: dload         8
+     114: dload         10
+     116: dcmpl
+     117: ifeq          242
+     120: dload         16
+     122: ldc2_w        #34                 // double 0.5d
+     125: dcmpg
+     126: ifge          142
+     129: dload         10
+     131: dload         8
+     133: dsub
+     134: dload         10
+     136: dload         8
+     138: dadd
+     139: ddiv
+     140: dstore        14
+     142: dload         16
+     144: ldc2_w        #34                 // double 0.5d
+     147: dcmpl
+     148: iflt          168
+     151: dload         10
+     153: dload         8
+     155: dsub
+     156: ldc2_w        #32                 // double 2.0d
+     159: dload         10
+     161: dsub
+     162: dload         8
+     164: dsub
+     165: ddiv
+     166: dstore        14
+     168: dload_2
+     169: dload         10
+     171: dcmpl
+     172: ifne          191
+     175: dload         4
+     177: dload         6
+     179: dsub
+     180: dload         10
+     182: dload         8
+     184: dsub
+     185: ddiv
+     186: dstore        12
+     188: goto          242
+     191: dload         4
+     193: dload         10
+     195: dcmpl
+     196: ifne          218
+     199: ldc2_w        #32                 // double 2.0d
+     202: dload         6
+     204: dload_2
+     205: dsub
+     206: dload         10
+     208: dload         8
+     210: dsub
+     211: ddiv
+     212: dadd
+     213: dstore        12
+     215: goto          242
+     218: dload         6
+     220: dload         10
+     222: dcmpl
+     223: ifne          242
+     226: ldc2_w        #36                 // double 4.0d
+     229: dload_2
+     230: dload         4
+     232: dsub
+     233: dload         10
+     235: dload         8
+     237: dsub
+     238: ddiv
+     239: dadd
+     240: dstore        12
+     242: dload         12
+     244: ldc2_w        #38                 // double 6.0d
+     247: ddiv
+     248: dstore        12
+     250: aload_0
+     251: dload         12
+     253: ldc2_w        #30                 // double 256.0d
+     256: dmul
+     257: d2i
+     258: putfield      #17                 // Field anInt394:I
+     261: aload_0
+     262: dload         14
+     264: ldc2_w        #30                 // double 256.0d
+     267: dmul
+     268: d2i
+     269: putfield      #18                 // Field anInt395:I
+     272: aload_0
+     273: dload         16
+     275: ldc2_w        #30                 // double 256.0d
+     278: dmul
+     279: d2i
+     280: putfield      #19                 // Field anInt396:I
+     283: aload_0
+     284: getfield      #18                 // Field anInt395:I
+     287: ifge          298
+     290: aload_0
+     291: iconst_0
+     292: putfield      #18                 // Field anInt395:I
+     295: goto          315
+     298: aload_0
+     299: getfield      #18                 // Field anInt395:I
+     302: sipush        255
+     305: if_icmple     315
+     308: aload_0
+     309: sipush        255
+     312: putfield      #18                 // Field anInt395:I
+     315: aload_0
+     316: getfield      #19                 // Field anInt396:I
+     319: ifge          330
+     322: aload_0
+     323: iconst_0
+     324: putfield      #19                 // Field anInt396:I
+     327: goto          347
+     330: aload_0
+     331: getfield      #19                 // Field anInt396:I
+     334: sipush        255
+     337: if_icmple     347
+     340: aload_0
+     341: sipush        255
+     344: putfield      #19                 // Field anInt396:I
+     347: dload         16
+     349: ldc2_w        #34                 // double 0.5d
+     352: dcmpl
+     353: ifle          375
+     356: aload_0
+     357: dconst_1
+     358: dload         16
+     360: dsub
+     361: dload         14
+     363: dmul
+     364: ldc2_w        #40                 // double 512.0d
+     367: dmul
+     368: d2i
+     369: putfield      #21                 // Field anInt398:I
+     372: goto          389
+     375: aload_0
+     376: dload         16
+     378: dload         14
+     380: dmul
+     381: ldc2_w        #40                 // double 512.0d
+     384: dmul
+     385: d2i
+     386: putfield      #21                 // Field anInt398:I
+     389: aload_0
+     390: getfield      #21                 // Field anInt398:I
+     393: iconst_1
+     394: if_icmpge     402
+     397: aload_0
+     398: iconst_1
+     399: putfield      #21                 // Field anInt398:I
+     402: aload_0
+     403: dload         12
+     405: aload_0
+     406: getfield      #21                 // Field anInt398:I
+     409: i2d
+     410: dmul
+     411: d2i
+     412: putfield      #20                 // Field anInt397:I
+     415: aload_0
+     416: getfield      #17                 // Field anInt394:I
+     419: invokestatic  #42                 // Method java/lang/Math.random:()D
+     422: ldc2_w        #43                 // double 16.0d
+     425: dmul
+     426: d2i
+     427: iadd
+     428: bipush        8
+     430: isub
+     431: istore        18
+     433: iload         18
+     435: ifge          444
+     438: iconst_0
+     439: istore        18
+     441: goto          457
+     444: iload         18
+     446: sipush        255
+     449: if_icmple     457
+     452: sipush        255
+     455: istore        18
+     457: aload_0
+     458: getfield      #18                 // Field anInt395:I
+     461: invokestatic  #42                 // Method java/lang/Math.random:()D
+     464: ldc2_w        #45                 // double 48.0d
+     467: dmul
+     468: d2i
+     469: iadd
+     470: bipush        24
+     472: isub
+     473: istore        19
+     475: iload         19
+     477: ifge          486
+     480: iconst_0
+     481: istore        19
+     483: goto          499
+     486: iload         19
+     488: sipush        255
+     491: if_icmple     499
+     494: sipush        255
+     497: istore        19
+     499: aload_0
+     500: getfield      #19                 // Field anInt396:I
+     503: invokestatic  #42                 // Method java/lang/Math.random:()D
+     506: ldc2_w        #45                 // double 48.0d
+     509: dmul
+     510: d2i
+     511: iadd
+     512: bipush        24
+     514: isub
+     515: istore        20
+     517: iload         20
+     519: ifge          528
+     522: iconst_0
+     523: istore        20
+     525: goto          541
+     528: iload         20
+     530: sipush        255
+     533: if_icmple     541
+     536: sipush        255
+     539: istore        20
+     541: aload_0
+     542: aload_0
+     543: iload         18
+     545: iload         19
+     547: iload         20
+     549: invokespecial #47                 // Method method263:(III)I
+     552: putfield      #48                 // Field anInt399:I
+     555: return
+
+  private int method263(int, int, int);
+    Code:
+       0: iload_3
+       1: sipush        179
+       4: if_icmple     11
+       7: iload_2
+       8: iconst_2
+       9: idiv
+      10: istore_2
+      11: iload_3
+      12: sipush        192
+      15: if_icmple     22
+      18: iload_2
+      19: iconst_2
+      20: idiv
+      21: istore_2
+      22: iload_3
+      23: sipush        217
+      26: if_icmple     33
+      29: iload_2
+      30: iconst_2
+      31: idiv
+      32: istore_2
+      33: iload_3
+      34: sipush        243
+      37: if_icmple     44
+      40: iload_2
+      41: iconst_2
+      42: idiv
+      43: istore_2
+      44: iload_1
+      45: iconst_4
+      46: idiv
+      47: bipush        10
+      49: ishl
+      50: iload_2
+      51: bipush        32
+      53: idiv
+      54: bipush        7
+      56: ishl
+      57: iadd
+      58: iload_3
+      59: iconst_2
+      60: idiv
+      61: iadd
+      62: ireturn
+
+  private Flo();
+    Code:
+       0: aload_0
+       1: invokespecial #49                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_m1
+       6: putfield      #14                 // Field anInt391:I
+       9: aload_0
+      10: iconst_1
+      11: putfield      #15                 // Field aBoolean393:Z
+      14: return
+}

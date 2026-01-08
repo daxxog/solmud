@@ -1,0 +1,218 @@
+Compiled from "NPC.java"
+public final class NPC extends Entity {
+  public EntityDef desc;
+
+  private Model method450();
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field Entity.anim:I
+       4: iflt          89
+       7: aload_0
+       8: getfield      #2                  // Field Entity.anInt1529:I
+      11: ifne          89
+      14: getstatic     #3                  // Field Animation.anims:[LAnimation;
+      17: aload_0
+      18: getfield      #1                  // Field Entity.anim:I
+      21: aaload
+      22: getfield      #4                  // Field Animation.anIntArray353:[I
+      25: aload_0
+      26: getfield      #5                  // Field Entity.anInt1527:I
+      29: iaload
+      30: istore_1
+      31: iconst_m1
+      32: istore_2
+      33: aload_0
+      34: getfield      #6                  // Field Entity.anInt1517:I
+      37: iflt          68
+      40: aload_0
+      41: getfield      #6                  // Field Entity.anInt1517:I
+      44: aload_0
+      45: getfield      #7                  // Field Entity.anInt1511:I
+      48: if_icmpeq     68
+      51: getstatic     #3                  // Field Animation.anims:[LAnimation;
+      54: aload_0
+      55: getfield      #6                  // Field Entity.anInt1517:I
+      58: aaload
+      59: getfield      #4                  // Field Animation.anIntArray353:[I
+      62: aload_0
+      63: getfield      #8                  // Field Entity.anInt1518:I
+      66: iaload
+      67: istore_2
+      68: aload_0
+      69: getfield      #9                  // Field desc:LEntityDef;
+      72: iload_2
+      73: iload_1
+      74: getstatic     #3                  // Field Animation.anims:[LAnimation;
+      77: aload_0
+      78: getfield      #1                  // Field Entity.anim:I
+      81: aaload
+      82: getfield      #10                 // Field Animation.anIntArray357:[I
+      85: invokevirtual #11                 // Method EntityDef.method164:(II[I)LModel;
+      88: areturn
+      89: iconst_m1
+      90: istore_1
+      91: aload_0
+      92: getfield      #6                  // Field Entity.anInt1517:I
+      95: iflt          115
+      98: getstatic     #3                  // Field Animation.anims:[LAnimation;
+     101: aload_0
+     102: getfield      #6                  // Field Entity.anInt1517:I
+     105: aaload
+     106: getfield      #4                  // Field Animation.anIntArray353:[I
+     109: aload_0
+     110: getfield      #8                  // Field Entity.anInt1518:I
+     113: iaload
+     114: istore_1
+     115: aload_0
+     116: getfield      #9                  // Field desc:LEntityDef;
+     119: iconst_m1
+     120: iload_1
+     121: aconst_null
+     122: invokevirtual #11                 // Method EntityDef.method164:(II[I)LModel;
+     125: areturn
+
+  public Model getRotatedModel();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field desc:LEntityDef;
+       4: ifnonnull     9
+       7: aconst_null
+       8: areturn
+       9: aload_0
+      10: invokespecial #12                 // Method method450:()LModel;
+      13: astore_1
+      14: aload_1
+      15: ifnonnull     20
+      18: aconst_null
+      19: areturn
+      20: aload_0
+      21: aload_1
+      22: getfield      #13                 // Field Model.modelHeight:I
+      25: putfield      #14                 // Field Entity.height:I
+      28: aload_0
+      29: getfield      #15                 // Field Entity.anInt1520:I
+      32: iconst_m1
+      33: if_icmpeq     224
+      36: aload_0
+      37: getfield      #16                 // Field Entity.anInt1521:I
+      40: iconst_m1
+      41: if_icmpeq     224
+      44: getstatic     #17                 // Field SpotAnim.cache:[LSpotAnim;
+      47: aload_0
+      48: getfield      #15                 // Field Entity.anInt1520:I
+      51: aaload
+      52: astore_2
+      53: aload_2
+      54: invokevirtual #18                 // Method SpotAnim.getModel:()LModel;
+      57: astore_3
+      58: aload_3
+      59: ifnull        224
+      62: aload_2
+      63: getfield      #19                 // Field SpotAnim.aAnimation_407:LAnimation;
+      66: getfield      #4                  // Field Animation.anIntArray353:[I
+      69: aload_0
+      70: getfield      #16                 // Field Entity.anInt1521:I
+      73: iaload
+      74: istore        4
+      76: new           #20                 // class Model
+      79: dup
+      80: iconst_1
+      81: iload         4
+      83: invokestatic  #21                 // Method Class36.method532:(I)Z
+      86: iconst_0
+      87: aload_3
+      88: invokespecial #22                 // Method Model."<init>":(ZZZLModel;)V
+      91: astore        5
+      93: aload         5
+      95: iconst_0
+      96: aload_0
+      97: getfield      #23                 // Field Entity.anInt1524:I
+     100: ineg
+     101: iconst_0
+     102: invokevirtual #24                 // Method Model.method475:(III)V
+     105: aload         5
+     107: invokevirtual #25                 // Method Model.method469:()V
+     110: aload         5
+     112: iload         4
+     114: invokevirtual #26                 // Method Model.method470:(I)V
+     117: aload         5
+     119: aconst_null
+     120: checkcast     #27                 // class "[[I"
+     123: putfield      #28                 // Field Model.anIntArrayArray1658:[[I
+     126: aload         5
+     128: aconst_null
+     129: checkcast     #27                 // class "[[I"
+     132: putfield      #29                 // Field Model.anIntArrayArray1657:[[I
+     135: aload_2
+     136: getfield      #30                 // Field SpotAnim.anInt410:I
+     139: sipush        128
+     142: if_icmpne     155
+     145: aload_2
+     146: getfield      #31                 // Field SpotAnim.anInt411:I
+     149: sipush        128
+     152: if_icmpeq     172
+     155: aload         5
+     157: aload_2
+     158: getfield      #30                 // Field SpotAnim.anInt410:I
+     161: aload_2
+     162: getfield      #30                 // Field SpotAnim.anInt410:I
+     165: aload_2
+     166: getfield      #31                 // Field SpotAnim.anInt411:I
+     169: invokevirtual #32                 // Method Model.method478:(III)V
+     172: aload         5
+     174: bipush        64
+     176: aload_2
+     177: getfield      #33                 // Field SpotAnim.anInt413:I
+     180: iadd
+     181: sipush        850
+     184: aload_2
+     185: getfield      #34                 // Field SpotAnim.anInt414:I
+     188: iadd
+     189: bipush        -30
+     191: bipush        -50
+     193: bipush        -30
+     195: iconst_1
+     196: invokevirtual #35                 // Method Model.method479:(IIIIIZ)V
+     199: iconst_2
+     200: anewarray     #20                 // class Model
+     203: dup
+     204: iconst_0
+     205: aload_1
+     206: aastore
+     207: dup
+     208: iconst_1
+     209: aload         5
+     211: aastore
+     212: astore        6
+     214: new           #20                 // class Model
+     217: dup
+     218: aload         6
+     220: invokespecial #36                 // Method Model."<init>":([LModel;)V
+     223: astore_1
+     224: aload_0
+     225: getfield      #9                  // Field desc:LEntityDef;
+     228: getfield      #37                 // Field EntityDef.aByte68:B
+     231: iconst_1
+     232: if_icmpne     240
+     235: aload_1
+     236: iconst_1
+     237: putfield      #38                 // Field Model.aBoolean1659:Z
+     240: aload_1
+     241: areturn
+
+  public boolean isVisible();
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field desc:LEntityDef;
+       4: ifnull        11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  NPC();
+    Code:
+       0: aload_0
+       1: invokespecial #39                 // Method Entity."<init>":()V
+       4: return
+}

@@ -1,0 +1,204 @@
+Compiled from "NodeList.java"
+final class NodeList {
+  private final Node head;
+
+  private Node current;
+
+  public NodeList();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #2                  // class Node
+       8: dup
+       9: invokespecial #3                  // Method Node."<init>":()V
+      12: putfield      #4                  // Field head:LNode;
+      15: aload_0
+      16: getfield      #4                  // Field head:LNode;
+      19: aload_0
+      20: getfield      #4                  // Field head:LNode;
+      23: putfield      #5                  // Field Node.prev:LNode;
+      26: aload_0
+      27: getfield      #4                  // Field head:LNode;
+      30: aload_0
+      31: getfield      #4                  // Field head:LNode;
+      34: putfield      #6                  // Field Node.next:LNode;
+      37: return
+
+  public void insertHead(Node);
+    Code:
+       0: aload_1
+       1: getfield      #6                  // Field Node.next:LNode;
+       4: ifnull        11
+       7: aload_1
+       8: invokevirtual #7                  // Method Node.unlink:()V
+      11: aload_1
+      12: aload_0
+      13: getfield      #4                  // Field head:LNode;
+      16: getfield      #6                  // Field Node.next:LNode;
+      19: putfield      #6                  // Field Node.next:LNode;
+      22: aload_1
+      23: aload_0
+      24: getfield      #4                  // Field head:LNode;
+      27: putfield      #5                  // Field Node.prev:LNode;
+      30: aload_1
+      31: getfield      #6                  // Field Node.next:LNode;
+      34: aload_1
+      35: putfield      #5                  // Field Node.prev:LNode;
+      38: aload_1
+      39: getfield      #5                  // Field Node.prev:LNode;
+      42: aload_1
+      43: putfield      #6                  // Field Node.next:LNode;
+      46: return
+
+  public void insertTail(Node);
+    Code:
+       0: aload_1
+       1: getfield      #6                  // Field Node.next:LNode;
+       4: ifnull        11
+       7: aload_1
+       8: invokevirtual #7                  // Method Node.unlink:()V
+      11: aload_1
+      12: aload_0
+      13: getfield      #4                  // Field head:LNode;
+      16: putfield      #6                  // Field Node.next:LNode;
+      19: aload_1
+      20: aload_0
+      21: getfield      #4                  // Field head:LNode;
+      24: getfield      #5                  // Field Node.prev:LNode;
+      27: putfield      #5                  // Field Node.prev:LNode;
+      30: aload_1
+      31: getfield      #6                  // Field Node.next:LNode;
+      34: aload_1
+      35: putfield      #5                  // Field Node.prev:LNode;
+      38: aload_1
+      39: getfield      #5                  // Field Node.prev:LNode;
+      42: aload_1
+      43: putfield      #6                  // Field Node.next:LNode;
+      46: return
+
+  public Node popHead();
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field head:LNode;
+       4: getfield      #5                  // Field Node.prev:LNode;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #4                  // Field head:LNode;
+      13: if_acmpne     18
+      16: aconst_null
+      17: areturn
+      18: aload_1
+      19: invokevirtual #7                  // Method Node.unlink:()V
+      22: aload_1
+      23: areturn
+
+  public Node reverseGetFirst();
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field head:LNode;
+       4: getfield      #5                  // Field Node.prev:LNode;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #4                  // Field head:LNode;
+      13: if_acmpne     23
+      16: aload_0
+      17: aconst_null
+      18: putfield      #8                  // Field current:LNode;
+      21: aconst_null
+      22: areturn
+      23: aload_0
+      24: aload_1
+      25: getfield      #5                  // Field Node.prev:LNode;
+      28: putfield      #8                  // Field current:LNode;
+      31: aload_1
+      32: areturn
+
+  public Node getFirst();
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field head:LNode;
+       4: getfield      #6                  // Field Node.next:LNode;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #4                  // Field head:LNode;
+      13: if_acmpne     23
+      16: aload_0
+      17: aconst_null
+      18: putfield      #8                  // Field current:LNode;
+      21: aconst_null
+      22: areturn
+      23: aload_0
+      24: aload_1
+      25: getfield      #6                  // Field Node.next:LNode;
+      28: putfield      #8                  // Field current:LNode;
+      31: aload_1
+      32: areturn
+
+  public Node reverseGetNext();
+    Code:
+       0: aload_0
+       1: getfield      #8                  // Field current:LNode;
+       4: astore_1
+       5: aload_1
+       6: aload_0
+       7: getfield      #4                  // Field head:LNode;
+      10: if_acmpne     20
+      13: aload_0
+      14: aconst_null
+      15: putfield      #8                  // Field current:LNode;
+      18: aconst_null
+      19: areturn
+      20: aload_0
+      21: aload_1
+      22: getfield      #5                  // Field Node.prev:LNode;
+      25: putfield      #8                  // Field current:LNode;
+      28: aload_1
+      29: areturn
+
+  public Node getNext();
+    Code:
+       0: aload_0
+       1: getfield      #8                  // Field current:LNode;
+       4: astore_1
+       5: aload_1
+       6: aload_0
+       7: getfield      #4                  // Field head:LNode;
+      10: if_acmpne     20
+      13: aload_0
+      14: aconst_null
+      15: putfield      #8                  // Field current:LNode;
+      18: aconst_null
+      19: areturn
+      20: aload_0
+      21: aload_1
+      22: getfield      #6                  // Field Node.next:LNode;
+      25: putfield      #8                  // Field current:LNode;
+      28: aload_1
+      29: areturn
+
+  public void removeAll();
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field head:LNode;
+       4: getfield      #5                  // Field Node.prev:LNode;
+       7: aload_0
+       8: getfield      #4                  // Field head:LNode;
+      11: if_acmpne     15
+      14: return
+      15: aload_0
+      16: getfield      #4                  // Field head:LNode;
+      19: getfield      #5                  // Field Node.prev:LNode;
+      22: astore_1
+      23: aload_1
+      24: aload_0
+      25: getfield      #4                  // Field head:LNode;
+      28: if_acmpne     32
+      31: return
+      32: aload_1
+      33: invokevirtual #7                  // Method Node.unlink:()V
+      36: goto          15
+}

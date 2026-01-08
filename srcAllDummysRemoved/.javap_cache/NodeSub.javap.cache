@@ -1,0 +1,38 @@
+Compiled from "NodeSub.java"
+public class NodeSub extends Node {
+  public NodeSub prevNodeSub;
+
+  NodeSub nextNodeSub;
+
+  public static int anInt1305;
+
+  public final void unlinkSub();
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field nextNodeSub:LNodeSub;
+       4: ifnonnull     10
+       7: goto          42
+      10: aload_0
+      11: getfield      #1                  // Field nextNodeSub:LNodeSub;
+      14: aload_0
+      15: getfield      #2                  // Field prevNodeSub:LNodeSub;
+      18: putfield      #2                  // Field prevNodeSub:LNodeSub;
+      21: aload_0
+      22: getfield      #2                  // Field prevNodeSub:LNodeSub;
+      25: aload_0
+      26: getfield      #1                  // Field nextNodeSub:LNodeSub;
+      29: putfield      #1                  // Field nextNodeSub:LNodeSub;
+      32: aload_0
+      33: aconst_null
+      34: putfield      #2                  // Field prevNodeSub:LNodeSub;
+      37: aload_0
+      38: aconst_null
+      39: putfield      #1                  // Field nextNodeSub:LNodeSub;
+      42: return
+
+  public NodeSub();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method Node."<init>":()V
+       4: return
+}

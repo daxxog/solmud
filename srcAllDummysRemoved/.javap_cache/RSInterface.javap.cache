@@ -1,0 +1,1208 @@
+Compiled from "RSInterface.java"
+public final class RSInterface {
+  public Sprite sprite1;
+
+  public int anInt208;
+
+  public Sprite[] sprites;
+
+  public static RSInterface[] interfaceCache;
+
+  public int[] anIntArray212;
+
+  public int anInt214;
+
+  public int[] spritesX;
+
+  public int anInt216;
+
+  public int atActionType;
+
+  public java.lang.String spellName;
+
+  public int anInt219;
+
+  public int width;
+
+  public java.lang.String tooltip;
+
+  public java.lang.String selectedActionName;
+
+  public boolean aBoolean223;
+
+  public int scrollPosition;
+
+  public java.lang.String[] actions;
+
+  public int[][] valueIndexArray;
+
+  public boolean aBoolean227;
+
+  public java.lang.String aString228;
+
+  public int anInt230;
+
+  public int invSpritePadX;
+
+  public int textColor;
+
+  public int anInt233;
+
+  public int mediaID;
+
+  public boolean aBoolean235;
+
+  public int parentID;
+
+  public int spellUsableOn;
+
+  private static MRUNodes aMRUNodes_238;
+
+  public int anInt239;
+
+  public int[] children;
+
+  public int[] childX;
+
+  public boolean usableItemInterface;
+
+  public TextDrawingArea textDrawingAreas;
+
+  public int invSpritePadY;
+
+  public int[] anIntArray245;
+
+  public int anInt246;
+
+  public int[] spritesY;
+
+  public java.lang.String message;
+
+  public boolean isInventoryInterface;
+
+  public int id;
+
+  public int[] invStackSizes;
+
+  public int[] inv;
+
+  public byte aByte254;
+
+  private int anInt255;
+
+  private int anInt256;
+
+  public int anInt257;
+
+  public int anInt258;
+
+  public boolean aBoolean259;
+
+  public Sprite sprite2;
+
+  public int scrollMax;
+
+  public int type;
+
+  public int anInt263;
+
+  private static final MRUNodes aMRUNodes_264;
+
+  public int anInt265;
+
+  public boolean aBoolean266;
+
+  public int height;
+
+  public boolean aBoolean268;
+
+  public int anInt269;
+
+  public int anInt270;
+
+  public int anInt271;
+
+  public int[] childY;
+
+  public void swapInventoryItems(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field inv:[I
+       4: iload_1
+       5: iaload
+       6: istore_3
+       7: aload_0
+       8: getfield      #1                  // Field inv:[I
+      11: iload_1
+      12: aload_0
+      13: getfield      #1                  // Field inv:[I
+      16: iload_2
+      17: iaload
+      18: iastore
+      19: aload_0
+      20: getfield      #1                  // Field inv:[I
+      23: iload_2
+      24: iload_3
+      25: iastore
+      26: aload_0
+      27: getfield      #2                  // Field invStackSizes:[I
+      30: iload_1
+      31: iaload
+      32: istore_3
+      33: aload_0
+      34: getfield      #2                  // Field invStackSizes:[I
+      37: iload_1
+      38: aload_0
+      39: getfield      #2                  // Field invStackSizes:[I
+      42: iload_2
+      43: iaload
+      44: iastore
+      45: aload_0
+      46: getfield      #2                  // Field invStackSizes:[I
+      49: iload_2
+      50: iload_3
+      51: iastore
+      52: return
+
+  public static void unpack(StreamLoader, TextDrawingArea[], StreamLoader);
+    Code:
+       0: new           #3                  // class MRUNodes
+       3: dup
+       4: ldc           #4                  // int 50000
+       6: invokespecial #5                  // Method MRUNodes."<init>":(I)V
+       9: putstatic     #6                  // Field aMRUNodes_238:LMRUNodes;
+      12: new           #7                  // class Stream
+      15: dup
+      16: aload_0
+      17: ldc           #8                  // String data
+      19: invokevirtual #9                  // Method StreamLoader.getDataForName:(Ljava/lang/String;)[B
+      22: invokespecial #10                 // Method Stream."<init>":([B)V
+      25: astore_3
+      26: iconst_m1
+      27: istore        4
+      29: aload_3
+      30: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+      33: istore        5
+      35: iload         5
+      37: anewarray     #12                 // class RSInterface
+      40: putstatic     #13                 // Field interfaceCache:[LRSInterface;
+      43: aload_3
+      44: getfield      #14                 // Field Stream.currentOffset:I
+      47: aload_3
+      48: getfield      #15                 // Field Stream.buffer:[B
+      51: arraylength
+      52: if_icmpge     1740
+      55: aload_3
+      56: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+      59: istore        6
+      61: iload         6
+      63: ldc           #16                 // int 65535
+      65: if_icmpne     80
+      68: aload_3
+      69: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+      72: istore        4
+      74: aload_3
+      75: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+      78: istore        6
+      80: getstatic     #13                 // Field interfaceCache:[LRSInterface;
+      83: iload         6
+      85: new           #12                 // class RSInterface
+      88: dup
+      89: invokespecial #17                 // Method "<init>":()V
+      92: dup_x2
+      93: aastore
+      94: astore        7
+      96: aload         7
+      98: iload         6
+     100: putfield      #18                 // Field id:I
+     103: aload         7
+     105: iload         4
+     107: putfield      #19                 // Field parentID:I
+     110: aload         7
+     112: aload_3
+     113: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     116: putfield      #21                 // Field type:I
+     119: aload         7
+     121: aload_3
+     122: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     125: putfield      #22                 // Field atActionType:I
+     128: aload         7
+     130: aload_3
+     131: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     134: putfield      #23                 // Field anInt214:I
+     137: aload         7
+     139: aload_3
+     140: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     143: putfield      #24                 // Field width:I
+     146: aload         7
+     148: aload_3
+     149: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     152: putfield      #25                 // Field height:I
+     155: aload         7
+     157: aload_3
+     158: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     161: i2b
+     162: putfield      #26                 // Field aByte254:B
+     165: aload         7
+     167: aload_3
+     168: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     171: putfield      #27                 // Field anInt230:I
+     174: aload         7
+     176: getfield      #27                 // Field anInt230:I
+     179: ifeq          205
+     182: aload         7
+     184: aload         7
+     186: getfield      #27                 // Field anInt230:I
+     189: iconst_1
+     190: isub
+     191: bipush        8
+     193: ishl
+     194: aload_3
+     195: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     198: iadd
+     199: putfield      #27                 // Field anInt230:I
+     202: goto          211
+     205: aload         7
+     207: iconst_m1
+     208: putfield      #27                 // Field anInt230:I
+     211: aload_3
+     212: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     215: istore        8
+     217: iload         8
+     219: ifle          280
+     222: aload         7
+     224: iload         8
+     226: newarray       int
+     228: putfield      #28                 // Field anIntArray245:[I
+     231: aload         7
+     233: iload         8
+     235: newarray       int
+     237: putfield      #29                 // Field anIntArray212:[I
+     240: iconst_0
+     241: istore        9
+     243: iload         9
+     245: iload         8
+     247: if_icmpge     280
+     250: aload         7
+     252: getfield      #28                 // Field anIntArray245:[I
+     255: iload         9
+     257: aload_3
+     258: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     261: iastore
+     262: aload         7
+     264: getfield      #29                 // Field anIntArray212:[I
+     267: iload         9
+     269: aload_3
+     270: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     273: iastore
+     274: iinc          9, 1
+     277: goto          243
+     280: aload_3
+     281: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     284: istore        9
+     286: iload         9
+     288: ifle          366
+     291: aload         7
+     293: iload         9
+     295: anewarray     #30                 // class "[I"
+     298: putfield      #31                 // Field valueIndexArray:[[I
+     301: iconst_0
+     302: istore        10
+     304: iload         10
+     306: iload         9
+     308: if_icmpge     366
+     311: aload_3
+     312: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     315: istore        11
+     317: aload         7
+     319: getfield      #31                 // Field valueIndexArray:[[I
+     322: iload         10
+     324: iload         11
+     326: newarray       int
+     328: aastore
+     329: iconst_0
+     330: istore        12
+     332: iload         12
+     334: iload         11
+     336: if_icmpge     360
+     339: aload         7
+     341: getfield      #31                 // Field valueIndexArray:[[I
+     344: iload         10
+     346: aaload
+     347: iload         12
+     349: aload_3
+     350: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     353: iastore
+     354: iinc          12, 1
+     357: goto          332
+     360: iinc          10, 1
+     363: goto          304
+     366: aload         7
+     368: getfield      #21                 // Field type:I
+     371: ifne          486
+     374: aload         7
+     376: aload_3
+     377: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     380: putfield      #32                 // Field scrollMax:I
+     383: aload         7
+     385: aload_3
+     386: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     389: iconst_1
+     390: if_icmpne     397
+     393: iconst_1
+     394: goto          398
+     397: iconst_0
+     398: putfield      #33                 // Field aBoolean266:Z
+     401: aload_3
+     402: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     405: istore        10
+     407: aload         7
+     409: iload         10
+     411: newarray       int
+     413: putfield      #34                 // Field children:[I
+     416: aload         7
+     418: iload         10
+     420: newarray       int
+     422: putfield      #35                 // Field childX:[I
+     425: aload         7
+     427: iload         10
+     429: newarray       int
+     431: putfield      #36                 // Field childY:[I
+     434: iconst_0
+     435: istore        11
+     437: iload         11
+     439: iload         10
+     441: if_icmpge     486
+     444: aload         7
+     446: getfield      #34                 // Field children:[I
+     449: iload         11
+     451: aload_3
+     452: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     455: iastore
+     456: aload         7
+     458: getfield      #35                 // Field childX:[I
+     461: iload         11
+     463: aload_3
+     464: invokevirtual #37                 // Method Stream.readSignedWord:()I
+     467: iastore
+     468: aload         7
+     470: getfield      #36                 // Field childY:[I
+     473: iload         11
+     475: aload_3
+     476: invokevirtual #37                 // Method Stream.readSignedWord:()I
+     479: iastore
+     480: iinc          11, 1
+     483: goto          437
+     486: aload         7
+     488: getfield      #21                 // Field type:I
+     491: iconst_1
+     492: if_icmpne     505
+     495: aload_3
+     496: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+     499: pop
+     500: aload_3
+     501: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     504: pop
+     505: aload         7
+     507: getfield      #21                 // Field type:I
+     510: iconst_2
+     511: if_icmpne     838
+     514: aload         7
+     516: aload         7
+     518: getfield      #24                 // Field width:I
+     521: aload         7
+     523: getfield      #25                 // Field height:I
+     526: imul
+     527: newarray       int
+     529: putfield      #1                  // Field inv:[I
+     532: aload         7
+     534: aload         7
+     536: getfield      #24                 // Field width:I
+     539: aload         7
+     541: getfield      #25                 // Field height:I
+     544: imul
+     545: newarray       int
+     547: putfield      #2                  // Field invStackSizes:[I
+     550: aload         7
+     552: aload_3
+     553: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     556: iconst_1
+     557: if_icmpne     564
+     560: iconst_1
+     561: goto          565
+     564: iconst_0
+     565: putfield      #38                 // Field aBoolean259:Z
+     568: aload         7
+     570: aload_3
+     571: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     574: iconst_1
+     575: if_icmpne     582
+     578: iconst_1
+     579: goto          583
+     582: iconst_0
+     583: putfield      #39                 // Field isInventoryInterface:Z
+     586: aload         7
+     588: aload_3
+     589: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     592: iconst_1
+     593: if_icmpne     600
+     596: iconst_1
+     597: goto          601
+     600: iconst_0
+     601: putfield      #40                 // Field usableItemInterface:Z
+     604: aload         7
+     606: aload_3
+     607: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     610: iconst_1
+     611: if_icmpne     618
+     614: iconst_1
+     615: goto          619
+     618: iconst_0
+     619: putfield      #41                 // Field aBoolean235:Z
+     622: aload         7
+     624: aload_3
+     625: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     628: putfield      #42                 // Field invSpritePadX:I
+     631: aload         7
+     633: aload_3
+     634: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     637: putfield      #43                 // Field invSpritePadY:I
+     640: aload         7
+     642: bipush        20
+     644: newarray       int
+     646: putfield      #44                 // Field spritesX:[I
+     649: aload         7
+     651: bipush        20
+     653: newarray       int
+     655: putfield      #45                 // Field spritesY:[I
+     658: aload         7
+     660: bipush        20
+     662: anewarray     #46                 // class Sprite
+     665: putfield      #47                 // Field sprites:[LSprite;
+     668: iconst_0
+     669: istore        10
+     671: iload         10
+     673: bipush        20
+     675: if_icmpge     779
+     678: aload_3
+     679: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     682: istore        11
+     684: iload         11
+     686: iconst_1
+     687: if_icmpne     773
+     690: aload         7
+     692: getfield      #44                 // Field spritesX:[I
+     695: iload         10
+     697: aload_3
+     698: invokevirtual #37                 // Method Stream.readSignedWord:()I
+     701: iastore
+     702: aload         7
+     704: getfield      #45                 // Field spritesY:[I
+     707: iload         10
+     709: aload_3
+     710: invokevirtual #37                 // Method Stream.readSignedWord:()I
+     713: iastore
+     714: aload_3
+     715: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+     718: astore        12
+     720: aload_2
+     721: ifnull        773
+     724: aload         12
+     726: invokevirtual #49                 // Method java/lang/String.length:()I
+     729: ifle          773
+     732: aload         12
+     734: ldc           #50                 // String ,
+     736: invokevirtual #51                 // Method java/lang/String.lastIndexOf:(Ljava/lang/String;)I
+     739: istore        13
+     741: aload         7
+     743: getfield      #47                 // Field sprites:[LSprite;
+     746: iload         10
+     748: aload         12
+     750: iload         13
+     752: iconst_1
+     753: iadd
+     754: invokevirtual #52                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     757: invokestatic  #53                 // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+     760: aload_2
+     761: aload         12
+     763: iconst_0
+     764: iload         13
+     766: invokevirtual #54                 // Method java/lang/String.substring:(II)Ljava/lang/String;
+     769: invokestatic  #55                 // Method method207:(ILStreamLoader;Ljava/lang/String;)LSprite;
+     772: aastore
+     773: iinc          10, 1
+     776: goto          671
+     779: aload         7
+     781: iconst_5
+     782: anewarray     #56                 // class java/lang/String
+     785: putfield      #57                 // Field actions:[Ljava/lang/String;
+     788: iconst_0
+     789: istore        10
+     791: iload         10
+     793: iconst_5
+     794: if_icmpge     838
+     797: aload         7
+     799: getfield      #57                 // Field actions:[Ljava/lang/String;
+     802: iload         10
+     804: aload_3
+     805: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+     808: aastore
+     809: aload         7
+     811: getfield      #57                 // Field actions:[Ljava/lang/String;
+     814: iload         10
+     816: aaload
+     817: invokevirtual #49                 // Method java/lang/String.length:()I
+     820: ifne          832
+     823: aload         7
+     825: getfield      #57                 // Field actions:[Ljava/lang/String;
+     828: iload         10
+     830: aconst_null
+     831: aastore
+     832: iinc          10, 1
+     835: goto          791
+     838: aload         7
+     840: getfield      #21                 // Field type:I
+     843: iconst_3
+     844: if_icmpne     865
+     847: aload         7
+     849: aload_3
+     850: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     853: iconst_1
+     854: if_icmpne     861
+     857: iconst_1
+     858: goto          862
+     861: iconst_0
+     862: putfield      #58                 // Field aBoolean227:Z
+     865: aload         7
+     867: getfield      #21                 // Field type:I
+     870: iconst_4
+     871: if_icmpeq     883
+     874: aload         7
+     876: getfield      #21                 // Field type:I
+     879: iconst_1
+     880: if_icmpne     938
+     883: aload         7
+     885: aload_3
+     886: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     889: iconst_1
+     890: if_icmpne     897
+     893: iconst_1
+     894: goto          898
+     897: iconst_0
+     898: putfield      #59                 // Field aBoolean223:Z
+     901: aload_3
+     902: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     905: istore        10
+     907: aload_1
+     908: ifnull        920
+     911: aload         7
+     913: aload_1
+     914: iload         10
+     916: aaload
+     917: putfield      #60                 // Field textDrawingAreas:LTextDrawingArea;
+     920: aload         7
+     922: aload_3
+     923: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+     926: iconst_1
+     927: if_icmpne     934
+     930: iconst_1
+     931: goto          935
+     934: iconst_0
+     935: putfield      #61                 // Field aBoolean268:Z
+     938: aload         7
+     940: getfield      #21                 // Field type:I
+     943: iconst_4
+     944: if_icmpne     965
+     947: aload         7
+     949: aload_3
+     950: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+     953: putfield      #62                 // Field message:Ljava/lang/String;
+     956: aload         7
+     958: aload_3
+     959: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+     962: putfield      #63                 // Field aString228:Ljava/lang/String;
+     965: aload         7
+     967: getfield      #21                 // Field type:I
+     970: iconst_1
+     971: if_icmpeq     992
+     974: aload         7
+     976: getfield      #21                 // Field type:I
+     979: iconst_3
+     980: if_icmpeq     992
+     983: aload         7
+     985: getfield      #21                 // Field type:I
+     988: iconst_4
+     989: if_icmpne     1001
+     992: aload         7
+     994: aload_3
+     995: invokevirtual #64                 // Method Stream.readDWord:()I
+     998: putfield      #65                 // Field textColor:I
+    1001: aload         7
+    1003: getfield      #21                 // Field type:I
+    1006: iconst_3
+    1007: if_icmpeq     1019
+    1010: aload         7
+    1012: getfield      #21                 // Field type:I
+    1015: iconst_4
+    1016: if_icmpne     1046
+    1019: aload         7
+    1021: aload_3
+    1022: invokevirtual #64                 // Method Stream.readDWord:()I
+    1025: putfield      #66                 // Field anInt219:I
+    1028: aload         7
+    1030: aload_3
+    1031: invokevirtual #64                 // Method Stream.readDWord:()I
+    1034: putfield      #67                 // Field anInt216:I
+    1037: aload         7
+    1039: aload_3
+    1040: invokevirtual #64                 // Method Stream.readDWord:()I
+    1043: putfield      #68                 // Field anInt239:I
+    1046: aload         7
+    1048: getfield      #21                 // Field type:I
+    1051: iconst_5
+    1052: if_icmpne     1167
+    1055: aload_3
+    1056: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1059: astore        10
+    1061: aload_2
+    1062: ifnull        1111
+    1065: aload         10
+    1067: invokevirtual #49                 // Method java/lang/String.length:()I
+    1070: ifle          1111
+    1073: aload         10
+    1075: ldc           #50                 // String ,
+    1077: invokevirtual #51                 // Method java/lang/String.lastIndexOf:(Ljava/lang/String;)I
+    1080: istore        11
+    1082: aload         7
+    1084: aload         10
+    1086: iload         11
+    1088: iconst_1
+    1089: iadd
+    1090: invokevirtual #52                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+    1093: invokestatic  #53                 // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+    1096: aload_2
+    1097: aload         10
+    1099: iconst_0
+    1100: iload         11
+    1102: invokevirtual #54                 // Method java/lang/String.substring:(II)Ljava/lang/String;
+    1105: invokestatic  #55                 // Method method207:(ILStreamLoader;Ljava/lang/String;)LSprite;
+    1108: putfield      #69                 // Field sprite1:LSprite;
+    1111: aload_3
+    1112: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1115: astore        10
+    1117: aload_2
+    1118: ifnull        1167
+    1121: aload         10
+    1123: invokevirtual #49                 // Method java/lang/String.length:()I
+    1126: ifle          1167
+    1129: aload         10
+    1131: ldc           #50                 // String ,
+    1133: invokevirtual #51                 // Method java/lang/String.lastIndexOf:(Ljava/lang/String;)I
+    1136: istore        11
+    1138: aload         7
+    1140: aload         10
+    1142: iload         11
+    1144: iconst_1
+    1145: iadd
+    1146: invokevirtual #52                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+    1149: invokestatic  #53                 // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+    1152: aload_2
+    1153: aload         10
+    1155: iconst_0
+    1156: iload         11
+    1158: invokevirtual #54                 // Method java/lang/String.substring:(II)Ljava/lang/String;
+    1161: invokestatic  #55                 // Method method207:(ILStreamLoader;Ljava/lang/String;)LSprite;
+    1164: putfield      #70                 // Field sprite2:LSprite;
+    1167: aload         7
+    1169: getfield      #21                 // Field type:I
+    1172: bipush        6
+    1174: if_icmpne     1346
+    1177: aload_3
+    1178: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1181: istore        10
+    1183: iload         10
+    1185: ifeq          1211
+    1188: aload         7
+    1190: iconst_1
+    1191: putfield      #71                 // Field anInt233:I
+    1194: aload         7
+    1196: iload         10
+    1198: iconst_1
+    1199: isub
+    1200: bipush        8
+    1202: ishl
+    1203: aload_3
+    1204: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1207: iadd
+    1208: putfield      #72                 // Field mediaID:I
+    1211: aload_3
+    1212: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1215: istore        10
+    1217: iload         10
+    1219: ifeq          1245
+    1222: aload         7
+    1224: iconst_1
+    1225: putfield      #73                 // Field anInt255:I
+    1228: aload         7
+    1230: iload         10
+    1232: iconst_1
+    1233: isub
+    1234: bipush        8
+    1236: ishl
+    1237: aload_3
+    1238: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1241: iadd
+    1242: putfield      #74                 // Field anInt256:I
+    1245: aload_3
+    1246: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1249: istore        10
+    1251: iload         10
+    1253: ifeq          1276
+    1256: aload         7
+    1258: iload         10
+    1260: iconst_1
+    1261: isub
+    1262: bipush        8
+    1264: ishl
+    1265: aload_3
+    1266: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1269: iadd
+    1270: putfield      #75                 // Field anInt257:I
+    1273: goto          1282
+    1276: aload         7
+    1278: iconst_m1
+    1279: putfield      #75                 // Field anInt257:I
+    1282: aload_3
+    1283: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1286: istore        10
+    1288: iload         10
+    1290: ifeq          1313
+    1293: aload         7
+    1295: iload         10
+    1297: iconst_1
+    1298: isub
+    1299: bipush        8
+    1301: ishl
+    1302: aload_3
+    1303: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1306: iadd
+    1307: putfield      #76                 // Field anInt258:I
+    1310: goto          1319
+    1313: aload         7
+    1315: iconst_m1
+    1316: putfield      #76                 // Field anInt258:I
+    1319: aload         7
+    1321: aload_3
+    1322: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+    1325: putfield      #77                 // Field anInt269:I
+    1328: aload         7
+    1330: aload_3
+    1331: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+    1334: putfield      #78                 // Field anInt270:I
+    1337: aload         7
+    1339: aload_3
+    1340: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+    1343: putfield      #79                 // Field anInt271:I
+    1346: aload         7
+    1348: getfield      #21                 // Field type:I
+    1351: bipush        7
+    1353: if_icmpne     1551
+    1356: aload         7
+    1358: aload         7
+    1360: getfield      #24                 // Field width:I
+    1363: aload         7
+    1365: getfield      #25                 // Field height:I
+    1368: imul
+    1369: newarray       int
+    1371: putfield      #1                  // Field inv:[I
+    1374: aload         7
+    1376: aload         7
+    1378: getfield      #24                 // Field width:I
+    1381: aload         7
+    1383: getfield      #25                 // Field height:I
+    1386: imul
+    1387: newarray       int
+    1389: putfield      #2                  // Field invStackSizes:[I
+    1392: aload         7
+    1394: aload_3
+    1395: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1398: iconst_1
+    1399: if_icmpne     1406
+    1402: iconst_1
+    1403: goto          1407
+    1406: iconst_0
+    1407: putfield      #59                 // Field aBoolean223:Z
+    1410: aload_3
+    1411: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1414: istore        10
+    1416: aload_1
+    1417: ifnull        1429
+    1420: aload         7
+    1422: aload_1
+    1423: iload         10
+    1425: aaload
+    1426: putfield      #60                 // Field textDrawingAreas:LTextDrawingArea;
+    1429: aload         7
+    1431: aload_3
+    1432: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1435: iconst_1
+    1436: if_icmpne     1443
+    1439: iconst_1
+    1440: goto          1444
+    1443: iconst_0
+    1444: putfield      #61                 // Field aBoolean268:Z
+    1447: aload         7
+    1449: aload_3
+    1450: invokevirtual #64                 // Method Stream.readDWord:()I
+    1453: putfield      #65                 // Field textColor:I
+    1456: aload         7
+    1458: aload_3
+    1459: invokevirtual #37                 // Method Stream.readSignedWord:()I
+    1462: putfield      #42                 // Field invSpritePadX:I
+    1465: aload         7
+    1467: aload_3
+    1468: invokevirtual #37                 // Method Stream.readSignedWord:()I
+    1471: putfield      #43                 // Field invSpritePadY:I
+    1474: aload         7
+    1476: aload_3
+    1477: invokevirtual #20                 // Method Stream.readUnsignedByte:()I
+    1480: iconst_1
+    1481: if_icmpne     1488
+    1484: iconst_1
+    1485: goto          1489
+    1488: iconst_0
+    1489: putfield      #39                 // Field isInventoryInterface:Z
+    1492: aload         7
+    1494: iconst_5
+    1495: anewarray     #56                 // class java/lang/String
+    1498: putfield      #57                 // Field actions:[Ljava/lang/String;
+    1501: iconst_0
+    1502: istore        11
+    1504: iload         11
+    1506: iconst_5
+    1507: if_icmpge     1551
+    1510: aload         7
+    1512: getfield      #57                 // Field actions:[Ljava/lang/String;
+    1515: iload         11
+    1517: aload_3
+    1518: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1521: aastore
+    1522: aload         7
+    1524: getfield      #57                 // Field actions:[Ljava/lang/String;
+    1527: iload         11
+    1529: aaload
+    1530: invokevirtual #49                 // Method java/lang/String.length:()I
+    1533: ifne          1545
+    1536: aload         7
+    1538: getfield      #57                 // Field actions:[Ljava/lang/String;
+    1541: iload         11
+    1543: aconst_null
+    1544: aastore
+    1545: iinc          11, 1
+    1548: goto          1504
+    1551: aload         7
+    1553: getfield      #22                 // Field atActionType:I
+    1556: iconst_2
+    1557: if_icmpeq     1569
+    1560: aload         7
+    1562: getfield      #21                 // Field type:I
+    1565: iconst_2
+    1566: if_icmpne     1596
+    1569: aload         7
+    1571: aload_3
+    1572: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1575: putfield      #80                 // Field selectedActionName:Ljava/lang/String;
+    1578: aload         7
+    1580: aload_3
+    1581: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1584: putfield      #81                 // Field spellName:Ljava/lang/String;
+    1587: aload         7
+    1589: aload_3
+    1590: invokevirtual #11                 // Method Stream.readUnsignedWord:()I
+    1593: putfield      #82                 // Field spellUsableOn:I
+    1596: aload         7
+    1598: getfield      #21                 // Field type:I
+    1601: bipush        8
+    1603: if_icmpne     1615
+    1606: aload         7
+    1608: aload_3
+    1609: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1612: putfield      #62                 // Field message:Ljava/lang/String;
+    1615: aload         7
+    1617: getfield      #22                 // Field atActionType:I
+    1620: iconst_1
+    1621: if_icmpeq     1652
+    1624: aload         7
+    1626: getfield      #22                 // Field atActionType:I
+    1629: iconst_4
+    1630: if_icmpeq     1652
+    1633: aload         7
+    1635: getfield      #22                 // Field atActionType:I
+    1638: iconst_5
+    1639: if_icmpeq     1652
+    1642: aload         7
+    1644: getfield      #22                 // Field atActionType:I
+    1647: bipush        6
+    1649: if_icmpne     1737
+    1652: aload         7
+    1654: aload_3
+    1655: invokevirtual #48                 // Method Stream.readString:()Ljava/lang/String;
+    1658: putfield      #83                 // Field tooltip:Ljava/lang/String;
+    1661: aload         7
+    1663: getfield      #83                 // Field tooltip:Ljava/lang/String;
+    1666: invokevirtual #49                 // Method java/lang/String.length:()I
+    1669: ifne          1737
+    1672: aload         7
+    1674: getfield      #22                 // Field atActionType:I
+    1677: iconst_1
+    1678: if_icmpne     1688
+    1681: aload         7
+    1683: ldc           #84                 // String Ok
+    1685: putfield      #83                 // Field tooltip:Ljava/lang/String;
+    1688: aload         7
+    1690: getfield      #22                 // Field atActionType:I
+    1693: iconst_4
+    1694: if_icmpne     1704
+    1697: aload         7
+    1699: ldc           #85                 // String Select
+    1701: putfield      #83                 // Field tooltip:Ljava/lang/String;
+    1704: aload         7
+    1706: getfield      #22                 // Field atActionType:I
+    1709: iconst_5
+    1710: if_icmpne     1720
+    1713: aload         7
+    1715: ldc           #85                 // String Select
+    1717: putfield      #83                 // Field tooltip:Ljava/lang/String;
+    1720: aload         7
+    1722: getfield      #22                 // Field atActionType:I
+    1725: bipush        6
+    1727: if_icmpne     1737
+    1730: aload         7
+    1732: ldc           #86                 // String Continue
+    1734: putfield      #83                 // Field tooltip:Ljava/lang/String;
+    1737: goto          43
+    1740: aconst_null
+    1741: putstatic     #6                  // Field aMRUNodes_238:LMRUNodes;
+    1744: return
+
+  private Model method206(int, int);
+    Code:
+       0: getstatic     #87                 // Field aMRUNodes_264:LMRUNodes;
+       3: iload_1
+       4: bipush        16
+       6: ishl
+       7: iload_2
+       8: iadd
+       9: i2l
+      10: invokevirtual #88                 // Method MRUNodes.insertFromCache:(J)LNodeSub;
+      13: checkcast     #89                 // class Model
+      16: astore_3
+      17: aload_3
+      18: ifnull        23
+      21: aload_3
+      22: areturn
+      23: iload_1
+      24: iconst_1
+      25: if_icmpne     33
+      28: iload_2
+      29: invokestatic  #90                 // Method Model.method462:(I)LModel;
+      32: astore_3
+      33: iload_1
+      34: iconst_2
+      35: if_icmpne     46
+      38: iload_2
+      39: invokestatic  #91                 // Method EntityDef.forID:(I)LEntityDef;
+      42: invokevirtual #92                 // Method EntityDef.method160:()LModel;
+      45: astore_3
+      46: iload_1
+      47: iconst_3
+      48: if_icmpne     58
+      51: getstatic     #93                 // Field client.myPlayer:LPlayer;
+      54: invokevirtual #94                 // Method Player.method453:()LModel;
+      57: astore_3
+      58: iload_1
+      59: iconst_4
+      60: if_icmpne     73
+      63: iload_2
+      64: invokestatic  #95                 // Method ItemDef.forID:(I)LItemDef;
+      67: bipush        50
+      69: invokevirtual #96                 // Method ItemDef.method202:(I)LModel;
+      72: astore_3
+      73: iload_1
+      74: iconst_5
+      75: if_icmpne     80
+      78: aconst_null
+      79: astore_3
+      80: aload_3
+      81: ifnull        98
+      84: getstatic     #87                 // Field aMRUNodes_264:LMRUNodes;
+      87: aload_3
+      88: iload_1
+      89: bipush        16
+      91: ishl
+      92: iload_2
+      93: iadd
+      94: i2l
+      95: invokevirtual #97                 // Method MRUNodes.removeFromCache:(LNodeSub;J)V
+      98: aload_3
+      99: areturn
+
+  private static Sprite method207(int, StreamLoader, java.lang.String);
+    Code:
+       0: aload_2
+       1: invokestatic  #98                 // Method TextClass.method585:(Ljava/lang/String;)J
+       4: bipush        8
+       6: lshl
+       7: iload_0
+       8: i2l
+       9: ladd
+      10: lstore_3
+      11: getstatic     #6                  // Field aMRUNodes_238:LMRUNodes;
+      14: lload_3
+      15: invokevirtual #88                 // Method MRUNodes.insertFromCache:(J)LNodeSub;
+      18: checkcast     #46                 // class Sprite
+      21: astore        5
+      23: aload         5
+      25: ifnull        31
+      28: aload         5
+      30: areturn
+      31: new           #46                 // class Sprite
+      34: dup
+      35: aload_1
+      36: aload_2
+      37: iload_0
+      38: invokespecial #99                 // Method Sprite."<init>":(LStreamLoader;Ljava/lang/String;I)V
+      41: astore        5
+      43: getstatic     #6                  // Field aMRUNodes_238:LMRUNodes;
+      46: aload         5
+      48: lload_3
+      49: invokevirtual #97                 // Method MRUNodes.removeFromCache:(LNodeSub;J)V
+      52: goto          59
+      55: astore        6
+      57: aconst_null
+      58: areturn
+      59: aload         5
+      61: areturn
+    Exception table:
+       from    to  target type
+          31    52    55   Class java/lang/Exception
+
+  public static void method208(boolean, Model);
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: iconst_5
+       3: istore_3
+       4: iload_0
+       5: ifeq          9
+       8: return
+       9: getstatic     #87                 // Field aMRUNodes_264:LMRUNodes;
+      12: invokevirtual #101                // Method MRUNodes.unlinkAll:()V
+      15: aload_1
+      16: ifnull        38
+      19: iload_3
+      20: iconst_4
+      21: if_icmpeq     38
+      24: getstatic     #87                 // Field aMRUNodes_264:LMRUNodes;
+      27: aload_1
+      28: iload_3
+      29: bipush        16
+      31: ishl
+      32: iload_2
+      33: iadd
+      34: i2l
+      35: invokevirtual #97                 // Method MRUNodes.removeFromCache:(LNodeSub;J)V
+      38: return
+
+  public Model method209(int, int, boolean);
+    Code:
+       0: iload_3
+       1: ifeq          21
+       4: aload_0
+       5: aload_0
+       6: getfield      #73                 // Field anInt255:I
+       9: aload_0
+      10: getfield      #74                 // Field anInt256:I
+      13: invokespecial #102                // Method method206:(II)LModel;
+      16: astore        4
+      18: goto          35
+      21: aload_0
+      22: aload_0
+      23: getfield      #71                 // Field anInt233:I
+      26: aload_0
+      27: getfield      #72                 // Field mediaID:I
+      30: invokespecial #102                // Method method206:(II)LModel;
+      33: astore        4
+      35: aload         4
+      37: ifnonnull     42
+      40: aconst_null
+      41: areturn
+      42: iload_2
+      43: iconst_m1
+      44: if_icmpne     63
+      47: iload_1
+      48: iconst_m1
+      49: if_icmpne     63
+      52: aload         4
+      54: getfield      #103                // Field Model.anIntArray1640:[I
+      57: ifnonnull     63
+      60: aload         4
+      62: areturn
+      63: new           #89                 // class Model
+      66: dup
+      67: iconst_1
+      68: iload_2
+      69: invokestatic  #104                // Method Class36.method532:(I)Z
+      72: iload_1
+      73: invokestatic  #104                // Method Class36.method532:(I)Z
+      76: iand
+      77: iconst_0
+      78: aload         4
+      80: invokespecial #105                // Method Model."<init>":(ZZZLModel;)V
+      83: astore        5
+      85: iload_2
+      86: iconst_m1
+      87: if_icmpne     95
+      90: iload_1
+      91: iconst_m1
+      92: if_icmpeq     100
+      95: aload         5
+      97: invokevirtual #106                // Method Model.method469:()V
+     100: iload_2
+     101: iconst_m1
+     102: if_icmpeq     111
+     105: aload         5
+     107: iload_2
+     108: invokevirtual #107                // Method Model.method470:(I)V
+     111: iload_1
+     112: iconst_m1
+     113: if_icmpeq     122
+     116: aload         5
+     118: iload_1
+     119: invokevirtual #107                // Method Model.method470:(I)V
+     122: aload         5
+     124: bipush        64
+     126: sipush        768
+     129: bipush        -50
+     131: bipush        -10
+     133: bipush        -50
+     135: iconst_1
+     136: invokevirtual #108                // Method Model.method479:(IIIIIZ)V
+     139: aload         5
+     141: areturn
+
+  public RSInterface();
+    Code:
+       0: aload_0
+       1: invokespecial #109                // Method java/lang/Object."<init>":()V
+       4: return
+
+  static {};
+    Code:
+       0: new           #3                  // class MRUNodes
+       3: dup
+       4: bipush        30
+       6: invokespecial #5                  // Method MRUNodes."<init>":(I)V
+       9: putstatic     #87                 // Field aMRUNodes_264:LMRUNodes;
+      12: return
+}

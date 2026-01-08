@@ -1,0 +1,148 @@
+Compiled from "VarBit.java"
+public final class VarBit {
+  public static VarBit[] cache;
+
+  public int anInt648;
+
+  public int anInt649;
+
+  public int anInt650;
+
+  private boolean aBoolean651;
+
+  public static void unpackConfig(StreamLoader);
+    Code:
+       0: new           #1                  // class Stream
+       3: dup
+       4: aload_0
+       5: ldc           #2                  // String varbit.dat
+       7: invokevirtual #3                  // Method StreamLoader.getDataForName:(Ljava/lang/String;)[B
+      10: invokespecial #4                  // Method Stream."<init>":([B)V
+      13: astore_1
+      14: aload_1
+      15: invokevirtual #5                  // Method Stream.readUnsignedWord:()I
+      18: istore_2
+      19: getstatic     #6                  // Field cache:[LVarBit;
+      22: ifnonnull     32
+      25: iload_2
+      26: anewarray     #7                  // class VarBit
+      29: putstatic     #6                  // Field cache:[LVarBit;
+      32: iconst_0
+      33: istore_3
+      34: iload_3
+      35: iload_2
+      36: if_icmpge     101
+      39: getstatic     #6                  // Field cache:[LVarBit;
+      42: iload_3
+      43: aaload
+      44: ifnonnull     59
+      47: getstatic     #6                  // Field cache:[LVarBit;
+      50: iload_3
+      51: new           #7                  // class VarBit
+      54: dup
+      55: invokespecial #8                  // Method "<init>":()V
+      58: aastore
+      59: getstatic     #6                  // Field cache:[LVarBit;
+      62: iload_3
+      63: aaload
+      64: aload_1
+      65: invokespecial #9                  // Method readValues:(LStream;)V
+      68: getstatic     #6                  // Field cache:[LVarBit;
+      71: iload_3
+      72: aaload
+      73: getfield      #10                 // Field aBoolean651:Z
+      76: ifeq          95
+      79: getstatic     #11                 // Field Varp.cache:[LVarp;
+      82: getstatic     #6                  // Field cache:[LVarBit;
+      85: iload_3
+      86: aaload
+      87: getfield      #12                 // Field anInt648:I
+      90: aaload
+      91: iconst_1
+      92: putfield      #13                 // Field Varp.aBoolean713:Z
+      95: iinc          3, 1
+      98: goto          34
+     101: aload_1
+     102: getfield      #14                 // Field Stream.currentOffset:I
+     105: aload_1
+     106: getfield      #15                 // Field Stream.buffer:[B
+     109: arraylength
+     110: if_icmpeq     121
+     113: getstatic     #16                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     116: ldc           #17                 // String varbit load mismatch
+     118: invokevirtual #18                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     121: return
+
+  private void readValues(Stream);
+    Code:
+       0: aload_1
+       1: invokevirtual #19                 // Method Stream.readUnsignedByte:()I
+       4: istore_2
+       5: iload_2
+       6: ifne          10
+       9: return
+      10: iload_2
+      11: iconst_1
+      12: if_icmpne     42
+      15: aload_0
+      16: aload_1
+      17: invokevirtual #5                  // Method Stream.readUnsignedWord:()I
+      20: putfield      #12                 // Field anInt648:I
+      23: aload_0
+      24: aload_1
+      25: invokevirtual #19                 // Method Stream.readUnsignedByte:()I
+      28: putfield      #20                 // Field anInt649:I
+      31: aload_0
+      32: aload_1
+      33: invokevirtual #19                 // Method Stream.readUnsignedByte:()I
+      36: putfield      #21                 // Field anInt650:I
+      39: goto          120
+      42: iload_2
+      43: bipush        10
+      45: if_icmpne     56
+      48: aload_1
+      49: invokevirtual #22                 // Method Stream.readString:()Ljava/lang/String;
+      52: pop
+      53: goto          120
+      56: iload_2
+      57: iconst_2
+      58: if_icmpne     69
+      61: aload_0
+      62: iconst_1
+      63: putfield      #10                 // Field aBoolean651:Z
+      66: goto          120
+      69: iload_2
+      70: iconst_3
+      71: if_icmpne     82
+      74: aload_1
+      75: invokevirtual #23                 // Method Stream.readDWord:()I
+      78: pop
+      79: goto          120
+      82: iload_2
+      83: iconst_4
+      84: if_icmpne     95
+      87: aload_1
+      88: invokevirtual #23                 // Method Stream.readDWord:()I
+      91: pop
+      92: goto          120
+      95: getstatic     #16                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      98: new           #24                 // class java/lang/StringBuilder
+     101: dup
+     102: invokespecial #25                 // Method java/lang/StringBuilder."<init>":()V
+     105: ldc           #26                 // String Error unrecognised config code:
+     107: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     110: iload_2
+     111: invokevirtual #28                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     114: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     117: invokevirtual #18                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     120: goto          0
+
+  private VarBit();
+    Code:
+       0: aload_0
+       1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #10                 // Field aBoolean651:Z
+       9: return
+}

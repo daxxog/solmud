@@ -1,0 +1,144 @@
+Compiled from "Class32.java"
+final class Class32 {
+  byte[] aByteArray563;
+
+  int anInt564;
+
+  int anInt565;
+
+  int anInt566;
+
+  int anInt567;
+
+  byte[] aByteArray568;
+
+  int anInt569;
+
+  int anInt570;
+
+  int anInt571;
+
+  int anInt572;
+
+  byte aByte573;
+
+  int anInt574;
+
+  boolean aBoolean575;
+
+  int anInt576;
+
+  int anInt577;
+
+  int anInt578;
+
+  int anInt579;
+
+  int anInt580;
+
+  int anInt581;
+
+  int anInt582;
+
+  final int[] anIntArray583;
+
+  int anInt584;
+
+  final int[] anIntArray585;
+
+  public static int[] anIntArray587;
+
+  int anInt588;
+
+  final boolean[] aBooleanArray589;
+
+  final boolean[] aBooleanArray590;
+
+  final byte[] aByteArray591;
+
+  final byte[] aByteArray592;
+
+  final int[] anIntArray593;
+
+  final byte[] aByteArray594;
+
+  final byte[] aByteArray595;
+
+  final byte[][] aByteArrayArray596;
+
+  final int[][] anIntArrayArray597;
+
+  final int[][] anIntArrayArray598;
+
+  final int[][] anIntArrayArray599;
+
+  final int[] anIntArray600;
+
+  int anInt601;
+
+  Class32();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: sipush        256
+       8: newarray       int
+      10: putfield      #2                  // Field anIntArray583:[I
+      13: aload_0
+      14: sipush        257
+      17: newarray       int
+      19: putfield      #3                  // Field anIntArray585:[I
+      22: aload_0
+      23: sipush        256
+      26: newarray       boolean
+      28: putfield      #4                  // Field aBooleanArray589:[Z
+      31: aload_0
+      32: bipush        16
+      34: newarray       boolean
+      36: putfield      #5                  // Field aBooleanArray590:[Z
+      39: aload_0
+      40: sipush        256
+      43: newarray       byte
+      45: putfield      #6                  // Field aByteArray591:[B
+      48: aload_0
+      49: sipush        4096
+      52: newarray       byte
+      54: putfield      #7                  // Field aByteArray592:[B
+      57: aload_0
+      58: bipush        16
+      60: newarray       int
+      62: putfield      #8                  // Field anIntArray593:[I
+      65: aload_0
+      66: sipush        18002
+      69: newarray       byte
+      71: putfield      #9                  // Field aByteArray594:[B
+      74: aload_0
+      75: sipush        18002
+      78: newarray       byte
+      80: putfield      #10                 // Field aByteArray595:[B
+      83: aload_0
+      84: bipush        6
+      86: sipush        258
+      89: multianewarray #11,  2            // class "[[B"
+      93: putfield      #12                 // Field aByteArrayArray596:[[B
+      96: aload_0
+      97: bipush        6
+      99: sipush        258
+     102: multianewarray #13,  2            // class "[[I"
+     106: putfield      #14                 // Field anIntArrayArray597:[[I
+     109: aload_0
+     110: bipush        6
+     112: sipush        258
+     115: multianewarray #13,  2            // class "[[I"
+     119: putfield      #15                 // Field anIntArrayArray598:[[I
+     122: aload_0
+     123: bipush        6
+     125: sipush        258
+     128: multianewarray #13,  2            // class "[[I"
+     132: putfield      #16                 // Field anIntArrayArray599:[[I
+     135: aload_0
+     136: bipush        6
+     138: newarray       int
+     140: putfield      #17                 // Field anIntArray600:[I
+     143: return
+}

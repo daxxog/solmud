@@ -1,0 +1,12 @@
+Compiled from "OnDemandFetcherParent.java"
+public class OnDemandFetcherParent {
+  public void method548(int);
+    Code:
+       0: return
+
+  OnDemandFetcherParent();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+}
