@@ -170,13 +170,12 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"ISAACRandomGen":  "JOCFVBOI", // FIXED: was OIBEELAZ - verified by forensic analysis
 	"Stream":          "MBMGIXGO", // VERIFIED: bit mask patterns, ISAAC integration
 	"MRUNodes":        "GCPOSBWX", // VERIFIED: error code 47547, constructor pattern
-	"NodeCache":       "LHGXPZPG", // CORRECTED: circular Node linking, -77 cache marker, LRU management (was ARZPHHDH)
+	"NodeCache":       "ARZPHHDH", // VERIFIED: error code 91499, hash table patterns (CORRECT - verification confirmed)
 	"WorldController": "NYFUGYQS", // DISCOVERED: multi-dimensional arrays, WorldController patterns
 	// Phase 3: High-confidence forensic mappings (January 2026)
 	"Skills":       "YUXCUCXD", // VERIFIED: literal skill names "attack", "defence", "strength", etc.
 	"TextClass":    "ZTQFNQRH", // VERIFIED: base-37 hashing algorithm, 6582952005840035281L boundary
-	"StreamLoader": "XTGLDHGX", // VERIFIED: magic constants 44820, -29508, base-61 hash algorithm
-	"Class32":      "VBAXKVMG", // VERIFIED: 19 arrays (11 instance + 6 static + 2 multi), Bzip2 decompression
+	"StreamLoader": "XTGLDHGX", // VERIFIED: base-61 hash algorithm (hash *= 61) - 32 offset
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
