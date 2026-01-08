@@ -69,7 +69,7 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Animable": "XHHRODPC",
 	"Entity":   "GQOSZKJC",
 	"Model":    "ZKARKDQW",
-	"Stream":   "CRRWDRTI", // Reassigned from MBMGIXGO
+	// "Stream": "MBMGIXGO", // TODO: Reassign after conflict resolution
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
