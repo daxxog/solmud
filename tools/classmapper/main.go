@@ -147,7 +147,7 @@ type BytecodeParser struct {
 
 func NewBytecodeParser() *BytecodeParser {
 	return &BytecodeParser{
-		regex_class_decl: regexp.MustCompile(`^(public|final|abstract)?\s*(class|interface)\s+(\w+)`),
+		regex_class_decl: regexp.MustCompile(`^\s*(?:(?:public|private|protected|final|abstract|static)\s+)*(class|interface)\s+(\w+)`),
 		regex_extends:    regexp.MustCompile(`extends (\w+)`),
 		regex_implements: regexp.MustCompile(`implements ([\w,\s\.]+)`),
 		regex_field:      regexp.MustCompile(`^private|public|protected?\s+(?:static\s+)?(?:final\s+)?([\[\]\w]+)\s+(\w+)`),
@@ -199,8 +199,12 @@ func (self *BytecodeParser) parse_file(file_path string) (*ClassInfo, error) {
 	for scanner.Scan() {
 		line := scanner.Text()
 
+		if strings.Contains(file_path, "CXGZMTJK") && strings.Contains(line, "class") {
+			fmt.Fprintf(os.Stderr, "  [DEBUG] %s: %s\n", file_path, line)
+		}
+
 		if matches := self.regex_class_decl.FindStringSubmatch(line); matches != nil {
-			class_info.Name = matches[3]
+			class_info.Name = matches[2]
 		}
 
 		if matches := self.regex_extends.FindStringSubmatch(line); matches != nil {
@@ -253,7 +257,7 @@ type JavapParser struct {
 
 func NewJavapParser(cacheManager *CacheManager) *JavapParser {
 	return &JavapParser{
-		regex_class_decl: regexp.MustCompile(`^(public|final|abstract)?\s*(class|interface)\s+(\w+)`),
+		regex_class_decl: regexp.MustCompile(`^\s*(?:(?:public|private|protected|final|abstract|static)\s+)*(class|interface)\s+(\w+)`),
 		regex_extends:    regexp.MustCompile(`extends\s+(\w+)`),
 		regex_implements: regexp.MustCompile(`implements\s+([\w,\.]+)`),
 		regex_field:      regexp.MustCompile(`^\s*(private|public|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)`),
@@ -363,7 +367,7 @@ func (self *JavapParser) parse_class(file_path string, class_name string) (*Clas
 		line := scanner.Text()
 
 		if matches := self.regex_class_decl.FindStringSubmatch(line); matches != nil {
-			class_info.Name = strings.TrimSpace(matches[3])
+			class_info.Name = strings.TrimSpace(matches[2])
 		}
 
 		if matches := self.regex_extends.FindStringSubmatch(line); matches != nil {
