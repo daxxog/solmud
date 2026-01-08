@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 )
 
 const (
@@ -239,15 +240,19 @@ type JavapParser struct {
 	regex_implements *regexp.Regexp
 	regex_field      *regexp.Regexp
 	regex_method     *regexp.Regexp
+	cacheManager     *CacheManager
+	cacheHits        int
+	cacheMisses      int
 }
 
-func NewJavapParser() *JavapParser {
+func NewJavapParser(cacheManager *CacheManager) *JavapParser {
 	return &JavapParser{
 		regex_class_decl: regexp.MustCompile(`^(public|final|abstract)?\s*(class|interface)\s+(\w+)`),
 		regex_extends:    regexp.MustCompile(`extends\s+(\w+)`),
 		regex_implements: regexp.MustCompile(`implements\s+([\w,\.]+)`),
 		regex_field:      regexp.MustCompile(`^\s*(private|public|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)`),
 		regex_method:     regexp.MustCompile(`^\s*(public|private|protected)?\s*(static\s+)?(final\s+)?([\[\]\w]+)\s+(\w+)\(([^)]*)\)`),
+		cacheManager:     cacheManager,
 	}
 }
 
@@ -286,14 +291,60 @@ func (self *JavapParser) ParseAll(source_path string) ([]ClassInfo, error) {
 		panic(fmt.Sprintf(ERR_NO_CLASSES_FOUND, source_path))
 	}
 
+	// Report cache statistics if verbose
+	if self.cacheManager != nil && self.cacheManager.verbose {
+		total := self.cacheHits + self.cacheMisses
+		if total > 0 {
+			hitRate := float64(self.cacheHits) / float64(total) * 100.0
+			fmt.Fprintf(os.Stderr, "  Cache statistics: %d hits, %d misses, %.0f%% hit rate\n",
+				self.cacheHits, self.cacheMisses, hitRate)
+		}
+	}
+
 	return classes, nil
 }
 
 func (self *JavapParser) parse_class(file_path string, class_name string) (*ClassInfo, error) {
-	cmd := exec.Command("javap", "-c", "-p", file_path)
-	output, err := cmd.Output()
-	if err != nil {
-		return nil, fmt.Errorf(ERR_JAVAP_EXECUTION, err)
+	var output []byte
+	var err error
+
+	// Try to use cache if available
+	if self.cacheManager != nil {
+		cached, cacheErr := self.cacheManager.GetCachedOutput(file_path)
+		if cacheErr == nil {
+			// Cache hit
+			output = cached
+			self.cacheHits++
+			if self.cacheManager.verbose {
+				fmt.Fprintf(os.Stderr, "  Cache HIT: %s\n", class_name)
+			}
+		} else {
+			// Cache miss - run javap
+			self.cacheMisses++
+			if self.cacheManager.verbose {
+				fmt.Fprintf(os.Stderr, "  Cache MISS: %s - running javap\n", class_name)
+			}
+			cmd := exec.Command("javap", "-c", "-p", file_path)
+			output, err = cmd.Output()
+			if err != nil {
+				return nil, fmt.Errorf(ERR_JAVAP_EXECUTION, err)
+			}
+
+			// Store in cache
+			if cacheStoreErr := self.cacheManager.StoreCachedOutput(file_path, output); cacheStoreErr != nil {
+				if self.cacheManager.verbose {
+					fmt.Fprintf(os.Stderr, "  Warning: failed to store cache for %s: %v\n", class_name, cacheStoreErr)
+				}
+				// Don't fail the parsing, just warn
+			}
+		}
+	} else {
+		// No cache - run javap directly
+		cmd := exec.Command("javap", "-c", "-p", file_path)
+		output, err = cmd.Output()
+		if err != nil {
+			return nil, fmt.Errorf(ERR_JAVAP_EXECUTION, err)
+		}
 	}
 
 	scanner := bufio.NewScanner(bytes.NewReader(output))
@@ -1235,8 +1286,47 @@ func main() {
 		MIN_CONFIDENCE_THRESHOLD,
 		"Minimum confidence threshold (0-100)",
 	)
+	cacheDir := flag.String(
+		"cache-dir",
+		"srcAllDummysRemoved/.javap_cache",
+		"Javap cache directory",
+	)
+	cleanCache := flag.Bool(
+		"clean-cache",
+		false,
+		"Clean cache and exit",
+	)
+	noCache := flag.Bool(
+		"no-cache",
+		false,
+		"Disable caching",
+	)
+	verbose := flag.Bool(
+		"verbose",
+		false,
+		"Verbose output with timing information",
+	)
 
 	flag.Parse()
+
+	// Handle cache cleanup flag
+	if *cleanCache {
+		_, err := NewCacheManager(*cacheDir, *verbose)
+		if err != nil {
+			panic(fmt.Sprintf("failed to initialize cache manager: %v", err))
+		}
+
+		if *verbose {
+			fmt.Fprintf(os.Stderr, "Cleaning cache in %s...\n", *cacheDir)
+		}
+
+		if err := os.RemoveAll(*cacheDir); err != nil {
+			panic(fmt.Sprintf("failed to clean cache: %v", err))
+		}
+
+		fmt.Fprintf(os.Stderr, "Cache cleaned successfully\n")
+		return // Exit after cleaning
+	}
 
 	if *mode != "csv" && *mode != "json" {
 		panic("mode must be 'csv' or 'json'")
@@ -1246,13 +1336,54 @@ func main() {
 		panic("threshold must be between 0 and 100")
 	}
 
+	// Initialize cache manager
+	var cacheManager *CacheManager
+	if *noCache {
+		if *verbose {
+			fmt.Fprintf(os.Stderr, "Caching disabled (-no-cache=true)\n")
+		}
+		cacheManager = nil
+	} else {
+		var err error
+		cacheManager, err = NewCacheManager(*cacheDir, *verbose)
+		if err != nil {
+			panic(fmt.Sprintf("failed to initialize cache manager: %v", err))
+		}
+		if *verbose {
+			fmt.Fprintf(os.Stderr, "Cache directory: %s\n", *cacheDir)
+		}
+	}
+
 	fmt.Fprintf(os.Stderr, "Parsing deobfuscated classes from: %s\n", *deob_dir)
-	javap_parser := NewJavapParser()
+
+	var parseStart time.Time
+	if *verbose {
+		parseStart = time.Now()
+	}
+
+	javap_parser := NewJavapParser(cacheManager)
 	deob_classes, err := javap_parser.ParseAll(*deob_dir)
 	if err != nil {
 		panic(fmt.Sprintf("failed to parse deobfuscated classes: %v", err))
 	}
 	fmt.Fprintf(os.Stderr, "  Found %d deobfuscated classes\n", len(deob_classes))
+
+	if *verbose {
+		parseDuration := time.Since(parseStart)
+		fmt.Fprintf(os.Stderr, "  Parsing time: %.3fs\n", parseDuration.Seconds())
+
+		// Estimate time saved by cache
+		if cacheManager != nil {
+			totalClasses := javap_parser.cacheHits + javap_parser.cacheMisses
+			if totalClasses > 0 {
+				avgJavapTime := 0.15 // estimated average javap execution time in seconds
+				estimatedSavings := float64(javap_parser.cacheHits) * avgJavapTime
+				if javap_parser.cacheHits > 0 {
+					fmt.Fprintf(os.Stderr, "  Estimated time saved by cache: %.3fs\n", estimatedSavings)
+				}
+			}
+		}
+	}
 
 	fmt.Fprintf(os.Stderr, "Parsing obfuscated classes from: %s\n", *obf_dir)
 	bytecode_parser := NewBytecodeParser()
@@ -1300,6 +1431,20 @@ func main() {
 	fmt.Fprintf(os.Stderr, "  High confidence (≥%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, high_conf)
 	fmt.Fprintf(os.Stderr, "  Medium confidence (%.2f-%.2f): %d\n", MIN_CONFIDENCE_THRESHOLD, HIGH_CONFIDENCE_THRESHOLD, medium_conf)
 	fmt.Fprintf(os.Stderr, "  Low confidence (<%.2f): %d\n", HIGH_CONFIDENCE_THRESHOLD, len(valid_matches)-high_conf-medium_conf)
+
+	// Save cache checksums for next run
+	if cacheManager != nil {
+		if *verbose {
+			fmt.Fprintf(os.Stderr, "Saving cache checksums...\n")
+		}
+		if err := cacheManager.SaveChecksums(); err != nil {
+			fmt.Fprintf(os.Stderr, "Warning: failed to save cache checksums: %v\n", err)
+		} else if *verbose {
+			fmt.Fprintf(os.Stderr, "Cache checksums saved successfully\n")
+		}
+	} else if *verbose {
+		fmt.Fprintf(os.Stderr, "Cache manager is nil, skipping checksum save\n")
+	}
 
 	fmt.Fprintln(os.Stderr, "\nDone!")
 }
