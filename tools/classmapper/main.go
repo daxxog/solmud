@@ -179,6 +179,7 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Class32":      "QPNUVGRI", // VERIFIED: exact array structure match (256,257,258,6,16,4096,18002) - Bzip2 decompression
 	"Sounds":       "JHDAGNBV", // VERIFIED: audio constants (22050, 441000, 65535) + cryptographic seeds + CLRWXPOI integration
 	"Class39":      "VADHJTLJ", // VERIFIED: π constant (3.1415927f) + Math.cos + 3D arrays ([[[I]) + graphics constants - 3D graphics renderer
+	"Class6":       "CLRWXPOI", // VERIFIED: 5215.1903d + Math.sin + 16384.0d + 32768 arrays + VADHJTLJ integration - audio synthesis and mixing
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
