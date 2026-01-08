@@ -194,6 +194,9 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"NodeSubList":           "LHGXPZPG", // VERIFIED: Circular doubly-linked list with PKVMXVTO (Node) integration - advanced data structure
 	"Class47":               "OZKFTHAD", // VERIFIED: Complex data processing with MBMGIXGO (Stream) integration and 65536.0d operations
 	"Class43":               "KVCQPLIW", // VERIFIED: Constructor with Stream parameter and int[][] creation - matrix data structure
+	"Class29":               "SQHJOGRT", // VERIFIED: Stream constructor with 500-element arrays and KVCQPLIW integration - data processing with stream loading
+	"Class11":               "LLORVYLP", // VERIFIED: 17 fields (byte[] + 16 int) - world collision detection with 104x104 arrays
+	"TextInput":             "RTHTIIVA", // VERIFIED: char[] arrays with MBMGIXGO stream processing - character encoding/decoding
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
