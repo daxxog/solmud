@@ -191,6 +191,9 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"SizeConstants":         "QDBYELAJ", // VERIFIED: Exact static array initialization (anIntArray552) with magic sequence 6,21,25,33,254,127...
 	"OnDemandFetcherParent": "VJKFYAWG", // VERIFIED: Exact minimal base class structure (boolean a, void a(int)) - parent class for on-demand fetching
 	"OnDemandFetcher":       "GHOWLKWN", // VERIFIED: Runnable implementation with Socket/InputStream/CRC32/cache integration - main network asset downloader
+	"NodeSubList":           "LHGXPZPG", // VERIFIED: Circular doubly-linked list with PKVMXVTO (Node) integration - advanced data structure
+	"Class47":               "OZKFTHAD", // VERIFIED: Complex data processing with MBMGIXGO (Stream) integration and 65536.0d operations
+	"Class43":               "KVCQPLIW", // VERIFIED: Constructor with Stream parameter and int[][] creation - matrix data structure
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
