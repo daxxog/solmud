@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 )
 
@@ -20,6 +21,7 @@ type CacheManager struct {
 	cacheDir  string
 	checksums map[string]FileChecksum
 	verbose   bool
+	mu        sync.RWMutex
 }
 
 type FileChecksum struct {
@@ -131,6 +133,9 @@ func (cm *CacheManager) LoadChecksums() error {
 		return fmt.Errorf("failed to read checksums file: %w", err)
 	}
 
+	cm.mu.Lock()
+	defer cm.mu.Unlock()
+
 	if err := json.Unmarshal(data, &cm.checksums); err != nil {
 		return fmt.Errorf("failed to unmarshal checksums: %w", err)
 	}
@@ -146,14 +151,15 @@ func (cm *CacheManager) SaveChecksums() error {
 	checksumsPath := filepath.Join(cm.cacheDir, CHECKSUMS_FILE)
 
 	if cm.verbose {
-		fmt.Fprintf(os.Stderr, "  Saving %d checksums to %s\n", len(cm.checksums), checksumsPath)
-		for file, checksum := range cm.checksums {
-			fmt.Fprintf(os.Stderr, "    %s: size=%d, sha256=%s\n", file, checksum.Size, checksum.SHA256[:8]+"...")
-			break // Just show first one
-		}
+		cm.mu.RLock()
+		count := len(cm.checksums)
+		cm.mu.RUnlock()
+		fmt.Fprintf(os.Stderr, "  Saving %d checksums to %s\n", count, checksumsPath)
 	}
 
+	cm.mu.RLock()
 	data, err := json.MarshalIndent(cm.checksums, "", "  ")
+	cm.mu.RUnlock()
 	if err != nil {
 		return fmt.Errorf("failed to marshal checksums: %w", err)
 	}
@@ -186,7 +192,10 @@ func (cm *CacheManager) CalculateChecksum(filePath string) (FileChecksum, error)
 }
 
 func (cm *CacheManager) IsCacheValid(classFile string) bool {
+	cm.mu.RLock()
 	stored, exists := cm.checksums[classFile]
+	cm.mu.RUnlock()
+
 	if !exists {
 		return false
 	}
@@ -228,7 +237,9 @@ func (cm *CacheManager) StoreCachedOutput(classFile string, output []byte) error
 		return fmt.Errorf("failed to calculate checksum for storage: %w", err)
 	}
 
+	cm.mu.Lock()
 	cm.checksums[classFile] = checksum
+	cm.mu.Unlock()
 
 	// Save cache file
 	cacheFileName := cm.getCacheFileName(classFile)
@@ -307,7 +318,9 @@ func (cm *CacheManager) Cleanup() error {
 				}
 
 				// Also remove from checksums
+				cm.mu.Lock()
 				delete(cm.checksums, filepath.Join(filepath.Dir(cm.cacheDir), className))
+				cm.mu.Unlock()
 			}
 		}
 	}

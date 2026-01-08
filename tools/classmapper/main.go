@@ -1306,6 +1306,16 @@ func main() {
 		false,
 		"Verbose output with timing information",
 	)
+	workers := flag.Int(
+		"workers",
+		-1,
+		"Number of worker goroutines (-1 = auto, runtime.NumCPU()-1)",
+	)
+	parallelProgress := flag.Bool(
+		"parallel-progress",
+		false,
+		"Show real-time parallel progress",
+	)
 
 	flag.Parse()
 
@@ -1386,12 +1396,45 @@ func main() {
 	}
 
 	fmt.Fprintf(os.Stderr, "Parsing obfuscated classes from: %s\n", *obf_dir)
+
+	var parse_start time.Time
+	if *parallelProgress {
+		parse_start = time.Now()
+	}
+
 	bytecode_parser := NewBytecodeParser()
-	obf_classes, err := bytecode_parser.ParseAll(*obf_dir)
+
+	// Create progress tracker if enabled
+	var progress *ProgressTracker
+	if *parallelProgress {
+		// Count files first for progress tracking
+		if files, err := os.ReadDir(*obf_dir); err == nil {
+			count := 0
+			for _, file := range files {
+				if !file.IsDir() && strings.HasSuffix(file.Name(), ".bytecode.txt") {
+					count++
+				}
+			}
+			progress = NewProgressTracker(count, *parallelProgress)
+			fmt.Fprintf(os.Stderr, "  Using %d worker goroutines\n", *workers)
+		}
+	}
+
+	obf_classes, err := bytecode_parser.ParseAllParallel(*obf_dir, *workers, progress)
 	if err != nil {
 		panic(fmt.Sprintf("failed to parse obfuscated classes: %v", err))
 	}
+
+	if progress != nil {
+		progress.Finalize()
+	}
+
 	fmt.Fprintf(os.Stderr, "  Found %d obfuscated classes\n", len(obf_classes))
+
+	if *parallelProgress {
+		parse_duration := time.Since(parse_start)
+		fmt.Fprintf(os.Stderr, "  Parsing time: %.3fs\n", parse_duration.Seconds())
+	}
 
 	resolver_instance := NewResolver(ANCHOR_MAPPINGS)
 
