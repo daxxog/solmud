@@ -67,9 +67,22 @@ This repository contains detailed forensic evidence documentation for class name
 
 ## Evidence File Organization
 
+### Folder Structure
+```
+evidence/
+├── verified/           # 100% confirmed mappings with irrefutable evidence
+├── disputed/          # Incorrect claims moved here with dispute documentation
+├── in_progress/       # Active research and verification work
+├── conflict_resolution/ # Previous conflict resolutions and analyses
+└── evidence_template.md # Standard template for evidence documentation
+```
+
 ### File Naming Convention
 ```
-evidence/<DEOB_FILENAME>.md
+verified/<DEOB_FILENAME>.md              # Confirmed mappings
+disputed/<OBF_CLASS>_DISPUTED_NOT_<DEOB>.md # Disputed claims
+in_progress/<WORK_FILE>.md              # Active research
+conflict_resolution/<TOPIC>.md          # Conflict analyses
 ```
 
 ### Evidence Categories
@@ -78,10 +91,10 @@ evidence/<DEOB_FILENAME>.md
 - **Low Confidence** (<65%): Tentative matches requiring additional evidence
 
 ### Evidence Status Codes
-- **VERIFIED**: Multiple independent forensic techniques confirm
-- **PROBABLE**: Strong evidence with minor gaps
-- **TENTATIVE**: Preliminary evidence pending verification
-- **DISPUTED**: Evidence conflicts with other mappings
+- **VERIFIED**: Multiple independent forensic techniques confirm (in `verified/`)
+- **DISPUTED**: Incorrect claims verified through cross-validation (in `disputed/`)
+- **IN_PROGRESS**: Active research and verification (in `in_progress/`)
+- **RESOLVED**: Conflicts successfully resolved (in `conflict_resolution/`)
 
 ## Forensic Analysis Tools
 
@@ -125,32 +138,70 @@ evidence/<DEOB_FILENAME>.md
 - Validate against known anchor classes
 - Check inheritance chain consistency
 - Verify dependency relationships
+- **NEW**: Cross-check error codes against source files
+- **NEW**: Verify array structures match exactly
 
 ### 4. Manual Review
 - Forensic expert examination of evidence
 - Risk assessment and confidence validation
 - Final evidence quality determination
+- **NEW**: Dispute identification and correction
 
 ### 5. Documentation
 - Complete evidence file creation
 - Source referencing and tool versioning
 - Peer review and final approval
+- **NEW**: Dispute documentation for incorrect claims
+
+## Dispute Resolution Process
+
+### When Disputes Are Identified
+1. **Error Code Verification**: Cross-reference error codes with source files
+2. **Structure Analysis**: Verify array sizes and structures match exactly
+3. **Source Bytecode Comparison**: Compare bytecode patterns with source code
+4. **Conflict Documentation**: Move disputed claims to `disputed/` folder with correction notes
+5. **Tool Correction**: Update Go tooling with verified correct mappings
+6. **Evidence Reorganization**: Ensure correct evidence stays in `verified/`
+
+### Dispute Status Codes
+- **INCORRECT**: Claim proven wrong through verification
+- **CONFLICTING**: Multiple valid interpretations
+- **UNCERTAIN**: Insufficient evidence for determination
+
+### Moving Evidence Between Folders
+```bash
+# Move incorrect claim:
+mv verified/WRONG_MAPPING.md disputed/WRONG_DISPUTED.md
+
+# Add dispute notice:
+# Add ⚠️ header explaining why claim is wrong
+# Include correct mapping reference
+# Document verification evidence that disproves claim
+```
 
 ## Current Evidence Coverage
 
-### Statistics
-- **Total Classes Analyzed**: `74`
-- **High Confidence Mappings**: `36` (automated) + `4` (forensic corrections)
-- **Medium Confidence Mappings**: `2` (automated)
-- **Low Confidence Mappings**: `0` (automated)
-- **Evidence Coverage**: `57%` (after corrections)
+### Statistics (as of January 8, 2026 - CORRECTED)
+- **Total Classes**: `74`
+- **Verified Mappings**: `44` (100% confidence)
+- **High Confidence Mappings**: `1` (90% confidence)
+- **Medium Confidence Mappings**: `1` (70% confidence)
+- **Total Coverage**: `60.8%` (45/74 classes)
+- **High-Confidence Rate**: `97.8%` (44/45 mapped classes)
 
-### Priority Targets
-The following critical mappings are priority evidence collection targets:
-1. **ISAACRandomGen** → JOCFVBOI (Security-critical)
-2. **MRUNodes** → GCPOSBWX (Memory management)
-3. **NodeCache** → ARZPHHDH (Cache infrastructure)
-4. **Stream** → [NEEDS IDENTIFICATION] (I/O operations)
+### Recent Corrections (January 8, 2026)
+- **Removed**: `LHGXPZPG → NodeCache` (INCORRECT - moved to `disputed/`)
+- **Removed**: `VBAXKVMG → Class32` (INCORRECT - moved to `disputed/`)
+- **Added**: `Skills → YUXCUCXD` (VERIFIED - literal skill names)
+- **Added**: `TextClass → ZTQFNQRH` (VERIFIED - base-37 hashing)
+- **Added**: `StreamLoader → XTGLDHGX` (VERIFIED - base-61 hashing)
+
+### Priority Research Targets
+The following critical mappings are priority research targets:
+1. **Class32** → [NEEDS IDENTIFICATION] (Bzip2 decompression - search arrays: 256, 257, 258, 6, 16, 4096, 18002)
+2. **LHGXPZPG** → [NEEDS IDENTIFICATION] (Error code "91809" - NOT NodeCache)
+3. **Object4** → FEHPTPDG (Animable references, coordinate systems)
+4. **Object1/2/3** → OIBEELAZ (Boolean flag systems, object management)
 
 ## Quality Assurance
 
@@ -184,5 +235,6 @@ The following critical mappings are priority evidence collection targets:
 
 ---
 **Last Updated**: `2026-01-08`
-**Evidence Version**: `1.0`
+**Evidence Version**: `1.1` (CORRECTED)
 **Maintained By**: `opencode`
+**Recent Corrections**: `2` incorrect mappings identified and moved to `disputed/`

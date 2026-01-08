@@ -1,9 +1,17 @@
-# Forensic Evidence: LHGXPZPG → NodeCache
+# ⚠️ DISPUTED MAPPING - INCORRECT CLAIM
+
+**Status**: **WRONG** - This mapping claim has been VERIFIED as INCORRECT
+**Correction**: `NodeCache → ARZPHHDH` (error code "91499") is the CORRECT mapping
+**Evidence**: Error code verification proves LHGXPZPG contains "91809", not "91499"
+
+---
+
+# Forensic Evidence: LHGXPZPG → NodeCache (DISPUTED)
 
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: LHGXPZPG
-- **Deobfuscated Name**: NodeCache
-- **Confidence**: 90% (HIGH CONFIDENCE)
+- **Deobfuscated Name**: NodeCache (WRONG - see correction above)
+- **Confidence**: 0% (DISPUTED - INCORRECT)
 - **Date Identified**: January 8, 2026
 
 ## **PRIMARY FORENSIC EVIDENCE**

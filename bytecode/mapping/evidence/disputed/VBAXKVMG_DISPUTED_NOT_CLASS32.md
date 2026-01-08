@@ -1,10 +1,18 @@
-# Forensic Evidence: VBAXKVMG → Class32 (Bzip2Decompressor)
+# ⚠️ DISPUTED MAPPING - INCORRECT CLAIM
+
+**Status**: **WRONG** - This mapping claim has been VERIFIED as INCORRECT
+**Correction**: VBAXKVMG structure does NOT match Class32.java
+**Evidence**: Class32 constructor requires arrays with sizes 256, 257, 258, 6, 16, 4096, 18002 - these patterns are NOT found in VBAXKVMG
+
+---
+
+# Forensic Evidence: VBAXKVMG → Class32 (DISPUTED)
 
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: VBAXKVMG
-- **Deobfuscated Name**: Class32
-- **Common Name**: Bzip2Decompressor
-- **Confidence**: 85% (HIGH CONFIDENCE)
+- **Deobfuscated Name**: Class32 (WRONG - see correction above)
+- **Common Name**: Bzip2Decompressor (WRONG)
+- **Confidence**: 0% (DISPUTED - INCORRECT)
 - **Date Identified**: January 8, 2026
 
 ## **PRIMARY FORENSIC EVIDENCE**
