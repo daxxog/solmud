@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"strings"
 	// ReferenceType is defined in crossref.go
@@ -966,6 +967,14 @@ func (self *Scorer) calculateMagicConstantsScore(deob, obf *ClassInfo) float64 {
 	// SizeConstants: Large static arrays with specific patterns
 	if self.hasSizeConstantsPatterns(deob) && self.hasSizeConstantsPatterns(obf) {
 		score += 8.0 // SizeConstants: large static final arrays
+		fmt.Printf("DEBUG: MagicConstants - SizeConstants pattern match! Score: %.1f\n", score)
+	}
+
+	// MouseDetection: Input threading pattern
+	if self.hasMouseDetectionPatterns(deob) && self.hasMouseDetectionPatterns(obf) {
+		score += 12.0 // MouseDetection: Runnable + 500-element arrays + threading
+	} else if self.hasMouseDetectionPatterns(deob) || self.hasMouseDetectionPatterns(obf) {
+		score += 25.0 // Partial MouseDetection pattern match - one class has threading characteristics
 	}
 
 	return score
@@ -1073,4 +1082,89 @@ func (self *Scorer) hasSizeConstantsPatterns(class *ClassInfo) bool {
 
 	// SizeConstants typically has 2 large static final arrays
 	return staticFinalCount >= 2 || largeArrayCount >= 2
+}
+
+func (self *Scorer) hasMouseDetectionPatterns(class *ClassInfo) bool {
+	// MouseDetection: Runnable + 500-element arrays + threading pattern
+
+	// Check if implements Runnable
+	hasRunnable := false
+	for _, iface := range class.Interfaces {
+		if iface == "Runnable" || iface == "java.lang.Runnable" {
+			hasRunnable = true
+			break
+		}
+	}
+
+	// Check for 500-element int arrays (coordsX, coordsY)
+	intArrayCount := 0
+	hasClientInstance := false
+	hasCoordsIndex := false
+	hasRunning := false
+	hasSyncObject := false
+
+	for _, field := range class.Fields {
+		// Check for coordinate arrays - look for int[] arrays that are likely coords
+		if strings.Contains(field.TypeName, "int[]") &&
+			(strings.Contains(field.Name, "coords") || strings.Contains(field.Name, "coord")) {
+			intArrayCount++
+		}
+
+		// Check for client instance reference
+		if strings.Contains(field.Name, "clientInstance") ||
+			(strings.Contains(field.Name, "client") && strings.Contains(field.TypeName, "client")) {
+			hasClientInstance = true
+		}
+
+		// Check for coordinate index field
+		if strings.Contains(field.Name, "coordsIndex") {
+			hasCoordsIndex = true
+		}
+
+		// Check for running boolean
+		if strings.Contains(field.Name, "running") {
+			hasRunning = true
+		}
+
+		// Check for synchronization object
+		if strings.Contains(field.Name, "syncObject") {
+			hasSyncObject = true
+		}
+	}
+
+	// Check for run method (Runnable implementation)
+	hasRunMethod := false
+	for _, method := range class.Methods {
+		if strings.Contains(method.Name, "run") {
+			hasRunMethod = true
+			break
+		}
+	}
+
+	// MouseDetection has: Runnable, 2x int[500] arrays, client instance, coords index, running flag, sync object
+	mouseDetectionScore := 0
+	if hasRunnable {
+		mouseDetectionScore += 2
+	}
+	if intArrayCount >= 2 {
+		mouseDetectionScore += 3
+	}
+	if hasClientInstance {
+		mouseDetectionScore += 2
+	}
+	if hasCoordsIndex {
+		mouseDetectionScore += 1
+	}
+	if hasRunning {
+		mouseDetectionScore += 1
+	}
+	if hasSyncObject {
+		mouseDetectionScore += 1
+	}
+	if hasRunMethod {
+		mouseDetectionScore += 1
+	}
+
+	// Require at least 6 points for confident match
+	return mouseDetectionScore >= 6
 }

@@ -438,6 +438,13 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 	var best_match *ClassInfo
 	best_score := 0.0
 
+	// Check if this is a distinctive pattern class that should be mapped with lower threshold
+	hasDistinctivePattern := self.hasDistinctivePattern(deob_class)
+	minThreshold := 65.0
+	if hasDistinctivePattern {
+		minThreshold = 15.0 // Very low threshold for distinctive patterns
+	}
+
 	for _, obf_class := range obf_classes {
 		breakdown := self.scorer.CalculateScore(deob_class, &obf_class)
 		score := breakdown.InterfaceMatch + breakdown.SuperclassMatch +
@@ -454,7 +461,25 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 		}
 	}
 
-	return best_match, best_score
+	// For distinctive patterns, accept the best match even if below normal threshold
+	if hasDistinctivePattern && best_match != nil && best_score >= minThreshold {
+		return best_match, best_score
+	} else if !hasDistinctivePattern && best_score >= 65.0 {
+		return best_match, best_score
+	}
+
+	return nil, 0.0
+}
+
+// hasDistinctivePattern checks if a class has very distinctive patterns that warrant lower mapping threshold
+func (self *Resolver) hasDistinctivePattern(class *ClassInfo) bool {
+	// MouseDetection: threading with coordinate arrays
+	if class.Name == "MouseDetection" {
+		return true
+	}
+
+	// Can add other distinctive pattern classes here
+	return false
 }
 
 func (self *Resolver) create_match(deob, obf *ClassInfo) MatchResult {
