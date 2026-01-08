@@ -181,6 +181,11 @@ var ANCHOR_MAPPINGS = map[string]string{
 	"Class39":      "VADHJTLJ", // VERIFIED: π constant (3.1415927f) + Math.cos + 3D arrays ([[[I]) + graphics constants - 3D graphics renderer
 	"Class6":       "CLRWXPOI", // VERIFIED: 5215.1903d + Math.sin + 16384.0d + 32768 arrays + VADHJTLJ integration - audio synthesis and mixing
 	"Object1":      "FEHPTPDG", // VERIFIED: Exact field structure match (6 int, 2 Animable, 1 byte) - 3D object positioning system
+	"CacheManager": "BISVHPUN", // VERIFIED: Linked list cache with NodeSub, magic constants -589/-25, cache management operations
+	"Object2":      "OFQAEXFV", // VERIFIED: Exact field structure match (5 int, 1 Animable, 1 int, 1 byte) - 3D object positioning system
+	"Object3":      "ZIKPHIFI", // VERIFIED: Exact field structure match (3 int, 1 Animable, 1 int, 1 byte) - 3D object positioning system
+	"Object4":      "BMEXSMOV", // VERIFIED: Exact field structure match (3 int, 3 Animable, 2 int) - 3D object positioning system
+	"Object5":      "OPNPFUJE", // VERIFIED: Exact field structure match (4 int, 1 Animable, 9 int, 1 int, 1 byte) - 3D object positioning system
 	// Phase 2: Immediate high-confidence matches
 	"RSFrame": "FPVKJCAH", // Extends Frame, identical constructor signatures
 	// Phase 2: File loading pattern matches
