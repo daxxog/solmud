@@ -24,12 +24,20 @@ type InternalBehaviorParser struct {
 	regex_factory_pattern  *regexp.Regexp // create*, new* methods
 	regex_event_pattern    *regexp.Regexp // on*, handle* methods
 	regex_utility_pattern  *regexp.Regexp // format*, parse*, validate* methods
+
+	// Enhanced array pattern analysis (Phase 3.2.2.2.1)
+	regex_single_dim_array  *regexp.Regexp // array[index]
+	regex_multi_dim_array   *regexp.Regexp // array[][][][] or array[x][y][z]
+	regex_array_in_for      *regexp.Regexp // for (int i = 0; i < array.length; i++)
+	regex_bulk_operations   *regexp.Regexp // System.arraycopy, Arrays.fill, Arrays.copyOf
+	regex_array_calculation *regexp.Regexp // array[index] + something, array[index] * something
+	regex_array_assignment  *regexp.Regexp // array[index] = value
 }
 
 // NewInternalBehaviorParser creates a new internal behavior parser
 func NewInternalBehaviorParser() *InternalBehaviorParser {
 	return &InternalBehaviorParser{
-		// Internal method calls: this.methodName( or just methodName(
+		// Enhanced regex for Jad output patterns (obfuscated names: aClass123, method456)
 		regex_method_call: regexp.MustCompile(`(?:this\.)?([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\(`),
 		// Field reads: this.fieldName (not followed by =)
 		regex_field_read: regexp.MustCompile(`this\.([a-zA-Z_$][a-zA-Z0-9_$]*)(?:\s*[;=]|\s*\.)`),
@@ -56,7 +64,21 @@ func NewInternalBehaviorParser() *InternalBehaviorParser {
 		// Event patterns: onXxx(, handleXxx(
 		regex_event_pattern: regexp.MustCompile(`\b(?:on|handle)[A-Z][a-zA-Z0-9_]*\b`),
 		// Utility patterns: formatXxx(, parseXxx(, validateXxx(
-		regex_utility_pattern: regexp.MustCompile(`\b(?:format|parse|validate)[A-Z][a-zA-Z0-9_]*\b`),
+		regex_utility_pattern: regexp.MustCompile(`\b(?:format|parse|validate)[A-zA-Z0-9_]*\b`),
+
+		// Enhanced array pattern analysis (Phase 3.2.2.2.1)
+		// Single dimensional: array[index]
+		regex_single_dim_array: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[\s*[^]]+\s*\]`),
+		// Multi-dimensional: array[][][] or array[x][y][z]
+		regex_multi_dim_array: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)(?:\s*\[\s*[^]]+\s*\])+(?:\s*\[\s*[^]]+\s*\])`),
+		// Array access in for loops: for (int i = 0; i < array.length; i++)
+		regex_array_in_for: regexp.MustCompile(`for\s*\(\s*[^;]*;\s*[^;]*<\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\.length[^;]*;\s*[^)]*\)`),
+		// Bulk operations: System.arraycopy, Arrays.fill, Arrays.copyOf
+		regex_bulk_operations: regexp.MustCompile(`(?:System\.arraycopy|Arrays\.(?:fill|copyOf|sort))\s*\(`),
+		// Array calculations: array[index] + something, array[index] * something
+		regex_array_calculation: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[\s*[^]]+\s*\]\s*[+\-*/%]\s*[^;]+`),
+		// Array assignments: array[index] = value
+		regex_array_assignment: regexp.MustCompile(`([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\[\s*[^]]+\s*\]\s*=\s*[^;]+`),
 	}
 }
 
@@ -67,6 +89,7 @@ func (p *InternalBehaviorParser) ParseInternalBehavior(javaSource string, method
 		StatePatterns:     p.parseStateManipulation(javaSource, methods),
 		IterationPatterns: p.parseIterationPatterns(javaSource),
 		SemanticPatterns:  p.parseSemanticPatterns(methods),
+		ArrayPatterns:     p.detectArrayPatterns(javaSource),
 	}
 
 	return patterns
@@ -278,4 +301,191 @@ func (p *InternalBehaviorParser) extractMethodCalls(line string, knownMethods ma
 	}
 
 	return calls
+}
+
+// detectArrayPatterns performs comprehensive array pattern analysis
+func (p *InternalBehaviorParser) detectArrayPatterns(javaSource string) *ArrayPatternMetrics {
+	metrics := &ArrayPatternMetrics{
+		ArrayAlgorithms: make([]string, 0),
+	}
+
+	lines := strings.Split(javaSource, "\n")
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "//") || strings.HasPrefix(line, "/*") {
+			continue
+		}
+
+		// Count single dimensional array access
+		if p.regex_single_dim_array.MatchString(line) {
+			metrics.SingleDimAccess++
+
+			// Check if this single-dim access is actually part of multi-dim
+			if p.regex_multi_dim_array.MatchString(line) {
+				metrics.MultiDimAccess++
+			}
+		}
+
+		// Count multi-dimensional array access (additional detection)
+		if matches := p.regex_multi_dim_array.FindAllStringSubmatch(line, -1); matches != nil {
+			for _, match := range matches {
+				if len(match) > 1 {
+					arrayName := match[1]
+					// Count brackets to determine depth
+					depth := strings.Count(line, "[") - strings.Count(line, "]")
+					if depth > metrics.NestedArrayDepth {
+						metrics.NestedArrayDepth = depth
+					}
+					metrics.MultiDimAccess++
+					// Use arrayName to avoid unused variable warning
+					_ = arrayName
+				}
+			}
+		}
+
+		// Count array access in loops
+		if p.regex_array_in_for.MatchString(line) {
+			metrics.LoopArrayAccess++
+		}
+
+		// Count bulk operations
+		if p.regex_bulk_operations.MatchString(line) {
+			metrics.BulkOperations++
+
+			// Detect specific algorithms
+			if strings.Contains(line, "Arrays.sort") {
+				if !contains(metrics.ArrayAlgorithms, "sort") {
+					metrics.ArrayAlgorithms = append(metrics.ArrayAlgorithms, "sort")
+				}
+			}
+			if strings.Contains(line, "System.arraycopy") {
+				if !contains(metrics.ArrayAlgorithms, "copy") {
+					metrics.ArrayAlgorithms = append(metrics.ArrayAlgorithms, "copy")
+				}
+			}
+		}
+
+		// Additional algorithm detection from patterns
+		if p.detectSortingPattern(line) && !contains(metrics.ArrayAlgorithms, "sort") {
+			metrics.ArrayAlgorithms = append(metrics.ArrayAlgorithms, "sort")
+		}
+		if p.detectSearchPattern(line) && !contains(metrics.ArrayAlgorithms, "search") {
+			metrics.ArrayAlgorithms = append(metrics.ArrayAlgorithms, "search")
+		}
+		if p.detectFilterPattern(line) && !contains(metrics.ArrayAlgorithms, "filter") {
+			metrics.ArrayAlgorithms = append(metrics.ArrayAlgorithms, "filter")
+		}
+	}
+
+	return metrics
+}
+
+// analyzeAccessContext analyzes the context of array access patterns
+func (p *InternalBehaviorParser) analyzeAccessContext(javaSource string, arrayName string) *ArrayAccessContext {
+	context := &ArrayAccessContext{}
+
+	lines := strings.Split(javaSource, "\n")
+	totalLines := len(lines)
+	arrayAccesses := 0
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "//") || strings.HasPrefix(line, "/*") {
+			continue
+		}
+
+		// Check if this line contains access to the specific array
+		arrayPattern := regexp.MustCompile(arrayName + `\s*\[`)
+		if arrayPattern.MatchString(line) {
+			arrayAccesses++
+
+			// Check context
+			if p.isInLoop(line) {
+				context.InLoop = true
+			}
+			if p.isInMethodCall(line) {
+				context.InMethodCall = true
+			}
+			if p.regex_array_calculation.MatchString(line) {
+				context.InCalculation = true
+			}
+			if p.regex_array_assignment.MatchString(line) {
+				context.InAssignment = true
+			}
+		}
+	}
+
+	// Calculate access frequency
+	if totalLines > 0 {
+		context.AccessFrequency = float64(arrayAccesses) / float64(totalLines)
+	}
+
+	return context
+}
+
+// Helper functions for array pattern detection
+
+// isInLoop checks if a line is inside a loop construct
+func (p *InternalBehaviorParser) isInLoop(line string) bool {
+	return p.regex_for_loop.MatchString(line) || p.regex_while_loop.MatchString(line)
+}
+
+// isInMethodCall checks if array access is in a method call context
+func (p *InternalBehaviorParser) isInMethodCall(line string) bool {
+	// Simple heuristic: if there are parentheses after array access
+	return strings.Contains(line, "(") && strings.Contains(line, ")")
+}
+
+// detectSortingPattern detects basic sorting algorithm patterns
+func (p *InternalBehaviorParser) detectSortingPattern(line string) bool {
+	// Look for nested loops with array swaps (bubble sort pattern)
+	swapPatterns := []string{
+		`temp\s*=.*\[.*\];.*\[.*\]\s*=.*\[.*\];.*\[.*\]\s*=\s*temp`, // swap pattern
+		`if\s*\(.*\[.*\]\s*>\s*.*\[.*\]\)`,                          // comparison pattern
+	}
+	for _, pattern := range swapPatterns {
+		if regexp.MustCompile(pattern).MatchString(line) {
+			return true
+		}
+	}
+	return false
+}
+
+// detectSearchPattern detects search algorithm patterns
+func (p *InternalBehaviorParser) detectSearchPattern(line string) bool {
+	searchPatterns := []string{
+		`for\s*\([^;]*;\s*[^;]*<\s*.*\.length[^;]*;`, // linear search loop
+		`while\s*\([^;]*&&\s*.*\[.*\]\s*!=\s*`,       // search condition
+	}
+	for _, pattern := range searchPatterns {
+		if regexp.MustCompile(pattern).MatchString(line) {
+			return true
+		}
+	}
+	return false
+}
+
+// detectFilterPattern detects filtering/copying patterns
+func (p *InternalBehaviorParser) detectFilterPattern(line string) bool {
+	filterPatterns := []string{
+		`if\s*\(.*\[.*\]\s*[<>!=]+\s*`,               // conditional array access
+		`[a-zA-Z_$][a-zA-Z0-9_$]*\[.*\]\s*=.*\[.*\]`, // array to array copy
+	}
+	for _, pattern := range filterPatterns {
+		if regexp.MustCompile(pattern).MatchString(line) {
+			return true
+		}
+	}
+	return false
+}
+
+// contains checks if a slice contains a string
+func contains(slice []string, item string) bool {
+	for _, s := range slice {
+		if s == item {
+			return true
+		}
+	}
+	return false
 }

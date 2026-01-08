@@ -54,6 +54,9 @@ type InternalBehavioralPatterns struct {
 
 	// Semantic method analysis
 	SemanticPatterns *SemanticMethodPatterns `json:"semantic_patterns"`
+
+	// Enhanced array pattern analysis (Phase 3.2.2.2)
+	ArrayPatterns *ArrayPatternMetrics `json:"array_patterns,omitempty"`
 }
 
 // InternalCallGraph tracks method calls within the same class
@@ -86,6 +89,25 @@ type SemanticMethodPatterns struct {
 	FactoryMethods []string // create*, new* methods
 	EventHandlers  []string // on*, handle* methods
 	UtilityMethods []string // format*, parse*, validate* methods
+}
+
+// ArrayPatternMetrics tracks comprehensive array access patterns
+type ArrayPatternMetrics struct {
+	SingleDimAccess  int      // array[index] patterns
+	MultiDimAccess   int      // array[][][][] indexing patterns
+	BulkOperations   int      // arraycopy, Arrays.fill, System.arraycopy
+	LoopArrayAccess  int      // array access in loops vs outside
+	NestedArrayDepth int      // maximum nesting level detected
+	ArrayAlgorithms  []string // sorting, searching, filtering patterns detected
+}
+
+// ArrayAccessContext analyzes the context of array access patterns
+type ArrayAccessContext struct {
+	InLoop          bool    // array access inside loops
+	InMethodCall    bool    // array passed to other methods
+	InCalculation   bool    // array elements used in computations
+	InAssignment    bool    // array elements being assigned
+	AccessFrequency float64 // access density per lines of code
 }
 
 type FieldInfo struct {
