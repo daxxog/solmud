@@ -130,6 +130,18 @@ func (self *Resolver) ResolveAll(deob_classes []ClassInfo, obf_classes []ClassIn
 		}
 	}
 
+	fmt.Fprintln(os.Stderr, "Pass 2.5: Enhanced cross-reference similarity scoring...")
+	pending_deob = self.remove_matched(deob_classes, results)
+	pending_obf = self.remove_matched(obf_classes, results)
+
+	// Enhanced cross-reference similarity matching
+	crossref_similarity_matches := self.find_crossref_similarity_matches(pending_deob, pending_obf)
+	results = append(results, crossref_similarity_matches...)
+
+	// Update pending lists after cross-reference similarity matching
+	pending_deob = self.remove_matched(deob_classes, results)
+	pending_obf = self.remove_matched(obf_classes, results)
+
 	fmt.Fprintln(os.Stderr, "Pass 3: Matching by signatures and cross-references...")
 	pending_deob = self.remove_matched(deob_classes, results)
 	pending_obf = self.remove_matched(obf_classes, results)
@@ -315,6 +327,47 @@ func (self *Resolver) find_cross_reference_matches(deob_classes []ClassInfo, obf
 	return results
 }
 
+func (self *Resolver) find_crossref_similarity_matches(deob_classes []ClassInfo, obf_classes []ClassInfo) []MatchResult {
+	var results []MatchResult
+
+	// For each pending deobfuscated class with cross-references
+	for _, deob_class := range deob_classes {
+		if deob_class.CrossReferences == nil || deob_class.CrossReferences.TotalReferences == 0 {
+			continue // Skip classes without cross-reference data
+		}
+
+		var best_match *ClassInfo
+		best_score := 0.0
+
+		// Find obfuscated class with highest cross-reference similarity
+		for _, obf_class := range obf_classes {
+			if obf_class.CrossReferences == nil || obf_class.CrossReferences.TotalReferences == 0 {
+				continue // Skip classes without cross-reference data
+			}
+
+			// Calculate cross-reference similarity score
+			breakdown := self.scorer.CalculateScore(&deob_class, &obf_class)
+			crossref_score := breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature
+
+			// Only consider if there's meaningful cross-reference similarity
+			if crossref_score >= 5.0 && crossref_score > best_score {
+				best_score = crossref_score
+				best_match = &obf_class
+			}
+		}
+
+		// Create match if we found a good cross-reference similarity
+		if best_match != nil && best_score >= 8.0 { // Threshold for cross-reference similarity match
+			result := self.create_match(&deob_class, best_match)
+			result.ConfidenceScore = best_score
+			result.Details = fmt.Sprintf("Matched by cross-reference similarity - score %.2f", best_score)
+			results = append(results, result)
+		}
+	}
+
+	return results
+}
+
 func (self *Resolver) find_best_cross_reference_match(deob_class *ClassInfo, deob_refs []string, obf_classes []ClassInfo) *ClassInfo {
 	// Look for obfuscated classes that reference the same mapped classes
 	for _, obf_class := range obf_classes {
@@ -391,6 +444,7 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 			breakdown.FieldCountMatch + breakdown.FieldSimilarity +
 			breakdown.MethodCountMatch + breakdown.MethodSimilarity +
 			breakdown.ConstructorMatch + breakdown.AccessMatch +
+			breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
 			breakdown.SizePenalty
 
 		if score > best_score {
@@ -408,6 +462,7 @@ func (self *Resolver) create_match(deob, obf *ClassInfo) MatchResult {
 		breakdown.FieldCountMatch + breakdown.FieldSimilarity + breakdown.FieldPatternSim +
 		breakdown.MethodCountMatch + breakdown.MethodSimilarity + breakdown.MethodNameSim +
 		breakdown.ConstructorMatch + breakdown.AccessMatch + breakdown.FunctionalPattern +
+		breakdown.CrossrefSimilarity + breakdown.UniquePatterns + breakdown.BehavioralSignature +
 		breakdown.SizePenalty
 
 	return MatchResult{
