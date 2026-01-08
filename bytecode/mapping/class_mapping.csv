@@ -62,5 +62,3 @@ Item,HNKCWGJM,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 ISAACRandomGen,JOCFVBOI,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 NodeCache,ARZPHHDH,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Animable_Sub4,SWTXAYDT,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
-deobfuscated_name,obfuscated_name,confidence_score,notes
-MouseDetection,ZIJPRJEC,70.00,Matched by signature - score 70.00
