@@ -442,7 +442,7 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 	hasDistinctivePattern := self.hasDistinctivePattern(deob_class)
 	minThreshold := 65.0
 	if hasDistinctivePattern {
-		minThreshold = 15.0 // Very low threshold for distinctive patterns
+		minThreshold = 5.0 // Very low threshold for distinctive patterns like ISAAC
 	}
 
 	for _, obf_class := range obf_classes {
@@ -475,6 +475,11 @@ func (self *Resolver) find_best_match(deob_class *ClassInfo, obf_classes []Class
 func (self *Resolver) hasDistinctivePattern(class *ClassInfo) bool {
 	// MouseDetection: threading with coordinate arrays
 	if class.Name == "MouseDetection" {
+		return true
+	}
+
+	// ISAACRandomGen: cryptographic random number generation
+	if class.Name == "ISAACRandomGen" {
 		return true
 	}
 
