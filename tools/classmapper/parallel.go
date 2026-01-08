@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -8,6 +9,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"golang.org/x/sync/semaphore"
 )
 
 type ParseError struct {
@@ -106,6 +109,9 @@ func (self *BytecodeParser) ParseAllParallel(source_path string, workers int, pr
 		}
 	}
 
+	// Create semaphore for concurrency control
+	sem := semaphore.NewWeighted(int64(num_workers))
+
 	// Create channels
 	jobs := make(chan string, len(valid_files))
 	results := make(chan *ClassInfo, len(valid_files))
@@ -113,12 +119,25 @@ func (self *BytecodeParser) ParseAllParallel(source_path string, workers int, pr
 
 	// Create worker pool
 	var wg sync.WaitGroup
+	ctx := context.Background()
 	for w := 0; w < num_workers; w++ {
 		wg.Add(1)
 		go func(worker_id int) {
 			defer wg.Done()
 			for file_path := range jobs {
+				// Acquire semaphore slot
+				if err := sem.Acquire(ctx, 1); err != nil {
+					errors <- ParseError{
+						err:       err,
+						file_path: file_path,
+						worker_id: worker_id,
+					}
+					continue
+				}
+
 				class_info, err := self.parse_file(file_path)
+				sem.Release(1) // Always release semaphore
+
 				if err != nil {
 					errors <- ParseError{
 						err:       err,

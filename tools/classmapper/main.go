@@ -1416,7 +1416,14 @@ func main() {
 				}
 			}
 			progress = NewProgressTracker(count, *parallelProgress)
-			fmt.Fprintf(os.Stderr, "  Using %d worker goroutines\n", *workers)
+			actual_workers := *workers
+			if actual_workers <= 0 {
+				actual_workers = runtime.NumCPU() - 1
+				if actual_workers < 1 {
+					actual_workers = 1
+				}
+			}
+			fmt.Fprintf(os.Stderr, "  Using %d worker goroutines\n", actual_workers)
 		}
 	}
 
