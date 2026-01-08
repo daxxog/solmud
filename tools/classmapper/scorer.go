@@ -37,6 +37,9 @@ const (
 	WEIGHT_TEXTURE_DATA           = 10.0 // Texture class specific
 	WEIGHT_WORLD_DATA             = 9.0  // WorldController specific
 
+	// Phase 1.1A: Magic Constants & Static Fields Pattern
+	WEIGHT_MAGIC_CONSTANTS = 20.0 // Distinctive magic numbers and constants
+
 	SIZE_DIFFERENCE_PENALTY   = 10.0
 	MAX_SIZE_DIFFERENCE_RATIO = 1.5
 )
@@ -65,6 +68,9 @@ type ScoreBreakdown struct {
 
 	// Phase 3.2.2.2.2: Data structure classification
 	GraphicsArrayBonus float64
+
+	// Phase 1.1A: Magic Constants & Static Fields Pattern
+	MagicConstants float64
 
 	SizePenalty float64
 }
@@ -137,6 +143,10 @@ func (self *Scorer) CalculateScore(deob_class *ClassInfo, obf_class *ClassInfo) 
 	// Phase 3.2.2.2.2: Data structure classification scoring
 	graphics_bonus := self.calculateGraphicsArrayBonus(deob_class, obf_class)
 	breakdown.GraphicsArrayBonus = graphics_bonus
+
+	// Phase 1.1A: Magic Constants & Static Fields Pattern scoring
+	magic_constants := self.calculateMagicConstantsScore(deob_class, obf_class)
+	breakdown.MagicConstants = magic_constants
 
 	if len(deob_class.Constructors) == len(obf_class.Constructors) {
 		breakdown.ConstructorMatch = WEIGHT_CONSTRUCTOR_MATCH
@@ -929,4 +939,138 @@ func (self *Scorer) calculateWorldSimilarity(deobSig, obfSig *ArrayStructureSign
 	}
 
 	return similarity / float64(comparisons)
+}
+
+// Phase 1.1A: Magic Constants & Static Fields Pattern
+// calculateMagicConstantsScore detects distinctive magic numbers and constants
+func (self *Scorer) calculateMagicConstantsScore(deob, obf *ClassInfo) float64 {
+	score := 0.0
+
+	// TextClass: Base-37 string hashing methods
+	if self.hasTextClassMethods(deob) && self.hasTextClassMethods(obf) {
+		score += 8.0 // TextClass specific methods: longForName, nameForLong
+	} else if self.hasTextClassMethods(deob) || self.hasTextClassMethods(obf) {
+		score += 6.0 // Partial match - at least one class has TextClass-like methods
+	}
+
+	// ISAACRandomGen: Cryptographic constants and array sizes
+	if self.hasISAACPatterns(deob) && self.hasISAACPatterns(obf) {
+		score += 10.0 // ISAAC specific: 256-element arrays, getNextKey method
+	}
+
+	// Skills: 25 skill count and skill name arrays
+	if self.hasSkillsPatterns(deob) && self.hasSkillsPatterns(obf) {
+		score += 8.0 // Skills class with 25-element arrays and skill-related names
+	}
+
+	// SizeConstants: Large static arrays with specific patterns
+	if self.hasSizeConstantsPatterns(deob) && self.hasSizeConstantsPatterns(obf) {
+		score += 8.0 // SizeConstants: large static final arrays
+	}
+
+	return score
+}
+
+// Helper methods for magic constant detection
+
+func (self *Scorer) hasTextClassMethods(class *ClassInfo) bool {
+	hasLongForName := false
+	hasNameForLong := false
+
+	for _, method := range class.Methods {
+		if strings.Contains(method.Name, "longForName") || strings.Contains(method.Name, "method585") {
+			hasLongForName = true
+		}
+		if strings.Contains(method.Name, "nameForLong") || strings.Contains(method.Name, "method586") {
+			hasNameForLong = true
+		}
+	}
+
+	// TextClass has string conversion methods - be flexible
+	return hasLongForName || hasNameForLong
+}
+
+func (self *Scorer) hasISAACPatterns(class *ClassInfo) bool {
+	// ISAAC has getNextKey method and typically 2 int[] fields
+	hasGetNextKey := false
+	intArrayCount := 0
+
+	for _, method := range class.Methods {
+		if strings.Contains(method.Name, "getNextKey") {
+			hasGetNextKey = true
+		}
+	}
+
+	for _, field := range class.Fields {
+		if strings.Contains(field.TypeName, "int[") || strings.Contains(field.TypeName, "[I") {
+			intArrayCount++
+		}
+	}
+
+	// ISAAC typically has getNextKey method and 2 int arrays (memory, results)
+	return hasGetNextKey && intArrayCount >= 2
+}
+
+func (self *Scorer) hasSkillsPatterns(class *ClassInfo) bool {
+	// Skills has 25-element arrays and skill-related field names
+	hasSkillCount := false
+	hasSkillNames := false
+
+	// Check for skillsCount field or similar
+	for _, field := range class.Fields {
+		if strings.Contains(field.Name, "skillsCount") ||
+			(strings.Contains(field.TypeName, "String[") && strings.Contains(field.TypeName, "25")) {
+			hasSkillCount = true
+		}
+		if strings.Contains(field.Name, "skillNames") ||
+			strings.Contains(field.Name, "skillEnabled") {
+			hasSkillNames = true
+		}
+	}
+
+	// Check method names for skill-related functionality
+	methodCount := 0
+	for _, method := range class.Methods {
+		if strings.Contains(method.Name, "skill") ||
+			strings.Contains(method.Name, "Skill") {
+			methodCount++
+		}
+	}
+
+	return hasSkillCount || (hasSkillNames && methodCount >= 2)
+}
+
+func (self *Scorer) hasSizeConstantsPatterns(class *ClassInfo) bool {
+	// SizeConstants has large static final arrays
+	staticFinalCount := 0
+	largeArrayCount := 0
+
+	for _, field := range class.Fields {
+		// Look for static final modifiers (if available)
+		isStatic := false
+		isFinal := false
+		for _, mod := range field.AccessModifiers {
+			if mod == "static" {
+				isStatic = true
+			}
+			if mod == "final" {
+				isFinal = true
+			}
+		}
+
+		if isStatic && isFinal {
+			staticFinalCount++
+		}
+
+		// Look for large arrays (256+ elements or specific array names)
+		if strings.Contains(field.Name, "anIntArray552") ||
+			strings.Contains(field.Name, "packetSizes") ||
+			strings.Contains(field.TypeName, "int[256]") ||
+			strings.Contains(field.TypeName, "[I") {
+			largeArrayCount++
+		}
+	}
+
+	// SizeConstants typically has 2 large static final arrays
+	return staticFinalCount >= 2 || largeArrayCount >= 2
 }

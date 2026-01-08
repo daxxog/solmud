@@ -207,7 +207,7 @@ const (
 func main() {
 	deob_dir := flag.String(
 		"deob",
-		"srcAllDummysRemoved/bin",
+		"../../srcAllDummysRemoved/bin",
 		"Path to deobfuscated class files",
 	)
 	obf_dir := flag.String(
