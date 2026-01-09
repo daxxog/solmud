@@ -35,6 +35,7 @@ You can break the research needed to complete these tasks as delegations for sub
  - [ ] Not just grep for a single line—multiple lines of evidence should be shown to display the context around the bytecode segment.
  - [ ] Be verified by checking the commands actually work and the presented evidence is non-contradictory.
  - [ ] Only be mapped 1:1—each obfusticated bytecode file should only map to a single DEOB source file/javap cache.
+ - [ ] **NOT** use absolute paths in documentation (such as `/Users/daxxog/Desktop`). Paths should be relative to the project root.
 
 
 
