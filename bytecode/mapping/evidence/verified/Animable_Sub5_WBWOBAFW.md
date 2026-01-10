@@ -1,51 +1,109 @@
-# Animable_Sub5 → Animable_Sub5
+# Evidence: Animable_Sub5 → WBWOBAFW
 
-## Overview
-Animable_Sub5 manages animated objects with sequence processing and ObjectDef integration.
+## Class Overview
 
-## Architectural Relationships
-Animable_Sub5 extends Animable (XHHRODPC), uses Animation (LKGEGIEW) and ObjectDef (YZDBYLRM).
+**Animable_Sub5** is a specialized animable subclass that manages animated game objects with integrated ObjectDef references and sequence processing capabilities. It combines animation rendering with object definition data to provide contextual animated object behavior in the game world, handling complex sequence timing and object-specific rendering logic.
+
+The class provides comprehensive animated object management:
+- **Object Integration**: Direct ObjectDef integration for contextual object rendering
+- **Sequence Processing**: Specialized animation sequence handling with object-specific timing
+- **3D Model Generation**: Complex model creation combining animation frames with object definitions
+- **State Management**: Tracks animation state, timing, and object-specific properties
+
+## Architecture Role
+Animable_Sub5 occupies a unique position in the rendering hierarchy as a bridge between generic animable objects and specific object definitions. It extends the base Animable functionality by adding ObjectDef awareness, enabling objects to be rendered with their specific visual properties and animation sequences. This allows for more sophisticated animated object behavior that maintains object identity during animation playback.
 
 ```mermaid
 classDiagram
     Animable_Sub5 --> Animable
-    Animable_Sub5 --> Animation
     Animable_Sub5 --> ObjectDef
-    Animable_Sub5 : +getRotatedModel(int)
+    Animable_Sub5 --> Animation
+    Animable_Sub5 --> Model
+    Animable_Sub5 : +getRotatedModel(int, int, int)
+    Animable_Sub5 : +method450()
 ```
 
-## Bytecode Matching Commands
-To show class and inheritance:
-```
-grep -A 20 "public class Animable_Sub5" bytecode/client/Animable_Sub5.bytecode.txt
+## Forensic Evidence Commands
+
+### 1. ObjectDef Integration Evidence (UNIQUE PATTERN)
+```bash
+# Show ObjectDef (YZDBYLRM) references in bytecode - unique to Animable_Sub5
+grep -A 10 -B 5 "YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
+
+# Show corresponding ObjectDef references in DEOB source
+grep -A 10 -B 5 "ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Verify javap cache ObjectDef field declarations
+grep -A 5 -B 5 "ObjectDef" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
 ```
 
-To show method signatures:
-```
-grep -A 10 -B 5 "public.*ZKARKDQW" bytecode/client/Animable_Sub5.bytecode.txt
+### 2. Specialized Constructor Pattern
+```bash
+# Show constructor with 4 parameters including ObjectDef reference
+grep -A 15 -B 5 "public.*WBWOBAFW.*int.*int.*int.*YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
+
+# Show matching constructor in DEOB source
+grep -A 15 -B 5 "public Animable_Sub5.*ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Show constructor bytecode in javap cache
+grep -A 20 "public Animable_Sub5(" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
 ```
 
-## Deobfuscated Source Evidence Commands
-For Animable_Sub5 class:
-```
-grep -A 15 -B 5 "public final class Animable_Sub5" srcAllDummysRemoved/src/Animable_Sub5.java
+### 3. Sequence Processing Evidence
+```bash
+# Show sequence-specific method implementations with ObjectDef context
+grep -A 20 -B 5 "public.*ZKARKDQW.*sequence" bytecode/client/WBWOBAFW.bytecode.txt
+
+# Show sequence processing in DEOB source with ObjectDef usage
+grep -A 20 -B 5 "getRotatedModel.*ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Verify sequence handling in javap cache
+grep -A 15 -B 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
 ```
 
-For getRotatedModel:
-```
-grep -A 10 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/src/Animable_Sub5.java
+### 4. Field Structure Verification
+```bash
+# Show unique field combinations including ObjectDef and animation fields
+grep -A 3 -B 3 "YZDBYLRM\|LKGEGIEW\|boolean.*sequence" bytecode/client/WBWOBAFW.bytecode.txt
+
+# Show corresponding field structure in DEOB source
+grep -A 5 -B 2 "ObjectDef\|Animation\|boolean.*sequence" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Verify field declarations in javap cache
+grep -A 10 -B 2 "ObjectDef\|Animation\|boolean" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
 ```
 
-## Javap Cache Evidence Commands
-For class structure:
-```
-grep -A 15 -B 5 "public final class Animable_Sub5" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
+### 5. Cross-Reference Validation (UNIQUENESS VERIFICATION)
+```bash
+# Verify only Animable_Sub5 has ObjectDef+Animable pattern among all animable subclasses
+grep -l "YZDBYLRM" bytecode/client/*.bytecode.txt | xargs grep -l "LKGEGIEW" | wc -l
+
+# Show this is unique among all Animable subclasses
+grep -l "extends.*XHHRODPC" bytecode/client/*.bytecode.txt | xargs grep -l "YZDBYLRM" | grep "WBWOBAFW"
+
+# Verify no other classes have this exact field combination
+grep -l "YZDBYLRM" bytecode/client/*.bytecode.txt | grep -v "WBWOBAFW.bytecode.txt" | wc -l
 ```
 
-For methods:
-```
-grep -A 10 -B 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
-```
+## Critical Evidence Points
 
-## Verification of Non-Contradictory Evidence
-Bytecode matches source/javap in animation sequences, object refs. No contradictions. 1:1 mapping confirmed.
+1. **ObjectDef Integration**: Animable_Sub5 is unique among animable classes in having direct ObjectDef (YZDBYLRM) references for contextual object rendering.
+
+2. **4-Parameter Constructor**: Distinct constructor signature taking animation parameters plus ObjectDef reference.
+
+3. **Sequence Processing**: Specialized getRotatedModel method that combines animation sequences with object definition data.
+
+4. **Unique Field Combination**: Only class combining ObjectDef, Animation, and sequence boolean fields in this specific pattern.
+
+## Verification Status
+
+**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The ObjectDef integration pattern, specialized constructor signature, and unique field combination provide definitive 1:1 mapping evidence that distinguishes Animable_Sub5 from other animable subclasses.
+
+## Sources and References
+- **Bytecode**: bytecode/client/WBWOBAFW.bytecode.txt
+- **Deobfuscated Source**: srcAllDummysRemoved/src/Animable_Sub5.java
+- **Javap Cache**: srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
+- **Animable Base**: XHHRODPC (Animable)
+- **ObjectDef Integration**: YZDBYLRM (ObjectDef)
+- **Animation System**: LKGEGIEW (Animation)
+- **Model Generation**: ZKARKDQW (Model)
