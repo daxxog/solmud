@@ -108,6 +108,47 @@ final class TextClass {
 }
 ```
 
+## Bytecode Evidence Commands
+To show hashing algorithm:
+```
+grep -A 20 -B 5 "sipush.*37" bytecode/client/ZTQFNQRH.bytecode.txt
+```
+
+To show character mapping:
+```
+grep -A 15 -B 5 "bipush.*65" bytecode/client/ZTQFNQRH.bytecode.txt
+```
+
+To show base-37 validation:
+```
+grep -A 10 -B 5 "irem" bytecode/client/ZTQFNQRH.bytecode.txt
+```
+
+## Deobfuscated Source Evidence Commands
+For longForName method:
+```
+grep -A 20 "public static long longForName" srcAllDummysRemoved/src/TextClass.java
+```
+
+For nameForLong method:
+```
+grep -A 15 "public static String nameForLong" srcAllDummysRemoved/src/TextClass.java
+```
+
+## Javap Cache Evidence Commands
+For longForName:
+```
+grep -A 20 "public static long longForName" srcAllDummysRemoved/.javap_cache/TextClass.javap.cache
+```
+
+For nameForLong:
+```
+grep -A 15 "public static java.lang.String nameForLong" srcAllDummysRemoved/.javap_cache/TextClass.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Bytecode matches source/javap in base-37 hashing, character mappings, validation. No contradictions. 1:1 mapping confirmed.
+
 ## **UNIQUE IDENTIFIERS**
 - **Base-37 Algorithm**: Unique to RuneScape text processing
 - **Character Ranges**: A-Z, a-z, 0-9 with specific offsets

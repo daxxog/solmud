@@ -6,6 +6,13 @@
 
 RKAYAFDQ maps to Censor with 100% confidence based on irrefutable evidence of text filtering functionality. This was previously incorrectly mapped to RSInterface due to functional misidentification.
 
+```mermaid
+classDiagram
+    Censor --> StreamLoader : loads config files
+    Censor --> Stream : processes text data
+    StreamLoader --> client : provides resources
+```
+
 ## Historical Context
 
 **Previous Incorrect Mapping:**
