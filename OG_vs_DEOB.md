@@ -30,7 +30,7 @@ You can break the research needed to complete these tasks as delegations for sub
     - Run jobs in batches to avoid rate limits.
     - Tell the agent they are a subagent.
 
-    _ If you are _not_ a subagent reading this, your *primary task* is to verify _each and every_ mapping file to adhere to this document, using the subagent strategy documented above!
+    _ If you are _not_ a subagent reading this, your *primary task* is to verify _each and every_ mapping file to adhere to this document, using the subagent strategy documented above! Don't trust—verify!
 ```
 
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
