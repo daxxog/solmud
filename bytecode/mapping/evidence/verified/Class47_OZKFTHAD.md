@@ -66,3 +66,12 @@ grep -A 3 -B 3 "Class47" srcAllDummysRemoved/src/ | head -10
 # Show javap method signatures
 grep -E "public.*Class47\|final.*Class47" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
 ```
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method695" srcAllDummysRemoved/src/Class47.java
+grep -A 5 -B 5 "anIntArray696" srcAllDummysRemoved/src/Class47.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method695" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
+grep -A 5 -B 5 "anIntArray696" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
+```

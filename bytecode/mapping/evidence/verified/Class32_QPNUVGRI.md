@@ -156,5 +156,13 @@ grep -l "256\|257\|258" bytecode/client/*.bytecode.txt | xargs grep -l "18002"
 grep -l "6.*258" bytecode/client/*.bytecode.txt
 ```
 
-**Result**: QPNUVGRI is the ONLY class matching this complete signature.</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/QPNUVGRI_CLASS32.md
+**Result**: QPNUVGRI is the ONLY class matching this complete signature.
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method530" srcAllDummysRemoved/src/Class32.java
+grep -A 5 -B 5 "anIntArray531" srcAllDummysRemoved/src/Class32.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method530" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+grep -A 5 -B 5 "anIntArray531" srcAllDummysRemoved/.javap_cache/Class32.javap.cache</content>
+<parameter name="filePath">bytecode/mapping/evidence/verified/QPNUVGRI_CLASS32.md

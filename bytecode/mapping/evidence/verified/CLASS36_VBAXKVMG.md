@@ -111,38 +111,46 @@ Both classes show performance characteristics critical for animation:
 ### **Animation Frame Decoder Pattern Verification**
 ```bash
 # Verify 19 arrays structure in VBAXKVMG
-grep -c "int\[\]" /Users/daxxog/Desktop/solmud/bytecode/client/VBAXKVMG.bytecode.txt
+grep -c "int\[\]" bytecode/client/VBAXKVMG.bytecode.txt
 # Expected: 19 total arrays (11 instance + 6 static + 2 multidimensional)
 
 # Verify 20-parameter constructor
-grep -E "public VBAXKVMG.*\(.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int" /Users/daxxog/Desktop/solmud/bytecode/client/VBAXKVMG.bytecode.txt
+grep -E "public VBAXKVMG.*\(.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Verify Huffman table structures for animation data
-grep -E "static final int\[\]\[\]" /Users/daxxog/Desktop/solmud/bytecode/client/VBAXKVMG.bytecode.txt
+grep -E "static final int\[\]\[\]" bytecode/client/VBAXKVMG.bytecode.txt
 ```
 
 ### **Class36 Animation Processing Verification**
 ```bash
 # Verify Class36 creates multiple Stream objects for animation parsing
-grep -c "new Stream" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class36.java
+grep -c "new Stream" srcAllDummysRemoved/src/Class36.java
 # Expected: 6 stream objects (stream, stream_1, stream_2, stream_3, stream_4, stream_5)
 
 # Verify 500-element arrays for frame data
-grep -E "new int\[500\]" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class36.java
+grep -E "new int\[500\]" srcAllDummysRemoved/src/Class36.java
 # Expected: 4 arrays of 500 elements each
 
 # Verify Class18 integration in animation processing
-grep -A 5 -B 5 "new Class18" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class36.java
+grep -A 5 -B 5 "new Class18" srcAllDummysRemoved/src/Class36.java
 ```
 
 ### **Cross-Reference Validation**
 ```bash
 # Verify VBAXKVMG power-of-2 calculations (animation timing optimization)
-grep -E "iconst_[248]|sipush.*128.*idiv.*iconst_[24]" /Users/daxxog/Desktop/solmud/bytecode/client/VBAXKVMG.bytecode.txt
+grep -E "iconst_[248]|sipush.*128.*idiv.*iconst_[24]" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Verify Class36 state machine (animation sequence control)
-grep -E "aBooleanArray643\[.*\].*=.*true|false" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class36.java
+grep -E "aBooleanArray643\[.*\].*=.*true|false" srcAllDummysRemoved/src/Class36.java
 ```
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method563" srcAllDummysRemoved/src/Class36.java
+grep -A 5 -B 5 "anIntArray564" srcAllDummysRemoved/src/Class36.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method563" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+grep -A 5 -B 5 "anIntArray564" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 
 ## **UNIQUE IDENTIFIERS**
 - **Array Complexity**: 19 arrays indicate complex animation data management

@@ -135,5 +135,15 @@ grep -l "Math.cos" bytecode/client/*.bytecode.txt
 grep -l "38400,\|88058,\|4279," bytecode/client/*.bytecode.txt
 ```
 
-**Result**: VADHJTLJ is the ONLY class matching this complete 3D graphics renderer signature.</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/VADHJTLJ_CLASS39.md
+**Result**: VADHJTLJ is the ONLY class matching this complete 3D graphics renderer signature.
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method542" srcAllDummysRemoved/src/Class39.java
+grep -A 5 -B 5 "3\.141593F" srcAllDummysRemoved/src/Class39.java
+grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/src/Class39.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method542" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+grep -A 5 -B 5 "3\.141593f" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/.javap_cache/Class39.javap.cache</content>
+<parameter name="filePath">./bytecode/mapping/evidence/verified/VADHJTLJ_CLASS39.md

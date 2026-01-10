@@ -44,4 +44,4 @@ grep -A 10 -B 10 "removeFromCache" srcAllDummysRemoved/.javap_cache/NodeCache.ja
 All sources align on the cache implementation: array of Node arrays, hash-based indexing, linked list traversal for lookups, and unlink/relink operations for removals. Bytecode shows consistent array initialization, field accesses, and method invocations without discrepancies.
 
 ## 1:1 Mapping Confirmation
-This is a 1:1 mapping. The obfuscated bytecode file ARZPHHDH maps exclusively to the NodeCache class, with matching cache size, Node references, and no shared functionality with other classes.
+This mapping is disputed due to potential overlap with NodeCache.md (same class, conflicting evidence). Flag for subagent research in disputed/ if unique identifiers cannot resolve.

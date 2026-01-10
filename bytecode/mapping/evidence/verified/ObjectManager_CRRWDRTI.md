@@ -103,7 +103,7 @@ CRRWDRTI is the **World 3D Renderer** responsible for:
 - Integration point between world data and rendering engine
 
 ## **MAPPING CONFIDENCE**
-**95% CONFIDENCE** - The combination of exact method signatures, unique lighting constants, 104x104 array patterns, and WorldController integration creates a fingerprint unique to 3D world rendering. The method171(Class11[], WorldController) signature is irrefutable evidence.
+**85% CONFIDENCE** - The combination of exact method signatures, unique lighting constants, 104x104 array patterns, and WorldController integration creates a fingerprint unique to 3D world rendering. The method171(Class11[], WorldController) signature is irrefutable evidence.
 
 ## **EVIDENCE LIMITATIONS**
 None significant - the evidence is comprehensive and unambiguous.

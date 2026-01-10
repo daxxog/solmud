@@ -121,4 +121,4 @@ final class TextClass {
 - Core text processing system used throughout the client
 - Essential for username validation, chat filtering, item names
 - Enables proper deobfuscation of all text-related functionality</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/ZTQFNQRH_TEXTCLASS.md
+<parameter name="filePath">bytecode/mapping/evidence/verified/ZTQFNQRH_TEXTCLASS.md

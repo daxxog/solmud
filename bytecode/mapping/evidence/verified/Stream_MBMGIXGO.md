@@ -23,4 +23,4 @@ grep -A 10 "public Stream" srcAllDummysRemoved/.javap_cache/Stream.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence
-Aligns on buffer access. No contradictions. 1:1 confirmed.
+Aligns on buffer access. No contradictions. 1:1 confirmed. Note: This mapping is disputed due to potential overlap with Stream.md (same class, conflicting evidence). Flag for subagent research in disputed/ if unique identifiers cannot resolve.

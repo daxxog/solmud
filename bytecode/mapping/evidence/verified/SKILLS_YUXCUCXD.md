@@ -205,4 +205,4 @@ final class Skills {
 - Core game mechanics infrastructure
 - Essential for understanding player stats and skill system
 - Enables proper deobfuscation of skill-related code throughout the client</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/YUXCUCXD_SKILLS.md
+<parameter name="filePath">./bytecode/mapping/evidence/verified/YUXCUCXD_SKILLS.md

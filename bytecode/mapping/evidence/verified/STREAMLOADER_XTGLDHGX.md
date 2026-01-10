@@ -118,4 +118,4 @@ final class StreamLoader {
 - Critical cache loading infrastructure
 - Handles all compressed game assets (models, textures, sounds)
 - Essential for client startup and resource management</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/XTGLDHGX_STREAMLOADER.md
+<parameter name="filePath">bytecode/mapping/evidence/verified/XTGLDHGX_STREAMLOADER.md

@@ -43,4 +43,4 @@ grep -A 10 -B 10 "isaac" srcAllDummysRemoved/.javap_cache/ISAACRandomGen.javap.c
 All evidence sources consistently show the same class structure: fields for memory, results, accumulator, etc.; methods for getNextKey, isaac, and initializeKeySet; and bytecode operations matching the ISAAC algorithm steps (shifts, XORs, additions). No contradictions in field counts, method signatures, or algorithmic flow.
 
 ## 1:1 Mapping Confirmation
-This is a 1:1 mapping. The obfuscated bytecode file JOCFVBOI corresponds exclusively to the deobfuscated ISAACRandomGen class, with matching javap cache and no overlapping functionality with other classes.
+This mapping is disputed due to potential overlap with ISAACRandomGen.md (same class, conflicting evidence). Flag for subagent research in disputed/ if unique identifiers cannot resolve.

@@ -127,4 +127,4 @@ grep -l "17085,\|50738,\|47851,\|43186," bytecode/client/*.bytecode.txt
 ```
 
 **Result**: JHDAGNBV is the ONLY class matching this complete audio system signature.</content>
-<parameter name="filePath">/Users/daxxog/Desktop/solmud/bytecode/mapping/evidence/verified/JHDAGNBV_SOUNDS.md
+<parameter name="filePath">bytecode/mapping/evidence/verified/JHDAGNBV_SOUNDS.md

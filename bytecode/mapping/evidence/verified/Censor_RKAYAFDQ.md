@@ -109,6 +109,22 @@ Contains hardcoded banned words: `["cook", "cook's", "cooks", "seeks", "sheet", 
 
 **Overall Confidence: 100%**
 
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "loadConfig" srcAllDummysRemoved/src/Censor.java
+grep -A 5 -B 5 "fragmentsenc\.txt" srcAllDummysRemoved/src/Censor.java
+grep -A 5 -B 5 "badenc\.txt" srcAllDummysRemoved/src/Censor.java
+grep -A 5 -B 5 "domainenc\.txt" srcAllDummysRemoved/src/Censor.java
+grep -A 5 -B 5 "tldlist\.txt" srcAllDummysRemoved/src/Censor.java
+grep -A 5 -B 5 "cook" srcAllDummysRemoved/src/Censor.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "loadConfig" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+grep -A 5 -B 5 "fragmentsenc\.txt" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+grep -A 5 -B 5 "badenc\.txt" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+grep -A 5 -B 5 "domainenc\.txt" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+grep -A 5 -B 5 "tldlist\.txt" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+grep -A 5 -B 5 "cook" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+
 ## Notes
 
 This correction represents a critical fix to maintain mapping integrity. The previous RSInterface mapping was based on assumption rather than evidence. The censorship functionality is sophisticated and complete, indicating this is the genuine Censor class rather than dummy methods added by obfuscation.

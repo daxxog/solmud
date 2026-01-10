@@ -97,7 +97,7 @@ NYFUGYQS is the **World Controller** responsible for:
 - **Collision Detection**: Supplies collision data to player and NPC movement systems
 
 ## **MAPPING CONFIDENCE**
-**100% CONFIDENCE** - The combination of multi-dimensional world arrays, plane-based coordinate system, world loading methods, and unique game state management creates a fingerprint that is absolutely unique to the RuneScape world controller. No other class implements this level of world state complexity.
+**85% CONFIDENCE** - The combination of multi-dimensional world arrays, plane-based coordinate system, world loading methods, and unique game state management creates a fingerprint that is absolutely unique to the RuneScape world controller. No other class implements this level of world state complexity.
 
 ## **EVIDENCE LIMITATIONS**
 None - evidence is comprehensive and irrefutable.

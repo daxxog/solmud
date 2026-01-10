@@ -118,3 +118,11 @@ The main limitation is that 3D graphics operations are somewhat complex, but the
 - [x] Method155/156/157 signature patterns match
 - [x] Graphics constants and operations align with Class40
 - [x] Previous incorrect mapping identified and corrected
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method155" srcAllDummysRemoved/src/Class40.java
+grep -A 5 -B 5 "LKGEGIEW" srcAllDummysRemoved/src/Class40.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method155" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+grep -A 5 -B 5 "LKGEGIEW" srcAllDummysRemoved/.javap_cache/Class40.javap.cache

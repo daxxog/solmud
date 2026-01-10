@@ -103,36 +103,36 @@ XPBACSMK's structure is extremely simple and could potentially map to other simp
 ### **Simple Data Container Structure Verification**
 ```bash
 # Verify XPBACSMK has exactly 6 fields (5 int + 1 boolean + 1 int)
-grep -E "^\s*(int|boolean)\s+\w+;" /Users/daxxog/Desktop/solmud/bytecode/client/XPBACSMK.bytecode.txt
+grep -E "^\s*(int|boolean)\s+\w+;" bytecode/client/XPBACSMK.bytecode.txt
 # Expected: 5 int fields + 1 boolean field
 
 # Verify 7-parameter constructor
-grep -E "public XPBACSMK.*\(.*int.*int.*int.*int.*int.*int.*boolean" /Users/daxxog/Desktop/solmud/bytecode/client/XPBACSMK.bytecode.txt
+grep -E "public XPBACSMK.*\(.*int.*int.*int.*int.*int.*int.*boolean" bytecode/client/XPBACSMK.bytecode.txt
 
 # Verify minimal method complexity (only constructor)
-grep -c "public.*(" /Users/daxxog/Desktop/solmud/bytecode/client/XPBACSMK.bytecode.txt
+grep -c "public.*(" bytecode/client/XPBACSMK.bytecode.txt
 # Expected: 1 (just the constructor)
 ```
 
 ### **Class18 Stream-Based Structure Verification**
 ```bash
 # Verify Class18 reads from Stream in constructor
-grep -A 10 "public Class18.*Stream.*stream" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class18.java
+grep -A 10 "public Class18.*Stream.*stream" srcAllDummysRemoved/src/Class18.java
 
 # Verify dynamic array allocation based on stream data
-grep -E "new int\[.*\].*=.*stream\.readUnsignedByte" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class18.java
+grep -E "new int\[.*\].*=.*stream\.readUnsignedByte" srcAllDummysRemoved/src/Class18.java
 
 # Verify 2D array structure from stream
-grep -E "new int\[\]\[.*\].*=.*stream\.readUnsignedByte" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class18.java
+grep -E "new int\[\]\[.*\].*=.*stream\.readUnsignedByte" srcAllDummysRemoved/src/Class18.java
 ```
 
 ### **Constructor Parameter Correlation**
 ```bash
 # Verify XPBACSMK constructor assigns all 7 parameters
-grep -E "putfield.*Field.*:I|:Z" /Users/daxxog/Desktop/solmud/bytecode/client/XPBACSMK.bytecode.txt
+grep -E "putfield.*Field.*:I|:Z" bytecode/client/XPBACSMK.bytecode.txt
 
 # Verify Class18 stream-based parameter reading
-grep -c "stream\.readUnsignedByte" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/Class18.java
+grep -c "stream\.readUnsignedByte" srcAllDummysRemoved/src/Class18.java
 # Expected: Multiple reads for dynamic array sizing
 ```
 
@@ -159,6 +159,14 @@ XPBACSMK appears to be a **Stream Data Wrapper** responsible for:
 - Providing simple access to array-based data structures
 - Managing basic validation through boolean flags
 - Acting as a data container for animation system integration
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method362" srcAllDummysRemoved/src/Class18.java
+grep -A 5 -B 5 "anIntArray363" srcAllDummysRemoved/src/Class18.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method362" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+grep -A 5 -B 5 "anIntArray363" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 
 ## **IMPACT**
 - Minor utility class for animation data management

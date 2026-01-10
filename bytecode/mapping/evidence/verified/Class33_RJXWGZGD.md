@@ -141,6 +141,14 @@ public RJXWGZGD();
 | Complexity Match     | 5%         | 100%      | 5%                |
 | **TOTAL CONFIDENCE** | **100%**   |           | **100%**          |
 
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method555" srcAllDummysRemoved/src/Class33.java
+grep -A 5 -B 5 "aClass33Array556" srcAllDummysRemoved/src/Class33.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method555" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+grep -A 5 -B 5 "aClass33Array556" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
 ## Notes
 
 This mapping represents a textbook example of structural forensic analysis succeeding where functional analysis initially failed. The disputed case with ZARDZRHZ was resolved by finding the true structural match with RJXWGZGD.

@@ -77,4 +77,12 @@ grep -A 3 -B 3 "Class43" srcAllDummysRemoved/src/ | head -10
 # Show javap final field count
 grep -c "final int" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
 ```
+
+## Deobfuscated Source Evidence Commands
+grep -A 10 -B 5 "method669" srcAllDummysRemoved/src/Class43.java
+grep -A 5 -B 5 "anIntArray670" srcAllDummysRemoved/src/Class43.java
+
+## Javap Cache Evidence Commands
+grep -A 10 -B 5 "method669" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
+grep -A 5 -B 5 "anIntArray670" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
 ```
