@@ -15,13 +15,13 @@ NYFUGYQS implements comprehensive world state management that perfectly matches 
 **Verification Commands:**
 ```bash
 # Verify world state fields in NYFUGYQS
-grep -E "int.*\[\]\[\]|anIntArray.*anIntArrayArray" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt | head -5
+grep -E "int.*\[\]\[\]|anIntArray.*anIntArrayArray" bytecode/client/NYFUGYQS.bytecode.txt | head -5
 
 # Verify world coordinate systems
-grep -E "(plane|height|tile|region)" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt | head -10
+grep -E "(plane|height|tile|region)" bytecode/client/NYFUGYQS.bytecode.txt | head -10
 
 # Verify deobfuscated WorldController has same patterns
-grep -E "(plane|height|tile|region)" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/WorldController.java | head -10
+grep -E "(plane|height|tile|region)" srcAllDummysRemoved/src/WorldController.java | head -10
 ```
 
 **Evidence**: NYFUGYQS manages multi-dimensional world arrays with coordinate systems identical to WorldController.
@@ -32,13 +32,13 @@ Both classes implement world data loading and initialization:
 **World Loading Verification:**
 ```bash
 # Verify world loading methods in NYFUGYQS
-grep -E "(loadWorld|initWorld|setupWorld)" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -E "(loadWorld|initWorld|setupWorld)" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify world size management
-grep -E "(worldWidth|worldHeight|worldSize)" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -E "(worldWidth|worldHeight|worldSize)" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify WorldController loading patterns
-grep -A 10 -B 5 "public.*init" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/WorldController.java
+grep -A 10 -B 5 "public.*init" srcAllDummysRemoved/src/WorldController.java
 ```
 
 ### **3. Multi-Dimensional Array Structures (DISTINCTIVE)**
@@ -47,13 +47,13 @@ Both classes use complex multi-dimensional arrays for world data:
 **Array Structure Verification:**
 ```bash
 # Verify multi-dimensional arrays in NYFUGYQS
-grep -c -E "int\[\]\[\[\]|anIntArrayArray" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -c -E "int\[\]\[\[\]|anIntArrayArray" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify world coordinate grid structures
-grep -E "104.*104|64.*64|plane.*\[\]" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -E "104.*104|64.*64|plane.*\[\]" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify WorldController has matching array structures
-grep -E "int\[\]\[\[\]|anIntArrayArray" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/WorldController.java | head -5
+grep -E "int\[\]\[\[\]|anIntArrayArray" srcAllDummysRemoved/src/WorldController.java | head -5
 ```
 
 ### **4. Coordinate System Implementation**
@@ -62,13 +62,13 @@ Both classes implement RuneScape's coordinate system with planes and regions:
 **Coordinate System Verification:**
 ```bash
 # Verify plane-based coordinate system in NYFUGYQS
-grep -E "(plane.*[0-3]|planeHeight|planeIndex)" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -E "(plane.*[0-3]|planeHeight|planeIndex)" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify region-based loading
-grep -E "(regionX|regionY|regionId)" /Users/daxxog/Desktop/solmud/bytecode/client/NYFUGYQS.bytecode.txt
+grep -E "(regionX|regionY|regionId)" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify WorldController coordinate patterns
-grep -E "(plane.*[0-3]|planeHeight|planeIndex)" /Users/daxxog/Desktop/solmud/srcAllDummysRemoved/src/WorldController.java
+grep -E "(plane.*[0-3]|planeHeight|planeIndex)" srcAllDummysRemoved/src/WorldController.java
 ```
 
 ## **ALTERNATIVE ANALYSIS**
