@@ -206,6 +206,47 @@ public ZIJPRJEC(client, java.lang.Object);  // Constructor signature
 | Constructor Match    | 10%        | 95%       | 9.5%              |
 | **TOTAL CONFIDENCE** | **100%**   |           | **99.5%**         |
 
+## Bytecode Matching Commands
+To show Runnable implementation:
+```
+grep -A 5 "implements.*Runnable" bytecode/client/ZIJPRJEC.bytecode.txt
+```
+
+To show mouse coordinate arrays:
+```
+grep -A 5 -B 5 "sipush.*500" bytecode/client/ZIJPRJEC.bytecode.txt
+```
+
+To show synchronization:
+```
+grep -A 10 "monitorenter" bytecode/client/ZIJPRJEC.bytecode.txt
+```
+
+## Deobfuscated Source Sections
+For run method:
+```
+grep -A 20 "public void run" srcAllDummysRemoved/src/MouseDetection.java
+```
+
+For fields:
+```
+grep -A 5 "private.*coordsX\|private.*syncObject" srcAllDummysRemoved/src/MouseDetection.java
+```
+
+## Javap Cache Sections
+For run method:
+```
+grep -A 20 "public void run" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
+```
+
+For fields:
+```
+grep -A 5 "coordsX\|syncObject" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Bytecode matches source/javap in Runnable, coordinate tracking, synchronization. No contradictions. 1:1 mapping confirmed.
+
 ## Notes
 
 This mapping represents one of the strongest evidence-based identifications in the project. The Runnable interface provides a unique signature that, combined with the mouse tracking functionality and client integration patterns, creates irrefutable evidence for this mapping. The structural and functional alignment is perfect across all dimensions.

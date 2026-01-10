@@ -115,6 +115,42 @@ final class Class29 {
 }
 ```
 
+## Bytecode Matching Commands
+To show stream processing with 500-element arrays:
+```
+grep -A 10 -B 5 "sipush.*500" bytecode/client/SQHJOGRT.bytecode.txt
+```
+
+To show KVCQPLIW integration:
+```
+grep -A 5 -B 5 "KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
+```
+
+## Deobfuscated Source Sections
+For stream methods:
+```
+grep -A 10 "public void method325" srcAllDummysRemoved/src/Class29.java
+```
+
+For array processing:
+```
+grep -A 5 "anIntArray536.*new int" srcAllDummysRemoved/src/Class29.java
+```
+
+## Javap Cache Sections
+For stream methods:
+```
+grep -A 10 "public void method325" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+```
+
+For arrays:
+```
+grep -A 5 "anIntArray536" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Bytecode matches source/javap in stream processing, 500-element arrays, KVCQPLIW usage. No contradictions. 1:1 mapping confirmed.
+
 ## **UNIQUE IDENTIFIERS**
 - **500-Element Arrays**: `sipush 500` constant for data processing
 - **KVCQPLIW Integration**: Class43 object creation and usage

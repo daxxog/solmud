@@ -153,6 +153,42 @@ public OIBEELAZ();
 | Usage Patterns       | 5%         | 95%       | 4.75%             |
 | **TOTAL CONFIDENCE** | **100%**   |           | **99.75%**        |
 
+## Bytecode Matching Commands
+To show static cache array:
+```
+grep -A 5 "public static.*\[\]" bytecode/client/OIBEELAZ.bytecode.txt
+```
+
+To show constructor field initialization:
+```
+grep -A 10 "putfield" bytecode/client/OIBEELAZ.bytecode.txt
+```
+
+## Deobfuscated Source Sections
+For static array:
+```
+grep -A 5 "public static.*cache" srcAllDummysRemoved/src/DummyClass.java
+```
+
+For constructor:
+```
+grep -A 5 "public DummyClass" srcAllDummysRemoved/src/DummyClass.java
+```
+
+## Javap Cache Sections
+For static array:
+```
+grep -A 5 "public static.*cache" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
+```
+
+For constructor:
+```
+grep -A 5 "public DummyClass" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Bytecode matches source/javap in static array, constructor initialization. No contradictions. 1:1 mapping confirmed.
+
 ## Notes
 
 This mapping represents a perfect structural alignment that is rare in obfuscated code analysis. The static cache array pattern is so distinctive and the structural similarity so complete that this represents one of the most reliable mappings in the project.
