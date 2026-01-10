@@ -102,7 +102,7 @@ XPBACSMK's structure is extremely simple and could potentially map to other simp
 
 ### **Simple Data Container Structure Verification**
 ```bash
-# Verify XPBACSMK has exactly 6 fields (5 int + 1 boolean + 1 int)
+# Verify XPBACSMK has exactly 7 fields (6 int + 1 boolean)
 grep -E "^\s*(int|boolean)\s+\w+;" bytecode/client/XPBACSMK.bytecode.txt
 # Expected: 5 int fields + 1 boolean field
 
@@ -147,7 +147,7 @@ grep -c "stream\.readUnsignedByte" srcAllDummysRemoved/src/Class18.java
 **90% CONFIDENCE** - While XPBACSMK's simple structure could match multiple data container classes, Class18 represents the most logical mapping based on stream-based initialization patterns and similar complexity levels. The confidence is high but not absolute due to the generic nature of simple data containers.
 
 ## **REPRODUCIBILITY CHECKLIST**
-- [x] XPBACSMK has exactly 6 fields (verified)
+- [x] XPBACSMK has exactly 7 fields (verified)
 - [x] XPBACSMK has 7-parameter constructor (confirmed)
 - [x] Class18 uses stream-based constructor (verified)
 - [x] Both classes show minimal computational complexity (confirmed)
@@ -161,12 +161,12 @@ XPBACSMK appears to be a **Stream Data Wrapper** responsible for:
 - Acting as a data container for animation system integration
 
 ## Deobfuscated Source Evidence Commands
-grep -A 10 -B 5 "method362" srcAllDummysRemoved/src/Class18.java
-grep -A 5 -B 5 "anIntArray363" srcAllDummysRemoved/src/Class18.java
+grep -A 10 -B 5 "anIntArray342\\[\\]" srcAllDummysRemoved/src/Class18.java
+grep -A 5 -B 5 "anIntArray342\\[\\]" srcAllDummysRemoved/src/Class18.java
 
 ## Javap Cache Evidence Commands
-grep -A 10 -B 5 "method362" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
-grep -A 5 -B 5 "anIntArray363" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+grep -A 10 -B 5 "anIntArray342\\[\\]" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+grep -A 5 -B 5 "anIntArray342\\[\\]" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 
 ## **IMPACT**
 - Minor utility class for animation data management

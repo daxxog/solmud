@@ -112,7 +112,7 @@ Both classes show performance characteristics critical for animation:
 ```bash
 # Verify 19 arrays structure in VBAXKVMG
 grep -c "int\[\]" bytecode/client/VBAXKVMG.bytecode.txt
-# Expected: 20 total arrays (11 instance + 6 static + 2 multidimensional)
+# Expected: 19 total arrays (11 instance + 6 static + 2 multidimensional)
 
 # Verify 20-parameter constructor
 grep -E "public VBAXKVMG.*\(.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int.*int" bytecode/client/VBAXKVMG.bytecode.txt

@@ -39,7 +39,7 @@ grep -E "ARZPHHDH|NodeCache" bytecode/client/BISVHPUN.bytecode.txt
 grep -A 5 -B 5 "PPOHBEGB" bytecode/client/BISVHPUN.bytecode.txt
 
 # Verify NodeList method signatures
-grep -E "(insertHead|insertTail|popHead|removeAll)" srcAllDummysRemoved/src/NodeList.java
+grep -E "(insertHead|insertTail|popHead|clear)" srcAllDummysRemoved/src/NodeList.java
 ```
 
 ### **3. Cache Performance Optimization (DISTINCTIVE)**

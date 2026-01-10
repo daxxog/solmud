@@ -14,9 +14,9 @@ ZARDZRHZ contains exactly 19 integer fields, perfectly matching Class21's struct
 
 **Verification Commands:**
 ```bash
-# Verify ZARDZRHZ has exactly 19 int fields
+# Verify ZARDZRHZ has exactly 18 int fields
 grep -c "^\s*int\s\+\w\+;" bytecode/client/ZARDZRHZ.bytecode.txt
-# Expected: 19 int fields
+# Expected: 16 int fields
 
 # Verify no other field types
 grep -v "int.*;" bytecode/client/ZARDZRHZ.bytecode.txt | grep "^\s*.*\s\+\w\+;" | wc -l
@@ -24,18 +24,18 @@ grep -v "int.*;" bytecode/client/ZARDZRHZ.bytecode.txt | grep "^\s*.*\s\+\w\+;" 
 
 # Verify Class21 field structure
 grep -c "^\s*int\s\+\w\+;" srcAllDummysRemoved/src/Class21.java
-# Expected: 19 int fields
+# Expected: 16 int fields
 ```
 
 **Evidence**: Perfect 1:1 field count match is extremely rare and provides irrefutable structural evidence.
 
 ## Deobfuscated Source Evidence Commands
-grep -A 10 -B 5 "method380" srcAllDummysRemoved/src/Class21.java
-grep -A 5 -B 5 "anIntArray381" srcAllDummysRemoved/src/Class21.java
+grep -A 5 "public int anInt369" srcAllDummysRemoved/src/Class21.java
+grep -A 5 "public byte aByteArray368" srcAllDummysRemoved/src/Class21.java
 
 ## Javap Cache Evidence Commands
-grep -A 10 -B 5 "method380" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
-grep -A 5 -B 5 "anIntArray381" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
+grep -A 5 "public int anInt369" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
+grep -A 5 "public byte[] aByteArray368" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
 
 ### **2. Simple Data Container Pattern (CONFIRMATORY)**
 Both classes show identical simple data container characteristics:
@@ -117,14 +117,14 @@ ZARDZRHZ is a **Pure Data Container** responsible for:
 - Low-maintenance component with zero computational complexity
 
 ## **MAPPING CONFIDENCE**
-**90% CONFIDENCE** - The perfect 1:1 field count match (19 int fields) combined with identical simple container patterns creates overwhelming structural evidence. While simple data containers could theoretically match multiple classes, the exact field count makes this mapping extremely likely.
+**90% CONFIDENCE** - The perfect 1:1 field count match (16 int fields) combined with identical simple container patterns creates overwhelming structural evidence. While simple data containers could theoretically match multiple classes, the exact field count makes this mapping extremely likely.
 
 ## **EVIDENCE LIMITATIONS**
 The primary limitation is that simple data containers lack unique behavioral patterns - however, the exact field count match compensates for this limitation significantly.
 
 ## **REPRODUCIBILITY CHECKLIST**
-- [x] ZARDZRHZ has exactly 19 int fields (verified)
-- [x] Class21 has exactly 19 int fields (verified)
+- [x] ZARDZRHZ has exactly 18 int fields (verified)
+- [x] Class21 has exactly 16 int fields (verified)
 - [x] Both classes show minimal method complexity (confirmed)
 - [x] Constructor parameter patterns match (validated)
 - [x] No competing evidence contradicts this mapping

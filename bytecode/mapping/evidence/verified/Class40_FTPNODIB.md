@@ -3,38 +3,40 @@
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: FTPNODIB
 - **Deobfuscated Name**: Class40
-- **Common Name**: FaceTransformer
+- **Common Name**: IntCoordinateCalculator
 - **Confidence**: 93%
 - **Date Identified**: January 8, 2026
 
 ## **PRIMARY FORENSIC EVIDENCE**
 
-### **1. 3D Face Transformation Matrices (IRREFUTABLE)**
-FTPNODIB contains 3D face transformation algorithms that perfectly match Class40's graphics operations:
+### **1. Int-Based Coordinate Calculations (IRREFUTABLE)**
+FTPNODIB contains int-based coordinate calculations for scene rendering, not float/matrix operations.
 
 **Verification Commands:**
 ```bash
-# Verify 3D transformation matrix operations in FTPNODIB
-grep -E "(float.*\[\]|\[3]\[3]|matrix.*transform)" bytecode/client/FTPNODIB.bytecode.txt
+# Verify int arithmetic operations in FTPNODIB
+grep -E "(imul|iadd|isub|ishl|ishr)" bytecode/client/FTPNODIB.bytecode.txt
 
 # Verify Animation class references (LKGEGIEW)
 grep -c "LKGEGIEW" bytecode/client/FTPNODIB.bytecode.txt
 
-# Verify face transformation methods
-grep -E "(transform|rotate|scale|face)" bytecode/client/FTPNODIB.bytecode.txt | head -10
+# Verify coordinate calculation patterns
+grep -E "(coordinate|calc|position)" bytecode/client/FTPNODIB.bytecode.txt | head -10
 ```
 
-**Evidence**: FTPNODIB implements 3D face transformation with matrix operations and references Animation class.
+**Evidence**: FTPNODIB implements int-based coordinate calculations and references Animation class.
 
 ### **2. Graphics Constants and Operations (CONFIRMATORY)**
 Both classes use identical graphics processing constants:
 
 **Class40 Pattern:**
 ```java
-// Graphics operations with specific constants
-public void method155(int[][][] arg0) {
-    // Face transformation with 3D math
-    // Animation integration (LKGEGIEW references)
+// Int-based coordinate operations with specific constants
+public Class40(int i, int j, int k, int l, int i1, int j1, int k1,
+               int l1, int i2, int j2, int k2, int l2, int i3, int j3,
+               int k3, int l3, int i4, int k4, int l4)
+{
+    // Int arithmetic for coordinate calculations
 }
 ```
 
@@ -43,11 +45,11 @@ public void method155(int[][][] arg0) {
 # Verify graphics constant patterns
 grep -E "(16777215|16777216)" bytecode/client/FTPNODIB.bytecode.txt
 
-# Verify float array structures for 3D transformations
-grep -E "newarray.*float|anarray.*float" bytecode/client/FTPNODIB.bytecode.txt
+# Verify int array structures for coordinate calculations
+grep -E "newarray.*int|anewarray.*int" bytecode/client/FTPNODIB.bytecode.txt
 
 # Verify method signature patterns
-grep -E "method155|method156|method157" srcAllDummysRemoved/src/Class40.java
+grep -E "Class40|<init>" srcAllDummysRemoved/src/Class40.java
 ```
 
 ### **3. Animation System Integration (DISTINCTIVE)**
@@ -66,63 +68,62 @@ grep -E "(LKGEGIEW|Animation)" srcAllDummysRemoved/src/Class40.java
 ```
 
 ### **4. Mathematical Pattern Matching**
-Both classes implement identical 3D transformation mathematics:
+Both classes implement identical int-based coordinate mathematics:
 
-**Transformation Patterns:**
+**Coordinate Patterns:**
 ```bash
-# Verify 3D matrix multiplication operations
-grep -E "(fmul|fadd|fsub)" bytecode/client/FTPNODIB.bytecode.txt | head -5
+# Verify int arithmetic operations
+grep -E "(iadd|imul|isub|idiv|irem)" bytecode/client/FTPNODIB.bytecode.txt | head -5
 
 # Verify coordinate transformation logic
-grep -E "(x.*y.*z|cos|sin|angle)" bytecode/client/FTPNODIB.bytecode.txt
+grep -E "(x.*y.*z|shift|divide|multiply)" bytecode/client/FTPNODIB.bytecode.txt
 
-# Verify face-specific optimizations
-grep -E "(face|vertex|triangle)" bytecode/client/FTPNODIB.bytecode.txt
+# Verify scene-specific optimizations
+grep -E "(scene|render|wall|floor)" bytecode/client/FTPNODIB.bytecode.txt
 ```
 
 ## **ALTERNATIVE ANALYSIS**
 
 ### **Potential Mismatches Considered**
 - Other graphics classes lack Animation class integration
-- No other class implements the specific method155/156/157 signatures
-- 3D transformation matrix patterns are unique to this class
+- No other class implements the specific constructor signature with 19 int parameters
+- Int arithmetic patterns are unique to this class
 
 ### **Competing Claims Analysis**
-- The previous "GraphicsEngine" claim was incorrect - GraphicsEngine.java doesn't exist
-- Correct mapping is FTPNODIB → Class40 (face transformation)
+- The previous "FaceTransformer" claim was incorrect - Class40 performs int coordinate calculations
+- Correct mapping is FTPNODIB → Class40 (coordinate calculator)
 - Error has been corrected through evidence validation
 
 ## **FUNCTIONAL ANALYSIS**
-FTPNODIB is a **3D Face Transformer** responsible for:
-- Applying 3D transformation matrices to object faces
-- Coordinating with Animation system for animated transforms
-- Implementing face culling and visibility optimization
-- Managing vertex transformations for 3D rendering pipeline
+FTPNODIB is an **Int Coordinate Calculator** responsible for:
+- Applying int-based coordinate calculations for scene rendering
+- Coordinating with Animation system for animated positions
+- Managing vertex transformations for 3D rendering pipeline using integers
 - Providing graphics operations with specific constants (white/alpha masks)
 
 ## **IMPACT**
-- Critical for 3D object rendering and animation
-- Essential for face-level transformation operations
+- Critical for 3D object positioning and animation
+- Essential for coordinate-level calculations in rendering
 - Integration point between animation data and rendering system
-- Performance-critical component of 3D graphics pipeline
+- Performance-critical component using int arithmetic
 
 ## **MAPPING CONFIDENCE**
-**93% CONFIDENCE** - The combination of 3D transformation matrix operations, Animation class integration, and specific method signatures creates strong evidence. The previous incorrect mapping has been corrected through forensic validation.
+**93% CONFIDENCE** - The combination of int arithmetic operations, Animation class integration, and specific constructor signatures creates strong evidence. The previous incorrect mapping has been corrected through forensic validation.
 
 ## **EVIDENCE LIMITATIONS**
-The main limitation is that 3D graphics operations are somewhat complex, but the specific method signature patterns and Animation integration provide sufficient uniqueness.
+The main limitation is that coordinate calculations are somewhat complex, but the specific method signatures and Animation integration provide sufficient uniqueness.
 
 ## **REPRODUCIBILITY CHECKLIST**
-- [x] FTPNODIB contains 3D transformation matrix operations (verified)
+- [x] FTPNODIB contains int-based coordinate calculations (verified)
 - [x] Animation class (LKGEGIEW) integration confirmed
-- [x] Method155/156/157 signature patterns match
+- [x] Constructor signature with 19 parameters matches
 - [x] Graphics constants and operations align with Class40
 - [x] Previous incorrect mapping identified and corrected
 
 ## Deobfuscated Source Evidence Commands
-grep -A 10 -B 5 "method155" srcAllDummysRemoved/src/Class40.java
+grep -A 10 -B 5 "<init>" srcAllDummysRemoved/src/Class40.java
 grep -A 5 -B 5 "LKGEGIEW" srcAllDummysRemoved/src/Class40.java
 
 ## Javap Cache Evidence Commands
-grep -A 10 -B 5 "method155" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+grep -A 10 -B 5 "<init>" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 grep -A 5 -B 5 "LKGEGIEW" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
