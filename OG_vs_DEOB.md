@@ -34,8 +34,9 @@ You can break the research needed to complete these tasks as delegations for sub
 ```
 
 ### ADHERE TO CRITICAL CHECKLIST
+ - [ ] Diagrams should only contain reference to classes that exist in the DEOB source! Only reference classes by their DEOB name in diagrams (diagrams full of OG names are _useless_).
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
- - [ ] Explain its role in the overall architecture and relationship with other classes. Use mermaid diagrams where appropriate for documenting class-relationships.
+ - [ ] Explain its role in the overall architecture and relationship with other classes. Use mermaid diagrams where appropriate for documenting class-relationships (inheritance, data access, method calls).
  - [ ] Contain bash commands which can be ran to show specific areas of bytecode that prove a mapping.
  - [ ] Have commands that show sections of DEOB source code that relate to each section of obfusticated bytecode used as evidence.
  - [ ] Have commands that show sections of DEOB javap cache that relate to each section of obfusticated bytecode used as evidence.
@@ -50,7 +51,6 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
 
 
 ### Notes to avoid wrong-direction and rabbit trails
- - [ ] Diagrams should *not* reference non-existent classes!
  - You can ignore the old tool in `./tools/classmapper_ARCHIVED_2026-01-08/`. This is archived and no longer apart of the strategy.
  - Avoid creating files like `bytecode/mapping/evidence/verified/Animable.md`. This doesn't contain any context in the filename about _which_ OG class it is mapped to! Instead use a path like `bytecode/mapping/evidence/verified/RSSocket_NQABEVLK.md`. Notice how the case is preserved.
  - Correct order for file naming convention is DEOB (first) _ OG (second)
