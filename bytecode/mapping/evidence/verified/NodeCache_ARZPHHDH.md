@@ -1,78 +1,47 @@
-# Forensic Evidence: NodeCache → ARZPHHDH
+# NodeCache_ARZPHHDH Evidence
 
-## Evidence Summary
-- **Deobfuscated Class**: `NodeCache`
-- **Obfuscated Class**: `ARZPHHDH`
-- **Confidence Score**: `100/100`
-- **Evidence Type**: `Behavioral`
-- **Verification Status**: `Verified`
+## Overview
+This class implements a cache for Node objects using a hash table with separate chaining (linked lists) for collision resolution. It provides methods to store and retrieve nodes by ID, and to remove nodes from the cache while maintaining the linked list structure. The cache size is fixed at 1024 entries, optimized for fast lookups in RuneScape's object management system.
 
-## Primary Forensic Evidence
+## Architectural Relationships
+```mermaid
+graph TD
+    A[NodeCache] --> B[Hash Table Cache]
+    A --> C[Node Management]
+    A --> D[Separate Chaining]
+    C --> E[findNodeByID Method]
+    C --> F[removeFromCache Method]
+    B --> G[Fixed Size Array: 1024]
+    D --> H[Linked List per Bucket]
+    H --> I[Node.prev/next Links]
+```
 
-### 1. Structural Fingerprints
-- **Class Modifiers**: `final`
-- **Superclass**: `java/lang/Object`
-- **Interfaces**: `none`
-- **Field Count**: `3/3` (cache[], size, node)
-- **Method Count**: `2/2` (constructor, findNodeByID)
+## Bytecode Evidence Commands
+```bash
+head -20 bytecode/client/ARZPHHDH.bytecode.txt
+tail -10 bytecode/client/ARZPHHDH.bytecode.txt
+grep -A 5 -B 5 "sipush.*1024" bytecode/client/ARZPHHDH.bytecode.txt
+grep -A 10 -B 10 "invokevirtual.*unlink" bytecode/client/ARZPHHDH.bytecode.txt
+```
 
-### 2. Behavioral Analysis
-- **Constructor Pattern**: Creates `Node[]` array and initializes circular linked lists
-- **Magic Constants**: Error code `"91499,"`
-- **Cross-References**: `PKVMXVTO` (Node) array elements
-- **Unique Operations**: Hash table with `(l & (size - 1))` indexing
+## Deobfuscated Source Evidence Commands
+```bash
+head -15 srcAllDummysRemoved/src/NodeCache.java
+tail -15 srcAllDummysRemoved/src/NodeCache.java
+grep -A 5 -B 5 "findNodeByID" srcAllDummysRemoved/src/NodeCache.java
+grep -A 10 -B 10 "removeFromCache" srcAllDummysRemoved/src/NodeCache.java
+```
 
-### 3. Forensic Technique Evidence
+## Javap Cache Evidence Commands
+```bash
+head -15 srcAllDummysRemoved/.javap_cache/NodeCache.javap.cache
+tail -15 srcAllDummysRemoved/.javap_cache/NodeCache.javap.cache
+grep -A 5 -B 5 "findNodeByID" srcAllDummysRemoved/.javap_cache/NodeCache.javap.cache
+grep -A 10 -B 10 "removeFromCache" srcAllDummysRemoved/.javap_cache/NodeCache.javap.cache
+```
 
-#### Behavioral Evidence (PRIMARY)
-- **Bytecode Instruction Patterns**: `newarray PKVMXVTO` for hash table
-- **Method Call Graph**: Hash table lookup with linked list traversal
-- **State Manipulation**: Circular linked list initialization (`node.prev = node`)
+## Verification of Non-Contradictory Evidence
+All sources align on the cache implementation: array of Node arrays, hash-based indexing, linked list traversal for lookups, and unlink/relink operations for removals. Bytecode shows consistent array initialization, field accesses, and method invocations without discrepancies.
 
-#### Signature Evidence (SUPPORTING)
-- **Field Type Patterns**: Single `Node[]` array field
-- **Method Signature Similarity**: `findNodeByID(long)` method
-- **Access Modifier Match**: `final` class with consistent field access
-
-## Detailed Analysis
-
-### Critical Evidence Points
-1. **Unique Error Code**: The error string `"91499,"` appears at line 162 in ARZPHHDH.bytecode.txt, providing definitive identification.
-2. **1024-Element Node Array**: Creates `anewarray PKVMXVTO` (Node array) of exactly 1024 elements, matching the hash table size.
-3. **Circular Linked List Pattern**: Initializes each Node with `node.prev = node; node.next = node`, creating circular self-references.
-4. **Hash Table Indexing**: Uses `(l & (size - 1))` masking for hash table bucket calculation, exact same algorithm as deobfuscated version.
-
-### Cross-Reference Validation
-- **Dependencies**: `PKVMXVTO` (Node) class for array elements
-- **References From**: `GCPOSBWX` (MRUNodes) creates NodeCache instance
-- **Validation Loop**: Confirmed by MRUNodes constructor that instantiates this class
-
-### Counter-Evidence Analysis
-- **Potential Conflicts**: No other class combines 1024-element Node arrays with circular linked list initialization
-- **Risk Assessment**: Error code + specific hash algorithm provides unique signature
-- **Alternative Hypotheses**: None viable - this combination of patterns is completely unique
-
-## Forensic Methodology
-
-### Detection Method Used
-- **Primary Method**: `behavioral` (hash table + linked list patterns)
-- **Supporting Methods**: `cross-reference, signature`
-- **Validation Techniques**: `data structure pattern analysis`
-
-### Evidence Strength Assessment
-- **Structural Match**: `23/25` (field and method patterns match closely)
-- **Behavioral Match**: `25/25` (hash table algorithm identical)
-- **Cross-Reference Match**: `25/25` (dependency relationships confirmed)
-- **Unique Identifiers**: `25/25` (error code + hash algorithm unique)
-
-## Verification History
-- **Initial Match**: `2026-01-08` - Hash table pattern analysis
-- **Cross-Reference Validation**: `2026-01-08` - Node dependency verification
-- **Manual Review**: `2026-01-08` - Circular linked list algorithm review
-- **Final Confirmation**: `2026-01-08` - 100% confidence
-
-## Sources and References
-- **Deobfuscated Source**: `srcAllDummysRemoved/src/NodeCache.java`
-- **Obfuscated Bytecode**: `bytecode/client/ARZPHHDH.bytecode.txt`
-- **Related Evidence**: `Node.md, MRUNodes.md`
-- **Analysis Tools**: `classmapper v1.0, manual bytecode analysis`
+## 1:1 Mapping Confirmation
+This mapping is disputed due to potential overlap with NodeCache.md (same class, conflicting evidence). Flag for subagent research in disputed/ if unique identifiers cannot resolve.
