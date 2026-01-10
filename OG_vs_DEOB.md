@@ -42,3 +42,7 @@ You can break the research needed to complete these tasks as delegations for sub
 
 
 For any disputes/contradictions document the issue in `bytecode/mapping/evidence/disputed`, then use subagents to research what the proper mapping _should_ be.
+
+
+### Notes to avoid wrong-direction and rabbit trails
+ - You can ignore the old tool in `./tools/classmapper_ARCHIVED_2026-01-08/`. This is archived and no longer apart of the strategy.
