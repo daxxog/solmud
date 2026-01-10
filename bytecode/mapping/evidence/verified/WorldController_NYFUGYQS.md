@@ -17,11 +17,11 @@ NYFUGYQS implements comprehensive world state management that perfectly matches 
 # Verify world state fields in NYFUGYQS
 grep -E "int.*\[\]\[\]|anIntArray.*anIntArrayArray" bytecode/client/NYFUGYQS.bytecode.txt | head -5
 
-# Verify world coordinate systems
-grep -E "(plane|height|tile|region)" bytecode/client/NYFUGYQS.bytecode.txt | head -10
+# Verify world coordinate systems (multi-dimensional arrays)
+grep -E "int\[\]\[\]\[\]" bytecode/client/NYFUGYQS.bytecode.txt | head -10
 
 # Verify deobfuscated WorldController has same patterns
-grep -E "(plane|height|tile|region)" srcAllDummysRemoved/src/WorldController.java | head -10
+grep -E "int\[\]\[\]\[\]|anIntArrayArrayArray" srcAllDummysRemoved/src/WorldController.java | head -10
 ```
 
 **Evidence**: NYFUGYQS manages multi-dimensional world arrays with coordinate systems identical to WorldController.
@@ -31,14 +31,14 @@ Both classes implement world data loading and initialization:
 
 **World Loading Verification:**
 ```bash
-# Verify world loading methods in NYFUGYQS
-grep -E "(loadWorld|initWorld|setupWorld)" bytecode/client/NYFUGYQS.bytecode.txt
+# Verify world loading methods in NYFUGYQS (look for constructor and init methods)
+grep -E "public NYFUGYQS|public.*init" bytecode/client/NYFUGYQS.bytecode.txt
 
-# Verify world size management
-grep -E "(worldWidth|worldHeight|worldSize)" bytecode/client/NYFUGYQS.bytecode.txt
+# Verify world size management (look for dimensions in constructor)
+grep -A 5 "public NYFUGYQS" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify WorldController loading patterns
-grep -A 10 -B 5 "public.*init" srcAllDummysRemoved/src/WorldController.java
+grep -A 10 -B 5 "public.*init|public WorldController" srcAllDummysRemoved/src/WorldController.java
 ```
 
 ### **3. Multi-Dimensional Array Structures (DISTINCTIVE)**
@@ -47,10 +47,10 @@ Both classes use complex multi-dimensional arrays for world data:
 **Array Structure Verification:**
 ```bash
 # Verify multi-dimensional arrays in NYFUGYQS
-grep -c -E "int\[\]\[\[\]|anIntArrayArray" bytecode/client/NYFUGYQS.bytecode.txt
+grep -c "int\[\]\[\]\[\]" bytecode/client/NYFUGYQS.bytecode.txt
 
-# Verify world coordinate grid structures
-grep -E "104.*104|64.*64|plane.*\[\]" bytecode/client/NYFUGYQS.bytecode.txt
+# Verify world coordinate grid structures (look for array initialization)
+grep -A 5 "newarray" bytecode/client/NYFUGYQS.bytecode.txt | head -10
 
 # Verify WorldController has matching array structures
 grep -E "int\[\]\[\[\]|anIntArrayArray" srcAllDummysRemoved/src/WorldController.java | head -5
@@ -69,6 +69,35 @@ grep -E "(regionX|regionY|regionId)" bytecode/client/NYFUGYQS.bytecode.txt
 
 # Verify WorldController coordinate patterns
 grep -E "(plane.*[0-3]|planeHeight|planeIndex)" srcAllDummysRemoved/src/WorldController.java
+```
+
+## **JAVAP CACHE VERIFICATION**
+
+### **1. World State Management in Javap**
+The javap cache shows the same comprehensive world state management:
+
+**Verification Commands:**
+```bash
+# Verify world state fields in WorldController javap cache
+grep -E "int\[\]\[\]|anIntArray.*anIntArrayArray" srcAllDummysRemoved/.javap_cache/WorldController.javap.cache | head -5
+
+# Verify world coordinate systems (multi-dimensional arrays) in javap
+grep -E "int\[\]\[\]\[\]" srcAllDummysRemoved/.javap_cache/WorldController.javap.cache | head -10
+
+# Verify world loading methods in javap cache
+grep -E "public.*init|public WorldController" srcAllDummysRemoved/.javap_cache/WorldController.javap.cache
+```
+
+### **2. Array Structure in Javap**
+Both bytecode and javap show identical complex multi-dimensional arrays:
+
+**Array Structure Verification:**
+```bash
+# Verify multi-dimensional arrays in WorldController javap
+grep -c "int\[\]\[\]\[\]" srcAllDummysRemoved/.javap_cache/WorldController.javap.cache
+
+# Verify world coordinate grid structures in javap (look for array initialization)
+grep -A 5 "newarray" srcAllDummysRemoved/.javap_cache/WorldController.javap.cache | head -10
 ```
 
 ## **ALTERNATIVE ANALYSIS**

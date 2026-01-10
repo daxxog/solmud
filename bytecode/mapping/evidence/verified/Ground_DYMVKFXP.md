@@ -26,23 +26,23 @@ grep -A 10 -B 5 "putfield" bytecode/client/DYMVKFXP.bytecode.txt
 ## Deobfuscated Source Evidence Commands
 For Ground class:
 ```
-grep -A 10 "public final class Ground" srcAllDummysRemoved/src/Ground.java
+grep -A 10 -B 5 "public final class Ground" srcAllDummysRemoved/src/Ground.java
 ```
 
 For constructor:
 ```
-grep -A 15 "public Ground" srcAllDummysRemoved/src/Ground.java
+grep -A 15 -B 5 "public Ground" srcAllDummysRemoved/src/Ground.java
 ```
 
 ## Javap Cache Evidence Commands
 For class structure:
 ```
-grep -A 10 "public final class Ground" srcAllDummysRemoved/.javap_cache/Ground.javap.cache
+grep -A 10 -B 5 "public final class Ground" srcAllDummysRemoved/.javap_cache/Ground.javap.cache
 ```
 
 For fields:
 ```
-grep -A 5 "Object" srcAllDummysRemoved/.javap_cache/Ground.javap.cache
+grep -A 5 -B 5 "Object" srcAllDummysRemoved/.javap_cache/Ground.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

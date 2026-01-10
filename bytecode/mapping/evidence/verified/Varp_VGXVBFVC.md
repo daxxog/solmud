@@ -27,13 +27,13 @@ grep -A 25 "public void a.*MBMGIXGO.*boolean.*int" bytecode/client/VGXVBFVC.byte
 For unpackConfig method:
 
 ```
-grep -A 25 "public static void unpackConfig" srcAllDummysRemoved/src/Varp.java
+grep -A 25 -B 5 "public static void unpackConfig" srcAllDummysRemoved/src/Varp.java
 ```
 
 For readValues method:
 
 ```
-grep -A 35 "private void readValues" srcAllDummysRemoved/src/Varp.java
+grep -A 35 -B 5 "private void readValues" srcAllDummysRemoved/src/Varp.java
 ```
 
 ## Javap Cache Sections
@@ -41,13 +41,13 @@ grep -A 35 "private void readValues" srcAllDummysRemoved/src/Varp.java
 For unpackConfig:
 
 ```
-grep -A 25 "public static void unpackConfig" srcAllDummysRemoved/.javap_cache/Varp.javap.cache
+grep -A 25 -B 5 "public static void unpackConfig" srcAllDummysRemoved/.javap_cache/Varp.javap.cache
 ```
 
 For readValues:
 
 ```
-grep -A 35 "private void readValues" srcAllDummysRemoved/.javap_cache/Varp.javap.cache
+grep -A 35 -B 5 "private void readValues" srcAllDummysRemoved/.javap_cache/Varp.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

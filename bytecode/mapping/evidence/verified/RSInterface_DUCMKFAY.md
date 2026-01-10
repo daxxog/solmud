@@ -8,10 +8,10 @@ RSInterface extends Object, uses Sprite (CXGZMTJK), TextDrawingArea (YXVQXWYR), 
 
 ```mermaid
 classDiagram
-    DUCMKFAY --> Object
-    DUCMKFAY --> CXGZMTJK[Sprite]
-    DUCMKFAY --> YXVQXWYR[TextDrawingArea]
-    DUCMKFAY --> GCPOSBWX[MRUNodes]
+    RSInterface --> Object
+    RSInterface --> Sprite
+    RSInterface --> TextDrawingArea
+    RSInterface --> MRUNodes
 ```
 
 ## Bytecode Matching Commands
@@ -28,7 +28,7 @@ grep -A 10 -B 5 "public static" bytecode/client/DUCMKFAY.bytecode.txt
 ## Deobfuscated Source Evidence Commands
 For RSInterface class:
 ```
-grep -A 25 "public class RSInterface" srcAllDummysRemoved/src/RSInterface.java
+grep -A 25 "public final class RSInterface" srcAllDummysRemoved/src/RSInterface.java
 ```
 
 For static methods:
@@ -39,12 +39,12 @@ grep -A 10 "public static RSInterface" srcAllDummysRemoved/src/RSInterface.java
 ## Javap Cache Evidence Commands
 For class structure:
 ```
-grep -A 20 "public class RSInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 20 "public final class RSInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 For methods:
 ```
-grep -A 5 "addButton" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 5 "unpack" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

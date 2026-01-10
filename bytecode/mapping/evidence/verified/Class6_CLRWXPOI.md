@@ -39,10 +39,10 @@ grep -E "public.*method167\|private.*method168\|public.*method169" bytecode/clie
 head -10 srcAllDummysRemoved/src/Class6.java
 
 # Show key fields in source
-grep -A 5 -B 2 "private Class29\|private final int\[\]\|private static int\[\]" srcAllDummysRemoved/src/Class6.java
+grep -A 5 -B 5 "private Class29\|private final int\[\]\|private static int\[\]" srcAllDummysRemoved/src/Class6.java
 
 # Show javap cache field declarations
-grep -A 15 -B 2 "Class29.*aClass29\|int\[\].*anIntArray106\|static.*anIntArray115" srcAllDummysRemoved/.javap_cache/Class6.javap.cache
+grep -A 15 -B 5 "Class29.*aClass29\|int\[\].*anIntArray106\|static.*anIntArray115" srcAllDummysRemoved/.javap_cache/Class6.javap.cache
 ```
 
 ### 3. Wave Table Generation Evidence
@@ -55,6 +55,9 @@ grep -A 5 -B 5 "Math\.sin\|5215\.1903" bytecode/client/CLRWXPOI.bytecode.txt
 
 # Show source wave table generation
 grep -A 15 -B 5 "method166\|Math\.random\|Math\.sin.*5215" srcAllDummysRemoved/src/Class6.java
+
+# Show source audio synthesis algorithm
+grep -A 20 -B 5 "method167\|aClass29_98\.method328\|method168" srcAllDummysRemoved/src/Class6.java
 ```
 
 ### 4. Audio Synthesis Evidence

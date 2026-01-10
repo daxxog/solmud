@@ -8,12 +8,12 @@ Animable_Sub4 extends Animable (XHHRODPC), uses SpotAnim (MUDLUUBC), Model (ZKAR
 
 ```mermaid
 classDiagram
-    SWTXAYDT --> XHHRODPC[Animable]
-    SWTXAYDT --> MUDLUUBC[SpotAnim]
-    SWTXAYDT --> ZKARKDQW[Model]
-    SWTXAYDT --> LKGEGIEW[Animation]
-    SWTXAYDT : +getRotatedModel()
-    SWTXAYDT : +method456(int)
+    Animable_Sub4 --> Animable
+    Animable_Sub4 --> SpotAnim
+    Animable_Sub4 --> Model
+    Animable_Sub4 --> Animation
+    Animable_Sub4 : +getRotatedModel()
+    Animable_Sub4 : +method456(int)
 ```
 
 ## Bytecode Matching Commands

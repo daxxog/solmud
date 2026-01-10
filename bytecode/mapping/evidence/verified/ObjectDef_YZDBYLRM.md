@@ -40,7 +40,7 @@ head -50 srcAllDummysRemoved/src/ObjectDef.java
 grep -A 10 -B 5 "forID\|readValues" srcAllDummysRemoved/src/ObjectDef.java
 
 # Show javap cache method signatures
-grep -A 5 -B 2 "public.*(" srcAllDummysRemoved/.javap_cache/ObjectDef.javap.cache | head -10
+grep -A 5 -B 5 "public.*(" srcAllDummysRemoved/.javap_cache/ObjectDef.javap.cache | head -10
 ```
 
 ### 3. Behavioral Patterns

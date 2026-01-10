@@ -30,7 +30,7 @@ grep -E "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytec
 grep -E "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytecode/client/LKGEGIEW.bytecode.txt
 
 # Show method signatures
-grep -E "public static.*a\|private.*readValues" bytecode/client/LKGEGIEW.bytecode.txt
+grep -E "public static.*a\|public void.*a" bytecode/client/LKGEGIEW.bytecode.txt
 ```
 
 ### 2. Source Code Correlation

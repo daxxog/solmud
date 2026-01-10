@@ -1,4 +1,4 @@
-# ZIJPRJEC → MouseDetection
+# MouseDetection → MouseDetection
 
 ## Overview
 MouseDetection implements Runnable for background mouse coordinate tracking with synchronization.
@@ -8,43 +8,43 @@ MouseDetection implements Runnable, uses client for mouse access, references RSA
 
 ```mermaid
 classDiagram
-    ZIJPRJEC ..|> Runnable
-    ZIJPRJEC --> client
-    ZIJPRJEC --> KHACHIFW[RSApplet]
-    ZIJPRJEC : +run()
+    MouseDetection ..|> Runnable
+    MouseDetection --> client
+    MouseDetection --> RSApplet
+    MouseDetection : +run()
 ```
 
 ## Bytecode Matching Commands
 To show Runnable implementation:
 ```
-grep -A 30 "public void run" bytecode/client/ZIJPRJEC.bytecode.txt
+grep -A 30 "public void run" bytecode/client/MouseDetection.bytecode.txt
 ```
 
 To show synchronization:
 ```
-grep -A 10 -B 5 "monitorenter" bytecode/client/ZIJPRJEC.bytecode.txt
+grep -A 10 -B 5 "monitorenter" bytecode/client/MouseDetection.bytecode.txt
 ```
 
 ## Deobfuscated Source Evidence Commands
 For MouseDetection class:
 ```
-grep -A 15 "public class MouseDetection" srcAllDummysRemoved/src/MouseDetection.java
+grep -A 15 -B 5 "public class MouseDetection" srcAllDummysRemoved/src/MouseDetection.java
 ```
 
 For run method:
 ```
-grep -A 10 "public void run" srcAllDummysRemoved/src/MouseDetection.java
+grep -A 10 -B 5 "public void run" srcAllDummysRemoved/src/MouseDetection.java
 ```
 
 ## Javap Cache Evidence Commands
 For class structure:
 ```
-grep -A 15 "public class MouseDetection" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
+grep -A 15 -B 5 "public class MouseDetection" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
 ```
 
 For methods:
 ```
-grep -A 5 "run" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
+grep -A 10 -B 5 "run" srcAllDummysRemoved/.javap_cache/MouseDetection.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

@@ -18,10 +18,10 @@ classDiagram
 - `grep -A 20 -B 5 "public XHHRODPC(" bytecode/client/XHHRODPC.bytecode.txt`  
   Shows the empty constructor bytecode with invokespecial to NodeSub init and return.
 
-- `grep -A 30 -B 5 "getRotatedModel" bytecode/client/XHHRODPC.bytecode.txt`  
+- `grep -A 30 -B 5 "public ZKARKDQW a(int)" bytecode/client/XHHRODPC.bytecode.txt`  
   Shows the getRotatedModel method returning null (aconst_null areturn).
 
-- `grep -A 40 -B 10 "method443" bytecode/client/XHHRODPC.bytecode.txt`  
+- `grep -A 40 -B 10 "public void a(int, int, int, int, int, int, int, int, int)" bytecode/client/XHHRODPC.bytecode.txt`  
   Shows the method443 drawing method with getRotatedModel call, null check, modelHeight set, and delegate to Model.method443.
 
 ## Commands for Deob Source Sections

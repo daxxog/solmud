@@ -8,8 +8,8 @@ ObjectManager extends Object and manages multiple 3D arrays for terrain and obje
 
 ```mermaid
 classDiagram
-    CRRWDRTI --> Object
-    CRRWDRTI --> client
+    ObjectManager --> Object
+    ObjectManager --> client
 ```
 
 ## Bytecode Matching Commands

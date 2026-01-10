@@ -111,7 +111,7 @@ final class TextClass {
 ## Bytecode Evidence Commands
 To show hashing algorithm:
 ```
-grep -A 20 -B 5 "sipush.*37" bytecode/client/ZTQFNQRH.bytecode.txt
+grep -A 20 -B 5 "ldc2_w.*37" bytecode/client/ZTQFNQRH.bytecode.txt
 ```
 
 To show character mapping:
@@ -121,7 +121,7 @@ grep -A 15 -B 5 "bipush.*65" bytecode/client/ZTQFNQRH.bytecode.txt
 
 To show base-37 validation:
 ```
-grep -A 10 -B 5 "irem" bytecode/client/ZTQFNQRH.bytecode.txt
+grep -A 10 -B 5 "lrem" bytecode/client/ZTQFNQRH.bytecode.txt
 ```
 
 ## Deobfuscated Source Evidence Commands

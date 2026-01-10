@@ -60,25 +60,65 @@ Used for most complex 3D object placement with extensive properties:
 - ✅ **Unique ID**: uid field for object identification
 - ✅ **Status Flags**: Byte field for additional object properties
 
+## **FORENSIC EVIDENCE COMMANDS**
+
+### **1. Source Code Correlation**
+Show field structure with multi-line context:
+
+```bash
+grep -A 10 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/src/Object5.java
+```
+
+Show Animable field integration:
+
+```bash
+grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/src/Object5.java
+```
+
+Show uid and byte fields:
+
+```bash
+grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/src/Object5.java
+```
+
+### **2. Javap Cache Correlation**
+Show field declarations in javap cache:
+
+```bash
+grep -A 10 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
+Show Animable field in javap:
+
+```bash
+grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
+Show uid and byte fields in javap:
+
+```bash
+grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
 ## **SOURCE CODE CORRELATION**
 
 ### **Object5.java (Reference):**
 ```java
 public final class Object5 {
-    int anInt517;
-    int anInt518;
-    int anInt519;
-    int anInt520;
-    public Animable aClass30_Sub2_Sub4_521;
-    public int anInt522;
-    int anInt523;
-    int anInt524;
-    int anInt525;
-    int anInt526;
-    int anInt527;
-    int anInt528;
-    public int uid;
-    byte aByte530;
+int anInt517;
+int anInt518;
+int anInt519;
+int anInt520;
+public Animable aClass30_Sub2_Sub4_521;
+public int anInt522;
+int anInt523;
+int anInt524;
+int anInt525;
+int anInt526;
+int anInt527;
+int anInt528;
+public int uid;
+byte aByte530;
 }
 ```
 

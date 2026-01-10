@@ -46,13 +46,13 @@ Contains the complete ISAAC mixing and generation methods:
 **Key Methods:**
 ```bash
 # Show isaac() method implementation
-grep -A 30 -B 5 "public.*isaac\|public.*v" bytecode/client/JOCFVBOI.bytecode.txt
+grep -A 30 -B 5 "private void b" bytecode/client/JOCFVBOI.bytecode.txt
 
 # Show getNextKey() method
-grep -A 15 -B 5 "getNextKey\|nextKey" bytecode/client/JOCFVBOI.bytecode.txt
+grep -A 15 -B 5 "public final int a" bytecode/client/JOCFVBOI.bytecode.txt
 
 # Show initialization method
-grep -A 20 -B 5 "initializeKeySet\|init" bytecode/client/JOCFVBOI.bytecode.txt
+grep -A 20 -B 5 "private final void c" bytecode/client/JOCFVBOI.bytecode.txt
 ```
 
 **Evidence**: Complete ISAAC algorithm with proper method signatures.
@@ -184,7 +184,7 @@ grep -E "\[I|\.count" srcAllDummysRemoved/.javap_cache/ISAACRandomGen.javap.cach
 
 ```mermaid
 graph TD
-    A[ISAACRandomGen_JOCFVBOI] --> B[Network Security]
+    A[ISAACRandomGen] --> B[Network Security]
     A --> C[Client Authentication]
     A --> D[Packet Encryption]
     B --> E[Anti-Cheat System]

@@ -24,8 +24,8 @@ graph TD
 head -20 bytecode/client/BMEXSMOV.bytecode.txt
 
 # Show method count and signatures
-grep -c "public.*(" bytecode/client/BMEXSMOV.bytecode.txt
-grep -E "public.*\(" bytecode/client/BMEXSMOV.bytecode.txt
+grep -c "(" bytecode/client/BMEXSMOV.bytecode.txt
+grep "(" bytecode/client/BMEXSMOV.bytecode.txt | grep -v Code
 
 # Show field declarations
 grep -E "^  public|^  private|^  int" bytecode/client/BMEXSMOV.bytecode.txt
@@ -48,8 +48,8 @@ grep -A 10 "Animable\|anInt\|uid" srcAllDummysRemoved/.javap_cache/Object4.javap
 # Show multiple Animable field declarations
 grep -E "XHHRODPC [d-f];" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show field access patterns
-grep -A 3 -B 3 "putfield" bytecode/client/BMEXSMOV.bytecode.txt | head -10
+# Show constructor bytecode
+grep -A 10 "Code:" bytecode/client/BMEXSMOV.bytecode.txt
 
 # Show coordinate field patterns
 grep -E "int [a-c];" bytecode/client/BMEXSMOV.bytecode.txt

@@ -113,14 +113,14 @@ final class Class11 {
 ```
 
 ## Deobfuscated Source Evidence Commands
-grep -A 10 -B 5 "method218" srcAllDummysRemoved/src/Class11.java
-grep -A 5 -B 5 "anIntArray220" srcAllDummysRemoved/src/Class11.java
-grep -A 5 -B 5 "anInt221" srcAllDummysRemoved/src/Class11.java
+grep -A 10 -B 5 "method210" srcAllDummysRemoved/src/Class11.java
+grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/src/Class11.java
+grep -A 5 -B 5 "anInt290" srcAllDummysRemoved/src/Class11.java
 
 ## Javap Cache Evidence Commands
-grep -A 10 -B 5 "method218" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
-grep -A 5 -B 5 "anIntArray220" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
-grep -A 5 -B 5 "anInt221" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+grep -A 10 -B 5 "method210" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+grep -A 5 -B 5 "anInt290" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
 
 ## **UNIQUE IDENTIFIERS**
 - **17 Field Structure**: 1 byte[] + 16 int fields

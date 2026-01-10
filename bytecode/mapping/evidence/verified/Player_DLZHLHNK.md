@@ -8,11 +8,11 @@ Player extends Entity (GQOSZKJC), uses EntityDef (CKDEJADD), Model (ZKARKDQW), M
 
 ```mermaid
 classDiagram
-    DLZHLHNK --> GQOSZKJC[Entity]
-    DLZHLHNK --> CKDEJADD[EntityDef]
-    DLZHLHNK --> ZKARKDQW[Model]
-    DLZHLHNK --> GCPOSBWX[MRUNodes]
-    DLZHLHNK --> LKGEGIEW[Animation]
+    Player --> Entity[Entity]
+    Player --> EntityDef[EntityDef]
+    Player --> Model[Model]
+    Player --> MRUNodes[MRUNodes]
+    Player --> Animation[Animation]
 ```
 
 ## Bytecode Matching Commands

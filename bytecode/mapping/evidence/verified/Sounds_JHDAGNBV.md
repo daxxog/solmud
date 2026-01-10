@@ -95,6 +95,28 @@ final class Sounds {
 }
 ```
 
+## Deobfuscated Source Evidence Commands
+For Sounds unpack method:
+```
+grep -A 15 -B 5 "public static void unpack" srcAllDummysRemoved/src/Sounds.java
+```
+
+For constructor:
+```
+grep -A 10 -B 5 "private Sounds" srcAllDummysRemoved/src/Sounds.java
+```
+
+## Javap Cache Evidence Commands
+For Sounds unpack method:
+```
+grep -A 15 -B 5 "public static void unpack" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+```
+
+For constructor:
+```
+grep -A 10 -B 5 "private Sounds" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+```
+
 ## **UNIQUE IDENTIFIERS**
 - **Audio Constants**: 22050 sample rate + 441000 buffer + 65535 limit
 - **Cryptographic Seeds**: 4 unique seeds for procedural audio generation

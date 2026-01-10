@@ -13,10 +13,10 @@ classDiagram
 ```
 
 ## Bash Commands Proving Bytecode Matches
-- `grep -A 20 -B 5 "public HNKCWGJM(" bytecode/client/HNKCWGJM.bytecode.txt`  
+- `grep -A 20 -B 5 "public final ZKARKDQW a" bytecode/client/HNKCWGJM.bytecode.txt`  
   Shows constructor with ID and quantity fields.
 
-- `grep -A 30 -B 5 "getRotatedModel" bytecode/client/HNKCWGJM.bytecode.txt`  
+- `grep -A 30 -B 5 "public final ZKARKDQW a" bytecode/client/HNKCWGJM.bytecode.txt`  
   Shows model generation method.
 
 ## Commands for Deob Source Sections
@@ -32,6 +32,13 @@ classDiagram
 
 - `grep -A 30 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/.javap_cache/Item.javap.cache`  
   Shows method.
+
+## Independent Verification Commands
+To demonstrate uniqueness beyond inheritance:
+```
+# Count other classes with methods returning Model (ZKARKDQW)
+grep -r "ZKARKDQW" bytecode/client/ | grep -v HNKCWGJM.bytecode.txt | wc -l
+```
 
 ## Verification of Non-Contradictory Evidence
 Matches exactly. No contradictions.

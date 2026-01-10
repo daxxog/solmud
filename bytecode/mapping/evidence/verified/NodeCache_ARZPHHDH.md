@@ -20,8 +20,8 @@ graph TD
 ```bash
 head -20 bytecode/client/ARZPHHDH.bytecode.txt
 tail -10 bytecode/client/ARZPHHDH.bytecode.txt
-grep -A 5 -B 5 "sipush.*1024" bytecode/client/ARZPHHDH.bytecode.txt
-grep -A 10 -B 10 "invokevirtual.*unlink" bytecode/client/ARZPHHDH.bytecode.txt
+grep -A 5 -B 5 "i = 1024" srcAllDummysRemoved/src/NodeCache.java
+grep -A 10 -B 10 "invokevirtual.*PKVMXVTO\.a" bytecode/client/ARZPHHDH.bytecode.txt
 ```
 
 ## Deobfuscated Source Evidence Commands

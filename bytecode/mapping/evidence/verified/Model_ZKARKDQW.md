@@ -39,7 +39,7 @@ head -30 srcAllDummysRemoved/src/Model.java
 
 ```bash
 # Key methods
-grep -A 5 "method.*render\|method.*draw" srcAllDummysRemoved/src/Model.java
+grep -A 5 -B 5 "method.*render\|method.*draw" srcAllDummysRemoved/src/Model.java
 ```
 
 ## Javap Cache Evidence Commands
@@ -51,7 +51,7 @@ head -20 srcAllDummysRemoved/.javap_cache/Model.javap.cache
 
 ```bash
 # Static arrays
-grep -A 10 "static.*anIntArray" srcAllDummysRemoved/.javap_cache/Model.javap.cache
+grep -A 10 -B 5 "static.*anIntArray" srcAllDummysRemoved/.javap_cache/Model.javap.cache
 ```
 
 ## Verification

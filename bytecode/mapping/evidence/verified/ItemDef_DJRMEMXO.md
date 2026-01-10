@@ -37,15 +37,15 @@ This shows sprite generation method.
 
 ## Deob Source Sections
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 15 "public static ItemDef forID"`
+`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 15 -B 5 "public static ItemDef forID"`
 
 This shows forID caching.
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 20 "private void readValues"`
+`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 20 -B 5 "private void readValues"`
 
 This shows readValues.
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 30 "public static Sprite getSprite"`
+`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 30 -B 5 "public static Sprite getSprite"`
 
 This shows sprite generation.
 

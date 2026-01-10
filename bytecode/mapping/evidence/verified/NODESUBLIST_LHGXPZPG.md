@@ -102,6 +102,58 @@ Used throughout the client for advanced data management:
 - ✅ **Efficient Storage**: Dynamic node allocation and deallocation
 - ✅ **Memory Management**: Proper node lifecycle management
 
+## **FORENSIC EVIDENCE COMMANDS**
+
+### **1. Source Code Correlation**
+Show constructor implementation with circular linking:
+
+```bash
+grep -A 10 -B 5 "public NodeSubList()" srcAllDummysRemoved/src/NodeSubList.java
+```
+
+Show insertHead method with node manipulation:
+
+```bash
+grep -A 15 -B 5 "public void insertHead" srcAllDummysRemoved/src/NodeSubList.java
+```
+
+Show popTail method:
+
+```bash
+grep -A 10 -B 5 "public NodeSub popTail" srcAllDummysRemoved/src/NodeSubList.java
+```
+
+Show field declarations:
+
+```bash
+grep -A 5 -B 5 "private final NodeSub head\|private NodeSub current" srcAllDummysRemoved/src/NodeSubList.java
+```
+
+### **2. Javap Cache Correlation**
+Show constructor in javap:
+
+```bash
+grep -A 10 -B 5 "public NodeSubList()" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+Show insertHead method in javap:
+
+```bash
+grep -A 15 -B 5 "public void insertHead" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+Show popTail method in javap:
+
+```bash
+grep -A 10 -B 5 "public NodeSub popTail" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+Show field declarations in javap:
+
+```bash
+grep -A 5 -B 5 "private final NodeSub head\|private NodeSub current" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
 ## **SOURCE CODE CORRELATION**
 
 ### **NodeSubList.java (Reference):**

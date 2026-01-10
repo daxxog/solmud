@@ -59,7 +59,7 @@ head -5 bytecode/client/client.bytecode.txt
 
 ```bash
 # Core game state fields (NPC arrays, ground arrays, socket)
-grep -A 15 "CWNCPMLX\[\]|LHGXPZPG\[\]\[\[\]|java\.net\.Socket" bytecode/client/client.bytecode.txt
+grep -E -A 15 "CWNCPMLX\[\]|LHGXPZPG\[\]\[\[\]|java\.net\.Socket" bytecode/client/client.bytecode.txt
 ```
 
 ```bash
@@ -78,7 +78,7 @@ head -15 srcAllDummysRemoved/src/client.java
 
 ```bash
 # Core game fields (NPC arrays, ground arrays, socket)
-grep -A 10 "NPC\[\]|NodeList\[\]\[\[\]|Socket.*socket" srcAllDummysRemoved/src/client.java
+grep -E -A 10 "NPC\[\]|NodeList\[\]\[\[\]|Socket.*socket" srcAllDummysRemoved/src/client.java
 ```
 
 ```bash
@@ -97,7 +97,7 @@ head -30 srcAllDummysRemoved/.javap_cache/client.javap.cache
 
 ```bash
 # Key game state arrays and networking fields
-grep -A 10 "NPC\[\]|NodeList\[\]\[\[\]|Socket" srcAllDummysRemoved/.javap_cache/client.javap.cache
+grep -E -A 10 "NPC\[\]|NodeList\[\]\[\[\]|Socket" srcAllDummysRemoved/.javap_cache/client.javap.cache
 ```
 
 ### 4. Cross-Reference Validation

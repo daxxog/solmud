@@ -192,6 +192,28 @@ final class Skills {
 }
 ```
 
+## Deobfuscated Source Evidence Commands
+For skillNames array:
+```
+grep -A 25 "public static final String\[\] skillNames" srcAllDummysRemoved/src/Skills.java
+```
+
+For skillEnabled array:
+```
+grep -A 15 "public static final boolean\[\] skillEnabled" srcAllDummysRemoved/src/Skills.java
+```
+
+## Javap Cache Evidence Commands
+For skillNames array:
+```
+grep -A 25 "public static final java.lang.String\[\] skillNames" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
+
+For skillEnabled array:
+```
+grep -A 15 "public static final boolean\[\] skillEnabled" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
+
 ## **UNIQUE IDENTIFIERS**
 - **Literal Strings**: Exact RuneScape skill names (attack, defence, etc.)
 - **Array Size**: 25 elements

@@ -89,12 +89,12 @@ head -10 srcAllDummysRemoved/.javap_cache/Class13.javap.cache
 
 ```bash
 # Method225 signature and monitorenter pattern
-grep -A 10 "method225.*Code:" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
+grep -A 10 -B 5 "method225.*Code:" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
 ```
 
 ```bash
 # Field assignments to Class32 instance
-grep -A 15 "putfield.*Class32" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
+grep -A 15 -B 5 "putfield.*Class32" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
 ```
 
 ### 4. Cross-Reference Validation

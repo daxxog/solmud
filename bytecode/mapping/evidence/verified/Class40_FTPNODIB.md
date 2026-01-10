@@ -8,8 +8,8 @@ Class40 extends Object, references Animation (LKGEGIEW) for timing.
 
 ```mermaid
 classDiagram
-    FTPNODIB --> Object
-    FTPNODIB --> LKGEGIEW[Animation]
+    Class40 --> Object
+    Class40 --> Animation
 ```
 
 ## Bytecode Matching Commands

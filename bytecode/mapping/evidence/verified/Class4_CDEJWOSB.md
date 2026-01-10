@@ -18,25 +18,14 @@ grep -A 15 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJW
 ```
 
 ## Deobfuscated Source Sections
-For method155:
-```
-grep -A 10 "public static int method155" srcAllDummysRemoved/src/Class4.java
-```
+grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/src/Class4.java
 
-For method157:
-```
-grep -A 10 "public static int method157" srcAllDummysRemoved/src/Class4.java
-```
+grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/src/Class4.java
 
 ## Javap Cache Sections
-For method155:
-```
-grep -A 10 "public static int method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
-```
+grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 
-For method157:
-```
-grep -A 10 "public static int method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

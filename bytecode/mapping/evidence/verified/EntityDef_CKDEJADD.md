@@ -32,11 +32,11 @@ This shows the readValues method parsing stream data.
 
 ## Deob Source Sections
 
-`cat srcAllDummysRemoved/src/EntityDef.java | grep -A 20 "public static EntityDef forID"`
+`cat srcAllDummysRemoved/src/EntityDef.java | grep -A 20 -B 5 "public static EntityDef forID"`
 
 This shows forID method caching logic.
 
-`cat srcAllDummysRemoved/src/EntityDef.java | grep -A 20 "private void readValues"`
+`cat srcAllDummysRemoved/src/EntityDef.java | grep -A 20 -B 5 "private void readValues"`
 
 This shows readValues parsing actions, models, etc.
 

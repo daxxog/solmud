@@ -28,23 +28,30 @@ grep -A 10 -B 5 "public.*ZKARKDQW" bytecode/client/CWNCPMLX.bytecode.txt
 ## Deobfuscated Source Evidence Commands
 For NPC class:
 ```
-grep -A 15 "public final class NPC" srcAllDummysRemoved/src/NPC.java
+grep -A 10 -B 5 "public final class NPC" srcAllDummysRemoved/src/NPC.java
 ```
 
 For getRotatedModel:
 ```
-grep -A 10 "public Model getRotatedModel" srcAllDummysRemoved/src/NPC.java
+grep -A 10 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/src/NPC.java
 ```
 
 ## Javap Cache Evidence Commands
 For class and inheritance:
 ```
-grep -A 10 "public final class NPC" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
+grep -A 10 -B 5 "public final class NPC" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
 ```
 
 For methods:
 ```
-grep -A 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
+grep -A 10 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
+```
+
+## Independent Verification Commands
+To demonstrate unique 1:1 correspondence beyond inheritance:
+```
+# Count classes extending Entity (GQOSZKJC) with a method returning Model (ZKARKDQW)
+grep -l "extends.*GQOSZKJC" bytecode/client/*.bytecode.txt | xargs grep -l "ZKARKDQW" | wc -l
 ```
 
 ## Verification of Non-Contradictory Evidence

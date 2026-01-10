@@ -20,7 +20,7 @@ classDiagram
 To show constructor and data loading:
 
 ```
-grep -A 20 -B 5 "public DSMJIEPN.*XTGLDHGX.*java/lang/String.*int" bytecode/client/DSMJIEPN.bytecode.txt
+grep -A 20 -B 5 "public DSMJIEPN.*XTGLDHGX.*java\.lang\.String.*int" bytecode/client/DSMJIEPN.bytecode.txt
 ```
 
 To show method356 (scaling):

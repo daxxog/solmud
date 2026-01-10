@@ -105,6 +105,28 @@ final class StreamLoader {
 }
 ```
 
+## Deobfuscated Source Evidence Commands
+For StreamLoader constructor:
+```
+grep -A 15 -B 5 "public StreamLoader" srcAllDummysRemoved/src/StreamLoader.java
+```
+
+For getDataForName method:
+```
+grep -A 10 -B 5 "public byte\[\] getDataForName" srcAllDummysRemoved/src/StreamLoader.java
+```
+
+## Javap Cache Evidence Commands
+For StreamLoader constructor:
+```
+grep -A 15 -B 5 "public StreamLoader" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
+
+For getDataForName method:
+```
+grep -A 10 -B 5 "public byte\[\] getDataForName" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
+
 ## **UNIQUE IDENTIFIERS**
 - **Magic Constants**: 44820, -29508, 891 combination
 - **Hash Algorithm**: Base-61 with -32 offset (unique to RuneScape)

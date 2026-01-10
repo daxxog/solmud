@@ -20,29 +20,18 @@ grep -A 20 -B 5 "public final class BISVHPUN" bytecode/client/BISVHPUN.bytecode.
 
 To show insertion method:
 ```
-grep -A 15 -B 5 "public final void a" bytecode/client/BISVHPUN.bytecode.txt
+grep -A 15 -B 5 "public void a(PPOHBEGB)" bytecode/client/BISVHPUN.bytecode.txt
 ```
 
 ## Deobfuscated Source Evidence Commands
-For NodeList constructor:
-```
-grep -A 10 "public NodeList" srcAllDummysRemoved/src/NodeList.java
-```
+grep -A 10 -B 5 "public NodeList" srcAllDummysRemoved/src/NodeList.java
 
-For insertHead method:
-```
-grep -A 10 "public void insertHead" srcAllDummysRemoved/src/NodeList.java
-```
+grep -A 10 -B 5 "public void insertHead" srcAllDummysRemoved/src/NodeList.java
 
 ## Javap Cache Evidence Commands
-For class structure:
-```
-grep -A 10 "public final class NodeList" srcAllDummysRemoved/.javap_cache/NodeList.javap.cache
-```
+grep -A 10 -B 5 "final class NodeList" srcAllDummysRemoved/.javap_cache/NodeList.javap.cache
 
-For methods:
-```
-grep -A 5 "insertHead" srcAllDummysRemoved/.javap_cache/NodeList.javap.cache
+grep -A 5 -B 5 "insertHead" srcAllDummysRemoved/.javap_cache/NodeList.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

@@ -31,7 +31,7 @@ grep -E "private|public|int|byte|XHHRODPC" bytecode/client/ZIKPHIFI.bytecode.txt
 grep -E "private|public|int|byte|XHHRODPC" bytecode/client/ZIKPHIFI.bytecode.txt
 
 # Show method signatures
-grep -E "public.*ZIKPHIFI\|private.*method457" bytecode/client/ZIKPHIFI.bytecode.txt
+grep "(" bytecode/client/ZIKPHIFI.bytecode.txt | grep -v Code
 ```
 
 ### 2. Source Code Correlation
@@ -51,8 +51,8 @@ grep -A 8 -B 2 "anInt811\|Animable\|anInt812\|uid\|aByte816" srcAllDummysRemoved
 # Show exact field ordering in bytecode
 grep -A 10 -B 2 "private int a\|private int b\|private int c\|public XHHRODPC d" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show uid field usage
-grep -A 3 -B 3 "putfield.*e\|getfield.*e" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show constructor bytecode
+grep -A 10 "Code:" bytecode/client/ZIKPHIFI.bytecode.txt
 
 # Show source field structure
 grep -A 10 -B 2 "anInt811\|anInt812\|anInt813\|aClass30_Sub2_Sub4_814\|uid\|aByte816" srcAllDummysRemoved/src/Object3.java
@@ -63,8 +63,8 @@ grep -A 10 -B 2 "anInt811\|anInt812\|anInt813\|aClass30_Sub2_Sub4_814\|uid\|aByt
 # Show Animable field access
 grep -A 5 -B 5 "XHHRODPC\|getfield.*d" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show constructor parameter usage
-grep -A 10 -B 5 "invokespecial.*ZIKPHIFI\|putfield.*B\|putfield.*d" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show constructor declaration
+grep -A 10 "ZIKPHIFI();" bytecode/client/ZIKPHIFI.bytecode.txt
 
 # Show source Animable assignment
 grep -A 5 -B 5 "aClass30_Sub2_Sub4_814\|Animable" srcAllDummysRemoved/src/Object3.java
@@ -75,8 +75,8 @@ grep -A 5 -B 5 "aClass30_Sub2_Sub4_814\|Animable" srcAllDummysRemoved/src/Object
 # Verify unique mapping - no other classes reference ZIKPHIFI
 grep -r "ZIKPHIFI" bytecode/client/ | grep -v "ZIKPHIFI.bytecode.txt" | wc -l
 
-# Show inheritance relationship in bytecode
-grep -A 2 -B 2 "extends.*XHHRODPC" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show class declaration in bytecode
+grep "class ZIKPHIFI" bytecode/client/ZIKPHIFI.bytecode.txt
 
 # Show inheritance in DEOB source
 grep -A 2 -B 2 "extends.*Animable" srcAllDummysRemoved/src/Object3.java

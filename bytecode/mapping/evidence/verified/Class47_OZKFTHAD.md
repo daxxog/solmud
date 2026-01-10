@@ -68,6 +68,25 @@ grep -E "public.*Class47\|final.*Class47" srcAllDummysRemoved/.javap_cache/Class
 ```
 
 ## Deobfuscated Source Evidence Commands
+```bash
+# Show Class47 class declaration
+grep -A 10 -B 5 "public class Class47" srcAllDummysRemoved/src/Class47.java
+
+# Show int field declarations
+grep -A 5 -B 5 "int anInt" srcAllDummysRemoved/src/Class47.java
+
+# Show constructor or method signatures
+grep -A 5 -B 5 "public Class47\|public void" srcAllDummysRemoved/src/Class47.java
+```
 
 ## Javap Cache Evidence Commands
+```bash
+# Show Class47 class structure
+grep -A 10 -B 5 "public class Class47" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
+
+# Show field declarations in javap
+grep -A 5 -B 5 "int anInt" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
+
+# Show method signatures in javap
+grep -A 5 -B 5 "public.*Class47\|public.*void" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
 ```

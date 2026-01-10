@@ -15,7 +15,6 @@ NodeSub extends Node; used in caching systems like MRUNodes.
 ```mermaid
 classDiagram
     Node <|-- NodeSub
-    NodeSub --> PPOHBEGB : extends with unlink
 ```
 
 ## Bytecode Matches

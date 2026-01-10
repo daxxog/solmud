@@ -164,7 +164,7 @@ grep -A 25 "public Class21" srcAllDummysRemoved/src/Class21.java
 ### **Javap Cache Verification:**
 ```bash
 # Show Class21 in javap cache
-grep -E "anInt687|anInt705" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
+grep -E "anInt369|anInt384" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
 
 # Show method signatures
 grep "public.*(" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
@@ -174,7 +174,7 @@ grep "public.*(" srcAllDummysRemoved/.javap_cache/Class21.javap.cache
 
 ```mermaid
 graph TD
-    A[Class21_ZARDZRHZ] --> B[Game Data Storage]
+    A[Class21] --> B[Game Data Storage]
     A --> C[Integer Container]
     A --> D[State Management]
     B --> E[Game Logic Systems]

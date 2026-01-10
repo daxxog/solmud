@@ -15,7 +15,7 @@ MBMGIXGO implements the fundamental data reading stream for RuneScape:
 **Buffer Management:**
 ```bash
 # Show buffer array and pointer
-grep -A 5 -B 5 "aByteArray\|currentOffset\|field" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 5 -B 5 "public byte\[\] y\|public int z" bytecode/client/MBMGIXGO.bytecode.txt
 ```
 
 **Expected Pattern:**
@@ -29,13 +29,13 @@ Contains all standard primitive data reading methods:
 **Core Read Methods:**
 ```bash
 # Show readByte method
-grep -A 10 -B 5 "readByte\|a.*II" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 10 -B 5 "public byte d" bytecode/client/MBMGIXGO.bytecode.txt
 
 # Show readUnsignedByte method  
-grep -A 10 -B 5 "readUnsignedByte\|a.*III" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 10 -B 5 "public int c" bytecode/client/MBMGIXGO.bytecode.txt
 
 # Show readInt method
-grep -A 10 -B 5 "readInt\|a.*I" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 10 -B 5 "public int h" bytecode/client/MBMGIXGO.bytecode.txt
 ```
 
 **Expected Methods:**
@@ -51,7 +51,7 @@ Implements variable bit-length reading for efficient data encoding:
 **Bit Reading Operations:**
 ```bash
 # Show bit reading methods
-grep -A 15 -B 5 "readBits\|bitMask\|remainingBits" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 15 -B 5 "public int c.*int.*int" bytecode/client/MBMGIXGO.bytecode.txt
 ```
 
 **Expected Pattern:**
@@ -65,10 +65,10 @@ Contains game-specific data reading methods:
 **Special Read Methods:**
 ```bash
 # Show string reading
-grep -A 10 -B 5 "readString\|readBytes" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 10 -B 5 "public java.lang.String i" bytecode/client/MBMGIXGO.bytecode.txt
 
-# Show Jagex string reading
-grep -A 10 -B 5 "readJagString\|readJString" bytecode/client/MBMGIXGO.bytecode.txt
+# Show byte array reading
+grep -A 10 -B 5 "public byte\[\] a.*byte" bytecode/client/MBMGIXGO.bytecode.txt
 ```
 
 **Expected Methods:**
@@ -175,14 +175,7 @@ public class Stream {
 ### **Stream Structure Verification:**
 ```bash
 # Show buffer and field declarations
-grep -A 5 -B 5 "aByteArray\|currentOffset\|length" bytecode/client/MBMGIXGO.bytecode.txt
-
-# Show constructor patterns
-grep -A 8 -B 2 "public MBMGIXGO\|<init>" bytecode/client/MBMGIXGO.bytecode.txt
-
-# Show method count and signatures
-grep -c "public.*(" bytecode/client/MBMGIXGO.bytecode.txt
-grep "public.*(" bytecode/client/MBMGIXGO.bytecode.txt
+grep -A 5 -B 5 "public byte\[\] y\|public int z" bytecode/client/MBMGIXGO.bytecode.txt
 ```
 
 ### **Source Code Correlation:**
@@ -213,7 +206,7 @@ grep "<init>" srcAllDummysRemoved/.javap_cache/Stream.javap.cache
 
 ```mermaid
 graph TD
-    A[Stream_MBMGIXGO] --> B[Network Packet Processing]
+    A[Stream] --> B[Network Packet Processing]
     A --> C[Cache File Reading]
     A --> D[Game Data Serialization]
     B --> E[Client-Server Communication]

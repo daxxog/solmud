@@ -79,6 +79,25 @@ grep -c "final int" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
 ```
 
 ## Deobfuscated Source Evidence Commands
+```bash
+# Show Class43 class declaration with constructor
+grep -A 10 -B 5 "public Class43" srcAllDummysRemoved/src/Class43.java
+
+# Show final int field declarations
+grep -A 5 -B 5 "final int anInt" srcAllDummysRemoved/src/Class43.java
+
+# Show boolean field
+grep -A 5 -B 5 "boolean aBoolean" srcAllDummysRemoved/src/Class43.java
+```
 
 ## Javap Cache Evidence Commands
+```bash
+# Show Class43 class structure
+grep -A 10 -B 5 "public Class43" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
+
+# Show final field declarations
+grep -A 5 -B 5 "final int" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
+
+# Show boolean field in javap
+grep -A 5 -B 5 "boolean" srcAllDummysRemoved/.javap_cache/Class43.javap.cache
 ```
