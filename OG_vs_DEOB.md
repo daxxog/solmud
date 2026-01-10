@@ -26,7 +26,7 @@ Probably correct mapping (unless proven WRONG using **evidence**):
 _note for agent_
 You can break the research needed to complete these tasks as delegations for subagents.
 
-    - Make sure each subagent **reads** this file _before_ editing any evidence files!
+    - Make sure each subagent **reads** this file (./OG_vs_DEOB.md) _before_ editing any evidence files!
     - Run jobs in batches to avoid rate limits.
     - Tell the agent they are a subagent.
 
