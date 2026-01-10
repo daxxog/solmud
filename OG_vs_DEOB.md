@@ -27,6 +27,7 @@ _note for agent_
 You can break the research needed to complete these tasks as delegations for subagents.
 
     - Make sure each subagent **reads** this file _before_ editing any evidence files!
+    - Run jobs in batches to avoid rate limits.
 ```
 
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
