@@ -36,6 +36,7 @@ You can break the research needed to complete these tasks as delegations for sub
 ### ADHERE TO CRITICAL CHECKLIST
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
  - [ ] Explain its role in the overall architecture and relationship with other classes. Use mermaid diagrams where appropriate for documenting class-relationships.
+ - [ ] Diagrams should *not* reference non-existent classes!
  - [ ] Contain bash commands which can be ran to show specific areas of bytecode that prove a mapping.
  - [ ] Have commands that show sections of DEOB source code that relate to each section of obfusticated bytecode used as evidence.
  - [ ] Have commands that show sections of DEOB javap cache that relate to each section of obfusticated bytecode used as evidence.
