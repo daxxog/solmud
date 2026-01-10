@@ -1,4 +1,4 @@
-We are currently working on getting the 317 deob located in ./srcAllDummysRemoved mapped 1:1 with the bytecode in rs317og.jar (extracted to ./bytecode/)
+We are currently working on getting the 317 deob located in ./srcAllDummysRemoved mapped 1:1 with the bytecode in rs317og.jar (extracted to ./bytecode/). Don't trust—verify. If something doesn't seem right, create a plan to fix it. This document is the single source of truth for our task. This specific document **must not** be modified by any agent for any reason.
 
 
 73 classes, excluded GUI
