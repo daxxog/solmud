@@ -111,6 +111,38 @@ public class OnDemandFetcherParent {
 ## **MAPPING CONFIDENCE**
 **100% CONFIDENCE** - The combination of exact minimal structure, inheritance relationship with GHOWLKWN (OnDemandFetcher), empty method implementation, and boolean field pattern represents irrefutable forensic evidence. This is the base class for the on-demand fetching hierarchy.
 
+## Bytecode Matching Commands
+To show class and method:
+```
+grep -A 5 "public VJKFYAWG" bytecode/client/VJKFYAWG.bytecode.txt
+```
+
+To show method548:
+```
+grep -A 5 "public void b" bytecode/client/VJKFYAWG.bytecode.txt
+```
+
+## Deob Source Sections
+```
+head -10 srcAllDummysRemoved/src/OnDemandFetcherParent.java
+```
+
+```
+grep -A 5 "public void method548" srcAllDummysRemoved/src/OnDemandFetcherParent.java
+```
+
+## Javap Cache Sections
+```
+head -10 srcAllDummysRemoved/.javap_cache/OnDemandFetcherParent.javap.cache
+```
+
+```
+grep -A 5 "public void method548" srcAllDummysRemoved/.javap_cache/OnDemandFetcherParent.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Minimal class with empty methods. No contradictions. 1:1 mapping confirmed.
+
 ## **IMPACT**
 - Essential base class for network asset downloading
 - Provides foundation for OnDemandFetcher functionality

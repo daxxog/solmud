@@ -1,10 +1,46 @@
-# Forensic Evidence: CDEJWOSB → Class4
+# Class4_CDEJWOSB
 
-## **CLASS IDENTIFICATION**
-- **Obfuscated Name**: CDEJWOSB
-- **Deobfuscated Name**: Class4
-- **Confidence**: 100% (IRREFUTABLE EVIDENCE)
-- **Date Identified**: January 8, 2026
+## Overview
+Class4 provides static utility methods for coordinate transformations, likely for map or grid rotations in RuneScape. It handles orientation changes with bitwise operations on directions.
+
+## Architectural Relationships
+Class4 is a utility class with no dependencies. It may be used by game logic for positioning. No diagram.
+
+## Bytecode Matching Commands
+To show method155:
+```
+grep -A 10 "public static int a.*int.*int.*boolean" bytecode/client/CDEJWOSB.bytecode.txt
+```
+
+To show method157:
+```
+grep -A 15 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJWOSB.bytecode.txt
+```
+
+## Deobfuscated Source Sections
+For method155:
+```
+grep -A 10 "public static int method155" srcAllDummysRemoved/src/Class4.java
+```
+
+For method157:
+```
+grep -A 10 "public static int method157" srcAllDummysRemoved/src/Class4.java
+```
+
+## Javap Cache Sections
+For method155:
+```
+grep -A 10 "public static int method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+For method157:
+```
+grep -A 10 "public static int method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## Verification of Non-Contradictory Evidence
+Bytecode matches javap and source in switch logic and return values. No contradictions. 1:1 mapping confirmed.
 
 ## **PRIMARY FORENSIC EVIDENCE**
 
