@@ -25,6 +25,8 @@ Probably correct mapping (unless proven WRONG using **evidence**):
 ```
 _note for agent_
 You can break the research needed to complete these tasks as delegations for subagents.
+
+    - Make sure each subagent **reads** this file _before_ editing any evidence files!
 ```
 
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
