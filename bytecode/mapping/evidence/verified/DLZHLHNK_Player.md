@@ -1,52 +1,75 @@
-# DLZHLHNK → Player
+# Player → DLZHLHNK Evidence
 
 ## Overview
-Player manages player character data, extending Entity for base functionality, with fields for equipment, skills, and appearance.
+The Player class represents the user-controlled character in RuneScape 317, extending Entity for shared properties. It handles player-specific features like equipment rendering, skills, and user input, distinct from NPCs by managing player state and appearance.
 
-## Architectural Relationships
-Player extends Entity (GQOSZKJC), uses EntityDef (CKDEJADD), Model (ZKARKDQW), MRUNodes (GCPOSBWX), and Animation (LKGEGIEW).
+## Architectural Role and Relationships
+Player is central to client-side game logic, integrating with Entity for movement, Model/Animation for rendering, and client for input. It differs from NPC by including player-only fields like equipment arrays.
 
 ```mermaid
-classDiagram
-    DLZHLHNK --> GQOSZKJC[Entity]
-    DLZHLHNK --> CKDEJADD[EntityDef]
-    DLZHLHNK --> ZKARKDQW[Model]
-    DLZHLHNK --> GCPOSBWX[MRUNodes]
-    DLZHLHNK --> LKGEGIEW[Animation]
+graph TD
+    Entity --> Player
+    Player --> Model
+    Player --> Animation
+    Player --> client
 ```
 
-## Bytecode Matching Commands
-To show inheritance and fields:
-```
-head -n 25 bytecode/client/DLZHLHNK.bytecode.txt
+## Bytecode Evidence Commands
+
+```bash
+# Inheritance from Entity
+grep "extends GQOSZKJC" bytecode/client/DLZHLHNK.bytecode.txt
 ```
 
-To show method signatures:
-```
-grep -A 10 -B 5 "public.*ZKARKDQW" bytecode/client/DLZHLHNK.bytecode.txt
-```
-
-## Deobfuscated Source Evidence Commands
-For Player class:
-```
-grep -A 20 "public final class Player" srcAllDummysRemoved/src/Player.java
+```bash
+# Player-specific fields: long sb, int[] vb, etc.
+head -15 bytecode/client/DLZHLHNK.bytecode.txt
 ```
 
-For getRotatedModel:
+```bash
+# Public getRotatedModel method
+grep -A 5 "public final ZKARKDQW a(int)" bytecode/client/DLZHLHNK.bytecode.txt
 ```
-grep -A 10 "public Model getRotatedModel" srcAllDummysRemoved/src/Player.java
+
+```bash
+# Equipment array and player methods
+grep -A 10 "int\[\] vb" bytecode/client/DLZHLHNK.bytecode.txt
+```
+
+## Deob Source Evidence Commands
+
+```bash
+# Class declaration
+head -10 srcAllDummysRemoved/src/Player.java
+```
+
+```bash
+# Key methods and fields
+grep -A 5 "getRotatedModel\|method452" srcAllDummysRemoved/src/Player.java
+```
+
+```bash
+# Player-specific fields
+grep -A 5 "boolean.*visible\|aBoolean1699" srcAllDummysRemoved/src/Player.java
 ```
 
 ## Javap Cache Evidence Commands
-For class and inheritance:
-```
-grep -A 15 "public final class Player" srcAllDummysRemoved/.javap_cache/Player.javap.cache
+
+```bash
+# Class structure
+head -10 srcAllDummysRemoved/.javap_cache/Player.javap.cache
 ```
 
-For methods:
-```
-grep -A 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/Player.javap.cache
+```bash
+# Methods
+grep -A 5 "getRotatedModel\|method452" srcAllDummysRemoved/.javap_cache/Player.javap.cache
 ```
 
-## Verification of Non-Contradictory Evidence
-Bytecode matches source/javap in Entity extension, Player fields. No contradictions. 1:1 mapping confirmed.
+```bash
+# Fields
+grep -A 10 "long\|int\[\]" srcAllDummysRemoved/.javap_cache/Player.javap.cache
+```
+
+## Verification
+Commands show unique Player patterns (e.g., long field vs NPC's int, equipment arrays). No contradictions—DLZHLHNK maps only to Player. 1:1 verified. Relative paths used.</content>
+<parameter name="filePath">bytecode/mapping/evidence/verified/Player_DLZHLHNK.md
