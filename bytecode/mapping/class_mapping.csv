@@ -27,7 +27,7 @@ Class43,KVCQPLIW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Flo,MNHKFPQO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Object5,OPNPFUJE,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Sprite,CXGZMTJK,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Class30_Sub1,QTKGMFHL,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Class30_Sub1,DYMVKFXP,85.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
 Class11,LLORVYLP,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Class29,SQHJOGRT,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Censor,RKAYAFDQ,100.00,true,0,N/A,N/A,N/A,N/A,Censorship and text filtering - exact file matches
@@ -35,7 +35,7 @@ Skills,YUXCUCXD,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Sounds,JHDAGNBV,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 StreamLoader,XTGLDHGX,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 TextDrawingArea,YXVQXWYR,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Ground,DYMVKFXP,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Ground,QTKGMFHL,85.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
 Model,ZKARKDQW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 RSImageProducer,IVIFZQBK,100.00,true,1,N/A,N/A,N/A,N/A,Exact match - anchor class
 OnDemandData,PHKHJKBS,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
