@@ -33,6 +33,7 @@ You can break the research needed to complete these tasks as delegations for sub
     _ If you are _not_ a subagent reading this, your *primary task* is to verify _each and every_ mapping file to adhere to this document, using the subagent strategy documented above! Don't trust—verify!
 ```
 
+### ADHERE TO CRITICAL CHECKLIST
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
  - [ ] Explain its role in the overall architecture and relationship with other classes. Use mermaid diagrams where appropriate for documenting class-relationships.
  - [ ] Contain bash commands which can be ran to show specific areas of bytecode that prove a mapping.
