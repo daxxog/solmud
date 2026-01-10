@@ -53,3 +53,5 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
  - You can ignore the old tool in `./tools/classmapper_ARCHIVED_2026-01-08/`. This is archived and no longer apart of the strategy.
  - Avoid creating files like `bytecode/mapping/evidence/verified/Animable.md`. This doesn't contain any context in the filename about _which_ OG class it is mapped to! Instead use a path like `bytecode/mapping/evidence/verified/RSSocket_NQABEVLK.md`. Notice how the case is preserved.
  - Correct order for file naming convention is DEOB (first) _ OG (second)
+ - OG = ./rs317og.jar (you can list the contents of the jar if you are confused)
+ - DEOB = ./srcAllDummysRemoved.zip (you can list the contents of the zip if you are confused)
