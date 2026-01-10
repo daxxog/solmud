@@ -67,3 +67,6 @@ grep -A 3 -B 3 "mruNodes" srcAllDummysRemoved/src/ObjectDef.java
 # Show javap method signatures
 grep -E "insertFromCache|removeFromCache" srcAllDummysRemoved/.javap_cache/MRUNodes.javap.cache
 ```
+## DISPUTED ISSUE
+The unique mapping check shows references from other classes, contradicting the expected 0.
+

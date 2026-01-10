@@ -95,3 +95,6 @@ grep -A 2 -B 2 "implements.*Runnable" bytecode/client/GHOWLKWN.bytecode.txt
 - **Caching**: NodeList queue management
 - **Decompression**: Integration with Decompressor system</content>
 <parameter name="filePath">bytecode/mapping/evidence/verified/OnDemandFetcher_GHOWLKWN.md
+## DISPUTED ISSUE
+The unique mapping check shows references from other classes, contradicting the expected 0.
+

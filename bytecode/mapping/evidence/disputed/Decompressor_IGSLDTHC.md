@@ -93,3 +93,6 @@ grep -A 3 -B 3 "IOException" bytecode/client/IGSLDTHC.bytecode.txt
 - **Synchronization**: Thread-safe file operations
 - **Custom Format**: 520-byte blocks with 6-byte index entries</content>
 <parameter name="filePath">bytecode/mapping/evidence/verified/Decompressor_IGSLDTHC.md
+## DISPUTED ISSUE
+The unique mapping check command expects 0 references from other classes, but IGSLDTHC is referenced 25 times by client.bytecode.txt, indicating it is used by the client class. This suggests the mapping may not be 1:1 or the verification command is incorrect.
+
