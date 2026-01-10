@@ -57,3 +57,4 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
  - Correct order for file naming convention is DEOB (first) _ OG (second)
  - OG = ./rs317og.jar (you can list the contents of the jar if you are confused)
  - DEOB = ./srcAllDummysRemoved.zip (you can list the contents of the zip if you are confused)
+ - modify the `./Makefile` to create helper commands that speed up this work when it makes sense
