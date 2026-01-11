@@ -16,7 +16,6 @@ Node occupies the foundational position in the scene graph hierarchy, serving as
 
 ```mermaid
 classDiagram
-    Node --> Object
     Node <|-- NodeSub
     Node <|-- Entity
     Node <|-- Model

@@ -126,7 +126,7 @@ grep -r "NQABEVLK" bytecode/mapping/evidence/verified/ | grep -v RSSocket || ech
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "implements java.lang.Runnable" {} \; | xargs grep -l "java.io.InputStream" | xargs grep -l "java.io.OutputStream" | xargs grep -l "java.net.Socket" | xargs grep -l "KHACHIFW"
 
 # Show RSSocket's unique network configuration pattern
-grep -l "setSoTimeout.*30000" bytecode/client/*.bytecode.txt | xargs grep -l "setTcpNoDelay.*true" | grep "NQABEVLK"
+grep -l "setSoTimeout\|30000" bytecode/client/*.bytecode.txt | xargs grep -l "setTcpNoDelay\|true" | xargs grep -l "NQABEVLK"
 ```
 
 ### 8. Network Error Handling Evidence

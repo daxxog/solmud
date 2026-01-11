@@ -14,10 +14,8 @@ The class provides:
 
 ```mermaid
 graph TD
-    Flo --> Client[client]
     Flo --> StreamLoader[StreamLoader]
     Flo --> Stream[Stream]
-    Flo --> World[WorldController/Region]
 
     subgraph "Data Loading"
         StreamLoader
@@ -28,14 +26,8 @@ graph TD
         Flo
     end
 
-    subgraph "Rendering"
-        Client
-        World
-    end
-
     StreamLoader -.-> Flo
-    Flo -.-> Client
-    Flo -.-> World
+    Stream -.-> Flo
 ```
 
 Flo acts as the configuration layer between raw data files and the rendering engine, providing processed color data for terrain and environmental rendering.

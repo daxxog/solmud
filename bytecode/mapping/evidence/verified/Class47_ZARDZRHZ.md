@@ -5,7 +5,7 @@
 **Class47** functions as a comprehensive computational data container within the RuneScape game client, storing multiple integer fields alongside boolean flags, byte values, and integer arrays for complex algorithmic operations. The class provides structured storage for configuration parameters, intermediate calculations, and transformation matrices essential for mathematical computations, rendering optimizations, and game state management.
 
 The class provides comprehensive computational storage:
-- **Multiple Integer Fields**: Extensive collection of int fields (anInt787-795) for parameter storage
+- **Multiple Integer Fields**: Extensive collection of int fields (anInt787-804) for parameter storage
 - **Boolean and Byte Flags**: Boolean and byte fields for state control and configuration toggles
 - **Integer Arrays**: Array structures for complex data storage and mathematical operations
 - **Default Constructor**: Simple initialization pattern for computational framework integration
@@ -16,10 +16,8 @@ Class47 occupies a specialized position in the game's computational framework as
 ```mermaid
 classDiagram
     Class47 --> Object
-    Class47 --> Math
-    Class47 --> ConfigSystem
     Class47 : +Class47()
-    Class47 : -anInt787-794 (computational fields)
+    Class47 : -anInt787-804 (computational fields)
     Class47 : -boolean flags (state control)
     Class47 : -byte field (configuration)
     Class47 : -int[] arrays (complex storage)
@@ -90,7 +88,7 @@ grep -A 20 -B 5 "public Class47()" srcAllDummysRemoved/.javap_cache/Class47.java
 ### 6. Field Initialization Patterns
 ```bash
 # Show field initialization values in bytecode
-grep -A 15 -B 5 "putfield.*iconst\|putfield.*bipush" bytecode/client/OZKFTHAD.bytecode.txt
+grep -A 15 -B 5 "putfield.*iconst\|putfield.*bipush" bytecode/client/ZARDZRHZ.bytecode.txt
 
 # Show default field values in source
 grep -A 10 -B 5 "= 0\|= -1\|= 1" srcAllDummysRemoved/src/Class47.java
@@ -102,20 +100,20 @@ grep -A 10 -B 5 "putfield" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
 ### 7. Cross-Reference Validation (COMPUTATIONAL UNIQUENESS)
 ```bash
 # Show Class47 unique field count compared to other data classes
-grep -c "private.*int\|public.*int" bytecode/client/OZKFTHAD.bytecode.txt
+grep -c "private.*int\|public.*int" bytecode/client/ZARDZRHZ.bytecode.txt
 
 # Show Class47 array usage compared to similar classes
-grep -c "int\[\]" bytecode/client/OZKFTHAD.bytecode.txt
+grep -c "int\[\]" bytecode/client/ZARDZRHZ.bytecode.txt
 grep -c "int\[\]" bytecode/client/XPBACSMK.bytecode.txt
 
 # Verify Class47 boolean/byte field uniqueness
-grep -c "boolean.*;\|byte.*;" bytecode/client/OZKFTHAD.bytecode.txt
+grep -c "boolean.*;\|byte.*;" bytecode/client/ZARDZRHZ.bytecode.txt
 ```
 
 ### 8. Mathematical Operation Context
 ```bash
 # Show potential mathematical operations with enhanced context in bytecode
-grep -A 15 -B 10 "imul\|iadd\|isub\|idiv\|irem" bytecode/client/OZKFTHAD.bytecode.txt
+grep -A 15 -B 10 "imul\|iadd\|isub\|idiv\|irem" bytecode/client/ZARDZRHZ.bytecode.txt
 
 # Show computational method patterns with field context in DEOB source
 grep -A 15 -B 10 "Math\|calculate\|compute\|anInt.*anInt" srcAllDummysRemoved/src/Class47.java || echo "Focus on field operations"
@@ -127,7 +125,7 @@ grep -A 15 -B 10 "invokestatic.*Math\|iaload\|iastore" srcAllDummysRemoved/.java
 ### 9. Final Class Properties
 ```bash
 # Show final class declaration in bytecode
-grep -A 5 -B 5 "final class.*OZKFTHAD" bytecode/client/OZKFTHAD.bytecode.txt
+grep -A 5 -B 5 "final class.*ZARDZRHZ" bytecode/client/ZARDZRHZ.bytecode.txt
 
 # Show final class in DEOB source
 grep -A 5 -B 5 "final class Class47" srcAllDummysRemoved/src/Class47.java
@@ -139,7 +137,7 @@ grep -A 5 -B 5 "final class Class47" srcAllDummysRemoved/.javap_cache/Class47.ja
 ### 10. Field Access Patterns for Computation
 ```bash
 # Show field access patterns in bytecode
-grep -A 10 -B 5 "getfield\|putfield.*int" bytecode/client/OZKFTHAD.bytecode.txt
+grep -A 10 -B 5 "getfield\|putfield.*int" bytecode/client/ZARDZRHZ.bytecode.txt
 
 # Show field access in DEOB source
 grep -A 10 -B 5 "anInt78" srcAllDummysRemoved/src/Class47.java
@@ -150,7 +148,7 @@ grep -A 10 -B 5 "getfield.*anInt\|putfield.*anInt" srcAllDummysRemoved/.javap_ca
 
 ## Critical Evidence Points
 
-1. **Extensive Integer Fields**: Class47 contains 18 int fields (a-r) corresponding to anInt787-795 for comprehensive parameter storage.
+1. **Extensive Integer Fields**: Class47 contains 18 int fields (a-r) corresponding to anInt787-804 for comprehensive parameter storage.
 
 2. **Final Class Structure**: Simple final class with no boolean, byte, or array fields - pure computational data container.
 

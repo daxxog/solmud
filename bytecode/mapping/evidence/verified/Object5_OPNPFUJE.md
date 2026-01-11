@@ -11,16 +11,12 @@ The class provides advanced 3D object functionality:
 - **Comprehensive Rendering State**: Multiple integer fields for complex rendering parameters and visual properties
 
 ## Architecture Role
-Object5 serves as the highest-complexity 3D object representation in RuneScape's world management system, providing the most detailed object support for advanced animated entities and complex world objects. The class integrates with Animable for sophisticated visual effects, works with WorldController for world placement, and provides unique identification for object tracking. Object5 acts as the premium object class used for the most complex entities requiring full animation, rendering, and state management capabilities.
+Object5 serves as the highest-complexity 3D object representation in RuneScape's world management system, providing the most detailed object support for advanced animated entities and complex world objects. The class integrates with Animable for sophisticated visual effects, and provides unique identification for object tracking. Object5 acts as the premium object class used for the most complex entities requiring full animation, rendering, and state management capabilities.
 
 ```mermaid
 classDiagram
     Object5 --> Animable
     Object5 --> ObjectDef
-    Object5 --> WorldController
-    Object5 --> Model
-    WorldController --> Object5 : manages in world
-    RenderingEngine --> Object5 : renders objects
     Object5 : +anInt517-520 (position)
     Object5 : +aClass30_Sub2_Sub4_521 (Animable)
     Object5 : +anInt522-528 (rendering)
@@ -83,7 +79,7 @@ Object5:  int x4, Animable, int, int x7, int uid, byte
 Used for most complex 3D object placement with extensive properties:
 
 - ✅ **Coordinate System**: 4 integer fields for positioning data
-- ✅ **Model Reference**: Single Animable for visual representation
+- ✅ **Animable Reference**: Single Animable field for visual representation
 - ✅ **Extensive Properties**: 7 additional integer fields for complex object data
 - ✅ **Unique ID**: uid field for object identification
 - ✅ **Status Flags**: Byte field for additional object properties
@@ -163,7 +159,6 @@ Object5 serves as the most complex 3D world object class that integrates compreh
 classDiagram
     Object5 --> Animable
     Object5 --> ObjectDef
-    Object5 --> WorldController
     Object5 : +anInt517-520 (position)
     Object5 : +aClass30_Sub2_Sub4_521 (Animable)
     Object5 : +anInt522-528 (rendering)
@@ -271,5 +266,5 @@ grep -A 10 -B 5 "Animable.*aClass30_Sub2_Sub4_521" srcAllDummysRemoved/.javap_ca
 ## **IMPACT**
 - Essential component of 3D object positioning system
 - Used for most complex game world objects with extensive properties
-- Integrates with WorldController for advanced rendering
+- Provides advanced rendering capabilities through Animable fields
 - Part of complete Object1-5 hierarchy

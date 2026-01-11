@@ -2,16 +2,16 @@
 
 ## Class Overview
 
-**Object4** represents advanced 3D game world objects with enhanced positioning, animation, and model management capabilities within the RuneScape game engine. The class extends Animable to provide comprehensive object management with coordinate tracking, orientation handling, and direct Model references, enabling sophisticated animated objects with complex visual representations.
+**Object4** represents advanced 3D game world objects with enhanced positioning, animation, and rendering management capabilities within the RuneScape game engine. The class extends Animable to provide comprehensive object management with coordinate tracking, orientation handling, and multiple Animable references, enabling sophisticated animated objects with complex visual representations.
 
 The class provides comprehensive advanced object management:
 - **Animable Extension**: Inherits rendering and animation capabilities from base Animable class
 - **Enhanced Positioning**: Advanced coordinate and orientation fields for precise spatial placement
-- **Direct Model Integration**: Direct Model field references for optimized rendering performance
+- **Animable Field Integration**: Multiple Animable field references for rendering capabilities
 - **Object State Management**: Multiple fields for tracking object state and animation parameters
 
 ## Architecture Role
-Object4 occupies the most advanced position in the object hierarchy, combining Animable rendering capabilities with direct Model integration and enhanced positioning. Unlike other object types, Object4 provides the most comprehensive object management with direct Model references for optimized rendering while maintaining full animation support.
+Object4 occupies the most advanced position in the object hierarchy, combining Animable rendering capabilities with multiple Animable fields and enhanced positioning. Unlike other object types, Object4 provides the most comprehensive object management with multiple Animable fields for rendering while maintaining full animation support.
 
 ```mermaid
 classDiagram
@@ -154,7 +154,7 @@ grep -A 15 -B 5 "field.*count\|complexity" srcAllDummysRemoved/.javap_cache/Obje
 
 ## Critical Evidence Points
 
-1. **Direct Model Integration**: Object4 uniquely provides direct Model field for optimized rendering.
+1. **Multiple Animable Fields**: Object4 uniquely provides multiple Animable fields (aClass30_Sub2_Sub4_48, aClass30_Sub2_Sub4_49, aClass30_Sub2_Sub4_50) for rendering capabilities.
 
 2. **Enhanced Positioning**: Advanced coordinate and orientation field sets for precise placement.
 
@@ -164,12 +164,12 @@ grep -A 15 -B 5 "field.*count\|complexity" srcAllDummysRemoved/.javap_cache/Obje
 
 ## Verification Status
 
-**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The direct Model integration, enhanced positioning, Animable extension, and advanced field patterns provide definitive 1:1 mapping evidence that establishes Object4 as the most sophisticated object type with optimized rendering capabilities.
+**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The multiple Animable fields, enhanced positioning, Animable extension, and advanced field patterns provide definitive 1:1 mapping evidence that establishes Object4 as the most sophisticated object type with optimized rendering capabilities.
 
 ## Sources and References
 - **Bytecode**: bytecode/client/BMEXSMOV.bytecode.txt
 - **Deobfuscated Source**: srcAllDummysRemoved/src/Object4.java
 - **Javap Cache**: srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 - **Animable Base**: XHHRODPC (Animable) inheritance
-- **Direct Model**: ZKARKDQW (Model) field integration
+- **Multiple Animable Fields**: XHHRODPC (Animable) field integration
 - **Enhanced Positioning**: Advanced coordinate and orientation management

@@ -15,7 +15,7 @@ ObjectDef occupies a critical position in object definition hierarchy, serving a
 
 ```mermaid
 classDiagram
-    ObjectDef --> Object
+    
     ObjectDef --> Model
     ObjectDef --> Stream
     ObjectDef : +ObjectDef()
