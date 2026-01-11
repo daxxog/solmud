@@ -34,7 +34,7 @@ You can break the research needed to complete these tasks as delegations for sub
 ```
 
 ### ADHERE TO CRITICAL CHECKLIST
- - [ ] If you have never analyzed this before (and are not a subagent)—Rank evidence by quality and use the highest quality set of evidence as the template.
+ - [ ] If you have never analyzed this before (and are not a subagent)—Rank evidence by quality and use the highest quality set of evidence as the template. Existing "template" files should be ignored and removed. We only want exceptional forensic-grade evidence with beautiful documentation.
  - [ ] Diagrams should only contain reference to classes that exist in the DEOB source! Only reference classes by their DEOB name in diagrams (diagrams full of OG names are _useless_).
  - [ ] Contain an overview of the class, it's intended purpose, and core functionality.
  - [ ] Explain its role in the overall architecture and relationship with other classes. Use mermaid diagrams where appropriate for documenting class-relationships (inheritance, data access, method calls).
