@@ -71,3 +71,4 @@ ObjectManager,CRRWDRTI,95.00,true,0,N/A,N/A,N/A,N/A,Complex 3D world rendering -
 NodeList,BISVHPUN,85.00,true,0,N/A,N/A,N/A,N/A,Linked list cache management with NodeSub operations
 Class36,VBAXKVMG,95.00,true,0,N/A,N/A,N/A,N/A,Animation frame decoder - complex stream processing with 19 arrays
 Class18,XPBACSMK,90.00,true,0,N/A,N/A,N/A,N/A,Stream data wrapper - simple 6-field container with 7-parameter constructor
+Class11,OZKFTHAD,100.00,true,0,N/A,N/A,N/A,N/A,Collision detection system with coordinate scaling
