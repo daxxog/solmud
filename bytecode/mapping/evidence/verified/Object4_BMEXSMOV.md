@@ -15,88 +15,92 @@ Object4 occupies the most advanced position in the object hierarchy, combining A
 
 ```mermaid
 classDiagram
-    Object4 --> Animable
-    Object4 --> Model
+    Object4 --> Animable : contains fields
     Object4 : +Object4()
-    Object4 : -enhanced coordinates
-    Object4 : -direct Model reference
-    Object4 : -orientation fields
-    Object4 : +getRotatedModel()
+    Object4 : -int anInt45
+    Object4 : -int anInt46  
+    Object4 : -int anInt47
+    Object4 : -Animable aClass30_Sub2_Sub4_48
+    Object4 : -Animable aClass30_Sub2_Sub4_49
+    Object4 : -Animable aClass30_Sub2_Sub4_50
+    Object4 : -int uid
+    Object4 : -int anInt52
 ```
 
 ## Forensic Evidence Commands
 
 ### 1. Class Structure and Advanced Features
 ```bash
-# Show Object4 extends Animable in bytecode
-grep -A 20 -B 5 "extends.*XHHRODPC" bytecode/client/BMEXSMOV.bytecode.txt
+# Show Object4 final class declaration in bytecode
+grep -A 5 -B 5 "final class BMEXSMOV" bytecode/client/BMEXSMOV.bytecode.txt
 
 # Show corresponding class structure in DEOB source
-grep -A 15 -B 5 "public class Object4.*Animable" srcAllDummysRemoved/src/Object4.java
+grep -A 15 -B 5 "final class Object4" srcAllDummysRemoved/src/Object4.java
 
-# Verify inheritance in javap cache
-grep -A 15 -B 5 "class Object4 extends Animable" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
+# Verify final class in javap cache
+grep -A 5 -B 5 "final class Object4" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
-### 2. Direct Model Field Integration
+### 2. Animable Field Integration
 ```bash
-# Show direct Model field in bytecode
-grep -A 10 -B 5 "ZKARKDQW\|Model" bytecode/client/BMEXSMOV.bytecode.txt
+# Show Animable field references in bytecode
+grep -A 10 -B 5 "XHHRODPC.*[d-f];" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show Model field in DEOB source
-grep -A 10 -B 5 "Model.*model\|ZKARKDQW" srcAllDummysRemoved/src/Object4.java
+# Show Animable fields in DEOB source
+grep -A 10 -B 5 "Animable.*aClass30_Sub2_Sub4" srcAllDummysRemoved/src/Object4.java
 
-# Verify Model field in javap cache
-grep -A 10 -B 2 "Model\|ZKARKDQW" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
+# Verify Animable fields in javap cache
+grep -A 10 -B 2 "Animable" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
-### 3. Enhanced Coordinate and Orientation Fields
+### 3. Enhanced Integer Fields for Positioning
 ```bash
-# Show enhanced positioning fields in bytecode
-grep -A 15 -B 5 "coordinate\|orientation\|position" bytecode/client/BMEXSMOV.bytecode.txt
+# Show integer positioning fields in bytecode
+grep -A 15 -B 5 "int [a-c];" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show enhanced positioning in DEOB source
-grep -A 15 -B 5 "anInt.*coordinate\|orientation" srcAllDummysRemoved/src/Object4.java
+# Show integer fields in DEOB source
+grep -A 15 -B 5 "anInt45\|anInt46\|anInt47" srcAllDummysRemoved/src/Object4.java
 
-# Verify positioning fields in javap cache
-grep -A 15 -B 2 "coordinate\|orientation" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
+# Verify integer fields in javap cache
+grep -A 15 -B 2 "anInt45\|anInt46\|anInt47" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
-### 4. Constructor with Advanced Parameters
+### 4. Default Constructor Analysis
 ```bash
-# Show constructor in bytecode
-grep -A 25 -B 5 "public BMEXSMOV(" bytecode/client/BMEXSMOV.bytecode.txt
+# Show default constructor in bytecode
+grep -A 15 -B 5 "BMEXSMOV();" bytecode/client/BMEXSMOV.bytecode.txt
 
 # Show constructor in DEOB source
-grep -A 15 -B 5 "Object4(" srcAllDummysRemoved/src/Object4.java
+grep -A 10 -B 5 "Object4(" srcAllDummysRemoved/src/Object4.java
 
 # Verify constructor in javap cache
-grep -A 20 -B 5 "public Object4(" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
+grep -A 10 -B 5 "Object4(" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
 ### 5. Cross-Reference Validation (OBJECT4 UNIQUENESS)
 ```bash
-# Show only Object4 has direct Model field among object classes
-grep -l "ZKARKDQW.*;" bytecode/client/O*.bytecode.txt | grep "BMEXSMOV"
+# Show Object4 has multiple Animable fields among object classes
+grep -l "XHHRODPC.*d;" bytecode/client/*.bytecode.txt | grep "BMEXSMOV"
 
-# Show Object4 enhanced field count
+# Show Object4 enhanced field count vs other objects
 grep -c "int.*;" bytecode/client/BMEXSMOV.bytecode.txt
 grep -c "int.*;" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Verify Object4 unique Model integration
-grep -l "Model.*field\|direct.*Model" bytecode/client/*.bytecode.txt | grep "BMEXSMOV" || echo "Uniqueness through field patterns"
+# Verify Object4 unique multiple Animable field pattern
+grep -c "XHHRODPC.*;" bytecode/client/BMEXSMOV.bytecode.txt
+grep -c "XHHRODPC.*;" bytecode/client/OFQAEXFV.bytecode.txt
 ```
 
-### 6. Animable Method Overrides
+### 6. Field Complexity Analysis
 ```bash
-# Show method overrides in bytecode
-grep -A 20 -B 5 "public.*getRotatedModel\|public.*method" bytecode/client/BMEXSMOV.bytecode.txt
+# Show field complexity in bytecode
+grep -E "int [a-c];|XHHRODPC [d-f];|int [gh];" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show method overrides in DEOB source
-grep -A 15 -B 5 "getRotatedModel\|override" srcAllDummysRemoved/src/Object4.java
+# Show field complexity in DEOB source
+grep -E "anInt4[5-7]|aClass30_Sub2_Sub4_[4-9][0-9]|uid|anInt52" srcAllDummysRemoved/src/Object4.java
 
-# Verify methods in javap cache
-grep -A 15 -B 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
+# Verify field patterns in javap cache
+grep -E "anInt4[5-7]|aClass30_Sub2_Sub4" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
 ### 7. Field Initialization and State Management

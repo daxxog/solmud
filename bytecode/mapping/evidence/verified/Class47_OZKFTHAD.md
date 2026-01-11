@@ -114,14 +114,14 @@ grep -c "boolean.*;\|byte.*;" bytecode/client/OZKFTHAD.bytecode.txt
 
 ### 8. Mathematical Operation Context
 ```bash
-# Show potential mathematical operations in bytecode
-grep -A 10 -B 5 "imul\|iadd\|isub\|idiv" bytecode/client/OZKFTHAD.bytecode.txt
+# Show potential mathematical operations with enhanced context in bytecode
+grep -A 15 -B 10 "imul\|iadd\|isub\|idiv\|irem" bytecode/client/OZKFTHAD.bytecode.txt
 
-# Show computational method patterns in DEOB source
-grep -A 10 -B 5 "Math\|calculate\|compute" srcAllDummysRemoved/src/Class47.java || echo "No explicit Math operations"
+# Show computational method patterns with field context in DEOB source
+grep -A 15 -B 10 "Math\|calculate\|compute\|anInt.*anInt" srcAllDummysRemoved/src/Class47.java || echo "Focus on field operations"
 
-# Verify computational context in javap cache
-grep -A 10 -B 5 "invokestatic.*Math" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
+# Verify computational context with array access in javap cache
+grep -A 15 -B 10 "invokestatic.*Math\|iaload\|iastore" srcAllDummysRemoved/.javap_cache/Class47.javap.cache
 ```
 
 ### 9. Final Class Properties

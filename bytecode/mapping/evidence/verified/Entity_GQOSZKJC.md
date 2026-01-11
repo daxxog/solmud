@@ -104,6 +104,30 @@ grep -r "GQOSZKJC" bytecode/mapping/evidence/verified/ | grep -v Entity || echo 
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "extends XHHRODPC" {} \; | xargs grep -l "int\[\] m" | xargs grep -l "int\[\] n" | xargs grep -l "java.lang.String s" | xargs grep -l "int\[\] A"
 ```
 
+### 5. Animation Integration Evidence
+```bash
+# Show Animable integration in bytecode with context
+grep -A 15 -B 10 "XHHRODPC\|Animable\|getRotatedModel" bytecode/client/GQOSZKJC.bytecode.txt
+
+# Show corresponding animation methods in DEOB source with context
+grep -A 15 -B 10 "Animable.*extends\|getRotatedModel\|animation" srcAllDummysRemoved/src/Entity.java
+
+# Verify animation integration in javap cache with context
+grep -A 15 -B 10 "XHHRODPC\|Animable\|getRotatedModel" srcAllDummysRemoved/.javap_cache/Entity.javap.cache
+```
+
+### 6. Position Array Evidence
+```bash
+# Show position tracking arrays in bytecode with context
+grep -A 15 -B 10 "int\[\] m.*n.*A.*B" bytecode/client/GQOSZKJC.bytecode.txt
+
+# Show corresponding position arrays in DEOB source with context
+grep -A 15 -B 10 "smallX.*smallY.*smallXYIndex" srcAllDummysRemoved/src/Entity.java
+
+# Verify position array structure in javap cache with context
+grep -A 15 -B 10 "smallX\|smallY\|smallXYIndex" srcAllDummysRemoved/.javap_cache/Entity.javap.cache
+```
+
 ## Critical Evidence Points
 
 1. **Animable Inheritance**: The class extends XHHRODPC (Animable), indicating it's a renderable game object with animation capabilities.

@@ -65,12 +65,12 @@ grep -A 25 "public final void unlinkSub" srcAllDummysRemoved/.javap_cache/NodeSu
 
 ### 4. Cross-Reference Validation (NODESUB UNIQUENESS)
 ```bash
-# Show only NodeSub has prev/next linking among Node subclasses
-grep -l "extends.*PKVMXVTO" bytecode/client/*.bytecode.txt | xargs grep -l "prevNodeSub\|nextNodeSub" | grep "PPOHBEGB"
+# Show only NodeSub has NodeSub-type linking among Node subclasses
+grep -l "extends.*PKVMXVTO" bytecode/client/*.bytecode.txt | xargs grep -l "PPOHBEGB.*f\|PPOHBEGB.*g" | grep "PPOHBEGB"
 
 # Show NodeSub unique method count compared to base Node
-grep -c "unlinkSub" bytecode/client/PPOHBEGB.bytecode.txt
-grep -c "unlinkSub" bytecode/client/PKVMXVTO.bytecode.txt
+grep -c "public void b(" bytecode/client/PPOHBEGB.bytecode.txt
+grep -c "public void a(" bytecode/client/PKVMXVTO.bytecode.txt
 
 # Verify NodeSub lacks Node's cache-specific fields (distinguishes from Node)
 grep -l "cache\|MRUNodes" bytecode/client/PPOHBEGB.bytecode.txt | wc -l
@@ -135,40 +135,3 @@ grep -A 10 -B 5 "prevNodeSub\|nextNodeSub" srcAllDummysRemoved/.javap_cache/Node
 - **Base Node**: PKVMXVTO (Node)
 - **List Integration**: LHGXPZPG (NodeSubList)
 - **Cache Integration**: GCPOSBWX (MRUNodes)
-
-### 2. Linked List Field Evidence
-```bash
-# Show prev/next NodeSub fields in bytecode
-grep -A 15 -B 5 "prevNodeSub\|nextNodeSub\|PPOHBEGB.*c\|PPOHBEGB.*d" bytecode/client/PPOHBEGB.bytecode.txt
-
-# Show corresponding linked list fields in DEOB source
-grep -A 15 -B 5 "prevNodeSub\|nextNodeSub" srcAllDummysRemoved/src/NodeSub.java
-
-# Verify linked list field declarations in javap cache
-grep -A 15 -B 5 "prevNodeSub\|nextNodeSub" srcAllDummysRemoved/.javap_cache/NodeSub.javap.cache
-```
-
-### 3. unlinkSub Method Evidence
-```bash
-# Show unlinkSub method implementation in bytecode
-grep -A 25 -B 5 "public void b\|unlinkSub" bytecode/client/PPOHBEGB.bytecode.txt
-
-# Show corresponding unlinkSub in DEOB source
-grep -A 25 -B 5 "public final void unlinkSub" srcAllDummysRemoved/src/NodeSub.java
-
-# Verify unlinkSub in javap cache
-grep -A 25 "public final void unlinkSub" srcAllDummysRemoved/.javap_cache/NodeSub.javap.cache
-```
-
-### 4. Cross-Reference Validation (NODESUB UNIQUENESS)
-```bash
-# Show only NodeSub has prev/next linking among Node subclasses
-grep -l "extends.*PKVMXVTO" bytecode/client/*.bytecode.txt | xargs grep -l "prevNodeSub\|nextNodeSub" | grep "PPOHBEGB"
-
-# Show NodeSub unique method count compared to base Node
-grep -c "unlinkSub" bytecode/client/PPOHBEGB.bytecode.txt
-grep -c "unlinkSub" bytecode/client/PKVMXVTO.bytecode.txt
-
-# Verify NodeSub lacks Node's cache-specific fields (distinguishes from Node)
-grep -l "cache\|MRUNodes" bytecode/client/PPOHBEGB.bytecode.txt | wc -l
-```

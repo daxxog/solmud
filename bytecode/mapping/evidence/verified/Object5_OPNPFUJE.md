@@ -122,6 +122,21 @@ byte aByte530;
 }
 ```
 
+## **ARCHITECTURE ROLE**
+Object5 serves as the most complex 3D world object class that integrates comprehensive rendering state with animation support through 14 fields. The class combines positioning data, animation references, unique identification, and rendering flags to support advanced object visualization in the game world. Object5 acts as the highest-fidelity object representation for complex animated entities.
+
+```mermaid
+classDiagram
+    Object5 --> Animable
+    Object5 --> ObjectDef
+    Object5 --> WorldController
+    Object5 : +anInt517-520 (position)
+    Object5 : +aClass30_Sub2_Sub4_521 (Animable)
+    Object5 : +anInt522-528 (rendering)
+    Object5 : +uid (unique ID)
+    Object5 : +aByte530 (flags)
+```
+
 ## **UNIQUE IDENTIFIERS**
 - **Exact Field Count**: 14 fields total (4 int + 1 Animable + 8 int + 1 byte)
 - **Most Complex**: Largest field count among Object classes
@@ -171,13 +186,52 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Object5.javap.
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "aClass30_Sub2_Sub4_521\|uid\|aByte530" bytecode/client/*.bytecode.txt | xargs grep -l "14.*fields" | grep "OPNPFUJE"
+grep -l "public XHHRODPC.*e" bytecode/client/*.bytecode.txt | grep "OPNPFUJE"
 
-# Show class-specific metrics
-grep -c "anInt51[7-8]\|anInt52[0-9]\|XHHRODPC" bytecode/client/OPNPFUJE.bytecode.txt
+# Show class-specific field count patterns
+grep -c "public.*int\|private.*int\|final.*int" bytecode/client/OPNPFUJE.bytecode.txt
 
-# Verify class lacks exclusion patterns (distinguishes from others)
-grep -l "method\|array\|implements" bytecode/client/OPNPFUJE.bytecode.txt | wc -l
+# Verify unique Animable field integration
+grep -A 5 -B 5 "XHHRODPC e" bytecode/client/OPNPFUJE.bytecode.txt
+
+# Show complete field structure count
+grep -c "int.*;" bytecode/client/OPNPFUJE.bytecode.txt
+```
+
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show 14-field structure in DEOB source
+grep -A 15 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/src/Object5.java
+
+# Show Animable field in DEOB source
+grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/src/Object5.java
+
+# Show uid and byte fields in DEOB source
+grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/src/Object5.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show 14-field structure in javap cache with multi-line context
+grep -A 15 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+
+# Show Animable field in javap cache with context
+grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+
+# Show uid and byte fields in javap cache with context
+grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show Animable XHHRODPC field usage in bytecode
+grep -A 10 -B 5 "XHHRODPC.*e" bytecode/client/OPNPFUJE.bytecode.txt
+
+# Show corresponding Animable field in DEOB source
+grep -A 10 -B 5 "Animable.*aClass30_Sub2_Sub4_521" srcAllDummysRemoved/src/Object5.java
+
+# Verify Animable field structure in javap cache
+grep -A 10 -B 5 "Animable.*aClass30_Sub2_Sub4_521" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
 ```
 
 ## **IMPACT**

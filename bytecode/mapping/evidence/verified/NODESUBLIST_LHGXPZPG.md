@@ -98,60 +98,24 @@ public NodeSubList() {
 Used throughout the client for advanced data management:
 
 - ✅ **Cache Systems**: Linked list caching with node management
-- ✅ **Queue Operations**: FIFO/LIFO data structures
-- ✅ **Efficient Storage**: Dynamic node allocation and deallocation
-- ✅ **Memory Management**: Proper node lifecycle management
+- ✅ **Data Processing**: Ordered data structures for algorithms
+- ✅ **State Management**: Maintains traversal state across operations
+- ✅ **Memory Management**: Efficient node allocation and cleanup
 
-## **FORENSIC EVIDENCE COMMANDS**
+## **ARCHITECTURE ROLE**
+NodeSubList serves as a circular doubly-linked list implementation that provides ordered node traversal and management for cache systems and data processing algorithms. The class implements head/tail node management with circular references, supporting both forward and reverse iteration with state tracking. NodeSubList acts as a fundamental data structure for efficient ordered data management throughout the client.
 
-### **1. Source Code Correlation**
-Show constructor implementation with circular linking:
-
-```bash
-grep -A 10 -B 5 "public NodeSubList()" srcAllDummysRemoved/src/NodeSubList.java
-```
-
-Show insertHead method with node manipulation:
-
-```bash
-grep -A 15 -B 5 "public void insertHead" srcAllDummysRemoved/src/NodeSubList.java
-```
-
-Show popTail method:
-
-```bash
-grep -A 10 -B 5 "public NodeSub popTail" srcAllDummysRemoved/src/NodeSubList.java
-```
-
-Show field declarations:
-
-```bash
-grep -A 5 -B 5 "private final NodeSub head\|private NodeSub current" srcAllDummysRemoved/src/NodeSubList.java
-```
-
-### **2. Javap Cache Correlation**
-Show constructor in javap:
-
-```bash
-grep -A 10 -B 5 "public NodeSubList()" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
-```
-
-Show insertHead method in javap:
-
-```bash
-grep -A 15 -B 5 "public void insertHead" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
-```
-
-Show popTail method in javap:
-
-```bash
-grep -A 10 -B 5 "public NodeSub popTail" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
-```
-
-Show field declarations in javap:
-
-```bash
-grep -A 5 -B 5 "private final NodeSub head\|private NodeSub current" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```mermaid
+classDiagram
+    NodeSubList --> NodeSub
+    NodeSub --> NodeSubList
+    NodeSubList : +head (NodeSub)
+    NodeSubList : +current (NodeSub)
+    NodeSubList : +insertHead(NodeSub)
+    NodeSubList : +insertTail(NodeSub)
+    NodeSubList : +unlink(NodeSub)
+    NodeSubList : +reverseGetFirst()
+    NodeSubList : +reverseGetNext()
 ```
 
 ## **SOURCE CODE CORRELATION**
@@ -274,6 +238,42 @@ grep -c "PKVMXVTO\|head\|current" bytecode/client/LHGXPZPG.bytecode.txt
 
 # Verify class lacks exclusion patterns (distinguishes from others)
 grep -l "cache\|array\|method" bytecode/client/LHGXPZPG.bytecode.txt | wc -l
+```
+
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show head and current fields in DEOB source
+grep -A 10 -B 5 "head\|current" srcAllDummysRemoved/src/NodeSubList.java
+
+# Show insertHead method in DEOB source
+grep -A 10 -B 5 "insertHead" srcAllDummysRemoved/src/NodeSubList.java
+
+# Show reverseGetFirst method in DEOB source
+grep -A 10 -B 5 "reverseGetFirst" srcAllDummysRemoved/src/NodeSubList.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show head and current fields in javap cache with multi-line context
+grep -A 10 -B 5 "head\|current" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+
+# Show insertHead method in javap cache with context
+grep -A 10 -B 5 "insertHead" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+
+# Show reverseGetFirst method in javap cache with context
+grep -A 10 -B 5 "reverseGetFirst" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show PKVMXVTO (NodeSub) field usage in bytecode
+grep -A 15 -B 5 "PKVMXVTO" bytecode/client/LHGXPZPG.bytecode.txt
+
+# Show corresponding NodeSub usage in DEOB source
+grep -A 15 -B 5 "NodeSub" srcAllDummysRemoved/src/NodeSubList.java
+
+# Verify NodeSub field usage in javap cache
+grep -A 15 -B 5 "NodeSub" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
 ```
 
 ## **IMPACT**

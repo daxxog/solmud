@@ -101,6 +101,18 @@ public class OnDemandFetcherParent {
 }
 ```
 
+## **ARCHITECTURE ROLE**
+OnDemandFetcherParent serves as a minimal base class foundation for the network asset downloading system, providing basic state management through a boolean flag and an empty method for child class override. The class implements the simplest possible inheritance pattern with a constructor that initializes the operational state to true. OnDemandFetcherParent acts as the abstract foundation for on-demand resource loading functionality.
+
+```mermaid
+classDiagram
+    OnDemandFetcherParent --> OnDemandFetcher
+    OnDemandFetcherParent : +a(int) (empty method)
+    OnDemandFetcherParent : -a (boolean state)
+    OnDemandFetcherParent : +OnDemandFetcherParent()
+    OnDemandFetcher --> OnDemandFetcherParent
+```
+
 ## **UNIQUE IDENTIFIERS**
 - **Minimal Implementation**: Only boolean field and empty method
 - **Inheritance Base**: Designed as parent class for OnDemandFetcher
@@ -122,16 +134,34 @@ To show method548:
 grep -A 5 "public void b" bytecode/client/VJKFYAWG.bytecode.txt
 ```
 
-## Deob Source Sections
-```
+## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show minimal class structure in DEOB source
 head -10 srcAllDummysRemoved/src/OnDemandFetcherParent.java
 
+# Show empty method in DEOB source with multi-line context
 grep -A 5 -B 5 "public void method548" srcAllDummysRemoved/src/OnDemandFetcherParent.java
+```
 
-## Javap Cache Sections
+## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
+```bash
+# Show minimal class structure in javap cache
 head -10 srcAllDummysRemoved/.javap_cache/OnDemandFetcherParent.javap.cache
 
+# Show empty method in javap cache with context
 grep -A 5 -B 5 "public void method548" srcAllDummysRemoved/.javap_cache/OnDemandFetcherParent.javap.cache
+```
+
+## COMMAND BLOCK 4: BOOLEAN STATE EVIDENCE
+```bash
+# Show boolean field initialization in bytecode
+grep -A 10 -B 5 "putfield.*boolean\|iconst_1" bytecode/client/VJKFYAWG.bytecode.txt
+
+# Show corresponding boolean field in DEOB source
+grep -A 5 -B 5 "private boolean a\|a = true" srcAllDummysRemoved/src/OnDemandFetcherParent.java
+
+# Verify boolean field in javap cache
+grep -A 5 -B 5 "private boolean a\|a = true" srcAllDummysRemoved/.javap_cache/OnDemandFetcherParent.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

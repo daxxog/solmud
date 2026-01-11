@@ -90,13 +90,13 @@ grep -A 25 "method167" srcAllDummysRemoved/.javap_cache/Class6.javap.cache
 ### 6. Cross-Reference Validation (CLASS6 UNIQUENESS)
 ```bash
 # Show only Class6 has this specific envelope generator count pattern
-grep -l "OZKFTHAD.*;" bytecode/client/*.bytecode.txt | xargs grep -c "OZKFTHAD.*;" | grep ":8" | cut -d: -f1
+grep -l "OZKFTHAD" bytecode/client/*.bytecode.txt | xargs grep -c "OZKFTHAD" | grep ":8"
 
 # Show Class6's unique wave table array count compared to other classes
-grep -c "32768\|anIntArray118\|anIntArray119\|anIntArray120" bytecode/client/CLRWXPOI.bytecode.txt
+grep -c "32768\|256\|257" bytecode/client/CLRWXPOI.bytecode.txt
 
 # Verify Class6's unique static wave table initialization
-grep -l "method166\|anIntArray116.*new.*32768" bytecode/client/*.bytecode.txt | grep "CLRWXPOI"
+grep -l "method166\|anIntArray116" bytecode/client/*.bytecode.txt | grep "CLRWXPOI"
 ```
 
 ### 7. Class39 Filter Integration Evidence

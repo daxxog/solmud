@@ -106,6 +106,18 @@ Verify this is a unique 1:1 mapping:
 grep -r "HZTFWEML" bytecode/mapping/evidence/verified/ | grep -v Class13 || echo "Unique mapping confirmed"
 ```
 
+### 5. Class32 Integration Evidence
+```bash
+# Show Class32 field declarations in bytecode
+grep -A 10 -B 5 "QPNUVGRI.*a\|static.*QPNUVGRI" bytecode/client/HZTFWEML.bytecode.txt
+
+# Show corresponding Class32 field in DEOB source
+grep -A 10 -B 5 "aClass32.*305\|Class32.*305" srcAllDummysRemoved/src/Class13.java
+
+# Verify Class32 field in javap cache
+grep -A 5 -B 5 "aClass32_305\|QPNUVGRI" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
+```
+
 ```bash
 # Verify the unique bzip2 decompression pattern appears only in HZTFWEML
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "QPNUVGRI a" {} \; | xargs grep -l "monitorenter" | xargs grep -l "putfield.*QPNUVGRI\."

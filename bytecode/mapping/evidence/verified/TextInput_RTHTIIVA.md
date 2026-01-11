@@ -117,6 +117,30 @@ grep -r "RTHTIIVA" bytecode/mapping/evidence/verified/ | grep -v TextInput || ec
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "char\[\] d" {} \; | xargs grep -l "char\[\] f" | xargs grep -l "MBMGIXGO" | xargs grep -l "ishr" | xargs grep -l "iand"
 ```
 
+### 5. Character Processing Evidence
+```bash
+# Show character array declarations in bytecode with context
+grep -A 15 -B 10 "char\[\] d.*f" bytecode/client/RTHTIIVA.bytecode.txt
+
+# Show corresponding character arrays in DEOB source with context
+grep -A 15 -B 10 "aCharArray631\|validChars" srcAllDummysRemoved/src/TextInput.java
+
+# Verify character array structure in javap cache with context
+grep -A 15 -B 10 "aCharArray631\|validChars" srcAllDummysRemoved/.javap_cache/TextInput.javap.cache
+```
+
+### 6. Bit Manipulation Evidence
+```bash
+# Show 4-bit shift operations in bytecode with context
+grep -A 20 -B 15 "ishr.*4\|iand.*15" bytecode/client/RTHTIIVA.bytecode.txt
+
+# Show corresponding bit manipulation in DEOB source with context
+grep -A 20 -B 15 ">> 4.*& 0xf\|i1 >> 4 & 0xf" srcAllDummysRemoved/src/TextInput.java
+
+# Verify bit manipulation patterns in javap cache with context
+grep -A 20 -B 15 "ishr\|iand.*15" srcAllDummysRemoved/.javap_cache/TextInput.javap.cache
+```
+
 ## Critical Evidence Points
 
 1. **Character Array Processing**: The class declares two static char[] fields (d and f in bytecode, corresponding to aCharArray631 and validChars in deobfuscated code) for character encoding tables and processing buffers.

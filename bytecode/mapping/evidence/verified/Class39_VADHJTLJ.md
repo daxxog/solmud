@@ -97,11 +97,24 @@ final class Class39 {
     aFloatArrayArray669[i][0] = -2F * f2 * (float)Math.cos(method543(f, 0, i));
     float f4 = -2F * f3 * (float)Math.cos(method543(f, k, i)); // Math.cos usage
 
-    // 3D array structures for transformations
-    private int[][][] anIntArrayArrayArray666;       // 3D transformation arrays
-    private int[][][] anIntArrayArrayArray667;       // 3D graphics data
-    private float[][] aFloatArrayArray669;           // 2D transformation matrices
-}
+// 3D array structures for transformations
+float[][][] aFloatArrayArray669 = new float[32][3][2];
+```
+
+## **ARCHITECTURE ROLE**
+Class39 serves as the graphics rendering engine and 3D mathematics processor that handles complex trigonometric transformations for visual effects. The class implements sophisticated audio-to-visual conversion algorithms using mathematical constants (π, 11025Hz sample rate, 65536 precision) and manages 3D array structures for coordinate transformations. Class39 acts as the core graphics processing unit that converts mathematical functions into visual rendering data.
+
+```mermaid
+classDiagram
+    Class39 --> DrawingArea
+    Class39 --> WorldController
+    Class39 --> Model
+    Class39 : +method542(float)
+    Class39 : +method543(float, int, int)
+    Class39 : -aFloatArrayArray669[32][3][2]
+    Class39 : -π constant (3.1415927f)
+    Class39 : -audio sample rate (11025.0f)
+    Class39 : -graphics precision (65536.0f)
 ```
 
 ## **UNIQUE IDENTIFIERS**
@@ -137,13 +150,40 @@ grep -l "38400,\|88058,\|4279," bytecode/client/*.bytecode.txt
 
 **Result**: VADHJTLJ is the ONLY class matching this complete 3D graphics renderer signature.
 
-## Deobfuscated Source Evidence Commands
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show method542 with π and audio constants in DEOB source
 grep -A 10 -B 5 "method542" srcAllDummysRemoved/src/Class39.java
-grep -A 5 -B 5 "3\.141593F" srcAllDummysRemoved/src/Class39.java
-grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/src/Class39.java
 
-## Javap Cache Evidence Commands
+# Show π constant usage in DEOB source
+grep -A 5 -B 5 "3\.141593F" srcAllDummysRemoved/src/Class39.java
+
+# Show Math.cos trigonometric operations in DEOB source
+grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/src/Class39.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show method542 in javap cache with multi-line context
 grep -A 10 -B 5 "method542" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+
+# Show π constant in javap cache with context
 grep -A 5 -B 5 "3\.141593f" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+
+# Show trigonometric operations in javap cache
+grep -A 5 -B 5 "Math\.cos\|invokestatic.*Math" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show 3D array structure [32][3][2] in bytecode
+grep -A 10 -B 5 "multianewarray.*32.*3.*2" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show corresponding 3D array in DEOB source
+grep -A 10 -B 5 "new float\[32\]\[3\]\[2\]" srcAllDummysRemoved/src/Class39.java
+
+# Verify 3D array structure in javap cache
+grep -A 10 -B 5 "\[32\]\[3\]\[2\]\|aFloatArrayArray669" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
 grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/.javap_cache/Class39.javap.cache</content>
 <parameter name="filePath">./bytecode/mapping/evidence/verified/VADHJTLJ_CLASS39.md

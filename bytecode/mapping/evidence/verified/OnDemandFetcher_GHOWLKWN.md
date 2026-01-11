@@ -28,11 +28,11 @@ graph TD
 head -5 bytecode/client/GHOWLKWN.bytecode.txt
 
 # Show field count and types
-grep -E "private.*int\|public.*String\|java\.util\.zip\.CRC32\|byte\[\]\[\]" bytecode/client/GHOWLKWN.bytecode.txt | wc -l
-grep -E "private.*int\|public.*String\|java\.util\.zip\.CRC32\|byte\[\]\[\]" bytecode/client/GHOWLKWN.bytecode.txt
+grep -c "private.*int\|public.*String\|CRC32\|byte\[\]\[\]" bytecode/client/GHOWLKWN.bytecode.txt
+grep -A 5 -B 5 "CRC32\|byte\[\]\[\]" bytecode/client/GHOWLKWN.bytecode.txt
 
 # Show method signatures
-grep -E "public.*run\|private.*crcMatches\|private.*readData" bytecode/client/GHOWLKWN.bytecode.txt
+grep -A 10 -B 5 "public.*run\|private.*crc\|private.*read" bytecode/client/GHOWLKWN.bytecode.txt
 ```
 
 ### 2. Source Code Correlation

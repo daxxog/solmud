@@ -110,6 +110,35 @@ grep -r "AFCKELYG" bytecode/mapping/evidence/verified/ | grep -v DrawingArea || 
 ```
 
 ```bash
+# Verify unique pixel buffer + coordinate system pattern appears only in AFCKELYG
+find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "int\[\] m" {} \; | xargs grep -l "public static int n" | xargs grep -l "public static int o" | xargs grep -l "public static int p"
+```
+
+### 5. Pixel Buffer Setup Evidence
+```bash
+# Show pixel buffer initialization in bytecode with context
+grep -A 15 -B 10 "int\[\] m\|putstatic.*m" bytecode/client/AFCKELYG.bytecode.txt
+
+# Show corresponding pixel buffer in DEOB source with context
+grep -A 15 -B 10 "pixels\[\].*new\|pixels.*width" srcAllDummysRemoved/src/DrawingArea.java
+
+# Verify pixel buffer structure in javap cache with context
+grep -A 15 -B 10 "pixels\[\]\|int\[\] m" srcAllDummysRemoved/.javap_cache/DrawingArea.javap.cache
+```
+
+### 6. Coordinate System Evidence
+```bash
+# Show coordinate field declarations in bytecode with context
+grep -A 20 -B 10 "public static int n.*o.*p.*q" bytecode/client/AFCKELYG.bytecode.txt
+
+# Show corresponding coordinate fields in DEOB source with context
+grep -A 20 -B 10 "topX.*topY.*bottomX.*bottomY\|n.*o.*p.*q" srcAllDummysRemoved/src/DrawingArea.java
+
+# Verify coordinate field structure in javap cache with context
+grep -A 20 -B 10 "topX.*topY.*bottomX.*bottomY\|n.*o.*p.*q" srcAllDummysRemoved/.javap_cache/DrawingArea.javap.cache
+```
+
+```bash
 # Verify the unique pixel buffer + coordinate system pattern appears only in AFCKELYG
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "int\[\] m" {} \; | xargs grep -l "public static int n" | xargs grep -l "public static int o" | xargs grep -l "public static int p"
 ```

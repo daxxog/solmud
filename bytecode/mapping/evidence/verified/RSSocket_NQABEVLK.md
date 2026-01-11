@@ -107,6 +107,30 @@ grep -r "NQABEVLK" bytecode/mapping/evidence/verified/ | grep -v RSSocket || ech
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "implements java.lang.Runnable" {} \; | xargs grep -l "java.io.InputStream" | xargs grep -l "java.io.OutputStream" | xargs grep -l "java.net.Socket" | xargs grep -l "KHACHIFW"
 ```
 
+### 5. Network Configuration Evidence
+```bash
+# Show TCP socket configuration in bytecode with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000\|true" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding socket configuration in DEOB source with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify socket configuration in javap cache with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 6. Runnable Implementation Evidence
+```bash
+# Show Runnable interface implementation in bytecode with context
+grep -A 15 -B 10 "java.lang.Runnable\|run.*method" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding Runnable implementation in DEOB source with context
+grep -A 15 -B 10 "implements Runnable\|public void run" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify Runnable implementation in javap cache with context
+grep -A 15 -B 10 "java.lang.Runnable\|public void run" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
 ## Critical Evidence Points
 
 1. **Runnable Implementation**: The class implements java.lang.Runnable, indicating asynchronous network operation capabilities for background I/O processing.

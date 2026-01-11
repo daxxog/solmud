@@ -202,6 +202,24 @@ Note: OG class has additional obfuscation fields (x-z, A-H, etc.)
 
 ---
 
+## Architecture Role
+Sprite serves as an advanced 2D graphics rendering component that extends DrawingArea with sophisticated image manipulation capabilities including rotation, scaling, alpha blending, and format conversion. The class implements complex pixel processing using fixed-point mathematics (65536.0 multiplier), rotation calculations (326.11 factor), and supports multiple image formats including JPG loading. Sprite acts as the core sprite rendering engine for the game's 2D graphics system.
+
+```mermaid
+classDiagram
+    Sprite --> DrawingArea
+    Sprite --> Image
+    Sprite --> Toolkit
+    Sprite : +Sprite(int, int)
+    Sprite : +Sprite(String, Toolkit)
+    Sprite : +Sprite(Sprite, int, int)
+    Sprite : +drawSprite1(int, int, int, boolean)
+    Sprite : +method352(Sprite, int, int, int, int, int, int, int, int, int)
+    Sprite : -326.11 rotation factor
+    Sprite : -65536.0 fixed-point multiplier
+    Sprite : -16711935 alpha mask
+```
+
 ## Summary
 
 This mapping is **VERIFIED** with 100% confidence based on:
@@ -218,6 +236,48 @@ This mapping is **VERIFIED** with 100% confidence based on:
 10. ✓ All method signatures correspond (with obfuscated names)
 
 **No additional evidence needed. This is a definitive 1:1 mapping.**
+
+## COMMAND BLOCK 1: CONSTRUCTOR EVIDENCE
+```bash
+# Show 3 constructor signatures in bytecode
+grep -A 5 -B 5 "public.*init.*int.*int\|public.*init.*String.*Toolkit\|public.*init.*Sprite" bytecode/client/CXGZMTJK.bytecode.txt
+
+# Show corresponding constructors in DEOB source
+grep -A 5 -B 5 "public Sprite.*int.*int\|public Sprite.*String.*Toolkit\|public Sprite.*Sprite" srcAllDummysRemoved/src/Sprite.java
+```
+
+## COMMAND BLOCK 2: JAVAP CACHE EVIDENCE
+```bash
+# Show constructors in javap cache with multi-line context
+grep -A 5 -B 5 "public Sprite" srcAllDummysRemoved/.javap_cache/Sprite.javap.cache
+
+# Show DrawingArea extension in javap cache
+grep -A 5 -B 5 "class Sprite extends DrawingArea" srcAllDummysRemoved/.javap_cache/Sprite.javap.cache
+```
+
+## COMMAND BLOCK 3: UNIQUE CONSTANTS EVIDENCE
+```bash
+# Show 326.11 rotation constant in bytecode
+grep -A 5 -B 5 "326.11" bytecode/client/CXGZMTJK.bytecode.txt
+
+# Show 65536.0 fixed-point multiplier in bytecode
+grep -A 5 -B 5 "65536.0" bytecode/client/CXGZMTJK.bytecode.txt
+
+# Show 16711935 alpha mask in bytecode
+grep -A 5 -B 5 "16711935" bytecode/client/CXGZMTJK.bytecode.txt
+```
+
+## COMMAND BLOCK 4: DEOB SOURCE CONSTANTS EVIDENCE
+```bash
+# Show 326.11 rotation constant in DEOB source
+grep -A 5 -B 5 "326.11" srcAllDummysRemoved/src/Sprite.java
+
+# Show 65536.0 fixed-point multiplication in DEOB source
+grep -A 5 -B 5 "65536" srcAllDummysRemoved/src/Sprite.java
+
+# Show error message in DEOB source
+grep -A 5 -B 5 "Error converting jpg" srcAllDummysRemoved/src/Sprite.java
+```
 
 ---
 

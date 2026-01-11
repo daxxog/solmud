@@ -53,28 +53,28 @@ grep -A 5 -B 2 "static.*anIntArray\|static.*aBackgroundArray\|static.*boolean" s
 grep -A 15 -B 2 "static.*anIntArray\|static.*aBackgroundArray\|static.*boolean" srcAllDummysRemoved/.javap_cache/Texture.javap.cache
 ```
 
-### 3. Texture Loading Evidence
+### 3. Texture Loading Evidence - ENHANCED QUALITY
 ```bash
-# Show texture initialization patterns (using obfuscated method names)
-grep -A 10 -B 5 "public static final void a(int, int, int)" bytecode/client/OPPOFIOL.bytecode.txt
+# Show texture initialization patterns with multi-line context
+grep -A 15 -B 10 "public static final void a(int, int, int)" bytecode/client/OPPOFIOL.bytecode.txt
 
-# Show background loading operations (using obfuscated field names)
-grep -A 5 -B 5 "public static DSMJIEPN\[\] N\|XTGLDHGX" bytecode/client/OPPOFIOL.bytecode.txt
+# Show background loading operations with field context
+grep -A 10 -B 10 "public static DSMJIEPN\[\] N\|XTGLDHGX.*DSMJIEPN" bytecode/client/OPPOFIOL.bytecode.txt
 
-# Show corresponding source texture loading
-grep -A 10 -B 5 "method367\|anIntArrayArray1478.*new int" srcAllDummysRemoved/src/Texture.java
+# Show corresponding source texture loading with array context
+grep -A 15 -B 10 "method367\|anIntArrayArray1478.*new int\|Background\[\]" srcAllDummysRemoved/src/Texture.java
 ```
 
-### 4. Color Processing Evidence
+### 4. Color Processing Evidence - ENHANCED QUALITY
 ```bash
-# Show color manipulation arrays (using obfuscated field names)
-grep -A 3 -B 3 "public static int\[\] H\|public static int\[\] I\|public static int\[\] J" bytecode/client/OPPOFIOL.bytecode.txt
+# Show color manipulation arrays with enhanced context
+grep -A 10 -B 10 "public static int\[\] H.*I.*J" bytecode/client/OPPOFIOL.bytecode.txt
 
-# Show RGB processing operations
-grep -A 5 -B 5 "Math\.pow\|d1 \* 256D\|d2 \* 256D\|d3 \* 256D" bytecode/client/OPPOFIOL.bytecode.txt
+# Show RGB processing operations with calculation context
+grep -A 10 -B 10 "Math\.pow\|d1 \* 256D\|d2 \* 256D\|d3 \* 256D" bytecode/client/OPPOFIOL.bytecode.txt
 
-# Show source color calculation methods
-grep -A 15 -B 5 "method373\|Math\.pow.*d1\|d1 \* 256D" srcAllDummysRemoved/src/Texture.java
+# Show source color calculation methods with array context
+grep -A 20 -B 10 "method373\|Math\.pow.*d1\|anIntArray1472.*1470" srcAllDummysRemoved/src/Texture.java
 ```
 
 ### 5. Cross-Reference Validation

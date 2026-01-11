@@ -87,6 +87,21 @@ public static void a(byte[], boolean);       // Data processing
 - ✅ **Boolean Control**: Flag-based processing logic
 - ✅ **Array Operations**: Complex array manipulation algorithms
 
+## **ARCHITECTURE ROLE**
+Class29 serves as an audio processing middleware component that handles audio data stream processing and integration with the audio engine. The class processes byte array audio data with boolean control flags, manages 500-element audio buffers, and coordinates with Class43 for audio operations. Class29 acts as a bridge between raw audio data and the game's audio rendering system.
+
+```mermaid
+classDiagram
+    Class29 --> Stream
+    Class29 --> Class43
+    Class29 --> Sounds
+    Class29 : +a(byte[], boolean)
+    Class29 : +method325(Stream)
+    Class29 : +method326(Stream)
+    Class29 : -500-element audio buffers
+    Class29 : -audio processing flags
+```
+
 ## **SOURCE CODE CORRELATION**
 
 ### **Class29.java (Reference):**
@@ -126,26 +141,40 @@ To show KVCQPLIW integration:
 grep -A 5 -B 5 "KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
 ```
 
-## Deobfuscated Source Sections
-For stream methods:
-```
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show stream processing method325 in DEOB source
 grep -A 10 "public void method325" srcAllDummysRemoved/src/Class29.java
-```
 
-For array processing:
-```
+# Show 500-element array initialization in DEOB source
 grep -A 5 "anIntArray536.*new int" srcAllDummysRemoved/src/Class29.java
+
+# Show method326 stream processing continuation
+grep -A 10 "public void method326" srcAllDummysRemoved/src/Class29.java
 ```
 
-## Javap Cache Sections
-For stream methods:
-```
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show stream method325 in javap cache with multi-line context
 grep -A 10 "public void method325" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+
+# Show 500-element array structure in javap cache
+grep -A 5 -B 5 "anIntArray536" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+
+# Show method326 stream processing in javap cache
+grep -A 10 "public void method326" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
 ```
 
-For arrays:
-```
-grep -A 5 "anIntArray536" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show 500-element array processing (sipush 500) in bytecode
+grep -A 15 -B 5 "sipush.*500\|500.*new" bytecode/client/SQHJOGRT.bytecode.txt
+
+# Show corresponding array creation in DEOB source
+grep -A 15 -B 5 "new int\[500\]\|anIntArray.*500" srcAllDummysRemoved/src/Class29.java
+
+# Verify 500-element array structure in javap cache
+grep -A 10 -B 5 "500.*new.*int\|anIntArray.*500" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

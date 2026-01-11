@@ -98,6 +98,19 @@ public RJXWGZGD();
 **Evidence:** Both are minimal complexity data containers
 **Confidence:** 100%
 
+## Architecture Role
+Class33 serves as a simple data container class that stores four integer values for basic data transfer and state management. The class provides minimal functionality beyond field storage and constructor initialization, acting as a lightweight data structure for passing integer quartets between components. Class33 represents the simplest form of data holder in the codebase.
+
+```mermaid
+classDiagram
+    Class33 --> "Various Components"
+    Class33 : +anInt602
+    Class33 : +anInt603
+    Class33 : +anInt604
+    Class33 : +anInt605
+    Class33 : +Class33()
+```
+
 ## Technical Details
 
 ### Size Compatibility
@@ -180,7 +193,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Class33.javap.
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "anInt602\|anInt603\|anInt604\|anInt605" bytecode/client/*.bytecode.txt | xargs grep -l "4.*int" | grep "RJXWGZGD"
+grep -c "int a;\|int b;\|int c;\|int d;" bytecode/client/RJXWGZGD.bytecode.txt
 
 # Show class-specific metrics
 grep -c "int.*a\|int.*b\|int.*c\|int.*d" bytecode/client/RJXWGZGD.bytecode.txt
@@ -189,13 +202,41 @@ grep -c "int.*a\|int.*b\|int.*c\|int.*d" bytecode/client/RJXWGZGD.bytecode.txt
 grep -l "array\|method.*\|implements" bytecode/client/RJXWGZGD.bytecode.txt | wc -l
 ```
 
-## Deobfuscated Source Evidence Commands
-grep -A 10 -B 5 "method555" srcAllDummysRemoved/src/Class33.java
-grep -A 5 -B 5 "aClass33Array556" srcAllDummysRemoved/src/Class33.java
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show 4-field structure in DEOB source
+grep -A 10 -B 5 "anInt602\|anInt603\|anInt604\|anInt605" srcAllDummysRemoved/src/Class33.java
 
-## Javap Cache Evidence Commands
-grep -A 10 -B 5 "method555" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
-grep -A 5 -B 5 "aClass33Array556" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+# Show constructor pattern in DEOB source
+grep -A 10 -B 5 "Class33()" srcAllDummysRemoved/src/Class33.java
+
+# Show simple data container structure in DEOB source
+grep -A 15 -B 5 "public.*int.*anInt" srcAllDummysRemoved/src/Class33.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show 4-field structure in javap cache with multi-line context
+grep -A 10 -B 5 "anInt602\|anInt603\|anInt604\|anInt605" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show constructor in javap cache with context
+grep -A 10 -B 5 "Class33()" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "public.*int.*anInt" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show 4-field pattern in bytecode (int a; int b; int c; int d;)
+grep -A 15 -B 5 "int.*a.*;\|int.*b.*;\|int.*c.*;\|int.*d.*;" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding 4-field structure in DEOB source
+grep -A 15 -B 5 "anInt602.*anInt603.*anInt604.*anInt605" srcAllDummysRemoved/src/Class33.java
+
+# Verify 4-field pattern in javap cache
+grep -A 15 -B 5 "anInt602\|anInt603\|anInt604\|anInt605" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+```
 
 ## Notes
 

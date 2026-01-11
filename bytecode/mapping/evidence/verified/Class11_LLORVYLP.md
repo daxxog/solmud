@@ -82,6 +82,22 @@ Used in world collision detection and pathfinding systems:
 - ✅ **Pathfinding Support**: Coordinate fields for movement calculations
 - ✅ **Boundary Management**: Edge detection and processing
 
+## **ARCHITECTURE ROLE**
+Class11 serves as a collision detection data container in the world positioning system, providing coordinate storage and boundary management for pathfinding algorithms. The class integrates with collision detection systems through its 2D array structure and coordinate field organization, supporting world navigation and movement calculations. Class11 acts as a foundational component for collision boundary processing in the game world.
+
+```mermaid
+classDiagram
+    Class11 --> WorldController
+    Class11 --> Ground
+    Class11 : +method210()
+    Class11 : +method211(int, int, int, int, boolean)
+    Class11 : -anInt290 (x coordinate)
+    Class11 : -anInt291 (y coordinate)
+    Class11 : -anInt292 (width: 104)
+    Class11 : -anInt293 (height: 104)
+    Class11 : -anIntArrayArray294 (collision data)
+```
+
 ## **SOURCE CODE CORRELATION**
 
 ### **Class11.java (Reference):**
@@ -160,15 +176,41 @@ grep -c "anInt290\|anInt291\|anInt292\|anInt293" bytecode/client/LLORVYLP.byteco
 grep -l "fragment\|badenc\|domainenc" bytecode/client/LLORVYLP.bytecode.txt | wc -l
 ```
 
-## Deobfuscated Source Evidence Commands
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show method210 collision array initialization in DEOB source
 grep -A 10 -B 5 "method210" srcAllDummysRemoved/src/Class11.java
-grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/src/Class11.java
-grep -A 5 -B 5 "anInt290" srcAllDummysRemoved/src/Class11.java
 
-## Javap Cache Evidence Commands
+# Show anIntArrayArray294 2D collision array in DEOB source
+grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/src/Class11.java
+
+# Show coordinate fields anInt290-anInt293 in DEOB source
+grep -A 5 -B 5 "anInt290" srcAllDummysRemoved/src/Class11.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show method210 in javap cache with multi-line context
 grep -A 10 -B 5 "method210" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+
+# Show anIntArrayArray294 in javap cache with context
 grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+
+# Show coordinate field declarations in javap cache
 grep -A 5 -B 5 "anInt290" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show 104x104 collision array pattern in bytecode
+grep -A 15 -B 5 "104.*104\|new.*\[.*\[" bytecode/client/LLORVYLP.bytecode.txt
+
+# Show corresponding collision array creation in DEOB source
+grep -A 15 -B 5 "new int\[anInt292\]\[anInt293\]" srcAllDummysRemoved/src/Class11.java
+
+# Verify collision array structure in javap cache
+grep -A 15 -B 5 "anIntArrayArray294.*new.*int" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+```
 
 ## **UNIQUE IDENTIFIERS**
 - **17 Field Structure**: 1 byte[] + 16 int fields

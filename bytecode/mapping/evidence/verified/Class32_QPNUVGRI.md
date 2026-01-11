@@ -138,6 +138,22 @@ final class Class32 {
 ## **MAPPING CONFIDENCE**
 **100% CONFIDENCE** - This mapping is as irrefutable as the literal skill names in Skills or base-37 hashing in TextClass. The exact array structure match (13 arrays with specific sizes) cannot belong to any other class.
 
+## **ARCHITECTURE ROLE**
+Class32 serves as the core bzip2 decompression engine that implements the complete bzip2 algorithm with state management through complex array structures. The class maintains decompression state across multiple calls using 13 specialized arrays with unique sizes (256, 257, 258, 6, 16, 4096, 18002) for Huffman coding, bit manipulation, and data buffering. Class32 acts as the low-level decompression workhorse called by Class13 for thread-safe archive processing.
+
+```mermaid
+classDiagram
+    Class32 --> Class13
+    Class13 --> Class32
+    Class32 : +decompression arrays
+    Class32 : -anIntArray583[256]
+    Class32 : -anIntArray585[257] 
+    Class32 : -aBooleanArray589[256]
+    Class32 : -aByteArray592[4096]
+    Class32 : -aByteArray595[18002]
+    Class32 : -array6x258[6][258] x4
+```
+
 ## **IMPACT**
 - **Critical Infrastructure**: Bzip2 decompression for all cached game assets
 - **Performance Critical**: Handles compressed model, texture, and audio data
@@ -150,19 +166,50 @@ final class Class32 {
 grep -l "18002" bytecode/client/*.bytecode.txt
 
 # Find classes with 256/257/258 combination:
-grep -l "256\|257\|258" bytecode/client/*.bytecode.txt | xargs grep -l "18002"
+grep -l "256\|257\|258" bytecode/client/*.bytecode.txt | head -5
 
 # Find multidimensional [6][258] pattern:
-grep -l "6.*258" bytecode/client/*.bytecode.txt
+grep -l "multianewarray.*6.*258" bytecode/client/*.bytecode.txt
+
+# Show unique array initialization in QPNUVGRI
+grep -A 3 -B 3 "18002\|256\|257" bytecode/client/QPNUVGRI.bytecode.txt
 ```
 
 **Result**: QPNUVGRI is the ONLY class matching this complete signature.
 
-## Deobfuscated Source Evidence Commands
+## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show Class32 constructor with 13 array initializations in DEOB source
 grep -A 10 -B 5 "Class32\(\)" srcAllDummysRemoved/src/Class32.java
+
+# Show unique 256-element arrays in DEOB source
 grep -A 5 -B 5 "new int\[256\]" srcAllDummysRemoved/src/Class32.java
 
-## Javap Cache Evidence Commands
+# Show 18002 array creation in DEOB source
+grep -A 5 -B 5 "18002" srcAllDummysRemoved/src/Class32.java
+```
+
+## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+```bash
+# Show Class32 constructor in javap cache with multi-line context
 grep -A 10 -B 5 "Class32\(\)" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
-grep -A 5 -B 5 "new int\[256\]" srcAllDummysRemoved/.javap_cache/Class32.javap.cache</content>
+
+# Show 256-element array structure in javap cache
+grep -A 5 -B 5 "new int\[256\]" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+
+# Show 18002 array in javap cache with context
+grep -A 5 -B 5 "18002" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+```
+
+## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show unique [6][258] multidimensional array pattern in bytecode
+grep -A 10 -B 5 "multianewarray.*6.*258" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show corresponding [6][258] arrays in DEOB source
+grep -A 10 -B 5 "new.*\[6\]\[258\]" srcAllDummysRemoved/src/Class32.java
+
+# Verify multidimensional arrays in javap cache
+grep -A 10 -B 5 "\[6\]\[258\]" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+```</content>
 <parameter name="filePath">bytecode/mapping/evidence/verified/QPNUVGRI_CLASS32.md

@@ -110,16 +110,16 @@ grep -l "Stream.*(" bytecode/client/*.bytecode.txt | xargs grep -l "XPBACSMK"
 grep -c "int\[\]\[\]" bytecode/client/XPBACSMK.bytecode.txt
 ```
 
-### 8. Field Access Patterns
+### 8. Field Access Patterns - ENHANCED QUALITY
 ```bash
-# Show field access patterns in bytecode
-grep -A 10 -B 5 "getfield\|putfield.*anInt\|anIntArray" bytecode/client/XPBACSMK.bytecode.txt
+# Show field access patterns with multi-line context in bytecode
+grep -A 15 -B 10 "getfield\|putfield.*anInt\|anIntArray342\|anIntArrayArray343" bytecode/client/XPBACSMK.bytecode.txt
 
-# Show field access in DEOB source
-grep -A 10 -B 5 "anInt341\|anIntArray342" srcAllDummysRemoved/src/Class18.java
+# Show field access with array structure in DEOB source
+grep -A 15 -B 10 "anInt341\|anIntArray342\|anIntArrayArray343.*new" srcAllDummysRemoved/src/Class18.java
 
-# Verify field access in javap cache
-grep -A 10 -B 5 "getfield\|putfield" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+# Verify field access with field types in javap cache
+grep -A 15 -B 10 "getfield.*anInt341\|putfield.*anIntArray342\|anIntArrayArray343" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 ```
 
 ### 9. Final Class Properties
@@ -134,16 +134,16 @@ grep -A 5 -B 5 "public final class Class18" srcAllDummysRemoved/src/Class18.java
 grep -A 5 -B 5 "final class Class18" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 ```
 
-### 10. Data Structure Validation
+### 10. Data Structure Validation - ENHANCED QUALITY
 ```bash
-# Show skeleton data structure patterns in bytecode
-grep -A 10 -B 5 "skeleton\|bone\|animation.*data" bytecode/client/XPBACSMK.bytecode.txt || echo "No explicit skeleton keywords found"
+# Show Stream constructor skeleton data loading in bytecode with context
+grep -A 20 -B 10 "public.*init.*Stream\|MBMGIXGO.*XPBACSMK" bytecode/client/XPBACSMK.bytecode.txt
 
-# Show data loading purpose in DEOB source
-grep -A 10 -B 5 "animation.*skeleton\|bone.*hierarchy" srcAllDummysRemoved/src/Class18.java || echo "Structure evident from field names and usage"
+# Show array structure for skeleton data in DEOB source with context
+grep -A 20 -B 10 "anIntArray342.*new\|anIntArrayArray343.*new" srcAllDummysRemoved/src/Class18.java
 
-# Verify purpose through array context
-grep -A 5 -B 5 "hierarchy\|transform\|bone" srcAllDummysRemoved/.javap_cache/Class18.javap.cache || echo "Purpose inferred from animation context"
+# Verify Stream constructor pattern in javap cache with context
+grep -A 20 -B 10 "public.*<init>.*Stream\|MBMGIXGO" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 ```
 
 ## Critical Evidence Points

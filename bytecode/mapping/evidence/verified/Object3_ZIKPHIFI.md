@@ -15,63 +15,64 @@ Object3 occupies an advanced position in the object hierarchy, combining Animabl
 
 ```mermaid
 classDiagram
-    Object3 --> Animable
-    Object3 --> Model
+    Object3 --> Animable : contains public field
     Object3 : +Object3()
-    Object3 : -coordinates (x, y, z)
-    Object3 : -object ID (int)
-    Object3 : -orientation (int)
-    Object3 : +getRotatedModel()
+    Object3 : -int anInt811
+    Object3 : -int anInt812
+    Object3 : -int anInt813
+    Object3 : +public Animable aClass30_Sub2_Sub4_814
+    Object3 : +public int uid
+    Object3 : -byte aByte816
 ```
 
 ## Forensic Evidence Commands
 
-### 1. Class Structure and Animable Extension
+### 1. Class Structure and Field Pattern
 ```bash
-# Show Object3 extends Animable (XHHRODPC) in bytecode
-grep -A 15 -B 5 "extends.*XHHRODPC" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show Object3 public final class declaration in bytecode
+grep -A 15 -B 5 "public final class ZIKPHIFI" bytecode/client/ZIKPHIFI.bytecode.txt
 
 # Show corresponding class structure in DEOB source
-grep -A 15 -B 5 "public class Object3.*Animable" srcAllDummysRemoved/src/Object3.java
+grep -A 15 -B 5 "public final class Object3" srcAllDummysRemoved/src/Object3.java
 
-# Verify inheritance in javap cache
-grep -A 15 -B 5 "class Object3 extends Animable" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
+# Verify class structure in javap cache
+grep -A 15 -B 5 "public final class Object3" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 
-### 2. Coordinate Field Patterns
+### 2. Integer Field Pattern Analysis
 ```bash
-# Show 3D coordinate fields in bytecode
-grep -A 15 -B 5 "coordinate\|position\|x.*y.*z" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show integer identification fields in bytecode
+grep -A 15 -B 5 "int [a-c];" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show coordinate fields in DEOB source
-grep -A 15 -B 5 "anInt.*x\|anInt.*y\|anInt.*z" srcAllDummysRemoved/src/Object3.java
+# Show integer identification fields in DEOB source
+grep -A 15 -B 5 "anInt81[1-3]" srcAllDummysRemoved/src/Object3.java
 
-# Verify coordinate fields in javap cache
-grep -A 15 -B 2 "coordinate\|position" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
+# Verify integer fields in javap cache
+grep -A 15 -B 2 "anInt81[1-3]" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 
-### 3. Object ID and Orientation Fields
+### 3. Public Animable Field Integration
 ```bash
-# Show object ID and orientation in bytecode
-grep -A 10 -B 5 "objectID\|orientation\|type" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show public Animable field in bytecode
+grep -A 10 -B 5 "public XHHRODPC d;" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show ID and orientation in DEOB source
-grep -A 10 -B 5 "anInt.*ID\|anInt.*orientation" srcAllDummysRemoved/src/Object3.java
+# Show public Animable field in DEOB source
+grep -A 10 -B 5 "public Animable aClass30_Sub2_Sub4_814" srcAllDummysRemoved/src/Object3.java
 
-# Verify ID and orientation in javap cache
-grep -A 10 -B 2 "ID\|orientation" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
+# Verify public Animable field in javap cache
+grep -A 10 -B 2 "public Animable aClass30_Sub2_Sub4_814" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 
-### 4. Animable getRotatedModel Integration
+### 4. Unique Field Structure Analysis
 ```bash
-# Show getRotatedModel method in bytecode
-grep -A 25 -B 5 "public.*getRotatedModel\|public.*ZKARKDQW.*" bytecode/client/ZIKPHIFI.bytecode.txt
+# Show byte field and public fields in bytecode
+grep -A 10 -B 5 "byte f;\|public.*e;" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show getRotatedModel in DEOB source
-grep -A 20 -B 5 "getRotatedModel" srcAllDummysRemoved/src/Object3.java
+# Show byte field and uid field in DEOB source
+grep -A 10 -B 5 "byte aByte816\|public int uid" srcAllDummysRemoved/src/Object3.java
 
-# Verify getRotatedModel in javap cache
-grep -A 20 -B 5 "getRotatedModel" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
+# Verify unique fields in javap cache
+grep -A 10 -B 2 "aByte816\|uid" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 
 ### 5. Constructor with Animable Parameters

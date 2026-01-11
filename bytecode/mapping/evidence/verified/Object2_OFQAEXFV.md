@@ -15,63 +15,66 @@ Object2 occupies a specialized position in the object hierarchy, serving as a me
 
 ```mermaid
 classDiagram
-    Object2 --> Object
-    Object2 --> Model
+    Object2 --> Animable : contains public field
     Object2 : +Object2()
-    Object2 : -object ID (int)
-    Object2 : -orientation (int)
-    Object2 : -height (int)
-    Object2 : -position fields (int)
+    Object2 : -int anInt499
+    Object2 : -int anInt500
+    Object2 : -int anInt501
+    Object2 : -int anInt502
+    Object2 : -int anInt503
+    Object2 : +public Animable aClass30_Sub2_Sub4_504
+    Object2 : +public int uid
+    Object2 : -byte aByte506
 ```
 
 ## Forensic Evidence Commands
 
 ### 1. Class Structure and Field Pattern
 ```bash
-# Show Object2 class definition in bytecode
-grep -A 20 -B 5 "public class OFQAEXFV" bytecode/client/OFQAEXFV.bytecode.txt
+# Show Object2 public final class declaration in bytecode
+grep -A 20 -B 5 "public final class OFQAEXFV" bytecode/client/OFQAEXFV.bytecode.txt
 
 # Show corresponding class structure in DEOB source
-grep -A 15 -B 5 "public class Object2" srcAllDummysRemoved/src/Object2.java
+grep -A 15 -B 5 "public final class Object2" srcAllDummysRemoved/src/Object2.java
 
 # Verify class structure in javap cache
-grep -A 15 -B 5 "class Object2" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
+grep -A 15 -B 5 "public final class Object2" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 
-### 2. Object ID and Orientation Fields
+### 2. Integer Field Pattern Analysis
 ```bash
-# Show object ID and orientation fields in bytecode
-grep -A 10 -B 5 "objectID\|orientation\|rotation" bytecode/client/OFQAEXFV.bytecode.txt
+# Show integer identification fields in bytecode
+grep -A 15 -B 5 "int [a-e];" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Show ID and orientation fields in DEOB source
-grep -A 10 -B 5 "anInt.*ID\|anInt.*orientation" srcAllDummysRemoved/src/Object2.java
+# Show integer identification fields in DEOB source
+grep -A 15 -B 5 "anInt49[9-503]" srcAllDummysRemoved/src/Object2.java
 
-# Verify ID and orientation fields in javap cache
-grep -A 10 -B 2 "anInt.*" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
+# Verify integer fields in javap cache
+grep -A 15 -B 2 "anInt49[9-503]" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 
-### 3. Height and Position Management
+### 3. Public Animable Field Integration
 ```bash
-# Show height and position fields in bytecode
-grep -A 10 -B 5 "height\|position\|coordinate" bytecode/client/OFQAEXFV.bytecode.txt
+# Show public Animable field in bytecode
+grep -A 10 -B 5 "public XHHRODPC f;" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Show height and position in DEOB source
-grep -A 10 -B 5 "height\|anInt.*height\|position" srcAllDummysRemoved/src/Object2.java
+# Show public Animable field in DEOB source
+grep -A 10 -B 5 "public Animable aClass30_Sub2_Sub4_504" srcAllDummysRemoved/src/Object2.java
 
-# Verify height and position in javap cache
-grep -A 10 -B 2 "height" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
+# Verify public Animable field in javap cache
+grep -A 10 -B 2 "public Animable aClass30_Sub2_Sub4_504" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 
-### 4. Constructor with Object Parameters
+### 4. Unique Field Structure Analysis
 ```bash
-# Show constructor in bytecode
-grep -A 20 -B 5 "public OFQAEXFV(" bytecode/client/OFQAEXFV.bytecode.txt
+# Show byte field and public fields in bytecode
+grep -A 10 -B 5 "byte h;\|public.*g;" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Show constructor in DEOB source
-grep -A 15 -B 5 "Object2(" srcAllDummysRemoved/src/Object2.java
+# Show byte field and uid field in DEOB source
+grep -A 10 -B 5 "byte aByte506\|public int uid" srcAllDummysRemoved/src/Object2.java
 
-# Verify constructor in javap cache
-grep -A 15 -B 5 "public Object2(" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
+# Verify unique fields in javap cache
+grep -A 10 -B 2 "aByte506\|uid" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 
 ### 5. Cross-Reference Validation (OBJECT2 UNIQUENESS)

@@ -95,7 +95,22 @@ final class Sounds {
 }
 ```
 
-## Deobfuscated Source Evidence Commands
+## **ARCHITECTURE ROLE**
+Sounds serves as the audio system manager that handles sound file unpacking, channel management, and audio processing with industry-standard sample rates. The class manages 10 audio channels through Class6 instances, processes 441000-byte audio buffers, and implements sample rate calculations using the 22050Hz standard. Sounds acts as the core audio engine for the game's sound system.
+
+```mermaid
+classDiagram
+    Sounds --> Class6
+    Sounds --> Stream
+    Sounds --> AudioAccessor
+    Sounds : +unpack(Stream)
+    Sounds : -aClass6Array329[10] (channels)
+    Sounds : -aByteArray327[441000] (buffer)
+    Sounds : -22050Hz sample rate
+    Sounds : -65535 audio limit
+```
+
+## COMMAND BLOCK 1: DEOBFUSCATED SOURCE EVIDENCE
 For Sounds unpack method:
 ```
 grep -A 15 -B 5 "public static void unpack" srcAllDummysRemoved/src/Sounds.java
@@ -106,15 +121,49 @@ For constructor:
 grep -A 10 -B 5 "private Sounds" srcAllDummysRemoved/src/Sounds.java
 ```
 
-## Javap Cache Evidence Commands
-For Sounds unpack method:
-```
+## COMMAND BLOCK 2: JAVAP CACHE EVIDENCE
+```bash
+# Show Sounds unpack method in javap cache with multi-line context
 grep -A 15 -B 5 "public static void unpack" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+
+# Show constructor in javap cache with context
+grep -A 10 -B 5 "private Sounds" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
 ```
 
-For constructor:
+## COMMAND BLOCK 3: AUDIO CONSTANTS EVIDENCE
+```bash
+# Show 22050 sample rate constants in bytecode
+grep -A 5 -B 5 "22050" bytecode/client/JHDAGNBV.bytecode.txt
+
+# Show 441000 audio buffer size in bytecode
+grep -A 5 -B 5 "441000" bytecode/client/JHDAGNBV.bytecode.txt
+
+# Show 65535 audio limit in bytecode
+grep -A 5 -B 5 "65535" bytecode/client/JHDAGNBV.bytecode.txt
 ```
-grep -A 10 -B 5 "private Sounds" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+
+## COMMAND BLOCK 4: DEOB SOURCE AUDIO EVIDENCE
+```bash
+# Show 22050 sample rate in DEOB source
+grep -A 5 -B 5 "22050" srcAllDummysRemoved/src/Sounds.java
+
+# Show 441000 buffer creation in DEOB source
+grep -A 5 -B 5 "0x6baa8\|441000" srcAllDummysRemoved/src/Sounds.java
+
+# Show audio channel array in DEOB source
+grep -A 5 -B 5 "aClass6Array329.*10" srcAllDummysRemoved/src/Sounds.java
+```
+
+## COMMAND BLOCK 5: JAVAP CACHE AUDIO EVIDENCE
+```bash
+# Show 22050 sample rate in javap cache with context
+grep -A 5 -B 5 "22050" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+
+# Show 441000 buffer in javap cache with context
+grep -A 5 -B 5 "441000\|0x6baa8" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
+
+# Show audio channel array in javap cache with context
+grep -A 5 -B 5 "aClass6Array329" srcAllDummysRemoved/.javap_cache/Sounds.javap.cache
 ```
 
 ## **UNIQUE IDENTIFIERS**

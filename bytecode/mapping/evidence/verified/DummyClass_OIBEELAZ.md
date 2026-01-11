@@ -153,37 +153,43 @@ public OIBEELAZ();
 | Usage Patterns       | 5%         | 95%       | 4.75%             |
 | **TOTAL CONFIDENCE** | **100%**   |           | **99.75%**        |
 
-## Bytecode Matching Commands
-To show static cache array:
-```
+## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
+```bash
+# Show static cache array in bytecode
 grep -A 5 "public static.*\[\]" bytecode/client/OIBEELAZ.bytecode.txt
-```
 
-To show constructor field initialization:
-```
+# Show constructor field initialization in bytecode
 grep -A 10 "putfield" bytecode/client/OIBEELAZ.bytecode.txt
 ```
 
-## Deobfuscated Source Sections
-For static array:
-```
-grep -A 5 "public static.*cache" srcAllDummysRemoved/src/DummyClass.java
+## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show static cache array in DEOB source
+grep -A 5 -B 5 "public static.*cache" srcAllDummysRemoved/src/DummyClass.java
+
+# Show constructor in DEOB source with context
+grep -A 5 -B 5 "public DummyClass" srcAllDummysRemoved/src/DummyClass.java
 ```
 
-For constructor:
-```
-grep -A 5 "public DummyClass" srcAllDummysRemoved/src/DummyClass.java
+## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
+```bash
+# Show static cache array in javap cache with multi-line context
+grep -A 5 -B 5 "public static.*cache" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
+
+# Show constructor in javap cache with context
+grep -A 5 -B 5 "public DummyClass" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
 ```
 
-## Javap Cache Sections
-For static array:
-```
-grep -A 5 "public static.*cache" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
-```
+## COMMAND BLOCK 4: MINIMAL CLASS PATTERN EVIDENCE
+```bash
+# Show minimal class structure in bytecode
+grep -A 10 -B 5 "class OIBEELAZ" bytecode/client/OIBEELAZ.bytecode.txt
 
-For constructor:
-```
-grep -A 5 "public DummyClass" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
+# Show corresponding minimal structure in DEOB source
+grep -A 10 -B 5 "class DummyClass" srcAllDummysRemoved/src/DummyClass.java
+
+# Verify minimal class pattern in javap cache
+grep -A 10 -B 5 "class DummyClass" srcAllDummysRemoved/.javap_cache/DummyClass.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence
@@ -199,3 +205,14 @@ The additional fields in OIBEELAZ compared to DummyClass are likely the result o
 3. Compiler-generated fields for optimization
 
 Regardless of the source, the core functionality (static cache array) is identical, making this mapping highly reliable.
+
+## Architecture Role
+DummyClass serves as a minimal cache management utility that provides a static array for object storage and caching operations. The class implements the simplest possible cache pattern with a static array field and basic constructor initialization. DummyClass acts as a foundational caching component for generic object storage across various systems.
+
+```mermaid
+classDiagram
+    DummyClass --> "Various Cache Systems"
+    DummyClass : +static cache[]
+    DummyClass : +DummyClass()
+    DummyClass : -minimal object storage
+```

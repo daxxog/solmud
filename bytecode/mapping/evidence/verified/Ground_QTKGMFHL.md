@@ -93,8 +93,8 @@ grep -A 15 "Ground.*int.*int.*int" srcAllDummysRemoved/.javap_cache/Ground.javap
 
 ### 6. Ground-Specific Array Initialization Evidence
 ```bash
-# Show anIntArray1319 initialization in Ground bytecode
-grep -A 10 -B 5 "anIntArray1319\|s\[" bytecode/client/QTKGMFHL.bytecode.txt
+# Show integer array initialization in Ground bytecode
+grep -A 10 -B 5 "int\[\].*s\|newarray.*int" bytecode/client/QTKGMFHL.bytecode.txt
 
 # Show corresponding array initialization in DEOB source
 grep -A 10 -B 5 "anIntArray1319.*new.*5" srcAllDummysRemoved/src/Ground.java

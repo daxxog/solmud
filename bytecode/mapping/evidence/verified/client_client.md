@@ -114,6 +114,30 @@ grep -r "client" bytecode/mapping/class_mapping.csv | grep "client.*client" | wc
 find bytecode/client/ -name "client.bytecode.txt" -exec grep -l "extends KHACHIFW" {} \;
 ```
 
+### 5. Core Game Loop Evidence
+```bash
+# Show main game loop methods in bytecode with context
+grep -A 15 -B 10 "main\|processGameLoop\|update\|render" bytecode/client/client.bytecode.txt
+
+# Show corresponding game loop methods in DEOB source with context
+grep -A 15 -B 10 "public.*main\|processGameLoop\|update\|render" srcAllDummysRemoved/src/client.java
+
+# Verify game loop structure in javap cache with context
+grep -A 15 -B 10 "public.*main\|processGameLoop\|update\|render" srcAllDummysRemoved/.javap_cache/client.javap.cache
+```
+
+### 6. Network Connection Evidence
+```bash
+# Show network connection fields in bytecode with context
+grep -A 15 -B 10 "socket\|RSSocket\|NQABEVLK" bytecode/client/client.bytecode.txt
+
+# Show corresponding network fields in DEOB source with context
+grep -A 15 -B 10 "socket\|RSSocket\|NQABEVLK" srcAllDummysRemoved/src/client.java
+
+# Verify network integration in javap cache with context
+grep -A 15 -B 10 "socket\|RSSocket\|NQABEVLK" srcAllDummysRemoved/.javap_cache/client.javap.cache
+```
+
 ## Critical Evidence Points
 
 1. **RSApplet Extension**: The class extends KHACHIFW (RSApplet), indicating it's the main applet-based application entry point.

@@ -84,8 +84,8 @@ grep -A 10 -B 5 "extends.*GQOSZKJC\|CKDEJADD.*vb" bytecode/client/CWNCPMLX.bytec
 # Show EntityDef usage count - only NPC has direct EntityDef field
 grep -l "CKDEJADD.*desc\|EntityDef.*desc" bytecode/client/*.bytecode.txt | wc -l
 
-# Verify NPC unique method450 among Entity subclasses
-grep -l "extends.*GQOSZKJC" bytecode/client/*.bytecode.txt | xargs grep -l "method450" | grep "CWNCPMLX"
+# Verify NPC unique private Model method among Entity subclasses
+grep -l "extends.*GQOSZKJC" bytecode/client/*.bytecode.txt | xargs grep -l "private.*ZKARKDQW.*int" | grep "CWNCPMLX"
 ```
 
 ### 6. Animation Model Generation Evidence

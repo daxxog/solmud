@@ -110,6 +110,30 @@ grep -r "TAVAECED" bytecode/mapping/evidence/verified/ | grep -v IDK || echo "Un
 find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "idk\.dat" {} \; | xargs grep -l "TAVAECED\[\] c" | xargs grep -l "int\[\] e" | xargs grep -l "int\[\] f" | xargs grep -l "int\[\] g"
 ```
 
+### 5. Identity Kit Data Loading Evidence
+```bash
+# Show idk.dat loading in bytecode with context
+grep -A 20 -B 10 "idk\.dat\|TAVAECED\[\] c" bytecode/client/TAVAECED.bytecode.txt
+
+# Show corresponding identity kit loading in DEOB source with context
+grep -A 20 -B 10 "idk\.dat\|unpackConfig\|IDK\[\]" srcAllDummysRemoved/src/IDK.java
+
+# Verify identity kit loading in javap cache with context
+grep -A 20 -B 10 "idk\.dat\|unpackConfig\|TAVAECED" srcAllDummysRemoved/.javap_cache/IDK.javap.cache
+```
+
+### 6. Appearance Array Evidence
+```bash
+# Show appearance arrays in bytecode with context
+grep -A 15 -B 10 "int\[\] e.*f.*g.*h" bytecode/client/TAVAECED.bytecode.txt
+
+# Show corresponding appearance arrays in DEOB source with context
+grep -A 15 -B 10 "anIntArray658.*659.*660.*661" srcAllDummysRemoved/src/IDK.java
+
+# Verify appearance array structure in javap cache with context
+grep -A 15 -B 10 "anIntArray658\|anIntArray659\|anIntArray660\|anIntArray661" srcAllDummysRemoved/.javap_cache/IDK.javap.cache
+```
+
 ## Critical Evidence Points
 
 1. **Identity Kit Data Loading**: The class loads configuration data from "idk.dat" file, a unique identifier for character appearance data.

@@ -4,28 +4,54 @@
 Class4 provides static utility methods for coordinate transformations, likely for map or grid rotations in RuneScape. It handles orientation changes with bitwise operations on directions.
 
 ## Architectural Relationships
-Class4 is a utility class with no dependencies. It may be used by game logic for positioning. No diagram.
+Class4 is a static utility class that provides coordinate transformation methods for map and grid rotations in the game world. The class handles orientation changes with bitwise operations on directional values, supporting 4-directional movement and rotation calculations. Class4 acts as a mathematical utility for positioning systems.
 
-## Bytecode Matching Commands
-To show method155:
+```mermaid
+classDiagram
+    Class4 --> "Game Logic Components"
+    Class4 : +method155(int, int, boolean)
+    Class4 : +method157(int, int, byte, int, int)
+    Class4 : +static coordinate transformations
+    Class4 : +bitwise rotation operations
 ```
+
+## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
+```bash
+# Show method155 coordinate transformation in bytecode
 grep -A 10 "public static int a.*int.*int.*boolean" bytecode/client/CDEJWOSB.bytecode.txt
-```
 
-To show method157:
-```
+# Show method157 complex coordinate transformation in bytecode
 grep -A 15 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJWOSB.bytecode.txt
 ```
 
-## Deobfuscated Source Sections
+## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show method155 in DEOB source with multi-line context
 grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/src/Class4.java
 
+# Show method157 in DEOB source with context
 grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/src/Class4.java
+```
 
-## Javap Cache Sections
+## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
+```bash
+# Show method155 in javap cache with multi-line context
 grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 
+# Show method157 in javap cache with context
 grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 4: STATIC UTILITY PATTERN EVIDENCE
+```bash
+# Show static method patterns in bytecode
+grep -A 5 -B 5 "public static" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding static methods in DEOB source
+grep -A 5 -B 5 "public static" srcAllDummysRemoved/src/Class4.java
+
+# Verify static utility pattern in javap cache
+grep -A 5 -B 5 "public static" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence
