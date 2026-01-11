@@ -39,8 +39,8 @@ grep -A 5 -B 5 "ObjectDef" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.
 
 ### 2. Specialized Constructor Pattern
 ```bash
-# Show constructor with 4 parameters including ObjectDef reference
-grep -A 15 -B 5 "public.*WBWOBAFW.*int.*int.*int.*YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
+# Show constructor with 10 parameters including ObjectDef reference
+grep -A 15 -B 5 "public WBWOBAFW(" bytecode/client/WBWOBAFW.bytecode.txt
 
 # Show matching constructor in DEOB source
 grep -A 15 -B 5 "public Animable_Sub5.*ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
@@ -52,7 +52,7 @@ grep -A 20 "public Animable_Sub5(" srcAllDummysRemoved/.javap_cache/Animable_Sub
 ### 3. Sequence Processing Evidence
 ```bash
 # Show sequence-specific method implementations with ObjectDef context
-grep -A 20 -B 5 "public.*ZKARKDQW.*sequence" bytecode/client/WBWOBAFW.bytecode.txt
+grep -A 20 -B 5 "public final ZKARKDQW a(int)" bytecode/client/WBWOBAFW.bytecode.txt
 
 # Show sequence processing in DEOB source with ObjectDef usage
 grep -A 20 -B 5 "getRotatedModel.*ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java

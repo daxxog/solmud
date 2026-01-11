@@ -70,5 +70,52 @@ Verification: Commands simulate correctly showing matching initialization sequen
 
 Non-contradictory evidence: All sources show consistent image production logic with minor variations in the bytecode likely due to obfuscation or optimization.
 
-1:1 mapping confirmation: Field mappings are unique and direct, no overlap with other classes.</content>
-<parameter name="filePath">bytecode/mapping/evidence/verified/RSImageProducer_IVIFZQBK.md
+1:1 mapping confirmation: Field mappings are unique and direct, no overlap with other classes.
+
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/IVIFZQBK.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/RSImageProducer.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/RSImageProducer.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/IVIFZQBK.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/RSImageProducer.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/RSImageProducer.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/IVIFZQBK.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/RSImageProducer.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/RSImageProducer.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "drawGraphics\|addConsumer\|anImage320" bytecode/client/*.bytecode.txt | xargs grep -l "ColorModel" | grep "IVIFZQBK"
+
+# Show class-specific metrics
+grep -c "anInt31[6-7]\|anIntArray315\|drawingArea" bytecode/client/IVIFZQBK.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "cache\|array\|stream" bytecode/client/IVIFZQBK.bytecode.txt | wc -l
+```

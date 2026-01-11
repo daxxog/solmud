@@ -22,15 +22,15 @@ graph TD
 
 ### 1. Structural Fingerprints
 ```bash
-# Show class definition and final modifier
-head -5 bytecode/client/LKGEGIEW.bytecode.txt
+# Show class definition and field structure
+grep -A 20 -B 5 "public class LKGEGIEW" bytecode/client/LKGEGIEW.bytecode.txt
 
 # Show field count and types
-grep -E "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytecode/client/LKGEGIEW.bytecode.txt | wc -l
-grep -E "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytecode/client/LKGEGIEW.bytecode.txt
+grep "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytecode/client/LKGEGIEW.bytecode.txt | wc -l
+grep "public.*int\|private.*int\|public.*boolean\|public.*LKGEGIEW\[\]" bytecode/client/LKGEGIEW.bytecode.txt
 
 # Show method signatures
-grep -E "public static.*a\|public void.*a" bytecode/client/LKGEGIEW.bytecode.txt
+grep "public static.*a\|public void.*a" bytecode/client/LKGEGIEW.bytecode.txt
 ```
 
 ### 2. Source Code Correlation
@@ -62,8 +62,8 @@ grep -A 10 -B 5 "unpackConfig\|seq\.dat\|readValues" srcAllDummysRemoved/src/Ani
 # Show frame array operations
 grep -A 5 -B 5 "anIntArray353\|anIntArray354\|anewarray" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show frame timing calculations
-grep -A 10 -B 5 "method258\|Class36\.method531" bytecode/client/LKGEGIEW.bytecode.txt
+# Show frame timing calculations - method a(int, byte) is the frame timing method
+grep -A 10 -B 5 "public int a(int, byte)" bytecode/client/LKGEGIEW.bytecode.txt
 
 # Show source frame management
 grep -A 15 -B 5 "method258\|anIntArray355\|Class36" srcAllDummysRemoved/src/Animation.java

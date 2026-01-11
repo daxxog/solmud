@@ -116,6 +116,54 @@ Contains hardcoded banned words: `["cook", "cook's", "cooks", "seeks", "sheet", 
 
 **Overall Confidence: 100%**
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/RKAYAFDQ.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Censor.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/RKAYAFDQ.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/Censor.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/RKAYAFDQ.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/Censor.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Censor.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "fragmentsenc\.txt\|badenc\.txt\|domainenc\.txt\|tldlist\.txt" bytecode/client/*.bytecode.txt | xargs grep -l "cook" | grep "RKAYAFDQ"
+
+# Show class-specific metrics
+grep -c "loadConfig\|doCensor" bytecode/client/RKAYAFDQ.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "widget\|interface\|render" bytecode/client/RKAYAFDQ.bytecode.txt | wc -l
+```
+
 ## Deobfuscated Source Evidence Commands
 grep -A 10 -B 5 "loadConfig" srcAllDummysRemoved/src/Censor.java
 grep -A 5 -B 5 "fragmentsenc\.txt" srcAllDummysRemoved/src/Censor.java

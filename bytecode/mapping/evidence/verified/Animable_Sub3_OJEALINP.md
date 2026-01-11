@@ -17,14 +17,17 @@ classDiagram
 ```
 
 ## Bash Commands Proving Bytecode Matches
+- `grep -A 20 -B 5 "extends\|implements" bytecode/client/OJEALINP.bytecode.txt`  
+  Shows final class OJEALINP extending XHHRODPC (Animable), with field declarations including 5 public int fields (m-q), private boolean r, private int s, public boolean t, private MUDLUUBC u (SpotAnim), and private int v-w.
+
 - `grep -A 50 -B 5 "public OJEALINP(" bytecode/client/OJEALINP.bytecode.txt`  
-  Shows the constructor bytecode with 8 parameters, initializing fields r (boolean), s (int), t (boolean duplicate), u (SpotAnim reference), m/n/o/p/q (int fields), matching the deob constructor sequence.
+  Shows the constructor bytecode with 8 parameters, initializing fields r (boolean), s (int), t (boolean), u (SpotAnim reference from SpotAnim.cache array), m/n/o/p/q (int fields) with proper field access patterns.
 
-- `grep -A 100 -B 10 "getfield.*u" bytecode/client/OJEALINP.bytecode.txt | head -50`  
-  Shows the getRotatedModel method accessing the SpotAnim field (u), invoking getModel(), checking null, accessing Animation arrays, creating new Model with Class36.method532 call, and conditional method calls for transformations.
+- `grep -A 50 -B 5 "public final ZKARKDQW a(int)" bytecode/client/OJEALINP.bytecode.txt`  
+  Shows the getRotatedModel method accessing the SpotAnim field (u), invoking getModel(), null check, accessing Animation arrays, creating new Model with Class36.method532, and conditional transformation method calls.
 
-- `grep -A 50 -B 5 "aload_0" bytecode/client/OJEALINP.bytecode.txt | grep -A 50 "dup" | grep -A 50 "iadd" | head -50`  
-  Shows the animation update method (method454 equivalent) incrementing a field, comparing with Animation.method258 result in a loop, updating indices and boolean flag.
+- `grep -A 50 -B 5 "public final void a(int, boolean)" bytecode/client/OJEALINP.bytecode.txt`  
+  Shows the animation update method (method454 equivalent) with field increment patterns, loop structure comparing with Animation.method258 result, updating animation indices and boolean flags.
 
 ## Commands for Deob Source Sections
 - `head -20 srcAllDummysRemoved/src/Animable_Sub3.java`  

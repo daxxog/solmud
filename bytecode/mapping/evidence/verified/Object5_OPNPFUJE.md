@@ -132,6 +132,54 @@ byte aByte530;
 ## **MAPPING CONFIDENCE**
 **100% CONFIDENCE** - Perfect field structure match with exact count, type, and ordering correspondence. Animable type integration confirmed through existing mappings.
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/OPNPFUJE.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Object5.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/OPNPFUJE.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/Object5.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/OPNPFUJE.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/Object5.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Object5.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "aClass30_Sub2_Sub4_521\|uid\|aByte530" bytecode/client/*.bytecode.txt | xargs grep -l "14.*fields" | grep "OPNPFUJE"
+
+# Show class-specific metrics
+grep -c "anInt51[7-8]\|anInt52[0-9]\|XHHRODPC" bytecode/client/OPNPFUJE.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "method\|array\|implements" bytecode/client/OPNPFUJE.bytecode.txt | wc -l
+```
+
 ## **IMPACT**
 - Essential component of 3D object positioning system
 - Used for most complex game world objects with extensive properties

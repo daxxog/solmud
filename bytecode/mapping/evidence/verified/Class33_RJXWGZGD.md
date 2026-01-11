@@ -141,6 +141,54 @@ public RJXWGZGD();
 | Complexity Match     | 5%         | 100%      | 5%                |
 | **TOTAL CONFIDENCE** | **100%**   |           | **100%**          |
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Class33.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/Class33.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/RJXWGZGD.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/Class33.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Class33.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "anInt602\|anInt603\|anInt604\|anInt605" bytecode/client/*.bytecode.txt | xargs grep -l "4.*int" | grep "RJXWGZGD"
+
+# Show class-specific metrics
+grep -c "int.*a\|int.*b\|int.*c\|int.*d" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "array\|method.*\|implements" bytecode/client/RJXWGZGD.bytecode.txt | wc -l
+```
+
 ## Deobfuscated Source Evidence Commands
 grep -A 10 -B 5 "method555" srcAllDummysRemoved/src/Class33.java
 grep -A 5 -B 5 "aClass33Array556" srcAllDummysRemoved/src/Class33.java

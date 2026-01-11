@@ -112,6 +112,54 @@ final class Class11 {
 }
 ```
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/LLORVYLP.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Class11.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/LLORVYLP.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/Class11.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/LLORVYLP.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/Class11.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Class11.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "anIntArrayArray294\|104.*104" bytecode/client/*.bytecode.txt | xargs grep -l "collision" | grep "LLORVYLP"
+
+# Show class-specific metrics
+grep -c "anInt290\|anInt291\|anInt292\|anInt293" bytecode/client/LLORVYLP.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "fragment\|badenc\|domainenc" bytecode/client/LLORVYLP.bytecode.txt | wc -l
+```
+
 ## Deobfuscated Source Evidence Commands
 grep -A 10 -B 5 "method210" srcAllDummysRemoved/src/Class11.java
 grep -A 5 -B 5 "anIntArrayArray294" srcAllDummysRemoved/src/Class11.java

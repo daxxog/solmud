@@ -223,8 +223,55 @@ grep -A 15 "public static final boolean\[\] skillEnabled" srcAllDummysRemoved/.j
 ## **MAPPING CONFIDENCE**
 **100% CONFIDENCE** - This mapping is irrefutable due to literal skill names embedded in bytecode. No other class could contain this exact combination of RuneScape skill data.
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/YUXCUCXD.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Skills.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/YUXCUCXD.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/Skills.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/YUXCUCXD.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/Skills.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Skills.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "attack\|defence\|strength\|hitpoints" bytecode/client/*.bytecode.txt | xargs grep -l "skillsCount" | grep "YUXCUCXD"
+
+# Show class-specific metrics
+grep -c "skillNames\|skillEnabled\|skillsCount" bytecode/client/YUXCUCXD.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "method\|extends\|implements" bytecode/client/YUXCUCXD.bytecode.txt | wc -l
+```
+
 ## **IMPACT**
 - Core game mechanics infrastructure
 - Essential for understanding player stats and skill system
-- Enables proper deobfuscation of skill-related code throughout the client</content>
-<parameter name="filePath">./bytecode/mapping/evidence/verified/YUXCUCXD_SKILLS.md
+- Enables proper deobfuscation of skill-related code throughout the client

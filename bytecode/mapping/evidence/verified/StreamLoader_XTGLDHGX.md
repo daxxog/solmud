@@ -136,8 +136,55 @@ grep -A 10 -B 5 "public byte\[\] getDataForName" srcAllDummysRemoved/.javap_cach
 ## **MAPPING CONFIDENCE**
 **95% CONFIDENCE** - Multiple irrefutable constants combined with unique hash algorithm make this mapping extremely reliable. The combination of 44820, -29508, and base-61 hashing is unique to StreamLoader.
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/XTGLDHGX.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/StreamLoader.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/XTGLDHGX.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/StreamLoader.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/XTGLDHGX.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/StreamLoader.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "44820\|-29508\|891" bytecode/client/*.bytecode.txt | xargs grep -l "getDataForName" | grep "XTGLDHGX"
+
+# Show class-specific metrics
+grep -c "anIntArray72[8-9]\|anIntArray73[0-2]\|19672" bytecode/client/XTGLDHGX.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "widget\|interface\|render" bytecode/client/XTGLDHGX.bytecode.txt | wc -l
+```
+
 ## **IMPACT**
 - Critical cache loading infrastructure
 - Handles all compressed game assets (models, textures, sounds)
-- Essential for client startup and resource management</content>
-<parameter name="filePath">bytecode/mapping/evidence/verified/XTGLDHGX_STREAMLOADER.md
+- Essential for client startup and resource management

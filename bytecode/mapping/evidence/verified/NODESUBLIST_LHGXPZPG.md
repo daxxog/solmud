@@ -228,6 +228,54 @@ public final class NodeSubList {
 ## **MAPPING CONFIDENCE**
 **95% CONFIDENCE** - The combination of circular linked list implementation, PKVMXVTO (Node) integration, exact constructor pattern, and comprehensive node manipulation methods represents irrefutable forensic evidence. The only minor uncertainty is specific usage context, but the core data structure implementation is undeniable.
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/LHGXPZPG.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/NodeSubList.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/LHGXPZPG.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/NodeSubList.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/LHGXPZPG.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/NodeSubList.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "insertHead\|popTail\|reverseGetNext" bytecode/client/*.bytecode.txt | xargs grep -l "PPOHBEGB" | grep "LHGXPZPG"
+
+# Show class-specific metrics
+grep -c "PKVMXVTO\|head\|current" bytecode/client/LHGXPZPG.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "cache\|array\|method" bytecode/client/LHGXPZPG.bytecode.txt | wc -l
+```
+
 ## **IMPACT**
 - Essential data structure for efficient node-based storage
 - Critical for cache management and queue operations

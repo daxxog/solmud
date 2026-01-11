@@ -23,29 +23,29 @@ classDiagram
 
 ## Bytecode Matches
 
-`cat bytecode/client/DJRMEMXO.bytecode.txt | grep -A 15 -B 5 "public static DJRMEMXO c"`
+`grep -A 15 -B 5 "public static final DJRMEMXO b(int)" bytecode/client/DJRMEMXO.bytecode.txt`
 
 This shows the forID method checking cache and loading.
 
-`cat bytecode/client/DJRMEMXO.bytecode.txt | grep -A 10 -B 5 "private void readValues"`
+`grep -A 10 -B 5 "private void a" bytecode/client/DJRMEMXO.bytecode.txt`
 
-This shows readValues parsing item data.
+This shows readValues method parsing item data.
 
-`cat bytecode/client/DJRMEMXO.bytecode.txt | grep -A 20 -B 5 "public static Sprite getSprite"`
+`grep -A 20 -B 5 "public static.*getSprite" bytecode/client/DJRMEMXO.bytecode.txt`
 
 This shows sprite generation method.
 
 ## Deob Source Sections
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 15 -B 5 "public static ItemDef forID"`
+`grep -A 15 -B 5 "public static ItemDef forID" srcAllDummysRemoved/src/ItemDef.java`
 
 This shows forID caching.
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 20 -B 5 "private void readValues"`
+`grep -A 20 -B 5 "private void readValues" srcAllDummysRemoved/src/ItemDef.java`
 
 This shows readValues.
 
-`cat srcAllDummysRemoved/src/ItemDef.java | grep -A 30 -B 5 "public static Sprite getSprite"`
+`grep -A 30 -B 5 "public static Sprite getSprite" srcAllDummysRemoved/src/ItemDef.java`
 
 This shows sprite generation.
 
@@ -69,5 +69,52 @@ Verification: Consistent item definition logic.
 
 Non-contradictory: All show same item management.
 
-1:1 mapping confirmation: Unique to items.</content>
-<parameter name="filePath">bytecode/mapping/evidence/verified/ItemDef_DJRMEMXO.md
+1:1 mapping confirmation: Unique to items.
+
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/DJRMEMXO.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/ItemDef.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/ItemDef.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/DJRMEMXO.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/ItemDef.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/ItemDef.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/DJRMEMXO.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/ItemDef.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/ItemDef.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "forID\|getSprite\|readValues" bytecode/client/*.bytecode.txt | xargs grep -l "GCPOSBWX" | grep "DJRMEMXO"
+
+# Show class-specific metrics
+grep -c "modelID\|stackable\|team" bytecode/client/DJRMEMXO.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "combatLevel\|nameString\|actions" bytecode/client/DJRMEMXO.bytecode.txt | wc -l
+```

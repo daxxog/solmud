@@ -150,6 +150,54 @@ public class SizeConstants {
 ## **MAPPING CONFIDENCE**
 **100% CONFIDENCE** - The combination of identical static array initialization, exact magic number sequence, packet size constants with negative values, and static final configuration pattern represents irrefutable forensic evidence. This is the game's size and configuration constants class.
 
+## COMMAND BLOCK 1: STRUCTURE EVIDENCE
+```bash
+# Show class structure and inheritance in bytecode
+grep -A 10 -B 5 "extends\|implements" bytecode/client/QDBYELAJ.bytecode.txt
+
+# Show corresponding structure in DEOB source
+grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/SizeConstants.java
+
+# Verify structure in javap cache
+grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/SizeConstants.javap.cache
+```
+
+## COMMAND BLOCK 2: FIELD EVIDENCE
+```bash
+# Show field patterns in bytecode
+grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/QDBYELAJ.bytecode.txt
+
+# Show field structure in DEOB source
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/SizeConstants.java | head -30
+
+# Verify field declarations in javap cache
+grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/SizeConstants.javap.cache
+```
+
+## COMMAND BLOCK 3: METHOD EVIDENCE
+```bash
+# Show method signatures in bytecode
+grep -A 15 -B 5 "public.*\|private.*\|protected.*" bytecode/client/QDBYELAJ.bytecode.txt | grep "(" | head -10
+
+# Show method signatures in DEOB source
+grep -A 20 -B 5 "public.*\|private.*" srcAllDummysRemoved/src/SizeConstants.java | grep "(" | head -10
+
+# Verify methods in javap cache
+grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/SizeConstants.javap.cache | grep "(" | head -10
+```
+
+## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
+```bash
+# Show unique patterns compared to similar classes
+grep -l "6.*21.*25.*33.*254" bytecode/client/*.bytecode.txt | xargs grep -l "packetSizes" | grep "QDBYELAJ"
+
+# Show class-specific metrics
+grep -c "anIntArray552\|packetSizes\|static.*final" bytecode/client/QDBYELAJ.bytecode.txt
+
+# Verify class lacks exclusion patterns (distinguishes from others)
+grep -l "method\|extends\|implements" bytecode/client/QDBYELAJ.bytecode.txt | wc -l
+```
+
 ## **IMPACT**
 - Core game configuration and tuning parameters
 - Network protocol definitions and packet sizes
