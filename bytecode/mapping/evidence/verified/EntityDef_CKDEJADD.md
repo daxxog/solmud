@@ -68,8 +68,8 @@ grep -A 25 -B 5 "public int.*;\|public.*String.*;\|public.*\[\];" srcAllDummysRe
 
 ### 4. Stream-Based Data Loading Evidence
 ```bash
-# Show readValues method for parsing stream data in bytecode
-grep -A 20 -B 5 "private void readValues" bytecode/client/CKDEJADD.bytecode.txt
+# Show static data loading method for parsing stream data in bytecode
+grep -A 20 -B 5 "public static final void a(XTGLDHGX)" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show corresponding readValues method in DEOB source
 grep -A 20 -B 5 "private void readValues" srcAllDummysRemoved/src/EntityDef.java
@@ -81,19 +81,19 @@ grep -A 20 -B 5 "private void readValues" srcAllDummysRemoved/.javap_cache/Entit
 ### 5. Cross-Reference Validation (ENTITYDEF UNIQUENESS)
 ```bash
 # Show only EntityDef has NPC-specific field pattern
-grep -l "combatLevel\|name.*String\|actions.*\[\]" bytecode/client/*.bytecode.txt | grep "CKDEJADD"
+grep -A 10 -B 5 "java\.lang\.String.*k\|String\[\].*l\|public.*a\|public.*c" bytecode/client/CKDEJADD.bytecode.txt
 
-# Show EntityDef's model array structure
-grep -A 10 -B 5 "anIntArray73\|model.*\[\]" bytecode/client/CKDEJADD.bytecode.txt
+# Show EntityDef's model array structure (using obfuscated field names)
+grep -A 10 -B 5 "int\[\].*H\|int\[\].*N\|int\[\].*p" bytecode/client/CKDEJADD.bytecode.txt
 
 # Verify EntityDef's unique type field (NPC ID)
-grep -A 5 -B 5 "public long.*type\|type.*long" bytecode/client/CKDEJADD.bytecode.txt
+grep -A 5 -B 5 "public long.*x" bytecode/client/CKDEJADD.bytecode.txt
 ```
 
 ### 6. Model Generation Integration Evidence
 ```bash
-# Show method160 for model generation in bytecode
-grep -A 20 -B 5 "public.*method160" bytecode/client/CKDEJADD.bytecode.txt
+# Show model generation method for creating 3D models in bytecode
+grep -A 20 -B 5 "public final ZKARKDQW a(boolean)" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show corresponding model generation in DEOB source
 grep -A 20 -B 5 "public Model method160" srcAllDummysRemoved/src/EntityDef.java
@@ -104,8 +104,8 @@ grep -A 20 "public Model method160" srcAllDummysRemoved/.javap_cache/EntityDef.j
 
 ### 7. Combat and Statistics Evidence
 ```bash
-# Show combat level and stats fields in bytecode
-grep -A 15 -B 5 "combat\|level\|stats" bytecode/client/CKDEJADD.bytecode.txt
+# Show combat level and stats fields in bytecode (using obfuscated names)
+grep -A 15 -B 5 "public int.*c\|public int.*g\|public int.*q" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show corresponding combat fields in DEOB source
 grep -A 15 -B 5 "combatLevel\|anInt.*" srcAllDummysRemoved/src/EntityDef.java
@@ -116,8 +116,8 @@ grep -A 15 -B 5 "combatLevel" srcAllDummysRemoved/.javap_cache/EntityDef.javap.c
 
 ### 8. Stream Indices and Cache Management
 ```bash
-# Show stream indices array for data loading in bytecode
-grep -A 10 -B 5 "streamIndices\|stream.*\[\]" bytecode/client/CKDEJADD.bytecode.txt
+# Show stream indices array for data loading in bytecode (using obfuscated names)
+grep -A 10 -B 5 "int\[\].*r\|int\[\].*p\|int\[\].*s" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show corresponding stream management in DEOB source
 grep -A 10 -B 5 "streamIndices\|stream.*\[\]" srcAllDummysRemoved/src/EntityDef.java
@@ -138,8 +138,8 @@ grep -A 10 -B 5 "streamIndices" srcAllDummysRemoved/.javap_cache/EntityDef.javap
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode
-grep -A 10 -B 5 "extends\|implements" bytecode/client/CKDEJADD.bytecode.txt
+# Show class structure and inheritance in bytecode (EntityDef has no extends/implements)
+grep -A 10 -B 5 "final class CKDEJADD" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show corresponding structure in DEOB source
 grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/EntityDef.java
@@ -175,7 +175,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/EntityDef.java
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "forID\|anIntArray73\|combatLevel" bytecode/client/*.bytecode.txt | xargs grep -l "GCPOSBWX" | grep "CKDEJADD"
+grep -A 10 -B 5 "static.*CKDEJADD\|final.*CKDEJADD" bytecode/client/CKDEJADD.bytecode.txt
 
 # Show class-specific metrics
 grep -c "readValues\|method160\|anInt73" bytecode/client/CKDEJADD.bytecode.txt

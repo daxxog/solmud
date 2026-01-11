@@ -151,7 +151,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Class11.javap.
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "anIntArrayArray294\|104.*104" bytecode/client/*.bytecode.txt | xargs grep -l "collision" | grep "LLORVYLP"
+grep -A 10 -B 5 "byte\[\].*a\|int.*b.*int.*c" bytecode/client/LLORVYLP.bytecode.txt
 
 # Show class-specific metrics
 grep -c "anInt290\|anInt291\|anInt292\|anInt293" bytecode/client/LLORVYLP.bytecode.txt

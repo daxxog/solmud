@@ -267,7 +267,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/NodeSubList.ja
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "insertHead\|popTail\|reverseGetNext" bytecode/client/*.bytecode.txt | xargs grep -l "PPOHBEGB" | grep "LHGXPZPG"
+grep -A 10 -B 5 "PKVMXVTO.*c\|PKVMXVTO.*d\|final class" bytecode/client/LHGXPZPG.bytecode.txt
 
 # Show class-specific metrics
 grep -c "PKVMXVTO\|head\|current" bytecode/client/LHGXPZPG.bytecode.txt

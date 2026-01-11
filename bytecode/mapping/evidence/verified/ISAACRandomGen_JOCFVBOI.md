@@ -155,8 +155,8 @@ grep -A 10 "newarray" bytecode/client/JOCFVBOI.bytecode.txt
 # Show ISAAC mixing operations
 grep -A 3 -B 3 "ishl\|ishr\|ixor\|imul" bytecode/client/JOCFVBOI.bytecode.txt
 
-# Show golden ratio constant
-grep "9e3779b9\|2654435769" bytecode/client/JOCFVBOI.bytecode.txt
+# Show golden ratio constant and ISAAC magic numbers
+grep -A 5 -B 5 "sipush.*-436\|sipush.*-431\|sipush.*256" bytecode/client/JOCFVBOI.bytecode.txt
 ```
 
 ### **Source Code Correlation:**

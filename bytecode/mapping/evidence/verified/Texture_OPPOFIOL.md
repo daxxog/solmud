@@ -38,7 +38,7 @@ grep -E "private static|public static|static.*boolean|static.*int|static.*DSMJIE
 grep -E "private static|public static|static.*boolean|static.*int|static.*DSMJIEPN|static.*int\[\]" bytecode/client/OPPOFIOL.bytecode.txt
 
 # Show method signatures
-grep -E "public static.*void\|public static.*int\|private static.*int\[\]" bytecode/client/OPPOFIOL.bytecode.txt
+grep -E "public static.*void\|public static.*int" bytecode/client/OPPOFIOL.bytecode.txt
 ```
 
 ### 2. Source Code Correlation
@@ -55,11 +55,11 @@ grep -A 15 -B 2 "static.*anIntArray\|static.*aBackgroundArray\|static.*boolean" 
 
 ### 3. Texture Loading Evidence
 ```bash
-# Show texture initialization patterns
-grep -A 10 -B 5 "method367\|newarray.*anIntArrayArray1478" bytecode/client/OPPOFIOL.bytecode.txt
+# Show texture initialization patterns (using obfuscated method names)
+grep -A 10 -B 5 "public static final void a(int, int, int)" bytecode/client/OPPOFIOL.bytecode.txt
 
-# Show background loading operations
-grep -A 5 -B 5 "aBackgroundArray1474s\|StreamLoader" bytecode/client/OPPOFIOL.bytecode.txt
+# Show background loading operations (using obfuscated field names)
+grep -A 5 -B 5 "public static DSMJIEPN\[\] N\|XTGLDHGX" bytecode/client/OPPOFIOL.bytecode.txt
 
 # Show corresponding source texture loading
 grep -A 10 -B 5 "method367\|anIntArrayArray1478.*new int" srcAllDummysRemoved/src/Texture.java
@@ -67,8 +67,8 @@ grep -A 10 -B 5 "method367\|anIntArrayArray1478.*new int" srcAllDummysRemoved/sr
 
 ### 4. Color Processing Evidence
 ```bash
-# Show color manipulation arrays
-grep -A 3 -B 3 "anIntArray1482\|method373" bytecode/client/OPPOFIOL.bytecode.txt
+# Show color manipulation arrays (using obfuscated field names)
+grep -A 3 -B 3 "public static int\[\] H\|public static int\[\] I\|public static int\[\] J" bytecode/client/OPPOFIOL.bytecode.txt
 
 # Show RGB processing operations
 grep -A 5 -B 5 "Math\.pow\|d1 \* 256D\|d2 \* 256D\|d3 \* 256D" bytecode/client/OPPOFIOL.bytecode.txt

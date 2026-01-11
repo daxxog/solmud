@@ -1,15 +1,54 @@
-# Forensic Evidence: YUXCUCXD → Skills
+# Evidence: Skills → YUXCUCXD
 
-## **CLASS IDENTIFICATION**
-- **Obfuscated Name**: YUXCUCXD
-- **Deobfuscated Name**: Skills
-- **Confidence**: 100% (IRREFUTABLE EVIDENCE)
-- **Date Identified**: January 8, 2026
+## Class Overview
 
-## **PRIMARY FORENSIC EVIDENCE**
+**Skills** represents the comprehensive skill system configuration for RuneScape, containing the complete skill definitions, names, and enable states for all 25 skills including combat skills, gathering skills, production skills, and member skills. Skills provides static final arrays for skill names in order, skill count constants, and boolean flags for skill availability, serving as the definitive reference for the game's skill mechanics and character progression systems.
 
-### **1. Literal Skill Names (IRREFUTABLE)**
-The bytecode contains the exact RuneScape skill names in static initializer:
+The class provides essential skill system capabilities:
+- **Skill Name Registry**: Complete list of all RuneScape skills in proper order with exact names
+- **Skill Count Management**: Constant defining total skill count (25) for system configuration
+- **Enable State Control**: Boolean array defining which skills are enabled/disabled per player type
+- **Static Reference Data**: Immutable configuration for all skill-related systems throughout the client
+
+## Architecture Role
+
+Skills occupies a foundational position in the character progression architecture, serving as the single source of truth for all skill definitions and configuration data. Unlike other dynamic classes, Skills is uniquely characterized by its literal skill name strings, exact 25-skill structure, and the specific pattern of enabled/disabled skills, making it the central hub for all skill-related operations including interface display, experience calculations, and character stat management.
+
+```mermaid
+classDiagram
+    Skills : +skillNames (String array)
+    Skills : +skillEnabled (boolean array)
+    Skills : +skillsCount (int)
+    Skills : -Static final class
+    Skills : -Literal skill names
+    Skills : +attack, defence, strength, hitpoints...
+```
+
+## Forensic Evidence Commands
+
+### 1. Literal Skill Names Evidence (IRREFUTABLE IDENTIFIER)
+```bash
+# Show exact RuneScape skill names in bytecode static initializer
+grep -A 5 -B 5 "String attack\|String defence\|String strength" bytecode/client/YUXCUCXD.bytecode.txt
+
+# Show skill names array in DEOB source
+grep -A 25 "public static final String\[\] skillNames" srcAllDummysRemoved/src/Skills.java
+
+# Verify skill names in javap cache
+grep -A 25 "java.lang.String\[\] skillNames" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
+
+### 2. Complete Skill List Sequence Evidence
+```bash
+# Show full skill sequence including gathering and production skills
+grep -A 10 -B 5 "woodcutting\|fletching\|fishing\|crafting" bytecode/client/YUXCUCXD.bytecode.txt
+
+# Show member skills and unused slots in DEOB source
+grep -A 10 "runecraft\|herblore\|agility\|thieving" srcAllDummysRemoved/src/Skills.java
+
+# Verify skill ordering in javap cache
+grep -A 15 "slayer\|farming\|runecraft\|-unused-" srcAllDummysRemoved/.javap_cache/Skills.javap.cache
+```
 
 ```
 static {};
@@ -262,7 +301,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/Skills.javap.c
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "attack\|defence\|strength\|hitpoints" bytecode/client/*.bytecode.txt | xargs grep -l "skillsCount" | grep "YUXCUCXD"
+grep -A 10 -B 5 "attack\|defence\|strength\|hitpoints\|bipush.*25" bytecode/client/YUXCUCXD.bytecode.txt
 
 # Show class-specific metrics
 grep -c "skillNames\|skillEnabled\|skillsCount" bytecode/client/YUXCUCXD.bytecode.txt

@@ -27,11 +27,11 @@ classDiagram
 
 This shows the forID method checking cache and loading.
 
-`grep -A 10 -B 5 "private void a" bytecode/client/DJRMEMXO.bytecode.txt`
+`grep -A 10 -B 5 "public void a(byte)" bytecode/client/DJRMEMXO.bytecode.txt`
 
 This shows readValues method parsing item data.
 
-`grep -A 20 -B 5 "public static.*getSprite" bytecode/client/DJRMEMXO.bytecode.txt`
+`grep -A 20 -B 5 "public static final CXGZMTJK a(int, int, int, int)" bytecode/client/DJRMEMXO.bytecode.txt`
 
 This shows sprite generation method.
 
@@ -73,8 +73,8 @@ Non-contradictory: All show same item management.
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode
-grep -A 10 -B 5 "extends\|implements" bytecode/client/DJRMEMXO.bytecode.txt
+# Show class structure and inheritance in bytecode (ItemDef is final class with no inheritance)
+grep -A 10 -B 5 "final class DJRMEMXO" bytecode/client/DJRMEMXO.bytecode.txt
 
 # Show corresponding structure in DEOB source
 grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/ItemDef.java
@@ -110,7 +110,7 @@ grep -A 25 "public.*\|private.*" srcAllDummysRemoved/.javap_cache/ItemDef.javap.
 ## COMMAND BLOCK 4: CROSS-REFERENCE EVIDENCE
 ```bash
 # Show unique patterns compared to similar classes
-grep -l "forID\|getSprite\|readValues" bytecode/client/*.bytecode.txt | xargs grep -l "GCPOSBWX" | grep "DJRMEMXO"
+grep -A 10 -B 5 "static.*GCPOSBWX\|final.*DJRMEMXO" bytecode/client/DJRMEMXO.bytecode.txt
 
 # Show class-specific metrics
 grep -c "modelID\|stackable\|team" bytecode/client/DJRMEMXO.bytecode.txt

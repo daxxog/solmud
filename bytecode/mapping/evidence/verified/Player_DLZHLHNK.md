@@ -41,8 +41,8 @@ grep -A 5 -B 5 "MRUNodes\|anMRUNodes" srcAllDummysRemoved/.javap_cache/Player.ja
 
 ### 2. Equipment and Appearance Arrays
 ```bash
-# Show equipment and appearance array fields in bytecode
-grep -A 15 -B 5 "anIntArray\[.*\]\|equipment\|appearance" bytecode/client/DLZHLHNK.bytecode.txt
+# Show equipment and appearance array fields in bytecode (using obfuscated names)
+grep -A 15 -B 5 "int\[\].*vb\|int\[\].*Ab\|int\[\].*Bb" bytecode/client/DLZHLHNK.bytecode.txt
 
 # Show corresponding equipment/appearance arrays in DEOB source
 grep -A 15 -B 5 "anIntArray.*\[\]\|equipment\|appearance" srcAllDummysRemoved/src/Player.java | head -30
@@ -53,8 +53,8 @@ grep -A 15 -B 2 "anIntArray.*\[" srcAllDummysRemoved/.javap_cache/Player.javap.c
 
 ### 3. Player-Specific Field Patterns
 ```bash
-# Show player-specific fields distinguishing from NPC
-grep -A 20 -B 5 "skill\|experience\|level\|combat" bytecode/client/DLZHLHNK.bytecode.txt
+# Show player-specific fields distinguishing from NPC (using obfuscated names)
+grep -A 20 -B 5 "int.*wb\|int.*xb\|int.*Cb\|int.*Db" bytecode/client/DLZHLHNK.bytecode.txt
 
 # Show corresponding player fields in DEOB source
 grep -A 20 -B 5 "anInt.*\|skill\|experience\|combat" srcAllDummysRemoved/src/Player.java | head -30

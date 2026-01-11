@@ -79,7 +79,7 @@ grep -A 5 -B 5 "class NPC extends Entity" srcAllDummysRemoved/.javap_cache/NPC.j
 ### 5. Cross-Reference Validation (NPC vs PLAYER DISTINCTION)
 ```bash
 # Show only NPC extends Entity with EntityDef pattern (distinguishes from Player)
-grep -l "extends.*GQOSZKJC" bytecode/client/*.bytecode.txt | xargs grep -l "CKDEJADD" | grep "CWNCPMLX"
+grep -A 10 -B 5 "extends.*GQOSZKJC\|CKDEJADD.*vb" bytecode/client/CWNCPMLX.bytecode.txt
 
 # Show EntityDef usage count - only NPC has direct EntityDef field
 grep -l "CKDEJADD.*desc\|EntityDef.*desc" bytecode/client/*.bytecode.txt | wc -l

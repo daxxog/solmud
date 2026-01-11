@@ -1,15 +1,56 @@
-# Forensic Evidence: XTGLDHGX → StreamLoader
+# Evidence: StreamLoader → XTGLDHGX
 
-## **CLASS IDENTIFICATION**
-- **Obfuscated Name**: XTGLDHGX
-- **Deobfuscated Name**: StreamLoader
-- **Confidence**: 95% (VERY HIGH CONFIDENCE)
-- **Date Identified**: January 8, 2026
+## Class Overview
 
-## **PRIMARY FORENSIC EVIDENCE**
+**StreamLoader** represents a specialized data loading system for compressed game assets, implementing the RuneScape-specific hash algorithm and compression handling for managing game resources from cache files. StreamLoader handles the decompression of game data using custom algorithms, maintains parallel indexing arrays for efficient resource lookup, and provides the core infrastructure for loading models, textures, sounds, and other game assets from compressed cache streams.
 
-### **1. Magic Constants (IRREFUTABLE)**
-The bytecode contains multiple distinctive magic constants:
+The class provides essential asset loading capabilities:
+- **Hash-Based Indexing**: Custom base-61 string hash algorithm for efficient resource identification
+- **Compression Management**: Handles Bzip2-style decompression with magic constant validation
+- **Parallel Array Indexing**: Five synchronized integer arrays for hash, size, and offset tracking
+- **Resource Retrieval**: getDataForName method for loading specific assets by name
+
+## Architecture Role
+
+StreamLoader occupies a critical position in the content delivery architecture, serving as the primary interface between compressed cache data and the game's runtime asset systems. Unlike other data classes, StreamLoader is uniquely characterized by its custom hash algorithm, specific magic constants (44820, -29508, 891), and the five-array indexing system, making it the specialized decompression and indexing component for all game resource loading operations.
+
+```mermaid
+classDiagram
+    StreamLoader --> Stream
+    StreamLoader --> Class13
+    StreamLoader : +getDataForName(String)
+    StreamLoader : +anIntArray728 (hashes)
+    StreamLoader : +anIntArray729 (sizes)
+    StreamLoader : +anIntArray730 (compressed sizes)
+    StreamLoader : +anIntArray731 (offsets)
+    StreamLoader : +44820, -29508, 891 (magic constants)
+```
+
+## Forensic Evidence Commands
+
+### 1. Magic Constants Evidence (UNIQUE COMPRESSION MARKERS)
+```bash
+# Show compression constants 44820, -29508, 891 in bytecode
+grep -A 5 -B 5 "44820\|-29508\|891" bytecode/client/XTGLDHGX.bytecode.txt
+
+# Show compression handling in DEOB source
+grep -A 10 -B 5 "44820\|-29508\|891" srcAllDummysRemoved/src/StreamLoader.java
+
+# Verify compression constants in javap cache
+grep -A 5 -B 5 "44820\|-29508\|891" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
+
+### 2. Hash Algorithm Evidence (RUNESCAPE SPECIFIC)
+```bash
+# Show base-61 hash algorithm with -32 offset in bytecode
+grep -A 10 -B 5 "bipush.*61\|imul\|isub.*32" bytecode/client/XTGLDHGX.bytecode.txt
+
+# Show hash algorithm implementation in DEOB source
+grep -A 10 -B 5 "hash.*61\|char.*32" srcAllDummysRemoved/src/StreamLoader.java
+
+# Verify hash algorithm in javap cache
+grep -A 10 -B 5 "61\|32" srcAllDummysRemoved/.javap_cache/StreamLoader.javap.cache
+```
 
 ```
    23: ldc           #1                  // int 44820 (compression marker)
