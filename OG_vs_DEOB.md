@@ -60,3 +60,4 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
  - OG = ./rs317og.jar (you can list the contents of the jar if you are confused)
  - DEOB = ./srcAllDummysRemoved.zip (you can list the contents of the zip if you are confused)
  - create a `./Makefile` with helper commands that speed up this work when it makes sense. Modify existing `./Makefile` if it does not align to this document.
+ - "Build mode" does NOT mean creating a comprehensive build system. It simply refers to "read-write-mode" of the agent (i.e. !PLAN_MODE);
