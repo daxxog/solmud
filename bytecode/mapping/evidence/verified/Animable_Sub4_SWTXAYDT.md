@@ -30,16 +30,32 @@ classDiagram
 
 ## Forensic Evidence Commands
 
-### 1. Class Structure and Physics Fields
+### 1. Class Structure and Physics Fields Evidence
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show Animable_Sub4 extends Animable with double precision fields in bytecode
-grep -A 20 -B 5 "extends.*XHHRODPC" bytecode/client/SWTXAYDT.bytecode.txt
+# Show Animable_Sub4 extends Animable with unique double precision field pattern
+grep -A 25 -B 5 "extends.*XHHRODPC" bytecode/client/SWTXAYDT.bytecode.txt
 
-# Show corresponding physics field structure in DEOB source
-grep -A 15 -B 5 "double.*aDouble\|Math\." srcAllDummysRemoved/src/Animable_Sub4.java | head -30
+# Show double precision physics field declarations with surrounding context
+grep -A 20 -B 10 "private double\|public double" bytecode/client/SWTXAYDT.bytecode.txt
+```
 
-# Verify physics fields in javap cache
-grep -A 20 -B 2 "double\|D\|Math" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache | head -30
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show physics field structure with Math operations and projectile calculations
+grep -A 25 -B 5 "double.*aDouble\|Math\." srcAllDummysRemoved/src/Animable_Sub4.java
+
+# Show Math.sqrt and Math.tan operations for trajectory calculations
+grep -A 20 -B 5 "Math\.sqrt\|Math\.tan" srcAllDummysRemoved/src/Animable_Sub4.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify double precision physics fields with type signatures and context
+grep -A 25 -B 5 "double\|D\|Math" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
+
+# Show unique physics field combination in javap cache
+grep -A 30 -B 10 "aDouble1574\|aDouble1575\|aDouble1576" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
 ```
 
 ### 2. SpotAnim Field Integration
@@ -54,16 +70,32 @@ grep -A 10 -B 5 "SpotAnim.*cache\|aSpotAnim" srcAllDummysRemoved/src/Animable_Su
 grep -A 5 -B 5 "SpotAnim\|aSpotAnim_1592" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
 ```
 
-### 3. Physics Calculation Methods
+### 3. Physics Calculation Methods Evidence
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show Math operations and physics calculations in bytecode
-grep -A 15 -B 5 "Math\.sqrt\|Math\.atan2\|Math\.tan" bytecode/client/SWTXAYDT.bytecode.txt
+# Show Math library method calls for trajectory calculations with multi-line context
+grep -A 25 -B 10 "invokestatic.*Math\.*sqrt\|invokestatic.*Math\.*atan2\|invokestatic.*Math\.*tan" bytecode/client/SWTXAYDT.bytecode.txt
 
-# Show corresponding physics calculations in DEOB source
-grep -A 20 -B 5 "Math\.sqrt\|Math\.atan2\|Math\.tan" srcAllDummysRemoved/src/Animable_Sub4.java
+# Show double arithmetic operations for velocity and acceleration calculations
+grep -A 20 -B 5 "dadd\|dmul\|ddiv\|d2i" bytecode/client/SWTXAYDT.bytecode.txt
+```
 
-# Verify physics methods in javap cache
-grep -A 15 -B 2 "invokestatic.*Math" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show comprehensive physics calculations with Math operations for projectile motion
+grep -A 30 -B 5 "Math\.sqrt\|Math\.atan2\|Math\.tan" srcAllDummysRemoved/src/Animable_Sub4.java
+
+# Show trajectory calculation formula and velocity vector computations
+grep -A 25 -B 5 "aDouble1574.*aDouble1575\|d3.*Math\.sqrt" srcAllDummysRemoved/src/Animable_Sub4.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify Math method calls with bytecode instruction patterns
+grep -A 20 -B 5 "invokestatic.*Math" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
+
+# Show physics calculation instruction sequences
+grep -A 25 -B 5 "d2f\|f2d\|dcmpg\|dcmpl" srcAllDummysRemoved/.javap_cache/Animable_Sub4.javap.cache
 ```
 
 ### 4. method455 Trajectory Calculation

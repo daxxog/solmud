@@ -34,20 +34,30 @@ classDiagram
 
 ### 1. Inheritance and Interface Evidence (ONDEMANDFETCHER-SPECIFIC PATTERN)
 ```bash
-# Show GHOWLKWN extends OnDemandFetcherParent (VJKFYAWG) and implements Runnable
+# Show GHOWLKWN extends OnDemandFetcherParent (VJKFYAWG) and implements Runnable with multi-line context
 grep -A 5 -B 5 "class.*extends.*VJKFYAWG.*implements.*Runnable" bytecode/client/GHOWLKWN.bytecode.txt
 
-# Show corresponding inheritance in DEOB source
+# Show corresponding inheritance in DEOB source with multi-line context
 grep -A 5 -B 5 "extends.*OnDemandFetcherParent.*implements.*Runnable" srcAllDummysRemoved/src/OnDemandFetcher.java
 
-# Verify inheritance in javap cache
+# Verify inheritance in javap cache with multi-line context
 grep -A 5 -B 5 "class.*extends.*OnDemandFetcherParent.*implements.*Runnable" srcAllDummysRemoved/.javap_cache/OnDemandFetcher.javap.cache
+
+# A/B Evidence: Show inheritance pattern comparison
+echo "=== BYTECODE INHERITANCE (A) ===" && grep -A 8 -B 2 "public.*extends.*VJKFYAWG.*implements.*Runnable" bytecode/client/GHOWLKWN.bytecode.txt
+echo "=== DEOB SOURCE INHERITANCE (B) ===" && grep -A 8 -B 2 "public final.*extends.*OnDemandFetcherParent" srcAllDummysRemoved/src/OnDemandFetcher.java
+echo "=== JAVAP CACHE VERIFICATION ===" && grep -A 8 "class.*extends.*OnDemandFetcherParent" srcAllDummysRemoved/.javap_cache/OnDemandFetcher.javap.cache
 ```
 
 ### 2. Network Socket and Stream Evidence
 ```bash
-# Show Socket and InputStream/OutputStream field declarations in bytecode
+# Show Socket and InputStream/OutputStream field declarations in bytecode with multi-line context
 grep -A 10 -B 5 "java\.net\.Socket.*I\|java\.io\.InputStream.*H\|java\.io\.OutputStream.*z" bytecode/client/GHOWLKWN.bytecode.txt
+
+# A/B Evidence: Show network field patterns comparison
+echo "=== BYTECODE NETWORK FIELDS (A) ===" && grep -E "(Socket|InputStream|OutputStream)" bytecode/client/GHOWLKWN.bytecode.txt
+echo "=== DEOB SOURCE NETWORK FIELDS (B) ===" && grep -E "(Socket|InputStream|OutputStream)" srcAllDummysRemoved/src/OnDemandFetcher.java
+echo "=== JAVAP NETWORK VERIFICATION ===" && grep -E "(Socket|InputStream|OutputStream)" srcAllDummysRemoved/.javap_cache/OnDemandFetcher.javap.cache
 
 # Show Socket operations and stream connections in bytecode methods
 grep -A 15 -B 5 "Socket\.getInputStream\|Socket\.getOutputStream\|Socket\.close" bytecode/client/GHOWLKWN.bytecode.txt

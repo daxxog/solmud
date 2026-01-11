@@ -53,17 +53,17 @@ client acts as the central hub connecting all game systems, providing the main a
 Show the class declaration and extends RSApplet:
 
 ```bash
-# Class declaration extending KHACHIFW (RSApplet)
+# Class declaration extending KHACHIFW (RSApplet) (A flag)
 head -5 bytecode/client/client.bytecode.txt
 ```
 
 ```bash
-# Core game state fields (NPC arrays, ground arrays, socket)
+# Core game state fields (NPC arrays, ground arrays, socket) (A flag)
 grep -E -A 15 "CWNCPMLX\[\]|LHGXPZPG\[\]\[\[\]|java\.net\.Socket" bytecode/client/client.bytecode.txt
 ```
 
 ```bash
-# Main game loop and update methods
+# Main game loop and update methods (A flag)
 grep -A 5 "public final void" bytecode/client/client.bytecode.txt | head -10
 ```
 
@@ -72,17 +72,17 @@ grep -A 5 "public final void" bytecode/client/client.bytecode.txt | head -10
 Show the corresponding source code structure:
 
 ```bash
-# Class declaration extending RSApplet
+# Class declaration extending RSApplet (B flag)
 head -15 srcAllDummysRemoved/src/client.java
 ```
 
 ```bash
-# Core game fields (NPC arrays, ground arrays, socket)
+# Core game fields (NPC arrays, ground arrays, socket) (B flag)
 grep -E -A 10 "NPC\[\]|NodeList\[\]\[\[\]|Socket.*socket" srcAllDummysRemoved/src/client.java
 ```
 
 ```bash
-# Main game methods (connectServer, processGameLoop)
+# Main game methods (connectServer, processGameLoop) (B flag)
 grep -A 5 "connectServer\|processGameLoop\|main" srcAllDummysRemoved/src/client.java
 ```
 

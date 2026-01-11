@@ -45,17 +45,17 @@ Object1 acts as the fundamental data structure for representing interactive obje
 Show the class declaration and exact field structure:
 
 ```bash
-# Class declaration and field signatures
+# A: Class declaration and field signatures with multi-line context
 head -20 bytecode/client/FEHPTPDG.bytecode.txt
 ```
 
 ```bash
-# Field structure showing 5 int, 2 XHHRODPC, 1 int, 1 byte
+# B: Field structure showing 5 int, 2 XHHRODPC, 1 int, 1 byte with multi-line context
 grep -A 20 "int a;" bytecode/client/FEHPTPDG.bytecode.txt
 ```
 
 ```bash
-# Constructor showing simple data container pattern
+# A+B: Constructor showing simple data container pattern with multi-line context
 grep -A 10 "public FEHPTPDG();" bytecode/client/FEHPTPDG.bytecode.txt
 ```
 
@@ -64,17 +64,17 @@ grep -A 10 "public FEHPTPDG();" bytecode/client/FEHPTPDG.bytecode.txt
 Show the corresponding source code structure:
 
 ```bash
-# Class declaration and field structure
+# A: Class declaration and field structure with multi-line context
 head -25 srcAllDummysRemoved/src/Object1.java
 ```
 
 ```bash
-# Field declarations showing exact type matches
+# B: Field declarations showing exact type matches with multi-line context
 grep -A 15 "int anInt273;" srcAllDummysRemoved/src/Object1.java
 ```
 
 ```bash
-# Constructor showing data container pattern
+# A+B: Constructor showing data container pattern with multi-line context
 grep -A 5 "public Object1()" srcAllDummysRemoved/src/Object1.java
 ```
 

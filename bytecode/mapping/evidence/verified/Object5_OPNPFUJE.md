@@ -94,18 +94,21 @@ Used for most complex 3D object placement with extensive properties:
 Show field structure with multi-line context:
 
 ```bash
+# B: Show field structure with multi-line context
 grep -A 10 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/src/Object5.java
 ```
 
 Show Animable field integration:
 
 ```bash
+# B: Show Animable field integration with multi-line context
 grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/src/Object5.java
 ```
 
 Show uid and byte fields:
 
 ```bash
+# B: Show uid and byte fields with multi-line context
 grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/src/Object5.java
 ```
 
@@ -113,18 +116,21 @@ grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/src/Object5.j
 Show field declarations in javap cache:
 
 ```bash
+# A+B: Verify field declarations in javap cache with multi-line context
 grep -A 10 -B 5 "anInt517\|anInt518\|anInt519\|anInt520" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
 ```
 
 Show Animable field in javap:
 
 ```bash
+# A+B: Verify Animable field in javap cache with multi-line context
 grep -A 10 -B 5 "Animable aClass30_Sub2_Sub4_521" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
 ```
 
 Show uid and byte fields in javap:
 
 ```bash
+# A+B: Verify uid and byte fields in javap cache with multi-line context
 grep -A 5 -B 5 "public int uid\|byte aByte530" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
 ```
 
@@ -177,13 +183,13 @@ classDiagram
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode
+# A: Show class structure and inheritance in bytecode with multi-line context
 grep -A 10 -B 5 "extends\|implements" bytecode/client/OPNPFUJE.bytecode.txt
 
-# Show corresponding structure in DEOB source
+# B: Show corresponding structure in DEOB source with multi-line context
 grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Object5.java
 
-# Verify structure in javap cache
+# A+B: Verify structure in javap cache with multi-line context
 grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Object5.javap.cache
 ```
 

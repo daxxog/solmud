@@ -42,21 +42,43 @@ Class13 acts as the decompression middleware between resource loaders and the un
 
 ### 1. Bytecode Structure Match
 
-Show the class declaration and Class32 field integration:
-
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Class declaration and Class32 field
-head -10 bytecode/client/HZTFWEML.bytecode.txt
+# Show class declaration and Class32 field integration with multi-line context
+grep -A 15 -B 5 "public final class HZTFWEML\|private static QPNUVGRI" bytecode/client/HZTFWEML.bytecode.txt
+
+# Show method signature with complete byte array parameters and Class32 field access
+grep -A 20 -B 5 "public static int a(byte\[\], int, byte\[\], int, int)" bytecode/client/HZTFWEML.bytecode.txt
+
+# Show monitor synchronization pattern for thread safety
+grep -A 15 -B 5 "monitorenter\|monitorexit" bytecode/client/HZTFWEML.bytecode.txt
+
+# Show Class32 field assignments and usage patterns
+grep -A 20 -B 10 "getstatic.*QPNUVGRI\|putfield.*QPNUVGRI" bytecode/client/HZTFWEML.bytecode.txt
 ```
 
+**DEOB Source Code Analysis (B-Flag):**
 ```bash
-# Method signature with byte array parameters
-grep -A 5 "public static int a(byte\[\], int, byte\[\], int, int)" bytecode/client/HZTFWEML.bytecode.txt
+# Show class declaration and main decompression method with synchronization
+grep -A 25 -B 5 "public final class Class13\|method225.*synchronized" srcAllDummysRemoved/src/Class13.java
+
+# Show Class32 field assignments in decompression logic
+grep -A 20 -B 5 "aClass32_305\." srcAllDummysRemoved/src/Class13.java | head -30
+
+# Show method signature and byte array parameters
+grep -A 15 -B 5 "method225.*byte\[\]" srcAllDummysRemoved/src/Class11.java
 ```
 
+**Javap Cache Verification:**
 ```bash
-# Monitor synchronization pattern
-grep -A 5 "monitorenter" bytecode/client/HZTFWEML.bytecode.txt
+# Verify class structure and Class32 field declarations with type signatures
+grep -A 20 -B 5 "class Class13\|aClass32_305" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
+
+# Show method225 signature and monitorenter pattern with complete context
+grep -A 20 -B 5 "method225.*Code:\|monitorenter" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
+
+# Show field assignments to Class32 instance with bytecode instruction details
+grep -A 25 -B 5 "putfield.*Class32\|QPNUVGRI" srcAllDummysRemoved/.javap_cache/Class13.javap.cache
 ```
 
 ### 2. Deobfuscated Source Correlation

@@ -155,19 +155,19 @@ public OIBEELAZ();
 
 ## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
 ```bash
-# Show static cache array in bytecode
+# Show static cache array in bytecode (A flag)
 grep -A 5 "public static.*\[\]" bytecode/client/OIBEELAZ.bytecode.txt
 
-# Show constructor field initialization in bytecode
+# Show constructor field initialization in bytecode (A flag)
 grep -A 10 "putfield" bytecode/client/OIBEELAZ.bytecode.txt
 ```
 
 ## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
 ```bash
-# Show static cache array in DEOB source
+# Show static cache array in DEOB source (B flag)
 grep -A 5 -B 5 "public static.*cache" srcAllDummysRemoved/src/DummyClass.java
 
-# Show constructor in DEOB source with context
+# Show constructor in DEOB source with context (B flag)
 grep -A 5 -B 5 "public DummyClass" srcAllDummysRemoved/src/DummyClass.java
 ```
 

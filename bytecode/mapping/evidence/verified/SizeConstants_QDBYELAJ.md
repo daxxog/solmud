@@ -40,14 +40,19 @@ grep -A 5 -B 5 "final class SizeConstants" srcAllDummysRemoved/.javap_cache/Size
 
 ### 2. Magic Number Sequence Evidence (UNIQUE IDENTIFIER)
 ```bash
-# Show the magic sequence 6,21,25,33,254,127... in bytecode
+# Show the magic sequence 6,21,25,33,254,127... in bytecode with multi-line context
 grep -A 5 -B 5 "6.*21.*25.*33.*254" bytecode/client/QDBYELAJ.bytecode.txt
 
-# Show magic sequence in DEOB source
+# Show magic sequence in DEOB source with multi-line context
 grep -A 5 -B 5 "6, 21, 25, 33, 254" srcAllDummysRemoved/src/SizeConstants.java
 
-# Verify magic sequence in javap cache
+# Verify magic sequence in javap cache with multi-line context
 grep -A 5 -B 5 "6, 21, 25, 33, 254" srcAllDummysRemoved/.javap_cache/SizeConstants.javap.cache
+
+# A/B Evidence: Show unique magic number fingerprint
+echo "=== BYTECODE MAGIC SEQUENCE (A) ===" && grep -A 8 -B 2 "bipush.*6.*iastore.*bipush.*21" bytecode/client/QDBYELAJ.bytecode.txt | head -20
+echo "=== DEOB SOURCE MAGIC SEQUENCE (B) ===" && grep -A 8 -B 2 "6, 21, 25, 33, 254" srcAllDummysRemoved/src/SizeConstants.java
+echo "=== JAVAP MAGIC SEQUENCE VERIFICATION ===" && grep -A 8 "6, 21, 25, 33, 254" srcAllDummysRemoved/.javap_cache/SizeConstants.javap.cache
 ```
 
 ### 3. Static Final Array Pattern Evidence

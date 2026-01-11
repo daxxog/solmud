@@ -157,51 +157,64 @@ final class Class29 {
 }
 ```
 
-## Bytecode Matching Commands
-To show stream processing with 500-element arrays:
-```
-grep -A 10 -B 5 "sipush.*500" bytecode/client/SQHJOGRT.bytecode.txt
-```
-
-To show KVCQPLIW integration:
-```
-grep -A 5 -B 5 "KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
-```
-
-## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
 ```bash
-# Show stream processing method325 in DEOB source
-grep -A 10 "public void method325" srcAllDummysRemoved/src/Class29.java
-
-# Show 500-element array initialization in DEOB source
-grep -A 5 "anIntArray536.*new int" srcAllDummysRemoved/src/Class29.java
-
-# Show method326 stream processing continuation
-grep -A 10 "public void method326" srcAllDummysRemoved/src/Class29.java
-```
-
-## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
-```bash
-# Show stream method325 in javap cache with multi-line context
-grep -A 10 "public void method325" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
-
-# Show 500-element array structure in javap cache
-grep -A 5 -B 5 "anIntArray536" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
-
-# Show method326 stream processing in javap cache
-grep -A 10 "public void method326" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
-```
-
-## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
-```bash
-# Show 500-element array processing (sipush 500) in bytecode
+# Show 500-element array processing (sipush 500) with multi-line context
 grep -A 15 -B 5 "sipush.*500\|500.*new" bytecode/client/SQHJOGRT.bytecode.txt
 
-# Show corresponding array creation in DEOB source
-grep -A 15 -B 5 "new int\[500\]\|anIntArray.*500" srcAllDummysRemoved/src/Class29.java
+# Show KVCQPLIW (Class43) integration with context
+grep -A 10 -B 5 "KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
 
-# Verify 500-element array structure in javap cache
-grep -A 10 -B 5 "500.*new.*int\|anIntArray.*500" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+# Show stream processing patterns with MBMGIXGO
+grep -A 15 -B 5 "MBMGIXGO\|invokevirtual.*MBMGIXGO" bytecode/client/SQHJOGRT.bytecode.txt
+```
+
+## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
+```bash
+# Show stream processing method325 in DEOB source with multi-line context
+grep -A 15 -B 5 "public void method325" srcAllDummysRemoved/src/Class29.java
+
+# Show method326 stream processing with array initialization
+grep -A 15 -B 5 "public void method326" srcAllDummysRemoved/src/Class29.java
+
+# Show array field declarations in DEOB source
+grep -A 10 -B 5 "anIntArray536\|anIntArray537" srcAllDummysRemoved/src/Class29.java
+```
+
+## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
+```bash
+# Show stream method325 in javap cache with multi-line context
+grep -A 15 -B 5 "public void method325" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+
+# Show 500-element array structure in javap cache with context
+grep -A 10 -B 5 "anIntArray536\|anIntArray537" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+
+# Show method326 stream processing in javap cache with context
+grep -A 15 -B 5 "public void method326" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
+```
+
+## COMMAND BLOCK 4: BYTECODE TO SOURCE CORRELATION
+```bash
+# Show 500-element array processing patterns in bytecode
+grep -A 20 -B 5 "sipush.*500.*newarray.*int" bytecode/client/SQHJOGRT.bytecode.txt
+
+# Show corresponding array creation in DEOB source
+grep -A 10 -B 5 "new int\[.*\].*=" srcAllDummysRemoved/src/Class29.java
+
+# Verify stream field access patterns in bytecode to source correlation
+grep -A 10 -B 5 "invokevirtual.*MBMGIXGO.*read" bytecode/client/SQHJOGRT.bytecode.txt
+```
+
+## COMMAND BLOCK 5: STATIC ARRAY MANAGEMENT EVIDENCE
+```bash
+# Show static array management patterns in bytecode
+grep -A 10 -B 5 "static.*SQHJOGRT\|static.*boolean" bytecode/client/SQHJOGRT.bytecode.txt
+
+# Show corresponding static fields in DEOB source
+grep -A 10 -B 5 "static.*Class29\|static.*boolean" srcAllDummysRemoved/src/Class29.java
+
+# Verify static array patterns in javap cache
+grep -A 10 -B 5 "static.*\[\]" srcAllDummysRemoved/.javap_cache/Class29.javap.cache
 ```
 
 ## Verification of Non-Contradictory Evidence

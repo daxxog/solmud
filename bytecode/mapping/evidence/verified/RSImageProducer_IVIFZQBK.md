@@ -31,14 +31,19 @@ classDiagram
 
 ### 1. Dual Interface Implementation Evidence
 ```bash
-# Show RSImageProducer implements ImageProducer and ImageObserver in bytecode
+# Show RSImageProducer implements ImageProducer and ImageObserver in bytecode with multi-line context
 grep -A 10 -B 5 "implements.*ImageProducer.*ImageObserver" bytecode/client/IVIFZQBK.bytecode.txt
 
-# Show interface implementation in DEOB source
+# Show interface implementation in DEOB source with multi-line context
 grep -A 10 -B 5 "implements.*ImageProducer.*ImageObserver" srcAllDummysRemoved/src/RSImageProducer.java
 
-# Verify interface implementation in javap cache
+# Verify interface implementation in javap cache with multi-line context
 grep -A 5 -B 5 "implements ImageProducer, ImageObserver" srcAllDummysRemoved/.javap_cache/RSImageProducer.javap.cache
+
+# A/B Evidence: Show dual interface implementation patterns
+echo "=== BYTECODE DUAL INTERFACES (A) ===" && grep -A 8 -B 2 "public final.*implements.*ImageProducer.*ImageObserver" bytecode/client/IVIFZQBK.bytecode.txt
+echo "=== DEOB SOURCE DUAL INTERFACES (B) ===" && grep -A 8 -B 2 "public final.*implements.*ImageProducer.*ImageObserver" srcAllDummysRemoved/src/RSImageProducer.java
+echo "=== JAVAP INTERFACE VERIFICATION ===" && grep -A 8 "implements.*ImageProducer" srcAllDummysRemoved/.javap_cache/RSImageProducer.javap.cache
 ```
 
 ### 2. Pixel Buffer Management Evidence

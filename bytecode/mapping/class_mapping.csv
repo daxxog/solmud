@@ -20,7 +20,7 @@ MRUNodes,GCPOSBWX,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Node,PKVMXVTO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Object2,OFQAEXFV,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 NPC,CWNCPMLX,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
-Class47,OZKFTHAD,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
+Class47,ZARDZRHZ,100.00,true,0,18,18,1,1,Perfect field count match - 18 int fields data container
 Object4,BMEXSMOV,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 ObjectDef,YZDBYLRM,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Class43,KVCQPLIW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
@@ -68,7 +68,7 @@ MouseDetection,ZIJPRJEC,95.00,true,1,N/A,N/A,N/A,N/A,Runnable mouse tracking - c
 DummyClass,OIBEELAZ,98.00,true,0,N/A,N/A,N/A,N/A,Static cache array - minimal holder class
 Class33,RJXWGZGD,100.00,true,0,N/A,N/A,N/A,N/A,4 int fields - simple data container
 ObjectManager,CRRWDRTI,95.00,true,0,N/A,N/A,N/A,N/A,Complex 3D world rendering - exact method signatures with 104x104 arrays
-Class21,ZARDZRHZ,90.00,true,0,N/A,N/A,N/A,N/A,Perfect field count match - 19 int fields data container
+Class21,OZKFTHAD,90.00,true,0,17,3,1,5,Field signature mismatch - requires investigation
 NodeList,BISVHPUN,85.00,true,0,N/A,N/A,N/A,N/A,Linked list cache management with NodeSub operations
 Class36,VBAXKVMG,95.00,true,0,N/A,N/A,N/A,N/A,Animation frame decoder - complex stream processing with 19 arrays
 Class18,XPBACSMK,90.00,true,0,N/A,N/A,N/A,N/A,Stream data wrapper - simple 6-field container with 7-parameter constructor

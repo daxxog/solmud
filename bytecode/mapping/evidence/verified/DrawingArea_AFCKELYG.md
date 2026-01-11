@@ -48,17 +48,17 @@ DrawingArea acts as the fundamental graphics abstraction layer, providing the pi
 Show the class declaration and core graphics fields:
 
 ```bash
-# Class declaration and inheritance
+# Class declaration and inheritance (A flag)
 head -5 bytecode/client/AFCKELYG.bytecode.txt
 ```
 
 ```bash
-# Pixel buffer and coordinate fields
+# Pixel buffer and coordinate fields (A flag)
 grep -A 20 "public static int\[\] m\|public static int [nopqrstuv]" bytecode/client/AFCKELYG.bytecode.txt
 ```
 
 ```bash
-# Drawing area initialization method
+# Drawing area initialization method (A flag)
 grep -A 10 "public static void a(int, int, int, int\[\])" bytecode/client/AFCKELYG.bytecode.txt
 ```
 
@@ -67,17 +67,17 @@ grep -A 10 "public static void a(int, int, int, int\[\])" bytecode/client/AFCKEL
 Show the corresponding source code structure:
 
 ```bash
-# Class declaration and extends NodeSub
+# Class declaration and extends NodeSub (B flag)
 head -10 srcAllDummysRemoved/src/DrawingArea.java
 ```
 
 ```bash
-# Core static fields (pixels, width, height, coordinates)
+# Core static fields (pixels, width, height, coordinates) (B flag)
 grep -A 15 "public static.*pixels\|width\|height\|topX\|topY\|bottomX\|bottomY" srcAllDummysRemoved/src/DrawingArea.java
 ```
 
 ```bash
-# Drawing area initialization methods
+# Drawing area initialization methods (B flag)
 grep -A 10 "initDrawingArea\|setDrawingArea\|defaultDrawingAreaSize" srcAllDummysRemoved/src/DrawingArea.java
 ```
 

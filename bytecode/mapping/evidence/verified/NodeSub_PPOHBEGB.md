@@ -29,50 +29,50 @@ classDiagram
 
 ### 1. Node Extension Evidence (NODESUB-SPECIFIC INHERITANCE)
 ```bash
-# Show NodeSub extends Node (PKVMXVTO) in bytecode
+# A: Show NodeSub extends Node (PKVMXVTO) in bytecode with multi-line context
 grep -A 10 -B 5 "extends.*PKVMXVTO" bytecode/client/PPOHBEGB.bytecode.txt
 
-# Show corresponding Node extension in DEOB source
+# B: Show corresponding Node extension in DEOB source with multi-line context
 grep -A 10 -B 5 "class NodeSub.*Node" srcAllDummysRemoved/src/NodeSub.java
 
-# Verify Node extension in javap cache
+# A+B: Verify Node extension in javap cache with multi-line context
 grep -A 10 -B 5 "class NodeSub extends Node" srcAllDummysRemoved/.javap_cache/NodeSub.javap.cache
 ```
 
 ### 2. Linked List Field Evidence
 ```bash
-# Show prev/next NodeSub fields in bytecode
-grep -A 15 -B 5 "prevNodeSub\|nextNodeSub\|PPOHBEGB.*c\|PPOHBEGB.*d" bytecode/client/PPOHBEGB.bytecode.txt
+# A: Show prev/next NodeSub fields in bytecode with multi-line context
+grep -A 15 -B 5 "prevNodeSub\|nextNodeSub\|PPOHBEGB.*f\|PPOHBEGB.*g" bytecode/client/PPOHBEGB.bytecode.txt
 
-# Show corresponding linked list fields in DEOB source
+# B: Show corresponding linked list fields in DEOB source with multi-line context
 grep -A 15 -B 5 "prevNodeSub\|nextNodeSub" srcAllDummysRemoved/src/NodeSub.java
 
-# Verify linked list field declarations in javap cache
+# A+B: Verify linked list field declarations in javap cache with multi-line context
 grep -A 15 -B 5 "prevNodeSub\|nextNodeSub" srcAllDummysRemoved/.javap_cache/NodeSub.javap.cache
 ```
 
 ### 3. unlinkSub Method Evidence
 ```bash
-# Show unlinkSub method implementation in bytecode
+# A: Show unlinkSub method implementation in bytecode with multi-line context
 grep -A 25 -B 5 "public void b\|unlinkSub" bytecode/client/PPOHBEGB.bytecode.txt
 
-# Show corresponding unlinkSub in DEOB source
+# B: Show corresponding unlinkSub in DEOB source with multi-line context
 grep -A 25 -B 5 "public final void unlinkSub" srcAllDummysRemoved/src/NodeSub.java
 
-# Verify unlinkSub in javap cache
+# A+B: Verify unlinkSub in javap cache with multi-line context
 grep -A 25 "public final void unlinkSub" srcAllDummysRemoved/.javap_cache/NodeSub.javap.cache
 ```
 
 ### 4. Cross-Reference Validation (NODESUB UNIQUENESS)
 ```bash
-# Show only NodeSub has NodeSub-type linking among Node subclasses
+# A: Show only NodeSub has NodeSub-type linking among Node subclasses
 grep -l "extends.*PKVMXVTO" bytecode/client/*.bytecode.txt | xargs grep -l "PPOHBEGB.*f\|PPOHBEGB.*g" | grep "PPOHBEGB"
 
-# Show NodeSub unique method count compared to base Node
+# B: Show NodeSub unique method count compared to base Node
 grep -c "public void b(" bytecode/client/PPOHBEGB.bytecode.txt
 grep -c "public void a(" bytecode/client/PKVMXVTO.bytecode.txt
 
-# Verify NodeSub lacks Node's cache-specific fields (distinguishes from Node)
+# A+B: Verify NodeSub lacks Node's cache-specific fields (distinguishes from Node)
 grep -l "cache\|MRUNodes" bytecode/client/PPOHBEGB.bytecode.txt | wc -l
 ```
 

@@ -28,103 +28,109 @@ classDiagram
     Class40 : -aBoolean683 (transformation flag)
 ```
 
-## Forensic Evidence Commands
-
-### 1. Face Transformation Array Processing Evidence (CLASS40-SPECIFIC PATTERN)
+## COMMAND BLOCK 1: FACE TRANSFORMATION ARRAY EVIDENCE
 ```bash
-# Show face transformation arrays in Class40 bytecode
-grep -A 15 -B 5 "anIntArray673\|anIntArray674\|anIntArray675" bytecode/client/FTPNODIB.bytecode.txt
+# Show face transformation arrays (673-675) in Class40 bytecode with field declarations
+grep -A 15 -B 5 "int\[\].*673\|int\[\].*674\|int\[\].*675" bytecode/client/FTPNODIB.bytecode.txt
 
 # Show corresponding transformation arrays in DEOB source
 grep -A 15 -B 5 "anIntArray673\|anIntArray674\|anIntArray675" srcAllDummysRemoved/src/Class40.java
 
-# Verify transformation arrays in javap cache
-grep -A 10 -B 5 "anIntArray673\|anIntArray674\|anIntArray675" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify transformation arrays in javap cache with type information
+grep -A 12 -B 5 "anIntArray673\|anIntArray674\|anIntArray675" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 2. Animation Integration and Timing References
+## COMMAND BLOCK 2: ANIMATION INTEGRATION EVIDENCE
 ```bash
-# Show Animation (LKGEGIEW) references in Class40 bytecode
-grep -A 10 -B 5 "LKGEGIEW" bytecode/client/FTPNODIB.bytecode.txt
+# Show Animation (LKGEGIEW) references in Class40 bytecode with field access
+grep -A 12 -B 5 "LKGEGIEW\|getstatic.*LKGEGIEW" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show Animation integration in DEOB source
-grep -A 10 -B 5 "Animation\|LKGEGIEW" srcAllDummysRemoved/src/Class40.java
+# Show Animation integration timing references in bytecode
+grep -A 15 -B 5 "LKGEGIEW.*t\|Animation.*timing" bytecode/client/FTPNODIB.bytecode.txt
 
-# Verify Animation references in javap cache
-grep -A 5 -B 5 "LKGEGIEW" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Show corresponding Animation integration in DEOB source
+grep -A 12 -B 5 "Animation\|\.t\|timing" srcAllDummysRemoved/src/Class40.java
+
+# Verify Animation references in javap cache with type descriptors
+grep -A 12 -B 5 "LKGEGIEW\|Animation" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 3. Face Vertex Array Processing Evidence
+## COMMAND BLOCK 3: FACE VERTEX ARRAY PROCESSING EVIDENCE
 ```bash
-# Show face vertex arrays (676-678) in bytecode
-grep -A 15 -B 5 "anIntArray676\|anIntArray677\|anIntArray678" bytecode/client/FTPNODIB.bytecode.txt
+# Show face vertex arrays (676-678) in bytecode with field patterns
+grep -A 15 -B 5 "int\[\].*676\|int\[\].*677\|int\[\].*678" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show corresponding face processing in DEOB source
-grep -A 15 -B 5 "anIntArray676\|anIntArray677\|anIntArray678" srcAllDummysRemoved/src/Class40.java | head -30
+# Show corresponding face processing in DEOB source with array usage
+grep -A 15 -B 5 "anIntArray676\|anIntArray677\|anIntArray678" srcAllDummysRemoved/src/Class40.java
 
-# Verify face array structure in javap cache
-grep -A 10 -B 2 "anIntArray676\|anIntArray677\|anIntArray678" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify face array structure in javap cache with access patterns
+grep -A 12 -B 5 "anIntArray676\|anIntArray677\|anIntArray678" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 4. Class40 Method Implementation Evidence
+## COMMAND BLOCK 4: CLASS40 METHOD IMPLEMENTATION EVIDENCE
 ```bash
-# Show method155 (main transformation method) in bytecode
-grep -A 25 -B 5 "method155" bytecode/client/FTPNODIB.bytecode.txt
+# Show method155 (main transformation method) in bytecode with full signature
+grep -A 30 -B 5 "public.*method155.*boolean.*int.*int.*int" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show corresponding method in DEOB source
-grep -A 25 -B 5 "method155" srcAllDummysRemoved/src/Class40.java
+# Show corresponding method in DEOB source with implementation details
+grep -A 25 -B 5 "public.*method155" srcAllDummysRemoved/src/Class40.java
 
-# Verify method implementation in javap cache
-grep -A 25 "method155" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify method implementation in javap cache with byte code instructions
+grep -A 25 -B 5 "method155" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 5. Boolean Transformation Flag Evidence
+## COMMAND BLOCK 5: BOOLEAN TRANSFORMATION FLAG EVIDENCE
 ```bash
-# Show aBoolean683 transformation flag in bytecode
-grep -A 10 -B 5 "aBoolean683\|field.*683" bytecode/client/FTPNODIB.bytecode.txt
+# Show aBoolean683 transformation flag in bytecode with field operations
+grep -A 12 -B 5 "boolean.*683\|getfield.*683\|putfield.*683" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show corresponding boolean flag in DEOB source
-grep -A 10 -B 5 "aBoolean683" srcAllDummysRemoved/src/Class40.java
+# Show corresponding boolean flag in DEOB source with conditional logic
+grep -A 12 -B 5 "aBoolean683.*=" srcAllDummysRemoved/src/Class40.java
 
-# Verify boolean field in javap cache
-grep -A 5 -B 5 "aBoolean683" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify boolean field in javap cache with type signature
+grep -A 10 -B 5 "aBoolean683\|Z.*683" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 6. Face Index Array Processing (679-681) Evidence
+## COMMAND BLOCK 6: FACE INDEX ARRAY PROCESSING EVIDENCE
 ```bash
-# Show face index arrays in Class40 bytecode
-grep -A 15 -B 5 "anIntArray679\|anIntArray680\|anIntArray681" bytecode/client/FTPNODIB.bytecode.txt
+# Show face index arrays (679-681) in Class40 bytecode with field declarations
+grep -A 15 -B 5 "int\[\].*679\|int\[\].*680\|int\[\].*681" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show face index processing in DEOB source
+# Show face index processing in DEOB source with array assignments
 grep -A 15 -B 5 "anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/src/Class40.java
 
-# Verify face index arrays in javap cache
-grep -A 10 -B 5 "anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify face index arrays in javap cache with initialization patterns
+grep -A 12 -B 5 "anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
 ```
 
-### 7. Cross-Reference Validation (CLASS40 UNIQUENESS)
+## COMMAND BLOCK 7: CROSS-REFERENCE VALIDATION EVIDENCE
 ```bash
 # Show only Class40 has specific array pattern among transformation classes
-grep -l "anIntArray673" bytecode/client/*.bytecode.txt | grep "FTPNODIB"
+grep -l "anIntArray673" bytecode/client/*.bytecode.txt | grep FTPNODIB
 
-# Show Class40 unique animation integration pattern
+# Show Class40 unique animation integration pattern count
 grep -c "LKGEGIEW" bytecode/client/FTPNODIB.bytecode.txt
-grep -c "LKGEGIEW" bytecode/client/*.bytecode.txt | grep -v "FTPNODIB"
+
+# Compare animation integration with other transformation classes
+for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "LKGEGIEW" "$file"; done | grep -E "(FTPNODIB|[0-9])"
 
 # Verify Class40 extends Object without other inheritance
-grep -A 5 -B 5 "extends.*Object" bytecode/client/FTPNODIB.bytecode.txt
+grep -A 5 -B 5 "extends.*Object\|super.*Object" bytecode/client/FTPNODIB.bytecode.txt
 ```
 
-### 8. Constructor Parameter Pattern Evidence
+## COMMAND BLOCK 8: CONSTRUCTOR PARAMETER PATTERN EVIDENCE
 ```bash
-# Show Class40 constructor with multiple transformation parameters
-grep -A 20 -B 5 "public.*FTPNODIB.*int.*int.*boolean" bytecode/client/FTPNODIB.bytecode.txt
+# Show Class40 constructor with 18 transformation parameters in bytecode
+grep -A 25 -B 5 "public.*FTPNODIB.*int.*int.*int.*int.*int.*int" bytecode/client/FTPNODIB.bytecode.txt
 
-# Show corresponding constructor in DEOB source
+# Show corresponding constructor in DEOB source with full parameter list
 grep -A 20 "public Class40" srcAllDummysRemoved/src/Class40.java
 
-# Verify constructor signature in javap cache
-grep -A 15 "Class40.*int.*int.*int.*int" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+# Verify constructor signature in javap cache with parameter types
+grep -A 20 "Class40.*int.*int.*int.*int" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show constructor initialization logic with array assignments
+grep -A 30 -B 5 "anIntArray673.*new int\|anIntArray674.*new int" srcAllDummysRemoved/src/Class40.java
 ```
 
 ## Critical Evidence Points

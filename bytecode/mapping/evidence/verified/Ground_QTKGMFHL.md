@@ -88,17 +88,20 @@ Analysis of `QTKGMFHL` shows strong structural correlation:
 
 ### QTKGMFHL Constructor Match
 ```bash
+# Show 3-parameter constructor initializing arrays (A flag)
 grep -A 20 "public QTKGMFHL(int" bytecode/client/QTKGMFHL.bytecode.txt
 ```
 Shows 3-parameter constructor initializing OPNPFUJE[] (mapped to Object5) and int[] arrays of size 5.
 
 ### QTKGMFHL Field Structure
 ```bash
+# Show Object1-Object4 references (A flag)
 grep -E "(FEHPTPDG|OFQAEXFV|ZIKPHIFI|BMEXSMOV)" bytecode/client/QTKGMFHL.bytecode.txt
 ```
 Shows references matching Object1-Object4 mappings.
 
 ```bash
+# Show Class18/Class36 transformation matrix references (A flag)
 grep -E "(XPBACSMK|VBAXKVMG)" bytecode/client/QTKGMFHL.bytecode.txt
 ```
 Shows Class18 (XPBACSMK) and Class36 (VBAXKVMG) references matching Class40/Class43 pattern.

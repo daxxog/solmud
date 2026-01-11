@@ -31,25 +31,25 @@ classDiagram
 
 ### 1. Class Structure and Advanced Features
 ```bash
-# Show Object4 final class declaration in bytecode
+# A: Show Object4 final class declaration in bytecode with multi-line context
 grep -A 5 -B 5 "final class BMEXSMOV" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# B: Show corresponding class structure in DEOB source with multi-line context
 grep -A 15 -B 5 "final class Object4" srcAllDummysRemoved/src/Object4.java
 
-# Verify final class in javap cache
+# A+B: Verify final class in javap cache with multi-line context
 grep -A 5 -B 5 "final class Object4" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 
 ### 2. Animable Field Integration
 ```bash
-# Show Animable field references in bytecode
+# A: Show Animable field references in bytecode with multi-line context
 grep -A 10 -B 5 "XHHRODPC.*[d-f];" bytecode/client/BMEXSMOV.bytecode.txt
 
-# Show Animable fields in DEOB source
+# B: Show Animable fields in DEOB source with multi-line context
 grep -A 10 -B 5 "Animable.*aClass30_Sub2_Sub4" srcAllDummysRemoved/src/Object4.java
 
-# Verify Animable fields in javap cache
+# A+B: Verify Animable fields in javap cache with multi-line context
 grep -A 10 -B 2 "Animable" srcAllDummysRemoved/.javap_cache/Object4.javap.cache
 ```
 

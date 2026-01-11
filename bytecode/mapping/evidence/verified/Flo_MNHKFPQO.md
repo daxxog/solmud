@@ -47,17 +47,17 @@ Flo acts as the configuration layer between raw data files and the rendering eng
 Show the unpackConfig method and flo.dat loading:
 
 ```bash
-# Static unpackConfig method loading flo.dat
+# Static unpackConfig method loading flo.dat (A flag)
 grep -A 5 "public static void unpackConfig" bytecode/client/MNHKFPQO.bytecode.txt
 ```
 
 ```bash
-# Deobfuscated unpackConfig with flo.dat reference
+# Deobfuscated unpackConfig with flo.dat reference (B flag)
 grep -A 5 "public static void unpackConfig" srcAllDummysRemoved/src/Flo.java
 ```
 
 ```bash
-# Javap cache showing unpackConfig signature
+# Javap cache showing unpackConfig signature (A/B flag)
 grep -A 5 "public static void unpackConfig" srcAllDummysRemoved/.javap_cache/Flo.javap.cache
 ```
 

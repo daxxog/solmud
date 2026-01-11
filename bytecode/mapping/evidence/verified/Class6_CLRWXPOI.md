@@ -29,25 +29,25 @@ classDiagram
 
 ### 1. Wave Table Structure Evidence (CLASS6 SIGNATURE)
 ```bash
-# Show large static array initialization (32768 elements for wave tables)
-grep -A 15 -B 5 "32768\|anIntArray116\|anIntArray117\|anIntArray118\|anIntArray119" bytecode/client/CLRWXPOI.bytecode.txt
+# Show large static array initialization (32768 elements for wave tables) (A flag)
+grep -A 15 -B 5 "32768\|newarray.*int" bytecode/client/CLRWXPOI.bytecode.txt
 
-# Show corresponding wave table arrays in DEOB source
+# Show corresponding wave table arrays in DEOB source (B flag)
 grep -A 15 -B 5 "anIntArray116\|anIntArray117\|anIntArray118\|anIntArray119\|32768" srcAllDummysRemoved/src/Class6.java
 
-# Verify wave table structure in javap cache
+# Verify wave table structure in javap cache (A/B flag)
 grep -A 15 -B 5 "anIntArray116\|anIntArray117\|anIntArray118\|anIntArray119\|32768" srcAllDummysRemoved/.javap_cache/Class6.javap.cache
 ```
 
 ### 2. Multiple Envelope Generator Integration Evidence
 ```bash
-# Show 8 Class29 (OZKFTHAD) envelope generator fields in bytecode
-grep -A 20 -B 5 "OZKFTHAD.*;\|private.*OZKFTHAD" bytecode/client/CLRWXPOI.bytecode.txt
+# Show 8 Class29 (OZKFTHAD) envelope generator fields in bytecode (A flag)
+grep -A 20 -B 5 "OZKFTHAD" bytecode/client/CLRWXPOI.bytecode.txt
 
-# Show corresponding envelope generator array in DEOB source
+# Show corresponding envelope generator array in DEOB source (B flag)
 grep -A 20 -B 5 "aClass29_98\|aClass29_99\|aClass29_100\|aClass29_101\|aClass29_102\|aClass29_103\|aClass29_104\|aClass29_105" srcAllDummysRemoved/src/Class6.java
 
-# Verify envelope generator fields in javap cache
+# Verify envelope generator fields in javap cache (A/B flag)
 grep -A 20 -B 5 "Class29.*aClass29_98\|Class29.*aClass29_99" srcAllDummysRemoved/.javap_cache/Class6.javap.cache
 ```
 

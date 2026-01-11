@@ -29,38 +29,52 @@ classDiagram
 
 ### 1. NodeSub Extension Evidence (ON-DEMAND INHERITANCE)
 ```bash
-# Show OnDemandData extends NodeSub (PPOHBEGB) in bytecode
+# Show OnDemandData extends NodeSub (PPOHBEGB) in bytecode with multi-line context
 grep -A 10 -B 5 "extends.*PPOHBEGB" bytecode/client/PHKHJKBS.bytecode.txt
 
-# Show OnDemandData extends NodeSub in DEOB source
+# Show OnDemandData extends NodeSub in DEOB source with multi-line context
 grep -A 10 -B 5 "extends.*NodeSub" srcAllDummysRemoved/src/OnDemandData.java
 
-# Verify NodeSub extension in javap cache
+# Verify NodeSub extension in javap cache with multi-line context
 grep -A 5 -B 5 "class OnDemandData extends NodeSub" srcAllDummysRemoved/.javap_cache/OnDemandData.javap.cache
+
+# A/B Evidence: Show inheritance pattern comparison
+echo "=== BYTECODE EVIDENCE (A) ===" && grep -A 8 -B 2 "public.*extends.*PPOHBEGB" bytecode/client/PHKHJKBS.bytecode.txt
+echo "=== DEOB SOURCE EVIDENCE (B) ===" && grep -A 8 -B 2 "final.*extends.*NodeSub" srcAllDummysRemoved/src/OnDemandData.java
 ```
 
 ### 2. Field Pattern Analysis (ASSET MANAGEMENT FIELDS)
 ```bash
-# Show OnDemandData-specific field structure in bytecode
+# Show OnDemandData-specific field structure in bytecode with multi-line context
 grep -A 15 -B 5 "int i;\|byte\[\] j;\|int k;\|boolean l;\|int m;" bytecode/client/PHKHJKBS.bytecode.txt
 
-# Show corresponding field declarations in DEOB source
+# Show corresponding field declarations in DEOB source with multi-line context
 grep -A 15 -B 5 "dataType\|buffer\[\]\|ID\|incomplete" srcAllDummysRemoved/src/OnDemandData.java
 
-# Verify field types in javap cache
+# Verify field types in javap cache with multi-line context
 grep -A 15 -B 5 "int.*;\|byte\[\].*;\|boolean.*;" srcAllDummysRemoved/.javap_cache/OnDemandData.javap.cache
+
+# A/B Evidence: Show field pattern correspondence
+echo "=== BYTECODE FIELD SIGNATURES (A) ===" && grep -E "^\s*(int|byte\[\]|boolean)\s+\w+;" bytecode/client/PHKHJKBS.bytecode.txt
+echo "=== DEOB SOURCE FIELD NAMES (B) ===" && grep -E "^\s*(int|byte\[\]|boolean)\s+\w+;" srcAllDummysRemoved/src/OnDemandData.java
+echo "=== JAVAP CACHE VERIFICATION ===" && grep -E "^\s*(int|byte\[\]|boolean)\s+\w+;" srcAllDummysRemoved/.javap_cache/OnDemandData.javap.cache
 ```
 
 ### 3. Constructor Implementation Evidence
 ```bash
-# Show constructor setting incomplete field in bytecode
+# Show constructor setting incomplete field in bytecode with multi-line context
 grep -A 10 -B 5 "public PHKHJKBS" bytecode/client/PHKHJKBS.bytecode.txt
 
-# Show constructor initialization in DEOB source
+# Show constructor initialization in DEOB source with multi-line context
 grep -A 10 -B 5 "public OnDemandData\|incomplete = true" srcAllDummysRemoved/src/OnDemandData.java
 
-# Verify constructor signature in javap cache
+# Verify constructor signature in javap cache with multi-line context
 grep -A 15 -B 5 "public OnDemandData()" srcAllDummysRemoved/.javap_cache/OnDemandData.javap.cache
+
+# A/B Evidence: Show constructor bytecode pattern vs source implementation
+echo "=== BYTECODE CONSTRUCTOR (A) ===" && grep -A 15 "public PHKHJKBS();" bytecode/client/PHKHJKBS.bytecode.txt
+echo "=== DEOB SOURCE CONSTRUCTOR (B) ===" && grep -A 8 "public OnDemandData()" srcAllDummysRemoved/src/OnDemandData.java
+echo "=== JAVAP CONSTRUCTOR VERIFICATION ===" && grep -A 15 "public OnDemandData()" srcAllDummysRemoved/.javap_cache/OnDemandData.javap.cache
 ```
 
 ### 4. Buffer Management Evidence (BYTE ARRAY PATTERN)

@@ -27,15 +27,40 @@ classDiagram
 ## Forensic Evidence Commands
 
 ### 1. Class Structure and Array Field Patterns
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show Class18 extends Object with array fields in bytecode
-grep -A 15 -B 5 "public.*XPBACSMK" bytecode/client/XPBACSMK.bytecode.txt
+# Show Class18 class structure with constructor and field initialization patterns
+grep -A 25 -B 5 "public.*XPBACSMK\|public XPBACSMK.*(" bytecode/client/XPBACSMK.bytecode.txt
 
-# Show corresponding class structure in DEOB source
-grep -A 10 -B 5 "public final class Class18" srcAllDummysRemoved/src/Class18.java
+# Show field initialization in constructor with multi-line context
+grep -A 30 -B 10 "putfield.*a\|putfield.*b\|putfield.*c" bytecode/client/XPBACSMK.bytecode.txt
 
-# Verify class structure in javap cache
-grep -A 15 -B 5 "class Class18" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+# Show array field access patterns and Stream parameter integration
+grep -A 20 -B 5 "getfield.*int\[\]\|getfield.*int\[\]\[\]" bytecode/client/XPBACSMK.bytecode.txt
+```
+
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show Class18 class structure with Stream constructor and array declarations
+grep -A 20 -B 5 "public final class Class18\|Class18.*Stream" srcAllDummysRemoved/src/Class18.java
+
+# Show skeleton data array creation and initialization logic
+grep -A 25 -B 5 "anIntArray342.*new\|anIntArrayArray343.*new" srcAllDummysRemoved/src/Class18.java
+
+# Show Stream loading operations and loop structure for array population
+grep -A 20 -B 5 "readUnsignedByte\|for.*j.*anInt341" srcAllDummysRemoved/src/Class18.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify class structure with constructor signature and field types
+grep -A 20 -B 5 "class Class18\|public Class18" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+
+# Show array field declarations with type signatures and context
+grep -A 15 -B 5 "anIntArray342\|anIntArrayArray343" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
+
+# Show Stream constructor pattern and field access with bytecode instructions
+grep -A 25 -B 10 "Stream.*MBMGIXGO\|getfield.*anInt" srcAllDummysRemoved/.javap_cache/Class18.javap.cache
 ```
 
 ### 2. Constructor with Stream Parameter

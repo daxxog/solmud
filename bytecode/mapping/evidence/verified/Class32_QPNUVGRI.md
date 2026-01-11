@@ -203,39 +203,73 @@ grep -A 3 -B 3 "18002\|256\|257" bytecode/client/QPNUVGRI.bytecode.txt
 
 **Result**: QPNUVGRI is the ONLY class matching this complete signature.
 
-## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+## COMMAND BLOCK 1: BYTECODE ARRAY STRUCTURE EVIDENCE
+```bash
+# Show 13 unique array initialization patterns with sizes in bytecode
+grep -A 3 -B 1 "sipush.*25[67]\|bipush.*1[6]\|sipush.*4096\|sipush.*18002" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show unique [6][258] multidimensional array patterns in bytecode
+grep -A 5 -B 2 "bipush.*6.*sipush.*258.*multianewarray" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show constructor array allocation sequence in bytecode
+grep -A 2 -B 1 "newarray.*int\|newarray.*byte\|newarray.*boolean\|multianewarray" bytecode/client/QPNUVGRI.bytecode.txt
+```
+
+## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
 ```bash
 # Show Class32 constructor with 13 array initializations in DEOB source
-grep -A 10 -B 5 "Class32\(\)" srcAllDummysRemoved/src/Class32.java
+grep -A 20 -B 5 "Class32\(\)" srcAllDummysRemoved/src/Class32.java
 
-# Show unique 256-element arrays in DEOB source
-grep -A 5 -B 5 "new int\[256\]" srcAllDummysRemoved/src/Class32.java
+# Show unique 256-element arrays in DEOB source with field assignments
+grep -A 5 -B 5 "new int\[256\].*=" srcAllDummysRemoved/src/Class32.java
 
-# Show 18002 array creation in DEOB source
-grep -A 5 -B 5 "18002" srcAllDummysRemoved/src/Class32.java
+# Show 18002 array creation with field assignments in DEOB source
+grep -A 5 -B 5 "18002.*=" srcAllDummysRemoved/src/Class32.java
+
+# Show multidimensional [6][258] array patterns in source
+grep -A 5 -B 5 "new.*\[6\]\[258\].*=" srcAllDummysRemoved/src/Class32.java
 ```
 
-## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
 ```bash
 # Show Class32 constructor in javap cache with multi-line context
-grep -A 10 -B 5 "Class32\(\)" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+grep -A 25 -B 5 "Class32.*init" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
 
-# Show 256-element array structure in javap cache
-grep -A 5 -B 5 "new int\[256\]" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+# Show 256-element array structure in javap cache with context
+grep -A 8 -B 3 "256.*new.*int\|anIntArray.*256" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
 
 # Show 18002 array in javap cache with context
-grep -A 5 -B 5 "18002" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+grep -A 8 -B 3 "18002.*new.*byte\|aByteArray.*18002" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+
+# Show multidimensional arrays in javap cache with verification
+grep -A 10 -B 5 "\[6\]\[258\]\|multianewarray.*6.*258" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
 ```
 
-## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+## COMMAND BLOCK 4: BYTECODE TO SOURCE CORRELATION
 ```bash
-# Show unique [6][258] multidimensional array pattern in bytecode
-grep -A 10 -B 5 "multianewarray.*6.*258" bytecode/client/QPNUVGRI.bytecode.txt
+# Show [6][258] multidimensional array pattern in bytecode vs source
+grep -A 8 -B 2 "multianewarray.*\[\[B" bytecode/client/QPNUVGRI.bytecode.txt
+grep -A 8 -B 2 "new.*byte.*\[6\]\[258\]" srcAllDummysRemoved/src/Class32.java
 
-# Show corresponding [6][258] arrays in DEOB source
-grep -A 10 -B 5 "new.*\[6\]\[258\]" srcAllDummysRemoved/src/Class32.java
+# Show 18002 array correlation between bytecode and source
+grep -A 5 -B 2 "sipush.*18002.*newarray" bytecode/client/QPNUVGRI.bytecode.txt
+grep -A 5 -B 2 "18002.*new.*byte" srcAllDummysRemoved/src/Class32.java
 
-# Verify multidimensional arrays in javap cache
-grep -A 10 -B 5 "\[6\]\[258\]" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+# Verify array count uniqueness - only Class32 has this signature
+grep -c "18002" bytecode/client/QPNUVGRI.bytecode.txt
+grep -c "18002" srcAllDummysRemoved/src/Class32.java
+```
+
+## COMMAND BLOCK 5: ARRAY SIGNATURE VERIFICATION
+```bash
+# Verify unique array size combination exists only in QPNUVGRI
+grep -l "256\|257\|258\|4096\|18002" bytecode/client/*.bytecode.txt | xargs grep -l "multianewarray.*6.*258" | grep QPNUVGRI
+
+# Show that no other class has this exact 13-array structure
+for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "256\|257\|258\|4096\|18002" "$file"; done | grep -A1 -B1 "2\|3\|4\|5"
+
+# Cross-verify array field assignments between bytecode and source
+grep -E "newarray.*int.*256|newarray.*byte.*256" bytecode/client/QPNUVGRI.bytecode.txt
+grep -E "new int\[256\]|new byte\[256\]" srcAllDummysRemoved/src/Class32.java
 ```</content>
 <parameter name="filePath">bytecode/mapping/evidence/verified/QPNUVGRI_CLASS32.md

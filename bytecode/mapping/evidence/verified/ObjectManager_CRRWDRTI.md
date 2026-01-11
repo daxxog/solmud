@@ -32,25 +32,25 @@ classDiagram
 
 ### 1. Multi-Layer 3D Array Evidence (OBJECTMANAGER-SPECIFIC PATTERN)
 ```bash
-# Show 3D array initialization in ObjectManager bytecode
+# A: Show 3D array initialization in ObjectManager bytecode with multi-line context
 grep -A 15 -B 5 "multianewarray.*3" bytecode/client/CRRWDRTI.bytecode.txt
 
-# Show corresponding 3D arrays in DEOB source
+# B: Show corresponding 3D arrays in DEOB source with multi-line context
 grep -A 15 -B 5 "new.*byte.*4.*104.*104\|new.*int.*4.*104.*104" srcAllDummysRemoved/src/ObjectManager.java
 
-# Verify 3D array structure in javap cache
+# A+B: Verify 3D array structure in javap cache with multi-line context
 grep -A 10 -B 5 "\[\[\[" srcAllDummysRemoved/.javap_cache/ObjectManager.javap.cache
 ```
 
 ### 2. 104x104 Region Dimension Evidence
 ```bash
-# Show 104 dimension assignments in ObjectManager bytecode
+# A: Show 104 dimension assignments in ObjectManager bytecode with multi-line context
 grep -A 10 -B 5 "bipush.*104\|putfield.*104" bytecode/client/CRRWDRTI.bytecode.txt
 
-# Show corresponding 104 dimensions in DEOB source
+# B: Show corresponding 104 dimensions in DEOB source with multi-line context
 grep -A 10 -B 5 "104.*=.*104\|anInt146.*104\|anInt147.*104" srcAllDummysRemoved/src/ObjectManager.java
 
-# Verify 104 constants in javap cache
+# A+B: Verify 104 constants in javap cache with multi-line context
 grep -A 5 -B 5 "104" srcAllDummysRemoved/.javap_cache/ObjectManager.javap.cache
 ```
 

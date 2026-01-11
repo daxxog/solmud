@@ -32,13 +32,13 @@ classDiagram
 
 ### 1. EntityDef Static Factory Method Evidence (NPC DEFINITION PATTERN)
 ```bash
-# Show forID method with caching logic in bytecode
+# Show forID method with caching logic in bytecode (A flag)
 grep -A 20 -B 5 "public static final CKDEJADD a" bytecode/client/CKDEJADD.bytecode.txt
 
-# Show corresponding forID method in DEOB source
+# Show corresponding forID method in DEOB source (B flag)
 grep -A 20 -B 5 "public static EntityDef forID" srcAllDummysRemoved/src/EntityDef.java
 
-# Verify forID method structure in javap cache
+# Verify forID method structure in javap cache (A/B flag)
 grep -A 20 -B 5 "public static EntityDef forID" srcAllDummysRemoved/.javap_cache/EntityDef.javap.cache
 ```
 
@@ -138,13 +138,13 @@ grep -A 10 -B 5 "streamIndices" srcAllDummysRemoved/.javap_cache/EntityDef.javap
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode (EntityDef has no extends/implements)
+# Show class structure and inheritance in bytecode (EntityDef has no extends/implements) (A flag)
 grep -A 10 -B 5 "final class CKDEJADD" bytecode/client/CKDEJADD.bytecode.txt
 
-# Show corresponding structure in DEOB source
+# Show corresponding structure in DEOB source (B flag)
 grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/EntityDef.java
 
-# Verify structure in javap cache
+# Verify structure in javap cache (A/B flag)
 grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/EntityDef.javap.cache
 ```
 

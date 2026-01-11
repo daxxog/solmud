@@ -224,25 +224,25 @@ public final class NodeSubList {
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode
+# A: Show class structure and inheritance in bytecode with multi-line context
 grep -A 10 -B 5 "extends\|implements" bytecode/client/LHGXPZPG.bytecode.txt
 
-# Show corresponding structure in DEOB source
+# B: Show corresponding structure in DEOB source with multi-line context
 grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/NodeSubList.java
 
-# Verify structure in javap cache
+# A+B: Verify structure in javap cache with multi-line context
 grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
 ```
 
 ## COMMAND BLOCK 2: FIELD EVIDENCE
 ```bash
-# Show field patterns in bytecode
+# A: Show field patterns in bytecode with multi-line context
 grep -A 15 -B 5 "anInt.*\|anIntArray.*\|aBoolean.*\|aString" bytecode/client/LHGXPZPG.bytecode.txt
 
-# Show field structure in DEOB source
+# B: Show field structure in DEOB source with multi-line context
 grep -A 15 -B 5 "public.*\|private.*\|protected.*" srcAllDummysRemoved/src/NodeSubList.java | head -30
 
-# Verify field declarations in javap cache
+# A+B: Verify field declarations in javap cache with multi-line context
 grep -A 15 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*" srcAllDummysRemoved/.javap_cache/NodeSubList.javap.cache
 ```
 

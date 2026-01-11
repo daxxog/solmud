@@ -29,13 +29,13 @@ classDiagram
 
 ### 1. Class Structure and Field Pattern
 ```bash
-# Show Object3 public final class declaration in bytecode
+# A: Show Object3 public final class declaration in bytecode with multi-line context
 grep -A 15 -B 5 "public final class ZIKPHIFI" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# B: Show corresponding class structure in DEOB source with multi-line context
 grep -A 15 -B 5 "public final class Object3" srcAllDummysRemoved/src/Object3.java
 
-# Verify class structure in javap cache
+# A+B: Verify class structure in javap cache with multi-line context
 grep -A 15 -B 5 "public final class Object3" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 
@@ -77,13 +77,13 @@ grep -A 10 -B 2 "aByte816\|uid" srcAllDummysRemoved/.javap_cache/Object3.javap.c
 
 ### 5. Constructor with Animable Parameters
 ```bash
-# Show constructor in bytecode
+# A: Show constructor in bytecode with multi-line context
 grep -A 20 -B 5 "public ZIKPHIFI(" bytecode/client/ZIKPHIFI.bytecode.txt
 
-# Show constructor in DEOB source
+# B: Show constructor in DEOB source with multi-line context
 grep -A 15 -B 5 "Object3(" srcAllDummysRemoved/src/Object3.java
 
-# Verify constructor in javap cache
+# A+B: Verify constructor in javap cache with multi-line context
 grep -A 15 -B 5 "public Object3(" srcAllDummysRemoved/.javap_cache/Object3.javap.cache
 ```
 

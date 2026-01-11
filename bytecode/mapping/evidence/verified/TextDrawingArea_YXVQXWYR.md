@@ -1,83 +1,90 @@
 # Evidence: TextDrawingArea → YXVQXWYR
 
-## Class Overview and Purpose
-TextDrawingArea is a comprehensive text rendering and font management class that handles:
-- Loading and parsing font data from cache files (.dat and index.dat)
-- Character glyph rendering with various effects (shadows, waves, randomization)
-- String width calculation and text layout
-- Color parsing and text styling
-- Font optimization and character spacing adjustments
+## Class Overview
 
-The class extends DrawingArea and provides the core text rendering capabilities for the RuneScape client.
+**TextDrawingArea** serves as the comprehensive text rendering and font management system for RuneScape, handling all aspects of font loading, character glyph rendering, text layout, and visual effects. The class manages font data through complex byte array structures, provides multiple rendering modes including shadows and wave effects, implements string width calculations for proper text layout, and supports color parsing with advanced text styling capabilities. TextDrawingArea extends DrawingArea to provide pixel-level text rendering operations throughout the client interface.
 
-## Architecture and Relationships
+The class provides comprehensive text rendering functionality:
+- **Font Data Management**: Complex byte array structures for character glyph data and metrics
+- **Rendering Effects**: Shadow effects, wave animations, and character randomization for visual variety
+- **Text Layout**: String width calculation, character spacing, and multi-line text support
+- **Color Processing**: Color parsing, alpha blending, and text styling operations
+- **Cache Integration**: Font loading from cache files with proper Stream and StreamLoader integration
+
+## Architecture Role
+
+TextDrawingArea occupies the critical position in the user interface rendering hierarchy, extending DrawingArea with specialized text processing capabilities. The class serves as the foundation for all text rendering throughout the client, from chat messages and interface labels to game text and tooltips. TextDrawingArea integrates with cache systems for font loading, works with drawing surfaces for pixel manipulation, and provides the complete text rendering pipeline that enables the game's user interface.
 
 ```mermaid
 classDiagram
-    class TextDrawingArea {
-        -byte[][] aByteArrayArray1491
-        -int[] anIntArray1492
-        -int[] anIntArray1493
-        -int[] anIntArray1494
-        -int[] anIntArray1495
-        -int[] anIntArray1496
-        -Random aRandom1498
-        -boolean aBoolean1499
-        +TextDrawingArea(boolean, String, StreamLoader)
-        +getTextWidth(String) int
-        +method385(int, String, int, int) void
-        +method389(boolean, int, int, String, int) void
-        +method390(int, int, String, int, int) void
-        -getColorByName(String) int
-        -method392(byte[], int, int, int, int, int) void
-    }
-    
-    class DrawingArea {
-        +pixels: int[]
-        +width: int
-        +height: int
-    }
-    
-    class StreamLoader {
-        +getDataForName(String) byte[]
-    }
-    
-    class Stream {
-        +readUnsignedByte() int
-        +readUnsignedWord() int
-        +readSignedByte() byte
-    }
-    
-    TextDrawingArea --|> DrawingArea
+    TextDrawingArea --> DrawingArea
     TextDrawingArea --> StreamLoader
     TextDrawingArea --> Stream
+    TextDrawingArea --> TextClass
+    
+    subgraph "Text Rendering System"
+        TextDrawingArea
+    end
+    
+    subgraph "Graphics Foundation"
+        DrawingArea
+    end
+    
+    subgraph "Data Loading"
+        StreamLoader
+        Stream
+    end
+    
+    subgraph "Text Processing"
+        TextClass
+    end
+    
+    DrawingArea -.-> TextDrawingArea
+    StreamLoader -.-> TextDrawingArea
+    Stream -.-> TextDrawingArea
+    TextClass -.-> TextDrawingArea
 ```
 
-TextDrawingArea serves as the central text rendering engine, integrating with:
-- **DrawingArea**: For pixel-level drawing operations
-- **StreamLoader**: For loading font data from cache
-- **Stream**: For parsing font data streams
+## Forensic Evidence Commands
 
-## Bytecode Evidence
+### 1. Class Declaration and Structure Evidence
 
-### Font Array Initialization Pattern
-
-**DEOB Source Code:**
 ```bash
-grep -A6 -B2 "new byte\[256\]" srcAllDummysRemoved/src/TextDrawingArea.java
+# Show class structure and inheritance (A flag)
+head -10 bytecode/client/YXVQXWYR.bytecode.txt
+
+# Show class structure in DEOB source (B flag)
+head -10 srcAllDummysRemoved/src/TextDrawingArea.java
+
+# Verify class structure in javap cache (B flag)
+head -15 srcAllDummysRemoved/.javap_cache/TextDrawingArea.javap.cache
 ```
 
-**Output:**
-```
-   11|		aByteArrayArray1491 = new byte[256][];
-   12|		anIntArray1492 = new int[256];
-   13|		anIntArray1493 = new int[256];
-   14|		anIntArray1494 = new int[256];
-   15|		anIntArray1495 = new int[256];
-   16|		anIntArray1496 = new int[256];
+### 2. Font Array Initialization Evidence
+
+```bash
+# Show font array initialization pattern in bytecode (A flag)
+grep -A 10 -B 5 "new.*byte.*256.*\|new.*int.*256" bytecode/client/YXVQXWYR.bytecode.txt
+
+# Show corresponding font arrays in DEOB source with context (B flag)
+grep -A 10 -B 5 "aByteArrayArray1491\|anIntArray149[2-6]" srcAllDummysRemoved/src/TextDrawingArea.java
+
+# Verify font array structure in javap cache with context (B flag)
+grep -A 10 -B 5 "aByteArrayArray1491\|anIntArray149" srcAllDummysRemoved/.javap_cache/TextDrawingArea.javap.cache
 ```
 
-**OG Bytecode Pattern:**
+### 3. Text Rendering Methods Evidence
+
+```bash
+# Show key text rendering methods in bytecode (A flag)
+grep -A 15 -B 5 "method385\|method389\|method390\|getTextWidth" bytecode/client/YXVQXWYR.bytecode.txt
+
+# Show corresponding rendering methods in DEOB source with context (B flag)
+grep -A 15 -B 5 "method385\|method389\|method390\|getTextWidth" srcAllDummysRemoved/src/TextDrawingArea.java
+
+# Verify rendering methods in javap cache with context (B flag)
+grep -A 15 -B 5 "method385\|method389\|method390\|getTextWidth" srcAllDummysRemoved/.javap_cache/TextDrawingArea.javap.cache
+```
 ```bash
 grep -A6 -B2 "sipush        256" bytecode/client/YXVQXWYR.bytecode.txt
 ```

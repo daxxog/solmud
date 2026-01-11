@@ -31,13 +31,13 @@ classDiagram
 
 ### 1. Class Structure and Field Pattern
 ```bash
-# Show Object2 public final class declaration in bytecode
+# A: Show Object2 public final class declaration in bytecode with multi-line context
 grep -A 20 -B 5 "public final class OFQAEXFV" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# B: Show corresponding class structure in DEOB source with multi-line context
 grep -A 15 -B 5 "public final class Object2" srcAllDummysRemoved/src/Object2.java
 
-# Verify class structure in javap cache
+# A+B: Verify class structure in javap cache with multi-line context
 grep -A 15 -B 5 "public final class Object2" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 
@@ -55,13 +55,13 @@ grep -A 15 -B 2 "anInt49[9-503]" srcAllDummysRemoved/.javap_cache/Object2.javap.
 
 ### 3. Public Animable Field Integration
 ```bash
-# Show public Animable field in bytecode
+# A: Show public Animable field in bytecode with multi-line context
 grep -A 10 -B 5 "public XHHRODPC f;" bytecode/client/OFQAEXFV.bytecode.txt
 
-# Show public Animable field in DEOB source
+# B: Show public Animable field in DEOB source with multi-line context
 grep -A 10 -B 5 "public Animable aClass30_Sub2_Sub4_504" srcAllDummysRemoved/src/Object2.java
 
-# Verify public Animable field in javap cache
+# A+B: Verify public Animable field in javap cache with multi-line context
 grep -A 10 -B 2 "public Animable aClass30_Sub2_Sub4_504" srcAllDummysRemoved/.javap_cache/Object2.javap.cache
 ```
 

@@ -37,14 +37,19 @@ classDiagram
 
 ### 1. Multi-Interface Implementation Evidence (RSAPPLET-SPECIFIC PATTERN)
 ```bash
-# Show all 6 interface implementations in RSApplet bytecode
+# Show all 6 interface implementations in RSApplet bytecode with multi-line context
 grep -A 5 -B 5 "implements.*Runnable.*MouseListener.*MouseMotionListener.*KeyListener.*FocusListener.*WindowListener" bytecode/client/KHACHIFW.bytecode.txt
 
-# Show corresponding interface implementations in DEOB source
+# Show corresponding interface implementations in DEOB source with multi-line context
 grep -A 5 -B 5 "implements Runnable, MouseListener, MouseMotionListener, KeyListener, FocusListener, WindowListener" srcAllDummysRemoved/src/RSApplet.java
 
-# Verify interface implementations in javap cache
+# Verify interface implementations in javap cache with multi-line context
 grep -A 5 -B 5 "implements.*Runnable.*MouseListener" srcAllDummysRemoved/.javap_cache/RSApplet.javap.cache
+
+# A/B Evidence: Show comprehensive interface pattern comparison
+echo "=== BYTECODE INTERFACES (A) ===" && grep -A 8 -B 2 "public.*extends.*Applet.*implements" bytecode/client/KHACHIFW.bytecode.txt
+echo "=== DEOB SOURCE INTERFACES (B) ===" && grep -A 8 -B 2 "public.*extends.*Applet.*implements" srcAllDummysRemoved/src/RSApplet.java
+echo "=== JAVAP INTERFACE VERIFICATION ===" && grep -A 10 "implements.*Runnable" srcAllDummysRemoved/.javap_cache/RSApplet.javap.cache
 ```
 
 ### 2. Applet Extension Evidence

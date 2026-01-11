@@ -31,14 +31,19 @@ classDiagram
 
 ### 1. UI Framework Structure Evidence (RSINTERFACE-SPECIFIC PATTERN)
 ```bash
-# Show RSInterface class definition with extensive field structure in bytecode
+# Show RSInterface class definition with extensive field structure in bytecode with multi-line context
 grep -A 20 -B 5 "public class DUCMKFAY" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# Show corresponding class structure in DEOB source with multi-line context
 grep -A 15 -B 5 "public class RSInterface" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify class structure in javap cache
+# Verify class structure in javap cache with multi-line context
 grep -A 15 -B 5 "class RSInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+
+# A/B Evidence: Show extensive field structure correspondence
+echo "=== BYTECODE UI FIELDS (A) ===" && grep -A 15 "public class DUCMKFAY" bytecode/client/DUCMKFAY.bytecode.txt
+echo "=== DEOB SOURCE UI FIELDS (B) ===" && grep -A 15 "public class RSInterface" srcAllDummysRemoved/src/RSInterface.java
+echo "=== JAVAP CACHE VERIFICATION ===" && grep -A 15 "class RSInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ### 2. Sprite Integration Evidence

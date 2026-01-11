@@ -28,102 +28,100 @@ classDiagram
     Class36 : -aClass36Array635[] (animation cache)
 ```
 
-## Forensic Evidence Commands
-
-### 1. Animation Frame Array Structure Evidence (CLASS36 SIGNATURE)
+## COMMAND BLOCK 1: ANIMATION ARRAY STRUCTURE EVIDENCE
 ```bash
-# Show four核心 animation arrays in VBAXKVMG bytecode
-grep -A 10 -B 5 "int\[\].*;" bytecode/client/VBAXKVMG.bytecode.txt | head -20
+# Show four core animation arrays in VBAXKVMG bytecode with multi-line context
+grep -A 15 -B 5 "int\[\].*639\|int\[\].*640\|int\[\].*641\|int\[\].*642" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Show corresponding animation arrays in DEOB source
 grep -A 10 -B 5 "anIntArray639\|anIntArray640\|anIntArray641\|anIntArray642" srcAllDummysRemoved/src/Class36.java
 
-# Verify animation array structure in javap cache
-grep -A 10 -B 5 "anIntArray639\|anIntArray640\|anIntArray641\|anIntArray642" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify animation array structure in javap cache with context
+grep -A 12 -B 3 "anIntArray639\|anIntArray640\|anIntArray641\|anIntArray642" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 2. Stream-based Animation Loading Evidence
+## COMMAND BLOCK 2: STREAM-BASED ANIMATION LOADING EVIDENCE
 ```bash
-# Show animation stream processing pattern in bytecode
-grep -A 15 -B 5 "MBMGIXGO\|Stream\|abyte0\|currentOffset" bytecode/client/VBAXKVMG.bytecode.txt
+# Show animation stream processing pattern in bytecode with context
+grep -A 20 -B 5 "MBMGIXGO\|abyte0\[\]\|currentOffset\|getDataForName" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Show corresponding stream processing in DEOB source
-grep -A 15 -B 5 "Stream.*abyte0\|stream\.currentOffset\|new Stream" srcAllDummysRemoved/src/Class36.java
+grep -A 15 -B 5 "Stream.*abyte0\|stream\.currentOffset\|new Stream\|getDataForName" srcAllDummysRemoved/src/Class36.java
 
-# Verify stream operations in javap cache
-grep -A 15 -B 5 "Stream\|getDataForName\|currentOffset" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify stream operations in javap cache with context
+grep -A 20 -B 5 "Stream\|MBMGIXGO\|currentOffset\|getDataForName" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 3. Static Animation Management System Evidence
+## COMMAND BLOCK 3: STATIC ANIMATION MANAGEMENT SYSTEM EVIDENCE
 ```bash
-# Show static array cache system in bytecode
-grep -A 15 -B 5 "static.*\[\]\|aClass36Array635\|aBooleanArray643" bytecode/client/VBAXKVMG.bytecode.txt
+# Show static array cache system in bytecode with field patterns
+grep -A 10 -B 5 "static.*Class36\[\]\|static.*boolean\[\]" bytecode/client/VBAXKVMG.bytecode.txt
 
-# Show corresponding static management in DEOB source
+# Show corresponding static management in DEOB source with initialization
 grep -A 15 -B 5 "static.*Class36\[\]\|static.*boolean\[\]\|method528\|method529" srcAllDummysRemoved/src/Class36.java
 
-# Verify static fields in javap cache
+# Verify static fields in javap cache with access patterns
 grep -A 15 -B 5 "static.*Class36\[\]\|static.*boolean\[\]" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 4. Class18 Integration Evidence
+## COMMAND BLOCK 4: CLASS18 INTEGRATION EVIDENCE
 ```bash
-# Show Class18 (XPBACSMK) reference in bytecode
-grep -A 10 -B 5 "XPBACSMK\|Class18" bytecode/client/VBAXKVMG.bytecode.txt
+# Show Class18 (XPBACSMK) reference in bytecode with field access
+grep -A 12 -B 5 "XPBACSMK\|LClass18" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Show corresponding Class18 integration in DEOB source
 grep -A 10 -B 5 "Class18.*aClass18_637\|aClass18_637.*Class18" srcAllDummysRemoved/src/Class36.java
 
-# Verify Class18 field in javap cache
-grep -A 10 -B 5 "Class18\|XPBACSMK" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify Class18 field in javap cache with type information
+grep -A 10 -B 5 "LClass18\|XPBACSMK" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 5. Animation Constructor Pattern Evidence
+## COMMAND BLOCK 5: ANIMATION CONSTRUCTOR PATTERN EVIDENCE
 ```bash
 # Show complex constructor with 20+ parameters in bytecode
-grep -A 25 -B 5 "public VBAXKVMG.*int.*int.*int" bytecode/client/VBAXKVMG.bytecode.txt
+grep -A 30 -B 5 "public VBAXKVMG.*int.*int.*int" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Show corresponding constructor logic in DEOB source
-grep -A 25 -B 5 "public Class36\|anIntArray.*new int" srcAllDummysRemoved/src/Class36.java
+grep -A 25 -B 5 "public Class36.*int.*int.*int" srcAllDummysRemoved/src/Class36.java
 
-# Verify constructor signature in javap cache
-grep -A 25 "public.*VBAXKVMG.*int" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify constructor signature in javap cache with parameter types
+grep -A 30 "public.*VBAXKVMG.*int" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 6. Frame Processing Logic Evidence
+## COMMAND BLOCK 6: FRAME PROCESSING LOGIC EVIDENCE
 ```bash
-# Show frame data processing patterns in bytecode
-grep -A 20 -B 5 "for.*k3.*<.*l2\|anIntArray.*\[k3\].*" bytecode/client/VBAXKVMG.bytecode.txt
+# Show frame data processing patterns in bytecode with array operations
+grep -A 25 -B 5 "for.*k3.*<.*l2\|anIntArray.*\[k3\].*\|iaload\|iastore" bytecode/client/VBAXKVMG.bytecode.txt
 
 # Show corresponding frame processing in DEOB source
-grep -A 20 -B 5 "for.*k3.*<.*l2\|anIntArray.*\[k3\].*" srcAllDummysRemoved/src/Class36.java
+grep -A 25 -B 5 "for.*k3.*<.*l2\|anIntArray.*\[k3\].*" srcAllDummysRemoved/src/Class36.java
 
-# Verify processing logic in javap cache
-grep -A 20 -B 5 "iaload\|iastore" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify processing logic in javap cache with array instructions
+grep -A 20 -B 5 "iaload\|iastore\|for.*k3" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
-### 7. Cross-Reference Validation (CLASS36 UNIQUENESS)
+## COMMAND BLOCK 7: CROSS-REFERENCE VALIDATION EVIDENCE
 ```bash
 # Show only Class36 has this specific animation array pattern
-grep -l "int\[\].*;" bytecode/client/*.bytecode.txt | xargs grep -l "int\[\].*;" | xargs grep -c "int\[\]" | grep ":4" | cut -d: -f1
+grep -l "int\[\].*639\|int\[\].*640\|int\[\].*641\|int\[\].*642" bytecode/client/*.bytecode.txt | grep VBAXKVMG
 
 # Show Class36's unique static array count compared to other animation classes
 grep -c "static.*\[\]" bytecode/client/VBAXKVMG.bytecode.txt
 
-# Verify Class36's unique method529 signature
-grep -l "method529\|abyte0\[\]" bytecode/client/*.bytecode.txt | grep "VBAXKVMG"
+# Verify Class36's unique method529 signature with byte array parameter
+grep -l "method529\|abyte0\[\]" bytecode/client/*.bytecode.txt | grep VBAXKVMG
 ```
 
-### 8. Animation Data Type Patterns Evidence
+## COMMAND BLOCK 8: ANIMATION DATA TYPE PATTERNS EVIDENCE
 ```bash
-# Show animation-specific data types in bytecode
-grep -A 15 -B 5 "int.*\[\]\|boolean\[\]\|Class18\|Class36\[\]" bytecode/client/VBAXKVMG.bytecode.txt
+# Show animation-specific data types in bytecode with type signatures
+grep -A 15 -B 5 "int.*\[\]\|boolean\[\]\|LClass18\;\[LClass36" bytecode/client/VBAXKVMG.bytecode.txt
 
-# Show corresponding data types in DEOB source
+# Show corresponding data types in DEOB source with field declarations
 grep -A 15 -B 5 "int.*\[\]\|boolean\[\]\|Class18\|Class36\[\]" srcAllDummysRemoved/src/Class36.java
 
-# Verify data type declarations in javap cache
-grep -A 15 -B 5 "int\[\]\|boolean\[\]\|LClass18\;\[LClass36" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
+# Verify data type declarations in javap cache with full type information
+grep -A 15 -B 5 "\[I\|\[Z\|LClass18\;\[LClass36" srcAllDummysRemoved/.javap_cache/Class36.javap.cache
 ```
 
 ## Critical Evidence Points

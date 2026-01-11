@@ -29,16 +29,38 @@ classDiagram
 
 ## Forensic Evidence Commands
 
-### 1. Collision Array Initialization Evidence (CLASS11-SPECIFIC PATTERN)
+### 1. Collision Array Field Structure Evidence (CLASS11-SPECIFIC PATTERN)
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show 104x104 collision array initialization in bytecode
-grep -A 15 -B 5 "104.*104\|new.*\[.*\[" bytecode/client/LLORVYLP.bytecode.txt
+# Show Class11 basic class structure with multiple coordinate fields
+grep -A 25 -B 5 "public class LLORVYLP\|public int.*\|public byte.*" bytecode/client/LLORVYLP.bytecode.txt
 
-# Show corresponding collision array creation in DEOB source
-grep -A 15 -B 5 "new int\[anInt292\]\[anInt293\]" srcAllDummysRemoved/src/Class11.java
+# Show constructor pattern for Class11 initialization
+grep -A 15 -B 5 "public LLORVYLP.*(\)" bytecode/client/LLORVYLP.bytecode.txt
+```
 
-# Verify collision array structure in javap cache
-grep -A 15 -B 5 "anIntArrayArray294.*new.*int" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show 104x104 collision array creation with complete method context
+grep -A 20 -B 5 "new int\[anInt292\]\[anInt293\]" srcAllDummysRemoved/src/Class11.java
+
+# Show collision array initialization with 0xffffff and 0x1000000 values
+grep -A 25 -B 5 "0xffffff\|0x1000000" srcAllDummysRemoved/src/Class11.java
+
+# Show coordinate field declarations and boundary constants
+grep -A 15 -B 5 "anInt290\|anInt291\|anInt292.*104\|anInt293.*104" srcAllDummysRemoved/src/Class11.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify collision array structure with field type declarations
+grep -A 20 -B 5 "anIntArrayArray294.*new.*int" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+
+# Show collision value assignments and boundary processing
+grep -A 25 -B 5 "0xffffff\|0x1000000" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
+
+# Show coordinate field types and initialization patterns
+grep -A 15 -B 5 "anInt290\|anInt291\|anInt292\|anInt293" srcAllDummysRemoved/.javap_cache/Class11.javap.cache
 ```
 
 ### 2. Boundary Processing Evidence

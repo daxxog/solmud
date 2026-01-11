@@ -30,15 +30,31 @@ classDiagram
 ## Forensic Evidence Commands
 
 ### 1. DrawingArea Inheritance Evidence (BACKGROUND FOUNDATION)
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show Background extends DrawingArea (AFCKELYG) in bytecode
-grep -A 10 -B 5 "extends.*AFCKELYG" bytecode/client/DSMJIEPN.bytecode.txt
+# Show Background extends DrawingArea (AFCKELYG) with field declarations context
+grep -A 15 -B 10 "extends.*AFCKELYG" bytecode/client/DSMJIEPN.bytecode.txt
 
-# Show corresponding Background extends DrawingArea in DEOB source
-grep -A 5 -B 5 "public final class Background.*DrawingArea" srcAllDummysRemoved/src/Background.java
+# Show Background class structure with pixel data and dimension fields
+grep -A 20 -B 5 "public final class DSMJIEPN\|private.*\|public.*\[" bytecode/client/DSMJIEPN.bytecode.txt
+```
 
-# Verify DrawingArea inheritance in javap cache
-grep -A 5 -B 5 "class Background extends DrawingArea" srcAllDummysRemoved/.javap_cache/Background.javap.cache
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show Background extends DrawingArea with constructor and StreamLoader context
+grep -A 20 -B 5 "public final class Background.*DrawingArea" srcAllDummysRemoved/src/Background.java
+
+# Show Background constructor with StreamLoader parameter and file loading
+grep -A 25 -B 5 "Background.*StreamLoader\|getDataForName" srcAllDummysRemoved/src/Background.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify DrawingArea inheritance with field type declarations
+grep -A 15 -B 5 "class Background extends DrawingArea" srcAllDummysRemoved/.javap_cache/Background.javap.cache
+
+# Show Background pixel data array and palette field declarations
+grep -A 20 -B 5 "aByteArray1450\|anIntArray1451" srcAllDummysRemoved/.javap_cache/Background.javap.cache
 ```
 
 ### 2. Constructor with StreamLoader Integration Evidence

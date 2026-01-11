@@ -30,13 +30,13 @@ classDiagram
 
 ### 1. EntityDef Integration Evidence (NPC-SPECIFIC PATTERN)
 ```bash
-# Show EntityDef (CKDEJADD) field declarations in NPC bytecode
+# A: Show EntityDef (CKDEJADD) field declarations in NPC bytecode with multi-line context
 grep -A 10 -B 5 "CKDEJADD" bytecode/client/CWNCPMLX.bytecode.txt
 
-# Show corresponding EntityDef field in DEOB source
+# B: Show corresponding EntityDef field in DEOB source with multi-line context
 grep -A 10 -B 5 "EntityDef desc" srcAllDummysRemoved/src/NPC.java
 
-# Verify EntityDef field in javap cache
+# A+B: Verify EntityDef field in javap cache with multi-line context
 grep -A 5 -B 5 "EntityDef" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
 ```
 
@@ -54,13 +54,13 @@ grep -A 10 -B 2 "int.*;" srcAllDummysRemoved/.javap_cache/NPC.javap.cache | head
 
 ### 3. Specialized Animation Method Evidence
 ```bash
-# Show NPC-specific method450 (private Model generation)
+# A: Show NPC-specific method450 (private Model generation) with multi-line context
 grep -A 25 -B 5 "private.*method450.*ZKARKDQW" bytecode/client/CWNCPMLX.bytecode.txt
 
-# Show method450 implementation in DEOB source
+# B: Show method450 implementation in DEOB source with multi-line context
 grep -A 25 -B 5 "private Model method450" srcAllDummysRemoved/src/NPC.java
 
-# Verify method450 in javap cache
+# A+B: Verify method450 in javap cache with multi-line context
 grep -A 30 "private Model method450" srcAllDummysRemoved/.javap_cache/NPC.javap.cache
 ```
 

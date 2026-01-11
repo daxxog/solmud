@@ -29,25 +29,25 @@ classDiagram
 
 ### 1. Class Structure and Definition Management
 ```bash
-# Show ObjectDef class definition in bytecode
+# A: Show ObjectDef class definition in bytecode with multi-line context
 grep -A 20 -B 5 "public class YZDBYLRM" bytecode/client/YZDBYLRM.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# B: Show corresponding class structure in DEOB source with multi-line context
 grep -A 15 -B 5 "public class ObjectDef" srcAllDummysRemoved/src/ObjectDef.java
 
-# Verify class structure in javap cache
+# A+B: Verify class structure in javap cache with multi-line context
 grep -A 15 -B 5 "class ObjectDef" srcAllDummysRemoved/.javap_cache/ObjectDef.javap.cache
 ```
 
 ### 2. Stream Loading Integration
 ```bash
-# Show Stream loading operations in bytecode
+# A: Show Stream loading operations in bytecode with multi-line context
 grep -A 15 -B 5 "Stream\|read\|unpack" bytecode/client/YZDBYLRM.bytecode.txt
 
-# Show Stream loading in DEOB source
+# B: Show Stream loading in DEOB source with multi-line context
 grep -A 15 -B 5 "Stream\|read\|unpackConfig" srcAllDummysRemoved/src/ObjectDef.java
 
-# Verify Stream loading in javap cache
+# A+B: Verify Stream loading in javap cache with multi-line context
 grep -A 15 -B 5 "Stream\|read" srcAllDummysRemoved/.javap_cache/ObjectDef.javap.cache
 ```
 

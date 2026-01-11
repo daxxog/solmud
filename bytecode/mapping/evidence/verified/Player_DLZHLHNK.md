@@ -29,14 +29,19 @@ classDiagram
 
 ### 1. MRUNodes Integration Evidence (PLAYER-SPECIFIC PATTERN)
 ```bash
-# Show MRUNodes (GCPOSBWX) field references in Player bytecode
+# Show MRUNodes (GCPOSBWX) field references in Player bytecode with multi-line context
 grep -A 10 -B 5 "GCPOSBWX" bytecode/client/DLZHLHNK.bytecode.txt
 
-# Show corresponding MRUNodes field in DEOB source
+# Show corresponding MRUNodes field in DEOB source with multi-line context
 grep -A 10 -B 5 "MRUNodes\|anMRUNodes" srcAllDummysRemoved/src/Player.java
 
-# Verify MRUNodes field in javap cache
+# Verify MRUNodes field in javap cache with multi-line context
 grep -A 5 -B 5 "MRUNodes\|anMRUNodes" srcAllDummysRemoved/.javap_cache/Player.javap.cache
+
+# A/B Evidence: Show MRUNodes integration patterns
+echo "=== BYTECODE MRUNODES REFERENCES (A) ===" && grep -C 3 "GCPOSBWX" bytecode/client/DLZHLHNK.bytecode.txt | head -15
+echo "=== DEOB SOURCE MRUNODES FIELDS (B) ===" && grep -C 3 "MRUNodes" srcAllDummysRemoved/src/Player.java
+echo "=== JAVAP CACHE VERIFICATION ===" && grep -C 3 "MRUNodes" srcAllDummysRemoved/.javap_cache/Player.javap.cache
 ```
 
 ### 2. Equipment and Appearance Arrays

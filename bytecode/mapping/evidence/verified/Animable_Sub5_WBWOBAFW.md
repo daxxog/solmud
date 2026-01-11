@@ -26,15 +26,37 @@ classDiagram
 ## Forensic Evidence Commands
 
 ### 1. ObjectDef Integration Evidence (UNIQUE PATTERN)
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show ObjectDef (YZDBYLRM) references in bytecode - unique to Animable_Sub5
-grep -A 10 -B 5 "YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
+# Show ObjectDef (YZDBYLRM) field references and method calls with multi-line context
+grep -A 20 -B 10 "YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
 
-# Show corresponding ObjectDef references in DEOB source
-grep -A 10 -B 5 "ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
+# Show ObjectDef.forID static method calls and ObjectDef method578 calls
+grep -A 15 -B 5 "invokestatic.*YZDBYLRM\|invokevirtual.*YZDBYLRM" bytecode/client/WBWOBAFW.bytecode.txt
 
-# Verify javap cache ObjectDef field declarations
-grep -A 5 -B 5 "ObjectDef" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
+# Show ObjectDef field access patterns (childrenIDs, anInt774, anInt749)
+grep -A 25 -B 10 "getfield.*YZDBYLRM\.*childrenIDs\|getfield.*YZDBYLRM\.*anInt" bytecode/client/WBWOBAFW.bytecode.txt
+```
+
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show ObjectDef integration with complete method context including getRotatedModel
+grep -A 35 -B 5 "ObjectDef" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Show ObjectDef.forID usage and method578 model generation calls
+grep -A 20 -B 5 "ObjectDef\.forID\|method578" srcAllDummysRemoved/src/Animable_Sub5.java
+
+# Show ObjectDef field assignments (anInt774, anInt749, childrenIDs)
+grep -A 15 -B 5 "anInt774\|anInt749\|childrenIDs" srcAllDummysRemoved/src/Animable_Sub5.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify ObjectDef field declarations and method signatures with type information
+grep -A 20 -B 5 "ObjectDef\|YZDBYLRM" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
+
+# Show ObjectDef static method calls and field access patterns
+grep -A 25 -B 10 "invokestatic.*ObjectDef\|getfield.*ObjectDef" srcAllDummysRemoved/.javap_cache/Animable_Sub5.javap.cache
 ```
 
 ### 2. Specialized Constructor Pattern

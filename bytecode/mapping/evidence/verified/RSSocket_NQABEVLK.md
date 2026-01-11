@@ -42,14 +42,19 @@ graph TD
 
 ### 1. Runnable Interface Implementation Evidence (RSSOCKET-SPECIFIC PATTERN)
 ```bash
-# Show Runnable interface implementation in bytecode with context
+# Show Runnable interface implementation in bytecode with multi-line context
 grep -A 15 -B 10 "java.lang.Runnable\|run.*method" bytecode/client/NQABEVLK.bytecode.txt
 
-# Show corresponding Runnable implementation in DEOB source with context
+# Show corresponding Runnable implementation in DEOB source with multi-line context
 grep -A 15 -B 10 "implements Runnable\|public void run" srcAllDummysRemoved/src/RSSocket.java
 
-# Verify Runnable implementation in javap cache with context
+# Verify Runnable implementation in javap cache with multi-line context
 grep -A 15 -B 10 "java.lang.Runnable\|public void run" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+
+# A/B Evidence: Show Runnable implementation patterns
+echo "=== BYTECODE RUNNABLE (A) ===" && grep -A 10 -B 2 "implements.*java.lang.Runnable" bytecode/client/NQABEVLK.bytecode.txt
+echo "=== DEOB SOURCE RUNNABLE (B) ===" && grep -A 10 -B 2 "implements.*Runnable" srcAllDummysRemoved/src/RSSocket.java
+echo "=== JAVAP RUNNABLE VERIFICATION ===" && grep -A 10 "implements.*Runnable" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
 ```
 
 ### 2. Network Socket Field Evidence

@@ -43,17 +43,17 @@ Entity acts as the core abstraction layer for all dynamic game entities, providi
 Show the class declaration and key entity fields:
 
 ```bash
-# Class declaration extending Animable
+# Class declaration extending Animable (A flag)
 head -5 bytecode/client/GQOSZKJC.bytecode.txt
 ```
 
 ```bash
-# Core entity state fields (coordinates, arrays, combat data)
+# Core entity state fields (coordinates, arrays, combat data) (A flag)
 grep -A 20 "int\[\] m\|int\[\] n\|java\.lang\.String s" bytecode/client/GQOSZKJC.bytecode.txt
 ```
 
 ```bash
-# Position tracking and movement arrays
+# Position tracking and movement arrays (A flag)
 grep -A 10 "int\[\] A\|int\[\] B\|int\[\] C" bytecode/client/GQOSZKJC.bytecode.txt
 ```
 
@@ -62,17 +62,17 @@ grep -A 10 "int\[\] A\|int\[\] B\|int\[\] C" bytecode/client/GQOSZKJC.bytecode.t
 Show the corresponding source code structure:
 
 ```bash
-# Class declaration extending Animable
+# Class declaration extending Animable (B flag)
 head -10 srcAllDummysRemoved/src/Entity.java
 ```
 
 ```bash
-# Position and movement methods (setPos, updateHitData)
+# Position and movement methods (setPos, updateHitData) (B flag)
 grep -A 15 "setPos\|updateHitData" srcAllDummysRemoved/src/Entity.java
 ```
 
 ```bash
-# Coordinate arrays and movement tracking
+# Coordinate arrays and movement tracking (B flag)
 grep -A 10 "smallX\|smallY\|smallXYIndex" srcAllDummysRemoved/src/Entity.java
 ```
 

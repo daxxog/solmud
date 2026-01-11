@@ -25,43 +25,109 @@ classDiagram
     Class4 : +bitwise rotation operations
 ```
 
-## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
+## COMMAND BLOCK 1: BIT MASKING ALGORITHM EVIDENCE
 ```bash
-# Show method155 coordinate transformation in bytecode
-grep -A 10 "public static int a.*int.*int.*boolean" bytecode/client/CDEJWOSB.bytecode.txt
+# Show exact bit masking algorithm (i &= 3) in bytecode
+grep -A 15 -B 5 "iand.*3\|iconst_3.*iand" bytecode/client/CDEJWOSB.bytecode.txt
 
-# Show method157 complex coordinate transformation in bytecode
-grep -A 15 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJWOSB.bytecode.txt
+# Show coordinate transformation logic with conditional returns in bytecode
+grep -A 20 -B 5 "ifeq.*ireturn\|if_icmpne.*ireturn\|iconst.*isub.*ireturn" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding bit masking in DEOB source
+grep -A 12 -B 5 "i &= 3\|if.*== 0.*return\|if.*== 1.*return" srcAllDummysRemoved/src/Class4.java
+
+# Verify bit masking patterns in javap cache with instructions
+grep -A 15 -B 5 "iand\|ifeq\|if_icmpne\|ireturn" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 ```
 
-## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE
+## COMMAND BLOCK 2: METHOD SIGNATURE EVIDENCE
 ```bash
-# Show method155 in DEOB source with multi-line context
-grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/src/Class4.java
+# Show method155 coordinate transformation in bytecode with parameters
+grep -A 15 -B 5 "public static int a.*int.*int.*int.*boolean" bytecode/client/CDEJWOSB.bytecode.txt
 
-# Show method157 in DEOB source with context
-grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/src/Class4.java
+# Show method157 complex coordinate transformation in bytecode with parameters
+grep -A 20 -B 5 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding method signatures in DEOB source
+grep -A 12 -B 5 "public static int method155\|public static int method157" srcAllDummysRemoved/src/Class4.java
+
+# Verify method signatures in javap cache with parameter types
+grep -A 15 -B 5 "method155\|method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 ```
 
-## COMMAND BLOCK 3: JAVAP CACHE EVIDENCE
+## COMMAND BLOCK 3: ERROR HANDLING INTEGRATION EVIDENCE
 ```bash
-# Show method155 in javap cache with multi-line context
-grep -A 10 -B 5 "public static int method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+# Show error code "92720," in bytecode with StringBuffer operations
+grep -A 12 -B 5 "92720\|StringBuffer.*append.*92720" bytecode/client/CDEJWOSB.bytecode.txt
 
-# Show method157 in javap cache with context
-grep -A 10 -B 5 "public static int method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+# Show signlink error reporting integration in bytecode
+grep -A 15 -B 5 "signlink.*reporterror\|invokestatic.*signlink" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding error handling in DEOB source
+grep -A 10 -B 5 "92720\|StringBuffer.*append\|signlink.*reporterror" srcAllDummysRemoved/src/Class4.java
+
+# Verify error handling in javap cache with string constants
+grep -A 12 -B 5 "92720\|StringBuffer\|signlink" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
 ```
 
-## COMMAND BLOCK 4: STATIC UTILITY PATTERN EVIDENCE
+## COMMAND BLOCK 4: ANIMATION CLASS INTEGRATION EVIDENCE
 ```bash
-# Show static method patterns in bytecode
-grep -A 5 -B 5 "public static" bytecode/client/CDEJWOSB.bytecode.txt
+# Show Animation (LKGEGIEW) static field access in bytecode
+grep -A 10 -B 5 "getstatic.*LKGEGIEW\|LKGEGIEW.*t" bytecode/client/CDEJWOSB.bytecode.txt
 
-# Show corresponding static methods in DEOB source
-grep -A 5 -B 5 "public static" srcAllDummysRemoved/src/Class4.java
+# Show Animation integration context in bytecode
+grep -A 15 -B 5 "LKGEGIEW" bytecode/client/CDEJWOSB.bytecode.txt
 
-# Verify static utility pattern in javap cache
-grep -A 5 -B 5 "public static" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+# Show corresponding Animation references in DEOB source
+grep -A 8 -B 5 "Animation\|\.t" srcAllDummysRemoved/src/Class4.java
+
+# Verify Animation field access in javap cache
+grep -A 10 -B 5 "LKGEGIEW\|Animation" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 5: STATIC UTILITY PATTERN EVIDENCE
+```bash
+# Show static method patterns in bytecode with multiple methods
+grep -A 10 -B 3 "public static.*int.*(" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding static methods in DEOB source with full method list
+grep -A 8 -B 3 "public static.*int.*method" srcAllDummysRemoved/src/Class4.java
+
+# Verify static utility pattern in javap cache with method table
+grep -A 12 -B 3 "public static.*int" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show absence of instance fields - pure static utility class
+grep -c "^\s*private\|^\s*public.*field\|^\s*int.*=" bytecode/client/CDEJWOSB.bytecode.txt
+```
+
+## COMMAND BLOCK 6: COORDINATE TRANSFORMATION LOGIC EVIDENCE
+```bash
+# Show geometric return patterns (7 - k, 7 - j) in bytecode
+grep -A 8 -B 3 "bipush.*7.*isub.*ireturn" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding geometric transformations in DEOB source
+grep -A 8 -B 3 "7 - k\|7 - j" srcAllDummysRemoved/src/Class4.java
+
+# Verify geometric calculation patterns in javap cache
+grep -A 10 -B 3 "bipush.*7\|isub\|ireturn" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show 4-directional movement patterns (i == 0,1,2,else)
+grep -A 15 -B 5 "iconst_[0123]\|if.*iconst_[0123]" bytecode/client/CDEJWOSB.bytecode.txt
+```
+
+## COMMAND BLOCK 7: UNIQUENESS VERIFICATION EVIDENCE
+```bash
+# Verify only Class4 has this specific bit masking algorithm
+grep -l "iand.*3.*iconst_3" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Show only Class4 has "92720" error code
+grep -l "92720" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Verify Animation integration uniqueness
+grep -l "getstatic.*LKGEGIEW" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Cross-verify 4-directional transformation uniqueness
+grep -l "bipush.*7.*isub" bytecode/client/*.bytecode.txt | xargs grep -l "iand.*3" | grep CDEJWOSB
 ```
 
 ## Verification of Non-Contradictory Evidence

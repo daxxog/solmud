@@ -29,52 +29,104 @@ classDiagram
 
 ## Forensic Evidence Commands
 
-### 1. Class Structure and Inheritance
+### 1. Class Structure and Inheritance Evidence
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show Animable_Sub3 extends Animable (XHHRODPC) in bytecode
+# Show Animable_Sub3 extends Animable (XHHRODPC) with multi-line context
 grep -A 15 -B 5 "extends.*XHHRODPC" bytecode/client/OJEALINP.bytecode.txt
-
-# Show corresponding class structure in DEOB source
-grep -A 10 -B 5 "final class Animable_Sub3.*Animable" srcAllDummysRemoved/src/Animable_Sub3.java
-
-# Verify inheritance in javap cache
-grep -A 10 -B 5 "class Animable_Sub3 extends Animable" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
 ```
 
-### 2. SpotAnim Field Integration
+**DEOB Source Code Analysis (B-Flag):**
 ```bash
-# Show SpotAnim (MUDLUUBC) field references in bytecode
-grep -A 10 -B 5 "MUDLUUBC.*u" bytecode/client/OJEALINP.bytecode.txt
-
-# Show SpotAnim field in DEOB source
-grep -A 10 -B 5 "SpotAnim.*cache\|aSpotAnim" srcAllDummysRemoved/src/Animable_Sub3.java
-
-# Verify SpotAnim field in javap cache
-grep -A 5 -B 5 "SpotAnim\|aSpotAnim_1568" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+# Show corresponding class structure with constructor and field context
+grep -A 20 -B 5 "final class Animable_Sub3.*Animable" srcAllDummysRemoved/src/Animable_Sub3.java
 ```
 
-### 3. Constructor Pattern Evidence
+**Javap Cache Verification:**
 ```bash
-# Show constructor with 8 parameters in bytecode
-grep -A 50 -B 5 "public OJEALINP(" bytecode/client/OJEALINP.bytecode.txt
-
-# Show corresponding constructor in DEOB source
-grep -A 20 -B 5 "public Animable_Sub3(" srcAllDummysRemoved/src/Animable_Sub3.java
-
-# Verify constructor signature in javap cache
-grep -A 30 -B 5 "public Animable_Sub3(" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+# Verify inheritance pattern with field declarations in javap cache
+grep -A 20 -B 5 "class Animable_Sub3 extends Animable" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
 ```
 
-### 4. getRotatedModel Method Implementation
+### 2. SpotAnim Field Integration Evidence
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show getRotatedModel method in bytecode
-grep -A 80 -B 5 "public.*ZKARKDQW.*a(int)" bytecode/client/OJEALINP.bytecode.txt
+# Show SpotAnim (MUDLUUBC) field declaration with surrounding context
+grep -A 15 -B 10 "MUDLUUBC.*u" bytecode/client/OJEALINP.bytecode.txt
 
-# Show corresponding getRotatedModel in DEOB source
-grep -A 50 -B 5 "getRotatedModel" srcAllDummysRemoved/src/Animable_Sub3.java
+# Show SpotAnim field assignment in constructor with multi-line context
+grep -A 10 -B 5 "putfield.*MUDLUUBC\|getstatic.*SpotAnim" bytecode/client/OJEALINP.bytecode.txt
+```
 
-# Verify getRotatedModel in javap cache
-grep -A 80 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show SpotAnim field usage with complete method context including getRotatedModel
+grep -A 30 -B 5 "aSpotAnim_1568\|SpotAnim.*cache" srcAllDummysRemoved/src/Animable_Sub3.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify SpotAnim field with bytecode instructions showing field access patterns
+grep -A 15 -B 10 "aSpotAnim_1568\|SpotAnim.*cache" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+```
+
+### 3. Constructor Pattern Evidence with 8 Parameters
+**Bytecode Analysis (A-Flag):**
+```bash
+# Show complete constructor method signature and initialization pattern
+grep -A 60 -B 5 "public OJEALINP.*(" bytecode/client/OJEALINP.bytecode.txt
+
+# Show constructor field assignments with multi-line context
+grep -A 40 -B 5 "putfield.*anInt156\|putfield.*aBoolean" bytecode/client/OJEALINP.bytecode.txt
+```
+
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show constructor with full parameter list and field initialization context
+grep -A 35 -B 5 "public Animable_Sub3.*(" srcAllDummysRemoved/src/Animable_Sub3.java
+
+# Show SpotAnim cache assignment and coordinate field initialization
+grep -A 20 -B 5 "SpotAnim\.cache\[i1\]\|anInt1560.*=.*i" srcAllDummysRemoved/src/Animable_Sub3.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify constructor bytecode with field type information and initialization sequence
+grep -A 50 -B 5 "public Animable_Sub3.*(" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+```
+
+### 4. getRotatedModel Method Implementation Evidence
+**Bytecode Analysis (A-Flag):**
+```bash
+# Show complete getRotatedModel method with Model return type and field access
+grep -A 100 -B 5 "public.*ZKARKDQW.*a(int)" bytecode/client/OJEALINP.bytecode.txt
+
+# Show SpotAnim field usage within getRotatedModel with multi-line context
+grep -A 30 -B 10 "getfield.*MUDLUUBC.*getRotatedModel" bytecode/client/OJEALINP.bytecode.txt
+
+# Show Class36 method calls for animation frame processing
+grep -A 20 -B 5 "SQHJOGRT\|invokevirtual.*Class36" bytecode/client/OJEALINP.bytecode.txt
+```
+
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show complete getRotatedModel implementation with animation logic
+grep -A 60 -B 5 "Model getRotatedModel" srcAllDummysRemoved/src/Animable_Sub3.java
+
+# Show SpotAnim model retrieval and animation frame processing
+grep -A 25 -B 5 "aSpotAnim_1568\.getModel\|Class36\.method532" srcAllDummysRemoved/src/Animable_Sub3.java
+
+# Show animation rotation and transformation logic
+grep -A 20 -B 5 "method479\|method478\|method473" srcAllDummysRemoved/src/Animable_Sub3.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify getRotatedModel with complete bytecode instruction sequence
+grep -A 100 -B 5 "public Model getRotatedModel" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
+
+# Show SpotAnim field access patterns and Class36 integration
+grep -A 30 -B 10 "getfield.*aSpotAnim_1568\|invokevirtual.*Class36" srcAllDummysRemoved/.javap_cache/Animable_Sub3.javap.cache
 ```
 
 ### 5. Animation Update Method (method454)

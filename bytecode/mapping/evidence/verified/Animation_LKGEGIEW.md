@@ -30,15 +30,31 @@ classDiagram
 ## Forensic Evidence Commands
 
 ### 1. Static Animation Array Evidence (ANIMATION-SPECIFIC PATTERN)
+**Bytecode Analysis (A-Flag):**
 ```bash
-# Show static Animation array field in bytecode
-grep -A 10 -B 5 "public static.*LKGEGIEW\[" bytecode/client/LKGEGIEW.bytecode.txt
+# Show static Animation array field declaration with surrounding field context
+grep -A 15 -B 10 "public static.*LKGEGIEW\[" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show corresponding static anims array in DEOB source
-grep -A 10 -B 5 "public static.*anims\[\]" srcAllDummysRemoved/src/Animation.java
+# Show array initialization pattern and static field access
+grep -A 10 -B 5 "putstatic.*LKGEGIEW\|getstatic.*LKGEGIEW" bytecode/client/LKGEGIEW.bytecode.txt
+```
 
-# Verify static array in javap cache
-grep -A 10 -B 5 "public static.*LKGEGIEW\[" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+**DEOB Source Code Analysis (B-Flag):**
+```bash
+# Show static anims array declaration with surrounding field context
+grep -A 20 -B 5 "public static.*anims\[\]" srcAllDummysRemoved/src/Animation.java
+
+# Show frame array structures and animation field declarations
+grep -A 15 -B 5 "anIntArray353\[\]\|anIntArray354\[\]\|anIntArray355\[\]" srcAllDummysRemoved/src/Animation.java
+```
+
+**Javap Cache Verification:**
+```bash
+# Verify static array declaration with type signatures in javap cache
+grep -A 20 -B 5 "static.*Animation\[\]\|anims" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+
+# Show complete Animation class structure with static and instance fields
+head -25 srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
 ### 2. Frame Management Arrays Evidence

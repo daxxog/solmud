@@ -29,13 +29,13 @@ classDiagram
 
 ### 1. Class Structure and File System Integration
 ```bash
-# Show Decompressor extends Object with RandomAccessFile fields in bytecode
+# Show Decompressor extends Object with RandomAccessFile fields in bytecode (A flag)
 grep -A 20 -B 5 "public final class IGSLDTHC" bytecode/client/IGSLDTHC.bytecode.txt
 
-# Show corresponding class structure in DEOB source
+# Show corresponding class structure in DEOB source (B flag)
 grep -A 15 -B 5 "final class Decompressor" srcAllDummysRemoved/src/Decompressor.java
 
-# Verify class structure in javap cache
+# Verify class structure in javap cache (A/B flag)
 grep -A 15 -B 5 "class Decompressor" srcAllDummysRemoved/.javap_cache/Decompressor.javap.cache
 ```
 

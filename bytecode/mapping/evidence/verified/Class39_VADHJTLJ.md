@@ -178,40 +178,106 @@ grep -l "38400,\|88058,\|4279," bytecode/client/*.bytecode.txt
 
 **Result**: VADHJTLJ is the ONLY class matching this complete 3D graphics renderer signature.
 
-## COMMAND BLOCK 5: DEOBFUSCATED SOURCE EVIDENCE
+## COMMAND BLOCK 1: MATHEMATICAL CONSTANTS EVIDENCE
 ```bash
-# Show method542 with π and audio constants in DEOB source
-grep -A 10 -B 5 "method542" srcAllDummysRemoved/src/Class39.java
+# Show π constant (3.1415927f) in bytecode with context
+grep -A 8 -B 3 "3.1415927f\|ldc.*3.1415927f" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Show π constant usage in DEOB source
-grep -A 5 -B 5 "3\.141593F" srcAllDummysRemoved/src/Class39.java
+# Show audio sample rate constant (11025.0f) in bytecode
+grep -A 8 -B 3 "11025.0f\|ldc.*11025.0f" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Show Math.cos trigonometric operations in DEOB source
-grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/src/Class39.java
+# Show graphics precision constants (65536.0f, 32.703197f) in bytecode
+grep -A 8 -B 3 "65536.0f\|32.703197f\|0.0015258789f" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show corresponding constants in DEOB source
+grep -A 8 -B 3 "3.141593F\|11025F\|65536F\|32.7032F" srcAllDummysRemoved/src/Class39.java
 ```
 
-## COMMAND BLOCK 6: JAVAP CACHE EVIDENCE
+## COMMAND BLOCK 2: 3D TRIGONOMETRIC TRANSFORMATIONS EVIDENCE
 ```bash
-# Show method542 in javap cache with multi-line context
-grep -A 10 -B 5 "method542" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+# Show Math.cos operations in bytecode with invokestatic calls
+grep -A 5 -B 3 "invokestatic.*Math\.cos\|java/lang/Math\.cos" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Show π constant in javap cache with context
-grep -A 5 -B 5 "3\.141593f" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+# Show Math.pow operations for graphics calculations in bytecode
+grep -A 5 -B 3 "invokestatic.*Math\.pow\|java/lang/Math\.pow" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Show trigonometric operations in javap cache
-grep -A 5 -B 5 "Math\.cos\|invokestatic.*Math" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+# Show corresponding trigonometric operations in DEOB source
+grep -A 8 -B 3 "Math\.cos\|Math\.pow" srcAllDummysRemoved/src/Class39.java
+
+# Verify trigonometric operations in javap cache with method signatures
+grep -A 8 -B 3 "invokestatic.*Math\|Math\.cos\|Math\.pow" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
 ```
 
-## COMMAND BLOCK 7: BYTECODE TO SOURCE CORRELATION
+## COMMAND BLOCK 3: MULTIDIMENSIONAL GRAPHICS ARRAYS EVIDENCE
 ```bash
-# Show 3D array structure [32][3][2] in bytecode
-grep -A 10 -B 5 "multianewarray.*32.*3.*2" bytecode/client/VADHJTLJ.bytecode.txt
+# Show 3D integer arrays ([[[I) in bytecode with multianewarray
+grep -A 8 -B 3 "multianewarray.*\[\[\[I" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Show corresponding 3D array in DEOB source
-grep -A 10 -B 5 "new float\[32\]\[3\]\[2\]" srcAllDummysRemoved/src/Class39.java
+# Show 2D float arrays ([[F) and 2D int arrays ([[I) in bytecode
+grep -A 8 -B 3 "multianewarray.*\[\[F\|multianewarray.*\[\[I" bytecode/client/VADHJTLJ.bytecode.txt
 
-# Verify 3D array structure in javap cache
-grep -A 10 -B 5 "\[32\]\[3\]\[2\]\|aFloatArrayArray669" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+# Show corresponding 3D array [32][3][2] in DEOB source
+grep -A 8 -B 3 "new float\[32\]\[3\]\[2\]\|new int\[\]\[\]" srcAllDummysRemoved/src/Class39.java
+
+# Verify 3D array structure in javap cache with type descriptors
+grep -A 10 -B 3 "\[\[\[I\|\[\[F\|\[\[I" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
+
+## COMMAND BLOCK 4: GRAPHICS ERROR CODES EVIDENCE
+```bash
+# Show graphics-specific error codes in bytecode
+grep -A 5 -B 3 "38400\|88058\|4279" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show error handling patterns in bytecode
+grep -A 10 -B 5 "StringBuffer.*append\|signlink.*reporterror" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Verify error handling in javap cache with string constants
+grep -A 8 -B 3 "38400\|88058\|4279" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
+
+## COMMAND BLOCK 5: 3D GRAPHICS ALGORITHM PATTERNS EVIDENCE
+```bash
+# Show 3D array access patterns in bytecode
+grep -A 12 -B 5 "aload.*getfield.*aaload\|iaload.*iastore" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show coordinate transformation patterns in bytecode
+grep -A 15 -B 5 "f2d\|d2f\|fmul\|fadd\|fsub" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show corresponding 3D processing in DEOB source
+grep -A 12 -B 5 "\[i\]\[0\]\[j\]\|\[j\]\[0\]\[i\]" srcAllDummysRemoved/src/Class39.java
+
+# Verify 3D processing in javap cache with array access instructions
+grep -A 12 -B 5 "aaload\|iaload\|faload\|fastore" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
+
+## COMMAND BLOCK 6: METHOD SIGNATURES AND IMPLEMENTATIONS EVIDENCE
+```bash
+# Show method542 signature in bytecode with float parameter and return
+grep -A 15 -B 5 "method542.*float" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show method543 signature in bytecode with multiple parameters
+grep -A 15 -B 5 "method543.*float.*int.*int" bytecode/client/VADHJTLJ.bytecode.txt
+
+# Show corresponding methods in DEOB source with implementations
+grep -A 12 -B 5 "method542\|method543" srcAllDummysRemoved/src/Class39.java
+
+# Verify method signatures in javap cache with parameter types
+grep -A 15 -B 5 "method542\|method543" srcAllDummysRemoved/.javap_cache/Class39.javap.cache
+```
+
+## COMMAND BLOCK 7: UNIQUENESS VERIFICATION EVIDENCE
+```bash
+# Verify only Class39 has this complete mathematical constant combination
+grep -l "3.1415927f.*11025.0f.*65536.0f" bytecode/client/*.bytecode.txt | grep VADHJTLJ
+
+# Show only Class39 has 3D array processing patterns
+grep -l "multianewarray.*\[\[\[I" bytecode/client/*.bytecode.txt | grep VADHJTLJ
+
+# Verify trigonometric operation uniqueness
+grep -l "invokestatic.*Math\.cos.*invokestatic.*Math\.pow" bytecode/client/*.bytecode.txt | grep VADHJTLJ
+
+# Cross-verify 3D array [32][3][2] structure uniqueness
+grep -l "32.*3.*2" bytecode/client/*.bytecode.txt | xargs grep -l "multianewarray" | grep VADHJTLJ
 ```
 grep -A 5 -B 5 "Math\.cos" srcAllDummysRemoved/.javap_cache/Class39.javap.cache</content>
 <parameter name="filePath">./bytecode/mapping/evidence/verified/VADHJTLJ_CLASS39.md
