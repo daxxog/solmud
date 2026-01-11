@@ -1,4 +1,4 @@
-# TextDrawingArea → YXVQXWYR Mapping Evidence
+# Evidence: TextDrawingArea → YXVQXWYR
 
 ## Class Overview and Purpose
 TextDrawingArea is a comprehensive text rendering and font management class that handles:

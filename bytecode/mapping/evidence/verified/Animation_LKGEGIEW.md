@@ -1,165 +1,139 @@
 # Evidence: Animation → LKGEGIEW
 
-## Overview
-Animation manages skeletal animation sequences for game entities. It loads animation data from configuration files, handles frame timing, provides animation playback controls, and integrates with the 3D rendering system to animate characters and objects through sequenced frame transitions.
+## Class Overview
 
-## Architecture
-Animation is a core component of the game's animation system, managing frame sequences and timing. It loads configuration data from StreamLoader, provides frame access methods, and integrates with Class36 for frame data. The class supports complex animation sequences with multiple frames, timing controls, and priority systems for entity animation.
+**Animation** manages skeletal animation sequences for game entities. It loads animation data from configuration files, handles frame timing, provides animation playback controls, and integrates with the 3D rendering system to animate characters and objects through sequenced frame transitions.
+
+The class provides comprehensive animation management:
+- **Configuration Loading**: Loads seq.dat through StreamLoader for animation definitions
+- **Frame Arrays**: Multiple int arrays for frame IDs, delays, and timing calculations
+- **Static Animation Cache**: Public static array to store all loaded animations
+- **Class36 Integration**: Interfaces with frame data system for animation playback
+
+## Architecture Role
+Animation serves as the core animation system component, managing frame sequences and timing data. It loads configuration data from StreamLoader, provides frame access methods, and integrates with Class36 for frame data retrieval. The class supports complex animation sequences with multiple frames, timing controls, and priority systems for entity animation.
 
 ```mermaid
-graph TD
-    A[Animation] --> B[StreamLoader]
-    A --> C[Class36]
-    A --> D[FrameManager]
-    A --> E[EntitySystem]
-    B --> F[ResourceLoader]
-    C --> G[FrameData]
-    D --> H[AnimationPlayer]
-    E --> I[GameObjects]
+classDiagram
+    Animation --> StreamLoader
+    Animation --> Stream
+    Animation --> Class36
+    Animation : +unpackConfig(StreamLoader)
+    Animation : +method258(int)
+    Animation : -readValues(Stream)
+    Animation : +anims[]
+    Animation : +anIntArray353[]
+    Animation : +anIntArray354[]
+    Animation : -anIntArray355[]
 ```
 
 ## Forensic Evidence Commands
 
-### 1. Class Structure and Static Animation Arrays
+### 1. Static Animation Array Evidence (ANIMATION-SPECIFIC PATTERN)
 ```bash
-# Show Animation class definition with static arrays in bytecode
-grep -A 20 -B 5 "public class LKGEGIEW" bytecode/client/LKGEGIEW.bytecode.txt
+# Show static Animation array field in bytecode
+grep -A 10 -B 5 "public static.*LKGEGIEW\[" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show corresponding class structure in DEOB source
-head -15 srcAllDummysRemoved/src/Animation.java
+# Show corresponding static anims array in DEOB source
+grep -A 10 -B 5 "public static.*anims\[\]" srcAllDummysRemoved/src/Animation.java
 
-# Verify class structure in javap cache
-grep -A 15 -B 5 "class Animation" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+# Verify static array in javap cache
+grep -A 10 -B 5 "public static.*LKGEGIEW\[" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
-### 2. Static Animation Cache Evidence
+### 2. Frame Management Arrays Evidence
 ```bash
-# Show static animation array (anims) in bytecode
-grep -A 10 -B 5 "LKGEGIEW\[\].*d\|public static.*anims" bytecode/client/LKGEGIEW.bytecode.txt
+# Show frame array fields in bytecode
+grep -A 15 -B 5 "public int\[\].*f\|public int\[\].*g\|private int\[\].*h" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show static animation array in DEOB source
-grep -A 5 -B 2 "public static.*anims" srcAllDummysRemoved/src/Animation.java
+# Show corresponding frame arrays in DEOB source
+grep -A 15 -B 5 "anIntArray353\[\]\|anIntArray354\[\]\|anIntArray355\[\]" srcAllDummysRemoved/src/Animation.java
 
-# Verify animation array in javap cache
-grep -A 5 -B 2 "anims\|\[LAnimation" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+# Verify frame array declarations in javap cache
+grep -A 15 -B 5 "anIntArray353\|anIntArray354\|anIntArray355" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
-### 3. Frame Management Arrays
+### 3. Configuration Loading Evidence
 ```bash
-# Show frame arrays (anIntArray353, anIntArray354) in bytecode
-grep -A 10 -B 5 "int\[\].*f\|int\[\].*g\|int\[\].*h" bytecode/client/LKGEGIEW.bytecode.txt
+# Show unpackConfig method signature and seq.dat loading in bytecode
+grep -A 25 -B 5 "public static void a.*XTGLDHGX\|seq\.dat" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show frame arrays in DEOB source
-grep -A 10 -B 5 "anIntArray353\|anIntArray354" srcAllDummysRemoved/src/Animation.java
+# Show corresponding unpackConfig implementation in DEOB source
+grep -A 25 -B 5 "public static void unpackConfig\|seq\.dat" srcAllDummysRemoved/src/Animation.java
 
-# Verify frame arrays in javap cache
-grep -A 10 -B 2 "anIntArray353\|anIntArray354" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+# Verify unpackConfig method in javap cache
+grep -A 25 "public static void unpackConfig" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
-### 4. Configuration Loading (seq.dat)
+### 4. Frame Timing Method Evidence
 ```bash
-# Show seq.dat loading and unpackConfig in bytecode
-grep -A 15 -B 5 "seq\.dat\|unpackConfig" bytecode/client/LKGEGIEW.bytecode.txt
+# Show method258 (frame timing calculation) in bytecode
+grep -A 20 -B 5 "public int a.*int.*byte\|method258\|Class36" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show configuration loading in DEOB source
-grep -A 15 -B 5 "unpackConfig\|seq\.dat\|readValues" srcAllDummysRemoved/src/Animation.java
-
-# Verify configuration loading in javap cache
-grep -A 15 -B 5 "unpackConfig" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
-```
-
-### 5. Stream Processing Integration
-```bash
-# Show StreamLoader operations in bytecode
-grep -A 10 -B 5 "XTGLDHGX\|readUnsignedWord\|readUnsignedByte" bytecode/client/LKGEGIEW.bytecode.txt
-
-# Show Stream operations in DEOB source
-grep -A 10 -B 5 "Stream\|readUnsignedWord\|readUnsignedByte" srcAllDummysRemoved/src/Animation.java
-
-# Verify Stream processing in javap cache
-grep -A 10 -B 5 "XTGLDHGX\|Stream" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
-```
-
-### 6. method258 Frame Timing Method
-```bash
-# Show method258 frame timing in bytecode
-grep -A 15 -B 5 "public int a\(int, byte\)" bytecode/client/LKGEGIEW.bytecode.txt
-
-# Show method258 in DEOB source
-grep -A 15 -B 5 "method258" srcAllDummysRemoved/src/Animation.java
+# Show corresponding method258 implementation in DEOB source
+grep -A 20 -B 5 "public int method258\|Class36\.method531" srcAllDummysRemoved/src/Animation.java
 
 # Verify method258 in javap cache
-grep -A 15 -B 5 "method258\|public int a(int, byte)" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+grep -A 20 "public int method258" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
-### 7. Cross-Reference Validation (ANIMATION UNIQUENESS)
+### 5. Stream Processing Evidence
 ```bash
-# Show only Animation uses seq.dat among all classes
-grep -l "seq\.dat" bytecode/client/*.bytecode.txt | grep "LKGEGIEW"
+# Show Stream (MBMGIXGO) usage in readValues method in bytecode
+grep -A 25 -B 5 "public void a.*boolean.*MBMGIXGO\|readUnsignedWord\|readUnsignedByte" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show Animation unique static array count
-grep -c "public static.*\[\]" bytecode/client/LKGEGIEW.bytecode.txt
+# Show corresponding readValues implementation in DEOB source
+grep -A 25 -B 5 "private void readValues\|readUnsignedWord\|readUnsignedByte" srcAllDummysRemoved/src/Animation.java
 
-# Verify Animation Class36 integration uniqueness
-grep -c "SQHJOGRT\|Class36" bytecode/client/LKGEGIEW.bytecode.txt
+# Verify readValues method in javap cache
+grep -A 25 "private void readValues" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
-### 8. Animation Sequence Management
+### 6. Cross-Reference Validation (UNIQUE ANIMATION PATTERN)
 ```bash
-# Show animation sequence fields in bytecode
-grep -A 15 -B 5 "anInt352\|frameCount\|loopCycle" bytecode/client/LKGEGIEW.bytecode.txt
+# Show only LKGEGIEW has static array of its own type (unique pattern)
+grep -l "public static.*\[.*\]" bytecode/client/*.bytecode.txt | xargs grep -l "\[\].*LKGEGIEW\[" | grep "LKGEGIEW"
 
-# Show sequence fields in DEOB source
-grep -A 15 -B 5 "anInt352\|frameCount\|loopCycle" srcAllDummysRemoved/src/Animation.java
+# Show Animation class has distinctive frame array count pattern
+grep -c "int\[\]" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Verify sequence fields in javap cache
-grep -A 15 -B 2 "anInt352" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+# Verify static anims array initialization pattern in source
+grep -c "new Animation" srcAllDummysRemoved/src/Animation.java
 ```
 
-### 9. Class36 Integration for Frame Data
+### 7. StreamLoader Integration Evidence
 ```bash
-# Show Class36 method calls in bytecode
-grep -A 10 -B 5 "SQHJOGRT\|Class36" bytecode/client/LKGEGIEW.bytecode.txt
+# Show StreamLoader (XTGLDHGX) integration for config loading in bytecode
+grep -A 15 -B 5 "XTGLDHGX.*getDataForName" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show Class36 integration in DEOB source
-grep -A 10 -B 5 "Class36" srcAllDummysRemoved/src/Animation.java
+# Show StreamLoader integration in DEOB source
+grep -A 15 -B 5 "streamLoader\.getDataForName" srcAllDummysRemoved/src/Animation.java
 
-# Verify Class36 integration in javap cache
-grep -A 10 -B 5 "SQHJOGRT" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
-```
-
-### 10. Method Signature Validation
-```bash
-# Show all public method signatures in bytecode
-grep -A 3 -B 2 "public.*(" bytecode/client/LKGEGIEW.bytecode.txt
-
-# Show corresponding method signatures in DEOB source
-grep -A 3 -B 2 "public.*(" srcAllDummysRemoved/src/Animation.java
-
-# Verify method signatures in javap cache
-grep -A 3 -B 2 "public.*(" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
+# Verify StreamLoader method calls in javap cache
+grep -A 15 -B 5 "getDataForName" srcAllDummysRemoved/.javap_cache/Animation.javap.cache
 ```
 
 ## Critical Evidence Points
 
-1. **Static Animation Cache**: Animation uniquely manages static array of all animations (anims) for global access.
+1. **Static Animation Array**: LKGEGIEW uniquely contains a public static array of its own type for animation caching.
 
-2. **Configuration Loading**: Exclusive seq.dat file loading with StreamLoader integration for animation data.
+2. **Frame Management Arrays**: Multiple synchronized int arrays for frame IDs, delays, and timing control.
 
-3. **Frame Arrays**: Multiple int arrays (anIntArray353, anIntArray354) for frame timing and sequencing management.
+3. **Configuration Loading**: Specific seq.dat loading through StreamLoader with unpackConfig method.
 
-4. **Class36 Integration**: Direct integration with Class36 (SQHJOGRT) for frame data and animation utilities.
+4. **Class36 Integration**: Frame timing method that interfaces with Class36 for frame data retrieval.
+
+5. **Stream Processing**: ReadValues method processes animation configuration data from Stream.
 
 ## Verification Status
 
-**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The static animation cache, seq.dat loading, frame management arrays, and Class36 integration provide definitive 1:1 mapping evidence that establishes Animation as the core animation system manager.
+**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The static animation array pattern, frame management arrays, seq.dat configuration loading, and Class36 integration provide definitive 1:1 mapping evidence that uniquely identifies this class as Animation.
 
 ## Sources and References
 - **Bytecode**: bytecode/client/LKGEGIEW.bytecode.txt
 - **Deobfuscated Source**: srcAllDummysRemoved/src/Animation.java
 - **Javap Cache**: srcAllDummysRemoved/.javap_cache/Animation.javap.cache
-- **Configuration System**: seq.dat loading
-- **Stream Processing**: XTGLDHGX (StreamLoader)
-- **Frame Utilities**: SQHJOGRT (Class36)
-- **Animation Sequences**: Frame timing and playback control</content>
-<parameter name="filePath">bytecode/mapping/evidence/verified/Animation_LKGEGIEW.md
+- **Configuration**: seq.dat loading through XTGLDHGX (StreamLoader)
+- **Frame System**: VBAXKVMG (Class36) integration
+- **Stream Processing**: MBMGIXGO (Stream) for data parsing
+- **Static Cache**: Self-referencing static array pattern

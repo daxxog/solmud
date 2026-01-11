@@ -18,7 +18,7 @@ classDiagram
     Model --> Animable
     Model --> Stream
     Model --> DrawingArea
-    Model --> Class21
+    Model --> Class11
     Model : +method462(int)
     Model : +method463(int)
     Model : +getRotatedModel(int, int, int, int, int, int)

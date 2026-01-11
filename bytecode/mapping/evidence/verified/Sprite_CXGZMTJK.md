@@ -1,4 +1,4 @@
-# Mapping Verification: Sprite (DEOB) → CXGZMTJK (OG)
+# Evidence: Sprite → CXGZMTJK
 
 ## Status: VERIFIED ✓
 

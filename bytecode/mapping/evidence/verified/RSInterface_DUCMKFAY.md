@@ -48,7 +48,7 @@ grep -A 15 -B 5 "sprite\|Sprite\|CXGZMTJK" bytecode/client/DUCMKFAY.bytecode.txt
 grep -A 15 -B 5 "sprite\|Sprite" srcAllDummysRemoved/src/RSInterface.java
 
 # Verify sprite fields in javap cache
-grep -A 15 -B 2 "sprite\|Sprite" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 15 -B 5 "sprite\|Sprite" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ### 3. Text Rendering and Font Support
@@ -60,7 +60,7 @@ grep -A 15 -B 5 "text\|font\|TextDrawingArea\|YXVQXWYR" bytecode/client/DUCMKFAY
 grep -A 15 -B 5 "text\|font\|TextDrawingArea" srcAllDummysRemoved/src/RSInterface.java
 
 # Verify text support in javap cache
-grep -A 15 -B 2 "text\|TextDrawingArea" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 15 -B 5 "text\|TextDrawingArea" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ### 4. Interface Drawing and Rendering
@@ -84,7 +84,7 @@ grep -A 15 -B 5 "widget\|component\|RSInterface\[\]" bytecode/client/DUCMKFAY.by
 grep -A 15 -B 5 "widget\|component\|RSInterface\[\]" srcAllDummysRemoved/src/RSInterface.java
 
 # Verify widget arrays in javap cache
-grep -A 15 -B 2 "RSInterface\[\]" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 15 -B 5 "RSInterface\[\]" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ### 6. Cross-Reference Validation (RSINTERFACE UNIQUENESS)
@@ -139,13 +139,13 @@ grep -A 15 -B 5 "visible\|state" srcAllDummysRemoved/.javap_cache/RSInterface.ja
 ### 10. Interface Method Signatures
 ```bash
 # Show all public methods in bytecode
-grep -A 5 -B 2 "public.*(" bytecode/client/DUCMKFAY.bytecode.txt
+grep -A 10 -B 5 "public.*(" bytecode/client/DUCMKFAY.bytecode.txt
 
 # Show corresponding methods in DEOB source
-grep -A 5 -B 2 "public.*(" srcAllDummysRemoved/src/RSInterface.java
+grep -A 10 -B 5 "public.*(" srcAllDummysRemoved/src/RSInterface.java
 
 # Verify methods in javap cache
-grep -A 5 -B 2 "public.*(" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 10 -B 5 "public.*(" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ## Critical Evidence Points

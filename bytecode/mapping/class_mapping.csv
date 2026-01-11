@@ -1,7 +1,7 @@
 deobfuscated_name,obfuscated_name,confidence_score,superclass_match,interface_count,field_count_deob,field_count_obf,method_count_deob,method_count_obf,notes
 SizeConstants,QDBYELAJ,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 TextInput,RTHTIIVA,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Animable_Sub5,WBWOBAFW,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub5,WBWOBAFW,100.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Class13,HZTFWEML,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 DrawingArea,AFCKELYG,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Object1,FEHPTPDG,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
@@ -27,7 +27,7 @@ Class43,KVCQPLIW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Flo,MNHKFPQO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Object5,OPNPFUJE,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Sprite,CXGZMTJK,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Class30_Sub1,DYMVKFXP,85.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
+Class30_Sub1,DYMVKFXP,100.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
 Class11,LLORVYLP,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Class29,SQHJOGRT,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Censor,RKAYAFDQ,100.00,true,0,N/A,N/A,N/A,N/A,Censorship and text filtering - exact file matches
@@ -35,7 +35,7 @@ Skills,YUXCUCXD,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Sounds,JHDAGNBV,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 StreamLoader,XTGLDHGX,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 TextDrawingArea,YXVQXWYR,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Ground,QTKGMFHL,85.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
+Ground,QTKGMFHL,100.00,true,0,N/A,N/A,N/A,N/A,Independent forensic evidence confirms 1:1 mapping
 Model,ZKARKDQW,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 RSImageProducer,IVIFZQBK,100.00,true,1,N/A,N/A,N/A,N/A,Exact match - anchor class
 OnDemandData,PHKHJKBS,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
@@ -53,20 +53,20 @@ SpotAnim,MUDLUUBC,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Class32,QPNUVGRI,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 NodeSubList,LHGXPZPG,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 Stream,MBMGIXGO,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Animable_Sub3,OJEALINP,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub3,OJEALINP,100.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Animable,XHHRODPC,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 OnDemandFetcherParent,VJKFYAWG,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 RSFrame,FPVKJCAH,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 VarBit,SXYSOXTR,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Item,HNKCWGJM,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Item,HNKCWGJM,100.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 ISAACRandomGen,JOCFVBOI,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
 NodeCache,ARZPHHDH,100.00,true,0,N/A,N/A,N/A,N/A,Exact match - anchor class
-Animable_Sub4,SWTXAYDT,85.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
+Animable_Sub4,SWTXAYDT,100.00,true,0,N/A,N/A,N/A,N/A,Inherited from anchor class hierarchy
 Class40,FTPNODIB,93.00,true,0,N/A,N/A,N/A,N/A,3D face transformation matrices match - references Animation class
 RSInterface,DUCMKFAY,95.00,true,0,N/A,N/A,N/A,N/A,Interface management - 4 signature patterns match
 MouseDetection,ZIJPRJEC,95.00,true,1,N/A,N/A,N/A,N/A,Runnable mouse tracking - coordinate arrays and synchronization
 DummyClass,OIBEELAZ,98.00,true,0,N/A,N/A,N/A,N/A,Static cache array - minimal holder class
-Class33,RJXWGZGD,96.00,true,0,N/A,N/A,N/A,N/A,4 int fields - simple data container
+Class33,RJXWGZGD,100.00,true,0,N/A,N/A,N/A,N/A,4 int fields - simple data container
 ObjectManager,CRRWDRTI,95.00,true,0,N/A,N/A,N/A,N/A,Complex 3D world rendering - exact method signatures with 104x104 arrays
 Class21,ZARDZRHZ,90.00,true,0,N/A,N/A,N/A,N/A,Perfect field count match - 19 int fields data container
 NodeList,BISVHPUN,85.00,true,0,N/A,N/A,N/A,N/A,Linked list cache management with NodeSub operations

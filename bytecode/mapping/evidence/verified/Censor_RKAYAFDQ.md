@@ -1,4 +1,4 @@
-# Forensic Evidence: RKAYAFDQ → Censor
+# Evidence: Censor → RKAYAFDQ
 
 ## Mapping Confidence: 100%
 

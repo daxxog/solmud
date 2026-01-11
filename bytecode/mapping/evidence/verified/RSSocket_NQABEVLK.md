@@ -15,7 +15,7 @@ The class provides comprehensive network functionality:
 
 ```mermaid
 graph TD
-    RSSocket --> Client[client]
+    RSSocket --> client[client]
     RSSocket --> RSApplet[RSApplet]
     RSSocket --> Stream[Stream]
 
@@ -24,7 +24,7 @@ graph TD
     end
 
     subgraph "Application Layer"
-        Client
+        client
         RSApplet
     end
 
@@ -32,7 +32,7 @@ graph TD
         Stream
     end
 
-    Client -.-> RSSocket
+    client -.-> RSSocket
     RSApplet -.-> RSSocket
     RSSocket -.-> Stream
 ```

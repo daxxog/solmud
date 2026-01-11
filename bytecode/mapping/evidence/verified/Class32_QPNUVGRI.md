@@ -1,4 +1,4 @@
-# Forensic Evidence: QPNUVGRI → Class32 (Bzip2Decompressor)
+# Evidence: Class32 → QPNUVGRI
 
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: QPNUVGRI
