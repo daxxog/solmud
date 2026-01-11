@@ -64,3 +64,4 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
  - "Build mode" does NOT mean creating a comprehensive build system. It simply refers to "read-write-mode" of the agent (i.e. !PLAN_MODE);
  - You are only responsible for managing `./Makefile` and the `bytecode/mapping` folder. Don't concern yourself with the rest of this project at this stage. Only read paths relevant to the goals outlined in this file.
  - Focus on solving CSV-completeness, accuracy, and dispute resolution first. Then laser-focus on evidence quality.
+ - Don't ask the user about priority. The mantra describes priority already and contains a clear definition of what good looks like.
