@@ -46,6 +46,7 @@ You can break the research needed to complete these tasks as delegations for sub
  - [ ] Only be mapped 1:1—each obfusticated bytecode file should only map to a single DEOB source file/javap cache.
  - [ ] **NOT** use absolute paths in documentation (such as `/Users/daxxog/Desktop`). Paths should be relative to the project root.
  - [ ] `bytecode/mapping` should be a clean, auditable directory without unnecessary files, should not contain READMES unaligned to this document, random "docs" or "templates", and markdown spam with notes from previous agentic runs.
+ - [ ] If disputes are resolved they are no longer disputes. So there shouldn't be "resolved disputes" documented anywhere.
 
 
 
