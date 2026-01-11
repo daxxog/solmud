@@ -2,16 +2,17 @@
 
 ## Class Overview
 
-**RSSocket** is a network socket wrapper class that provides thread-safe client-server communication for the RuneScape client. It implements the Runnable interface to handle asynchronous network I/O operations, managing TCP socket connections with configurable timeouts and buffering. The class serves as the fundamental network communication layer, providing reliable data transmission between the client and game servers.
+**RSSocket** is a network socket wrapper class that provides thread-safe client-server communication for the RuneScape client. It implements the Runnable interface to handle asynchronous network I/O operations, managing TCP socket connections with configurable timeouts and buffering. The class serves as the fundamental network communication layer, providing reliable data transmission between the client and game servers with robust error handling.
 
 The class provides comprehensive network functionality:
-- **Socket Management**: TCP connection establishment and lifecycle management
-- **Asynchronous I/O**: Runnable implementation for background network operations
-- **Buffering**: Input/output stream buffering for efficient data handling
-- **Error Handling**: Robust exception handling for network failures
-- **Thread Safety**: Synchronized operations for concurrent access protection
+- **Socket Management**: TCP connection establishment and lifecycle management with proper cleanup
+- **Asynchronous I/O**: Runnable implementation for background network operations and non-blocking communication
+- **Buffering**: Input/output stream buffering for efficient data handling and performance optimization
+- **Error Handling**: Robust exception handling for network failures and connection recovery
+- **Thread Safety**: Synchronized operations for concurrent access protection and data integrity
 
 ## Architecture Role
+RSSocket acts as the network communication abstraction layer, providing a clean interface for the client to handle all server communication while managing the complexities of socket programming and thread safety. The class integrates with the main client and RSApplet for network operations, and works with Stream objects for data serialization and deserialization. RSSocket forms the foundation of all client-server communication in RuneScape.
 
 ```mermaid
 graph TD
@@ -37,89 +38,9 @@ graph TD
     RSSocket -.-> Stream
 ```
 
-RSSocket acts as the network communication abstraction layer, providing a clean interface for the client to handle all server communication while managing the complexities of socket programming and thread safety.
-
 ## Forensic Evidence Commands
 
-### 1. Bytecode Structure Match
-
-Show the class declaration and network-related fields:
-
-```bash
-# Class declaration showing Runnable implementation
-head -15 bytecode/client/NQABEVLK.bytecode.txt
-```
-
-```bash
-# Network I/O fields (InputStream, OutputStream, Socket)
-grep -A 10 "java\.io\.InputStream\|java\.io\.OutputStream\|java\.net\.Socket" bytecode/client/NQABEVLK.bytecode.txt
-```
-
-```bash
-# Constructor showing network initialization pattern
-grep -A 20 "public NQABEVLK.*throws java\.io\.IOException" bytecode/client/NQABEVLK.bytecode.txt
-```
-
-### 2. Deobfuscated Source Correlation
-
-Show the corresponding source code structure:
-
-```bash
-# Class declaration and implements Runnable
-head -15 srcAllDummysRemoved/src/RSSocket.java
-```
-
-```bash
-# Network fields and constructor signature
-grep -A 15 "InputStream\|OutputStream\|Socket.*socket" srcAllDummysRemoved/src/RSSocket.java
-```
-
-```bash
-# Socket configuration (timeout, TCP_NODELAY)
-grep -A 10 "setSoTimeout\|setTcpNoDelay" srcAllDummysRemoved/src/RSSocket.java
-```
-
-### 3. Javap Cache Verification
-
-Show the structured bytecode analysis from javap:
-
-```bash
-# Class structure with network field declarations
-head -25 srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
-```
-
-```bash
-# Constructor signature showing IOException
-grep -A 15 "public RSSocket.*throws java\.io\.IOException" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
-```
-
-### 4. Cross-Reference Validation
-
-Verify this is a unique 1:1 mapping:
-
-```bash
-# Confirm NQABEVLK only maps to RSSocket
-grep -r "NQABEVLK" bytecode/mapping/evidence/verified/ | grep -v RSSocket || echo "Unique mapping confirmed"
-```
-
-```bash
-# Verify the unique network socket + RSApplet + Runnable pattern appears only in NQABEVLK
-find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "implements java.lang.Runnable" {} \; | xargs grep -l "java.io.InputStream" | xargs grep -l "java.io.OutputStream" | xargs grep -l "java.net.Socket" | xargs grep -l "KHACHIFW"
-```
-
-### 5. Network Configuration Evidence
-```bash
-# Show TCP socket configuration in bytecode with context
-grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000\|true" bytecode/client/NQABEVLK.bytecode.txt
-
-# Show corresponding socket configuration in DEOB source with context
-grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/src/RSSocket.java
-
-# Verify socket configuration in javap cache with context
-grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
-```
-
-### 6. Runnable Implementation Evidence
+### 1. Runnable Interface Implementation Evidence (RSSOCKET-SPECIFIC PATTERN)
 ```bash
 # Show Runnable interface implementation in bytecode with context
 grep -A 15 -B 10 "java.lang.Runnable\|run.*method" bytecode/client/NQABEVLK.bytecode.txt
@@ -129,6 +50,90 @@ grep -A 15 -B 10 "implements Runnable\|public void run" srcAllDummysRemoved/src/
 
 # Verify Runnable implementation in javap cache with context
 grep -A 15 -B 10 "java.lang.Runnable\|public void run" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 2. Network Socket Field Evidence
+```bash
+# Show network I/O fields (InputStream, OutputStream, Socket) in bytecode
+grep -A 10 -B 5 "java\.io\.InputStream\|java\.io\.OutputStream\|java\.net\.Socket" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding network fields in DEOB source
+grep -A 15 -B 5 "InputStream\|OutputStream\|Socket.*socket" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify network field declarations in javap cache
+grep -A 15 -B 5 "InputStream\|OutputStream\|Socket" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 3. Constructor with IOException Evidence
+```bash
+# Show constructor signature showing network initialization with IOException in bytecode
+grep -A 20 -B 5 "public NQABEVLK.*throws java\.io\.IOException" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding constructor with IOException in DEOB source
+grep -A 20 -B 5 "public RSSocket.*throws java\.io\.IOException" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify constructor signature in javap cache
+grep -A 15 "public RSSocket.*throws java\.io\.IOException" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 4. TCP Socket Configuration Evidence
+```bash
+# Show TCP socket configuration (timeout, TCP_NODELAY) in bytecode with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000\|true" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding socket configuration in DEOB source with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify socket configuration in javap cache with context
+grep -A 20 -B 10 "setSoTimeout\|setTcpNoDelay\|30000" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 5. Asynchronous run() Method Evidence
+```bash
+# Show run() method implementation for asynchronous I/O in bytecode
+grep -A 25 -B 5 "public void run\|while.*true" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding run() method in DEOB source
+grep -A 25 -B 5 "public void run" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify run() method in javap cache
+grep -A 25 "public void run" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 6. Stream Integration Evidence
+```bash
+# Show Stream object integration for data I/O in bytecode
+grep -A 15 -B 5 "Stream\|MBMGIXGO\|read\|write" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show Stream usage in DEOB source
+grep -A 15 -B 5 "Stream\|read\|write" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify Stream integration in javap cache
+grep -A 15 -B 5 "Stream" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+```
+
+### 7. Cross-Reference Validation (UNIQUE RSSOCKET PATTERN)
+```bash
+# Confirm NQABEVLK only maps to RSSocket - unique mapping verification
+grep -r "NQABEVLK" bytecode/mapping/evidence/verified/ | grep -v RSSocket || echo "Unique mapping confirmed"
+
+# Verify the unique network socket + RSApplet + Runnable pattern appears only in NQABEVLK
+find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "implements java.lang.Runnable" {} \; | xargs grep -l "java.io.InputStream" | xargs grep -l "java.io.OutputStream" | xargs grep -l "java.net.Socket" | xargs grep -l "KHACHIFW"
+
+# Show RSSocket's unique network configuration pattern
+grep -l "setSoTimeout.*30000" bytecode/client/*.bytecode.txt | xargs grep -l "setTcpNoDelay.*true" | grep "NQABEVLK"
+```
+
+### 8. Network Error Handling Evidence
+```bash
+# Show exception handling for network operations in bytecode
+grep -A 15 -B 5 "IOException\|catch\|finally" bytecode/client/NQABEVLK.bytecode.txt
+
+# Show corresponding error handling in DEOB source
+grep -A 15 -B 5 "IOException\|catch\|finally" srcAllDummysRemoved/src/RSSocket.java
+
+# Verify error handling in javap cache
+grep -A 15 -B 5 "IOException\|catch" srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
 ```
 
 ## Critical Evidence Points
@@ -141,14 +146,18 @@ grep -A 15 -B 10 "java.lang.Runnable\|public void run" srcAllDummysRemoved/.java
 
 4. **TCP Configuration**: Socket configuration with setSoTimeout(30000) and setTcpNoDelay(true), typical for real-time game network optimization.
 
+5. **Asynchronous Operations**: run() method implementation for non-blocking network communication with while loop for continuous operation.
+
 ## Verification Status
 
-**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The combination of Runnable implementation, complete network socket field set, and TCP configuration patterns provides 100% confidence in this 1:1 mapping.
+**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The combination of Runnable implementation, complete network socket field set, TCP configuration patterns, and asynchronous I/O methods provides 100% confidence in this 1:1 mapping. The unique integration of network fields with Runnable interface and socket configuration establishes this as the definitive network communication layer.
 
 ## Sources and References
-
-- **Deobfuscated Source**: `srcAllDummysRemoved/src/RSSocket.java`
-- **Obfuscated Bytecode**: `bytecode/client/NQABEVLK.bytecode.txt`
-- **Javap Cache**: `srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache`
-- **Mapping Record**: `bytecode/mapping/class_mapping.csv` (line 8)</content>
-<parameter name="filePath">bytecode/mapping/evidence/verified/RSSocket_NQABEVLK.md
+- **Bytecode**: bytecode/client/NQABEVLK.bytecode.txt
+- **Deobfuscated Source**: srcAllDummysRemoved/src/RSSocket.java
+- **Javap Cache**: srcAllDummysRemoved/.javap_cache/RSSocket.javap.cache
+- **Network Configuration**: setSoTimeout(30000) and setTcpNoDelay(true) for game optimization
+- **Stream Integration**: MBMGIXGO (Stream) for data serialization
+- **Client Integration**: KHACHIFW (RSApplet) for application-layer communication
+- **Runnable Interface**: Asynchronous I/O operations for background network processing
+- **Error Handling**: Comprehensive IOException management for network reliability

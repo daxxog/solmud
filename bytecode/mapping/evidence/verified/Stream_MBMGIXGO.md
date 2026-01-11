@@ -1,5 +1,35 @@
 # Evidence: Stream → MBMGIXGO
 
+## Class Overview
+
+**Stream** implements the fundamental data buffer stream for RuneScape that handles all byte-level data operations throughout the client. The class provides comprehensive primitive reading methods (byte, short, int), variable bit-length reading capabilities, and Jagex-specific string formats. It serves as the core data processing component used for network packet parsing, cache file reading, game object serialization, and all data-intensive operations requiring precise byte-level manipulation.
+
+The class provides comprehensive data processing functionality:
+- **Buffer Management**: Core byte array storage with offset tracking for sequential data access
+- **Primitive Reading**: Complete set of methods for reading signed/unsigned bytes, shorts, and integers
+- **Bit Manipulation**: Variable bit-length reading with accumulator and position tracking for efficient encoding
+- **String Handling**: Multiple string format support including null-terminated and Jagex-specific formats
+
+## Architecture Role
+Stream serves as the fundamental data processing backbone for RuneScape's entire client architecture, providing byte-level data access for all critical systems including network communication, cache management, and game object serialization. The class integrates with network protocols for packet parsing, works with cache systems for file reading, and supports all game components requiring structured data access. Stream acts as the universal data interface that enables consistent data processing across the entire client architecture.
+
+```mermaid
+classDiagram
+    Stream --> Network Packet Processing
+    Stream --> Cache File Reading
+    Stream --> Game Data Serialization
+    Network Packet Processing --> Client-Server Communication
+    Cache File Reading --> Resource Loading
+    Game Data Serialization --> Object State Management
+    Stream : +readByte() byte
+    Stream : +readUnsignedByte() int
+    Stream : +readInt() int
+    Stream : +readString() String
+    Stream : +readBits(int) int
+    Stream : -aByteArray[] byte[]
+    Stream : -currentOffset int
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: MBMGIXGO
 - **Deobfuscated Name**: Stream

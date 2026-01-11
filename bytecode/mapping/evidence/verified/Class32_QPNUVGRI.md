@@ -1,5 +1,31 @@
 # Evidence: Class32 → QPNUVGRI
 
+## Class Overview
+
+**Class32** implements the core bzip2 decompression engine that provides complete compression algorithm functionality with sophisticated state management through complex array structures. The class maintains decompression state across multiple calls using 13 specialized arrays with unique sizes for Huffman coding, bit manipulation, and data buffering. It serves as the low-level decompression workhorse that processes compressed game assets with high efficiency and reliability.
+
+The class provides comprehensive decompression functionality:
+- **Bzip2 Algorithm Implementation**: Complete bzip2 decompression with Huffman coding, Burrows-Wheeler transform, and run-length encoding
+- **Complex State Management**: 13 specialized arrays with unique sizes (256, 257, 258, 6, 16, 4096, 18002) for maintaining decompression state
+- **Memory Buffer Management**: Large buffers for intermediate data processing and bit manipulation operations
+- **Multidimensional Data Structures**: Advanced [6][258] array patterns for efficient Huffman tree representation and state tracking
+
+## Architecture Role
+Class32 serves as the critical bzip2 decompression engine that provides the foundation for RuneScape's compressed asset management system. The class integrates with Class13 for thread-safe archive processing and handles all game asset decompression including models, textures, and audio data. Class32 acts as the low-level decompression workhorse that enables efficient loading of compressed game content while maintaining complex internal state across multiple processing calls.
+
+```mermaid
+classDiagram
+    Class32 --> Class13
+    Class13 --> Class32 : calls for decompression
+    CacheManager --> Class32 : decompresses assets
+    Model --> Class32 : loads compressed models
+    Texture --> Class32 : loads compressed textures
+    Class32 : +13 specialized arrays
+    Class32 : -anIntArray583[256]
+    Class32 : -aByteArray592[4096]
+    Class32 : -array6x258[6][258] x4
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: QPNUVGRI
 - **Deobfuscated Name**: Class32

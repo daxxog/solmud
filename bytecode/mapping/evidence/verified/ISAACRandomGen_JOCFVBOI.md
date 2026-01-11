@@ -1,5 +1,33 @@
 # Evidence: ISAACRandomGen → JOCFVBOI
 
+## Class Overview
+
+**ISAACRandomGen** implements the complete ISAAC cryptographic pseudorandom number generator algorithm that provides secure randomization for network communication and anti-cheat systems. The class maintains cryptographic state through 6 specialized arrays with exactly 256 elements each, including results, memory, accumulator, and counter arrays. It implements sophisticated bit manipulation patterns with the golden ratio constant (0x9e3779b9) for initialization and provides deterministic random number generation for secure client-server communication.
+
+The class provides comprehensive cryptographic functionality:
+- **ISAAC Algorithm**: Complete implementation with proper initialization, mixing, and generation cycles
+- **Cryptographic Arrays**: 6 arrays of exactly 256 elements for maintaining ISAAC internal state
+- **Bit Manipulation**: Advanced bit-shifting, XOR operations, and mixing for cryptographic security
+- **Seed Management**: Constructor accepting 256-integer seed array for reproducible random sequences
+
+## Architecture Role
+ISAACRandomGen serves as the cryptographic foundation for RuneScape's security infrastructure, providing secure randomization for network communication, client authentication, and anti-cheat mechanisms. The class integrates with client-server protocols to ensure unpredictable packet sequences, secure login processes, and protection against data manipulation. ISAACRandomGen acts as the core cryptographic component that maintains game integrity through advanced pseudorandom number generation.
+
+```mermaid
+classDiagram
+    ISAACRandomGen --> Network Security
+    ISAACRandomGen --> Client Authentication
+    ISAACRandomGen --> Packet Encryption
+    Network Security --> Anti-Cheat System
+    Client Authentication --> Login Process
+    Packet Encryption --> Data Transmission
+    ISAACRandomGen : +getNextKey() int
+    ISAACRandomGen : +isaac() void
+    ISAACRandomGen : +initializeKeySet(int[]) void
+    ISAACRandomGen : -randrsl[256] int[]
+    ISAACRandomGen : -mm[256] int[]
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: JOCFVBOI
 - **Deobfuscated Name**: ISAACRandomGen

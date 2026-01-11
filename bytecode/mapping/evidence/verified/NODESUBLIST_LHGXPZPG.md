@@ -1,5 +1,35 @@
 # Evidence: NodeSubList → LHGXPZPG
 
+## Class Overview
+
+**NodeSubList** implements a circular doubly-linked list data structure that provides efficient node traversal and management capabilities. The class creates and manages ordered collections of NodeSub instances with head node initialization, circular reference setup, and comprehensive node manipulation methods. It supports both forward and reverse iteration through the list, with state tracking for traversal position and node counting functionality.
+
+The class provides advanced linked list functionality:
+- **Circular Architecture**: Implements head node with self-referencing prev/next pointers creating a circular structure
+- **Bidirectional Traversal**: Supports both forward (insertHead, popTail) and reverse (reverseGetFirst, reverseGetNext) iteration
+- **Node Management**: Provides insert, unlink, and counting operations for dynamic list modification
+- **State Tracking**: Maintains current position for sequential traversal with efficient memory access patterns
+
+## Architecture Role
+NodeSubList serves as a fundamental data structure component for ordered data management throughout the RuneScape client. It provides the foundation for cache systems, queue implementations, and ordered data processing algorithms. The class integrates with NodeSub instances and serves higher-level systems requiring efficient ordered data access, including cache management, data processing pipelines, and state tracking systems where node-based organization is essential.
+
+```mermaid
+classDiagram
+    NodeSubList --> NodeSub
+    NodeSub --> NodeSubList
+    CacheManager --> NodeSubList : for ordered caching
+    DataProcessor --> NodeSubList : for sequential processing
+    NodeSubList : +head (NodeSub)
+    NodeSubList : +current (NodeSub)
+    NodeSubList : +insertHead(NodeSub)
+    NodeSubList : +insertTail(NodeSub)
+    NodeSubList : +unlink(NodeSub)
+    NodeSubList : +popTail() NodeSub
+    NodeSubList : +reverseGetFirst() NodeSub
+    NodeSubList : +reverseGetNext() NodeSub
+    NodeSubList : +getNodeCount() int
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: LHGXPZPG
 - **Deobfuscated Name**: NodeSubList

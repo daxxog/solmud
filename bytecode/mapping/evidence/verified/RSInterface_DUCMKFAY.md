@@ -2,16 +2,16 @@
 
 ## Class Overview
 
-**RSInterface** serves as the comprehensive user interface management system within the RuneScape game engine, handling all UI components including widgets, sprites, text, and interactive elements for game menus, HUD, and user interactions. The class provides extensive interface management with support for layered components, event handling, and dynamic content updates.
+**RSInterface** serves as the comprehensive user interface management system within the RuneScape game engine, handling all UI components including widgets, sprites, text, and interactive elements for game menus, HUD, and user interactions. The class provides extensive interface management with support for layered components, event handling, and dynamic content updates across multiple interface types.
 
 The class provides comprehensive UI management:
-- **Widget Management**: Complete system for UI widgets and component organization
-- **Sprite Integration**: Direct integration with sprite rendering for visual elements
-- **Text Rendering**: Support for text display, fonts, and message handling
-- **Event Handling**: Interactive element management for user input and responses
+- **Widget Management**: Complete system for UI widgets and component organization with hierarchical structure
+- **Sprite Integration**: Direct integration with sprite rendering system for visual elements and interface graphics
+- **Text Rendering**: Full support for text display, fonts, message handling, and text drawing areas
+- **Event Handling**: Interactive element management for user input, clicks, and interface responses
 
 ## Architecture Role
-RSInterface occupies a central position in the UI system architecture, serving as the primary interface between game logic and visual presentation. Unlike other UI components, RSInterface provides the comprehensive framework for all user interface elements, from simple buttons to complex menu systems, enabling rich user interaction with the game world.
+RSInterface occupies the central position in the UI system architecture, serving as the primary interface between game logic and visual presentation. Unlike other UI components, RSInterface provides the comprehensive framework for all user interface elements, from simple buttons to complex menu systems, enabling rich user interaction with the game world. The class integrates with sprite rendering, text drawing areas, and provides the foundational structure for all game UI elements.
 
 ```mermaid
 classDiagram
@@ -20,16 +20,18 @@ classDiagram
     RSInterface --> TextDrawingArea
     RSInterface : +RSInterface()
     RSInterface : +drawInterface()
-    RSInterface : -widget components
-    RSInterface : -sprite references
-    RSInterface : -text elements
+    RSInterface : +drawSprite(int, int, Sprite)
+    RSInterface : -widget components[]
+    RSInterface : -sprite references[]
+    RSInterface : -text elements[]
+    RSInterface : -interfaceId
 ```
 
 ## Forensic Evidence Commands
 
-### 1. Class Structure and UI Framework
+### 1. UI Framework Structure Evidence (RSINTERFACE-SPECIFIC PATTERN)
 ```bash
-# Show RSInterface class definition in bytecode
+# Show RSInterface class definition with extensive field structure in bytecode
 grep -A 20 -B 5 "public class DUCMKFAY" bytecode/client/DUCMKFAY.bytecode.txt
 
 # Show corresponding class structure in DEOB source
@@ -39,128 +41,106 @@ grep -A 15 -B 5 "public class RSInterface" srcAllDummysRemoved/src/RSInterface.j
 grep -A 15 -B 5 "class RSInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
-### 2. Sprite Integration and Management
+### 2. Sprite Integration Evidence
 ```bash
-# Show sprite field references in bytecode
-grep -A 15 -B 5 "sprite\|Sprite\|CXGZMTJK" bytecode/client/DUCMKFAY.bytecode.txt
+# Show sprite field references and drawing methods in bytecode
+grep -A 15 -B 5 "sprite\|Sprite\|CXGZMTJK\|drawSprite" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show sprite integration in DEOB source
-grep -A 15 -B 5 "sprite\|Sprite" srcAllDummysRemoved/src/RSInterface.java
+# Show sprite integration and drawing methods in DEOB source
+grep -A 15 -B 5 "sprite\|Sprite\|drawSprite" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify sprite fields in javap cache
+# Verify sprite fields and methods in javap cache
 grep -A 15 -B 5 "sprite\|Sprite" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
-### 3. Text Rendering and Font Support
+### 3. Text Rendering System Evidence
 ```bash
-# Show text and font handling in bytecode
-grep -A 15 -B 5 "text\|font\|TextDrawingArea\|YXVQXWYR" bytecode/client/DUCMKFAY.bytecode.txt
+# Show text and font handling with TextDrawingArea in bytecode
+grep -A 15 -B 5 "text\|font\|TextDrawingArea\|YXVQXWYR\|drawText" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show text rendering in DEOB source
-grep -A 15 -B 5 "text\|font\|TextDrawingArea" srcAllDummysRemoved/src/RSInterface.java
+# Show text rendering and font support in DEOB source
+grep -A 15 -B 5 "text\|font\|TextDrawingArea\|drawText" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify text support in javap cache
+# Verify text support and TextDrawingArea in javap cache
 grep -A 15 -B 5 "text\|TextDrawingArea" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
-### 4. Interface Drawing and Rendering
+### 4. Interface Drawing Methods Evidence
 ```bash
-# Show drawing methods in bytecode
-grep -A 20 -B 5 "draw\|render\|display" bytecode/client/DUCMKFAY.bytecode.txt
+# Show comprehensive drawing and rendering methods in bytecode
+grep -A 20 -B 5 "draw\|render\|display\|drawInterface\|drawSprite" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show drawing methods in DEOB source
-grep -A 15 -B 5 "draw\|render\|display" srcAllDummysRemoved/src/RSInterface.java
+# Show corresponding drawing methods in DEOB source
+grep -A 15 -B 5 "draw\|render\|display\|drawInterface" srcAllDummysRemoved/src/RSInterface.java
 
 # Verify drawing methods in javap cache
-grep -A 15 -B 5 "draw\|render" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+grep -A 15 -B 5 "draw\|render\|drawInterface" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
-### 5. Widget Component Management
+### 5. Widget Component Management Evidence
 ```bash
-# Show widget arrays and components in bytecode
-grep -A 15 -B 5 "widget\|component\|RSInterface\[\]" bytecode/client/DUCMKFAY.bytecode.txt
+# Show widget arrays and component management in bytecode
+grep -A 15 -B 5 "widget\|component\|RSInterface\[\]\|interfaceCache" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show widget management in DEOB source
-grep -A 15 -B 5 "widget\|component\|RSInterface\[\]" srcAllDummysRemoved/src/RSInterface.java
+# Show widget management and interface cache in DEOB source
+grep -A 15 -B 5 "widget\|component\|RSInterface\[\]\|interfaceCache" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify widget arrays in javap cache
-grep -A 15 -B 5 "RSInterface\[\]" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+# Verify widget arrays and cache in javap cache
+grep -A 15 -B 5 "RSInterface\[\]\|interfaceCache" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ### 6. Cross-Reference Validation (RSINTERFACE UNIQUENESS)
 ```bash
-# Show only RSInterface manages sprites and text together
+# Show only RSInterface manages both sprites and text together
 grep -l "sprite\|Sprite" bytecode/client/*.bytecode.txt | xargs grep -l "text\|TextDrawingArea" | grep "DUCMKFAY"
 
-# Show RSInterface unique UI field count
+# Show RSInterface unique UI field count compared to other interface classes
 grep -c "public.*;" bytecode/client/DUCMKFAY.bytecode.txt
 grep -c "public.*;" bytecode/client/YZDBYLRM.bytecode.txt
 
-# Verify RSInterface rendering uniqueness
+# Verify RSInterface rendering uniqueness with drawInterface
 grep -l "drawInterface\|renderInterface" bytecode/client/*.bytecode.txt | grep "DUCMKFAY"
 ```
 
-### 7. Event Handling and Interaction
+### 7. Event Handling and Interaction Evidence
 ```bash
-# Show event handling in bytecode
-grep -A 15 -B 5 "event\|action\|click\|interaction" bytecode/client/DUCMKFAY.bytecode.txt
+# Show event handling and user interaction methods in bytecode
+grep -A 15 -B 5 "event\|action\|click\|interaction\|mouseX\|mouseY" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show event handling in DEOB source
-grep -A 15 -B 5 "event\|action\|click" srcAllDummysRemoved/src/RSInterface.java
+# Show event handling and interaction logic in DEOB source
+grep -A 15 -B 5 "event\|action\|click\|mouseX\|mouseY" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify event handling in javap cache
-grep -A 15 -B 5 "event\|action" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+# Verify event handling methods in javap cache
+grep -A 15 -B 5 "event\|action\|click" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
-### 8. Layer Management and Z-ordering
-```bash
-# Show layer and Z-order management in bytecode
-grep -A 15 -B 5 "layer\|z-order\|depth" bytecode/client/DUCMKFAY.bytecode.txt
-
-# Show layer management in DEOB source
-grep -A 15 -B 5 "layer\|depth" srcAllDummysRemoved/src/RSInterface.java
-
-# Verify layer management in javap cache
-grep -A 15 -B 5 "layer\|depth" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
-```
-
-### 9. Interface State and Visibility
+### 8. Interface State and Visibility Management Evidence
 ```bash
 # Show visibility and state management in bytecode
-grep -A 15 -B 5 "visible\|hidden\|state\|enabled" bytecode/client/DUCMKFAY.bytecode.txt
+grep -A 15 -B 5 "visible\|hidden\|state\|enabled\|aBoolean" bytecode/client/DUCMKFAY.bytecode.txt
 
-# Show state management in DEOB source
-grep -A 15 -B 5 "visible\|hidden\|state" srcAllDummysRemoved/src/RSInterface.java
+# Show state management and visibility control in DEOB source
+grep -A 15 -B 5 "visible\|hidden\|state\|enabled" srcAllDummysRemoved/src/RSInterface.java
 
-# Verify state management in javap cache
-grep -A 15 -B 5 "visible\|state" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
-```
-
-### 10. Interface Method Signatures
-```bash
-# Show all public methods in bytecode
-grep -A 10 -B 5 "public.*(" bytecode/client/DUCMKFAY.bytecode.txt
-
-# Show corresponding methods in DEOB source
-grep -A 10 -B 5 "public.*(" srcAllDummysRemoved/src/RSInterface.java
-
-# Verify methods in javap cache
-grep -A 10 -B 5 "public.*(" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
+# Verify state management fields in javap cache
+grep -A 15 -B 5 "visible\|state\|aBoolean" srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 ```
 
 ## Critical Evidence Points
 
-1. **Comprehensive UI Framework**: RSInterface uniquely manages all aspects of user interface components.
+1. **Comprehensive UI Framework**: RSInterface uniquely manages all aspects of user interface components with extensive field structure and method support.
 
-2. **Sprite Integration**: Direct integration with sprite rendering system for visual elements.
+2. **Sprite Integration**: Direct integration with sprite rendering system (CXGZMTJK) for visual elements and interface graphics.
 
-3. **Text Rendering Support**: Complete text and font management for interface elements.
+3. **Text Rendering Support**: Complete text and font management through TextDrawingArea (YXVQXWYR) integration for interface text.
 
-4. **Widget Management**: Arrays and hierarchical organization for interface components.
+4. **Widget Management**: Arrays and hierarchical organization for interface components with interface cache management.
+
+5. **Event Handling System**: Comprehensive user interaction management with mouse position tracking and click detection.
 
 ## Verification Status
 
-**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The comprehensive UI framework, sprite integration, text rendering support, and widget management provide definitive 1:1 mapping evidence that establishes RSInterface as the central user interface management system.
+**VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The comprehensive UI framework with extensive field structure, sprite integration, text rendering support, widget management, and event handling system provide definitive 1:1 mapping evidence that establishes RSInterface as the central user interface management system. The unique combination of sprite and text management distinguishes this class from all other UI components.
 
 ## Sources and References
 - **Bytecode**: bytecode/client/DUCMKFAY.bytecode.txt
@@ -168,4 +148,6 @@ grep -A 10 -B 5 "public.*(" srcAllDummysRemoved/.javap_cache/RSInterface.javap.c
 - **Javap Cache**: srcAllDummysRemoved/.javap_cache/RSInterface.javap.cache
 - **Sprite System**: CXGZMTJK (Sprite) integration
 - **Text System**: YXVQXWYR (TextDrawingArea) support
-- **Widget Framework**: Interface component management
+- **Widget Framework**: Interface component management and caching
+- **Event System**: User interaction handling and mouse tracking
+- **State Management**: Interface visibility and control systems

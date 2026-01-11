@@ -1,5 +1,33 @@
 # Evidence: TextClass → ZTQFNQRH
 
+## Class Overview
+
+**TextClass** implements RuneScape's unique base-37 string hashing algorithm that provides bi-directional conversion between string names and long integer representations. The class contains character mapping functions for A-Z, a-z, and 0-9 ranges with specific offset calculations, validation boundaries, and reverse lookup capabilities. It serves as the fundamental text processing system used throughout the client for username validation, chat filtering, item names, and all text-related operations.
+
+The class provides comprehensive text processing functionality:
+- **Base-37 Hashing**: Implements unique RuneScape algorithm converting strings to long integers using base-37 multiplication
+- **Character Mapping**: Maps A-Z (1-26), a-z (1-26), and 0-9 (27-36) with specific offset calculations
+- **Validation System**: Checks for invalid names using boundary constants and modulo-37 validation
+- **Reverse Operations**: Provides nameForLong method to convert long hashes back to string representations
+
+## Architecture Role
+TextClass serves as the fundamental text processing foundation for RuneScape's entire client architecture, providing bi-directional string conversion capabilities used throughout the game. The class integrates with network systems for username validation, works with chat systems for message processing, and supports all game components requiring efficient text storage and manipulation. TextClass acts as the universal text encoding/decoding system that enables compact storage and fast lookup of text-based game data.
+
+```mermaid
+classDiagram
+    TextClass --> Network Systems
+    TextClass --> Chat Systems
+    TextClass --> Item Management
+    TextClass --> Player Management
+    Network Systems --> TextClass : username validation
+    Chat Systems --> TextClass : message processing
+    Item Management --> TextClass : name storage
+    TextClass : +longForName(String) long
+    TextClass : +nameForLong(long) String
+    TextClass : -base-37 hashing algorithm
+    TextClass : -character mapping arrays
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: ZTQFNQRH
 - **Deobfuscated Name**: TextClass

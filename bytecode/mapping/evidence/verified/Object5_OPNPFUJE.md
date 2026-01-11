@@ -1,5 +1,33 @@
 # Evidence: Object5 → OPNPFUJE
 
+## Class Overview
+
+**Object5** represents the most complex 3D world object class that integrates comprehensive rendering state with animation support through 14 carefully structured fields. The class combines positioning data, animation references, unique identification, and rendering flags to support advanced object visualization in the game world. It serves as the highest-fidelity object representation for complex animated entities requiring extensive rendering properties and state management.
+
+The class provides advanced 3D object functionality:
+- **Complex Field Structure**: 14 total fields including positioning coordinates, animation references, and rendering properties
+- **Animable Integration**: Single Animable field for advanced animation and visual representation support
+- **Unique Object Identification**: Dedicated uid field for precise object tracking and management
+- **Comprehensive Rendering State**: Multiple integer fields for complex rendering parameters and visual properties
+
+## Architecture Role
+Object5 serves as the highest-complexity 3D object representation in RuneScape's world management system, providing the most detailed object support for advanced animated entities and complex world objects. The class integrates with Animable for sophisticated visual effects, works with WorldController for world placement, and provides unique identification for object tracking. Object5 acts as the premium object class used for the most complex entities requiring full animation, rendering, and state management capabilities.
+
+```mermaid
+classDiagram
+    Object5 --> Animable
+    Object5 --> ObjectDef
+    Object5 --> WorldController
+    Object5 --> Model
+    WorldController --> Object5 : manages in world
+    RenderingEngine --> Object5 : renders objects
+    Object5 : +anInt517-520 (position)
+    Object5 : +aClass30_Sub2_Sub4_521 (Animable)
+    Object5 : +anInt522-528 (rendering)
+    Object5 : +uid (unique ID)
+    Object5 : +aByte530 (flags)
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: OPNPFUJE
 - **Deobfuscated Name**: Object5

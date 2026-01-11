@@ -1,4 +1,32 @@
-# Ground_DYMVKFXP Mapping Dispute
+# Evidence: Ground → QTKGMFHL
+
+## Class Overview
+
+**Ground** represents a comprehensive ground tile container in RuneScape's 3D game world that manages all objects and data present on a single tile. The class serves as a sophisticated data structure holding references to Object1 through Object5 instances, transformation matrices (Class18 and Class36), and numerous integer/boolean flags for rendering and state management. It implements complex tile connectivity through self-references and provides the foundation for world rendering and object placement logic.
+
+The class provides advanced tile management functionality:
+- **Object Container**: Holds all five object types (Object1-Object5) for complete world object representation
+- **Transformation Support**: Integrates Class18 and Class36 matrices for advanced object positioning and rendering
+- **Tile Connectivity**: Maintains references to adjacent tiles for navigation and spatial relationships
+- **State Management**: Complex integer and boolean flag systems for rendering, interaction, and game logic
+
+## Architecture Role
+Ground serves as the fundamental building block of RuneScape's world management system, working alongside ObjectManager and various Object classes to create the complete 3D game world. As a Node subclass, it participates in linked data structures for efficient tile access and provides self-referencing connectivity between adjacent tiles. Ground integrates with the complete object hierarchy and transformation systems to support complex world rendering and interaction logic.
+
+```mermaid
+classDiagram
+    Node <|-- Ground
+    Ground --> Object1
+    Ground --> Object2  
+    Ground --> Object3
+    Ground --> Object4
+    Ground --> Object5
+    Ground --> Class18
+    Ground --> Class36
+    Ground --> Ground : tile connectivity
+    ObjectManager --> Ground : manages tiles
+    WorldController --> Ground : creates tile arrays
+```
 
 ## Overview
 The current mapping associates the deobfuscated class `Ground` with the obfuscated bytecode class `DYMVKFXP`. `Ground` is a final class extending `Node` that represents a ground tile in the RuneScape game world. It manages various game objects (Object1 through Object5), transformation matrices (Class40, Class43), and numerous integer/boolean flags for rendering and state management.

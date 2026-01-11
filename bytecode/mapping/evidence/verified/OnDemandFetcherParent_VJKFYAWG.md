@@ -1,5 +1,28 @@
 # Evidence: OnDemandFetcherParent → VJKFYAWG
 
+## Class Overview
+
+**OnDemandFetcherParent** serves as a minimal base class foundation for RuneScape's network asset downloading system. It provides the simplest possible inheritance structure with a boolean state field and an empty method designed for child class override. The class implements a straightforward constructor that initializes the operational state to true, serving as the foundation for more complex on-demand resource loading functionality in its child classes.
+
+The class provides foundational functionality:
+- **Minimal Base Class**: Contains only a boolean field and empty method, designed specifically for inheritance
+- **State Management**: Boolean field for operational state tracking throughout the asset loading lifecycle
+- **Method Override Pattern**: Empty void method that accepts an integer parameter, designed to be overridden by child classes
+- **Constructor Simplicity**: Standard object initialization with boolean field set to true for default operational state
+
+## Architecture Role
+OnDemandFetcherParent serves as the foundational base class for RuneScape's network asset downloading hierarchy, providing essential inheritance structure for resource loading systems. The class implements minimal state management through a boolean field and offers an overrideable method pattern for child class specialization. OnDemandFetcherParent acts as the abstract foundation that enables proper inheritance-based design for on-demand fetching functionality throughout the client's resource management architecture.
+
+```mermaid
+classDiagram
+    OnDemandFetcherParent --> OnDemandFetcher
+    OnDemandFetcherParent --> OnDemandFetcher : extends
+    OnDemandFetcherParent : +a(int) (empty override method)
+    OnDemandFetcherParent : -a (boolean state field)
+    OnDemandFetcherParent : +OnDemandFetcherParent() (constructor)
+    OnDemandFetcher --> OnDemandFetcherParent : inherits state
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: VJKFYAWG
 - **Deobfuscated Name**: OnDemandFetcherParent

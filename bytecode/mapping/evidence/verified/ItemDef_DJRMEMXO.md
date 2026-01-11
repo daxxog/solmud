@@ -1,5 +1,30 @@
 # Evidence: ItemDef → DJRMEMXO
 
+## Class Overview
+
+**ItemDef** defines and manages comprehensive item definitions for RuneScape, including models, colors, actions, values, and stacking behavior. The class handles sprite generation and caching for inventory rendering, implements complex data parsing for item properties, and provides core functionality for all item-related operations throughout the client. It serves as the central repository for item metadata and visual representation management.
+
+The class provides complete item management functionality:
+- **Definition Loading**: forID method loads item definitions with caching through MRUNodes for performance
+- **Visual Rendering**: Generates models and sprites using Texture and DrawingArea for inventory display
+- **Data Parsing**: readValues method processes item configuration data including actions, values, and properties
+- **Sprite Management**: Comprehensive sprite generation and caching system for item visualization
+
+## Architecture Role
+ItemDef serves as the core item definition system that integrates with multiple client components for comprehensive item management. The class uses MRUNodes for efficient caching of item definitions, works with Model for 3D representation, and coordinates with Texture/DrawingArea for 2D sprite generation. ItemDef provides the foundation for inventory management, trading, equipment, and all item-related game mechanics.
+
+```mermaid
+classDiagram
+    ItemDef --> MRUNodes : for caching
+    ItemDef --> Model : for 3D rendering
+    ItemDef --> Texture : for sprite generation
+    ItemDef --> DrawingArea : for 2D drawing
+    ItemDef --> Sprite : for inventory display
+    client --> ItemDef : item lookups
+    Inventory --> ItemDef : item rendering
+    Shop --> ItemDef : item display
+```
+
 ## Overview
 
 ItemDef defines item definitions, including models, colors, actions, value, stacking. It handles sprite generation and caching.

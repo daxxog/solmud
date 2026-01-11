@@ -1,5 +1,33 @@
 # Evidence: Class39 → VADHJTLJ
 
+## Class Overview
+
+**Class39** implements the graphics rendering engine and 3D mathematics processor that handles complex trigonometric transformations for visual effects. The class implements sophisticated audio-to-visual conversion algorithms using mathematical constants (π, 11025Hz sample rate, 65536 precision) and manages 3D array structures for coordinate transformations. It serves as the core graphics processing unit that converts mathematical functions into visual rendering data for the game.
+
+The class provides comprehensive 3D graphics functionality:
+- **Mathematical Constants**: Uses π (3.1415927f), 11025Hz audio sample rate, and 65536 precision scaling for graphics calculations
+- **3D Trigonometry**: Implements Math.cos for 3D rotations and Math.pow for distance/perspective calculations
+- **Multidimensional Arrays**: Manages complex [32][3][2] float arrays and 3D integer arrays for transformation matrices
+- **Graphics Pipeline**: Provides complete rendering pipeline with coordinate transformations, lighting, and perspective projection
+
+## Architecture Role
+Class39 serves as the core 3D graphics rendering engine for RuneScape's client, providing the mathematical foundation for all visual transformations and rendering operations. The class integrates with DrawingArea for 2D output, works with WorldController for 3D world rendering, and provides essential mathematical functions to Model and other graphics components. Class39 acts as the central graphics processing unit that converts mathematical algorithms into visual game world rendering.
+
+```mermaid
+classDiagram
+    Class39 --> DrawingArea
+    Class39 --> WorldController
+    Class39 --> Model
+    Class39 --> client
+    DrawingArea --> Class39 : receives 2D output
+    WorldController --> Class39 : uses for 3D rendering
+    Model --> Class39 : uses transformations
+    Class39 : +method542(float)
+    Class39 : +method543(float, int, int)
+    Class39 : -aFloatArrayArray669[32][3][2]
+    Class39 : -π constant (3.1415927f)
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: VADHJTLJ
 - **Deobfuscated Name**: Class39

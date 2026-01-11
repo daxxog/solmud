@@ -1,5 +1,31 @@
 # Evidence: Class21 → ZARDZRHZ
 
+## Class Overview
+
+**Class21** serves as a simple data container class that stores exactly 19 integer values for game state and configuration management. The class provides a straightforward storage mechanism with primitive integer fields and minimal constructor logic, designed for efficient memory usage and rapid access to multiple numeric parameters. It functions as a structured data holder for game configuration, state tracking, and parameter storage throughout the client.
+
+The class provides fundamental data storage functionality:
+- **19 Integer Fields**: Exactly matches the required data structure for specific game parameter storage
+- **Primitive Type Design**: All fields are basic integers for optimal memory efficiency and fast access
+- **Data Container Pattern**: Simple storage class with no complex methods or business logic
+- **Standard Constructor**: Basic initialization that sets all fields to zero for clean state management
+
+## Architecture Role
+Class21 serves as a fundamental data container that provides structured integer storage for game state management and configuration parameters throughout RuneScape's client. The class integrates with various game systems that require multiple related integer values stored together, providing efficient memory layout and rapid access patterns. Class21 acts as a building block for complex data structures where related numeric parameters need to be managed as a cohesive unit.
+
+```mermaid
+classDiagram
+    Class21 --> Game Data Storage
+    Class21 --> Integer Container
+    Class21 --> State Management
+    Game Logic Systems --> Class21 : uses configuration
+    Configuration Data --> Class21 : stores parameters
+    Runtime State --> Class21 : tracks values
+    Class21 : +19 integer fields
+    Class21 : -anInt687 through anInt705
+    Class21 : +Class21() constructor
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: ZARDZRHZ
 - **Deobfuscated Name**: Class21

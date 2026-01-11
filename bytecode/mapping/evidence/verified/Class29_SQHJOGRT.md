@@ -1,5 +1,32 @@
 # Evidence: Class29 → SQHJOGRT
 
+## Class Overview
+
+**Class29** serves as an audio processing middleware component that handles audio data stream processing and integration with the audio engine. The class processes byte array audio data with boolean control flags, manages 500-element audio buffers, and coordinates with Class43 for audio operations. It functions as a bridge between raw audio data and the game's audio rendering system, providing essential data transformation and processing capabilities.
+
+The class provides comprehensive audio processing functionality:
+- **Stream Data Processing**: Handles byte array audio data with boolean control flags for conditional processing
+- **Buffer Management**: Manages 500-element audio buffers for efficient audio data handling and transformation
+- **Class43 Integration**: Coordinates with KVCQPLIW (Class43) objects for advanced audio processing operations
+- **Static Array Management**: Complex static initialization patterns for global audio data storage and state management
+
+## Architecture Role
+Class29 serves as an audio processing middleware component that bridges raw audio data streams with RuneScape's audio rendering system. The class integrates with Stream for data input, works with Class43 for audio processing operations, and coordinates with Sounds for complete audio pipeline management. Class29 acts as essential data transformation layer that processes byte array audio data with boolean control flags for sophisticated audio system operations.
+
+```mermaid
+classDiagram
+    Class29 --> Stream
+    Class29 --> Class43
+    Class29 --> Sounds
+    Stream --> Class29 : provides audio data
+    Class43 --> Class29 : audio processing
+    Sounds --> Class29 : manages audio pipeline
+    Class29 : +a(byte[], boolean)
+    Class29 : -500-element audio buffers
+    Class29 : -audio processing flags
+    Class29 : -static array management
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: SQHJOGRT
 - **Deobfuscated Name**: Class29

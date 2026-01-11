@@ -1,5 +1,15 @@
 # Class4_CDEJWOSB
 
+## Class Overview
+
+**Class4** provides static utility methods for 3D coordinate transformations and geometric calculations in RuneScape's rendering and positioning systems. The class implements mathematical algorithms for handling orientation changes with bitwise operations on directional values, supporting 4-directional movement and rotation calculations. It serves as a mathematical utility providing essential geometric functions for model rotation, coordinate transformation, and world positioning.
+
+The class provides comprehensive mathematical functionality:
+- **3D Geometry Rotations**: Multiple methods for rotating coordinates and transforming directional values
+- **Bitwise Operations**: Advanced bit masking and conditional logic for efficient orientation calculations
+- **Static Utility Design**: Pure mathematical functions without instance state, optimized for performance
+- **Error Handling**: Comprehensive exception handling with specific error codes for debugging geometric calculations
+
 ## Overview
 Class4 provides static utility methods for coordinate transformations, likely for map or grid rotations in RuneScape. It handles orientation changes with bitwise operations on directions.
 

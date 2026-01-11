@@ -1,5 +1,33 @@
 # Evidence: Sounds → JHDAGNBV
 
+## Class Overview
+
+**Sounds** implements the comprehensive audio system manager for RuneScape, handling sound file unpacking, channel management, and audio processing with industry-standard sample rates. The class manages 10 audio channels through Class6 instances, processes 441000-byte audio buffers, and implements sample rate calculations using the 22050Hz standard. It incorporates cryptographic seed values for procedural audio generation and provides extensive error handling for audio operations.
+
+The class provides complete audio functionality:
+- **Industry-Standard Audio**: Uses 22050Hz sample rate and 441000-byte buffers matching CD-quality audio specifications
+- **Channel Management**: Manages 10 audio channels through Class6 instances for parallel sound processing
+- **Procedural Generation**: Implements 4 unique cryptographic seed values for dynamic audio synthesis
+- **Mixer Integration**: Extensive integration with CLRWXPOI audio mixer for advanced sound processing and mixing
+
+## Architecture Role
+Sounds serves as the comprehensive audio engine for RuneScape's client, providing the foundation for all sound effects, music, and audio processing throughout the game. The class integrates with network systems for on-demand audio loading, works with audio mixer components for advanced sound processing, and manages multiple audio channels for simultaneous sound playback. Sounds acts as the central audio hub that handles everything from file unpacking to real-time audio rendering.
+
+```mermaid
+classDiagram
+    Sounds --> Class6
+    Sounds --> Stream
+    Sounds --> AudioAccessor
+    Sounds --> CLRWXPOI
+    Class6 --> Sounds : audio channels
+    Stream --> Sounds : unpacking data
+    AudioAccessor --> Sounds : audio playback
+    Sounds : +unpack(Stream)
+    Sounds : -aClass6Array329[10]
+    Sounds : -aByteArray327[441000]
+    Sounds : -22050Hz sample rate
+```
+
 ## **CLASS IDENTIFICATION**
 - **Obfuscated Name**: JHDAGNBV
 - **Deobfuscated Name**: Sounds

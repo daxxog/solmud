@@ -1,5 +1,33 @@
 # Evidence: Censor → RKAYAFDQ
 
+## Class Overview
+
+**Censor** implements a sophisticated text filtering and censorship system for RuneScape chat and content moderation. It provides comprehensive string processing capabilities including word fragment filtering, forbidden word detection, domain filtering, and character-level validation. The class loads configuration files containing banned words and fragments, then applies multi-level filtering algorithms to detect and replace inappropriate content.
+
+The class provides comprehensive censorship functionality:
+- **Multi-File Configuration**: Loads 4 configuration files (fragmentsenc.txt, badenc.txt, domainenc.txt, tldlist.txt) for comprehensive filtering rules
+- **Advanced Text Processing**: Implements character-level validation, word replacement, and fragment detection algorithms
+- **Hardcoded Banned Words**: Contains immediate blacklist including common inappropriate terms like "cook", "noob", "faq", etc.
+- **Multi-Dimensional Filter Arrays**: Uses complex char arrays for efficient pattern matching and word filtering
+
+## Architecture Role
+Censor serves as a critical content moderation component in RuneScape's chat and user-generated content systems. It integrates with StreamLoader for configuration loading and processes text data through Stream instances. The class operates as a static utility with final design, providing text filtering services throughout the client for chat messages, interface text, and user inputs.
+
+```mermaid
+classDiagram
+    Censor --> StreamLoader : loads config files
+    Censor --> Stream : processes text data
+    StreamLoader --> client : provides resources
+    client --> Censor : text filtering requests
+    Censor : +loadConfig(StreamLoader)
+    Censor : +doCensor(String, int) String
+    Censor : +filterChar(char, int) char
+    Censor : -fragmentArrays[][][]
+    Censor : -badWords[][]
+    Censor : -domainFilters[][]
+    Censor : -hardcodedBannedWords[]
+```
+
 ## Mapping Confidence: 100%
 
 ## Executive Summary
