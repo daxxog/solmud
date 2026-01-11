@@ -29,14 +29,14 @@ classDiagram
 ### 1. Class Structure and Array Field Patterns
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show Class18 class structure with constructor and field initialization patterns
-grep -A 25 -B 5 "public.*XPBACSMK\|public XPBACSMK.*(" bytecode/client/XPBACSMK.bytecode.txt
+# Show Class18 class structure with constructor and field initialization patterns including complete method context
+grep -A 30 -B 5 "public.*XPBACSMK\|public XPBACSMK.*(" bytecode/client/XPBACSMK.bytecode.txt
 
-# Show field initialization in constructor with multi-line context
-grep -A 30 -B 10 "putfield.*a\|putfield.*b\|putfield.*c" bytecode/client/XPBACSMK.bytecode.txt
+# Show field initialization in constructor with complete multi-line context including all array assignments
+grep -A 35 -B 10 "putfield.*a\|putfield.*b\|putfield.*c\|newarray\|anewarray" bytecode/client/XPBACSMK.bytecode.txt
 
-# Show array field access patterns and Stream parameter integration
-grep -A 20 -B 5 "getfield.*int\[\]\|getfield.*int\[\]\[\]" bytecode/client/XPBACSMK.bytecode.txt
+# Show array field access patterns and Stream parameter integration with complete access context
+grep -A 25 -B 5 "getfield.*int\[\]\|getfield.*int\[\]\[\]\|aload.*MBMGIXGO" bytecode/client/XPBACSMK.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

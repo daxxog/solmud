@@ -33,11 +33,11 @@ classDiagram
 ### 1. Class Structure and Physics Fields Evidence
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show Animable_Sub4 extends Animable with unique double precision field pattern
-grep -A 25 -B 5 "extends.*XHHRODPC" bytecode/client/SWTXAYDT.bytecode.txt
+# Show Animable_Sub4 extends Animable with unique double precision field pattern and comprehensive field context
+grep -A 30 -B 5 "extends.*XHHRODPC" bytecode/client/SWTXAYDT.bytecode.txt
 
-# Show double precision physics field declarations with surrounding context
-grep -A 20 -B 10 "private double\|public double" bytecode/client/SWTXAYDT.bytecode.txt
+# Show ALL double precision physics field declarations with complete surrounding context including coordinate fields
+grep -A 35 -B 10 "private double p\|private double q\|private double r\|private double s\|private double t\|public double A\|public double B\|public double C" bytecode/client/SWTXAYDT.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

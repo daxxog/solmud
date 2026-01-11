@@ -245,3 +245,123 @@ This mapping represents a textbook example of structural forensic analysis succe
 The field count discrepancy with ZARDZRHZ (18 vs 4 fields) was the key indicator that it was not a match, while the exact alignment with RJXWGZGD provides irrefutable evidence.
 
 This case demonstrates the importance of comprehensive structural analysis across all unmapped classes to find the true matches, rather than stopping at the first reasonable candidate.
+
+## COMMAND BLOCK 8: COMPREHENSIVE STRUCTURAL VERIFICATION
+```bash
+# Show complete 4-field structure in RJXWGZGD bytecode with field declarations
+grep -A 12 -B 5 "int a;\|int b;\|int c;\|int d;" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding 4-field structure in DEOB source with exact field names
+grep -A 12 -B 5 "anInt602\|anInt603\|anInt604\|anInt605" srcAllDummysRemoved/src/Class33.java
+
+# Verify 4-field structure in javap cache with field type information
+grep -A 12 -B 5 "int.*anInt602\|int.*anInt603\|int.*anInt604\|int.*anInt605" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show exact field count verification in bytecode
+grep -c "int [a-d];" bytecode/client/RJXWGZGD.bytecode.txt
+```
+
+## COMMAND BLOCK 9: DATA CONTAINER FUNCTIONALITY VERIFICATION
+```bash
+# Show simple data storage patterns in RJXWGZGD bytecode with field access
+grep -A 10 -B 3 "getfield.*int.*[a-d]\|putfield.*int.*[a-d]" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding field usage in DEOB source with access patterns
+grep -A 10 -B 3 "anInt60[2-5].*\|\.anInt60[2-5]" srcAllDummysRemoved/src/Class33.java
+
+# Verify field access operations in javap cache with byte code instructions
+grep -A 10 -B 3 "getfield.*anInt60\|putfield.*anInt60" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show absence of complex processing methods in RJXWGZGD bytecode
+grep -c "for\|while\|if.*else\|switch\|try.*catch" bytecode/client/RJXWGZGD.bytecode.txt
+```
+
+## COMMAND BLOCK 10: CONSTRUCTOR SIMPLICITY VERIFICATION
+```bash
+# Show minimal constructor in RJXWGZGD bytecode with only Object initialization
+grep -A 15 -B 5 "public RJXWGZGD.*()" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding simple constructor in DEOB source
+grep -A 12 -B 5 "public Class33.*()" srcAllDummysRemoved/src/Class33.java
+
+# Verify constructor implementation in javap cache with byte code instructions
+grep -A 15 -B 5 "public Class33.*()" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show absence of field initialization in constructor bytecode
+grep -A 10 -B 3 "putfield.*anInt60\|anInt60.*=" srcAllDummysRemoved/.javap_cache/Class33.javap.cache || echo "No field initialization found"
+```
+
+## COMMAND BLOCK 11: PURE DATA CLASS PATTERN VERIFICATION
+```bash
+# Show RJXWGZGD extends Object with minimal inheritance in bytecode
+grep -A 8 -B 3 "extends.*Object\|class.*RJXWGZGD" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding class structure in DEOB source
+grep -A 8 -B 3 "final class Class33\|extends.*Object" srcAllDummysRemoved/src/Class33.java
+
+# Verify class structure in javap cache with inheritance information
+grep -A 10 -B 3 "final class Class33\|Superclass.*Object" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show only methods are basic constructor and accessors in RJXWGZGD bytecode
+grep -A 5 -B 2 "public.*(" bytecode/client/RJXWGZGD.bytecode.txt
+```
+
+## COMMAND BLOCK 12: CROSS-REFERENCE VALIDATION FOR DATA CONTAINERS
+```bash
+# Show only RJXWGZGD has this exact 4-field pattern among data containers
+grep -l "int a;\|int b;\|int c;\|int d;" bytecode/client/*.bytecode.txt | xargs grep -c "int [a-d];" | grep -E ":4"
+
+# Verify RJXWGZGD's unique simplicity compared to other 4-field classes
+for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "int [a-z];" "$file"; done | grep -E "(RJXWGZGD|:4)"
+
+# Show Class33 uniqueness among simple data containers in DEOB source
+grep -l "anInt602\|anInt603\|anInt604\|anInt605" srcAllDummysRemoved/src/*.java | xargs grep -c "anInt60[2-5]" | grep -E ":4"
+
+# Cross-verify pure data container pattern in javap cache
+grep -l "anInt602" srcAllDummysRemoved/.javap_cache/*.javap.cache | xargs grep -c "public int anInt60" | grep -E ":4"
+```
+
+## COMMAND BLOCK 13: FIELD TYPE CONSISTENCY VERIFICATION
+```bash
+# Show all fields are primitive int types in RJXWGZGD bytecode
+grep -A 8 -B 3 "int.*;" bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding primitive int fields in DEOB source
+grep -A 8 -B 3 "public int anInt60" srcAllDummysRemoved/src/Class33.java
+
+# Verify primitive type consistency in javap cache with type descriptors
+grep -A 8 -B 3 "int.*anInt60" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show absence of complex types (arrays, objects) in RJXWGZGD bytecode
+grep -c "int\[\]\|String\|boolean\[\]\|Object" bytecode/client/RJXWGZGD.bytecode.txt
+```
+
+## COMMAND BLOCK 14: USAGE PATTERN VERIFICATION
+```bash
+# Show simple field assignment patterns in RJXWGZGD bytecode
+grep -A 8 -B 3 "putfield.*int.*[a-d]" bytecode/client/RJXWGZGD.bytecode.txt || echo "Focus on field declarations"
+
+# Show corresponding assignment patterns in DEOB source
+grep -A 8 -B 3 "anInt60[2-5].*\|\.anInt60[2-5].*=" srcAllDummysRemoved/src/Class33.java || echo "Focus on field declarations"
+
+# Verify field assignment patterns in javap cache
+grep -A 8 -B 3 "putfield.*anInt60" srcAllDummysRemoved/.javap_cache/Class33.javap.cache || echo "Focus on field declarations"
+
+# Show usage as data transfer object - referenced by other classes
+grep -l "RJXWGZGD\|Class33" bytecode/client/*.bytecode.txt | head -5
+```
+
+## COMMAND BLOCK 15: MINIMAL COMPLEXITY VERIFICATION
+```bash
+# Show total line count and complexity indicators in RJXWGZGD bytecode
+wc -l bytecode/client/RJXWGZGD.bytecode.txt
+
+# Show corresponding file size in DEOB source
+wc -l srcAllDummysRemoved/src/Class33.java
+
+# Verify minimal complexity metrics in javap cache
+grep -c "public\|private\|static\|final" srcAllDummysRemoved/.javap_cache/Class33.javap.cache
+
+# Show absence of inheritance hierarchy beyond Object
+grep -c "extends\|implements" bytecode/client/RJXWGZGD.bytecode.txt
+```

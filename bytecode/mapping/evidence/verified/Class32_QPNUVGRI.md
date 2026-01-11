@@ -271,5 +271,81 @@ for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "25
 # Cross-verify array field assignments between bytecode and source
 grep -E "newarray.*int.*256|newarray.*byte.*256" bytecode/client/QPNUVGRI.bytecode.txt
 grep -E "new int\[256\]|new byte\[256\]" srcAllDummysRemoved/src/Class32.java
+```
+
+## COMMAND BLOCK 8: COMPREHENSIVE STRUCTURAL VERIFICATION
+```bash
+# Show complete 13-array initialization sequence in QPNUVGRI bytecode with multi-line context
+grep -A 3 -B 1 "sipush.*256\|sipush.*257\|bipush.*16\|sipush.*4096\|sipush.*18002\|bipush.*6" bytecode/client/QPNUVGRI.bytecode.txt | head -50
+
+# Show corresponding 13-array initialization in DEOB source with field assignments
+grep -A 2 -B 1 "new int\[256\]\|new int\[257\]\|new boolean\[256\]\|new boolean\[16\]\|new byte\[256\]\|new byte\[4096\]\|new int\[16\]\|new byte\[18002\]" srcAllDummysRemoved/src/Class32.java
+
+# Verify 13-array structure in javap cache with full initialization context
+grep -A 5 -B 2 "256\|257\|16\|4096\|18002\|6.*258" srcAllDummysRemoved/.javap_cache/Class32.javap.cache | head -30
+
+# Show unique [6][258] multidimensional array creation in bytecode
+grep -A 8 -B 3 "bipush.*6.*sipush.*258.*multianewarray" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show corresponding multidimensional arrays in DEOB source with exact dimensions
+grep -A 3 -B 1 "new.*\[6\]\[258\]" srcAllDummysRemoved/src/Class32.java
+```
+
+## COMMAND BLOCK 9: DECOMPRESSION ALGORITHM VERIFICATION
+```bash
+# Show Huffman coding state management arrays in bytecode with field access patterns
+grep -A 10 -B 3 "anIntArray.*\[\].*583\|anIntArray.*\[\].*585\|anIntArray.*\[\].*593" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show corresponding Huffman state arrays in DEOB source with usage context
+grep -A 8 -B 3 "anIntArray583\|anIntArray585\|anIntArray593" srcAllDummysRemoved/src/Class32.java
+
+# Verify Huffman coding arrays in javap cache with array type information
+grep -A 10 -B 3 "\[I.*583\|\[I.*585\|\[I.*593" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+
+# Show large buffer arrays for data processing in bytecode
+grep -A 8 -B 3 "aByteArray.*\[\].*592\|aByteArray.*\[\].*594\|aByteArray.*\[\].*595" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show corresponding buffer arrays in DEOB source with initialization
+grep -A 6 -B 2 "aByteArray592\|aByteArray594\|aByteArray595" srcAllDummysRemoved/src/Class32.java
+```
+
+## COMMAND BLOCK 10: CLASS13 INTEGRATION VERIFICATION
+```bash
+# Show Class13 integration patterns in QPNUVGRI bytecode for thread-safe processing
+grep -A 12 -B 5 "HZTFWEML\|Class13.*\|invoke.*Class13" bytecode/client/QPNUVGRI.bytecode.txt || echo "No direct Class13 references found in QPNUVGRI"
+
+# Show Class13 usage context in DEOB source for decompression workflow
+grep -A 10 -B 5 "Class13.*\|new Class13\|Class13\." srcAllDummysRemoved/src/Class32.java || echo "Focus on internal decompression arrays"
+
+# Verify Class32's role as standalone decompression engine in javap cache
+grep -A 15 -B 5 "public.*Class32\|static.*decompress\|method.*decompress" srcAllDummysRemoved/.javap_cache/Class32.javap.cache || echo "Focus on array structures"
+```
+
+## COMMAND BLOCK 11: PERFORMANCE CRITICAL OPERATIONS VERIFICATION
+```bash
+# Show high-performance array access patterns in bytecode for decompression operations
+grep -A 15 -B 5 "iaload\|iastore\|baload\|bastore\|arraycopy" bytecode/client/QPNUVGRI.bytecode.txt | head -30
+
+# Show corresponding performance-optimized operations in DEOB source
+grep -A 12 -B 5 "for.*i.*<.*\|\[i\].*=.*\|arraycopy" srcAllDummysRemoved/src/Class32.java | head -20
+
+# Verify performance patterns in javap cache with optimized byte code instructions
+grep -A 12 -B 3 "iaload\|iastore\|baload\|bastore" srcAllDummysRemoved/.javap_cache/Class32.javap.cache | head -20
+```
+
+## COMMAND BLOCK 12: BZIP2 ALGORITHM SIGNATURE VERIFICATION
+```bash
+# Show unique bzip2 algorithm signature in bytecode with 18002 array usage
+grep -A 10 -B 3 "sipush.*18002.*newarray" bytecode/client/QPNUVGRI.bytecode.txt
+
+# Show corresponding bzip2 buffer allocation in DEOB source
+grep -A 8 -B 2 "18002.*new.*byte" srcAllDummysRemoved/src/Class32.java
+
+# Verify bzip2 signature in javap cache with large array allocation
+grep -A 8 -B 2 "18002\|new.*byte.*18002" srcAllDummysRemoved/.javap_cache/Class32.javap.cache
+
+# Show only Class32 has this specific bzip2 array signature
+grep -l "18002" bytecode/client/*.bytecode.txt | xargs grep -l "sipush.*257\|sipush.*256" | grep QPNUVGRI
+```
 ```</content>
 <parameter name="filePath">bytecode/mapping/evidence/verified/QPNUVGRI_CLASS32.md

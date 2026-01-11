@@ -44,17 +44,17 @@ Class13 acts as the decompression middleware between resource loaders and the un
 
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show class declaration and Class32 field integration with multi-line context
-grep -A 15 -B 5 "public final class HZTFWEML\|private static QPNUVGRI" bytecode/client/HZTFWEML.bytecode.txt
+# Show class declaration and Class32 field integration with complete multi-line context including method signatures
+grep -A 25 -B 10 "public final class HZTFWEML\|private static QPNUVGRI\|public static int a.*byte\[\]" bytecode/client/HZTFWEML.bytecode.txt
 
-# Show method signature with complete byte array parameters and Class32 field access
-grep -A 20 -B 5 "public static int a(byte\[\], int, byte\[\], int, int)" bytecode/client/HZTFWEML.bytecode.txt
+# Show complete method signature with byte array parameters and Class32 field access patterns
+grep -A 30 -B 5 "public static int a(byte\[\], int, byte\[\], int, int)" bytecode/client/HZTFWEML.bytecode.txt
 
-# Show monitor synchronization pattern for thread safety
-grep -A 15 -B 5 "monitorenter\|monitorexit" bytecode/client/HZTFWEML.bytecode.txt
+# Show monitor synchronization pattern for thread safety with complete synchronization block context
+grep -A 25 -B 5 "monitorenter\|monitorexit\|astore.*6\|aload.*6" bytecode/client/HZTFWEML.bytecode.txt
 
-# Show Class32 field assignments and usage patterns
-grep -A 20 -B 10 "getstatic.*QPNUVGRI\|putfield.*QPNUVGRI" bytecode/client/HZTFWEML.bytecode.txt
+# Show Class32 field assignments and usage patterns with complete field access context
+grep -A 30 -B 10 "getstatic.*QPNUVGRI\|putfield.*QPNUVGRI\|aload_2\|putfield.*j" bytecode/client/HZTFWEML.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

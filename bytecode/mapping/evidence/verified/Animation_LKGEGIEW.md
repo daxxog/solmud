@@ -32,11 +32,11 @@ classDiagram
 ### 1. Static Animation Array Evidence (ANIMATION-SPECIFIC PATTERN)
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show static Animation array field declaration with surrounding field context
-grep -A 15 -B 10 "public static.*LKGEGIEW\[" bytecode/client/LKGEGIEW.bytecode.txt
+# Show static Animation array field declaration with complete surrounding field context and type signatures
+grep -A 25 -B 10 "public static.*LKGEGIEW\[" bytecode/client/LKGEGIEW.bytecode.txt
 
-# Show array initialization pattern and static field access
-grep -A 10 -B 5 "putstatic.*LKGEGIEW\|getstatic.*LKGEGIEW" bytecode/client/LKGEGIEW.bytecode.txt
+# Show complete Animation class field structure including all frame arrays and configuration fields
+grep -A 40 -B 5 "public.*LKGEGIEW\[\]\|public int\[\].*\|private int\[\].*\|private boolean\|private int" bytecode/client/LKGEGIEW.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

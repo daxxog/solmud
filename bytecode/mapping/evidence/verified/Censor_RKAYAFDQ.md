@@ -146,14 +146,23 @@ Contains hardcoded banned words: `["cook", "cook's", "cooks", "seeks", "sheet", 
 
 ## COMMAND BLOCK 1: STRUCTURE EVIDENCE
 ```bash
-# Show class structure and inheritance in bytecode
-grep -A 10 -B 5 "extends\|implements" bytecode/client/RKAYAFDQ.bytecode.txt
+# Show class structure and inheritance in bytecode with complete field context
+grep -A 25 -B 5 "extends\|implements" bytecode/client/RKAYAFDQ.bytecode.txt
 
-# Show corresponding structure in DEOB source
-grep -A 10 -B 5 "extends\|implements" srcAllDummysRemoved/src/Censor.java
+# Show complete field patterns including censorship arrays and hardcoded banned words
+grep -A 30 -B 10 "anInt.*\|anIntArray.*\|aBoolean.*\|aString.*static.*final" bytecode/client/RKAYAFDQ.bytecode.txt
 
-# Verify structure in javap cache
-grep -A 10 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+# Show corresponding structure in DEOB source with comprehensive field context
+grep -A 25 -B 5 "extends\|implements" srcAllDummysRemoved/src/Censor.java
+
+# Show censorship-specific fields and arrays in DEOB source
+grep -A 40 -B 5 "public.*\|private.*\|protected.*\|final.*String.*\[\]" srcAllDummysRemoved/src/Censor.java | head -40
+
+# Verify structure in javap cache with type signatures and field declarations
+grep -A 25 -B 5 "class.*extends\|class.*implements" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
+
+# Show complete field structure in javap cache
+grep -A 50 -B 5 "int.*\|boolean.*\|String.*\|int\[\].*\|String\[\].*\|char\[\]\[\]" srcAllDummysRemoved/.javap_cache/Censor.javap.cache
 ```
 
 ## COMMAND BLOCK 2: FIELD EVIDENCE

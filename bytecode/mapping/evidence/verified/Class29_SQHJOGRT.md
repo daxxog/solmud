@@ -159,14 +159,17 @@ final class Class29 {
 
 ## COMMAND BLOCK 1: BYTECODE STRUCTURE EVIDENCE
 ```bash
-# Show 500-element array processing (sipush 500) with multi-line context
-grep -A 15 -B 5 "sipush.*500\|500.*new" bytecode/client/SQHJOGRT.bytecode.txt
+# Show 500-element array processing (sipush 500) with complete multi-line context including array creation patterns
+grep -A 25 -B 5 "sipush.*500\|500.*new\|newarray.*int" bytecode/client/SQHJOGRT.bytecode.txt
 
-# Show KVCQPLIW (Class43) integration with context
-grep -A 10 -B 5 "KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
+# Show KVCQPLIW (Class43) integration with complete object creation and field access context
+grep -A 20 -B 10 "KVCQPLIW\|new.*KVCQPLIW\|getfield.*KVCQPLIW" bytecode/client/SQHJOGRT.bytecode.txt
 
-# Show stream processing patterns with MBMGIXGO
-grep -A 15 -B 5 "MBMGIXGO\|invokevirtual.*MBMGIXGO" bytecode/client/SQHJOGRT.bytecode.txt
+# Show stream processing patterns with complete MBMGIXGO method invocation context
+grep -A 25 -B 5 "MBMGIXGO\|invokevirtual.*MBMGIXGO.*read\|invokevirtual.*MBMGIXGO.*e" bytecode/client/SQHJOGRT.bytecode.txt
+
+# Show static array management patterns with complete static field context
+grep -A 15 -B 5 "static.*SQHJOGRT\[\]\|static.*boolean\[\]\|putstatic.*SQHJOGRT" bytecode/client/SQHJOGRT.bytecode.txt
 ```
 
 ## COMMAND BLOCK 2: DEOBFUSCATED SOURCE EVIDENCE

@@ -32,11 +32,11 @@ classDiagram
 ### 1. DrawingArea Inheritance Evidence (BACKGROUND FOUNDATION)
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show Background extends DrawingArea (AFCKELYG) with field declarations context
-grep -A 15 -B 10 "extends.*AFCKELYG" bytecode/client/DSMJIEPN.bytecode.txt
+# Show Background extends DrawingArea (AFCKELYG) with field declarations context and complete class structure
+grep -A 30 -B 10 "extends.*AFCKELYG" bytecode/client/DSMJIEPN.bytecode.txt
 
-# Show Background class structure with pixel data and dimension fields
-grep -A 20 -B 5 "public final class DSMJIEPN\|private.*\|public.*\[" bytecode/client/DSMJIEPN.bytecode.txt
+# Show Background class structure with pixel data and dimension fields including constructor context
+grep -A 35 -B 5 "public final class DSMJIEPN\|private.*\|public.*\[\]\|public DSMJIEPN.*(" bytecode/client/DSMJIEPN.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

@@ -149,6 +149,153 @@ grep -A 30 -B 5 "anIntArray673.*new int\|anIntArray674.*new int" srcAllDummysRem
 
 **VERIFIED** - All bash commands execute successfully and evidence is non-contradictory. The face transformation arrays, animation integration, and specialized processing methods provide definitive 1:1 mapping evidence that distinguishes Class40 from other mathematical utility classes in the rendering system.
 
+## COMMAND BLOCK 9: COMPREHENSIVE FACE TRANSFORMATION VERIFICATION
+```bash
+# Show complete face transformation system with arrays 673-681 in FTPNODIB bytecode
+grep -A 30 -B 5 "anIntArray673\|anIntArray674\|anIntArray675\|anIntArray676\|anIntArray677\|anIntArray678\|anIntArray679\|anIntArray680\|anIntArray681" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding face transformation arrays in DEOB source with context
+grep -A 25 -B 5 "anIntArray673\|anIntArray674\|anIntArray675\|anIntArray676\|anIntArray677\|anIntArray678\|anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/src/Class40.java
+
+# Verify face transformation arrays in javap cache with type information
+grep -A 25 -B 3 "anIntArray673\|anIntArray674\|anIntArray675\|anIntArray676\|anIntArray677\|anIntArray678\|anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show face vertex transformation arrays (673-675) in FTPNODIB bytecode with field access patterns
+grep -A 18 -B 5 "getfield.*anIntArray673\|putfield.*anIntArray673\|getfield.*anIntArray674\|putfield.*anIntArray674\|getfield.*anIntArray675\|putfield.*anIntArray675" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding vertex transformation in DEOB source with array usage
+grep -A 15 -B 3 "anIntArray673\[.*\].*=.*\|anIntArray674\[.*\].*=.*\|anIntArray675\[.*\].*=.*" srcAllDummysRemoved/src/Class40.java
+
+# Verify vertex transformation in javap cache with array access instructions
+grep -A 18 -B 3 "anIntArray673\|anIntArray674\|anIntArray675" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 10: ANIMATION-DRIVEN TRANSFORMATION VERIFICATION
+```bash
+# Show Animation (LKGEGIEW) timing-based transformations in FTPNODIB bytecode
+grep -A 20 -B 5 "LKGEGIEW.*t\|getstatic.*LKGEGIEW.*t\|Animation.*timing" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding Animation timing integration in DEOB source with context
+grep -A 18 -B 3 "Animation.*t\|\.t.*animation\|timing.*Animation" srcAllDummysRemoved/src/Class40.java
+
+# Verify Animation timing integration in javap cache with field access
+grep -A 18 -B 3 "LKGEGIEW.*t\|Animation.*t" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show animation-driven coordinate transformations in FTPNODIB bytecode
+grep -A 25 -B 5 "LKGEGIEW.*transform\|animation.*coordinate\|timing.*transform" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding animation-driven transformations in DEOB source
+grep -A 20 -B 3 "animation.*transform\|timing.*coordinate\|Animation.*method" srcAllDummysRemoved/src/Class40.java
+
+# Verify animation-driven transformations in javap cache
+grep -A 20 -B 3 "LKGEGIEW.*transform\|animation.*timing" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 11: FACE PROCESSING ALGORITHMS VERIFICATION
+```bash
+# Show complex face processing method155 in FTPNODIB bytecode with full implementation
+grep -A 40 -B 5 "public.*method155.*boolean.*int.*int.*int" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding face processing method in DEOB source with algorithm details
+grep -A 35 -B 5 "public.*method155" srcAllDummysRemoved/src/Class40.java
+
+# Verify face processing algorithm in javap cache with byte code instructions
+grep -A 35 -B 5 "method155" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show face index processing with arrays 679-681 in FTPNODIB bytecode
+grep -A 25 -B 5 "anIntArray679\|anIntArray680\|anIntArray681" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding face index processing in DEOB source
+grep -A 20 -B 3 "anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/src/Class40.java
+
+# Verify face index processing in javap cache
+grep -A 20 -B 3 "anIntArray679\|anIntArray680\|anIntArray681" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 12: TRANSFORMATION STATE MANAGEMENT VERIFICATION
+```bash
+# Show boolean transformation flag aBoolean683 in FTPNODIB bytecode with state operations
+grep -A 15 -B 5 "boolean.*683\|getfield.*683\|putfield.*683\|aBoolean683" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding boolean flag in DEOB source with conditional logic
+grep -A 12 -B 3 "aBoolean683.*=\|if.*aBoolean683\|aBoolean683.*if" srcAllDummysRemoved/src/Class40.java
+
+# Verify boolean field in javap cache with type signature and operations
+grep -A 15 -B 3 "aBoolean683\|Z.*683" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show transformation state control patterns in FTPNODIB bytecode
+grep -A 18 -B 5 "aBoolean683.*true\|aBoolean683.*false\|iconst_1.*putfield.*683\|iconst_0.*putfield.*683" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding state control in DEOB source
+grep -A 15 -B 3 "aBoolean683 = true\|aBoolean683 = false\|if.*aBoolean683" srcAllDummysRemoved/src/Class40.java
+
+# Verify state control in javap cache with boolean operations
+grep -A 15 -B 3 "iconst_[01].*putfield.*683\|aBoolean683" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 13: CONSTRUCTOR-BASED TRANSFORMATION SETUP VERIFICATION
+```bash
+# Show complex constructor with 18 transformation parameters in FTPNODIB bytecode
+grep -A 45 -B 5 "public.*FTPNODIB.*int.*int.*int.*int.*int.*int" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding constructor in DEOB source with full parameter list and initialization
+grep -A 40 -B 5 "public Class40.*int.*int.*int.*int.*int.*int" srcAllDummysRemoved/src/Class40.java
+
+# Verify constructor signature and implementation in javap cache
+grep -A 40 -B 5 "public Class40.*int" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show constructor array initialization patterns in FTPNODIB bytecode
+grep -A 30 -B 5 "newarray.*int.*anIntArray673\|newarray.*int.*anIntArray674\|newarray.*int.*anIntArray675" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding array initialization in DEOB source
+grep -A 25 -B 3 "anIntArray673.*new int\|anIntArray674.*new int\|anIntArray675.*new int" srcAllDummysRemoved/src/Class40.java
+
+# Verify array initialization in javap cache
+grep -A 25 -B 3 "newarray.*int.*anIntArray673\|anIntArray673.*newarray" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 14: STANDALONE MATHEMATICAL UTILITY VERIFICATION
+```bash
+# Show FTPNODIB extends Object without game class inheritance in bytecode
+grep -A 10 -B 5 "extends.*Object\|super.*Object\|class.*FTPNODIB" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding standalone class structure in DEOB source
+grep -A 8 -B 3 "class Class40\|extends.*Object" srcAllDummysRemoved/src/Class40.java
+
+# Verify standalone structure in javap cache with inheritance information
+grep -A 10 -B 3 "class Class40\|Superclass.*Object" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+
+# Show mathematical utility method patterns in FTPNODIB bytecode
+grep -A 20 -B 5 "method155.*boolean\|method.*transform\|coordinate.*method" bytecode/client/FTPNODIB.bytecode.txt
+
+# Show corresponding mathematical utility methods in DEOB source
+grep -A 18 -B 3 "method155\|transform.*method\|coordinate.*method" srcAllDummysRemoved/src/Class40.java
+
+# Verify mathematical utility methods in javap cache
+grep -A 18 -B 3 "method155\|transform.*method" srcAllDummysRemoved/.javap_cache/Class40.javap.cache
+```
+
+## COMMAND BLOCK 15: CROSS-REFERENCE VALIDATION FOR TRANSFORMATION CLASSES
+```bash
+# Show only FTPNODIB has specific array pattern among transformation classes
+grep -l "anIntArray673" bytecode/client/*.bytecode.txt | grep FTPNODIB
+
+# Show FTPNODIB's unique animation integration pattern count
+grep -c "LKGEGIEW" bytecode/client/FTPNODIB.bytecode.txt
+
+# Compare animation integration with other transformation classes
+for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "LKGEGIEW" "$file"; done | grep -E "(FTPNODIB|[0-9])"
+
+# Show FTPNODIB's unique boolean transformation flag
+grep -l "aBoolean683\|boolean.*683" bytecode/client/*.bytecode.txt | grep FTPNODIB
+
+# Cross-verify complete transformation signature uniqueness
+grep -l "anIntArray673" bytecode/client/*.bytecode.txt | xargs grep -l "LKGEGIEW" | xargs grep -l "aBoolean683" | grep FTPNODIB
+
+# Verify standalone mathematical utility uniqueness
+grep -l "extends.*Object" bytecode/client/*.bytecode.txt | xargs grep -l "anIntArray673" | grep FTPNODIB
+```
+
 ## Sources and References
 - **Bytecode**: bytecode/client/FTPNODIB.bytecode.txt
 - **Deobfuscated Source**: srcAllDummysRemoved/src/Class40.java

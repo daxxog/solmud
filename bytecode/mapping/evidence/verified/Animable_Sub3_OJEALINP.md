@@ -32,8 +32,11 @@ classDiagram
 ### 1. Class Structure and Inheritance Evidence
 **Bytecode Analysis (A-Flag):**
 ```bash
-# Show Animable_Sub3 extends Animable (XHHRODPC) with multi-line context
-grep -A 15 -B 5 "extends.*XHHRODPC" bytecode/client/OJEALINP.bytecode.txt
+# Show Animable_Sub3 extends Animable (XHHRODPC) with multi-line context including field declarations
+grep -A 25 -B 5 "extends.*XHHRODPC" bytecode/client/OJEALINP.bytecode.txt
+
+# Show complete field structure with public int fields and boolean flag patterns
+grep -A 30 -B 10 "public int m\|public int n\|private boolean r\|public boolean t" bytecode/client/OJEALINP.bytecode.txt
 ```
 
 **DEOB Source Code Analysis (B-Flag):**

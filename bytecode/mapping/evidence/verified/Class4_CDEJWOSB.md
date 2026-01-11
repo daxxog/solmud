@@ -273,3 +273,150 @@ final class Class4 {
 - Critical for rendering pipeline coordinate transformations
 - Used throughout the 3D graphics and animation systems
 - Provides mathematical foundations for game world transformations
+
+## COMMAND BLOCK 8: COMPREHENSIVE COORDINATE TRANSFORMATION VERIFICATION
+```bash
+# Show complete 4-directional coordinate transformation algorithm in CDEJWOSB bytecode
+grep -A 25 -B 5 "iand.*3\|iconst_3.*iand.*iconst_[0123].*if_icmpne.*bipush.*7.*isub.*ireturn" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding 4-directional transformation logic in DEOB source
+grep -A 20 -B 5 "i &= 3\|if.*i == 0.*return.*k\|if.*i == 1.*return.*j\|if.*i == 2.*return.*7 - k\|else.*return.*7 - j" srcAllDummysRemoved/src/Class4.java
+
+# Verify 4-directional transformation logic in javap cache with byte code instructions
+grep -A 25 -B 5 "iand\|iconst_3\|iconst_[0123]\|if_icmpne\|bipush.*7\|isub\|ireturn" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show geometric return calculations (7 - k, 7 - j) in CDEJWOSB bytecode
+grep -A 15 -B 5 "bipush.*7.*isub.*ireturn" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding geometric calculations in DEOB source
+grep -A 12 -B 3 "7 - k\|7 - j" srcAllDummysRemoved/src/Class4.java
+
+# Verify geometric calculations in javap cache
+grep -A 15 -B 3 "bipush.*7\|isub\|ireturn" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 9: STATIC UTILITY METHOD VERIFICATION
+```bash
+# Show all static utility methods in CDEJWOSB bytecode with method signatures
+grep -A 15 -B 5 "public static.*int.*(" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding static methods in DEOB source with method names
+grep -A 12 -B 3 "public static int method15[5-8]" srcAllDummysRemoved/src/Class4.java
+
+# Verify static utility methods in javap cache with method table
+grep -A 18 -B 3 "public static.*int" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show absence of instance fields - pure static utility class in CDEJWOSB bytecode
+grep -c "private.*\|public.*field\|int.*=" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding lack of instance fields in DEOB source
+grep -c "private.*\|public.*field\|int.*=" srcAllDummysRemoved/src/Class4.java
+
+# Verify pure static utility pattern in javap cache
+grep -c "public.*static" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 10: ERROR HANDLING INTEGRATION VERIFICATION
+```bash
+# Show comprehensive error handling with "92720" error code in CDEJWOSB bytecode
+grep -A 20 -B 5 "StringBuffer.*append.*92720\|new.*StringBuffer\|ldc.*92720" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding error handling in DEOB source with StringBuffer operations
+grep -A 18 -B 3 "92720\|StringBuffer.*append" srcAllDummysRemoved/src/Class4.java
+
+# Verify error handling in javap cache with string constants and method calls
+grep -A 20 -B 3 "92720\|StringBuffer\|append" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show signlink error reporting integration in CDEJWOSB bytecode
+grep -A 15 -B 5 "signlink.*reporterror\|invokestatic.*signlink" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding signlink integration in DEOB source
+grep -A 12 -B 3 "signlink.*reporterror" srcAllDummysRemoved/src/Class4.java
+
+# Verify signlink integration in javap cache
+grep -A 12 -B 3 "signlink.*reporterror" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 11: ANIMATION CLASS INTEGRATION VERIFICATION
+```bash
+# Show Animation (LKGEGIEW) static field access in CDEJWOSB bytecode
+grep -A 18 -B 5 "getstatic.*LKGEGIEW\|LKGEGIEW.*t" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding Animation integration in DEOB source with context
+grep -A 15 -B 3 "Animation\|\.t" srcAllDummysRemoved/src/Class4.java
+
+# Verify Animation field access in javap cache with type information
+grep -A 15 -B 3 "LKGEGIEW\|Animation" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show Animation usage in coordinate transformation context in CDEJWOSB bytecode
+grep -A 12 -B 3 "LKGEGIEW.*t.*coordinate\|transform.*LKGEGIEW" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding Animation context in DEOB source
+grep -A 10 -B 3 "Animation.*coordinate\|transform.*Animation" srcAllDummysRemoved/src/Class4.java
+
+# Verify Animation integration context in javap cache
+grep -A 12 -B 3 "LKGEGIEW.*transform\|coordinate.*LKGEGIEW" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 12: MATHEMATICAL BIT MASKING VERIFICATION
+```bash
+# Show exact bit masking algorithm (i &= 3) in CDEJWOSB bytecode with multiple occurrences
+grep -A 12 -B 3 "iand.*3\|iconst_3.*iand" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding bit masking in DEOB source with context
+grep -A 10 -B 3 "i &= 3" srcAllDummysRemoved/src/Class4.java
+
+# Verify bit masking pattern in javap cache with instructions
+grep -A 12 -B 3 "iand\|iconst_3" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show 4-directional processing with bit masking in CDEJWOSB bytecode
+grep -A 18 -B 5 "iand.*3.*iconst_[0123].*if_icmpne" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding 4-directional processing in DEOB source
+grep -A 15 -B 3 "i &= 3.*if.*i == [0123]" srcAllDummysRemoved/src/Class4.java
+
+# Verify 4-directional processing in javap cache
+grep -A 15 -B 3 "iand.*3\|iconst_[0123]\|if_icmpne" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 13: COORDINATE TRANSFORMATION PATTERNS VERIFICATION
+```bash
+# Show method155 coordinate transformation signature in CDEJWOSB bytecode
+grep -A 18 -B 5 "public static int a.*int.*int.*int.*boolean" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding method155 in DEOB source with parameter names
+grep -A 15 -B 3 "public static int method155.*int.*int.*int.*boolean" srcAllDummysRemoved/src/Class4.java
+
+# Verify method155 signature in javap cache with parameter types
+grep -A 18 -B 3 "method155" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+
+# Show method157 complex coordinate transformation in CDEJWOSB bytecode
+grep -A 20 -B 5 "public static int a.*int.*int.*byte.*int.*int" bytecode/client/CDEJWOSB.bytecode.txt
+
+# Show corresponding method157 in DEOB source
+grep -A 18 -B 3 "public static int method157" srcAllDummysRemoved/src/Class4.java
+
+# Verify method157 signature in javap cache
+grep -A 20 -B 3 "method157" srcAllDummysRemoved/.javap_cache/Class4.javap.cache
+```
+
+## COMMAND BLOCK 14: UNIQUE ALGORITHM SIGNATURE VERIFICATION
+```bash
+# Show only CDEJWOSB has this specific bit masking algorithm
+grep -l "iand.*3.*iconst_3" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Show only CDEJWOSB has "92720" error code
+grep -l "92720" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Verify Animation integration uniqueness
+grep -l "getstatic.*LKGEGIEW" bytecode/client/*.bytecode.txt | grep CDEJWOSB
+
+# Cross-verify 4-directional transformation uniqueness
+grep -l "bipush.*7.*isub" bytecode/client/*.bytecode.txt | xargs grep -l "iand.*3" | grep CDEJWOSB
+
+# Show complete algorithm signature uniqueness verification
+grep -l "iand.*3" bytecode/client/*.bytecode.txt | xargs grep -l "92720" | xargs grep -l "LKGEGIEW" | grep CDEJWOSB
+
+# Verify mathematical utility uniqueness compared to other utility classes
+for file in bytecode/client/*.bytecode.txt; do echo "=== $file ==="; grep -c "public static.*int" "$file"; done | grep -E "(CDEJWOSB|[0-9])"
+```
