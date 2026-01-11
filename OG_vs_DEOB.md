@@ -53,6 +53,7 @@ For any disputes/contradictions document the issue in `bytecode/mapping/evidence
 
 ### Notes to avoid wrong-direction and rabbit trails
  - [ ]
+ - Quantity != Quality! Counting the number of lines in a file does not imply those lines are of quality craftsmanship.
  - You can ignore the old tool in `./tools/classmapper_ARCHIVED_2026-01-08/`. This is archived and no longer apart of the strategy.
  - Avoid creating files like `bytecode/mapping/evidence/verified/Animable.md`. This doesn't contain any context in the filename about _which_ OG class it is mapped to! Instead use a path like `bytecode/mapping/evidence/verified/RSSocket_NQABEVLK.md`. Notice how the case is preserved.
  - Correct order for file naming convention is DEOB (first) _ OG (second)
