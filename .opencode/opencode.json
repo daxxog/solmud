@@ -5,6 +5,12 @@
   "keybinds": {
     "agent_cycle": "tab"
   },
+  "permission": {
+    "skill": {
+      "og-deob-compliance": "ask",
+      "*": "allow"
+    }
+  },
   "agent": {
     "mapping-coordinator": {
       "description": "Orchestrates 9-batch workflow for 1:1 mapping verification with template management and conflict resolution approval",

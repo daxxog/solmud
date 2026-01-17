@@ -1,7 +1,7 @@
 # Enhanced Makefile for 317 Deob Mapping Project
 # Optimized workflow with agent enhancements
 
-.PHONY: help verify-all optimize-workflow quality-dashboard batch-smart pre-validate parallel-verifier quality-gate
+.PHONY: help verify-all optimize-workflow quality-dashboard batch-smart pre-validate parallel-verifier quality-gate verify-cleanliness
 
 # Enhanced workflow targets
 help:
@@ -13,6 +13,7 @@ help:
 	@echo "parallel-verifier - Run parallel verification pipeline"
 	@echo "quality-gate      - Run quality gate validation on sample files"
 	@echo "pre-validate      - Pre-validation quality gates"
+	@echo "verify-cleanliness- Run OG_vs_DEOB.md compliance verification"
 	@echo "verify-all        - Complete verification of all 73 files"
 
 # Persistent context cache setup
@@ -48,6 +49,10 @@ pre-validate: .context-cache
 	@echo "✅ Bash commands: Command blocks with backticks found"
 	@echo "✅ DEOB diagrams: Mermaid diagrams with DEOB names present"
 	@echo "✅ Relative paths: No absolute paths found"
+
+# OG_vs_DEOB.md compliance verification using skill
+verify-cleanliness:
+	@bash tools/verify_cleanliness.sh
 	@echo "Pre-validation complete. Proceed with forensic analysis."
 
 # Dynamic batch sizing based on complexity
