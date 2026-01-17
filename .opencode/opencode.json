@@ -3,7 +3,7 @@
   "instructions": ["OG_vs_DEOB.md"],
   "default_agent": "mapping-coordinator",
   "keybinds": {
-    "switch_agent": "Tab"
+    "agent_cycle": "tab"
   },
   "agent": {
     "mapping-coordinator": {
@@ -48,35 +48,6 @@
     },
     "resolve-dispute": {
       "template": "Investigate disputed mapping for $1 using forensic analysis\nUse forensic-analyst to perform deep analysis and generate resolution documentation with irrefutable evidence.\n\nRequirements:\n- Multi-line context analysis with grep -A X -B Y flags\n- Cross-reference all three sources: bytecode + source + javap cache\n- Focus on algorithmic patterns, not surface-level features\n- Provide irrefutable evidence that resolves conflict definitively\n- Follow OG_vs_DEOB.md forensic standards\n- Use relative paths only, maintain clean directory structure\n\nInvestigate disputed mapping for $1.\n\nUse forensic-analyst to perform forensic dispute resolution:\n\n1. **Functional Analysis**:\n   - Analyze DEOB functionality (srcAllDummysRemoved/src/${1}.java)\n   - Analyze OG functionality (bytecode/client/${2}.bytecode.txt)\n   - Compare core algorithms, constants, and patterns\n\n2. **Evidence Collection**:\n   - Unique constants and magic numbers\n   - Bitmasks and error codes\n   - Field types and method signatures\n   - Integration patterns and usage by other classes\n   - Subsystem context (audio, collision, rendering, etc.)\n\n3. **Comparison Analysis**:\n   - Algorithmic similarity assessment\n   - Integration pattern matching\n   - Unique identifier verification\n   - Cross-reference validation\n\n4. **Resolution Documentation**:\n   - Generate irrefutable evidence in bytecode/mapping/evidence/disputed/\n   - Provide clear reasoning for correct mapping\n   - Document root cause of original dispute\n   - Include executable verification commands\n\n5. **Recommendation Submission**:\n   - Prepare resolution recommendation for mapping-coordinator approval\n   - Support recommendation with compelling forensic evidence\n   - Ensure 1:1 mapping integrity",
-      "description": "Investigate and resolve disputed DEOB_OG mapping with irrefutable evidence",
-      "agent": "forensic-analyst"
-    }
-  }
-}
-  },
-  "command": {
-    "verify-all": {
-      "template": "Verify all evidence files in bytecode/mapping/evidence/ using evidence-reviewer and forensic-analyst collaboration\nUse mapping-coordinator to orchestrate verification workflow across all evidence files.",
-      "description": "Verify evidence quality across all mappings",
-      "agent": "mapping-coordinator"
-    },
-    "generate-evidence": {
-      "template": "Generate forensic-grade evidence for $1 (DEOB) → $2 (OG) mapping\nUse forensic-analyst to create bytecode/mapping/evidence/verified/${1}_${2}.md with dynamic template application and mermaid diagrams.",
-      "description": "Generate forensic-grade evidence for a mapping",
-      "agent": "forensic-analyst"
-    },
-    "quality-report": {
-      "template": "Use evidence-reviewer to analyze all evidence files in bytecode/mapping/evidence/ and generate comprehensive quality report.\nFor each evidence file, evaluate:\n1. **Bash Command Execution** (20 pts): % commands that execute successfully\n2. **Multi-line Context Usage** (20 pts): % commands with -A X -B Y flags  \n3. **Non-contradictory Evidence** (15 pts): Cross-reference validation success\n4. **OG_vs_DEOB.md Checklist Compliance** (25 pts): Item-by-item verification\n5. **Documentation Quality** (20 pts): Forensic-grade standards assessment\n\nGenerate structured report with:\n- Quality distribution by scoring tier\n- Top 5 best evidence files (quality templates)\n- Files needing improvement (specific issues)\n- Files to regenerate (auto-queued for forensic-analyst)\n- Conflict detection report (1:1 mapping violations)\n- Improvement recommendations for each evidence file",
-      "description": "Generate scored quality report for all evidence files",
-      "agent": "general"
-    },
-    "audit-csv": {
-      "template": "Use mapping-auditor capabilities to verify CSV integrity against evidence files.\n\nCheck for:\n1. **CSV Completeness**: Every CSV row has corresponding evidence file\n2. **Evidence-CSV Alignment**: Confidence scores match evidence quality\n3. **1:1 Mapping Integrity**: No duplicate mappings or orphaned evidence\n4. **Orphaned Files**: Evidence files without corresponding CSV entries\n5. **Dispute Resolution**: Disputed mappings properly resolved in CSV\n6. **Name Convention**: Evidence files follow DEOB_OG.md format\n\nGenerate structured audit report with recommendations.",
-      "description": "Audit CSV integrity against evidence files",
-      "agent": "explore"
-    },
-    "resolve-dispute": {
-      "template": "Investigate disputed mapping for $1 using forensic analysis\nUse forensic-analyst to perform deep analysis and generate resolution documentation with irrefutable evidence.\n\nRequirements:\n- Multi-line context analysis with grep -A X -B Y flags\n- Cross-reference all three sources: bytecode + source + javap cache\n- Focus on algorithmic patterns, not surface-level features\n- Provide irrefutable evidence that resolves conflict definitively",
       "description": "Investigate and resolve disputed DEOB_OG mapping with irrefutable evidence",
       "agent": "forensic-analyst"
     }
