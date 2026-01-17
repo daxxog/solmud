@@ -69,6 +69,114 @@ For each evidence file, include:
 - Clean, auditable structure
 - Resolved disputes removed from disputed directory
 
+## CRITICAL: Verification Requirements
+
+### Before Evidence Generation
+1. READ OG_vs_DEOB.md (MANDATORY first step)
+2. DO NOT assume CSV mapping is correct - VERIFY it with evidence
+3. Find a UNIQUE identifier first (magic numbers, specific filenames, algorithms)
+4. Test your grep commands against actual files before documenting
+
+### Forensic-Grade Evidence Requirements
+
+#### Requirement 1: Three-Way Evidence (MANDATORY)
+For EACH evidence section, MUST provide evidence from THREE sources:
+- Bytecode Analysis: grep on bytecode/client/*.bytecode.txt
+- DEOB Source Evidence: grep on srcAllDummysRemoved/src/*.java
+- Javap Cache Verification: grep on srcAllDummysRemoved/.javap_cache/*.javap.cache
+
+Example:
+```bash
+# Bytecode Analysis
+grep -A 15 -B 5 "class structure" bytecode/client/TARGET.bytecode.txt
+
+# DEOB Source Evidence
+grep -A 15 -B 5 "class structure" srcAllDummysRemoved/src/Target.java
+
+# Javap Cache Verification
+grep -A 15 -B 5 "class structure" srcAllDummysRemoved/.javap_cache/Target.javap.cache
+```
+
+#### Requirement 2: Multi-Line Context (MANDATORY)
+ALL grep commands MUST use context flags:
+- Minimum: -A 5 -B 2
+- Recommended: -A 15 -B 5 for methods/signatures
+- Recommended: -A 20 -B 10 for array initialization
+
+Example:
+```bash
+# ✅ CORRECT - Shows context
+grep -A 20 -B 10 "public void method123" bytecode/client/TARGET.bytecode.txt
+
+# ❌ INCORRECT - Single line only
+grep "public void method123" bytecode/client/TARGET.bytecode.txt
+```
+
+#### Requirement 3: Test Commands Before Documenting (MANDATORY)
+Before including any bash command:
+- Execute it to verify it works
+- Ensure it returns expected results
+- Document actual output format
+
+If a command doesn't work, FIND ANOTHER APPROACH - do not document it.
+
+#### Requirement 4: Minimum Evidence Coverage (MANDATORY)
+Each evidence file MUST have at least 7 command blocks:
+1. Class structure/inheritance
+2. Field patterns
+3. Method signatures
+4. Unique identifiers/constants
+5. Cross-reference (uniqueness verification)
+6. Architecture/integration
+7. Verification/status
+
+Complex classes (arrays, algorithms) should have 10-14 command blocks.
+
+#### Requirement 5: Uniqueness Verification (MANDATORY)
+Prove mapping is 1:1 by searching ALL classes:
+```bash
+# Verify only TARGET class has this pattern
+find bytecode/client/ -name "*.bytecode.txt" -exec grep -l "unique_pattern_1" {} \; | xargs grep -l "unique_pattern_2" | xargs grep -l "unique_pattern_3" | grep TARGET
+```
+
+#### Requirement 6: DEOB Diagrams Only (MANDATORY)
+Mermaid diagrams must reference ONLY DEOB class names:
+- Use DEOB names: RSSocket, Node, OnDemandFetcher
+- NEVER use obfuscated names: NQABEVLK, PKVMXVTO, GHOWLKWN
+
+### Forbidden Patterns (STRICTLY PROHIBITED)
+
+You MUST NOT include:
+- Sections titled "unique to obfuscated bytecode"
+- Explanations of "obfuscation addition" for field/method mismatches
+- Bash commands with || echo fallbacks to hide failures
+- Single-line grep without -A/-B context flags
+- Untested bash commands
+- Casual language: "appears to be", "probably", "seems like"
+
+### When You Find Discrepancies
+
+If bytecode has fields/methods not in DEOB source (or vice versa):
+1. DO NOT label it "obfuscation addition"
+2. Search for alternative mappings (different field/method names)
+3. Verify mapping is correct (maybe CSV is wrong)
+4. If mapping is disputed, document in bytecode/mapping/evidence/disputed/
+5. NEVER explain away discrepancies as "noise"
+
+### Pre-Submission Verification Checklist
+
+Before submitting evidence file, verify:
+- [ ] All bash commands execute successfully
+- [ ] Every evidence section has three sources (bytecode, source, javap)
+- [ ] All grep commands use -A X -B Y context flags
+- [ ] No "unique to obfuscated" or "obfuscation addition" sections
+- [ ] Mermaid diagrams use only DEOB class names
+- [ ] Cross-reference verification proves 1:1 mapping
+- [ ] At least 7 command blocks present
+- [ ] Terminology is forensic-grade ("IRREFUTABLE EVIDENCE")
+
+If ANY item is unchecked, revise the evidence file.
+
 ### Evidence Structure
 ```
 # Evidence: [DEOB] → [OG]

@@ -9,17 +9,20 @@ Complete `.opencode/` directory structure implemented with three specialized age
 ### **Agents Created**
 
 #### **forensic-analyst:grok-code** (subagent)
-- Performs deep forensic bytecode analysis for 1:1 mapping verification
-- Generates forensic-grade evidence with mermaid diagram generation
+- Performs deep forensic bytecode analysis for 1:1 mapping verification with mermaid diagram generation
 - Dynamic template application based on top 5 quality templates
 - Auto-regenerates files scoring <50 (delete + create fresh evidence)
 - Detects 1:1 mapping conflicts during analysis
 - Follows OG_vs_DEOB.md critical checklist exactly
+- Implements three-way evidence (bytecode + source + javap cache)
+- Uses multi-line context (grep -A 15 -B 5 minimum)
+- Tests all bash commands before documenting
+- Proves uniqueness across all classes
 
 #### **evidence-reviewer:big-pickle** (subagent)
-- Implements 100-point scoring methodology with rigorous validation
+- Implements binary PASS/FAIL verification gates with detailed failure feedback
 - Detects conflicts by cross-referencing OG class usage across evidence files
-- Triggers auto-regeneration for <50 scoring files
+- Triggers auto-regeneration for FAIL status files
 - Validates OG_vs_DEOB.md checklist compliance (17 critical items)
 - Provides specific improvement recommendations for quality enhancement
 
@@ -50,19 +53,10 @@ Complete `.opencode/` directory structure implemented with three specialized age
 ## Key Features
 
 ### **Quality Management**
-- 100-point scoring methodology with 5 criteria (20+20+15+25+20 points)
-- Scoring thresholds: 90-100 (FORENSIC-GRADE), 75-89 (GOOD), 50-74 (NEEDS WORK), 0-49 (LOW QUALITY)
-- Auto-regeneration for files scoring <50 points
-
-### **Conflict Detection**
-- Cross-reference OG class usage across all evidence files
-- Detect 1:1 mapping violations
-- Queue conflicts for resolution at batch completion
-- Irrefutable evidence generation for dispute resolution
-
-### **Template Evolution**
-- Dynamic balancing of template consistency with class-specific improvements
-- Template re-evaluation after batch 5 considering all evidence files
+- Binary PASS/FAIL verification gates (6 gates: Command Execution, Three-Way Evidence, Multi-Line Context, No Template Patterns, DEOB Diagrams Only, Cross-Reference Verification)
+- Detailed failure feedback on which gates failed
+- Auto-regeneration for FAIL status files
+- Template evolution management (re-evaluate after batch 5)
 - Top 5 quality templates identified and maintained
 
 ### **OG_vs_DEOB.md Compliance**
@@ -82,8 +76,7 @@ Complete `.opencode/` directory structure implemented with three specialized age
 ### **Quality Thresholds**
 - **<50 points**: Auto-regeneration (delete + create fresh)
 - **50-74 points**: Major improvements needed
-- **75-89 points**: Acceptable with minor improvements
-- **90-100 points**: FORENSIC-GRADE VERIFIED
+
 
 ## Workflow Architecture
 
