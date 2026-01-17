@@ -21,17 +21,17 @@ graph TD
     Class18 --> Animation[Animation]
     Class18 --> Model[Model]
     
-    subgraph "Animation System"
+    subgraph AnimationSystem
         Class18
         Class36
         Animation
     end
     
-    subgraph "Data Sources"
+    subgraph DataSources
         Stream
     end
     
-    subgraph "Rendering Pipeline"
+    subgraph RenderingPipeline
         Model
     end
     

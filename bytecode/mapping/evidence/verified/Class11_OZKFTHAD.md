@@ -22,16 +22,16 @@ graph TD
     Class11 --> Player[Player]
     Class11 --> NPC[NPC]
 
-    subgraph "Collision System"
+    subgraph CollisionSystem
         Class11
     end
 
-    subgraph "Game Entities"
+    subgraph GameEntities
         Player
         NPC
     end
 
-    subgraph "World Management"
+    subgraph WorldManagement
         client
         ObjectManager
     end

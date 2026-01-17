@@ -19,16 +19,16 @@ graph TD
     DrawingArea --> Text[TextDrawingArea]
     DrawingArea --> Sprites[Sprite]
 
-    subgraph "Graphics Foundation"
+    subgraph GraphicsFoundation
         DrawingArea
     end
 
-    subgraph "Rendering Systems"
+    subgraph RenderingSystems
         Client
         Graphics
     end
 
-    subgraph "Text & UI"
+    subgraph TextUI
         Text
         Sprites
     end

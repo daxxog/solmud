@@ -22,20 +22,20 @@ classDiagram
     TextDrawingArea --> Stream
     TextDrawingArea --> TextClass
     
-    subgraph "Text Rendering System"
+    subgraph TextRenderingSystem
         TextDrawingArea
     end
     
-    subgraph "Graphics Foundation"
+    subgraph GraphicsFoundation
         DrawingArea
     end
     
-    subgraph "Data Loading"
+    subgraph DataLoading
         StreamLoader
         Stream
     end
     
-    subgraph "Text Processing"
+    subgraph TextProcessing
         TextClass
     end
     

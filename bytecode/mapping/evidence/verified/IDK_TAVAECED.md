@@ -20,20 +20,20 @@ graph TD
     IDK --> RSInterface
     IDK --> Player
     
-    subgraph "Character Appearance System"
+    subgraph CharacterAppearanceSystem
         IDK --> AppearanceArrays[anIntArray658-661]
         IDK --> CacheSystem[Static Cache Array]
     end
     
-    subgraph "Resource Management"
+    subgraph ResourceManagement
         StreamLoader --> DataLoading[idk.dat parsing]
     end
     
-    subgraph "UI Integration"
+    subgraph UIIntegration
         RSInterface --> CharacterDisplay[Character rendering]
     end
     
-    subgraph "Game Entity"
+    subgraph GameEntity
         Player --> CharacterRendering[Visual appearance]
     end
     

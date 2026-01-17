@@ -20,12 +20,12 @@ graph TD
     StreamLoader --> Class13
     OnDemandFetcher --> Class13
     
-    subgraph "Asset Loading Pipeline"
+    subgraph AssetLoadingPipeline
         StreamLoader
         OnDemandFetcher
     end
     
-    subgraph "Decompression Layer"
+    subgraph DecompressionLayer
         Class13
         Class32
     end

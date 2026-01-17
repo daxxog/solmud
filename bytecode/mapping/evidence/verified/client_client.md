@@ -22,16 +22,16 @@ graph TD
     client --> DrawingArea[DrawingArea]
     client --> TextInput[TextInput]
 
-    subgraph "Core Application"
+    subgraph CoreApplication
         client
     end
 
-    subgraph "Infrastructure"
+    subgraph Infrastructure
         RSApplet
         RSSocket
     end
 
-    subgraph "Game Systems"
+    subgraph GameSystems
         WorldController
         DrawingArea
         TextInput

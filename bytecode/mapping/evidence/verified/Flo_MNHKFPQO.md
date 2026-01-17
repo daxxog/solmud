@@ -19,12 +19,12 @@ graph TD
     Flo --> StreamLoader[StreamLoader]
     Flo --> Stream[Stream]
 
-    subgraph "Data Loading"
+    subgraph DataLoading
         StreamLoader
         Stream
     end
 
-    subgraph "Color Processing"
+    subgraph ColorProcessing
         Flo
     end
 

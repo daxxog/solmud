@@ -19,20 +19,20 @@ graph TD
     TextInput --> UI[RSInterface]
     TextInput --> Stream[Stream]
 
-    subgraph "Text Processing Layer"
+    subgraph TextProcessingLayer
         TextInput
     end
 
-    subgraph "Network Layer"
+    subgraph NetworkLayer
         RSSocket
     end
 
-    subgraph "UI Layer"
+    subgraph UILayer
         Client
         UI
     end
 
-    subgraph "Data Layer"
+    subgraph DataLayer
         Stream
     end
 

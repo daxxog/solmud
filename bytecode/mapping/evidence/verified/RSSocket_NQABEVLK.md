@@ -20,16 +20,16 @@ graph TD
     RSSocket --> RSApplet[RSApplet]
     RSSocket --> Stream[Stream]
 
-    subgraph "Network Layer"
+    subgraph NetworkLayer
         RSSocket
     end
 
-    subgraph "Application Layer"
+    subgraph ApplicationLayer
         client
         RSApplet
     end
 
-    subgraph "Data Layer"
+    subgraph DataLayer
         Stream
     end
 

@@ -19,13 +19,13 @@ graph TD
     Entity --> Player[Player]
     Entity --> NPC[NPC]
 
-    subgraph "Entity Hierarchy"
+    subgraph EntityHierarchy
         Entity
         Player
         NPC
     end
 
-    subgraph "Rendering System"
+    subgraph RenderingSystem
         Animable
     end
 
