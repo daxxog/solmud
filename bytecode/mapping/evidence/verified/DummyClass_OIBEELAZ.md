@@ -211,8 +211,11 @@ DummyClass serves as a minimal cache management utility that provides a static a
 
 ```mermaid
 classDiagram
-    DummyClass --> "Various Cache Systems"
-    DummyClass : +static cache[]
-    DummyClass : +DummyClass()
-    DummyClass : -minimal object storage
+    class DummyClass {
+        +static cache[]
+        +DummyClass()
+        -minimal object storage
+    }
+    
+    DummyClass --> VariousCacheSystems
 ```
