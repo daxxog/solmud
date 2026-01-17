@@ -1,7 +1,8 @@
 ---
 description: Generate forensic-grade evidence for DEOB_OG mapping pair with dynamic template application
-template: Generate forensic-grade evidence for $1 (DEOB) → $2 (OG) mapping
-Use forensic-analyst to create bytecode/mapping/evidence/verified/${1}_${2}.md with dynamic template application and mermaid diagrams.
+template: |
+  Generate forensic-grade evidence for $1 (DEOB) → $2 (OG) mapping
+  Use forensic-analyst to create bytecode/mapping/evidence/verified/${1}_${2}.md with dynamic template application and mermaid diagrams.
 ---
 Generate forensic-grade evidence for $1 (DEOB) → $2 (OG) mapping.
 

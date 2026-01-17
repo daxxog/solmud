@@ -1,7 +1,8 @@
 ---
 description: Investigate and resolve disputed DEOB_OG mapping with irrefutable evidence
-template: Investigate disputed mapping for $1 (DEOB) or $2 (OG) using forensic analysis
-Use forensic-analyst to perform deep analysis and generate resolution documentation with irrefutable evidence.
+template: |
+  Investigate disputed mapping for $1 (DEOB) or $2 (OG) using forensic analysis
+  Use forensic-analyst to perform deep analysis and generate resolution documentation with irrefutable evidence.
 ---
 Investigate disputed mapping for $1.
 

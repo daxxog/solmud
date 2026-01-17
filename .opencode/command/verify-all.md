@@ -1,7 +1,8 @@
 ---
 description: Verify all evidence files in bytecode/mapping/evidence/ for quality and compliance
-template: Verify all evidence files in bytecode/mapping/evidence/ using evidence-reviewer and forensic-analyst collaboration
-Use mapping-coordinator to orchestrate verification workflow across all evidence files.
+template: |
+  Verify all evidence files in bytecode/mapping/evidence/ using evidence-reviewer and forensic-analyst collaboration
+  Use mapping-coordinator to orchestrate verification workflow across all evidence files.
 ---
 Use mapping-coordinator to verify all evidence files in bytecode/mapping/evidence/:
 
