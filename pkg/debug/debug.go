@@ -15,13 +15,3 @@ type Debug struct{}
 func Printf(format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
-
-// Warn outputs warning message to console.
-func Warn(format string, args ...interface{}) {
-	fmt.Printf("[WARN] "+format+"\n", args...)
-}
-
-// Error outputs error message to console.
-func Error(format string, args ...interface{}) {
-	fmt.Printf("[ERROR] "+format+"\n", args...)
-}

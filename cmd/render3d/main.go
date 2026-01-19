@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"solmud/pkg/debug"
 	"solmud/pkg/framebuffer"
 	"solmud/pkg/math"
 	"solmud/pkg/renderer"
@@ -27,18 +29,19 @@ func NewGame(trig math.ITrigTable) *Game {
 	renderer, _ := renderer.NewScanlineRenderer(trig)
 	camera := math.NewVec3(0, 0, 0)
 
-	return &Game{
+	game := &Game{
 		frame_buffer: nil,
 		renderer:     renderer,
 		camera:       camera,
 		vertices: []math.IVec3{
-			math.NewVec3(0, -50, 500),
-			math.NewVec3(-50, 50, 500),
-			math.NewVec3(50, 50, 500),
+			math.NewVec3(0, -50, 1000),
+			math.NewVec3(-50, 50, 1000),
+			math.NewVec3(50, 50, 1000),
 		},
 		rotation:   0,
 		trig_table: trig,
 	}
+	return game
 }
 
 func (g *Game) Update() error {
@@ -56,32 +59,33 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	g.renderTriangle()
 }
 
-func (g *Game) renderTriangle() {
-	sin := g.trig_table.Sin(g.rotation)
-	cos := g.trig_table.Cos(g.rotation)
+func (g *Game) renderTriangle() error {
+	debug.Printf("[DEBUG] renderTriangle ENTRY - camera: X=%d, Y=%d, Z=%d\n",
+		g.camera.X(), g.camera.Y(), g.camera.Z())
 
-	// Simple check - skip rendering if any projection returns nil
-	all_visible := true
+	mat := math.NewMatrix()
 	projected := make([]math.IVec2, 3)
+	visible_count := 0
 
-	for i := 0; i < 3; i++ {
-		v := g.vertices[i]
-		rotated_x := (v.X()*cos - v.Z()*sin) >> 16
-		rotated_z := (v.X()*sin + v.Z()*cos) >> 16
-
-		world := math.NewVec3(rotated_x, v.Y(), rotated_z)
-		screen, _, visible := math.Project(world, g.camera, math.RS2_CENTER_X, math.RS2_CENTER_Y)
-
-		projected[i] = screen
-		if !visible {
-			all_visible = false
+	for i, v := range g.vertices {
+		rotated := v.Rotate(mat)
+		screen, _, visible := math.Project(rotated, g.camera, math.RS2_CENTER_X, math.RS2_CENTER_Y)
+		if visible {
+			projected[i] = screen
+			visible_count++
 		}
 	}
 
-	// Only render if all vertices are visible
-	if all_visible {
-		g.fillTriangle(projected[0], projected[1], projected[2], color.NRGBA{255, 255, 255, 255})
+	debug.Printf("[DEBUG]   Visible vertices: %d/3\n", visible_count)
+
+	if visible_count != 3 {
+		return fmt.Errorf("triangle has %d visible vertices (expected 3)", visible_count)
 	}
+
+	g.fillTriangle(projected[0], projected[1], projected[2], color.NRGBA{255, 255, 255, 255})
+
+	debug.Printf("[DEBUG] renderTriangle END\n")
+	return nil
 }
 
 func (g *Game) fillTriangle(p0, p1, p2 math.IVec2, c color.NRGBA) {
