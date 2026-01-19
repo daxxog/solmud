@@ -17,7 +17,9 @@ type ScanlineRenderer struct {
 }
 
 // NewScanlineRenderer creates a new scanline-based renderer.
-func NewScanlineRenderer() (*ScanlineRenderer, error) {
+//
+// Returns IRenderer interface to hide implementation details.
+func NewScanlineRenderer() (IRenderer, error) {
 	trig := math.NewTrigTable()
 
 	return &ScanlineRenderer{
