@@ -54,13 +54,38 @@ type IVec3 interface {
 	Normalize() IVec3
 
 	// Transformations
-	Rotate(mat *Matrix) IVec3
+	Rotate(mat IMatrix) IVec3
 }
 
 // IVec2 defines interface for 2D screen coordinate operations.
 type IVec2 interface {
 	X() int
 	Y() int
+}
+
+// IMatrix defines interface for 3x3 transformation matrix operations.
+//
+// Provides field accessor methods for fixed-point transformation matrices.
+// Minimal interface design - only methods needed for current usage.
+type IMatrix interface {
+	M00() int
+	M01() int
+	M02() int
+	M10() int
+	M11() int
+	M12() int
+	M20() int
+	M21() int
+	M22() int
+}
+
+// ITrigTable defines interface for trigonometric table access.
+//
+// Provides access to precomputed sine/cosine lookup tables.
+// Used for efficient rotation calculations without runtime trig functions.
+type ITrigTable interface {
+	Sin(index int) int
+	Cos(index int) int
 }
 
 // Vec3 represents a 3D vector using fixed-point arithmetic.
@@ -108,7 +133,9 @@ func NewVec2(x, y int) IVec2 {
 }
 
 // NewMatrix creates a new 3x3 identity matrix.
-func NewMatrix() *Matrix {
+//
+// Returns IMatrix interface to hide implementation details.
+func NewMatrix() IMatrix {
 	return &Matrix{
 		m00: 65536, m01: 0, m02: 0,
 		m10: 0, m11: 65536, m12: 0,
@@ -118,8 +145,8 @@ func NewMatrix() *Matrix {
 
 // NewTrigTable initializes and returns precomputed trigonometric tables.
 //
-// Returns a TrigTable with 2048 entries for sine and cosine.
-func NewTrigTable() *TrigTable {
+// Returns ITrigTable interface to hide implementation details.
+func NewTrigTable() ITrigTable {
 	table := &TrigTable{}
 
 	for i := 0; i < 2048; i++ {
@@ -186,7 +213,11 @@ func (v *Vec3) Normalize() IVec3 {
 	return v.Scale(scale)
 }
 
-func (v *Vec3) Rotate(mat *Matrix) IVec3 {
+func (v *Vec3) Rotate(mat IMatrix) IVec3 {
+	return v.rotateInternal(mat.(*Matrix))
+}
+
+func (v *Vec3) rotateInternal(mat *Matrix) IVec3 {
 	return NewVec3(
 		(v.x*mat.m00+v.y*mat.m01+v.z*mat.m02)>>16,
 		(v.x*mat.m10+v.y*mat.m11+v.z*mat.m12)>>16,
@@ -212,6 +243,44 @@ func (t *TrigTable) Sin(index int) int {
 
 func (t *TrigTable) Cos(index int) int {
 	return t.cos[index%2048]
+}
+
+// IMatrix implementation methods for Matrix struct
+
+func (m *Matrix) M00() int {
+	return m.m00
+}
+
+func (m *Matrix) M01() int {
+	return m.m01
+}
+
+func (m *Matrix) M02() int {
+	return m.m02
+}
+
+func (m *Matrix) M10() int {
+	return m.m10
+}
+
+func (m *Matrix) M11() int {
+	return m.m11
+}
+
+func (m *Matrix) M12() int {
+	return m.m12
+}
+
+func (m *Matrix) M20() int {
+	return m.m20
+}
+
+func (m *Matrix) M21() int {
+	return m.m21
+}
+
+func (m *Matrix) M22() int {
+	return m.m22
 }
 
 // Project transforms world coordinate to screen coordinate using RS2 algorithm.

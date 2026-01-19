@@ -12,16 +12,15 @@ import (
 // This is a placeholder implementation that will be expanded with
 // actual rasterization algorithms matching RS2 build 317.
 type ScanlineRenderer struct {
-	trig_table *math.TrigTable
+	trig_table math.ITrigTable
 	stats      RenderStats
 }
 
 // NewScanlineRenderer creates a new scanline-based renderer.
 //
 // Returns IRenderer interface to hide implementation details.
-func NewScanlineRenderer() (IRenderer, error) {
-	trig := math.NewTrigTable()
-
+// Accepts ITrigTable injection for dependency injection pattern.
+func NewScanlineRenderer(trig math.ITrigTable) (IRenderer, error) {
 	return &ScanlineRenderer{
 		trig_table: trig,
 	}, nil

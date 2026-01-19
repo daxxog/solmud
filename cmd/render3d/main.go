@@ -20,13 +20,12 @@ type Game struct {
 	camera       math.IVec3
 	vertices     []math.IVec3
 	rotation     int
-	trig_table   *math.TrigTable
+	trig_table   math.ITrigTable
 }
 
-func NewGame() *Game {
-	renderer, _ := renderer.NewScanlineRenderer()
+func NewGame(trig math.ITrigTable) *Game {
+	renderer, _ := renderer.NewScanlineRenderer(trig)
 	camera := math.NewVec3(0, 0, 0)
-	trig_table := math.NewTrigTable()
 
 	return &Game{
 		frame_buffer: nil,
@@ -38,7 +37,7 @@ func NewGame() *Game {
 			math.NewVec3(100<<16, 100<<16, 300<<16),
 		},
 		rotation:   0,
-		trig_table: trig_table,
+		trig_table: trig,
 	}
 }
 
@@ -155,7 +154,8 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func main() {
 	ebiten.SetWindowSize(screenWidth*2, screenHeight*2)
 	ebiten.SetWindowTitle("RS2 317 - Triangle Test")
-	game := NewGame()
+	trig := math.NewTrigTable()
+	game := NewGame(trig)
 	if err := ebiten.RunGame(game); err != nil {
 		panic(err)
 	}
