@@ -32,9 +32,9 @@ func NewGame(trig math.ITrigTable) *Game {
 		renderer:     renderer,
 		camera:       camera,
 		vertices: []math.IVec3{
-			math.NewVec3(0, -100<<16, 300<<16),
-			math.NewVec3(-100<<16, 100<<16, 300<<16),
-			math.NewVec3(100<<16, 100<<16, 300<<16),
+			math.NewVec3(0, -50, 500),
+			math.NewVec3(-50, 50, 500),
+			math.NewVec3(50, 50, 500),
 		},
 		rotation:   0,
 		trig_table: trig,
@@ -60,31 +60,31 @@ func (g *Game) renderTriangle() {
 	sin := g.trig_table.Sin(g.rotation)
 	cos := g.trig_table.Cos(g.rotation)
 
+	// Simple check - skip rendering if any projection returns nil
+	all_visible := true
 	projected := make([]math.IVec2, 3)
 
 	for i := 0; i < 3; i++ {
 		v := g.vertices[i]
-
 		rotated_x := (v.X()*cos - v.Z()*sin) >> 16
 		rotated_z := (v.X()*sin + v.Z()*cos) >> 16
 
 		world := math.NewVec3(rotated_x, v.Y(), rotated_z)
-
 		screen, _, visible := math.Project(world, g.camera, math.RS2_CENTER_X, math.RS2_CENTER_Y)
 
-		if visible {
-			projected[i] = screen
+		projected[i] = screen
+		if !visible {
+			all_visible = false
 		}
 	}
 
-	g.fillTriangle(projected[0], projected[1], projected[2], color.NRGBA{255, 255, 255, 255})
+	// Only render if all vertices are visible
+	if all_visible {
+		g.fillTriangle(projected[0], projected[1], projected[2], color.NRGBA{255, 255, 255, 255})
+	}
 }
 
 func (g *Game) fillTriangle(p0, p1, p2 math.IVec2, c color.NRGBA) {
-	if p0 == nil || p1 == nil || p2 == nil {
-		return
-	}
-
 	x0, y0 := p0.X(), p0.Y()
 	x1, y1 := p1.X(), p1.Y()
 	x2, y2 := p2.X(), p2.Y()
