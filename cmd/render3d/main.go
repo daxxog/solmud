@@ -1,32 +1,34 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	"image/color"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
+const (
+	screenWidth  = 320
+	screenHeight = 240
+)
+
+type Game struct{}
+
+func (g *Game) Update() error {
+	return nil
+}
+
+func (g *Game) Draw(screen *ebiten.Image) {
+	screen.Fill(color.NRGBA{0x00, 0x40, 0x80, 0xff})
+}
+
+func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
+	return screenWidth, screenHeight
+}
+
 func main() {
-	fmt.Println("RuneScape 2 Build 317 - Ebitengine v2 Test")
-
-	const screen_width = 512
-	const screen_height = 384
-
-	ebiten.SetWindowSize(screen_width, screen_height)
-	ebiten.SetWindowTitle("RS2 - Ebitengine v2 Test")
-
-	start := time.Now()
-
-	fmt.Println("Running for 3 seconds...")
-
-	for i := 0; i < 3; i++ {
-		time.Sleep(1 * time.Second)
-		fmt.Printf("Tick %d\n", i+1)
-		ebiten.Update()
+	ebiten.SetWindowSize(screenWidth*2, screenHeight*2)
+	ebiten.SetWindowTitle("Ebitengine v2 - Basic Test")
+	if err := ebiten.RunGame(&Game{}); err != nil {
+		panic(err)
 	}
-
-	fmt.Println("Test complete!")
-
-	fmt.Printf("Ran for %v\n", time.Since(start))
 }
