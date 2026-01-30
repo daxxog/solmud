@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/yt_subs/__init__.py
+src/yt_subs/cli.py
+src/yt_subs/extractor.py
+src/yt_subs.egg-info/PKG-INFO
+src/yt_subs.egg-info/SOURCES.txt
+src/yt_subs.egg-info/dependency_links.txt
+src/yt_subs.egg-info/entry_points.txt
+src/yt_subs.egg-info/requires.txt
+src/yt_subs.egg-info/top_level.txt
